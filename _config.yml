@@ -1,6 +1,6 @@
 # Site settings
 title:       The Dima
-email:       your_email@example.com
+#email:       
 author:      Dmitriy Kopylenko
 description: "My blog"
 baseurl:     ""

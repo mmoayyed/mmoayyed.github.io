@@ -1,9 +1,9 @@
 ---
 layout:     post
 title:      Pixyll capabilities
-date:       Sat Jul 25
+date:       Jul 25
 summary:    Sample of the Pixyll styles
-categories: jekyll pixyll
+
 ---
 
 All links are easy to [locate and discern](https://www.google.com){:target="_blank"}, yet don't detract from the harmony
@@ -13,45 +13,23 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 ### Code, with syntax highlighting
 
-Here's an example of some ruby code with line anchors.
+Here's an example of some code with line anchors.
 
-{% highlight ruby lineanchors %}
-# The most awesome of classes
-class Awesome < ActiveRecord::Base
-  include EvenMoreAwesome
-
-  validates_presence_of :something
-  validates :email, email_format: true
-
-  def initialize(email, name = nil)
-    self.email = email
-    self.name = name
-    self.favorite_number = 12
-    puts 'created awesomeness'
-  end
-
-  def email_format
-    email =~ /\S+@\S+\.\S+/
-  end
-end
+{% highlight XML lineanchors %}
+  <dependency>
+    <groupId>net.unicon.cas</groupId>
+    <artifactId>cas-addon-hazelcast-ticket-registry</artifactId>
+    <version>1.1.0-GA</version>
+    <scope>runtime</scope>
+  </dependency>
 {% endhighlight %}
 
-{% highlight ruby lineanchors %}
-  /**
-  * A Class description
-  */
-  class Person {
-    /** the name of the person */
-    String name
+{% highlight java lineanchors %}
+  public class Person {
+    private String name;
 
-    /**
-    * Creates a greeting method for a certain person.
-    *
-    * @param otherPerson the person to greet
-    * @return a greeting message
-    */
-    String greet(String otherPerson) {
-      "Hello ${otherPerson}"
+    public String greet(String otherPerson) {
+      return "Hello world";
     }
   }
 {% endhighlight %}
