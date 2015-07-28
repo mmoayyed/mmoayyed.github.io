@@ -11,37 +11,89 @@ of a paragraph. The _same_ goes for italics and __bold__ elements. Even the the 
 works if <del>for some reason you need to update your post</del>. For consistency's sake,
 <ins>The same goes for insertions</ins>, of course.
 
+
+
 ### Code, with syntax highlighting
 
-Here's an example of some code with line anchors.
+### Embedded Gist
+{% gist e80acaf16609eebbfaaa %}
 
-{% highlight XML lineanchors %}
-  <dependency>
-    <groupId>net.unicon.cas</groupId>
-    <artifactId>cas-addon-hazelcast-ticket-registry</artifactId>
-    <version>1.1.0-GA</version>
-    <scope>runtime</scope>
-  </dependency>
-{% endhighlight %}
+### YAML
+<pre class="prettyprint lang-yaml">
+---
+services:
+  - !serviceWithAttributes
+    id: 1
+    name: ONE
+    description: Google service
+    serviceId: https://www.google.com/**
+    evaluationOrder: 1
+    theme: default
+    enabled: false
+    ssoEnabled: false
+    anonymousAccess: true
+    allowedToProxy: false
+    allowedAttributes: [uid, mail]
+    ignoreAttributes: false
+    usernameAttribute: cn
+    logoutType: FRONT_CHANNEL
+    extraAttributes:
+      authzAttributes:
+        memberOf: [group1, group2]
+        anotherAttr: val
+      unauthorizedUrl: http://exammple.com
 
-{% highlight java lineanchors %}
+
+  - !serviceWithAttributes
+    id: 2
+    name: TWO
+    serviceId: https://yahoo.com
+    evaluationOrder: 2
+    attributeFilter: !regexAttributeFilter ["https://.+"]
+
+  - !regexServiceWithAttributes
+    id: 3
+    name: THREE
+    serviceId: ^(https?|imaps?)://.*
+    evaluationOrder: 3
+    attributeFilter: !defaultAttributeFilter []
+    requiredHandlers: [handler1, handler2]
+</pre>
+
+
+### XML
+<pre class="prettyprint">
+&lt;cas:accept-users-authentication-handler
+        id=&quot;acceptUsersAuthnHandler&quot;&gt;
+        &lt;cas:user name=&quot;user1&quot; password=&quot;pass1&quot;/&gt;
+        &lt;cas:user name=&quot;user2&quot; password=&quot;pass2&quot;/&gt;
+&lt;/cas:accept-users-authentication-handler&gt;
+</pre>
+
+### Java
+<pre class="prettyprint lang-java">
   public class Person {
     private String name;
 
     public String greet(String otherPerson) {
+      System.out.println("Hello world");
       return "Hello world";
     }
   }
-{% endhighlight %}
+</pre>
 
-Here's some CSS:
-
-{% highlight css %}
-.foobar {
-  /* Named colors rule */
-  color: tomato;
-}
-{% endhighlight %}
+### Groovy
+<pre class="prettyprint lang-java">
+  (1..10).each {
+    println it
+    println 'String'
+    println "GString"
+    //Comment
+    /* comment
+       and comment
+     */
+  }
+</pre>
 
 # Headings!
 
