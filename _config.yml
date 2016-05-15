@@ -5,6 +5,7 @@ author:      Dmitriy Kopylenko
 description: "My blog"
 baseurl:     ""
 url:         "http://kopylenko.com"
+date_format: "%b %-d, %Y"
 
 # Google analytics
 google_analytics: UA-10548385-1
@@ -45,6 +46,11 @@ share_reddit: true
 share_stumbleupon: false
 share_hackernews: false
 
+text:
+  pagination:
+    newer: 'Newer'
+    older: 'Older'
+
 # Build settings
 markdown:     kramdown
 redcarpet:
@@ -55,3 +61,7 @@ sass:
   compressed: true
 gems:
   - jekyll-sitemap
+  - jekyll-paginate
+
+# https://github.com/jekyll/jekyll/issues/2938
+exclude: [vendor]
