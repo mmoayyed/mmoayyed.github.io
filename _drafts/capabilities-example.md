@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      Pixyll capabilities
-date:       Jul 25
 summary:    Sample of the Pixyll styles
 
 ---
@@ -14,9 +13,6 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 
 ### Code, with syntax highlighting
-
-### Embedded Gist
-{% gist e80acaf16609eebbfaaa %}
 
 ### YAML
 <pre class="prettyprint lang-yaml">
