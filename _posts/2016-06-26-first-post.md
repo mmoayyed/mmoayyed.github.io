@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      First Post
+title:      Spring Cloud
 summary:    An excellent overview of Spring Cloud
 
 ---
 
-This is the first post.
