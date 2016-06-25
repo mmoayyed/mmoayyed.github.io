@@ -5,12 +5,13 @@ permalink: /about/
 ---
 
 I am a software engineer at [Unicon Inc](https://www.unicon.net) 
-and a member of [Identity and Access Management group]((https://www.unicon.net/solutions/identity-and-access-management).
+and a member of [Identity and Access Management group](https://www.unicon.net/solutions/identity-and-access-management).
 
 You can find my full professional bio [here](https://www.linkedin.com/in/mmoayyed).
 
-I am a fan of Germany's national soccer team and that of Bayern Munich, used to support the Boston Celtics Basketball team dearly.
-I am an avid traveler who enjoys reading, movies, swimming, gardening, exotic food, playing guitar/piano/dulcimer and wrecking code I don't fully understand. 
+With the exception of Baseball, Golf and American Football, I am a huge sports fan and dearly support Germany's national soccer team and that of Bayern Munich.
+
+I am an avid traveler who enjoys reading, movies, swimming, tennis, gardening, exotic food, playing guitar/piano/dulcimer and wrecking code I don't fully understand. 
 
 My travel plans, whereabouts and charming looks are among the favorite topics of discussion between the IAM team members.
 
