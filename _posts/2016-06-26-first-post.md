@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Hello World
-summary:    Introductions
+title:      First Post
+summary:    An excellent overview of Spring Cloud
 
 ---
 
