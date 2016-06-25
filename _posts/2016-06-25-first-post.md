@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      This Test
+title:      First Post
 summary:    An overview of Spring Cloud
 
 ---
