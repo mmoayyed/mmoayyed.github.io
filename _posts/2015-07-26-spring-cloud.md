@@ -5,4 +5,3 @@ summary:    An excellent overview of Spring Cloud
 
 ---
 
-If 
