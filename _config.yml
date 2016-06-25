@@ -12,13 +12,13 @@ google_analytics: UA-10548385-1
 
 # Optional features
 animated:           true
-show_related_posts: false
-show_post_footers:  false
+show_related_posts: true
+show_post_footers:  true
 show_social_icons:  true
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: mmoayyed
+disqus_shortname: misaghm
 
 # Social icons
 github_username: mmoayyed
@@ -39,12 +39,12 @@ share_text: 'Share this post!'
 share_facebook: true
 share_twitter: true
 share_googleplus: true
-share_linkedin: false
+share_linkedin: true
 share_digg: false
 share_tumblr: false
 share_reddit: true
 share_stumbleupon: false
-share_hackernews: false
+share_hackernews: true
 
 text:
   pagination:
