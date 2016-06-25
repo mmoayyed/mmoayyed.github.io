@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Hello World
-summary:    Introductions
+summary:    Trying out Github Pages as a blog. Echo. Echo. Echo
 
 ---
 
