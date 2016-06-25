@@ -1,10 +1,10 @@
 # Site settings
-title:       The Dima
+title:       Misagh Moayyed
 #email:
-author:      Dmitriy Kopylenko
-description: "My blog"
+author:      Misagh Moayyed
+description: "Misagh's' blog"
 baseurl:     ""
-url:         "http://kopylenko.com"
+url:         "http://mmoayyed.github.io"
 date_format: "%b %-d, %Y"
 
 # Google analytics
@@ -18,17 +18,17 @@ show_social_icons:  true
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: kopylenko
+disqus_shortname: mmoayyed
 
 # Social icons
-github_username: dima767
-stackoverflow_id:
-twitter_username: dima767
-google_plus_id:
-linkedin_username:
+github_username: mmoayyed
+stackoverflow_id: misagh-moayyed
+twitter_username: misagh84
+google_plus_id: misagh.moayyed
+linkedin_username: mmoayyed
 angellist_username:
 medium_id:
-bitcoin_url: https://www.coinbase.com/dima767
+bitcoin_url:
 paypal_url:
 flattr_button:
 
