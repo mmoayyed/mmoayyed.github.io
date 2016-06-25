@@ -1,8 +1,10 @@
 ---
 layout:     post
-title:      First Post
-summary:    An overview of Spring Cloud
+title:      Hello World
+summary:    Introductions
 
 ---
 
-sdfsdfsdfsdfsdfsdf
+This is [me](/about) trying out Github Pages as a blog. Echo. Echo. Echo.
+
+``
