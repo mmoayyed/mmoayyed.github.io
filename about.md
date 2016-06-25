@@ -12,7 +12,7 @@ I also blog [here](https://www.unicon.net/about/blogs/blogger/15) sometimes.
 
 I am an avid traveler who enjoys reading, movies, swimming, tennis, gardening, exotic food, playing guitar/piano/dulcimer 
 and wrecking code I don't fully understand. While I am originally from Iran, occasionally I pretend to be fluent 
-in English, German, Arabic. With the exception of Baseball, Golf and American Football, I am a sports fan and dearly support Germany's 
+in English, German and Arabic. With the exception of Baseball, Golf and American Football, I am a sports fan and dearly support Germany's 
 national soccer team and that of Bayern Munich.
 
 My travel plans, whereabouts and charming looks are among the favorite topics of discussion between the IAM team members.
