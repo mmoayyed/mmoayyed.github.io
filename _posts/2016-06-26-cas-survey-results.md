@@ -133,24 +133,24 @@ This strategy helps with the documentation issue as well, to a large degree beca
 
 As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
 
-```xml
+<pre class="prettyprint lang-xml">
 <dependency>
      <groupId>org.apereo.cas</groupId>
      <artifactId>cas-server-support-ldap</artifactId>
      <version>${cas.version}</version>
 </dependency>
-```
+</pre>
 
 ...and declare the relevant settings:
 
-```properties
+<pre class="prettyprint lang-properties">
 # cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,ldaps://ldap2.example.edu,...
 # cas.authn.ldap[0].baseDn=dc=example,dc=org
 # cas.authn.ldap[0].userFilter=cn={user}
 # cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
 # cas.authn.ldap[0].bindCredential=Password
 ...
-```
+</pre>
 
 That's all. 
 
