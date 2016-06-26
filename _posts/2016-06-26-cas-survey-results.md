@@ -66,11 +66,11 @@ The following items were also reported by the community as areas that require im
 
 #### Better Documentation
 
-The current CAS documentation assumes a high degree of familiarity with deployment tools such as Maven, Tomcat. The adopter also at times has to deal with multiple XML configuration files for enabling features such as LDAP authentication. This presents varying degrees of difficulty for a novice deployer to quickly get started with CAS deployment. Step-by-step installation instructions, more samples and clarity in the documentation when it comes to dealing with specific CAS modules and features would be strongly desirable.
+The current CAS documentation assumes a high degree of familiarity with deployment tools such as Maven, Tomcat/Jetty, etc. The adopter also at times has to deal with multiple XML configuration files for enabling features such as LDAP authentication. This presents varying degrees of difficulty for a novice deployer to quickly get started with a CAS deployment. Step-by-step installation instructions, more samples and clarity in the documentation when it comes to dealing with specific CAS modules and features would be strongly desirable. A non-Maven deployment strategy could also be devised to relieve some of that pain when it comes to managing dependencies and CAS artifacts.
 
 #### Easier Upgrades
 
-The current CAS deployment strategy consists of constructing a Maven overlay in order to combine and merge local customizations with original CAS distribution. This at times can morph into a complicated CAS upgrade process, specially if local customizations end up at odd conflicts with the new CAS distribution. Adopters are invariably forced to compare locally overlaid artifacts with their original version and fill in the gaps where necessary. Needless to say, this process for a novice deploy is than less obvious to understand and utilize.
+The current CAS deployment strategy consists of constructing a Maven overlay in order to combine and merge local customizations with the original CAS distribution. This at times can morph into a complicated CAS upgrade process, specially if local customizations end up at odd conflicts with the new CAS distribution. Adopters are invariably forced to compare locally overlaid artifacts with their original version and fill in the gaps where necessary. Needless to say, this process for a novice deploy is than less obvious to understand and utilize.
 
 #### Other Features
 
