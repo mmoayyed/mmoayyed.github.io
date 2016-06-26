@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      CAS Community Servey Results
+title:      CAS Survey Results
 summary:    ...in which I present a summarized view of the latest CAS community survey and discuss results.
 
 ---
