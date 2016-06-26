@@ -130,9 +130,9 @@ To remove some of this pain, CAS 5 takes the following approach:
 
 At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
 
-This strategy helps with the documentation issue as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
+This strategy helps with the documentation noise as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
-This strategy also greatly assists with future upgrades because there would be very few, if any, local configuration files lying around in a deployment environment. The adopter should mostly care about the appropriate settings and values supplied to CAS that describe the corer intended business functionality desired.
+This strategy also greatly assists with future upgrades because there would be very few, if any, local configuration files lying around in a deployment environment. The adopter should mostly care about the appropriate settings and values supplied to CAS that describe the core intended business functionality desired.
 
 As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
 
@@ -199,12 +199,9 @@ Every attempt has been made to ensure every aspect of the built-it Tomcat contai
 
 Built-in containers are also available, optionally, for Jetty and Undertow.
 
-This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
-
 ### User Interfaces
 
-
-
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/6uq4s"><a href="//imgur.com/a/6uq4s">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 
