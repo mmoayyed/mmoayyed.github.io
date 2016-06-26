@@ -110,7 +110,7 @@ Since CAS 4.2.x, the platform has supported:
 
 ### Auto Configuration
 
-Loudly pointed out by the survey, a much-needed overhaul of the CAS documentation is needed to enable configuration of CAS features. To address this issue, CAS 5 takes an orthogonal approach where most if not all CAS features are **automatically configured** by CAS itself relieving the deployer from having to deal with XML configuration. This is a model we refer to as Intention-Driven configuration.
+Loudly pointed out by the survey, a much-needed overhaul of the CAS documentation is needed to enable configuration of CAS features. To address this issue, CAS 5 takes an orthogonal approach where most if not all CAS features are **automatically configured** by CAS itself relieving the deployer from having to deal with XML configuration. This is a model we refer to as **Intention-driven configuration**.
 
 In the past in order to turn on a particular CAS feature, the adopter had to:
 
@@ -125,20 +125,20 @@ To remove some of this pain, CAS 5 takes the following approach:
 
 - Find and declare the feature module as a dependency, thus announcing your intention of enabling a particular feature in CAS.
 - Optionally, configure the module by supplying settings via a simple `.properties` file.
-- That's it. 
 
-At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly ALL modules and features. 
+
+At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
 
 This strategy helps with the documentation issue as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
 As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
 
 <pre class="prettyprint lang-xml">
-<dependency>
-     <groupId>org.apereo.cas</groupId>
-     <artifactId>cas-server-support-ldap</artifactId>
-     <version>${cas.version}</version>
-</dependency>
+&lt;dependency>
+     &lt;groupId>org.apereo.cas&lt;/groupId>
+     &lt;artifactId>cas-server-support-ldap&lt;/artifactId>
+     &lt;version>${cas.version}&lt;/version>
+&lt;/dependency>
 </pre>
 
 ...and declare the relevant settings:
@@ -155,6 +155,8 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 That's all. 
 
 This model would not have possible without CAS taking full advantage of [Spring Boot](https://github.com/spring-projects/spring-boot).
+
+### Managing Configuration
 
 ### Deployment
 
