@@ -30,7 +30,7 @@ The "Other" category being: NoSQL, X509, Rest, Social AuthN and many other forms
 
 The table below shows what percentage of the community is using a given CAS server version.
 
-| CAS Version  | Adoption |
+| Version  | Adoption |
 | ------------- | ------------- |
 | 3.x  | 53% |
 | 4.0.x  | 22%  |
@@ -39,4 +39,46 @@ The table below shows what percentage of the community is using a given CAS serv
 | Other  | 7%  |
 
 It's important to note that CAS `3.x` has been EOLed for almost 2 years. What this means is that CAS `3.x` will no longer be maintained, fixed or (in case of security vulnerabilities) patched by the development team. Therefor, it is strongly recommended that those deployments switch and upgrade to a more recent and stable version of the platform, which at the time of this writing is CAS `4.2.x`. 
+
+### Features
+
+Survey participants were asked to vote on a number of proposed features on a 1-5 scale, with 5 being most desirable. The following table shows an aggregated view of the results for each given requested feature where the adoption percentage is summary of 4 and 5 response types, indicating the development should strongly focus on the completion or improvement of the proposed item.
+
+| Feature  | Vote |
+| ------------- | ------------- |
+| MFA  | 52% |
+| OIDC  | 29%  |
+| Adaptive AuthN  | 42%  |
+| Admin UIs  | 60%  |
+| Front-Channel SLO  | 33%  |
+| WS-Fed  | 31%  |
+| Surrogate AuthN  | 43%  |
+| GUI Wizard  | 33%  |
+| FISO  | 16%  |
+| SAML2  | 60%  |
+| Dynamic Registration  | 11%  |
+| Rest APIs  | 40%  |
+| OAuth2  | 28%  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
