@@ -9,7 +9,7 @@ A [while ago](https://groups.google.com/a/apereo.org/forum/#!searchin/cas-user/s
 
 In this post, I intend to provide a summarized view of the survey results and discuss what has or will be done to address the feedback.
 
-## Results
+# Results
 
 There were about 200 responses to the survey from both individuals and institutions. Some responses were submitted by consulting firms who provide CAS commercial services for their clients which indicates the actual number of deployers may be larger than the reported 200. 
 
@@ -26,7 +26,7 @@ The table below demonstrates what percentage of the community has chosen a given
 
 The "Other" category being: NoSQL, X509, Rest, Social AuthN and many other forms of authentication supported by CAS.
 
-### CAS Version
+## CAS Version
 
 The table below shows what percentage of the community is using a given CAS server version.
 
@@ -40,7 +40,7 @@ The table below shows what percentage of the community is using a given CAS serv
 
 It's important to note that CAS 3.x has been EOLed for almost 2 years. What this means is that CAS 3.x will no longer be maintained, fixed or (in case of security vulnerabilities) patched by the development team. Therefor, it is strongly recommended that those deployments switch and upgrade to a more recent and stable version of the platform, which at the time of this writing is CAS 4.2.x. 
 
-### Features
+## Features
 
 Survey participants were also asked to vote on a number of proposed features on a 1-5 scale with 5 being most desirable. The following table shows an aggregated view of the results for each given feature where the adoption percentage is a summary of 4 and 5 response types, indicating  development should strongly focus on the completion or improvement of the proposed item.
 
@@ -61,19 +61,19 @@ Survey participants were also asked to vote on a number of proposed features on 
 | Dynamic Registration  | 11%  |
 
 
-### Additional Feedback
+## Additional Feedback
 
 The following items were also reported by the community as areas that require improvement and clarification:
 
-#### Better Documentation
+### Better Documentation
 
 The current CAS documentation assumes a high degree of familiarity with deployment tools such as Maven, Tomcat/Jetty, etc. The adopter also at times has to deal with multiple XML configuration files for enabling features such as LDAP authentication. This presents varying degrees of difficulty for a novice deployer to quickly get started with a CAS deployment. Step-by-step installation instructions, more samples and clarity in the documentation when it comes to dealing with specific CAS modules and features would be strongly desirable. A non-Maven deployment strategy could also be devised to relieve some of that pain when it comes to managing dependencies and CAS artifacts.
 
-#### Easier Upgrades
+### Easier Upgrades
 
 The current CAS deployment strategy consists of constructing a Maven overlay in order to combine and merge local customizations with the original CAS distribution. This at times can morph into a complicated CAS upgrade process, specially if local customizations end up at odd conflicts with the new CAS distribution. Adopters are invariably forced to compare locally overlaid artifacts with their original version and fill in the gaps where necessary. Needless to say, this process for a novice deploy is than less obvious to understand and utilize.
 
-#### Other Features
+### Other Features
 
 A number of other features were requested by participants that were not part of proposed scope. These included:
 
