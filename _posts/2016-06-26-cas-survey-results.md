@@ -101,6 +101,7 @@ CAS 5 will have built-in support for:
 - OpenID Connect, acting as an OP producing claims for RPs
 - A YAML-based service registry.
 - Delegating authentication to a remote REST endpoint.
+- Recoding and Geotracking authentication events.
 
 Since CAS 4.2.x, the platform has supported:
 
@@ -144,7 +145,8 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 ...and declare the relevant settings:
 
 <pre class="prettyprint lang-properties">
-# cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,ldaps://ldap2.example.edu,...
+...
+# cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,...
 # cas.authn.ldap[0].baseDn=dc=example,dc=org
 # cas.authn.ldap[0].userFilter=cn={user}
 # cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
@@ -152,13 +154,50 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 ...
 </pre>
 
-That's all. 
+That's all. Note that auto configuration of modules not only takes into account core what-used-to-be XML configuration but also any additions that may be required for the CAS login webflow.
 
-This model would not have possible without CAS taking full advantage of [Spring Boot](https://github.com/spring-projects/spring-boot).
+This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ### Managing Configuration
 
+Previously, adopters had to repackage and redeploy the CAS web application if a configuration property (i.e. LDAP URL) had to be changed. This will no longer be true in CAS 5 where **most if not all** CAS components become reloadable. Specific endpoints are exposed to adopters which can receive a reload request and auto-configure the CAS application context with the new version of the settings without the need to repackage and/or deploy the CAS software.
+
+This model would not have possible without CAS taking full advantage of [Spring Cloud](http://projects.spring.io/spring-cloud/).
+
 ### Deployment
+
+Once packaged, adopters previously had to grab the final CAS web application and deploy it into a servlet container of choice such as Tomcat or Jetty. While this model is and will be supported, CAS 5 takes this one step further and ships with a built-in Tomcat container that can simply launch the CAS application from the command line. The recipe is as simple as:
+
+<pre class="prettyprint lang-bash">
+...
+mvn clean package
+java -jar target/cas.war
+
+...
+
+  __  ____     _     ____  __
+ / / / ___|   / \   / ___| \ \
+| | | |      / _ \  \___ \  | |
+| | | |___  / ___ \  ___) | | |
+| |  \____|/_/   \_\|____/  | |
+ \_\                       /_/
+
+CAS Version: 5.0.0.M3-SNAPSHOT
+Build Date/Time: 2016-06-26T20:55:15.345Z
+Java Home: C:\Program Files\Java\jdk1.8.0_92\jre
+Java Vendor: Oracle Corporation
+Java Version: 1.8.0_92
+OS Architecture: amd64
+OS Name: Windows 10
+OS Version: 10.0
+...
+</pre>
+
+Every attempt has been made to ensure every aspect of the built-it Tomcat container (such as SSL, context path, etc) is configurable via the same `.properties` file that houses all other CAS configuration.
+
+Built-in containers are also available, optionally, for Jetty and Undertow.
+
+This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ### User Interfaces
 
