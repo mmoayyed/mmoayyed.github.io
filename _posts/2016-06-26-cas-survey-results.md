@@ -46,19 +46,20 @@ Survey participants were asked to vote on a number of proposed features on a 1-5
 
 | Feature  | Vote |
 | ------------- | ------------- |
-| MFA  | 52% |
-| OIDC  | 29%  |
-| Adaptive AuthN  | 42%  |
 | Admin UIs  | 60%  |
+| SAML2  | 60%  |
+| MFA  | 52% |
+| Surrogate AuthN  | 43%  |
+| Adaptive AuthN  | 42%  |
+| Rest APIs  | 40%  |
+| GUI Wizard  | 33%  |
 | Front-Channel SLO  | 33%  |
 | WS-Fed  | 31%  |
-| Surrogate AuthN  | 43%  |
-| GUI Wizard  | 33%  |
-| FISO  | 16%  |
-| SAML2  | 60%  |
-| Dynamic Registration  | 11%  |
-| Rest APIs  | 40%  |
+| OIDC  | 29%  |
 | OAuth2  | 28%  |
+| FIDO  | 16%  |
+| Dynamic Registration  | 11%  |
+
 
 ### Additional Feedback
 
