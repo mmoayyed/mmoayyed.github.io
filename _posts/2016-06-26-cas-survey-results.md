@@ -82,6 +82,85 @@ A number of other features were requested by participants that were not part of 
 3. Tracking and Geo-profiling authentication requests.
 4. Other registry types of managing CAS tickets and service definitions, such as YAML, Redis, etc.
 
+# Response
+
+The CAS development team has been working on the next major release of the platform, that is 5.0.0. Taking into account the community survey and feedback, here are a few notes to help clarify how CAS 5 attempts to address some of the reported issues.
+
+Before we get started, it should be pointed out that [early milestone releases of CAS 5 are available](https://github.com/apereo/cas-overlay-template/tree/5.0). Deployers are more than welcome to try out the milestone releases and share feedback. 
+
+The current in-development documentation of CAS 5 is also [available here](https://apereo.github.io/cas/development/index.html).
+
+## Features
+
+### Core
+
+CAS 5 will have built-in support for:
+
+- MFA based on Duo Security, Google Authenticator and more. 
+- SAML2 authentication, acting as an identity provider consuming and producing SAML metadata.
+- OpenID Connect, acting as an OP producing claims for RPs
+- A YAML-based service registry.
+- Delegating authentication to a remote REST endpoint.
+
+Since CAS 4.2.x, the platform has supported:
+
+- JWT authentication.
+- Delegating authentication to ADFS, CAS, SAML2 IdPs and a large variety of social authentication providers such as Facebook, Twitter and more.
+- Ticket registry implementations based on Redis and Apache Cassandra.
+
+### Auto Configuration
+
+Loudly pointed out by the survey, a much-needed overhaul of the CAS documentation is needed to enable configuration of CAS features. To address this issue, CAS 5 takes an orthogonal approach where most if not all CAS features are **automatically configured** by CAS itself relieving the deployer from having to deal with XML configuration. This is a model we refer to as Intention-Driven configuration.
+
+In the past in order to turn on a particular CAS feature, the adopter had to:
+
+- Find and declare the module as a dependency
+- Fiddle with a variety of XML configuration files to declare components
+- Touch a few properties and settings supplying the appropriate values for those components.
+- Repackage and redeploy.
+
+This process was much prone to errors and at times had to be repeated over and over again until the final works was in place. It also was extremely dependent on an accurate and reasonably detailed and clear documentation. It goes without saying that sustaining this model of development and configuration presents a high degree of difficulty for maintainers of the project and adopters of the platform.
+
+To remove some of this pain, CAS 5 takes the following approach:
+
+- Find and declare the feature module as a dependency, thus announcing your intention of enabling a particular feature in CAS.
+- Optionally, configure the module by supplying settings via a simple `.properties` file.
+- That's it. 
+
+At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly ALL modules and features. 
+
+This strategy helps with the documentation issue as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
+
+As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
+
+```xml
+<dependency>
+     <groupId>org.apereo.cas</groupId>
+     <artifactId>cas-server-support-ldap</artifactId>
+     <version>${cas.version}</version>
+</dependency>
+```
+
+...and declare the relevant settings:
+
+```properties
+# cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,ldaps://ldap2.example.edu,...
+# cas.authn.ldap[0].baseDn=dc=example,dc=org
+# cas.authn.ldap[0].userFilter=cn={user}
+# cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
+# cas.authn.ldap[0].bindCredential=Password
+...
+```
+
+That's all. 
+
+This model would not have possible without CAS taking full advantage of [Spring Boot](https://github.com/spring-projects/spring-boot).
+
+### Deployment
+
+### User Interfaces
+
+
 
 
 
