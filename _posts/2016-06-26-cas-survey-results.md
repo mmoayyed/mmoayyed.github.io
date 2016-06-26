@@ -132,6 +132,8 @@ At deployment time, CAS will auto-determine every single change that is required
 
 This strategy helps with the documentation issue as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
+This strategy also greatly assists with future upgrades because there would be very few, if any, local configuration files lying around in a deployment environment. The adopter should mostly care about the appropriate settings and values supplied to CAS that describe the corer intended business functionality desired.
+
 As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
 
 <pre class="prettyprint lang-xml">
