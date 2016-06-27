@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I am a software engineer at [Unicon Inc](https://www.unicon.net) 
+I am a software engineer and consultant at [Unicon Inc](https://www.unicon.net) 
 and a member of [Identity and Access Management group](https://www.unicon.net/solutions/identity-and-access-management).
 
 You can find my full professional bio [here](https://www.linkedin.com/in/mmoayyed).
