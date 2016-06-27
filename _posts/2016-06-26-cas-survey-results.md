@@ -236,7 +236,7 @@ For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the 
 
 # Das Ende
 
-On behalf of the project team, I would like to thank all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
+I would like to thank all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
 
 Thank you for sharing. Thank you very much for all the kind words. 
 
