@@ -130,11 +130,11 @@ To remove some of this pain, CAS 5 presents the following approach to the deploy
 
 At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
 
-This strategy helps with the documentation noise as well, to a large degree because there is no longer a need to document every single XML configuration file and change required for each module for a given needed feature. The CAS 5 platform starts to have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
+This strategy helps with the documentation noise as well to a large degree because there is no longer a need to document every single XML configuration file and change required for each module for a given needed feature. The CAS 5 platform starts to have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
 This strategy also greatly assists with future upgrades because there would be very few, if any, local configuration files lying around in a deployment environment. The adopter should mostly care about the appropriate settings and values supplied to CAS that describe the core intended business functionality desired.
 
-As an example, in order to turn configure LDAP authentication, all an adopter has to do is declare the appropriate module/intention:
+As an example, in order to configure LDAP authentication, all an adopter has to do is **declare his/her intention**:
 
 <pre class="prettyprint lang-xml">
 &lt;dependency>
@@ -144,7 +144,7 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 &lt;/dependency>
 </pre>
 
-...and declare the relevant settings:
+...and **declare the relevant settings**:
 
 <pre class="prettyprint lang-properties">
 ...
@@ -156,21 +156,23 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 ...
 </pre>
 
-That's all. Note that auto configuration of modules not only takes into account core what-used-to-be XML configuration but also any additions that may be required for the CAS login webflow.
+That's all. There is no other change required.
 
 This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
 
-Note that CAS 5 does not remove one's ability to declare relevant changes and customizations in an XML file. There will be a `deployerConfigContext.xml` file for those who feel more comfortable with an XML-friendly explicit form of configuration. However, for most if not ALL changes this strategy is completely unnecessary.
+Note that auto configuration of modules not only takes into account core what-used-to-be XML configuration but also any additions that may be required for the CAS webflows.
+
+Note that CAS 5 does not remove one's ability to declare relevant changes and customizations in an XML file. There will be a `deployerConfigContext.xml` file, much like the old days, for those who feel more comfortable with an XML-friendly explicit form of configuration. However, for most if not ALL changes this strategy is completely unnecessary.
 
 ### Managing Configuration
 
-Previously, adopters had to repackage and redeploy the CAS web application if a configuration property (i.e. LDAP URL) had to be changed. This will no longer be true in CAS 5 where **most if not all** CAS components become reloadable. Specific endpoints are exposed to adopters which can receive a reload request and auto-configure the CAS application context with the new version of the settings without the need to repackage and/or deploy the CAS software.
+Previously, adopters had to repackage and redeploy the CAS web application if a configuration property (i.e. LDAP URL) had to be changed. This will no longer be true in CAS 5 where **most if not ALL** CAS components become reloadable. What this means is, specific endpoints (and administrative UIs) are exposed to adopters which can receive a reload request (permissions granting) and auto-configure the running CAS application context with the new state of the world WITHOUT the need to repackage and/or deploy the CAS software.
 
 This model would not have possible without CAS taking full advantage of [Spring Cloud](http://projects.spring.io/spring-cloud/).
 
 ### Deployment
 
-Once packaged, adopters previously had to grab the final CAS web application and deploy it into a servlet container of choice such as Tomcat or Jetty. While this model is and will be supported, CAS 5 takes this one step further and ships with a built-in Tomcat container that can simply launch the CAS application from the command line. The recipe is as simple as:
+Once packaged, adopters previously had to grab the final CAS web application and deploy it into a servlet container of choice such as Tomcat or Jetty. While this model is and will be supported, CAS 5 takes this one step further and ships with a built-in Tomcat container that can simply launch the CAS application directly from the command line. The recipe is as simple as:
 
 <pre class="prettyprint lang-bash">
 ...
@@ -197,19 +199,21 @@ OS Version: 10.0
 ...
 </pre>
 
-Every attempt has been made to ensure every aspect of the built-it Tomcat container (such as SSL, context path, etc) is configurable via the same `.properties` file that houses all other CAS configuration.
+Every attempt has been made to ensure every aspect of the built-in Tomcat container (such as SSL, context path, etc) is configurable via the same `.properties` file that houses all other CAS configuration.
 
 Built-in containers are also available, optionally, for Jetty and Undertow.
 
 ### User Interfaces
 
-CAS 5 starts use to use [Thymeleaf](http://www.thymeleaf.org/) as a rendering engine for its user interfaces. Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams. 
+CAS 5 starts use to use [Thymeleaf](http://www.thymeleaf.org/) as a rendering engine for its user interfaces. Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers. 
 
-The old JSP model required adopters to test out UI-related changes directly inside a servlet container such as Tomcat. Thymeleaf allows CAS to present HTML-native pages that can easily be viewed in the browser without requiring an underlying to container engine.
+The old JSP model required adopters to test out UI-related changes directly inside a running servlet container such as Tomcat. Thymeleaf allows CAS to present HTML-native pages that can easily be viewed in the browser without requiring an underlying container engine.
 
-CAS 5 also attempts to improve the user experience for the administrator in a cloud-friendly manner. There are many administrative control panels that expose insight into the CAS software. The screens report back on the health of the running CAS server, various configuration options and status of active SSO sessions. There is also additional upcoming work to further improve these control panels, allowing the adopter to monitor and configure logs, adjust CAS settings and manage SSO sessions more effectively without resorting access to the native command-line.
+CAS 5 also attempts to improve the user experience for the administrator in a cloud-friendly manner. There are many administrative control panels that expose insight into the running CAS software. The screens report back on the health of the running CAS server, various configuration options and status of active SSO sessions, etc. There is also additional upcoming work to further improve these control panels, allowing the adopter to monitor and configure logs, adjust CAS settings and manage SSO sessions more effectively without resorting access to the native command-line.
 
-Here are a few screen shots of the new CAS 5.
+Of course if you wish, you can always resort back to the command-line if you wish to manually hand-massage the configuration.
+
+Here are a few screenshots of the new CAS 5 user interfaces:
 
 <div align="center">
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/6uq4s"><a href="//imgur.com/a/6uq4s">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
@@ -219,20 +223,20 @@ Here are a few screen shots of the new CAS 5.
 
 The development team is working hard to make sure the CAS 5 release is right on [schedule](https://github.com/apereo/cas/milestones). 
 
-For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the development team. However, the primary development focus will be dedicated to CAS 5, addressing bugs and extending the platform to be a more comfortable experience specially for some of the brand new features presented in this release.
+For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the development team. However, the primary development focus and time will be dedicated to CAS 5, addressing bugs and extending the platform to be a more comfortable experience specially for some of the brand new features presented in this release.
 
 # How can you help?
 
 - Start your early [CAS 5 deployment](https://github.com/apereo/cas-overlay-template/tree/5.0) today. Try out features and [share feedback](https://apereo.github.io/cas/Mailing-Lists.html).
 - Better yet, [contribute patches](https://apereo.github.io/cas/developer/Contributor-Guidelines.html).
-- Review and suggest documentation improvements
+- Review and suggest documentation improvements.
 
 
 # Das Ende
 
-On behalf of the project team, I would like to thank the community and all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
+On behalf of the project team, I would like to thank all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
 
-Thank you very much for all the kind words. 
+Thank you for sharing. Thank you very much for all the kind words. 
 
 On behalf of the CAS project,
 Misagh Moayyed
