@@ -130,7 +130,7 @@ To remove some of this pain, CAS 5 presents the following approach to the deploy
 
 At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
 
-This strategy helps with the documentation noise as well, to a large degree because there is no longer a need to document every single XML configuration file and changes required for each for a given needed feature. The platform should have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
+This strategy helps with the documentation noise as well, to a large degree because there is no longer a need to document every single XML configuration file and change required for each module for a given needed feature. The CAS 5 platform starts to have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
 This strategy also greatly assists with future upgrades because there would be very few, if any, local configuration files lying around in a deployment environment. The adopter should mostly care about the appropriate settings and values supplied to CAS that describe the core intended business functionality desired.
 
@@ -159,6 +159,8 @@ As an example, in order to turn configure LDAP authentication, all an adopter ha
 That's all. Note that auto configuration of modules not only takes into account core what-used-to-be XML configuration but also any additions that may be required for the CAS login webflow.
 
 This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
+
+Note that CAS 5 does not remove one's ability to declare relevant changes and customizations in an XML file. There will be a `deployerConfigContext.xml` file for those who feel more comfortable with an XML-friendly explicit form of configuration. However, for most if not ALL changes this strategy is completely unnecessary.
 
 ### Managing Configuration
 
