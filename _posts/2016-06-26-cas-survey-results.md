@@ -209,7 +209,9 @@ CAS 5 also attempts to improve the user experience for the administrator in a cl
 
 Here are a few screen shots of the new CAS 5.
 
+<div align="center">
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/6uq4s"><a href="//imgur.com/a/6uq4s">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+</div>
 
 # What's Next?
 
