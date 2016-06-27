@@ -170,6 +170,8 @@ Previously, adopters had to repackage and redeploy the CAS web application if a 
 
 This model would not have been possible without CAS taking full advantage of [Spring Cloud](http://projects.spring.io/spring-cloud/).
 
+To learn more about how CAS manages the deployer configuration, particularly in a clustered environment, please [review this page](http://unicon.github.io/cas/development/installation/Configuration-Management.html).
+
 ### Deployment
 
 Once packaged, adopters previously had to grab the final CAS web application and deploy it into a servlet container of choice such as Tomcat or Jetty. While this model is and will be supported, CAS 5 takes this one step further and ships with a built-in Tomcat container that can simply launch the CAS application directly from the command line. The recipe is as simple as:
