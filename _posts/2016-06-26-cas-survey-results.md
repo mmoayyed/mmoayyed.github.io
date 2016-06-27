@@ -201,6 +201,14 @@ Built-in containers are also available, optionally, for Jetty and Undertow.
 
 ### User Interfaces
 
+CAS 5 starts use to use [Thymeleaf](http://www.thymeleaf.org/) as a rendering engine for its user interfaces. Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams. 
+
+The old JSP model required adopters to test out UI-related changes directly inside a servlet container such as Tomcat. Thymeleaf allows CAS to present HTML-native pages that can easily be viewed in the browser without requiring an underlying to container engine.
+
+CAS 5 also attempts to improve the user experience for the administrator in a cloud-friendly manner. There are many administrative control panels that expose insight into the CAS software. The screens report back on the health of the running CAS server, various configuration options and status of active SSO sessions. There is also additional upcoming work to further improve these control panels, allowing the adopter to monitor and configure logs, adjust CAS settings and manage SSO sessions more effectively without resorting access to the native command-line.
+
+Here are a few screen shots of the new CAS 5.
+
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/6uq4s"><a href="//imgur.com/a/6uq4s">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
