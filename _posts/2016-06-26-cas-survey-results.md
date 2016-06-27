@@ -96,17 +96,17 @@ The current in-development documentation of CAS 5 is also [available here](https
 
 CAS 5 will have built-in support for:
 
-- MFA based on Duo Security, Google Authenticator and more. 
-- SAML2 authentication, acting as an identity provider consuming and producing SAML metadata.
-- OpenID Connect, acting as an OP producing claims for RPs
+- [MFA](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication.html) based on Duo Security, Google Authenticator and more. 
+- [SAML2 authentication](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), acting as an identity provider consuming and producing SAML metadata.
+- [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html), acting as an OP producing claims for RPs
 - A YAML-based service registry.
 - Delegating authentication to a remote REST endpoint.
 - Recoding and Geotracking authentication events.
 
 Since CAS 4.2.x, the platform has supported:
 
-- JWT authentication.
-- Delegating authentication to ADFS, CAS, SAML2 IdPs and a large variety of social authentication providers such as Facebook, Twitter and more.
+- [JWT authentication](https://apereo.github.io/cas/4.2.x/installation/JWT-Authentication.html).
+- [Delegating authentication](https://apereo.github.io/cas/4.2.x/integration/Delegate-Authentication.html) to [ADFS](https://apereo.github.io/cas/4.2.x/integration/ADFS-Integration.html), CAS, SAML2 IdPs and a large variety of social authentication providers such as Facebook, Twitter and more.
 - Ticket registry implementations based on Redis and Apache Cassandra.
 
 ### Auto Configuration
