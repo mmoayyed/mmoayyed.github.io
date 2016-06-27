@@ -158,7 +158,7 @@ As an example, in order to configure LDAP authentication, all an adopter has to 
 
 That's all. There is no other change required.
 
-This model would not have possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
+This model would not have been possible without CAS taking full advantage of [Spring Boot](http://projects.spring.io/spring-boot/).
 
 Note that auto configuration of modules not only takes into account core what-used-to-be XML configuration but also any additions that may be required for the CAS webflows.
 
@@ -168,7 +168,7 @@ Note that CAS 5 does not remove one's ability to declare relevant changes and cu
 
 Previously, adopters had to repackage and redeploy the CAS web application if a configuration property (i.e. LDAP URL) had to be changed. This will no longer be true in CAS 5 where **most if not ALL** CAS components become reloadable. What this means is, specific endpoints (and administrative UIs) are exposed to adopters which can receive a reload request (permissions granting) and auto-configure the running CAS application context with the new state of the world WITHOUT the need to repackage and/or deploy the CAS software.
 
-This model would not have possible without CAS taking full advantage of [Spring Cloud](http://projects.spring.io/spring-cloud/).
+This model would not have been possible without CAS taking full advantage of [Spring Cloud](http://projects.spring.io/spring-cloud/).
 
 ### Deployment
 
