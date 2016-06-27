@@ -125,7 +125,7 @@ This process was much prone to errors and at times had to be repeated over and o
 To remove some of this pain, CAS 5 presents the following approach to the deployer:
 
 - Find and declare the feature module as a dependency, thus **announcing your intention** of enabling a particular feature in CAS.
-- Optionally, configure the module by supplying settings via a simple `.properties` file.
+- **Optionally**, configure the module by supplying settings via a simple `.properties` file.
 
 
 At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
