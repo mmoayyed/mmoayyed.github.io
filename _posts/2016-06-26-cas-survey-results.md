@@ -42,7 +42,7 @@ It's important to note that CAS 3.x has been EOLed for almost 2 years. What this
 
 ## Features
 
-Survey participants were also asked to vote on a number of proposed features on a 1-5 scale with 5 being most desirable. The following table shows an aggregated view of the results for each given feature where the adoption percentage is a summary of 4 and 5 response types, indicating  development should strongly focus on the completion or improvement of the proposed item.
+Survey participants were also asked to vote on a number of proposed features on a 1-5 scale with 5 being most desirable. The following table shows an aggregated view of the results for each given feature where the adoption percentage is a summary of category 4 and 5 response types, indicating  development should strongly focus on the completion or improvement of the proposed item.
 
 | Feature  | Vote |
 | ------------- | ------------- |
@@ -71,7 +71,7 @@ The current CAS documentation assumes a high degree of familiarity with deployme
 
 ### Easier Upgrades
 
-The current CAS deployment strategy consists of constructing a Maven overlay in order to combine and merge local customizations with the original CAS distribution. This at times can morph into a complicated CAS upgrade process, specially if local customizations end up at odd conflicts with the new CAS distribution. Adopters are invariably forced to compare locally overlaid artifacts with their original version and fill in the gaps where necessary. Needless to say, this process for a novice deploy is than less obvious to understand and utilize.
+The current CAS deployment strategy consists of [constructing a Maven overlay](https://github.com/apereo/cas-overlay-template) in order to combine and merge local customizations with the original CAS distribution. This at times can morph into a complicated CAS upgrade process, specially if local customizations end up at odd conflicts with the new CAS distribution. Adopters are invariably forced to compare locally overlaid artifacts with their original version and fill in the gaps where necessary. Needless to say, this process for a novice deployer is less than obvious to understand and utilize.
 
 ### Other Features
 
@@ -80,7 +80,7 @@ A number of other features were requested by participants that were not part of 
 1. JWT authentication
 2. Integrated Password Management
 3. Tracking and Geo-profiling authentication requests.
-4. Other registry types of managing CAS tickets and service definitions, such as YAML, Redis, etc.
+4. Other registry types for managing CAS tickets and service definitions, such as YAML, Redis, ZeroMQ, etc.
 
 # Response
 
@@ -98,10 +98,10 @@ CAS 5 will have built-in support for:
 
 - [MFA](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication.html) based on Duo Security, Google Authenticator and more. 
 - [SAML2 authentication](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), acting as an identity provider consuming and producing SAML metadata.
-- [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html), acting as an OP producing claims for RPs
+- [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html), acting as an OP producing claims for RPs.
 - A YAML-based service registry.
 - Delegating authentication to a remote REST endpoint.
-- Recoding and Geotracking authentication events.
+- Recording and Geotracking authentication events.
 
 Since CAS 4.2.x, the platform has supported:
 
@@ -111,7 +111,7 @@ Since CAS 4.2.x, the platform has supported:
 
 ### Auto Configuration
 
-Loudly pointed out by the survey, a much-needed overhaul of the CAS documentation is needed to enable configuration of CAS features. To address this issue, CAS 5 takes an orthogonal approach where most if not all CAS features are **automatically configured** by CAS itself relieving the deployer from having to deal with XML configuration. This is a model we refer to as **Intention-driven configuration**.
+Loudly pointed out by the survey, a much-needed overhaul of the CAS documentation is needed to enable configuration of CAS features in a more intuitive and sustainable way. To address this issue, CAS 5 takes an orthogonal approach where most if not all CAS features are **automatically configured** by CAS itself, given deployer's consent, relieving the deployer from having to deal with XML configuration. This is a model we refer to as **Intention-driven configuration**.
 
 In the past in order to turn on a particular CAS feature, the adopter had to:
 
@@ -122,9 +122,9 @@ In the past in order to turn on a particular CAS feature, the adopter had to:
 
 This process was much prone to errors and at times had to be repeated over and over again until the final works was in place. It also was extremely dependent on an accurate and reasonably detailed and clear documentation. It goes without saying that sustaining this model of development and configuration presents a high degree of difficulty for maintainers of the project and adopters of the platform.
 
-To remove some of this pain, CAS 5 takes the following approach:
+To remove some of this pain, CAS 5 presents the following approach to the deployer:
 
-- Find and declare the feature module as a dependency, thus announcing your intention of enabling a particular feature in CAS.
+- Find and declare the feature module as a dependency, thus **announcing your intention** of enabling a particular feature in CAS.
 - Optionally, configure the module by supplying settings via a simple `.properties` file.
 
 
@@ -228,7 +228,7 @@ For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the 
 
 # Das Ende
 
-On behalf of the project team, would like to thank the community and all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
+On behalf of the project team, I would like to thank the community and all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
 
 Thank you very much for all the kind words. 
 
