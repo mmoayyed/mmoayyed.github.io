@@ -224,6 +224,12 @@ For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the 
 - Review and suggest documentation improvements
 
 
+I also, on behalf of the project team, would like to thank the community and all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
+
+Thank you very much for all the kind words. 
+
+On behalf of the CAS project,
+Misagh Moayyed
 
 
 
