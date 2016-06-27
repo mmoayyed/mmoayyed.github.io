@@ -107,7 +107,7 @@ Since CAS 4.2.x, the platform has supported:
 
 - [JWT authentication](https://apereo.github.io/cas/4.2.x/installation/JWT-Authentication.html).
 - [Delegating authentication](https://apereo.github.io/cas/4.2.x/integration/Delegate-Authentication.html) to [ADFS](https://apereo.github.io/cas/4.2.x/integration/ADFS-Integration.html), CAS, SAML2 IdPs and a large variety of social authentication providers such as Facebook, Twitter and more.
-- Ticket registry implementations based on Redis and Apache Cassandra.
+- Ticket registry implementations based on [Redis and Apache Cassandra](https://apereo.github.io/cas/4.2.x/installation/Infinispan-Ticket-Registry.html).
 
 ### Auto Configuration
 
@@ -211,10 +211,17 @@ Here are a few screen shots of the new CAS 5.
 
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/6uq4s"><a href="//imgur.com/a/6uq4s">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
+# What's Next?
 
+The development team is working hard to make sure the CAS 5 release is right on [schedule](https://github.com/apereo/cas/milestones). 
 
+For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the development team. However, the primary development focus will be dedicated to CAS 5, addressing bugs and extending the platform to be a more comfortable experience specially for some of the brand new features presented in this release.
 
+# How can you help?
 
+- Start your early [CAS 5 deployment](https://github.com/apereo/cas-overlay-template/tree/5.0) today. Try out features and [share feedback](https://apereo.github.io/cas/Mailing-Lists.html).
+- Better yet, [contribute patches](https://apereo.github.io/cas/developer/Contributor-Guidelines.html).
+- Review and suggest documentation improvements
 
 
 
