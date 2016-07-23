@@ -30,6 +30,8 @@ Additional handlers can be defined by simply incrementing that `0` index.
 
 Furthermore, this release takes on a super comprehensive approach into allowing the adopter to control all aspects of authentication handlers via such typesafe properties. You can now define individual password encoders, principal transformers and password policy settings for a given handler all via the same collection set. No need to resort to any sort of XML configuration file. 
 
+There are many other small little enhancements packed into this particular area that remove the need for **explicit** XML configuration. Things such as attribute resolution, PersonDirectory configuration, and more.
+
 As you observe, **ALL** CAS properties are now collected inside a single page on the documentation site; they are no longer spread around here and there. This makes it easier for project developers to maintain them, and for you as deployers to find them all in one spot. 
 
 # Bootiful Management Webpp
@@ -73,15 +75,15 @@ I am most excited about Pac4j 1.9.1, which allows CAS easier support for delegat
 
 # Digest AuthN
 
-Taking advantage of Pac4j 1.9, CAS now presents support for Digest authentication as another form of non-interactive authentication.
+Taking advantage of Pac4j 1.9, CAS now presents support for [Digest authentication](https://apereo.github.io/cas/development/installation/Digest-Authentication.html) as another form of non-interactive authentication.
 
 # WS-Fed Encrypted Assertions
 
-In this milestone, The WS-FED CAS module starts to support encrypted assertions issued by ADFS. This change is also ported to the `4.2.x` release line.
+In this milestone, the WS-FED CAS module starts to support encrypted assertions issued by ADFS. This change is also ported to the `4.2.x` release line.
 
 # Authy OTP MFA
 
-Finally, CAS adds [Authy](https://www.authy.com) to its collection of supported MFA providers. At this time, support is limited to Authy's OTP REST API. Given community and interest, support for Authy's OneTouch API may be worked out in the future.
+Finally, CAS adds [Authy](https://www.authy.com) to its collection of supported MFA providers. At this time, support is limited to [Authy's OTP REST API](https://apereo.github.io/cas/development/installation/AuthyAuthenticator-Authentication.html). Given community demand and interest, support for Authy's OneTouch API may be worked out in the future.
 
 # What's Next?
 
