@@ -51,6 +51,8 @@ Listening for transport dt_socket at address: 5000
 
 2016-07-23 10:03:52,197 INFO [org.apereo.cas.mgmt.web.CasManagementWebApplication] - <The following profiles are active: native></pre>
 
+</pre>
+
 # Dependency Upgrades
 
 This milestone builds on top of some significant dependency upgrades that include:
