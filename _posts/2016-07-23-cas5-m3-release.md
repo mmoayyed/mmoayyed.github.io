@@ -34,7 +34,7 @@ There are many other small little enhancements packed into this particular area 
 
 As you observe, **ALL** CAS properties are now collected inside a single page on the documentation site; they are no longer spread around here and there. This makes it easier for project developers to maintain them, and for you as deployers to find them all in one spot. 
 
-# Bootiful Management Webpp
+# Bootiful Management Webapp
 
 The CAS management webapp is now bootified. It also boasts support for a few other additinal UI panes and sections that deal with MFA, OIDC, SAML, and more. Work continues to make sure all properties of a given CAS registered service can be configured and controlled via the UI. 
 
