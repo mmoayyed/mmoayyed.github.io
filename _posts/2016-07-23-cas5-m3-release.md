@@ -1,18 +1,18 @@
 ---
 layout:     post
-title:      CAS v5 Milestone 3 Released
+title:      CAS 5 M3 Released
 summary:    ...in which I present an overview of CAS 5 M3 release.
 ---
 
-Based on the [CAS project release schedule](https://github.com/apereo/cas/milestones), today we are execited to announce the 3rd milestone release in the CAS version 5 series. There are a [few significant enhancements](https://github.com/apereo/cas/releases/tag/v5.0.0.M3) packed into this release that are worthy to publicize. So here it goes. 
+Based on the [CAS project release schedule](https://github.com/apereo/cas/milestones), today we are execited to announce the 3rd milestone release in the CAS 5 series. There are a [few significant enhancements](https://github.com/apereo/cas/releases/tag/v5.0.0.M3) packed into this release that are worthy to publicize. So here it goes. 
 
-Before we get started, it should be pointed out that [early milestone releases of CAS 5 are available](https://github.com/apereo/cas-overlay-template/tree/5.0). Deployers are more than welcome to try out the milestone releases and share feedback. 
+Before we get started, it should be pointed out that [such milestone releases of CAS 5 are available to adopters to try](https://github.com/apereo/cas-overlay-template/tree/5.0). Deployers are more than welcome to try out the milestone releases and share feedback. 
 
 The current in-development documentation of CAS 5 is also [available here](https://apereo.github.io/cas/development/index.html).
 
 # Type-safe Properties
 
-The [entire collection of CAS settings](https://apereo.github.io/cas/development/installation/Configuration-Properties.html) are now redesigned to take advantage of Spring Boot's typesafe properties. These settings are safely mapped to a corresponding `SomeCasComonentProperties` Java class at runtime, support lists, sets and maps and can easily be refactored to contain more than one batch of settings. 
+The [entire collection of CAS settings](https://apereo.github.io/cas/development/installation/Configuration-Properties.html) are now redesigned to take advantage of [Spring Boot's typesafe properties](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-typesafe-configuration-properties). These settings are safely mapped to a corresponding `SomeCasComonentProperties` Java class at runtime, support lists, sets and maps and can easily be refactored to contain more than one batch of settings. 
 
 As an example, to define LDAP authentication handlers:
 
