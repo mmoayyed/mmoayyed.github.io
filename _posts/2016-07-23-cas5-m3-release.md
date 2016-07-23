@@ -34,9 +34,12 @@ As you observe, **ALL** CAS properties are now collected inside a single page on
 
 # Bootiful Management Webpp
 
-The CAS management webapp is now bootified. It also boasts support for a few other additinal UI panes and sections that deal with MFA, OIDC, SAML, and more. Work continued to make sure all properties of a given CAS registered service can be configured and controlled via the UI. 
+The CAS management webapp is now bootified. It also boasts support for a few other additinal UI panes and sections that deal with MFA, OIDC, SAML, and more. Work continues to make sure all properties of a given CAS registered service can be configured and controlled via the UI. 
 
 <pre class="prettyprint lang-bash">
+:cas-management-webapp:bootRun
+Listening for transport dt_socket at address: 5000
+
 
   ____     _     ____    __  __                                                            _   
  / ___|   / \   / ___|  |  \/  |  __ _  _ __    __ _   __ _   ___  _ __ ___    ___  _ __  | |_ 
@@ -44,17 +47,19 @@ The CAS management webapp is now bootified. It also boasts support for a few oth
 | |___  / ___ \  ___) | | |  | || (_| || | | || (_| || (_| ||  __/| | | | | ||  __/| | | || |_ 
  \____|/_/   \_\|____/  |_|  |_| \__,_||_| |_| \__,_| \__, | \___||_| |_| |_| \___||_| |_| \__|
                                                       |___/                                    
-</pre>
+
+
+2016-07-23 10:03:52,197 INFO [org.apereo.cas.mgmt.web.CasManagementWebApplication] - <The following profiles are active: native></pre>
 
 # Dependency Upgrades
 
-This milestone builds on top of some significant dependency upgades that include:
+This milestone builds on top of some significant dependency upgrades that include:
 
 - Spring Boot 1.4
 - Ldaptive 1.2
 - Pac4j 1.9
 
-I am most excited about Pac4j 1.9, which allows CAS easier support for delegated authentication to:
+I am most excited about Pac4j 1.9, which allows CAS easier support for delegated social authentication to:
 
 - Github
 - Dropbox
@@ -65,7 +70,7 @@ I am most excited about Pac4j 1.9, which allows CAS easier support for delegated
 
 # Digest AuthN
 
-Taking advantage of Pac4j 1.9, CAS now presents support for Digest authentication as another form of non-interactive authn.
+Taking advantage of Pac4j 1.9, CAS now presents support for Digest authentication as another form of non-interactive authentication.
 
 # WS-Fed Encrypted Assertions
 
