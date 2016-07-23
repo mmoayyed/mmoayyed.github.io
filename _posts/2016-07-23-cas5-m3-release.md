@@ -30,7 +30,7 @@ Additional handlers can be defined by simply incrementing that `0` index.
 
 Furthermore, this release takes on a super comprehensive approach into allowing the adopter to control all aspects of authentication handlers via such typesafe properties. You can now define individual password encoders, principal transformers and password policy settings for a given handler all via the same collection set. No need to resort to any sort of XML configuration file. 
 
-Note all that sensitive CAS settings [can be encrypted and secured](https://apereo.github.io/cas/development/installation/Configuration-Properties-Security.html). At runtime, CAS will auto-decrypt settings, make the configuration that much easier to be shared centrally in a central repository of some sort.
+Note all that sensitive CAS settings [can be encrypted and secured](https://apereo.github.io/cas/development/installation/Configuration-Properties-Security.html). At runtime, CAS will auto-decrypt settings, making the configuration that much easier to be shared centrally in a central repository of some sort.
 
 There are many other small little enhancements packed into this particular area that remove the need for **explicit** XML configuration. Things such as attribute resolution, PersonDirectory configuration, and more.
 
