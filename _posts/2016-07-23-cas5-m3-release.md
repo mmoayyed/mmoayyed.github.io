@@ -102,7 +102,7 @@ This is likely the last milestone for v5. As the milestones schedule shows, the 
 
 # Das Ende
 
-A big heaty thanks to all who participated in the development of this release to submit patches, report issues and suggest improvements. Keep'em coming!
+A big hearty thanks to all who participated in the development of this release to submit patches, report issues and suggest improvements. Keep'em coming!
 
 [Misagh Moayyed](https://twitter.com/misagh84)
 
