@@ -57,11 +57,11 @@ This milestone builds on top of some significant dependency upgrades that includ
 
 - Spring Boot 1.4 *
 - Ldaptive 1.2 *
-- Pac4j 1.9
+- Pac4j 1.9.1
 
 (*) These components are today in `RC` or `SNAPSHOT` mode, and will be switched to their appropriate `GA` release prior to the official CAS 5 release.
 
-I am most excited about Pac4j 1.9, which allows CAS easier support for delegated social authentication to:
+I am most excited about Pac4j 1.9.1, which allows CAS easier support for delegated social authentication to:
 
 - Github
 - Dropbox
