@@ -55,9 +55,11 @@ Listening for transport dt_socket at address: 5000
 
 This milestone builds on top of some significant dependency upgrades that include:
 
-- Spring Boot 1.4
-- Ldaptive 1.2
+- Spring Boot 1.4 *
+- Ldaptive 1.2 *
 - Pac4j 1.9
+
+(*) These components are today in `RC` or `SNAPSHOT` mode, and will be switched to their appropriate `GA` release prior to the official CAS 5 release.
 
 I am most excited about Pac4j 1.9, which allows CAS easier support for delegated social authentication to:
 
@@ -91,6 +93,7 @@ This is likely the last milestone for v5. As the milestones schedule shows, the 
 - Start your early [CAS 5 deployment](https://github.com/apereo/cas-overlay-template/tree/5.0) today. Try out features and [share feedback](https://apereo.github.io/cas/Mailing-Lists.html).
 - Better yet, [contribute patches](https://apereo.github.io/cas/developer/Contributor-Guidelines.html).
 - Review and suggest documentation improvements.
+- Review the release schedule and make sure you report your desired feature requests on the project's issue tracker.
 
 [Misagh Moayyed](https://twitter.com/misagh84)
 
