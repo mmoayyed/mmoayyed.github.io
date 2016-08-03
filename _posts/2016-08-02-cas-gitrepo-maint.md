@@ -9,13 +9,13 @@ If you have managed to clone the [CAS Github repository](https://github.com/aper
 
 Here are the details. 
 
-# What does this mean to adopters?
+## What does this mean to adopters?
 
 If you are a CAS deployer and have started your CAS deployment using a WAR overlay method, this will have **absolutely NO IMPACT** on your deployment and future upgrades. None whatsoever. Keep building, patching and upgrading. 
 
 If you are a CAS deployer and have started your CAS deployment via building directly from source, you **MIGHT** be in trouble. We certainly recommend all CAS deployments start with the official and suggested deployment strategy, but if you wish to stick to your existing deployment startegy, read on. 
 
-# What does this mean to developers?
+## What does this mean to developers?
 
 Well, we are simply creating history here.
 
@@ -28,10 +28,10 @@ Note that the cleanup process affects not just `master` but all CAS repository b
 - Safely backed up and stored somewhere else (so they can be reworked later into the fresh clone)
 - Merged into the canonical CAS repository prior to the cleanup effort. 
 
-# How do we do this?
+## How do we do this?
 
 We are going to follow [this guide](http://stevelorek.com/how-to-shrink-a-git-repository.html). Initial experiments seem to prove that repository size will shrink down to about 500MB, which is quite an improvement. 
 
-# When do we do this?
+## When do we do this?
 
 The cleanup process takes a while to complete, somewhere between 2-4 hours. Announcements will follow on the [CAS mailing lists](https://apereo.github.io/cas/Mailing-Lists.html) to give developers a headsup on the individual milestones within the cleanup task. Keep an eye out. 
