@@ -13,7 +13,7 @@ Here are the details.
 
 If you are a CAS deployer and have started your CAS deployment using a [WAR overlay method](https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html), this will have **absolutely NO IMPACT** on your deployment and future upgrades. None whatsoever. Keep building, patching and upgrading. 
 
-If you are a CAS deployer and have started your CAS deployment via building directly from source, you **MIGHT** be in trouble. We certainly recommend all CAS deployments start with the official and suggested deployment strategy, but if you wish to stick to your own ways, read on. 
+If you are a CAS deployer and have started your CAS deployment via building directly from source, you are doing it wrong!. We certainly recommend all CAS deployments start with the official and suggested deployment strategy, but if you wish to stick to your own ways, read on. 
 
 ## What does this mean to developers?
 
