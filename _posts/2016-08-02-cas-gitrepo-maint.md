@@ -32,6 +32,8 @@ Note that the cleanup process affects not just `master` but all CAS repository b
 
 We are going to follow [this guide](http://stevelorek.com/how-to-shrink-a-git-repository.html). Initial experiments seem to prove that repository size will shrink down to about 500MB, which is quite an improvement. 
 
+Prior to the cleanup process, we plan to store the existing CAS repository in a separate git repository for safekeeping as a backup.
+
 ## When do we do this?
 
 The cleanup process takes a while to complete, somewhere between 2-4 hours. Announcements will follow on the [CAS mailing lists](https://apereo.github.io/cas/Mailing-Lists.html) to give developers a headsup on the individual milestones within the cleanup task. Keep an eye out. 
