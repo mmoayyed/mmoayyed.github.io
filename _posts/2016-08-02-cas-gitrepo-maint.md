@@ -13,7 +13,7 @@ Here are the details.
 
 If you are a CAS deployer and have started your CAS deployment using a WAR overlay method, this will have **absolutely NO IMPACT** on your deployment and future upgrades. None whatsoever. Keep building, patching and upgrading. 
 
-If you are a CAS deployer and have started your CAS deployment via building directly from source, you **MIGHT* be in trouble. Read on. 
+If you are a CAS deployer and have started your CAS deployment via building directly from source, you **MIGHT** be in trouble. We certainly recommend all CAS deployments start with the official and suggested deployment strategy, but if you wish to stick to your existing deployment startegy, read on. 
 
 ## What does this mean to developers?
 
