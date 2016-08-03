@@ -16,3 +16,22 @@ If you are a CAS deployer and have started your CAS deployment using a WAR overl
 If you are a CAS deployer and have started your CAS deployment via building directly from source, you **MIGHT* be in trouble. Read on. 
 
 ## What does this mean to developers?
+
+Well, we are simply creating history here.
+
+Here is the [issue](https://github.com/apereo/cas/issues/1814) tracking this particular task. 
+
+One of the caveats of cleaning up the repository is that the commit log is massaged to rewrite the project history. This means that all project activity remains in place along with commit messages, authors and dates yet SHAs will be replaced and regenated as a result of rewriting history. This also implies that anyone else with a local clone or fork of the CAS repository will need to either use `git rebase` or create a fresh clone. If you fail to do so and manage to `push` again, those files are going to get pushed along with it and the repository will be reset to the state it was in before. So nuke your existing clones and forks and start again. 
+
+Note that the cleanup process affects not just `master` but all CAS repository branches, and there are quite a few. This means that before you start over with a fresh clone, you will need to make sure lingering branches in your local fork of the CAS repository are either:
+
+- Safely backed up and stored somewhere else (so they can be reworked later into the fresh clone)
+- Merged into the canonical CAS repository prior to the cleanup effort. 
+
+## How do we do this?
+
+We are going to follow [this guide](http://stevelorek.com/how-to-shrink-a-git-repository.html). Initial experiments seem to prove that repository size will shrink down to about 500MB, which is quite an improvement. 
+
+## When do we do this?
+
+The cleanup process takes a while to complete, somewhere between 2-4 hours. Announcements will follow on the [CAS mailing lists](https://apereo.github.io/cas/Mailing-Lists.html) to give developers a headsup on the individual milestones within the cleanup task. Keep an eye out. 
