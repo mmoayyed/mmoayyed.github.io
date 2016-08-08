@@ -24,7 +24,7 @@ There is no official policy to indicate the lifespan of a CAS release. Maintaini
 
 To mitigate some of this pain, the following proposal and a decidedly simple one at that is in the making:
 
-- CAS adopters **MAY EXPECT** a CAS release to be maintained for one lunar year, starting from [the original release date](https://github.com/apereo/cas/milestones). 
+- CAS adopters **MAY EXPECT** a CAS release to be maintained for one calendar year, starting from [the original release date](https://github.com/apereo/cas/milestones). 
 - Maintenance during this year includes bug fixes, security patches and general upkeep of the release.
 - Once the year is passed, maintenance of the release is **STRICTLY** limited to security patches and fixing vulnerabilities.  
 - The lifespan of a release **MAY** be extended beyond a single year, to be decided by the CAS PMC and the community at large when and where reasonable. 
