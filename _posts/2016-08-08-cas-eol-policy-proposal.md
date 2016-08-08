@@ -34,7 +34,7 @@ By "CAS Release", we mean anything that is a minor release and above. (i.e. `4.1
 
 ## What does this mean?
 
-The above policy, once in effect, implies that the following CAS releases will be EOLed at the indicates dates and will transition into a security-patch mode (SPM) only. 
+The above policy, once in effect, implies that the following CAS releases will transition into a security-patch mode (SPM) only and will be EOLed at the indicated dates. 
 
 | Release        | SPM Starting Date  | Full EOL  |
 | -------------- |:-------------:| --------------:|
@@ -42,6 +42,8 @@ The above policy, once in effect, implies that the following CAS releases will b
 | `4.1.x`        | January 31st, 2017 | January 31st, 2018 |
 | `4.2.x`        | January 1st, 2017  | January 1st, 2018 |
 
+
+All past releases that are absent in the above table are already considered EOLed. 
 
 
 [Misagh Moayyed](https://twitter.com/misagh84)
