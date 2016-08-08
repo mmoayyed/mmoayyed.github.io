@@ -14,17 +14,17 @@ The CAS project management committee has been reviewing a proposal on CAS releas
 The project has been handling release management and maintenance in a semi-official capacity. Today's release practices typically are:
 
 - Patch releases, once every 30 days.
-- Minor releases, once every 3-4 months
+- Minor releases, once every 3-4 months.
 - Major releases, where appropriate based on community demand and technical landscape.
 - Security patches, whenever needed and preferrably as soon as humanly possible.
 
-There is no official policy to indicate the lifespan of a CAS release. Maintaining multiple releases lines in an adhoc fashion is a very time-consuming and difficult process where the development team has to ensure patches across releases are ported backward or forward and that changesets are properly cherry-picked into the target release, tested, documented and made available. This process is simply not sustainable.
+There is no official policy to indicate the lifespan of a CAS release. Maintaining multiple releases lines in an adhoc fashion is a very time-consuming and difficult process where the development team has to ensure patches across releases are ported backward or forward correctly and that changesets are properly cherry-picked into the target release, tested, documented and made available. This process is simply not sustainable.
 
 ## Proposal
 
 To mitigate some of this pain, the following proposal and a decidedly simple one at that is in the making:
 
-- CAS Adopters **MAY EXPECT** a CAS release to generally be maintained for one lunar year, starting from the original release date. 
+- CAS adopters **MAY EXPECT** a CAS release to generally be maintained for one lunar year, starting from the original release date. 
 - Maintenance during this year includes bug fixes, security patches and general upkeep of the release.
 - Once the year is passed, maintenance of the release is **STRICTLY** limited to security patches and fixing vulnerabilities.  
 - The lifespan of a release **MAY** be extended beyond a single year, to be decided by the CAS PMC and the community at large when and where reasonable. 
