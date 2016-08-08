@@ -9,6 +9,8 @@ The CAS project management committee has been reviewing a proposal on CAS releas
 - How long should a CAS release be maintained?
 - What is the appropriate scope for release maintenance once a release is retired?
 
+## Today
+
 The project has been handling release management and maintenance in a semi-official capacity. Today's release practices typically are:
 
 - Patch releases, once every 30 days.
@@ -16,7 +18,7 @@ The project has been handling release management and maintenance in a semi-offic
 - Major releases, where appropriate based on community demand and technical landscape.
 - Security patches, whenever needed and preferrably as soon as humanly possible.
 
-Today, there is no official policy to indicate the lifespan of a CAS release. Maintaining multiple releases lines in an adhoc fashion is a very time-consuming and difficult process where the development team has to ensure patches across releases are ported backward or forward and that changesets are properly cherry-picked into the target release, tested, documented and made available. This process is simply not sustainable.
+There is no official policy to indicate the lifespan of a CAS release. Maintaining multiple releases lines in an adhoc fashion is a very time-consuming and difficult process where the development team has to ensure patches across releases are ported backward or forward and that changesets are properly cherry-picked into the target release, tested, documented and made available. This process is simply not sustainable.
 
 ## Proposal
 
@@ -32,9 +34,9 @@ By "CAS Release", we mean anything that is a minor release and above. (i.e. `4.1
 
 ## What does this mean?
 
-The above policy, once in effect, implies that the following CAS releases will be EOLed at the indicates dates and will transition into a secucity-patch mode only. 
+The above policy, once in effect, implies that the following CAS releases will be EOLed at the indicates dates and will transition into a security-patch mode (SPM) only. 
 
-| Release        | Maintenance Ending Date  | Full EOL  |
+| Release        | SPM Starting Date  | Full EOL  |
 | -------------- |:-------------:| --------------:|
 | `4.0.x`        | October 31st, 2016 | October 31st, 2017 |
 | `4.1.x`        | January 31st, 2017 | January 31st, 2018 |
