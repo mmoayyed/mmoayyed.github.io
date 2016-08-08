@@ -41,7 +41,7 @@ The above policy, once in effect, implies that the following CAS releases will t
 | `4.0.x`        | October 31st, 2016 | October 31st, 2017 |
 | `4.1.x`        | January 31st, 2017 | January 31st, 2018 |
 | `4.2.x`        | January 31st, 2017  | January 31st, 2018 |
-
+| `5.0.x`        | September 30th, 2017  | September 30th, 2018 |
 
 All past releases that are absent in the above table are considered EOLed. 
 
