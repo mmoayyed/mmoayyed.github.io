@@ -54,7 +54,7 @@ How do you block what you may consider a suspicious authentication attempt? For 
 
 As a variant of adaptive authentication and starting with this release candidate CAS allows you to geoprofile authentication requests and then based on your devised rules, reject those or force them through a particular multifactor provider. Geoprofiling can be achieved via Maxmind or GoogleMaps, both of which are services that require a paid subscription for full API usage.
 
-## Groovy, maaan!
+# Groovy, maaan!
 
 Furthermore, CAS starts to support attribute resolution and release via
 the Groovy programming language. In short, you can specify a groovy script
@@ -71,7 +71,19 @@ You mix and match options that are available for both.
 Needless to say, the script is all Groovy and and is capable of executing
 any kind of operation the Groovy language itself is able to support.
 
-## SAML2 SP Integrations
+# Spring Cloud: Vault & MongoDb
+
+CAS adds support for [Vault](https://www.vaultproject.io)
+and MongoDb, as options that may be used to
+house CAS configuration and settings.
+
+# DuoSecurity WebSDK 2.3
+
+Thanks to contributions from DuoSecurity, the Duo WebSDK module is now
+bumped to `2.3`.
+
+
+# SAML2 SP Integrations
 
 Now that CAS 5 starts to support the SAML2 protocol, you gotta ask: what
 if we could extend the auto-configuration strategy to provide built-in SP
@@ -91,6 +103,7 @@ out of the box:
 - Service Now
 - Net Partner
 - Workday
+- Webex
 
 These are generally SPs for which the SAML2 integration recipe is quite simple.
 As we progress forward, we hope to start collecting more and more
