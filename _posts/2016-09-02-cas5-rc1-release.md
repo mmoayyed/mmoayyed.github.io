@@ -120,7 +120,7 @@ for all cases.
 
 # Password Management
 
-Starting with this release, CAS provides a modest [password management capabilities](https://apereo.github.io/cas/development/installation/Password-Policy-Enforcement.html).
+Starting with this release, CAS provides very modest [password management capabilities](https://apereo.github.io/cas/development/installation/Password-Policy-Enforcement.html).
 This is an optional feature which allows users to change their password in-place
 when CAS detects an authentication failure due to a rejected password. LDAP is supported
 as backend option for managing the account password, though you could always extend
