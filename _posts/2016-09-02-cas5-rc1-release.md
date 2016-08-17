@@ -58,17 +58,14 @@ As a variant of [adaptive authentication](https://apereo.github.io/cas/developme
 
 # Groovy, maaan!
 
-Furthermore, CAS starts to support [attribute release](https://apereo.github.io/cas/development/integration/Attribute-Release-Policies.html#groovy-script)
+Furthermore, CAS starts to support [attribute release](https://apereo.github.io/cas/development/integration/Attribute-Release-Policies.html#groovy-script) via
 the Groovy programming language. In short, you can specify a groovy script
 that is executed upon attribute resolution and/or release to dynamically
 and programmatically decide which application should receive a selection
 of attributes.
 
 Note that attribute resolution could always be done via Groovy. This bit is not new.
-We have just made the configuration of it a whole easier.
-
-Also note that in CAS, attribute resolution is a separate process from attribute release.
-You mix and match options that are available for both.
+We have just made the configuration of it a whole easier.Also note that in CAS, attribute resolution is a separate process from attribute release. You mix and match options that are available for both.
 
 Needless to say, the script is all Groovy and and is capable of executing
 any kind of operation the Groovy language itself is able to support.
@@ -117,7 +114,7 @@ If you have SP suggestions, please feel free to share.
 # Audit Log
 
 In certain cases and depending on the nature of the request, CAS would produce
-an `audit:unknown` in the audit log. Thanks for [Dima](https://github.com/dima767),
+an `audit:unknown` in the audit log. Thanks to [Dima](https://github.com/dima767),
 this behavior is corrected to ensure the audit log can produce a valid user id
 for all cases.
 
