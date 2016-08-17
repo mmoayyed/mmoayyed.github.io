@@ -17,12 +17,14 @@ Several bug fixes submitted by the community that address:
 
 - SPNEGO authentication & documentation
 - LDAP authentication & attribute resolution
-- OIDC discovery
+- OIDC discovery; Thanks [Jérôme](https://github.com/leleuj)
 
 # Google reCAPTCHA
 
-Over the years, there have been several requests on the mailing list asking for guidance to enable a CAS integration with Google's reCAPTCHA. While [a recipe](https://wiki.jasig.org/display/CASUM/Integrating+reCaptcha+with+CAS) existed for enabling this feature for older CAS versions, over time it'd gotten rusty. In this release, CAS starts to support Google's reCAPTCHA natively. Just like with all other features, there will be no need to modify
+Over the years, there have been several requests on the mailing list asking for guidance to enable a CAS integration with Google's reCAPTCHA. While [a recipe](https://wiki.jasig.org/display/CASUM/Integrating+reCaptcha+with+CAS) existed for enabling this feature for older CAS versions, over time it'd gotten rusty. In this release, CAS starts to support [Google's reCAPTCHA](https://apereo.github.io/cas/development/integration/Configuring-Google-reCAPTCHA.html) natively. Just like with all other features, there will be no need to modify
 the CAS login webflow or any other configuration file. Including the relevant module, and provide your settings for reCAPTCHA.
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/DBIcr"><a href="//imgur.com/DBIcr"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 [This article](http://news.softpedia.com/news/google-recaptcha-cracked-in-new-automated-attack-502677.shtml) may be of further interest to you.
 
@@ -52,11 +54,11 @@ affects LDAP.
 
 How do you block what you may consider a suspicious authentication attempt? For instance, you may wish to disallow requests from certain locations or IP addresses or even fancier, you may want those requests to pass through multifactor authentication for extra security.
 
-As a variant of adaptive authentication and starting with this release candidate CAS allows you to geoprofile authentication requests and then based on your devised rules, reject those or force them through a particular multifactor provider. Geoprofiling can be achieved via Maxmind or GoogleMaps, both of which are services that require a paid subscription for full API usage.
+As a variant of [adaptive authentication](https://apereo.github.io/cas/development/installation/Configuring-Adaptive-Authentication.html) and starting with this release candidate CAS allows you to geoprofile authentication requests and then based on your devised rules, reject those or force them through a particular multifactor provider. Geoprofiling can be achieved via Maxmind or GoogleMaps, both of which are services that **require a paid subscription** for full API usage.
 
 # Groovy, maaan!
 
-Furthermore, CAS starts to support attribute resolution and release via
+Furthermore, CAS starts to support [attribute release](https://apereo.github.io/cas/development/integration/Attribute-Release-Policies.html#groovy-script)
 the Groovy programming language. In short, you can specify a groovy script
 that is executed upon attribute resolution and/or release to dynamically
 and programmatically decide which application should receive a selection
@@ -75,7 +77,7 @@ any kind of operation the Groovy language itself is able to support.
 
 CAS adds support for [Vault](https://www.vaultproject.io)
 and MongoDb, as options that may be used to
-house CAS configuration and settings.
+house [CAS configuration](https://apereo.github.io/cas/development/installation/Configuration-Management.html).
 
 # DuoSecurity WebSDK 2.3
 
@@ -93,7 +95,7 @@ file. CAS should auto-register the SP and take care of all the other technical d
 
 Right?
 
-Right! With this release, CAS starts to support the following SP Integrations
+Right! With this release, CAS starts to support the following [SP Integrations](https://apereo.github.io/cas/development/integration/Configuring-SAML-SP-Integrations.html)
 out of the box:
 
 - Dropbox
@@ -112,13 +114,23 @@ community often, such that we can **configure once, run everywhere**.
 
 If you have SP suggestions, please feel free to share.
 
+# Audit Log
+
+In certain cases and depending on the nature of the request, CAS would produce
+an `audit:unknown` in the audit log. Thanks for [Dima](https://github.com/dima767),
+this behavior is corrected to ensure the audit log can produce a valid user id
+for all cases.
+
 # Password Management
 
-Starting with this release, CAS provides modest password management capabilities.
+Starting with this release, CAS provides a modest [password management capabilities](https://apereo.github.io/cas/development/installation/Password-Policy-Enforcement.html).
 This is an optional feature which allows users to change their password in-place
 when CAS detects an authentication failure due to a rejected password. LDAP is supported
 as backend option for managing the account password, though you could always extend
 CAS to provide your own implementations of password management services for various backends.
+
+Note that this feature is off by default and without it, you simply get today's CAS experience
+which is a link redirecting to your own password management tool.
 
 Here are a few screenshots:
 
