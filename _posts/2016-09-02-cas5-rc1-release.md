@@ -112,6 +112,18 @@ community often, such that we can **configure once, run everywhere**.
 
 If you have SP suggestions, please feel free to share.
 
+# Password Management
+
+Starting with this release, CAS provides modest password management capabilities.
+This is an optional feature which allows users to change their password in-place
+when CAS detects an authentication failure due to a rejected password. LDAP is supported
+as backend option for managing the account password, though you could always extend
+CAS to provide your own implementations of password management services for various backends.
+
+Here are a few screenshots:
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/RMC7j"><a href="//imgur.com/RMC7j"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
 # What's Next?
 
 The development team is working to make sure the CAS 5 release is on [schedule](https://github.com/apereo/cas/milestones).
