@@ -118,6 +118,27 @@ an `audit:unknown` in the audit log. Thanks to [Dima](https://github.com/dima767
 this behavior is corrected to ensure the audit log can produce a valid user id
 for all cases.
 
+# Logging Dashboard
+
+Furthermore, CAS starts to allow its administrators, permissions granting, to observe logging configuration and view log outputs in real time. This is done via the magic of Web Sockets, where
+CAS and the browser establish a light-weight TCP connection to stream log data.
+
+Here are a few screenshots:
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/a2vUk"><a href="//imgur.com/a2vUk"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+# Custom Error Pages
+
+Thanks to the magic of Spring Boot, CAS starts to present customized error
+pages based on http error codes. You can for instance design a simple `401.html`
+to explain the error to your users better. Error pages can be defined in form
+Of series as well, such as `5xx.html`.
+
+Here are a few screenshots:
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/jGMeo"><a href="//imgur.com/jGMeo"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+
 # Password Management
 
 Starting with this release, CAS provides very modest [password management capabilities](https://apereo.github.io/cas/development/installation/Password-Policy-Enforcement.html).
