@@ -99,10 +99,10 @@ out of the box:
 - Box
 - Salesforce
 - SAManage
-- Service Now
-- Net Partner
+- ServiceNow
+- PowerFAIDS Net Partner
 - Workday
-- Webex
+- WebEx
 
 These are generally SPs for which the SAML2 integration recipe is quite simple.
 As we progress forward, we hope to start collecting more and more
