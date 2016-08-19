@@ -65,7 +65,7 @@ and programmatically decide which application should receive a selection
 of attributes.
 
 Note that attribute resolution could always be done via Groovy. This bit is not new.
-We have just made the configuration of it a whole easier.Also note that in CAS, attribute resolution is a separate process from attribute release. You mix and match options that are available for both.
+We have just made the configuration of it a whole easier. Also note that in CAS, attribute resolution is a separate process from attribute release. You can mix and match options that are available for both.
 
 Needless to say, the script is all Groovy and and is capable of executing
 any kind of operation the Groovy language itself is able to support.
@@ -144,7 +144,7 @@ Here are a few screenshots:
 Starting with this release, CAS provides very modest [password management capabilities](https://apereo.github.io/cas/development/installation/Password-Policy-Enforcement.html).
 This is an optional feature which allows users to change their password in-place
 when CAS detects an authentication failure due to a rejected password. LDAP is supported
-as backend option for managing the account password, though you could always extend
+as a backend option for managing the account password, though you could always extend
 CAS to provide your own implementations of password management services for various backends.
 
 Note that this feature is off by default and without it, you simply get today's CAS experience
