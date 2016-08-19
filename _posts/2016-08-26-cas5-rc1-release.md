@@ -22,7 +22,7 @@ Several bug fixes submitted by the community that address:
 # Google reCAPTCHA
 
 Over the years, there have been several requests on the mailing list asking for guidance to enable a CAS integration with Google's reCAPTCHA. While [a recipe](https://wiki.jasig.org/display/CASUM/Integrating+reCaptcha+with+CAS) existed for enabling this feature for older CAS versions, over time it'd gotten rusty. In this release, CAS starts to support [Google's reCAPTCHA](https://apereo.github.io/cas/development/integration/Configuring-Google-reCAPTCHA.html) natively. Just like with all other features, there will be no need to modify
-the CAS login webflow or any other configuration file. Including the relevant module, and provide your settings for reCAPTCHA.
+the CAS login webflow or any other configuration file. Include the relevant module, and provide your settings for reCAPTCHA.
 
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/DBIcr"><a href="//imgur.com/DBIcr"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
@@ -132,7 +132,7 @@ Here are a few screenshots:
 Thanks to the magic of Spring Boot, CAS starts to present customized error
 pages based on http error codes. You can for instance design a simple `401.html`
 to explain the error to your users better. Error pages can be defined in form
-Of series as well, such as `5xx.html`.
+of series as well, such as `5xx.html`.
 
 Here are a few screenshots:
 
