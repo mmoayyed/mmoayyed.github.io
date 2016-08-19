@@ -17,7 +17,7 @@ Several bug fixes submitted by the community that address:
 
 - SPNEGO authentication & documentation
 - LDAP authentication & attribute resolution
-- OIDC discovery; Thanks [Jérôme](https://github.com/leleuj)
+- OIDC discovery and authentication flows; Thanks [Jérôme](https://github.com/leleuj)
 
 # Google reCAPTCHA
 
