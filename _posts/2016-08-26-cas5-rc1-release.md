@@ -81,6 +81,14 @@ house [CAS configuration](https://apereo.github.io/cas/development/installation/
 Thanks to contributions from DuoSecurity, the Duo WebSDK module is now
 bumped to `2.3`.
 
+# Front Channel SLO
+
+While it has been and still is somewhat of an external feature,
+this release candidate improves the CAS front-channel single logout functionality.
+CAS attempts to collect applications that are defined to use front-channel logout and
+will use a bit of fancy javascript to contact each endpoint to pass along the logout notification request.
+The payload and syntax of the request is identical to the current back-channel logout, and status of each
+request is tracked and displayed in the user interface.
 
 # SAML2 SP Integrations
 
@@ -103,6 +111,7 @@ out of the box:
 - PowerFAIDS Net Partner
 - Workday
 - WebEx
+- Office365
 
 These are generally SPs for which the SAML2 integration recipe is quite simple.
 As we progress forward, we hope to start collecting more and more
