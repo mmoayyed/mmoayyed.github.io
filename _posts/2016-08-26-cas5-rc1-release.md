@@ -11,13 +11,9 @@ Before we get started, it should be pointed out that [releases of CAS 5 are avai
 
 The current documentation of CAS 5 is also [available here](https://apereo.github.io/cas/development/index.html).
 
-# Bug Fixes
+# OpenID Connect
 
-Several bug fixes submitted by the community that address:
-
-- SPNEGO authentication & documentation
-- LDAP authentication & attribute resolution
-- OIDC discovery and authentication flows; Thanks [Jérôme](https://github.com/leleuj)
+OIDC support in CAS gets a number of improvements and bug fixes thanks to [Jérôme](https://github.com/leleuj).
 
 # Google reCAPTCHA
 
@@ -83,7 +79,7 @@ bumped to `2.3`.
 
 # Front Channel SLO
 
-While it has been and still is somewhat of an external feature,
+While it has been and still is somewhat of an experimental feature,
 this release candidate improves the CAS front-channel single logout functionality.
 CAS attempts to collect applications that are defined to use front-channel logout and
 will use a bit of fancy javascript to contact each endpoint to pass along the logout notification request.
@@ -129,7 +125,7 @@ for all cases.
 
 # Logging Dashboard
 
-Furthermore, CAS starts to allow its administrators, permissions granting, to observe logging configuration and view log outputs in real time. This is done via the magic of Web Sockets, where
+CAS starts to allow its administrators, permissions granting, to observe logging configuration and view log outputs in real time. This is done via the magic of Web Sockets, where
 CAS and the browser establish a light-weight TCP connection to stream log data.
 
 Here are a few screenshots:
