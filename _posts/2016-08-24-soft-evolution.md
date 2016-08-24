@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Product vision: you are doing it wrong
+title:      Defining a Product Vision
 summary:    This is my take on how to evolve a product/project vision, and lessons I have learned
 ---
 
