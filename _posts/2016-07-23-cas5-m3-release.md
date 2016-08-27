@@ -18,7 +18,7 @@ The [entire collection of CAS settings](https://apereo.github.io/cas/development
 
 As an example, to define LDAP authentication handlers:
 
-<pre class="prettyprint lang-xml">
+{% highlight python %}
 ...
 # cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,...
 # cas.authn.ldap[0].baseDn=dc=example,dc=org
@@ -26,7 +26,7 @@ As an example, to define LDAP authentication handlers:
 # cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
 # cas.authn.ldap[0].bindCredential=Password
 ...
-</pre>
+{% endhighlight %}
 
 Additional handlers can be defined by simply incrementing that `0` index.
 
