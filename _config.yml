@@ -1,14 +1,15 @@
 # Site settings
 title:       Misagh Moayyed
-#email:
+email:       misagh.moayyed@gmail.com  
 author:      Misagh Moayyed
-description: "Misagh's' blog"
+description: "Misagh's blog"
 baseurl:     ""
 url:         "http://mmoayyed.github.io"
 date_format: "%b %-d, %Y"
 
 # Google analytics
 google_analytics: UA-10548385-1
+google_tag_manager:
 
 # Optional features
 animated:           true
@@ -79,3 +80,39 @@ kramdown:
     block:
       line_numbers: false
 start_line: 1
+    digg:         'Share on Digg'
+    tumblr:       'Share on Tumblr'
+    reddit:       'Share on Reddit'
+    stumbleupon:  'Share on StumbleUpon'
+    hackernews:   'Share on Hacker News'
+  post:
+    updated:        'Updated'
+    minute_read:    'minute read'
+    related_posts:  'Related Posts'
+  index:
+    coming_soon: 'Coming soon...'
+  contact:
+    email:    'Email Address'
+    content:  'What would you like to say?'
+    subject:  'New submission!'
+    submit:   'Say Hello'
+    ajax:
+      sending:  'sending..'
+      sent:     'Message sent!'
+      error:    'Error!'
+  thanks: 'Thanks for contacting us. We will reply as soon as possible.'
+  og_locale: 'en_US'
+
+# Build settings
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:    pretty
+paginate:     4
+sass:
+  compressed: true
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
+# https://github.com/jekyll/jekyll/issues/2938
+exclude: [vendor]
