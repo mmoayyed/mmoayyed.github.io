@@ -18,15 +18,16 @@ The [entire collection of CAS settings](https://apereo.github.io/cas/development
 
 As an example, to define LDAP authentication handlers:
 
-{% highlight python %}
+{% highlight properties lineanchors %}
 ...
-# cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,...
-# cas.authn.ldap[0].baseDn=dc=example,dc=org
-# cas.authn.ldap[0].userFilter=cn={user}
-# cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
-# cas.authn.ldap[0].bindCredential=Password
+cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,...
+cas.authn.ldap[0].baseDn=dc=example,dc=org
+cas.authn.ldap[0].userFilter=cn={user}
+cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
+cas.authn.ldap[0].bindCredential=Password
 ...
 {% endhighlight %}
+
 
 Additional handlers can be defined by simply incrementing that `0` index.
 
@@ -42,7 +43,7 @@ As you observe, **ALL** CAS properties are now collected inside a single page on
 
 The CAS management webapp is now bootified. It also boasts support for a few other additinal UI panes and sections that deal with MFA, OIDC, SAML, and more. Work continues to make sure all properties of a given CAS registered service can be configured and controlled via the UI.
 
-<pre class="prettyprint lang-bash">
+{% highlight bash %}
 :cas-management-webapp:bootRun
 Listening for transport dt_socket at address: 5000
 
@@ -54,9 +55,7 @@ Listening for transport dt_socket at address: 5000
  \____|/_/   \_\|____/  |_|  |_| \__,_||_| |_| \__,_| \__, | \___||_| |_| |_| \___||_| |_| \__|
                                                       |___/                                    
 
-
-
-</pre>
+{% endhighlight %}
 
 # Dependency Upgrades
 

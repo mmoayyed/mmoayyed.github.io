@@ -116,7 +116,8 @@ kramdown:
     span:
       line_numbers: false
     block:
-      line_numbers: false
+      line_numbers: true
+      start_line: 1
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
@@ -126,6 +127,7 @@ sass:
   compressed: true
 gems:
   - jekyll-paginate
+  - jekyll-feed
   - jekyll-sitemap
 # https://github.com/jekyll/jekyll/issues/2938
 exclude: [vendor]
