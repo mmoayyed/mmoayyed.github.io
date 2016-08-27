@@ -112,7 +112,9 @@ out of the box:
 These are generally SPs for which the SAML2 integration recipe is quite simple.
 As we progress forward, we hope to start collecting more and more
 of such SPs, specially those that are more visible and used by the wider
-community often, such that we can **configure once, run everywhere**.
+community often, such that we can **configure once, run everywhere** rather than
+document it repeatedly, maintain it separately and repeat it for every deployment
+forever.
 
 If you have SP suggestions, please feel free to share.
 
