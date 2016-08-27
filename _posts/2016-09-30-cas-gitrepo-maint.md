@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS Git Repository Maintenance
 summary:    The CAS development team is starting with a bit of git repository housekeeping. Here is how and why.
-date:       2014-06-09 12:32:18
+date:       2016-09-30 12:32:18
 categories: cas
 ---
 
