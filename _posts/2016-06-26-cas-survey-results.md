@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS Survey Results
 summary:    ...in which I present a summarized view of the latest CAS community survey and discuss results.
-
+categories: cas
 ---
 
 A [while ago](https://groups.google.com/a/apereo.org/forum/#!searchin/cas-user/survey/cas-user/vQr3eBdHNg8/eKm9gkpxIwAJ) the CAS project management committee prepared a [survey](http://goo.gl/forms/rF9EeCN6GH) to help plan the future roadmap of the project. The primary objectives of the survey were to gain a better understanding of the current configuration pain points from a deployer point of view and learn what additional features and enhancements should have to be prioritized for development.
@@ -11,7 +11,7 @@ In this post, I intend to provide a summarized view of the survey results and di
 
 # Results
 
-There were about 200 responses to the survey from both individuals and institutions. Some responses were submitted by consulting firms who provide CAS commercial services for their clients which indicates the actual number of deployers may be larger than the reported 200. 
+There were about 200 responses to the survey from both individuals and institutions. Some responses were submitted by consulting firms who provide CAS commercial services for their clients which indicates the actual number of deployers may be larger than the reported 200.
 
 Participants of the survey indicated that on average, they have been running CAS for more than 10 years in a variety of industry sectors such as Government, Higher-Ed, Insurance, Finance, Travel and Health. More than 50% of the results indicated a CAS server deployment size of more than 10K users which is considered a rather large deployment of the platform.
 
@@ -38,7 +38,7 @@ The table below shows what percentage of the community is using a given CAS serv
 | 4.2.x  | 4%  |
 | Other  | 7%  |
 
-It's important to note that CAS 3.x has been EOLed for almost 2 years. What this means is that CAS 3.x will no longer be maintained, fixed or (in case of security vulnerabilities) patched by the development team. Therefor, it is strongly recommended that those deployments switch and upgrade to a more recent and stable version of the platform, which at the time of this writing is CAS 4.2.x. 
+It's important to note that CAS 3.x has been EOLed for almost 2 years. What this means is that CAS 3.x will no longer be maintained, fixed or (in case of security vulnerabilities) patched by the development team. Therefor, it is strongly recommended that those deployments switch and upgrade to a more recent and stable version of the platform, which at the time of this writing is CAS 4.2.x.
 
 ## Features
 
@@ -86,7 +86,7 @@ A number of other features were requested by participants that were not part of 
 
 The CAS development team has been working on the next major release of the platform, that is 5.0.0. Taking into account the community survey and feedback, here are a few notes to help clarify how CAS 5 attempts to address some of the reported issues.
 
-Before we get started, it should be pointed out that [early milestone releases of CAS 5 are available](https://github.com/apereo/cas-overlay-template/tree/5.0). Deployers are more than welcome to try out the milestone releases and share feedback. 
+Before we get started, it should be pointed out that [early milestone releases of CAS 5 are available](https://github.com/apereo/cas-overlay-template/tree/5.0). Deployers are more than welcome to try out the milestone releases and share feedback.
 
 The current in-development documentation of CAS 5 is also [available here](https://apereo.github.io/cas/development/index.html).
 
@@ -96,7 +96,7 @@ The current in-development documentation of CAS 5 is also [available here](https
 
 CAS 5 will have built-in support for:
 
-- [MFA](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication.html) based on Duo Security, Google Authenticator and more. 
+- [MFA](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication.html) based on Duo Security, Google Authenticator and more.
 - [SAML2 authentication](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), acting as an identity provider consuming and producing SAML metadata.
 - [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html), acting as an OP producing claims for RPs.
 - A YAML-based service registry.
@@ -128,7 +128,7 @@ To remove some of this pain, CAS 5 presents the following approach to the deploy
 - **Optionally**, configure the module by supplying settings via a simple `.properties` file.
 
 
-At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features. 
+At deployment time, CAS will auto-determine every single change that is required for the functionality of declared modules and will auto-configure it all in order to remove the extra XML configuration pain. This is a strategy that is put into place for nearly **ALL** modules and features.
 
 This strategy helps with the documentation noise as well to a large degree because there is no longer a need to document every single XML configuration file and change required for each module for a given needed feature. The CAS 5 platform starts to have very low expectations of the adopter in terms of learning its internals and different configuration mechanics. Simply declaring an intention and optionally configuring it should be more than sufficient.
 
@@ -207,7 +207,7 @@ Built-in containers are also available, optionally, for Jetty and Undertow.
 
 ### User Interfaces
 
-CAS 5 starts use to use [Thymeleaf](http://www.thymeleaf.org/) as a rendering engine for its user interfaces. Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers. 
+CAS 5 starts use to use [Thymeleaf](http://www.thymeleaf.org/) as a rendering engine for its user interfaces. Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers.
 
 The old JSP model required adopters to test out UI-related changes directly inside a running servlet container such as Tomcat. Thymeleaf allows CAS to present HTML-native pages that can easily be viewed in the browser without requiring an underlying container engine.
 
@@ -223,7 +223,7 @@ Here are a few screenshots of the new CAS 5 user interfaces:
 
 # What's Next?
 
-The development team is working hard to make sure the CAS 5 release is right on [schedule](https://github.com/apereo/cas/milestones). 
+The development team is working hard to make sure the CAS 5 release is right on [schedule](https://github.com/apereo/cas/milestones).
 
 For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the development team. However, the primary development focus and time will be dedicated to CAS 5, addressing bugs and extending the platform to be a more comfortable experience specially for some of the brand new features presented in this release.
 
@@ -236,22 +236,10 @@ For the time being, CAS 4.1.x and 4.2.x release lines will be maintained by the 
 
 # Das Ende
 
-I would like to thank all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community. 
+I would like to thank all survey participants. None of this would have been possible without your engagement and involvement in a vibrant community.
 
-Thank you for sharing. Thank you very much for all the kind words. 
+Thank you for sharing. Thank you very much for all the kind words.
 
 On behalf of the CAS project,
 
 [Misagh Moayyed](https://twitter.com/misagh84)
-
-
-
-
-
-
-
-
-
-
-
-
