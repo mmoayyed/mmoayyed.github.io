@@ -2,7 +2,7 @@
 layout:     post
 title:      Defining a Product Vision
 summary:    This is my take on how to evolve a product/project vision, and lessons I have learned.
-date:       2014-06-09 12:32:18
+date:       2016-08-24 12:32:18
 categories: blog
 ---
 

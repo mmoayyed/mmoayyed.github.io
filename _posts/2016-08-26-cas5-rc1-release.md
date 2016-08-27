@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5 RC1 Release
 summary:    ...in which I present an overview of CAS 5 RC1 release.
-date:       2014-06-09 12:32:18
+date:       2016-08-26 12:32:18
 categories: cas
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS EOL Policy Proposal
 summary:    In which I attempt to provide an overview of the new CAS EOL policy.
-date:       2014-06-09 12:32:18
+date:       2016-08-08 12:32:18
 categories: cas
 ---
 
