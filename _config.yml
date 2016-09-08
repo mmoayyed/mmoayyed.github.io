@@ -114,7 +114,7 @@ kramdown:
     line_format: '%i'
     table_class: 'rouge-table'
     gutter_class: 'rouge-gutter'
-    code_class: 'codehilite'
+    code_class: 'highlight'
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
