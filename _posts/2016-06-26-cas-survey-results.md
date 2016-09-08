@@ -137,17 +137,17 @@ This strategy also greatly assists with future upgrades because there would be v
 
 As an example, in order to configure LDAP authentication, all an adopter has to do is **declare his/her intention**:
 
-<pre class="prettyprint lang-xml">
+```xml
 &lt;dependency>
      &lt;groupId>org.apereo.cas&lt;/groupId>
      &lt;artifactId>cas-server-support-ldap&lt;/artifactId>
      &lt;version>${cas.version}&lt;/version>
 &lt;/dependency>
-</pre>
+```
 
 ...and **declare the relevant settings**:
 
-<pre class="prettyprint lang-properties">
+```xml
 ...
 # cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.edu,...
 # cas.authn.ldap[0].baseDn=dc=example,dc=org
@@ -155,7 +155,7 @@ As an example, in order to configure LDAP authentication, all an adopter has to 
 # cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
 # cas.authn.ldap[0].bindCredential=Password
 ...
-</pre>
+```
 
 That's all. There is no other change required.
 
@@ -177,7 +177,7 @@ To learn more about how CAS manages the deployer configuration, particularly in 
 
 Once packaged, adopters previously had to grab the final CAS web application and deploy it into a servlet container of choice such as Tomcat or Jetty. While this model is and will be supported, CAS 5 takes this one step further and ships with a built-in Tomcat container that can simply launch the CAS application directly from the command line. The recipe is as simple as:
 
-<pre class="prettyprint lang-bash">
+```bash
 ...
 mvn clean package
 java -jar target/cas.war
@@ -200,7 +200,7 @@ OS Architecture: amd64
 OS Name: Windows 10
 OS Version: 10.0
 ...
-</pre>
+```
 
 Every attempt has been made to ensure every aspect of the built-in Tomcat container (such as SSL, context path, etc) is configurable via the same `.properties` file that houses all other CAS configuration.
 
