@@ -108,7 +108,7 @@ markdown:     kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  hard_wrap: true
+  hard_wrap: false
   syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
     css_class: 'highlight'
@@ -116,7 +116,7 @@ kramdown:
     span:
       line_numbers: false
     block:
-      line_numbers: true
+      line_numbers: false
       start_line: 1
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
