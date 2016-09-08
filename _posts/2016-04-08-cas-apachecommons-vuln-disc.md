@@ -42,7 +42,7 @@ Modify your CAS overlay to point to version `4.1.7`.
 
 A snippet of a `pom.xml` for a CAS overlay follows:
 
-```xml
+{% highlight xml lineanchors %}
 ...
 
 <dependencies>
@@ -59,7 +59,7 @@ A snippet of a `pom.xml` for a CAS overlay follows:
     <cas.version>4.1.7</cas.version>
 </properties>
 ...
-```
+ {% endhighlight %}
 
 #### TGC Settings
 
