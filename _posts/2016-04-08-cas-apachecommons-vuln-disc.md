@@ -435,19 +435,19 @@ A snippet of a `pom.xml` for a CAS overlay follows:
 ```xml
 ...
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jasig.cas</groupId>
-            <artifactId>cas-server-webapp</artifactId>
-            <version>${cas.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <dependency>
+        <groupId>org.jasig.cas</groupId>
+        <artifactId>cas-server-webapp</artifactId>
+        <version>${cas.version}</version>
+        <type>war</type>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
 
-    <properties>
-        <cas.version>4.1.7</cas.version>
-    </properties>
+<properties>
+    <cas.version>4.1.7</cas.version>
+</properties>
 ...
 ```
 
@@ -611,19 +611,19 @@ A snippet of a `pom.xml` for a CAS overlay follows:
 ```xml
 ...
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jasig.cas</groupId>
-            <artifactId>cas-server-webapp</artifactId>
-            <version>${cas.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <dependency>
+        <groupId>org.jasig.cas</groupId>
+        <artifactId>cas-server-webapp</artifactId>
+        <version>${cas.version}</version>
+        <type>war</type>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
 
-    <properties>
-        <cas.version>4.2.1</cas.version>
-    </properties>
+<properties>
+    <cas.version>4.2.1</cas.version>
+</properties>
 ...
 ```
 
