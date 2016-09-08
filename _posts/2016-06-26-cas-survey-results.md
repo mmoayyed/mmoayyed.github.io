@@ -138,11 +138,11 @@ This strategy also greatly assists with future upgrades because there would be v
 As an example, in order to configure LDAP authentication, all an adopter has to do is **declare his/her intention**:
 
 ```xml
-&lt;dependency>
-     &lt;groupId>org.apereo.cas&lt;/groupId>
-     &lt;artifactId>cas-server-support-ldap&lt;/artifactId>
-     &lt;version>${cas.version}&lt;/version>
-&lt;/dependency>
+<dependency>
+     <groupId>org.apereo.cas</groupId>
+     <artifactId>cas-server-support-ldap</artifactId>
+     <version>${cas.version}</version>
+</dependency>
 ```
 
 ...and **declare the relevant settings**:
