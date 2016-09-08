@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Apereo CAS Vulnerability Disclosure: Apache Commons Collections usage
-summary:    This is an Apereo CAS project vulnerability disclosure describing an issue with the Apache Commons Collections library usage.
+title:      Apereo CAS Vulnerability Disclosure Apache Commons Collections usage
+summary:    CAS vulnerability disclosure describing an issue with the Apache Commons Collections library usage.
 categories: blog
 date:       2016-04-08 12:32:18
 ---
