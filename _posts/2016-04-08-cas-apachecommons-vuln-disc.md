@@ -42,9 +42,7 @@ Modify your CAS overlay to point to version `4.1.7`.
 
 A snippet of a `pom.xml` for a CAS overlay follows:
 
-{% highlight xml lineanchors %}
-...
-
+```xml
 <dependencies>
     <dependency>
         <groupId>org.jasig.cas</groupId>
@@ -58,8 +56,7 @@ A snippet of a `pom.xml` for a CAS overlay follows:
 <properties>
     <cas.version>4.1.7</cas.version>
 </properties>
-...
- {% endhighlight %}
+```
 
 #### TGC Settings
 
