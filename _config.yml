@@ -110,11 +110,14 @@ kramdown:
   syntax_highlighter: rouge
   hard_wrap: false
   syntax_highlighter_opts:
-    start_line: 1
-    line_format: '%i'
-    table_class: 'rouge-table'
-    gutter_class: 'rouge-gutter'
-    code_class: 'highlight'
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
