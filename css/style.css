@@ -818,15 +818,21 @@ animation-delay: .8s;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(2) a,
 .blog-details-post-wrapper .post-share-area .share-icon li:nth-child(3) a {
-  color: #70c2e9;
-  border-color:#70c2e9;
+  color: black;
+  border-color:#525354;
 }
+
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(3) a,
-.blog-details-post-wrapper .post-share-area .share-icon li:nth-child(4) a {
-  color: #d8545d;
-  border-color:#d8545d;
+.blog-details-post-wrapper .post-share-area .share-icon li:nth-child(3) a {
+  color: #cd7024;
+  border-color:#cd7024;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(4) a,
+.blog-details-post-wrapper .post-share-area .share-icon li:nth-child(4) a {
+  color: #007ab9;
+  border-color:#007ab9;
+}
+#team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(5) a,
 .blog-details-post-wrapper .post-share-area .share-icon li:nth-child(5) a {
   color: #007ab9;
   border-color:#007ab9;
@@ -837,14 +843,18 @@ animation-delay: .8s;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(2) a:hover,
 .blog-details-post-wrapper .post-share-area .share-icon li:nth-child(3) a:hover {
-  background: #70c2e9;
+  background: #878a8c;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(3) a:hover,
 .blog-details-post-wrapper .post-share-area .share-icon li:nth-child(4) a:hover {
-  background: #d8545d;
+  background: #ee8624;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(4) a:hover,
 .blog-details-post-wrapper .post-share-area .share-icon li:nth-child(5) a:hover {
+  background: #007ab9;
+}
+#team-section .team-member-wrapper .single-team-member .member-name ul li:nth-child(5) a:hover,
+.blog-details-post-wrapper .post-share-area .share-icon li:nth-child(6) a:hover {
   background: #007ab9;
 }
 #team-section .team-member-wrapper .single-team-member .member-name ul li a:hover {
