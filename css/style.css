@@ -1631,7 +1631,7 @@ footer p {
   background-position: 50%;
   height: 100%;
   position: relative; 
-  height: 765px;
+  height: 815px;
   margin-bottom: 20px;
 }
 
@@ -1650,7 +1650,7 @@ footer p {
 }
 
 .hero--center {
-  padding-top: 190px;
+  padding-top: 200px;
 }
 
 .logo {
@@ -1677,5 +1677,10 @@ footer p {
 }
 
 #about-us-header, #team-section-header, #contact-section-header {
-  padding-bottom: 47px;
+  padding-bottom: 32px;
+}
+
+.teammember {
+  width: max-content;
+  height: 300px;
 }

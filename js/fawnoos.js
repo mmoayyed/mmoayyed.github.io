@@ -8,6 +8,12 @@ var totalNumberOfImages = 8
 var imageNumber=Math.floor(Math.random() * totalNumberOfImages) + 1;
 $('#main-banner-slider').css("background-image", "url(images/home/slide-" + imageNumber + ".jpg)");
 
+switch (imageNumber) {
+    case 7:
+        $('.hero').css('height', '1100px');
+        break;
+}
+
 /*********************************************************
 The logic below is used to apply shade and filters animations
 as the background picture loads. Do not modify!
