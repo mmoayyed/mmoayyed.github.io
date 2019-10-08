@@ -11,6 +11,7 @@ $('#main-banner-slider').css("background-image", "url(images/home/slide-" + imag
 switch (imageNumber) {
     case 7:
         $('.hero').css('height', '1100px');
+        $('.hero__title').css('padding-top', '450px');
         break;
 }
 

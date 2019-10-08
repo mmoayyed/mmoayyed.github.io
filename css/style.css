@@ -487,14 +487,15 @@ animation-delay: .8s;
 #service-section .single-service-content {
   border:1px solid #808489;
   text-align: center;
-  margin-bottom: 25px;
-  padding: 118px 23px 65px 23px;
+  margin-bottom: 5px;
+  padding: 138px 23px 15px 15px;
   overflow: hidden;
 }
 #service-section .single-service-content p {
   -webkit-transition-delay: 0.3s; /* Safari */
   transition-delay: 0.3s;
   opacity: 0;
+  text-align: justify;
   -webkit-transform: translate3D(0,200px,0);
      -moz-transform: translate3D(0,200px,0);
       -ms-transform: translate3D(0,200px,0);
@@ -506,10 +507,10 @@ animation-delay: .8s;
   width: 100%;
   left:0;
   right: 0;
-  top:120px;
+  top:70px;
 }
 #service-section .single-service-content .icon-heading .icon {
-  font-size: 48px;
+  font-size: 58px;
   color:#808489;
   width: 80px;
   margin: 0 auto;
@@ -523,6 +524,7 @@ animation-delay: .8s;
 #service-section .single-service-content:hover .icon-heading {
   top:-10px;
 }
+
 #service-section .single-service-content:hover p {
   opacity: 1;
   color: #fff;
@@ -1646,11 +1648,11 @@ footer p {
 }
 
 .hero__title {
-  font-size: 35px;
+  font-size: 36px;
 } 
 
 .hero__subtitle {
-  font-size: 18px;
+  font-size: 22px;
   color: white;
 } 
 
@@ -1686,8 +1688,8 @@ footer p {
   }
 }
 
-#about-us-header, #team-section-header, #contact-section-header {
-  padding-bottom: 32px;
+#about-us-header, #team-section-header, #contact-section-header, #service-section-header {
+  padding-bottom: 34px;
 }
 
 .teammember {
