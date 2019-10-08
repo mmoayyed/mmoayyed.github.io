@@ -1680,13 +1680,7 @@ footer p {
   display:inline;
 }
 
-@media screen and (max-width: 600px) {
-  #fawnoosprojects {
-    visibility: hidden;
-    clear: both;
-    display: none;
-  }
-}
+
 
 #about-us-header, #team-section-header, #contact-section-header, #service-section-header {
   padding-bottom: 34px;
