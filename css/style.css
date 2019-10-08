@@ -420,10 +420,10 @@ animation-delay: .8s;
 }
 .banner .project-button {
   /* width: 170px; */
-  line-height: 40px;
+  line-height: 20px;
   text-align: center;
   border-width: 0px;
-  margin-top: 40px;
+  margin-top: 60px;
   text-transform: uppercase;
 }
 /*** 
