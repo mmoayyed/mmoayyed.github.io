@@ -57,6 +57,46 @@ header.masthead {
     font-size: 12px;
 }
 
+.blogpost img {
+    height: auto;
+    width: 100%;
+}
+
+
+blockquote {
+    color: #2c3e50;
+    font-size: 30px;
+    line-height: 100%;
+    position: relative;
+    font-family: Georgia, serif;
+    width: 100%;
+    text-align: center;
+  }
+
+
+
+blockquote:before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    font-family: Arial, sans-serif;
+    font-size: 82px;
+    font-style: normal;
+    padding-top: 25px;
+}
+
+blockquote:after {
+    content: '\201C';
+    position: absolute;
+    bottom: -60px;
+    right: 0;
+    font-family: Arial, sans-serif;
+    font-size: 82px;
+    font-style: normal;
+    padding-bottom: 25px;
+}
+
 @media only screen and (max-width: 1500px) {
     .title {
         text-align: left;
@@ -82,4 +122,19 @@ header.masthead {
     body {
         font-size: 16px;
     }
+
+    blockquote {
+        font-size: 20px;
+    }
+
+    blockquote>p {
+        padding-left:20px;
+    }
 }
+
+
+
+
+
+
+
