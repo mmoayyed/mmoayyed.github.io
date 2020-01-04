@@ -1,0 +1,85 @@
+.logo {
+    width: 240px;
+    margin-top: 2px;
+}
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    text-align: justify;
+    font-size: 18px;
+}
+
+header.masthead .post-heading .meta  {
+    font-family: 'Tahoma', sans-serif; 
+    font-size: 18px;
+}
+
+.navbar-nav>li>a {
+    text-transform: uppercase;
+    color:#fff;
+    font-family: 'Raleway', sans-serif;
+    -webkit-transition: all .3s ease-in-out;
+    line-height: 20px;
+    font-weight: 700;
+    background: transparent;
+    padding: 9px 15px;
+    font-size: 16px;
+    text-decoration: none;
+    outline: none;
+} 
+
+.navbar-nav>li>a:hover {
+    color: rgb(232, 137, 12);
+}
+
+a:hover, .navbar-nav>li>a.active {
+    color: rgb(232, 137, 12);
+}
+
+.title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 100;
+    line-height: 1.5;
+    color:white;
+    font-size: 44px;
+}
+
+.post-subtitle {
+    font-style: italic;
+    font-size: 18px;
+}
+
+header.masthead {
+    margin-bottom: 5px;
+}
+
+.post-preview>.post-meta {
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 1500px) {
+    .title {
+        text-align: left;
+        font-size: 32px;
+        width: 70%;
+    }
+
+    header.masthead .post-heading .meta {
+        font-size: x-small;
+    }
+
+    #mainNav {
+        background-color: rgb(7, 6, 6);
+        border: none;
+    }
+
+    .row {
+        display: contents;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    body {
+        font-size: 16px;
+    }
+}
