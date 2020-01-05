@@ -115,7 +115,6 @@ div.highlight {
 }
 
 .blog-menu-collapsed {
-    color: #fff; 
     margin: 0px; 
     padding:0px; 
     position: absolute; 
@@ -125,8 +124,8 @@ div.highlight {
     background: border-box;
     border: none;
     outline:none; 
+    display: none;
 }
-
 
 @media only screen and (max-width: 1500px) {
     .title {
@@ -148,14 +147,10 @@ div.highlight {
         display: contents;
     }
 
-    .blog-menu-collapsed {
-        display: none;
-    }
+
 }
 
 @media only screen and (max-width: 990px) {
-    
-
     body {
         font-size: 16px;
     }
@@ -169,6 +164,7 @@ div.highlight {
     }
     .blog-menu-collapsed {
         display: block;
+        color: #fff; 
     }
 
     .navbar {
