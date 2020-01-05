@@ -31,7 +31,10 @@ linkedin_username: mmoayyed
 patreon_username: misagh
 google_analytics: UA-149384768-1
 
-
+tipue_search:
+  include:
+    pages: true
+    
 # Build settings
 # theme: minima
 plugins:
