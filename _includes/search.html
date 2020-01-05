@@ -1,0 +1,59 @@
+
+<script>
+    $( function() {
+            
+        $.noConflict();
+        $(document).ready(function( $ ) {
+        
+        const element = document.getElementById("searchForm");
+        element.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+        $('#tipue_search_input').tipuesearch();
+
+        $( "#searchdialog" ).dialog({
+            autoOpen: false,
+            maxHeight: 1100,
+            maxWidth: 1400,
+            minWidth: screen.availWidth / 2,
+            minHeight: 700,
+            title: "Search",
+            show: {
+            effect: "blind",
+            duration: 100
+            },
+            hide: {
+            effect: "explode",
+            duration: 100
+            },
+            buttons: [
+            {
+            text: "Done",
+            icon: "ui-icon-heart",
+            click: function() {
+                $( this ).dialog( "close" );
+            },
+            showText: true
+            }
+        ]
+        });
+    
+        $( "#searchbutton" ).on( "click", function() {
+            $( "#searchdialog" ).dialog( "open" );
+        });
+
+        });
+    } );
+
+    </script>
+
+<div id="searchdialog">
+    <form id="searchForm" action="{{ page.url | relative_url }}">
+        <div class="form-group">
+        <span for="tipue_search_input" style="margin-bottom: 2px;">Enter your search term:</span>
+        <input autocomplete="false" type="text" class="form-control" id="tipue_search_input" required>   
+        </div>
+    </form>
+
+    <div id="tipue_search_content"></div>
+</div>
