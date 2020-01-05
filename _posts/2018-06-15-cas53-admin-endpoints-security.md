@@ -375,12 +375,12 @@ Additional monitors and health indicators may get added in future CAS versions. 
 
 # What About...?
 
-- [CAS WAR Overlays](https://apereo.github.io/2018/06/09/cas53-gettingstarted-overlay/)
-- [CAS Multifactor Authentication with Duo Security](https://apereo.github.io/2018/01/08/cas-mfa-duosecurity/)
-- [CAS 5 LDAP AuthN and Jasypt Configuration](https://apereo.github.io/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
-- [CAS 5 SAML2 Delegated AuthN Tutorial](https://apereo.github.io/2017/03/22/cas51-delauthn-tutorial/)
-- [CAS User Interface Customizations](http://localhost:4000/2018/06/10/cas-userinterface-customizations/)
-- [CAS Multifactor Authentication with Google Authenticator](https://apereo.github.io/2018/06/10/cas-mfa-google-authenticator/)
+- [CAS WAR Overlays](https://fawnoos.com/2018/06/09/cas53-gettingstarted-overlay/)
+- [CAS Multifactor Authentication with Duo Security](https://fawnoos.com/2018/01/08/cas-mfa-duosecurity/)
+- [CAS 5 LDAP AuthN and Jasypt Configuration](https://fawnoos.com/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
+- [CAS 5 SAML2 Delegated AuthN Tutorial](https://fawnoos.com/2017/03/22/cas51-delauthn-tutorial/)
+- [CAS User Interface Customizations](http://fawnoos.com/2018/06/10/cas-userinterface-customizations/)
+- [CAS Multifactor Authentication with Google Authenticator](https://fawnoos.com/2018/06/10/cas-mfa-google-authenticator/)
 
 # So...
 

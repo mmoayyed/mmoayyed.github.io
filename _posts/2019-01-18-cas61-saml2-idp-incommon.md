@@ -117,7 +117,7 @@ Note the `serviceId` field here contains a regular expression that is very frien
 
 ## Metadata Administration
 
-There is also the ability to observe and manage the service provider metadata cache administratively, using a dedicated [actuator endpoint](https://apereo.github.io/2018/11/06/cas6-admin-endpoints-security/). 
+There is also the ability to observe and manage the service provider metadata cache administratively, using a dedicated [actuator endpoint](https://fawnoos.com/2018/11/06/cas6-admin-endpoints-security/). 
 
 <div class="alert alert-success">
   <strong>HA Deployments</strong><br/>Note that the state of the cache belongs to the CAS server node's JVM memory; it's not distributed. In an HA environment, you'd need to bypass load balancers, etc to reach the actual CAS server node(s) before the cache can be accessed.

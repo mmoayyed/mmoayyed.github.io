@@ -375,10 +375,6 @@ If you prefer a more traditional approach, there is always:
 docker-compose build
 ```
 
-# What About...?
-
-For more content, [please see this link](https://apereo.github.io/tags/#CAS).
-
 # So...
 
 It's important that you start off simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files around.

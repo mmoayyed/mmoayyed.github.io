@@ -213,11 +213,11 @@ Of course, if you decide to move the definition and registration steps into a se
 
 # What About...?
 
-- [CAS Multifactor Authentication with Duo Security](https://apereo.github.io/2018/01/08/cas-mfa-duosecurity/)
-- [CAS 5 LDAP AuthN and Jasypt Configuration](https://apereo.github.io/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
-- [CAS 5 SAML2 Delegated AuthN Tutorial](https://apereo.github.io/2017/03/22/cas51-delauthn-tutorial/)
-- [CAS 5 Linking Accounts with Delegated AuthN](https://apereo.github.io/2018/04/20/cas-delegated-authn-account-linking/)
-- [CAS Multifactor Authentication with Google Authenticator](https://apereo.github.io/2018/06/10/cas-mfa-google-authenticator/)
+- [CAS Multifactor Authentication with Duo Security](https://fawnoos.com/2018/01/08/cas-mfa-duosecurity/)
+- [CAS 5 LDAP AuthN and Jasypt Configuration](https://fawnoos.com/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
+- [CAS 5 SAML2 Delegated AuthN Tutorial](https://fawnoos.com/2017/03/22/cas51-delauthn-tutorial/)
+- [CAS 5 Linking Accounts with Delegated AuthN](https://fawnoos.com/2018/04/20/cas-delegated-authn-account-linking/)
+- [CAS Multifactor Authentication with Google Authenticator](https://fawnoos.com/2018/06/10/cas-mfa-google-authenticator/)
 
 # So...
 
