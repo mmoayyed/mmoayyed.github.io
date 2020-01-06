@@ -5,6 +5,8 @@ summary:    Check out GitHub pull requests as local branches using a simple bash
 tags:       [Blog]
 ---
 
+<div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
+
 Sometimes, when someone sends you a pull request from a fork or branch of a GitHub repository, you may want to merge it 
 locally to resolve a merge conflict or to test and verify the changes on your local computer before merging on GitHub. [This document](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally) describes the process quite well and I have managed to summarize and condense the 
 instructions into a small *bash* function that can be reused for any GitHub repository:
