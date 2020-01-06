@@ -3,7 +3,7 @@
   <a href="{{"/" | relative_url }}" class="logo float-left tran4s">
     <img class="logo" src="{{"/" | relative_url }}images/logo/logo.png" title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
   </a>
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header row">
       <span aria-disabled="true" class="navbar-toggle collapsed blog-menu-collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -28,3 +28,17 @@
     </nav>
   </div>
 </nav>
+
+<script>
+  $(window).scroll(function(){
+    var stickyNav = $('#mainNav');
+    var top = $(window).scrollTop();
+    stickyNav.css("border", "none");
+    
+    if (top > 500) {
+      stickyNav.css('background-color', "rgb(7, 6, 6)");
+    } else {
+      stickyNav.css('background-color', "unset");
+    }
+  });
+</script>

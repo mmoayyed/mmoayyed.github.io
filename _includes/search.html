@@ -11,37 +11,40 @@
         });
         $('#tipue_search_input').tipuesearch();
 
-        $( "#searchdialog" ).dialog({
+        var mainNav = $("#mainNav");
+
+        $("#searchdialog").dialog({
             autoOpen: false,
             maxHeight: 1100,
             maxWidth: 1400,
-            minWidth: screen.availWidth / 2,
-            minHeight: 700,
+            top: 190,
+            minWidth: screen.availWidth / 2 + 100,
+            minHeight: (screen.availHeight / 2) + 100,
             title: "Search",
             show: {
-            effect: "blind",
-            duration: 100
+                effect: "blind",
+                duration: 100
             },
             hide: {
-            effect: "explode",
-            duration: 100
+                effect: "explode",
+                duration: 100
             },
+            position: { my: "top", at: "bottom", of: mainNav },
             buttons: [
             {
-            text: "Done",
-            icon: "ui-icon-heart",
-            click: function() {
-                $( this ).dialog( "close" );
-            },
-            showText: true
+                text: "Close",
+                icon: "ui-icon-heart",
+                click: function() {
+                    $(this).dialog( "close" );
+                },
+                showText: true
             }
         ]
         });
     
-        $( "#searchbutton" ).on( "click", function() {
-            $( "#searchdialog" ).dialog( "open" );
+        $("#searchbutton").on( "click", function() {
+            $( "#searchdialog" ).dialog("open");
         });
-
         });
     } );
 
