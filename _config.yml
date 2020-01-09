@@ -30,7 +30,7 @@ github_username:  mmoayyed
 linkedin_username: mmoayyed
 patreon_username: misagh
 google_analytics: UA-149384768-1
-
+future: true
 tipue_search:
   include:
     pages: true
