@@ -707,10 +707,10 @@ animation-delay: .175s;
   margin: 20px 0 0 0;
 }
 #team-section .team-member-wrapper .float-left {
-  width: 33.333333333%;
+  width: 29.5%;
   padding: 0 15px;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 #team-section .team-member-wrapper .single-team-member,
 #team-section .team-member-wrapper .single-team-member .img {
@@ -755,7 +755,7 @@ animation-delay: .175s;
 }
 #team-section .team-member-wrapper .single-team-member .img .opacity p {
   color: #373a3f;
-  padding: 0 40px;
+  padding: 0 20px;
   text-align: justify;
 }
 #team-section .team-member-wrapper .single-team-member .img .opacity h4,
@@ -1687,6 +1687,6 @@ footer p {
 }
 
 .teammember {
-  width: max-content;
-  height: 300px;
+  /* width: 100%; */
+  /* height: 300px; */
 }
