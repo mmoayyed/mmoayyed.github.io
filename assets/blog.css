@@ -129,7 +129,7 @@ div.highlight {
 
 
 code {
-  /* color: rgb(75, 72, 72); */
+  color: rgb(75, 72, 72);
 }
 
 @media only screen and (max-width: 1500px) {
