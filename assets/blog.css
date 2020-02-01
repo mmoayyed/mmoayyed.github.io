@@ -4,10 +4,11 @@
 }
 
 body {
-    font-family: 'Tahoma', sans-serif;
+    font-family: 'Neuton', sans-serif;
     text-align: justify;
-    font-size: 18px;
+    font-size: 23.8px;
 }
+
 
 header.masthead .post-heading .meta  {
     font-family: 'Tahoma', sans-serif; 
@@ -32,7 +33,7 @@ header.masthead .post-heading .meta  {
     color: rgb(232, 137, 12);
 }
 
-a:hover, .navbar-nav>li>a.active {
+a, a:hover, .navbar-nav>li>a.active {
     color: rgb(232, 137, 12);
 }
 
@@ -106,12 +107,17 @@ pre.highlight {
     padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 1px;
+    font-size: 16px;
 }
 
 div.highlight {
     border-radius: 15px;
     overflow: auto;
     margin-bottom: 8px;
+}
+
+code {
+    font-size: 18px;
 }
 
 .blog-menu-collapsed {
