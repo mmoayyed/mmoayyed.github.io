@@ -50,7 +50,7 @@ brew install minikube
 ```
 
 <div class="alert alert-success">
-<strong>Minikube Symlinks</strong><br/>You may need to reset your symlins via <code>brew link --overwrite minikube</code>
+<strong>Minikube Symlinks</strong><br/>You may need to reset your symlinks via <code>brew link --overwrite minikube</code>
 </div>
 
 You can try to verify the state of your installation via:
@@ -138,7 +138,7 @@ To create a deployment descriptor, we can use the following:
 ```bash
 $ kubectl create deployment cas --image=mmoayyed/cas --dry-run -o=yaml > deployment.yaml
 $ echo --- >> deployment.yaml
-$ kubectl create service clusterip demo --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
+$ kubectl create service clusterip cas --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
 Let's example the `deployment.yaml` file to see what we can work with:
@@ -175,7 +175,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: cas
-  name: demo
+  name: cas
 spec:
   ports:
   - name: 8080-8080
@@ -199,7 +199,7 @@ Let's apply to let Kubernetes begin its magic:
 $ kubectl apply -f deployment.yaml
 
 deployment.apps/cas created
-service/demo created
+service/cas created
 ```
 
 Next, let's check to see if our CAS deployment is running:
@@ -211,7 +211,7 @@ NAME                       READY   STATUS    RESTARTS   AGE
 pod/cas-7f97f4844b-b2qc5   1/1     Running   0          44s
 
 NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-service/demo         ClusterIP   10.108.120.2   <none>        8080/TCP   44s
+service/cas          ClusterIP   10.108.120.2   <none>        8080/TCP   44s
 service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP    49d
 
 NAME                  READY   UP-TO-DATE   AVAILABLE   AGE

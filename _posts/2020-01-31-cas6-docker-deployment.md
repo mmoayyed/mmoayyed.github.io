@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Dockerized Deployments
-summary:    Review a number of strategies that allows to create Docker images for your CAS deployment and run Docker containers with ease.
+summary:    Review a number of strategies that allow to create Docker images for your CAS deployment and run Docker containers with ease.
 tags:       [CAS]
 ---
 
