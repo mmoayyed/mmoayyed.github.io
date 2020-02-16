@@ -20,7 +20,6 @@
 
 @media (max-width: 1366px) {
   .scroll-top {bottom: 30px; right:30px;}
-
 }
 @media (max-width: 1199px) {
   #team-section .team-member-wrapper .single-team-member .img .opacity p {padding: 0 15px;}
@@ -136,7 +135,17 @@
     clear: both;
     display: none;
   }
+  #misagh {
+    margin-left: 0px;
+  }
+
   #main-contact-ask {
     margin-top: 150px;
+  }
+}
+
+@media screen and (min-width: 899px) {
+  #misagh {
+    margin-left: 60px;
   }
 }

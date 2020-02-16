@@ -1680,13 +1680,6 @@ footer p {
   display:inline;
 }
 
-
-
 #about-us-header, #team-section-header, #contact-section-header, #service-section-header {
   padding-bottom: 34px;
-}
-
-.teammember {
-  /* width: 100%; */
-  /* height: 300px; */
 }

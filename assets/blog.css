@@ -138,6 +138,10 @@ code {
   color: rgb(75, 72, 72);
 }
 
+.ui-dialog {
+    font-size: 12pt;
+}
+
 @media only screen and (max-width: 1500px) {
     .title {
         text-align: left;

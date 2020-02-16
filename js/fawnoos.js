@@ -14,7 +14,6 @@ switch (imageNumber) {
         $('.hero__title').css('padding-top', '450px');
         break;
 }
-
 /*********************************************************
 The logic below is used to apply shade and filters animations
 as the background picture loads. Do not modify!
