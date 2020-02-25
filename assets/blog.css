@@ -42,7 +42,8 @@ a, a:hover, .navbar-nav>li>a.active {
     font-weight: 100;
     line-height: 1.5;
     color:white;
-    font-size: 44px;
+    /* width: 65%; */
+    font-size: 38px;
 }
 
 .post-subtitle {

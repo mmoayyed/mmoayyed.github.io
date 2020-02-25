@@ -108,7 +108,7 @@ def run(Object[] args) {
 }
 ```
 
-### Multifactor Authentication
+## Multifactor Authentication
 
 In another variation, the passwordless account can skip its default flow in favor of [multifactor authentication](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html) using a multifactor provider that is found configured and available in CAS. In doing so and much like other variations, the account must be tagged as one eligible for multifactor authentication:
 
