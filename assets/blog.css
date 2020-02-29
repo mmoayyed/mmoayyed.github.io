@@ -38,12 +38,12 @@ a, a:hover, .navbar-nav>li>a.active {
 }
 
 .title {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cochin;
     font-weight: 100;
     line-height: 1.5;
     color:white;
     /* width: 65%; */
-    font-size: 38px;
+    font-size: 42px;
 }
 
 .post-subtitle {
@@ -134,6 +134,9 @@ code {
     display: none;
 }
 
+.blog-logo {
+    margin-left:19%;
+}
 
 code {
   color: rgb(75, 72, 72);
@@ -162,7 +165,9 @@ code {
     .row {
         display: contents;
     }
-
+    .blog-logo {
+        margin-left: unset;
+    }
 
 }
 
@@ -186,5 +191,9 @@ code {
     .navbar {
         line-height: 2.1;
         /* margin-top: 10px; */
+    }
+
+    .blog-logo {
+        margin-left: unset;
     }
 }

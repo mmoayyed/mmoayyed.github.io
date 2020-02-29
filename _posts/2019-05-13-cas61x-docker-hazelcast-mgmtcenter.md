@@ -19,11 +19,11 @@ Our starting position is based on:
 - CAS `6.1.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [Hazlcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html)
+- [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html)
 
 # CAS Hazelcast Ticket Registry
 
-Running CAS with Hazelcast, in general and without Docker, is simply as simple as including [Hazlcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) in the overlay with the following *starter* settings:
+Running CAS with Hazelcast, in general and without Docker, is simply as simple as including [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) in the overlay with the following *starter* settings:
 
 ```properties
 cas.ticket.registry.hazelcast.cluster.members=127.0.0.1

@@ -141,7 +141,7 @@ $ echo --- >> deployment.yaml
 $ kubectl create service clusterip cas --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
-Let's example the `deployment.yaml` file to see what we can work with:
+Let's examine the `deployment.yaml` file to see what we can work with:
 
 ```yaml
 apiVersion: apps/v1
@@ -193,7 +193,7 @@ You can see the deployment descriptor listing details about how the container sh
 
 ## Unleash the YAML
 
-Let's apply to let Kubernetes begin its magic:
+Let's apply our YAML configuration to let Kubernetes begin its magic:
 
 ```bash
 $ kubectl apply -f deployment.yaml
@@ -228,7 +228,7 @@ Back in the dashboard, you should be able to see the deployment running in all g
 
 ![image](https://user-images.githubusercontent.com/1205228/74601572-20578580-50b9-11ea-8875-d9061186abd3.png)
 
-Now you need to be able to connect to CAS which is exposed as a [Service in Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/). We can use `kubectl port-forward` which allows using resource name, such as a pod name, to select a matching pod to for port-forwarding. Let's find our CAS pod first:
+Now you need to be able to connect to CAS which is exposed as a [Service in Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/). We can use `kubectl port-forward` which allows using resource name, such as a pod name, to select a matching pod for port-forwarding. Let's find our CAS pod first:
 
 ```bash
 $ kubectl get pods

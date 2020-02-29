@@ -298,7 +298,7 @@ animation-delay: .175s;
   left:0;
   right: 0;
   z-index: 999;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 .theme-main-menu .navbar-nav>li>a {
   text-transform: uppercase;
@@ -426,6 +426,7 @@ animation-delay: .175s;
   margin-top: 75px;
   text-transform: uppercase;
 }
+
 /*** 
 
 ====================================================================
@@ -707,8 +708,8 @@ animation-delay: .175s;
   margin: 20px 0 0 0;
 }
 #team-section .team-member-wrapper .float-left {
-  width: 29.5%;
-  padding: 0 15px;
+  width: 30.0%;
+  /* padding: 0 15px; */
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -778,6 +779,11 @@ animation-delay: .175s;
 #team-section .team-member-wrapper .single-team-member:hover .img .opacity p {
   opacity: 1;
 }
+
+#team-section .team-member-wrapper .single-team-member .img .teammember {
+  width: -webkit-fill-available;
+}
+
 #team-section .team-member-wrapper .single-team-member .member-name {
   background: #e6e6e6;
   overflow: hidden;
@@ -1680,6 +1686,65 @@ footer p {
   display:inline;
 }
 
+.resume {
+  position: relative;
+  left: 33%;
+}
+
 #about-us-header, #team-section-header, #contact-section-header, #service-section-header {
   padding-bottom: 34px;
 }
+
+/*
+*******************
+*/
+.tagcloud06 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tagcloud06 ul li {
+	display: inline-block;
+	margin: 0 0 .1em .6em;
+	padding: 0;
+}
+.tagcloud06 ul li a {
+	position: relative;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 1em 0 .5em;
+	background-color: #faaa5e;
+	border-radius: 0 3px 3px 0;
+	color: #fff;
+	font-size: 13px;
+	text-decoration: none;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.tagcloud06 ul li a::before {
+	position: absolute;
+	top: 0;
+	left: -12px;
+	z-index: -1;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background-color: #faaa5e;
+	border-radius: 100%;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+
+.tagcloud06 ul li span {
+	display: block;
+	max-width: 100px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tagcloud06 ul li a:hover::before {
+	background-color: #faaa5e;
+}
+
