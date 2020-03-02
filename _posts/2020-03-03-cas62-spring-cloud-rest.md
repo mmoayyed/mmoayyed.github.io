@@ -16,7 +16,7 @@ Our starting position is based on the following:
 
 ## Configuration
 
-To bootstrap the CAS application context using a REST API, the following dependency must first be incluced in the Overlay:
+To bootstrap the CAS application context using a REST API, the following dependencies must first be incluced in the Overlay:
 
 ```groovy
 implementation "org.apereo.cas:cas-server-support-configuration-cloud-rest:${casServerVersion}"
@@ -35,7 +35,7 @@ The default expectation is for CAS to reach out to the endpoint via `GET` and re
 
 ## REST API
 
-Our `/casproperties` quite simply is going to produce a collection of settings which are valid and recognizable by CAS or any other library/framework used by the system, such as Spring Cloud, Spring Security, etc. At a minimum, let's have our endpoint return the following settings:
+Our `/casproperties` endpoint quite simply is going to produce a collection of settings which are valid and recognizable by CAS or any other library/framework used by the system such as Spring Cloud, Spring Security, etc. At a minimum, let's have our endpoint return the following settings:
 
 ```json
 {
@@ -65,7 +65,7 @@ Using the above settings, our REST API is going to dictate the following behavio
 <strong>Security</strong><br/>Note that while out of scope for this review, sensitive values in payload can always be obfuscated and encrypted using CAS-accepted ciphers and strategies.
 </div>
 
-As you observe, the produced settings are combined mix of those controlled by CAS and some provided by Spring Boot. When you run CAS, at a minimum you should see the following in the application logs:
+As you observe, the produced settings are a combined mix of those controlled by CAS and some provided by Spring Boot. When you run CAS, at a minimum you should see the following in the application logs:
 
 ```bash
 ...
@@ -123,7 +123,6 @@ To learn more, please review [the Spring Cloud documentation](https://cloud.spri
 - Spring Cloud also presents the ability to distribute the refresh request, if the receiving application (CAS) is distributed in a clustered deployment. This is managed using the Spring Cloud Bus.
 
 - Components that can be refreshed are marked with `@RefreshScope` judiciously. Not every component has to be refreshable and certain beans should not be reloadable anyway. A bean's ability to reload its state must be a privilege and not a right. 
-
 
 ## Finale
 
