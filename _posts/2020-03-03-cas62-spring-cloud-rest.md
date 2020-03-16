@@ -16,7 +16,7 @@ Our starting position is based on the following:
 
 ## Configuration
 
-To bootstrap the CAS application context using a REST API, the following dependencies must first be incluced in the Overlay:
+To bootstrap the CAS application context using a REST API, the following dependencies must first be included in the Overlay:
 
 ```groovy
 implementation "org.apereo.cas:cas-server-support-configuration-cloud-rest:${casServerVersion}"
