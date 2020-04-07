@@ -40,7 +40,7 @@ Let's suppose that we would want to present a different policy based on user typ
 To achieve this, first, we need to teach CAS about the `affiliation` attribute that distinguishes users for policy terms:
 
 ```properties
-cas.acceptableUsagePolicy.aup-policy-term-attribute-name=affiliation
+cas.acceptableUsagePolicy.aup-policy-terms-attribute-name=affiliation
 ```
 
 ...and then, we should, of course, define our new policy for the developer audience in the appropriate CAS language bundle (typically `custom_messages.properties` file):
