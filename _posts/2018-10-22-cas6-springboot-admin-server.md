@@ -119,7 +119,7 @@ curl -u casuser:Mellon -k https://sso.example.org/cas/actuator/status | jq
 }
 ```
 
-You can also try hitting `actuator/health`, `actuator/info` and [many others]((https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html)).
+You can also try hitting `actuator/health`, `actuator/info` and [many others](https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html).
 
 Now that are endpoints are enabled and secured, we need to configure CAS to use our security credentials when contacting the Admin server as well:
 

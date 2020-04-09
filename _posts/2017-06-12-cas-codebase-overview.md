@@ -31,7 +31,7 @@ At a very high-level, the project is broken into the following categories:
 | `gradle`      | Houses [the gradle wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) used for internal builds.   |
 | `style`       | Guidelines and rules enforced and consumed by project's various static analysis checkers, such as Checkstyle and Findbugs.   |
 | `support`     | Extensions that enrich one's CAS experience with lots and lots of functionality and integrations. (i.e. LDAP, MFA, etc)      |
-| `travis`      | Configuration artifacts used by [Travis CI](travis-ci.org/apereo/cas/builds).          |
+| `travis`      | Configuration artifacts used by [Travis CI](https://travis-ci.org/apereo/cas/builds).          |
 | `webapp-mgmt` | Artifacts that pertain to the configuration and deployment of the [CAS Service Management Web Application](https://apereo.github.io/cas/5.1.x/installation/Installing-ServicesMgmt-Webapp.html).           |
 | `webapp`      | Artifacts that pertain to the deployment of the core CAS web application and its many sisters.     |
 

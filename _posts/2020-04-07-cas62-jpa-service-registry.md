@@ -67,7 +67,7 @@ So back to the task at hand, we will keep this container running in the backgrou
 
 ### CAS Configuration
 
-You should start by including the [indicated module]((https://apereo.github.io/cas/development/services/JPA-Service-Management.html)) in your [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template). Of course, we have to introduce CAS and our Oracle database to each other using the following settings:
+You should start by including the [indicated module](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) in your [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template). Of course, we have to introduce CAS and our Oracle database to each other using the following settings:
 
 ```properties
 cas.jdbc.showSql=true

@@ -17,12 +17,12 @@ Our starting position is based on:
 - Java `11`
 - [CLI JSON Processor `jq`](https://stedolan.github.io/jq/)
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html)
 - [REST Protocol](https://apereo.github.io/cas/development/protocol/REST-Protocol.html)
 
 # Configuration
 
-Let's assume that we have the following service definition in [CAS JSON service registry]((https://apereo.github.io/cas/development/services/JSON-Service-Management.html)):
+Let's assume that we have the following service definition in [CAS JSON service registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html):
 
 ```json
 {

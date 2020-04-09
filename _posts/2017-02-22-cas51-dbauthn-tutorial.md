@@ -157,7 +157,7 @@ Good job! Lets get some attributes now.
 
 # Attributes
 
-Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand]((https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory)) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
+Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
 
 ```properties
 cas.authn.attributeRepository.jdbc[0].singleRow=false

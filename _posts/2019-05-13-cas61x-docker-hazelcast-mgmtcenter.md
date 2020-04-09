@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-For a highly-available CAS deployment, running CAS backed by the [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) can be a great option. In the simplest scenario, CAS server nodes are registered as Hazelcast cluster members via static discovery and that is fine for most deployments. Likewise, producing a CAS docker image and running it a container is fairly straight forward, what with the scaffolding and machinery put into the [CAS Overlay]() to produce images via the `jib` plugin or a native `Dockerfile`.
+For a highly-available CAS deployment, running CAS backed by the [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) can be a great option. In the simplest scenario, CAS server nodes are registered as Hazelcast cluster members via static discovery and that is fine for most deployments. Likewise, producing a CAS docker image and running it a container is fairly straight forward, what with the scaffolding and machinery put into the [CAS Overlay](https://github.com/apereo/cas-overlay-template) to produce images via the `jib` plugin or a native `Dockerfile`.
 
 This blog post focuses on marrying up the two use cases; That is, getting CAS server nodes as Hazelcast cluster members to discover each other and form a cluster while running as Docker containers. We'll also be configuring CAS to connect to a Hazelcast Management Center deployment to observe cluster members and monitor configuration and activity.
 
@@ -19,11 +19,11 @@ Our starting position is based on:
 - CAS `6.1.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html)
+- [Hazelcast Ticket Registry](https://apereo.github.io/cas/6.1.x/ticketing/Hazelcast-Ticket-Registry.html)
 
 # CAS Hazelcast Ticket Registry
 
-Running CAS with Hazelcast, in general and without Docker, is simply as simple as including [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) in the overlay with the following *starter* settings:
+Running CAS with Hazelcast, in general and without Docker, is simply as simple as including [Hazelcast Ticket Registry](https://apereo.github.io/cas/6.1.x/ticketing/Hazelcast-Ticket-Registry.html) in the overlay with the following *starter* settings:
 
 ```properties
 cas.ticket.registry.hazelcast.cluster.members=127.0.0.1
