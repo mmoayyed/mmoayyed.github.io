@@ -1,0 +1,75 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---sms-notifications-via-twiliosummary----learn-to-configure-apereo-cas-for-sms-notifications-via-twiliotags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---sms-notifications-via-twiliosummary----learn-to-configure-apereo-cas-for-sms-notifications-via-twiliotags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - SMS Notifications via Twilio<br>
+summary:    Learn to configure Apereo CAS for SMS notifications via Twilio.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>CAS has the ability to <a href="https://apereo.github.io/cas/development/notifications/SMS-Messaging-Configuration.html">send notifications via SMS</a> for a variety of functions such as one-time passwords for multifactor authentication, service expiration notifications, and more. In this tutorial,<br>
+we are going to take a look at configuring CAS for <a href="https://www.twilio.com/">SMS notifications via Twilio</a> where we'll be using notifications to notify relevant contacts when services in the service registry are considered expired.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON Service Registry</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<h2>
+<a id="registered-service-policy" class="anchor" href="#registered-service-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registered Service Policy</h2>
+<p>Once we have CAS up and running, let's start with the following sample service file as <code>Sample-100.json</code> in our JSON service registry:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://app.example.org",
+  "name" : "Sample",
+  "id" : 100,   
+  "contacts": [
+    "java.util.ArrayList", [{
+        "@class": "org.apereo.cas.services.DefaultRegisteredServiceContact",
+        "name": "Misagh Moayyed",
+        "phone": "+11234567890"
+      }
+    ]
+  ],
+  "expirationPolicy": {
+    "@class": "org.apereo.cas.services.DefaultRegisteredServiceExpirationPolicy",
+    "notifyWhenExpired": true,   
+    "deleteWhenExpired": true,
+    "expirationDate": "2019-09-22"
+  }
+}
+</code></pre>
+<p>We have set up <a href="https://apereo.github.io/cas/development/services/Configuring-Service-Contacts.html">contacts for our service</a>.<br>
+These are the folks primarily in charge of this application who shall be notified once the service is considered expired. More importantly,<br>
+we have set up an expiration policy for the service where it will be considered expired and <strong>removed</strong> from the registry on the specified expiration date, <code>2019-09-22</code>.</p>
+<h2>
+<a id="sms-configuration-via-twilio" class="anchor" href="#sms-configuration-via-twilio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SMS Configuration via Twilio</h2>
+<p>Once our overlay is prepped with the <a href="https://apereo.github.io/cas/development/notifications/SMS-Messaging-Configuration.html">configuration module for Twilio</a>, we'll need to teach CAS about our <a href="https://www.twilio.com/">Twilio subscription</a> using the following settings:</p>
+<pre lang="properties"><code># cas.smsProvider.twilio.accountId=...
+# cas.smsProvider.twilio.token=...
+</code></pre>
+<p>So, at this point we have CAS set up with Twilio and all that is left to<br>
+configure the system for notifications when services are deemed expired:</p>
+<pre lang="properties"><code>cas.serviceRegistry.sms.from=1234567890
+cas.serviceRegistry.sms.text=The service %s is expired and removed from CAS.
+</code></pre>
+<h1>
+<a id="thou-shall-test" class="anchor" href="#thou-shall-test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Thou Shall Test</h1>
+<p>Once CAS is restarted, services in the registry will be reloaded and process to evaluate expiration dates. If an expired service is found, you might see something similar in the logs:</p>
+<pre lang="bash"><code>&lt;Registered service ... has expired on [2019-08-22]&gt;
+&lt;Contacts for registered service ... will be notified of service expiry&gt;  
+...
+&lt;Deleting expired registered service ... from registry.&gt;
+</code></pre>
+<p>At this point, you should have received an SMS from CAS with the<br>
+message <code>The service Sample is expired and removed from CAS.</code></p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

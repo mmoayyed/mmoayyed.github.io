@@ -1,0 +1,81 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------validate-generated-html-from-markdownsummary----htmlproofer-is-a-set-of-tests-to-validate-your-html-output-these-tests-check-if-your-image-references-are-legitimate-if-they-have-alt-tags-if-your-internal-links-are-working-and-so-on-its-intended-to-be-an-all-in-one-checker-for-your-output-in-this-post-you-will-learn-how-to-validate-and-verify-your-html-documents-that-are-generated-from-markdown-sourcespublished-truetags-------cas" class="anchor" href="#layout-----posttitle------validate-generated-html-from-markdownsummary----htmlproofer-is-a-set-of-tests-to-validate-your-html-output-these-tests-check-if-your-image-references-are-legitimate-if-they-have-alt-tags-if-your-internal-links-are-working-and-so-on-its-intended-to-be-an-all-in-one-checker-for-your-output-in-this-post-you-will-learn-how-to-validate-and-verify-your-html-documents-that-are-generated-from-markdown-sourcespublished-truetags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Validate Generated HTML from Markdown<br>
+summary:    HTMLProofer is a set of tests to validate your HTML output. These tests check if your image references are legitimate, if they have alt tags, if your internal links are working, and so on. It's intended to be an all-in-one checker for your output. In this post, you will learn how to validate and verify your HTML documents that are generated from markdown sources.<br>
+published: true<br>
+tags:       [CAS]</h2>
+<p>If you have a set of Markdown documents hosted somewhere (i.e. <a href="https://pages.github.com/">GitHub Pages</a>) and rendered in HTML format, it would be a good idea to validate and proof-read them all, to make sure image references, links, tags, etc are all working correctly before you publish. Doing so manually would take a lot of time and is quite a tedious task so in this blog post, we are going to take a look at the <a href="https://github.com/gjtorikian/html-proofer">HTMLProofer</a> tool to see how it can be used to validate our markdown documents.</p>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+<ul>
+<li>(Optional) Ruby</li>
+<li>Docker</li>
+<li>Text Editor (Visual Studio Code, Sublime Text, etc)</li>
+</ul>
+<h2>
+<a id="how" class="anchor" href="#how" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How</h2>
+<p>First, the <a href="https://github.com/gjtorikian/html-proofer">documentation</a> instructs us to put together a Ruby script that would mainly depend on the <code>html-proofer</code> Ruby gem to process our documents. That script, <code>html-proofer-docs.rb</code> would be as follows:</p>
+<pre lang="ruby"><code>require 'html-proofer'
+require 'html/pipeline'
+require 'find'
+require 'fileutils'
+
+# make an out dir
+Dir.mkdir("out") unless File.exist?("out")
+
+pipeline = HTML::Pipeline.new [
+  HTML::Pipeline::MarkdownFilter,
+  HTML::Pipeline::TableOfContentsFilter
+], :gfm =&gt; true
+
+# iterate over files, and generate HTML from Markdown
+Find.find("./docs") do |path|
+  if File.extname(path) == ".md"
+    contents = File.read(path)
+    result = pipeline.call(contents)
+    dirname = File.dirname(path)
+    FileUtils.mkdir_p ("out/" + dirname)
+    content_str = result[:output].to_s
+    filename = path.split("/").pop.sub('.md', '.html')
+    if filename == "sidebar.html"
+      content_str = content_str.gsub! '/%24version' '.'
+    end
+    File.open("out/#{dirname}/#{filename}", 'w') { |file| file.write(content_str) }
+  end
+end
+# url_ignore - ignore links content not in branch
+# file_ignore - ignore CAS spec b/c it has lots of bad anchor links, only *.html files are processed
+options = {
+            :file_ignore =&gt;  [ %r{.*/CAS-Protocol-Specification.html} ],
+            :disable_external =&gt; true,
+            :only_4xx =&gt; true,
+            :empty_alt_ignore =&gt; true,
+            :url_ignore =&gt; [ %r{^/cas}, %r{^../images/}, %r{^../../developer/} ],
+          }
+# test your out dir!
+HTMLProofer.check_directory("./out", options).run
+</code></pre>
+<p>Then, all that is left is to run the script. If you have Ruby installed, you should be able to execute the script directly. Alternatively, I am going to use a Docker image that my colleague, [Hal Deadman]((<a href="https://github.com/hdeadman">https://github.com/hdeadman</a>), on the <a href="https://github.com/apereo/cas">Apereo CAS project</a> put together to run the script all via a <code>proof.sh</code> file:</p>
+<pre lang="bash"><code>#!/bin/bash
+clear
+docker run --name="html-proofer" --rm --workdir /root \
+    -v $(pwd)/_posts:/root/docs \
+    -v $(pwd)/out:/root/out \
+    -v $(pwd)/html-proofer-docs.rb:/root/html-proofer-docs.rb \
+    --entrypoint /usr/local/bin/ruby \
+    hdeadman/html-proofer:latest /root/html-proofer-docs.rb
+# rm -Rf ./out
+</code></pre>
+<p>The script above assumes that Markdown documents are found in the current directory inside a <code>_posts</code> folder which is then mapped onto the running container. HTML files will be generated in an <code>out</code> directory and of course, the location of the Ruby script is assumed to also be in the same directory.</p>
+<p>If you run the script, hopefully you will see the following output:</p>
+<pre><code>Running ["ImageCheck", "ScriptCheck", "LinkCheck"] on ["./out"] on *.html...
+
+Ran on 84 files!
+
+HTML-Proofer finished successfully.
+</code></pre>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you. Be sure to take a look at <a href="https://github.com/gjtorikian/html-proofer">HTMLProofer</a> and give it a try.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

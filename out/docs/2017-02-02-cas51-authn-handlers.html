@@ -1,0 +1,119 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------design-authentication-handlers-in-cas-51xsummary----learn-and-master-writing-custom-authentication-handlersschemes-in-cas-51xtags-------cas" class="anchor" href="#layout-----posttitle------design-authentication-handlers-in-cas-51xsummary----learn-and-master-writing-custom-authentication-handlersschemes-in-cas-51xtags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Design Authentication Handlers in CAS 5.1.x<br>
+summary:    Learn and master writing custom authentication handlers/schemes in CAS 5.1.x<br>
+tags:       [CAS]</h2>
+<p>While <a href="https://apereo.github.io/cas/development/installation/Configuring-Authentication-Components.html">authentication support</a><br>
+in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case<br>
+is the task of designing custom authentication schemes. This post describes the necessary steps needed to design<br>
+and register a custom authentication strategy (i.e. <code>AuthenticationHandler</code>) in CAS <code>5.1.x</code>.</p>
+<h2>
+<a id="audience" class="anchor" href="#audience" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Audience</h2>
+<p>This post is intended for java developers with a basic-to-medium familiarity with Spring, Spring Boot and Spring Webflow. This is <strong>NOT</strong> a tutorial to be used verbatim via copy/paste. It is instead a recipe for developers to extend CAS based on specialized requirements.</p>
+<h2>
+<a id="steps" class="anchor" href="#steps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Steps</h2>
+<p>The overall tasks may be categorized as such:</p>
+<ol>
+<li>Design the authentication handler</li>
+<li>Register the authentication handler with the CAS authentication engine.</li>
+<li>Tell CAS to recognize the registration record and authentication configuration.</li>
+</ol>
+<h2>
+<a id="step-1-design-authentication-handlers" class="anchor" href="#step-1-design-authentication-handlers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1: Design Authentication Handlers</h2>
+<p>First step is to define the skeleton for the authentication handler itself. This is the core principal component whose job is to declare support for a given type of credential only to then attempt validate it and produce a successful result. The core parent component from which all handlers extend is the <code>AuthenticationHandler</code> interface.</p>
+<p>With the assumption that the type of credentials used here deal with the traditional username and password, noted by the infamous <code>UsernamePasswordCredential</code> below, a more appropriate skeleton to define for a custom authentication handler may seem like the following:</p>
+<pre lang="java"><code>public class MyAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
+    ...
+    protected HandlerResult authenticateUsernamePasswordInternal(final UsernamePasswordCredential credential,
+                                                                 final String originalPassword) {
+        if (everythingLooksGood()) {
+            return createHandlerResult(credential, 
+                    this.principalFactory.createPrincipal(username), null);
+        }
+        throw new FailedLoginException("Sorry, you are simply a big huge failure!");
+    }
+    ...
+}
+</code></pre>
+<h3>
+<a id="review" class="anchor" href="#review" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Review</h3>
+<ul>
+<li>
+<p>Authentication handlers have the ability to produce a fully resolved principal along with attributes. If you have the ability to retrieve attributes<br>
+from the same place as the original user/principal account store, the final <code>Principal</code> object that is resolved here must then be able to carry all<br>
+those attributes and claims inside it at construction time.</p>
+</li>
+<li>
+<p>The last parameter, <code>null</code>, is effectively a collection of warnings that is eventually worked into the authentication chain and conditionally<br>
+shown to the user. Examples of such warnings include password status nearing an expiration date, etc.</p>
+</li>
+<li>
+<p>Authentication handlers also have the ability to block authentication by throwing a number of specific exceptions. A more common exception to throw<br>
+back is <code>FailedLoginException</code> to note authentication failure. Other specific exceptions may be thrown to indicate abnormalities with the account status<br>
+itself, such as <code>AccountDisabledException</code>.</p>
+</li>
+<li>
+<p>Various other components such as <code>PrincipalNameTransformer</code>s, <code>PasswordEncoder</code>s and such may also be injected into our handler if need be, though these are skipped for now in this post for simplicity.</p>
+</li>
+</ul>
+<h2>
+<a id="step-2-register-authentication-handlers" class="anchor" href="#step-2-register-authentication-handlers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2: Register Authentication Handlers</h2>
+<p>Once the handler is designed, it needs to be registered with CAS and put into the authentication engine.<br>
+This is done via the magic of <code>@Configuration</code> classes that are picked up automatically at runtime, per your approval,<br>
+whose job is to understand how to dynamically modify the application context.</p>
+<p>So let's design our own <code>@Configuration</code> class:</p>
+<pre lang="java"><code>package com.example.cas;
+
+@Configuration("MyAuthenticationEventExecutionPlanConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class MyAuthenticationEventExecutionPlanConfiguration 
+                    implements AuthenticationEventExecutionPlanConfigurer {
+    @Autowired
+    private CasConfigurationProperties casProperties;
+
+    @Bean
+    public AuthenticationHandler myAuthenticationHandler() {
+        final MyAuthenticationHandler handler = new MyAuthenticationHandler();
+        /*
+            Configure the handler by invoking various setter methods.
+            Note that you also have full access to the collection of resolved CAS settings.
+            Note that each authentication handler may optionally qualify for an 'order` 
+            as well as a unique name.
+        */
+        return h;
+    }
+
+    @Override
+    public void configureAuthenticationExecutionPlan(final AuthenticationEventExecutionPlan plan) {
+        if (feelingGoodOnASundayMorning()) {
+            plan.registerAuthenticationHandler(myAuthenticationHandler());
+        }
+    }
+}
+</code></pre>
+<h2>
+<a id="step-3-register-configuration" class="anchor" href="#step-3-register-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3: Register Configuration</h2>
+<p>Now that we have properly created and registered our handler with the CAS authentication machinery, we just need to ensure that CAS is able to pick up our special configuration. To do so, create a <code>src/main/resources/META-INF/spring.factories</code> file and reference the configuration class in it as such:</p>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.cas.MyAuthenticationEventExecutionPlanConfiguration
+</code></pre>
+<p>Note that the configuration registration is not of CAS doing. It's a mechanism provided to CAS via <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html">Spring Boot</a><br>
+and it's an efficient way to pick up and register components into the runtime application context without the additional overhead of component-scanning and such.</p>
+<h3>
+<a id="review-1" class="anchor" href="#review-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Review</h3>
+<p>At runtime, CAS will try to automatically detect all components and beans that advertise themselves as <code>AuthenticationEventExecutionPlanConfigurer</code>s. Each detected <code>AuthenticationEventExecutionPlanConfigurer</code> is then invoked to register its own authentication execution plan. The result of this operation at the end will produce<br>
+a ready-made collection of authentication handlers that are ready to be invoked by CAS in the given order defined, if any.</p>
+<h2>
+<a id="whats-next" class="anchor" href="#whats-next" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What's Next?</h2>
+<p>CAS <code>5.1.0</code> is not released today in GA form. The development team is working to make sure the CAS <code>5.1.0</code> release is<br>
+on <a href="https://github.com/apereo/cas/milestones">schedule</a>. Additional release candidates<br>
+and more updates will likely be released prior to the official GA release.</p>
+<h2>
+<a id="get-involved" class="anchor" href="#get-involved" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Involved</h2>
+<ul>
+<li>Start your CAS deployment today. Try out features and <a href="https://apereo.github.io/cas/Mailing-Lists.html">share feedback</a>.</li>
+<li>Better yet, <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">contribute patches</a>.</li>
+<li>Review and suggest documentation improvements.</li>
+<li>Review the release schedule and make sure you report your desired feature requests on the project's issue tracker.</li>
+</ul>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

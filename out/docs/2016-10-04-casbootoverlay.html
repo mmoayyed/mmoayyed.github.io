@@ -1,0 +1,29 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------bootiful-cas-5-overlaysummary----a-quick-tutorial-on-running-a-cas-overlay-with-spring-boottags-------cas" class="anchor" href="#layout-----posttitle------bootiful-cas-5-overlaysummary----a-quick-tutorial-on-running-a-cas-overlay-with-spring-boottags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Bootiful CAS 5 Overlay<br>
+summary:    A quick tutorial on running a CAS Overlay with Spring Boot.<br>
+tags:       [CAS]</h2>
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>As you may know, the recommended strategy to start a CAS deployment today is via the<br>
+<a href="https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html">WAR Overlay Installation Method</a>. The idea is that a deployment gets to keep only local customizations<br>
+and <em>inherits</em> everything else from a pre-built pre-configured instance. Not only this allows<br>
+one to keep track of intentional changes, but also makes it easier to upgrade<br>
+the software in place by simply bumping the CAS version in the overlay script.</p>
+<p>CAS 5 itself is entirely based on Spring Boot. Today, CAS 5 overlays for both <a href="https://github.com/apereo/cas-overlay-template/tree/5.0">Maven</a> and <a href="https://github.com/apereo/cas-gradle-overlay-template/tree/5.0">Gradle</a> too are modified to accommodate easier deployment options via Spring Boot.</p>
+<p>Here's how.</p>
+<h1>
+<a id="bootiful-overlay" class="anchor" href="#bootiful-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bootiful Overlay</h1>
+<p>Today, adopters are given 3 choices to deploy an overlay:</p>
+<ol>
+<li>Run the CAS web application as an executable WAR via a <code>java -jar &lt;cas-war-file&gt;</code> type of command.</li>
+<li>Deploy the <code>&lt;cas-war-file&gt;</code> into an external container of choice, such as Apache Tomcat.</li>
+<li>[<strong>NEW</strong>] Run the CAS web application as an executable WAR via the Spring Boot's Maven/Gradle plugin, though you may be interested in <a href="https://github.com/apereo/cas/issues/2334">this issue</a>.</li>
+</ol>
+<p>The 3rd option is similar to the native <code>java -jar ...</code> command with the main difference that the Spring Boot plugin is able to recognize the presence of Spring Boot's <code>devtools</code> that is shipped with CAS by default and allows for ad-hoc live monitoring of CAS resources.</p>
+<p>This is specially helpful perhaps during UI design; such that you could keep modifying<br>
+<code>html</code>, <code>css</code>, and <code>js</code> resources and CAS will auto-detect changes and allows you to<br>
+see them via a simple refresh of your browser.</p>
+<p>Lots quicker!</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

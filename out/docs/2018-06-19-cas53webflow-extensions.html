@@ -1,0 +1,91 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---extending-webflowssummary----learn-and-master-extending-cas-5-spring-webflow-definitionstags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---extending-webflowssummary----learn-and-master-extending-cas-5-spring-webflow-definitionstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Extending Webflows<br>
+summary:    Learn and master extending CAS 5 Spring Webflow definitions.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>Unlike previous versions, CAS 5 attempts to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and viola! CAS will take care of the rest.</p>
+<p>If you wish to learn how that is done internally and furthermore, how you may take advantage of the same approach to extend CAS webflows and introduce your own, this is the right post for you.</p>
+<p>This tutorial specifically requires and focuses on:</p>
+<ul>
+<li>CAS <code>5.3.x</code>
+</li>
+<li>Java 8</li>
+<li><a href="https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html">Maven WAR Overlay</a></li>
+</ul>
+<p>This post <em>might</em> equally apply to CAS <code>5.2.x</code>. YMMV. To learn the same answers with CAS <code>5.0.x</code>, please <a href="https://apereo.github.io/2016/10/07/webflow-extcfg/">see this post</a>.</p>
+<h1>
+<a id="webflow-configurers" class="anchor" href="#webflow-configurers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webflow Configurers</h1>
+<p>Every CAS module that needs to dynamically augment the Spring Webflow routes simply takes on the following form:</p>
+<pre lang="java"><code>package com.example.cas;
+
+public class SomethingWebflowConfigurer extends AbstractCasWebflowConfigurer {
+
+    public SomethingWebflowConfigurer(final FlowBuilderServices flowBuilderServices,
+                                    final FlowDefinitionRegistry loginFlowDefinitionRegistry,
+                                    final ApplicationContext applicationContext,
+                                    final CasConfigurationProperties casProperties) {
+        super(flowBuilderServices, loginFlowDefinitionRegistry, applicationContext, casProperties);
+    }
+
+    @Override
+    protected void doInitialize() throws Exception {
+        final Flow flow = super.getLoginFlow();
+        // Magic happens; Call 'super' to see what you have access to...
+    }
+}
+</code></pre>
+<p>CAS modules register their <code>WebflowConfigurer</code> instances in <code>@Configuration</code> classes:</p>
+<pre lang="java"><code>package com.example.cas;
+
+@Configuration("SomethingConfiguration")
+public class SomethingConfiguration implements CasWebflowExecutionPlanConfigurer  {
+
+    @Autowired
+    @Qualifier("loginFlowRegistry")
+    private FlowDefinitionRegistry loginFlowDefinitionRegistry;
+
+    @Autowired
+    private FlowBuilderServices flowBuilderServices;
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @Autowired
+    private CasConfigurationProperties casProperties;
+
+    @ConditionalOnMissingBean(name = "somethingWebflowConfigurer")
+    @Bean
+    public CasWebflowConfigurer somethingWebflowConfigurer() {
+        return new SomethingWebflowConfigurer(flowBuilderServices, loginFlowDefinitionRegistry,
+            applicationContext, casProperties);
+    }
+    
+    @Override
+    public void configureWebflowExecutionPlan(final CasWebflowExecutionPlan plan) {
+        plan.registerWebflowConfigurer(somethingWebflowConfigurer());
+    }
+    
+}
+</code></pre>
+<p>Note that each <code>CasWebflowConfigurer</code> implementation may be assigned a specific <em>order</em> which is a numeric weight that determines its execution position once webflow auto-configuration kicks into action.</p>
+<!-- raw HTML omitted -->
+<p>Next, we just need to ensure that CAS is able to pick up our special configuration. To do so, create a <code>src/main/resources/META-INF/spring.factories</code> file and reference the configuration class in it as such:</p>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.cas.SomethingConfiguration
+</code></pre>
+<p>...and that should be it.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>CAS itself handles Spring Webflow changes related to its first-class features by default automatically. That strategy equally applies, should you need to write your own configurers if you absolutely need to. Be sure to take extra as accidents may happen. What if you have two <code>WebflowConfigurer</code>s who all decide to inject actions and state into the same Spring Webflow areas? What if multiple <code>WebflowConfigurer</code>s are competing to set themselves up as starting points of the CAS webflow? Who wins, who mourns?</p>
+<p>Indeed, these are questions you ought to be thinking about as a <em>developer</em>. With power comes responsibility.</p>
+<h1>
+<a id="remember" class="anchor" href="#remember" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remember</h1>
+<ul>
+<li>Changes are all scoped to one technology, that is Java.</li>
+<li>You have the full power of Java to dynamically augment the Spring Webflow as you see fit.</li>
+<li>Your changes are all self-contained.</li>
+<li>Unlike XML, your changes are now part of the CAS APIs. If you upgrade and something breaks, you will be notified immediately at build time.</li>
+</ul>
+<p>That's all.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

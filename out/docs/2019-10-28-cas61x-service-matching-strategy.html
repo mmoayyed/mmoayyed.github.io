@@ -1,0 +1,49 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---service-matching-strategiessummary----learn-to-customize-apereo-cas-to-modify-the-default-strategy-used-for-matching-servicestags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---service-matching-strategiessummary----learn-to-customize-apereo-cas-to-modify-the-default-strategy-used-for-matching-servicestags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Service Matching Strategies<br>
+summary:    Learn to customize Apereo CAS to modify the default strategy used for matching services.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Per the <a href="https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html">CAS Protocol</a>, validating service tickets requires a <code>service</code> parameter that is expected to be the identifier of the service for which the service ticket was issued. In other words, CAS requires and enforces an exact match between the given service identifier and one that was supplied originally for ticket creation.</p>
+<p>In this short tutorial, we are briefly going to review the specifics of this matching strategy and ways that it might be customized. Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>The default service matching strategy is exact and enforced by <code>DefaultServiceMatchingStrategy</code>. The strategy can be replaced if, for example, you wanted to disregard query string parameters and extract service identifiers solely by their URL.</p>
+<!-- raw HTML omitted -->
+<p>To do so, you should start by <a href="https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html">designing your own configuration component</a> to include the following bean:</p>
+<pre lang="java"><code>@Bean
+public ServiceMatchingStrategy serviceMatchingStrategy() {
+    return new MyServiceMatchingStrategy(...);
+}
+</code></pre>
+<p>The general outline of <code>MyServiceMatchingStrategy</code> should have to follow the below example:</p>
+<pre lang="java"><code>public class MyServiceMatchingStrategy implements ServiceMatchingStrategy {
+    @Override
+    public boolean matches(final Service service, final Service serviceToMatch) {
+        /*
+        service - the original service supplied when the ticket was created.
+        serviceToMatch - the provided service requesting the ticket to be validated.
+
+        Figure out what needs to be done and return either true or false.
+        */
+        return ...;
+    }
+}
+</code></pre>
+<p>That's all.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

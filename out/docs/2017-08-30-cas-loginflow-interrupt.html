@@ -1,0 +1,45 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------interrupt-cas-with-classsummary----an-overview-of-a-recent-cas-52x-feature-that-allows-one-to-interrupt-the-authentication-flow-with-notifications-and-advertisements-dictating-cas-should-treat-the-authenticated-session-with-configuration-and-compassiontags-------cas" class="anchor" href="#layout-----posttitle------interrupt-cas-with-classsummary----an-overview-of-a-recent-cas-52x-feature-that-allows-one-to-interrupt-the-authentication-flow-with-notifications-and-advertisements-dictating-cas-should-treat-the-authenticated-session-with-configuration-and-compassiontags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Interrupt CAS With Class<br>
+summary:    An overview of a recent CAS 5.2.x feature that allows one to interrupt the authentication flow with notifications and advertisements, dictating CAS should treat the authenticated session with configuration and compassion.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>The fastest route to a 10X engineer is to give them 0.1X the distractions. - Eric Meyer</p>
+</blockquote>
+<p>While that is generally sensible advice, when it comes to CAS there are times where you wish to interrupt the CAS authentication flow and the present the end-user with notifications and annoucements. A common use case deals with presenting a message board during the authentication flow to select users and then optionally require the audience to complete a certain task before CAS is able to honor the authentication request and establish a session. Examples of such messages tasks may include: <em>"The kitchen’s menu today features <!-- raw HTML omitted -->Khash<!-- raw HTML omitted -->. Click here to get directions."</em> or <em>"The office of compliance and regulations has announced a new policy on using forks. Click to accept, or forever be doomed with spoons"</em>.</p>
+<p>This is a tutorial on how to present such interruptions to your CAS audience, as a fairly recent feature in CAS <code>5.2.x</code> and beyond. To learn more about this behavior, please <a href="https://apereo.github.io/cas/development/installation/Webflow-Customization-Interrupt.html">see this guide</a>.</p>
+<!-- raw HTML omitted -->
+<h1>
+<a id="interrupt-source" class="anchor" href="#interrupt-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interrupt Source</h1>
+<p>First and foremost, there needs to be an engine of some sort that is able to produce notifications and interruptions. CAS supports a range of such engines that are backed by JSON &amp; Groovy resources, REST endpoints or one you decide to create and inject into the runtime.</p>
+<p>For the purposes of this tutorial, I will be using the static JSON resource which is a perfectly suitable option for super small deployments or relevant during development and testing. The JSON resource path is taught to CAS via the following setting:</p>
+<pre lang="properties"><code>cas.interrupt.json.location=file:/etc/cas/config/interrupt.json
+</code></pre>
+<h1>
+<a id="interrupt-rules" class="anchor" href="#interrupt-rules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interrupt Rules</h1>
+<p>Once you have defined the above setting and assuming your overlay is prepped with relevant <a href="https://apereo.github.io/cas/development/installation/Webflow-Customization-Interrupt.html">configuration module</a>, CAS will attempt to understand the interruption rules that are defined in the <code>interrupt.json</code> file. My rules are defined as such:</p>
+<pre lang="json"><code>{
+  "casuser" : {
+    "message" : "We have interrupted your CAS authentication workflow to bring you the following information. Select one of the links below to go somewhere and do something fun and then come back to continue with &lt;strong&gt;CAS&lt;/strong&gt;.",
+    "links" : {
+      "Go to Google" : "https://www.google.com",
+      "Go to Yahoo" : "https://www.yahoo.com"
+    },
+    "ssoEnabled" : false,
+    "interrupt" : true,
+  }
+}
+</code></pre>
+<p>The above ruleset simply says: <em>Whenever <!-- raw HTML omitted -->casuser<!-- raw HTML omitted --> authenticates, present the <code>message</code> to the user with a number of <code>links</code>. Make sure an SSO session is not established which would have the user present credentials again in subsequent attempts.</em></p>
+<h1>
+<a id="the-looks" class="anchor" href="#the-looks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Looks</h1>
+<p>Once that is all in place, <code>casuser</code> will see the following screen, after having authenticated successfully:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/29816821-eb5a597a-8cca-11e7-8ee8-f5433b01f90d.png" alt="image"></p>
+<p>It's that simple.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>For more advanced and production-quality interruptions you likely need to write a Groovy script or design a REST endpoint that ties CAS with your own institutional messages and you most certainly should want to decorate the user interface much better.</p>
+<p>Given this is very new today, I am sure you will find plenty of opportunities to improve the functionality with more cowbell. Laundry doesn't fold itself so <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">please do</a>.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

@@ -1,0 +1,163 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---managing-configuration-metadatasummary----learn-how-to-manage-cas-configuration-and-properties-using-spring-boot-configuration-metadatatags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---managing-configuration-metadatasummary----learn-how-to-manage-cas-configuration-and-properties-using-spring-boot-configuration-metadatatags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Managing Configuration Metadata<br>
+summary:    Learn how to manage CAS configuration and properties using Spring Boot Configuration metadata.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Based on the results of the most recent <a href="https://apereo.github.io/2019/10/09/cas-survey-results2019/">CAS Survey</a> and the many conversations I have had throughout the years<br>
+with CAS deployers, one item that is frequently debated and requested from the project is better documentation especially around CAS settings and properties. In this blog<br>
+post, I am going to demonstrate a few ways where one can query the CAS documentation to look up settings, review notes, examine default values, etc.</p>
+<h1>
+<a id="foreword" class="anchor" href="#foreword" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Foreword</h1>
+<p>Let's address the obvious question:</p>
+<blockquote>
+<p>Why isn't every single setting and property documented on the project website?</p>
+</blockquote>
+<p>Simply put,</p>
+<ul>
+<li>The project does not sufficient resources, time and energy to manage and maintain a large body of configuration settings <em>manually</em> over a long period of time and take care of their maintenance as progress is made. Doing this would mean that every single CAS setting, along with notes and explanations, would<br>
+not only be equipped with adequate javadocs, but also would be <em>duplicated</em> in the project documentation, in the installation script<br>
+and overlays, and possibly a few other places for this effort to truly be comprehensive. <em>Duplication is baad, mkay?</em>
+</li>
+<li>This process needs to be carefully reviewed, examined and controlled if a setting is removed, renamed or changed in any way, and furthermore, this process would not only have to be supported and followed by the project's core developers, but also by every single contributor with an accompanying patch.</li>
+<li>This process would not only have to be followed for CAS-owned settings, but also for those that are introduced and controlled by<br>
+projects and libraries on which CAS depends. So the maintenance effort would have to be multiplied by any number of libraries that present a certain functionality to CAS.</li>
+</ul>
+<p>Needless to say, manual maintenance efforts and risking inaccuracies and duplications do not make this effort worthwhile.</p>
+<h1>
+<a id="strategy" class="anchor" href="#strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Strategy</h1>
+<p>There are easier ways to accomplish this if we ditch the traditional approach to documentation and look at this from an API point of view. Every setting, whether owned by CAS or some other library, can and may be controlled by a schema and an API. Things that you generally want to know about a CAS setting are usually available as part of its very definition; type, name, default value, explanation, etc. So, what if there was an API that could allow one to query and list <em>metadata</em><br>
+about a setting, thus making the process much more automated?</p>
+<p>Good question. This is what <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-configuration-metadata.html">Configuration Metadata</a> is all about. CAS artifacts include metadata files that provide details of all supported configuration properties. Let's take a look at how they may be used.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h1>
+<a id="interactive-shell" class="anchor" href="#interactive-shell" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interactive Shell</h1>
+<p>One approach would be to use the <a href="https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html">CAS Command-line Shell</a>. If you examine the <a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a>, you will find a Gradle task for running the shell. Let's give it a try:</p>
+<pre lang="bash"><code>gradlew runShell
+...
+Run the following command to launch the shell:
+        java -jar build/libs/cas-server-support-shell-xyz.jar
+</code></pre>
+<p>If you run the command instructed above, you will see the following:</p>
+<pre lang="bash"><code>No active profile set, falling back to default profiles: default
+...
+Started CasCommandLineShellApplication in 9.151 seconds (JVM running for 11.384)
+cas&gt;
+</code></pre>
+<p>If you run <code>help</code>, you will see a number of CAS shell commands related to properties:</p>
+<pre lang="bash"><code>CAS Properties
+    ...
+    find: Look up properties associated with a CAS group/module.
+    ...
+</code></pre>
+<p>The <code>find</code> command is most interesting. Let's look up properties related to <code>duo</code>:</p>
+<pre lang="bash"><code>cas&gt; find --name duo
+</code></pre>
+<p>Let's try the same thing in summary mode:</p>
+<pre lang="bash"><code>cas&gt; find --name duo --summary
+</code></pre>
+<p>As you can see, you can query settings or groups of them to look up notes, default values, types, etc for each field. This <em>documentation</em> is automatically provided<br>
+to you and is available in the overlay.</p>
+<h1>
+<a id="configuration-metadata-report" class="anchor" href="#configuration-metadata-report" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Metadata Report</h1>
+<p>Another option is to take advantage of the <code>exportConfigMetadata</code> task available in <a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a>. This task<br>
+allows you to export collection of CAS properties as a report into a file that can later be examined. Let's try it:</p>
+<pre lang="bash"><code>gradlew exportConfigMetadata
+
+&gt; Task :exportConfigMetadata
+Configuration metadata is available at /cas-overlay-template/config-metadata.properties
+</code></pre>
+<p>If you examine the produced file, you will find a full list of CAS settings along with notes, types, default and accepted values. You will also see<br>
+whether the setting requires a particular module in the build and whether that module is automatically included. There is additional metadata to explain<br>
+whether the setting is required and one that is expected to be defined and tweaked by you, or optional with a default value.</p>
+<!-- raw HTML omitted -->
+<p>Note the report does <strong>NOT</strong> only include settings that are owned and used by CAS but also, others that are controlled and used by other frameworks and libraries<br>
+such as Spring Boot, Spring Cloud, etc. Of course, just as before, this <em>documentation</em> is too automatically provided to you and is available in the overlay.</p>
+<h1>
+<a id="developer-tooling" class="anchor" href="#developer-tooling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developer Tooling</h1>
+<p>Configuration metadata has very good support for most modern integrated development environments, such as eclipse or Intellij IDEA. The environment can<br>
+recognize the presence of configuration metadata and assist with tooltips, auto-completion of settings, values and many other related features:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/70863349-ba3b6e80-1f60-11ea-907c-c75008d48d4a.png" alt="image"></p>
+<p>For those who contribute to CAS or build extensions on top of the CAS platform, this is a great tool to assist with fine-tuning of the configuration<br>
+compared to chasing settings and notes in docs spread around on the web. The documentation ships with the code and the tooling that supports and recognizes<br>
+its schema is readily available.</p>
+<h1>
+<a id="property-migration-reports" class="anchor" href="#property-migration-reports" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Property Migration Reports</h1>
+<p>Configuration properties that are removed, renamed, etc can always be tracked by the configuration metadata to advertise the change<br>
+and provide guidance on replacements. In certain cases, the replacement setting can be automatically applied by CAS with a simple warning to follow-up<br>
+if a replacement is indeed available. In other cases, a warning will show up in the logs instructing you to take action and update your configuration<br>
+with notes and explanations.</p>
+<p>Note that automatic replacements of properties may only take place if they are type-compatible.</p>
+<p>Let's say we have the following two settings in our CAS configuration:</p>
+<pre lang="properties"><code># This setting can be replaced with its compatible alternative
+# automatically, with a warning in the logs
+server.context-path=/cas
+
+# There is no compatible replacement property for this setting
+cas.service-registry.config.location=file:/etc/cas/config/services  
+</code></pre>
+<p>If you run CAS, the following report in the logs will guide you with instructions:</p>
+<pre lang="bash"><code>WARN [o.s.b.c.p.m.PropertiesMigrationListener] - &lt;
+The use of configuration keys that have been renamed was found in the environment:
+
+Property source 'bootstrapProperties':
+    Key: server.context-path
+        Replacement: server.servlet.context-path
+        
+Each configuration key has been temporarily mapped to its replacement for your convenience. \
+To silence this warning, please update your configuration to use the new keys.
+</code></pre>
+<p>...and:</p>
+<pre lang="bash"><code>ERROR [o.s.b.c.p.m.PropertiesMigrationListener] - &lt;
+The use of configuration keys that are no longer supported was found in the environment:
+
+Property source 'bootstrapProperties':
+    Key: cas.service-registry.config.location
+        Reason: Property renamed due to cas.service-registry.json.location instead.
+
+
+Please refer to the migration guide or reference guide for potential alternatives.
+</code></pre>
+<!-- raw HTML omitted -->
+<p>This is a much easier and much more automated version of a transition strategy from one CAS version to the next<br>
+and allows for a more comfortable maintenance and adoption experience. No longer should one have to track down detailed<br>
+release notes and guides to observe and apply changes. The software takes care of all, if possible, and otherwise issues<br>
+appropriate warnings for one to take action.</p>
+<h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Limitations</h2>
+<p>Configuration metadata, when it comes to migration reports, does not support collection-based settings. For example,<br>
+if the original version of a CAS setting is at <code>cas.something.blah=blah</code> in one version and its new replacement is transformed<br>
+to support multiple <code>something</code>s with <code>cas.something[0].blah=blah</code> in another version, then this change is usually ignored by the reporter facility<br>
+provided by Spring Boot. In such scenarios, you will have check with the project documentation, release notes<br>
+or source code to note the correct syntax.</p>
+<h1>
+<a id="epilogue" class="anchor" href="#epilogue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Epilogue</h1>
+<p>The strategies and ideas outlined in this post go as far back<br>
+as CAS <a href="https://apereo.github.io/cas/5.2.x/installation/Configuration-Metadata-Repository.html"><code>5.2.x</code></a>. We have had to carefully<br>
+tune and modify the <em>configuration metadata generation process</em> over time and the years to make sure such metadata about settings<br>
+can be recognized, parsed and packed for wider use. We have added on layers and constructs to make sure settings be understood and picked up regardless of their physical<br>
+placement (i.e. inner classes) or complication of type (i.e. enums, collections, etc). In short, while the result is still far from perfect, it is a large improvement<br>
+over the manual maintenance tasks previously discussed, given project's availability of resources and funding.</p>
+<p>Now that we have configuration metadata available as an API, there are many other things that can also be automated such as the automatic<br>
+generation of a CAS installation script or overlay perhaps using a graphical user interface in wizard-like fashion. The possibilities are quite exciting!</p>
+<h1>
+<a id="bonus" class="anchor" href="#bonus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bonus</h1>
+<p>To see what Gradle tasks are available, run:</p>
+<pre lang="bash"><code>gradlew tasks
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

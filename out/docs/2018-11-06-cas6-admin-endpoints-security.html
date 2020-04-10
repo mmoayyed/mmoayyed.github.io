@@ -1,0 +1,117 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas-6---administrative-endpoints--monitoringsummary----gain-insight-into-your-running-apereo-cas-6-deployment-in-production-learn-how-to-monitor-and-manage-the-server-by-using-http-endpoints-and-gather-metrics-to-diagnose-issues-and-improve-performancetags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas-6---administrative-endpoints--monitoringsummary----gain-insight-into-your-running-apereo-cas-6-deployment-in-production-learn-how-to-monitor-and-manage-the-server-by-using-http-endpoints-and-gather-metrics-to-diagnose-issues-and-improve-performancetags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS 6 - Administrative Endpoints &amp; Monitoring<br>
+summary:    Gain insight into your running Apereo CAS 6 deployment in production. Learn how to monitor and manage the server by using HTTP endpoints and gather metrics to diagnose issues and improve performance.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>CAS, being a Spring-Boot application at heart, includes a number of endpoints to help you monitor and manage the server when it’s pushed to production. You can choose to manage and monitor the deployment using HTTP endpoints, referred to as <em>actuators</em>. This tutorial provides a basic overview of the endpoints provided by both Spring Boot and CAS and also provides instructions on how such endpoints can be secured for access and win.</p>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.0.0-RC4</code>
+</li>
+<li>Java 11</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> (The <code>master</code> branch specifically)</li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+</ul>
+<h1>
+<a id="actuawhat" class="anchor" href="#actuawhat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Actua...What?</h1>
+<p>In essence, actuator endpoints bring production-ready features to CAS. Monitoring a running CAS instance, gathering metrics, understanding traffic or the state of our database becomes trivial with such endpoints. The main benefit of these endpoints is that we can get production grade tools without having to actually implement these features ourselves. Actuators are mainly used to expose operational information about the running application – health, metrics, info, dump, env, etc. These are HTTP endpoints or JMX beans to enable us to interact with it.</p>
+<!-- raw HTML omitted -->
+<p>The full list of endpoints provided to your CAS deployment <a href="https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html">is posted here</a>. Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.</p>
+<h1>
+<a id="endpoints" class="anchor" href="#endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h1>
+<p>Starting with Spring Boot <code>2</code> and CAS <code>6.0.x</code>, the actuator endpoints and their method of security are entirely revamped. Here are the main differences:</p>
+<ul>
+<li>Endpoints can individually be exposed over the web under HTTP.</li>
+<li>Security of each endpoint using the combo of <code>enabled</code> and <code>sensitive</code> is now gone, and each endpoint entirely embraces Spring Security for protection.</li>
+<li>Endpoints internally are marked as <code>@Endpoint</code> and can be standalone or extensions of existing endpoints such as <code>/health</code>.</li>
+<li>Enabling an endpoint may pass through several layers of security: Default setting if undefined, globally or per endpoint.</li>
+</ul>
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+<p>Let's go through a number of scenarios that might be helpful. Bear in mind that in order to work with an endpoint, you must go through the following steps:</p>
+<ul>
+<li>The endpoint must be enabled.</li>
+<li>The endpoint may be somehow exposed.</li>
+<li>The endpoint may be somehow secured.</li>
+</ul>
+<p>Remember that the default path for endpoints exposed over the web is at <code>/actuator</code>, such as <code>/actuator/status</code>.</p>
+<h3>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h3>
+<p>Expose the CAS <code>status</code> endpoint over the web, enable it and make sure its protected via basic authentication:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=status
+management.endpoint.status.enabled=true
+
+cas.monitor.endpoints.endpoint.status.access=AUTHENTICATED
+
+spring.security.user.name=casuser
+spring.security.user.password=Mellon
+</code></pre>
+<h3>
+<a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 2</h3>
+<p>Expose the CAS <code>status</code> endpoint over the web, enable it and make sure a list of IP addresses can reach it:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=status
+management.endpoint.status.enabled=true
+cas.monitor.endpoints.endpoint.status.access=IP_ADDRESS
+cas.monitor.endpoints.endpoint.status.requiredIpAddresses=1.2.3.4,0.0.0.0
+</code></pre>
+<h3>
+<a id="example-3" class="anchor" href="#example-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 3</h3>
+<p>Expose the Spring Boot <code>health</code> and <code>info</code> endpoints over the web, enable them and make sure access to <code>health</code> is secured via basic authentication:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=health,info
+
+management.endpoint.health.enabled=true
+management.endpoint.health.show-details=always
+
+management.endpoint.info.enabled=true
+
+cas.monitor.endpoints.endpoint.health.access=AUTHENTICATED
+cas.monitor.endpoints.endpoint.info.access=ANONYMOUS
+
+spring.security.user.name=casuser
+spring.security.user.password=Mellon
+</code></pre>
+<h3>
+<a id="example-4" class="anchor" href="#example-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 4</h3>
+<p>Enable and expose all endpoints with no regard for security:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=*
+management.endpoints.enabled-by-default=true
+cas.monitor.endpoints.endpoint.defaults.access=ANONYMOUS
+</code></pre>
+<!-- raw HTML omitted -->
+<h3>
+<a id="example-5" class="anchor" href="#example-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 5</h3>
+<p>In addition to the usual, let's remap the path to endpoints to start with <code>endpoints</code> instead<br>
+of <code>actuator</code>, and lets rename the <code>status</code> endpoint to be <code>heartbeat</code>:</p>
+<pre lang="properties"><code>management.endpoints.web.path-mapping.status=heartbeat
+management.endpoints.web.base-path=/endpoints
+management.endpoints.web.exposure.include=status
+management.endpoint.status.enabled=true
+cas.monitor.endpoints.endpoint.status.access=IP_ADDRESS
+cas.monitor.endpoints.endpoint.status.requiredIpAddresses=1.2.3.4
+</code></pre>
+<h2>
+<a id="dashboard" class="anchor" href="#dashboard" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dashboard</h2>
+<p>Note that all GUIs related to CAS endpoints are removed and will be slightly transitioned over to the <a href="https://apereo.github.io/cas/development/services/Installing-ServicesMgmt-Webapp.html">CAS Management Web Application</a>. However, while the screens may be gone the underlying functionality remains all the same. For example, provided the endpoint is correctly enabled and secured you can invoke the <code>statistics</code> endpoint to get the required data:</p>
+<pre lang="bash"><code>curl -k https://sso.example.org/cas/actuator/statistics | jq
+</code></pre>
+<p>...where you'd see something like this:</p>
+<pre lang="json"><code>{
+  "upTime": 64,
+  "totalMemory": "1 GB",
+  "expiredTgts": 0,
+  "expiredSts": 0,
+  "maxMemory": "4 GB",
+  "freeMemory": "615 MB",
+  "unexpiredTgts": 0,
+  "unexpiredSts": 0
+}
+</code></pre>
+<p>Over time, this data should become accessible via the management application. Remember that for endpoints which are native to and provided by Spring Boot, you may always try the <a href="https://fawnoos.com/2018/10/22/cas6-springboot-admin-server/">Spring Boot Admin Server</a>.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>It's important that you start off simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files around.</p>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

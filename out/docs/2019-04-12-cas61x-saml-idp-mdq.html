@@ -1,0 +1,45 @@
+<hr>
+<p>layout:     post<br>
+title:      Apereo CAS - SAML2 Metadata Query Protocol<br>
+summary:    Learn how you may configure Apereo CAS to fetch and validate SAML2 metadata for service providers from InCommon's MDQ server using the metadata query protocol.</p>
+<h2>
+<a id="tags-------cas" class="anchor" href="#tags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Per-entity metadata allows CAS acting as a SAML2 identity provider to consume only metadata for specific service providers as needed instead of having to load the entire XML aggregate. Metadata is delivered through a protocol called MDQ ("Metadata Query" resulting in a significantly lower memory footprint in addition to quicker startup times by not having to verify the entirety of the XML aggregate at startup.</p>
+<p>In this blog post, we will take a look at <a href="https://spaces.at.internet2.edu/display/MDQ/The+Guide">InCommon MDQ server</a> and how Apereo CAS may be configured to fetch and validate service provider metadata on demand using MDQ and family.</p>
+<!-- raw HTML omitted -->
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON Service Registry</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>Once you have configured CAS to act as a <a href="https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html">SAML2 identity provider</a>, the following service definition can be a reasonable starting template for fetching service provider metadata from InCommon's MDQ server:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : ".+",
+  "name" : "SAMLMDQ",
+  "id" : 1,
+  "requireSignedRoot": true,
+  "evaluationOrder" : 1000,
+  "metadataSignatureLocation": "file:/etc/cas/incommon-mdq.pem",
+  "metadataLocation" : "http://mdq-preview.incommon.org/entities/{0}"
+}
+</code></pre>
+<p>The <code>serviceId</code> field above indicates that all SAML2 service provider entity ids are recognized and accepted by CAS so long metadata associated with entity ids can be found and fetched from the MDQ server.</p>
+<!-- raw HTML omitted -->
+<p>So if you could imagine that a service provider with the entity id of <code>https://studypages.com/saml-sp</code> sends an authentication request to CAS, the following picture is what you should expect:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/56044562-47ecfd00-5cf4-11e9-9bc2-dd0794135d8d.png" alt="image"></p>
+<p>Not the prettiest picture in the world for sure, and with a little bit of CSS magic it can be as glamorous as you could want.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

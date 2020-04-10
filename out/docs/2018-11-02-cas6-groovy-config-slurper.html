@@ -1,0 +1,53 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---slurp-configuration-with-groovysummary----learn-how-cas-configuration-may-be-consumed-via-groovy-to-simplify-and-consolidate-settings-for-multiple-deployment-environments-and-profilestags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---slurp-configuration-with-groovysummary----learn-how-cas-configuration-may-be-consumed-via-groovy-to-simplify-and-consolidate-settings-for-multiple-deployment-environments-and-profilestags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Slurp Configuration with Groovy<br>
+summary:    Learn how CAS configuration may be consumed via Groovy to simplify and consolidate settings for multiple deployment environments and profiles.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>CAS allows you to externalize your configuration settings so you can work with the same CAS instance in different environments. You can use properties files, YAML files, environment variables and command-line arguments (just to name a few!) to externalize and provide configuration. These strategies present a very flexible and powerful way to manage CAS configuration for production deployments in a variety of use cases.</p>
+<p>As your CAS deployment moves through the deployment pipeline from dev to test and into production, you can manage the configuration between those environments separately, and be certain that each tier has everything it needs to run when the server migrates. Tier-specific configuration is usually managed and activated through the use of application (aka. Spring) <em>profiles</em> while the rest of the more common settings are gathered centrally that apply to all environments. When you run CAS in <a href="https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html#standalone">standalone mode</a> specially, the default configuration directory on the filesystem (i.e. <code>/etc/cas/config</code>) may include <code>(cas|application).(yaml|yml|properties)</code> files that can be used to control behavior. Such configuration files may also specifically apply to a profile (i.e. <code>ldap.properties</code>) that can be activated using <code>spring.profiles.active</code> or <code>spring.profiles.include</code> settings.</p>
+<p>Starting with CAS <code>6</code>, Groovy can also serve as a strategy for loading configuration in a way that allows one to consolidate common and tier-specific files in one place. This tutorial explores that possibility with a starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.0.0-RC4</code>
+</li>
+<li>Java 11</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> (The <code>master</code> branch specifically)</li>
+</ul>
+<h2>
+<a id="groovy-configslurper" class="anchor" href="#groovy-configslurper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy <code>ConfigSlurper</code>
+</h2>
+<p>If you are familiar with Groovy, then <code>ConfigSlurper</code> is no stranger to you. This is a utility class for reading configuration files defined in the form of Groovy scripts. Configuration settings can be defined using dot notation or scoped using closures:</p>
+<pre lang="groovy"><code> grails.webflow.stateless = true
+ smtp {
+     mail.host = 'smtp.myisp.com'
+     mail.auth.user = 'server'
+ }
+ resources.URL = "http://localhost:80/resources"
+</code></pre>
+<p>CAS takes advantage of this very component, allowing you to isolate tier-specific settings in form of conditional closures. In the simplest scenario, it expects to find a <code>cas.groovy</code> file in the same configuration directory while running <em>standalone</em> mode that might look like this:</p>
+<pre lang="groovy"><code>profiles {
+    dev {
+        cas.authn.accept.users="test::dev"
+    }
+    prod {
+        cas.authn.accept.users="test::prod"
+    }
+}
+
+cas.common.setting="value"
+</code></pre>
+<p>When you run CAS using the <code>dev</code> profile, the collection of settings that are picked up from the script are:</p>
+<pre lang="properties"><code>cas.authn.accept.users="test::dev"
+cas.common.setting="value"
+</code></pre>
+<p>...and when you run CAS using the <code>prod</code> profile, the collection of settings that are picked up from the script are:</p>
+<pre lang="properties"><code>cas.authn.accept.users="test::prod"
+cas.common.setting="value"
+</code></pre>
+<p>For small configuration changes between tiers, this is arguably simpler than having, for example, <code>cas.properties</code>, <code>dev.properties</code> and <code>prod.properties</code> files. For anything else larger and more complicated, you still may want to think about separating settings into multiple files or perhaps consider using the <a href="https://fawnoos.com/2018/10/25/cas6-cloud-config-server/">Spring Cloud Config Server</a>.</p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

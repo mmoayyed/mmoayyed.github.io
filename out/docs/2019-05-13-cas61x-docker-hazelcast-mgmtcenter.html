@@ -1,0 +1,108 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---dockerized-hazelcast-deploymentssummary----learn-how-to-run-cas-backed-by-a-hazelcast-cluster-in-docker-containers-and-take-advantage-of-the-hazelcast-management-center-to-monitor-and-observer-cluster-memberstags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---dockerized-hazelcast-deploymentssummary----learn-how-to-run-cas-backed-by-a-hazelcast-cluster-in-docker-containers-and-take-advantage-of-the-hazelcast-management-center-to-monitor-and-observer-cluster-memberstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Dockerized Hazelcast Deployments<br>
+summary:    Learn how to run CAS backed by a Hazelcast cluster in Docker containers and take advantage of the Hazelcast management center to monitor and observer cluster members.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>For a highly-available CAS deployment, running CAS backed by the <a href="https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html">Hazelcast Ticket Registry</a> can be a great option. In the simplest scenario, CAS server nodes are registered as Hazelcast cluster members via static discovery and that is fine for most deployments. Likewise, producing a CAS docker image and running it a container is fairly straight forward, what with the scaffolding and machinery put into the <a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> to produce images via the <code>jib</code> plugin or a native <code>Dockerfile</code>.</p>
+<p>This blog post focuses on marrying up the two use cases; That is, getting CAS server nodes as Hazelcast cluster members to discover each other and form a cluster while running as Docker containers. We'll also be configuring CAS to connect to a Hazelcast Management Center deployment to observe cluster members and monitor configuration and activity.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://apereo.github.io/cas/6.1.x/ticketing/Hazelcast-Ticket-Registry.html">Hazelcast Ticket Registry</a></li>
+</ul>
+<h1>
+<a id="cas-hazelcast-ticket-registry" class="anchor" href="#cas-hazelcast-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Hazelcast Ticket Registry</h1>
+<p>Running CAS with Hazelcast, in general and without Docker, is simply as simple as including <a href="https://apereo.github.io/cas/6.1.x/ticketing/Hazelcast-Ticket-Registry.html">Hazelcast Ticket Registry</a> in the overlay with the following <em>starter</em> settings:</p>
+<pre lang="properties"><code>cas.ticket.registry.hazelcast.cluster.members=127.0.0.1
+cas.ticket.registry.hazelcast.cluster.port=5701
+
+cas.ticket.registry.hazelcast.management-center.enabled=true
+cas.ticket.registry.hazelcast.management-center.url=http://localhost:8080/hazelcast-mancenter/
+</code></pre>
+<p>Once deployed, the CAS server node will auto-register itself as a Hazelcast member with the management center, which we have yet to stand up.</p>
+<h1>
+<a id="hazelcast-management-center" class="anchor" href="#hazelcast-management-center" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hazelcast Management Center</h1>
+<p><a href="https://hazelcast.com/product-features/management-center/">Hazelcast Management Center</a> enables monitoring and management of nodes running Hazelcast IMDG or Jet. This includes monitoring the overall state of clusters, as well as detailed analysis and browsing of data structures in real time, updating map configurations, and taking thread dumps from nodes.</p>
+<p>Note that using the Hazelcast Management Center is <strong>free for clusters of 2 members</strong>.</p>
+<p>The management center can be fetched and deployed via Docker itself:</p>
+<pre lang="bash"><code>docker run -p 8080:8080 hazelcast/management-center:latest
+</code></pre>
+<p>...after which, it will be available on <code>http://localhost:8080/hazelcast-mancenter</code>.</p>
+<p>Once you create an admin account and sign in, you'd likely see the following:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/57580179-2ac65e00-745b-11e9-8f0b-a6076f71d72d.png" alt="image"></p>
+<p>You can also drill down into the member details:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/57580186-4df10d80-745b-11e9-9b97-e48fbeb5b3fa.png" alt="image"></p>
+<p>You can shut down any node or the management center itself and observe how the auto-registration process continues to resume.</p>
+<h1>
+<a id="dockerized-cas-deployment" class="anchor" href="#dockerized-cas-deployment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dockerized CAS Deployment</h1>
+<p>Once the overlay is prepped with the Hazelcast Ticket Registry, a simple way to produce a docker image would be to use the <code>jib</code> plugin built into the overlay. Before we do, we'll need to make sure our configuration is Docker-ready:</p>
+<pre lang="properties"><code>cas.ticket.registry.hazelcast.cluster.instanceName=localhost
+cas.ticket.registry.hazelcast.cluster.portAutoIncrement=false
+cas.ticket.registry.hazelcast.cluster.members=${HZ_MEMBER_LIST}
+cas.ticket.registry.hazelcast.cluster.port=${HZ_PORT}
+cas.ticket.registry.hazelcast.cluster.public-address=${HZ_PUBLIC_IP}
+
+cas.ticket.registry.hazelcast.management-center.enabled=true
+cas.ticket.registry.hazelcast.management-center.url=http://host.docker.internal:8080/hazelcast-mancenter/
+</code></pre>
+<p><code>public-address</code> overrides the public address of a member. By default, a member selects its socket address as its public address. In this case, the public addresses of the members are not an address of the container's local network but an address defined by the host. This setting is optional to set and useful when you have a private cloud. Note that, the value for this element should be given in the format of <code>IP address:port</code>.</p>
+<p>Also, from Docker <code>18.03</code> onwards the recommendation is to connect to the special DNS name <code>host.docker.internal</code> which resolves to the internal IP address used by the host. This is for development purpose and will not work in a production environment<br>
+outside of Docker Desktop for Mac. You will need to adjust the url if you're using a different OS.</p>
+<p>Now, we should be ready to build the Docker image via <code>jib</code>:</p>
+<pre lang="bash"><code>./gradlew build jibDockerBuild
+</code></pre>
+<h1>
+<a id="running-cas-docker-containers" class="anchor" href="#running-cas-docker-containers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running CAS Docker Containers</h1>
+<p>Let's start a docker container as <code>cas2</code>:</p>
+<pre lang="bash"><code>docker run -e HZ_PORT=5701 -e HZ_PUBLIC_IP=192.168.1.100:40002 \
+    -e HZ_MEMBER_LIST=192.168.1.100:40001,192.168.1.100:40002 -p 40002:5701 \
+    -p 8443:8443 -d --name="cas2" org.apereo.cas/cas:latest \
+    &amp;&amp; docker logs -f cas2
+</code></pre>
+<p>...where the logs would eventually indicate:</p>
+<pre><code>2019-05-12 10:12:40,497 INFO [com.hazelcast.internal.cluster.ClusterService] - &lt;[192.168.1.100]:40002 [dev] [3.12] 
+
+Members {size:1, ver:1} [
+    Member [192.168.1.100]:40002 - dbd50864-8b8a-4356-a597-303e0291de3d this
+]
+&gt;
+</code></pre>
+<p>Let's start another, named <code>cas1</code>:</p>
+<pre lang="bash"><code>docker run -e HZ_PORT=5701 -e HZ_PUBLIC_IP=192.168.1.100:40001 \
+    -e HZ_MEMBER_LIST=192.168.1.100:40001,192.168.1.100:40002 -p 40001:5701 \
+    -p 8443:8443 -d --name="cas1" org.apereo.cas/cas:latest \
+    &amp;&amp; docker logs -f cas1
+</code></pre>
+<p>...where the logs would eventually indicate:</p>
+<pre><code>2019-05-12 10:13:32,149 INFO [com.hazelcast.internal.cluster.ClusterService] - &lt;[192.168.1.100]:40001 [dev] [3.12] 
+
+Members {size:2, ver:2} [
+    Member [192.168.1.100]:40002 - dbd50864-8b8a-4356-a597-303e0291de3d
+    Member [192.168.1.100]:40001 - 1af4e693-c9ea-4636-a00f-5087b8f26ec3 this
+]
+&gt;
+</code></pre>
+<p>If you circle back and watch the logs for <code>cas2</code>, you'd also see:</p>
+<pre><code>2019-05-12 10:13:32,084 INFO [com.hazelcast.internal.cluster.ClusterService] - &lt;[192.168.1.100]:40002 [dev] [3.12] 
+
+Members {size:2, ver:2} [
+    Member [192.168.1.100]:40002 - dbd50864-8b8a-4356-a597-303e0291de3d this
+    Member [192.168.1.100]:40001 - 1af4e693-c9ea-4636-a00f-5087b8f26ec3
+]
+&gt;
+</code></pre>
+<p>The management center should also confirm this:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/57584777-12266a00-7494-11e9-8d7c-50d5babf09f4.png" alt="image"></p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

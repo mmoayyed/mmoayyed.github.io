@@ -1,0 +1,153 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---saml2-identity-provider-integration-w-incommonsummary----learn-how-apereo-cas-may-act-as-a-saml2-identity-provider-to-integrate-with-service-providers-from-metadata-aggregates-such-as-incommon-with-various-attribute-release-policies-for-research-and-scholarship-etctags-------cassaml" class="anchor" href="#layout-----posttitle------apereo-cas---saml2-identity-provider-integration-w-incommonsummary----learn-how-apereo-cas-may-act-as-a-saml2-identity-provider-to-integrate-with-service-providers-from-metadata-aggregates-such-as-incommon-with-various-attribute-release-policies-for-research-and-scholarship-etctags-------cassaml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - SAML2 Identity Provider Integration w/ InCommon<br>
+summary:    Learn how Apereo CAS may act as a SAML2 identity provider to integrate with service providers from metadata aggregates such as InCommon with various attribute release policies for research and scholarship, etc.<br>
+tags:       [CAS,SAML]</h2>
+<!-- raw HTML omitted -->
+<p>Apereo CAS, acting as a SAML2 identity provider, has the capability to integrate with SAML2 service providers from metadata aggregates such as InCommon. To handle these types of integrations successfully, one must note that CAS services (aka relying parties) are fundamentally recognized by service identifiers taught to CAS typically via regular expressions using the <code>serviceId</code> field. This allows for common groupings of applications and services by URL patterns (i.e. <em>Everything that belongs to example.org is registered with CAS</em>). A bilateral SAML2 SP integration is fairly simple in this regard as one might find an easy one-to-one relationship between a <code>serviceId</code> from CAS and the <code>entityId</code> from a SAML2 SP. With aggregated metadata, this behavior becomes more complicated since a CAS relying-party definition typically represents a single group of applications while aggregated metadata, given its very nature, represents many different SAML2 services from a variety of organizations and domains.</p>
+<p>In this tutorial, we are going to review a number of use cases dealing with multilateral integrations from the SAML2 metadata aggregate offered by InCommon. We will also briefly address configuration of various attribute release policies, specifically those that may belong to the <em>Research and Scholarship</em> group of service providers expecting a standard pre-defined bundle of attributes.</p>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h2>
+<a id="cas-configuration" class="anchor" href="#cas-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Configuration</h2>
+<p>In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the instructions provided <a href="https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html">here</a>. Remember to add the relevant module to the overlay along with the list of required build repositories.</p>
+<p>The SAML2 IdP configuration will need to minimally match the following settings:</p>
+<pre lang="properties"><code>cas.authn.samlIdp.entityId=https://sso.example.org/idp
+cas.authn.samlIdp.scope=example.org
+cas.authn.samlIdp.metadata.location=file:/etc/cas/saml
+</code></pre>
+<p>You will, of course, need to adjust your entityId and scope as needed. Upon startup, CAS will attempt to generate the appropriate metadata based on provided settings and produced artifacts will be placed at <code>/etc/cas/saml</code>. Of course, the running CAS process will need to have the right permissions in order to create this directory and the contents within it. Furthermore, to keep things simple, this post will assume that CAS is already configured to use <a href="https://apereo.github.io/cas/development/installation/LDAP-Authentication.html">LDAP authentication</a> and is set to fetch all needed attributes such as <code>givenName</code>, <code>eduPersonPrincipalName</code> from LDAP, etc. We shall also assume that relying party registration records are handled in CAS via the <a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON Service Registry</a>.</p>
+<h2>
+<a id="relying-party-integrations" class="anchor" href="#relying-party-integrations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relying-Party Integrations</h2>
+<p>Let's consider the following fictitious use cases:</p>
+<table>
+<thead>
+<tr>
+<th>Service Provider</th>
+<th>Entity ID</th>
+<th>Expected Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Almond</td>
+<td><code>almond.example.org</code></td>
+<td>InCommon R&amp;S bundle, <code>department</code>, <code>title</code>
+</td>
+</tr>
+<tr>
+<td>Coconut</td>
+<td><code>coconut.example.org</code></td>
+<td>
+<code>givenName</code>, <code>title</code>
+</td>
+</tr>
+<tr>
+<td>All Others</td>
+<td><code>*</code></td>
+<td>InCommon R&amp;S bundle, REFEDS R&amp;S bundle</td>
+</tr>
+</tbody>
+</table>
+<p>The above relying parties may be registered with CAS using the following sample records. As you browse through, you should pay attention to the following:</p>
+<ul>
+<li>There is a fair amount of duplication when it comes to the definition of the metadata location and anything else applicable to fetching, parsing and validating the metadata such as the signing signature, etc. Solutions to this issue to simplify maintenance and remove duplication may be worked out in future CAS releases.</li>
+<li>The metadata is downloaded once and cached, even though it is repeatedly specified for all relying parties. Caching rules are controlled by the service provider metadata tags, and/or the CAS service definition for that service provider as an override.</li>
+<li>Given a service definition file typically is entirely self-contained, a certain number of attribute release policies may need to be repeated in the event that a relying party definition needs to override or complement the default <em>catch-all</em> policy. Solutions to this issue to simplify maintenance and remove duplication may be worked out in future CAS releases.</li>
+</ul>
+<h3>
+<a id="almond-service-registration" class="anchor" href="#almond-service-registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Almond Service Registration</h3>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "almond.example.org",
+  "name": "almond",
+  "id": 1,
+  "evaluationOrder": 1,
+  "metadataLocation": "https://[metadata-aggregate-address].xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [
+      "java.util.ArrayList",
+      [
+        { "@class": "org.apereo.cas.support.saml.services.InCommonRSAttributeReleasePolicy" },
+        {
+          "@class": "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "department", "title" ] ]
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h3>
+<a id="coconut-service-registration" class="anchor" href="#coconut-service-registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Coconut Service Registration</h3>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "coconut.example.org",
+  "name" : "coconut",
+  "id" : 2,
+  "evaluationOrder": 2,
+  "metadataLocation": "https://[metadata-aggregate-address].xml",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "givenName", "title" ] ]
+  }
+}
+</code></pre>
+<h3>
+<a id="all-others" class="anchor" href="#all-others" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>All Others</h3>
+<p>Note the <code>serviceId</code> field here contains a regular expression that is very friendly to all relying parties. The <code>evaluationOrder</code> field is set to a sufficiently large number to ensure this definition is considered very late into the process.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": ".+",
+  "name": "All",
+  "id": 3,
+  "evaluationOrder": 10000,
+  "metadataLocation": "https://[metadata-aggregate-address].xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [
+      "java.util.ArrayList",
+      [
+        { "@class": "org.apereo.cas.support.saml.services.InCommonRSAttributeReleasePolicy" },
+        { "@class": "org.apereo.cas.support.saml.services.RefedsRSAttributeReleasePolicy" }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h2>
+<a id="metadata-administration" class="anchor" href="#metadata-administration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metadata Administration</h2>
+<p>There is also the ability to observe and manage the service provider metadata cache administratively, using a dedicated <a href="https://fawnoos.com/2018/11/06/cas6-admin-endpoints-security/">actuator endpoint</a>.</p>
+<!-- raw HTML omitted -->
+<p>Let's demonstrate this with a few examples:</p>
+<ul>
+<li>Retrieve the current state of the service provider metadata cache for <code>coconut</code>:</li>
+</ul>
+<pre lang="bash"><code>curl -k -X GET https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache?serviceId=All'&amp;'entityId=coconut.example.org
+</code></pre>
+<p>Likewise, the following command may do just as well:</p>
+<pre lang="bash"><code>curl -X GET https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache?serviceId=coconut
+</code></pre>
+<ul>
+<li>Invalidate the current state of the service provider metadata cache for <code>coconut</code>:</li>
+</ul>
+<pre lang="bash"><code>curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache?serviceId=coconut
+</code></pre>
+<ul>
+<li>Invalidate the current state of the service provider metadata cache:</li>
+</ul>
+<pre lang="bash"><code>curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache
+</code></pre>
+<p>Better details <a href="https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata.html#administrative-endpoints">may be found here</a>.</p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

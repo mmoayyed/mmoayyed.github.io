@@ -1,0 +1,141 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------effective-software-troubleshooting-tacticssummary----a-collection-of-what-hopefully-are-obvious-troubleshooting-tactics-when-it-comes-to-diagnosing-software-deployment-issues-and-configuration-problemstags-------blog" class="anchor" href="#layout-----posttitle------effective-software-troubleshooting-tacticssummary----a-collection-of-what-hopefully-are-obvious-troubleshooting-tactics-when-it-comes-to-diagnosing-software-deployment-issues-and-configuration-problemstags-------blog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Effective Software Troubleshooting Tactics<br>
+summary:    A collection of what hopefully are obvious troubleshooting tactics when it comes to diagnosing software deployment issues and configuration problems.<br>
+tags:       [Blog]</h2>
+<!-- raw HTML omitted -->
+<p>As an IAM consultant, a good portion of my time throughout the day is spent troubleshooting issues, analyzing logs, helping client and colleagues figure out how to make sense of a seemingly impossible situation when it comes to production system failures, behavioral weirdness or just simply getting something to work per a piece of documentation. I have found that having a documented set of steps and methods proves helpful at a high level as you set out a strategy to solve <em>almost any</em> issue dealing with software.</p>
+<p>In this blog post, I am sharing a few tactics I have learned and gathered over the years to help boost up my problem-solving foo and I hope that these continue to serve as helpful reminders for you as you troubleshoot software issues or diagnose deployment failures. Please note that these techniques are not listed in any particular order and all weigh more or less equally in terms of importance and priority. <em>Use what works best for you, in the order that works best for you</em>.</p>
+<h1>
+<a id="component-break-down" class="anchor" href="#component-break-down" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Component Break-down</h1>
+<p>As you set to configure and deploy a piece of software, one of the very first things you should do is to identify the <em>key actors</em> and their role in your particular deployment. For instance, if you are deploying a Java-based web application somewhere, your component break-down would include:</p>
+<ul>
+<li>The application itself</li>
+<li>Server deployment environment</li>
+<li>Dependent libraries/tooling</li>
+<li>Operating system</li>
+<li>Network</li>
+<li>Underlying programming language/framework</li>
+<li>...</li>
+</ul>
+<p>As you enumerate the components, it is important that you get to know each player to a reasonable degree. Be suspicious of everything. Once you have identified the key suspects, start working down the list and question everything.</p>
+<h1>
+<a id="start-simple" class="anchor" href="#start-simple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Start Simple</h1>
+<p>The weirdness you are trying to diagnose may, in fact, be a consequence of a rather complicated use case that involves many players, ugly preconditions and a decent weather forecast. It is generally rather difficult and sometimes impossible to get every aspect of that difficult use case configured and developed in one initial attempt, specifically if you are not too familiar with the technical solution or even the use case at hand. So, start simple and break down the use case into logical, concrete, bounded chunks. Shoot for best case scenarios small enough to be manageable in your starting attempts. Once successful, tweak one aspect of the configuration in oh-so-small ways, introduce a variable and observe how the behavior changes. Repeat this process until you get home.</p>
+<p>Not too long ago, a colleague and I were trying to figure out how to let Apache Tomcat handle <a href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html"><code>clientAuth</code></a>. After a component break-down, we had the following <em>key</em> actors:</p>
+<ul>
+<li>Apache Tomcat</li>
+<li>Application Realm Configuration</li>
+<li>SSL Certificate Setup</li>
+<li>Browser Setup</li>
+<li>...</li>
+</ul>
+<p>Then we broke the use case down:</p>
+<ol>
+<li>Visit URL in application</li>
+<li>Browser presents certificate choice</li>
+<li>Apache Tomcat processes that choice</li>
+<li>Application accepts certificate</li>
+<li>Other stuff happens...</li>
+</ol>
+<p>So, we started to work down the list: <em>Can the URL be accessed without Tomcat's interference? What browser version/type is used? Is our test certificate sane and valid?</em>, etc. Our very best initial outcome simply was the success of getting to a particular URL. We did not necessarily care what the URL looked like, whether it could or should be changed or rewritten, how one could end up at that URL, web access vs non-web access, etc. All those details were entirely irrelevant and we would get to them later.</p>
+<p>Things must be simple before they are complicated.</p>
+<h1>
+<a id="thou-shall-log" class="anchor" href="#thou-shall-log" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Thou Shall Log</h1>
+<p>Application logs are <strong>THE BEST RESOURCE</strong> for determining the root cause of a problem, provided you have configured the appropriate log levels. Specifically, you want to make sure <code>DEBUG</code> or <code>TRACE</code> levels are turned on for the relevant packages and components in your logging configuration. Know where the logging configuration is, become familiar with its syntax when changes are due and know where the output data is saved.</p>
+<p>Also:</p>
+<ul>
+<li>
+<p>When changes are applied, you may need to restart the server environment and observe the log files to get a better understanding of behavior.</p>
+</li>
+<li>
+<p>Remember that you may not always be dealing with a <em>single</em> log file. Various events may get logged to different files at different locations on the system and you will need to be mindful of all locations where diagnostic data may be. For example, Apache Tomcat has a <code>catalina.out</code> log file, then some kind of a <code>localhost-xyz</code> file, then some sort of a <code>accesslog</code> file, then you have the application log files which may or may not choose to use the same the log files as target destinations for data, etc. <em>Know your toolset</em>. Remember to look at everything.</p>
+</li>
+<li>
+<p>Nuke all logs before you start the next test attempt. <strong>ALWAYS</strong> start clean. When you or anyone else analyzes diagnostics data, there should never be a question of <em>Wait. Is this recent? Is this actually my attempt at doing X? It says there is an error, but the date goes back to 2 years ago. How?</em>. Put a stop to all that. Stop wasting time. Save lives.</p>
+</li>
+</ul>
+<p>If there is one take away in this section for you, dear reader, and one that you should take to heart, internalize, build statues for in tribute and pray to in the morning when you wake up, is this: <strong>REVIEW LOGS</strong>.</p>
+<p>Put another way:</p>
+<ul>
+<li>Are you troubleshooting software? Please review logs.</li>
+<li>Cannot get some vendor integration working? Please review logs.</li>
+<li>Neighbor's loud music keeping you up at night? Please review logs.</li>
+<li>Ran out of milk? Please review logs.</li>
+<li>Dog shedding on the carpet? Cat doesn't approve of your life choices? Sure. Please review logs.</li>
+</ul>
+<p>In summary, the answer is almost always in the logs.</p>
+<h1>
+<a id="compare-solutions" class="anchor" href="#compare-solutions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compare Solutions</h1>
+<p>If you can afford it, another helpful technique is to find environments and/or solutions that actually deliver the use case you need so that you can begin to compare differences. Your objective here is to try to eliminate variables that make the job unnecessarily unique and bothersome and remove those. Identification of these gotchas is the first step, but perhaps more importantly, understanding them and their effect is more ideal. For example, when we were trying to figure out Apache Tomcat's way of handling <code>clientAuth</code>, we started asking the following questions:</p>
+<ul>
+<li><em>This is Apache Tomcat 8. Does it work with 7? Does it work with 6?</em></li>
+<li><em>Do we have a certificate that actually does work? How is that different from ours?</em></li>
+<li><em>Docs say we need file <code>X</code> at THIS location, but we have <code>X</code> at THAT location. Is that important?</em></li>
+<li><em>Logs say we cannot connect to our new LDAP. Can we connect to our old LDAP? What's changed?</em></li>
+</ul>
+<p>Again, you want to find a solution that works and start comparing to identify differences and variables. Find working examples. Try different versions of software components with the same configuration you have today.</p>
+<p>Once you have spotted the difference, it's important that you establish a baseline first <em>and then</em> start tweaking that baseline one small step at a time in configuration and elsewhere to find the missing element or changing behavior. If you thought option <code>X</code> in the configuration does blah, it's important to figure out why it does or does not do as advertised. Identify what works and what doesn't. Getting something to work is important and is one best case scenario sure, but you should not have to stop there, as there will come a time where you would have to go above and beyond option X and getting something to work might bring about other (usually security-related) consequences of which you should be mindful.</p>
+<h1>
+<a id="code-speaks-truth" class="anchor" href="#code-speaks-truth" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Speaks Truth</h1>
+<p>So, thus far you have identified the key components, broke down the use case, examined logs, and played around with alternative solutions. <code>X</code> works but <code>X+1</code> does not. You know that. Your logs know that. Your previous working examples and legacy environments and your cat know that. What's next?</p>
+<p><em>Truth can only be found in one place: the code</em>, and surely, you must handle the truth.</p>
+<p>In my earlier anecdote of dealing with Apache Tomcat and <code>clientAuth</code>, all the steps led us to a suspicious realm configuration that was not activated quite correctly. We knew the realm worked and we know it was recognized by Apache Tomcat, yet it was never invoked at the right moment. So we started out by configuring Apache Tomcat for <a href="https://blog.trifork.com/2014/07/14/how-to-remotely-debug-application-running-on-tomcat-from-within-intellij-idea/">remote debugging</a>, got the source code, compiled it and connected it via IntelliJ IDEA to a live running Tomcat instance so we could step through each statement. This method allowed us to debug the application, the realm, specific portion of Apache Tomcat code dealing with the realm...and surely, the cat.</p>
+<p>What I am trying to say here is that, (if you have access and a permitting license), you must be prepared for stepping down into the code to either trace the flow and logic statically by simply reading (between) the lines or begin a remote debugging session as we did to figure out how it is actually executing. Logs, comparable solutions and such can only take you so far. In the end, code speaks the truth.</p>
+<h1>
+<a id="share-pain-responsibly" class="anchor" href="#share-pain-responsibly" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Share Pain, Responsibly</h1>
+<p>With enough collected data, you should, of course, ask for help and guidance as time and opportunity allows. Sharing data and problem reports requires a degree of discipline to make it easy for others to understand the request easily and respond to it quickly. While there would always be room for follow-up questions and clarifications, it is best to produce and collect as much data as possible and share them using well-understood conventional formats and channels for the best outcome.</p>
+<p>A very good discipline is to use a starting template for sharing such reports. A template is basically a stubbed out application, categorized with a series of questions relevant for diagnostics where you fill in the gaps and state the problem description. Again, whether or not the project or community asks this of you, try to provide the following data points:</p>
+<ul>
+<li><em>Problem Statement</em></li>
+</ul>
+<p>State the problem description. <em>What</em> are you trying to do? <em>Why</em> are you doing it at all? This is where you begin to explain the use case at hand, and circumstances that led you to it.</p>
+<p>Be brief but precise:</p>
+<ol>
+<li>Avoid statements such as <em>We have X and it doesn't work</em>. That statement simply doesn't work.</li>
+<li>Reformulate statements such as <em>Is it possible to do X?</em> to explain the why, the what and the how.</li>
+</ol>
+<ul>
+<li><em>Expected Outcome</em></li>
+</ul>
+<p>As the title suggests, what do you expect to happen? What should be the end result in your view?</p>
+<ul>
+<li><em>Current Outcome</em></li>
+</ul>
+<p>As the title suggests, what do you see happening today?</p>
+<ul>
+<li><em>Reproduce</em></li>
+</ul>
+<p>How exactly should one go about reproducing the current outcome? Do you have a series of test cases that demonstrate some faulty behavior? Do you have a sample, a test application to exhibit the issue at hand?</p>
+<ul>
+<li><em>Diagnostics</em></li>
+</ul>
+<p>What steps have you taken to identify and diagnose what you consider to be an issue? How far down the rabbit hole have you traveled to debug the code, analyze the logs, find comparable solutions and track breaking change and incompatibility across software releases?</p>
+<ul>
+<li><em>Workarounds</em></li>
+</ul>
+<p>Do you have a solution at hand today that does the job? Have you experimented with code and configuration to determine the root cause and come up with a suggestion on how X may be improved, fixed, etc?</p>
+<ul>
+<li><em>Logs</em></li>
+</ul>
+<p>It is important that you provide the full story given to you by log data. You may either attach a clean log file that shows the faulty sequence of operations from start to finish, or (and you should avoid this where you can) you may decide to paste relevant sections of the log although this option is usually risky since the portions you think are relevant may not, in fact, be the entire story. If you do decide to share snippets of logs, remember to <em>not</em> paste the entire log output into a forum or description field, and learn to format and organize the data so it can be easily and readily understood by others quickly.</p>
+<ul>
+<li><em>Environment</em></li>
+</ul>
+<p>Describe the environment you have today. What are the key components at play here? What precise version of the software do you run? Where did you download it? How old is it and have you considered upgrading? How did you install it? What changes have been applied to the software or its surrounding ecosystem, etc?</p>
+<p>Stick to a template. Less guesswork leads to quicker responses and better outcomes. Practice.</p>
+<h1>
+<a id="eat-sleep-think" class="anchor" href="#eat-sleep-think" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eat, Sleep, Think</h1>
+<p>This particular item may not be all too relevant when it comes to troubleshooting software, as issue resolution is usually time-sensitive and a task with a fair amount of pressure and stress, but I personally find this to be very valuable during design or coding sessions. At times, where you are stumped for a solution and have been staring at the screen and logs for a long time, unsure of how to connect certain pieces together and pigeonholed into a particular line of thinking, it is very useful to leave it all behind for a period of time and switch to a more <em>physical activity</em>. Go for a walk around the neighborhood's park, take a nap, shoot a few free throws, etc and allow your brain to reset itself and subconsciously work on the problem in the background. Once you come back, you would have the equivalent of a second pair of eyes and a fresh perspective on how to attack the problem.</p>
+<p>In the same category, I find that re-iterating the problem and insofar solutions using a whiteboard, pen/pencil, chatting with a colleague or just about any other type of physical activity outside the use of electronics has the same effect. This effectively tickles your brain to get moving on a solution without you actively realizing it, and of course, a short break every once in a while can do a lot of good. My personal best is around 40-minute mark where I get up, walk around and try to do something totally different and silly, like attempting to train the pigeons outside to dubstep.</p>
+<p>Believe me, it works. (The technique, not the dubstep).</p>
+<h1>
+<a id="start-early" class="anchor" href="#start-early" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Start Early</h1>
+<p><img src="https://user-images.githubusercontent.com/1205228/45082890-9b202100-b10f-11e8-9e28-c02251d3271a.png" alt="image"></p>
+<p><a href="https://apereo.github.io/2017/03/08/the-myth-of-ga-rel/">This</a>.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you. This is by no means a comprehensive list; a lot of it is subjective and could be entirely inapplicable to you, your personality and work etiquette. Either way, if you have other tactics and strategies to share please feel free to edit this post as best you can.</p>
+<p>Also, many thanks to <a href="https://github.com/jtgasper3">@jtgasper3</a> for reviewing this post and providing feedback.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

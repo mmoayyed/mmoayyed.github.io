@@ -1,0 +1,109 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---authentication-handler-resolutionsummary----learn-how-to-resolve-and-select-authentication-handlers-based-on-configurable-and-flexible-filtering-criteriatags-------casbackground-imageshomeslide-1jpg" class="anchor" href="#layout-----posttitle------apereo-cas---authentication-handler-resolutionsummary----learn-how-to-resolve-and-select-authentication-handlers-based-on-configurable-and-flexible-filtering-criteriatags-------casbackground-imageshomeslide-1jpg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Authentication Handler Resolution<br>
+summary:    Learn how to resolve and select authentication handlers based on configurable and flexible filtering criteria.<br>
+tags:       [CAS]<br>
+background: '/images/home/slide-1.jpg'</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Nobody enjoys restrictions and limitations but when it comes to Apereo CAS and dealing with authentication transactions,<br>
+there may be a few cases where you would want to limit or choose a select collection of authentication handlers to respond<br>
+to a request. The selection criteria could be based on the format or syntax of the credential, the requesting application<br>
+or some other arbitrary rule. In this post, we are going to briefly look at strategies that allow one to narrow down<br>
+the list of authentication handler candidates from a global set.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h1>
+<a id="credential-criteria" class="anchor" href="#credential-criteria" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credential Criteria</h1>
+<p>Most authentication strategies in CAS are given a <a href="https://apereo.github.io/cas/development/configuration/Configuration-Properties-Common.html#authentication-credential-selection">predicate to examine the requested credential</a> for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential:</p>
+<pre lang="properties"><code>...
+cas.authn.accept.credentialCriteria=.+@example.org
+cas.authn.accept.name=Default
+...
+</code></pre>
+<p>In the above example, the <code>credentialCriteria</code> is a regular expression pattern that is tested against the credential identifier. In other words, if an authentication request is submitted to CAS with a credential<br>
+whose identifier is <code>test@example.org</code>, this <code>Default</code> authentication handler will be selected to validate the credential.</p>
+<h1>
+<a id="per-application" class="anchor" href="#per-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Application</h1>
+<p>Imagine that we have defined the following authentication handlers/schemes in our CAS configuration:</p>
+<pre lang="properties"><code>...                  
+cas.authn.accept.users=casuser::Mellon
+cas.authn.accept.credentialCriteria=.+@example.org
+cas.authn.accept.name=Static 
+
+cas.authn.json.location=file:/etc/cas/config/json-authn.json
+cas.authn.json.name=JSON
+...
+</code></pre>
+<p>When an authentication request is submitted to CAS, both of the above strategies are made available and selected to respond<br>
+and verify the given credential. However, you may want to ignore the <code>Static</code> strategy and restrict the selection<br>
+criteria to only have the <code>JSON</code> authentication handler respond in case the authentication request<br>
+is submitted from an <code>https://app.example.org</code> application:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "https://app.example.org/.+",
+  "name" : "ExampleApp",
+  "id" : 1,
+  "requiredHandlers" : [ "java.util.HashSet", [ "JSON" ] ]
+}
+</code></pre>
+<h1>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h1>
+<p>In more flexible yet programmatic ways, the selection of authentication handlers can also be delegated to a Groovy script. This is the option where<br>
+you get to have complete control over the selection process and are tasked with designing the script to return the final filtered collection<br>
+of authentication handlers that should operate on the credential:</p>
+<pre lang="groovy"><code>cas.authn.core.groovy-authentication-resolution.location=file:/etc/cas/config/AuthenticationSelection.groovy
+</code></pre>
+<p>The <code>AuthenticationSelection.groovy</code> may look like this:</p>
+<pre lang="groovy"><code>def run(Object[] args) {
+    def handlers = args[0]
+    def transaction = args[1]
+    def servicesManager = args[2]
+    def logger = args[3]
+
+    logger.trace("Resolving authentication handlers ${handlers}...") 
+    /*
+        Return the final Set of AuthenticationHandler
+        components from the provided handlers
+        back to CAS to try this transaction.
+    */
+    handlers
+}
+
+def supports(Object[] args) {
+    def handlers = args[0]
+    def transaction = args[1]
+    def servicesManager = args[2]
+    def logger = args[3]      
+
+    /*
+        Determine if the script should be run,
+        and whether it can support the given transaction.
+    */
+    true
+}
+</code></pre>
+<h1>
+<a id="bonus" class="anchor" href="#bonus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bonus</h1>
+<p>The most extreme option of all is to simply supply your overall strategy for authentication management and override the CAS-provided engine.<br>
+To do this, you should start by <a href="https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html">designing your configuration component</a> to include the following bean:</p>
+<pre lang="java"><code>@Bean
+public AuthenticationManager casAuthenticationManager() {
+    ...
+}
+</code></pre>
+<p>You should only take up this option as a last resort, <a href="https://fawnoos.com/2017/09/10/stop-writing-code/">and maybe not even then</a>.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

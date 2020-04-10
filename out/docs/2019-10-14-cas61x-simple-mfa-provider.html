@@ -1,0 +1,93 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---simple-multifactor-authenticationsummary----learn-to-configure-apereo-cas-to-act-as-a-simple-multifactor-provider-itselftags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---simple-multifactor-authenticationsummary----learn-to-configure-apereo-cas-to-act-as-a-simple-multifactor-provider-itselftags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Simple Multifactor Authentication<br>
+summary:    Learn to configure Apereo CAS to act as a simple multifactor provider itself.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>The Apereo CAS portfolio presents support for an impressive number of <a href="https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html">multifactor authentication providers</a> out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather <a href="https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html">simplified multifactor authentication</a> solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.</p>
+<p>In this tutorial, we are going to briefly review the steps required to turn on <a href="https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html">Simple Multifactor Authentication</a>.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/tweakers/MockMock">MockMock</a></li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>Prepare your CAS overlay with the correct <a href="https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html">auto-configuration module</a>. Next, we will first instruct CAS to trigger <em>simple mfa</em> for all requests and applications:</p>
+<pre lang="properties"><code>cas.authn.mfa.globalProviderId=mfa-simple
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Then, let's choose email as our preferred communication mechanism for sharing tokens. To do so, let's teach CAS about <a href="https://github.com/tweakers/MockMock">our email server</a>:</p>
+<pre lang="properties"><code>spring.mail.host=localhost
+spring.mail.port=25000
+spring.mail.testConnection=true
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Then, let's instruct CAS to share tokens via email:</p>
+<pre lang="properties"><code>cas.authn.attributeRepository.stub.attributes.mail=misagh@somewhere.com
+
+cas.authn.mfa.simple.mail.from=wolverine@example.org
+cas.authn.mfa.simple.mail.subject=CAS MFA Token
+cas.authn.mfa.simple.mail.text=Hello! Your requested CAS token is %s
+cas.authn.mfa.simple.mail.attributeName=mail
+
+cas.authn.mfa.simple.timeToKillInSeconds=30
+</code></pre>
+<p>A few things to note:</p>
+<ul>
+<li>The <code>%s</code> acts as a placeholder for the generated token in the body of the message.</li>
+<li>The expiration of the generated token is set to <code>30</code> seconds.</li>
+<li>User email addresses are expected to be found under a <code>mail</code> attribute. In this example, this is done as a static attribute via the stub attribute repository configuration.</li>
+</ul>
+<p>At this point, we should be ready to test.</p>
+<h1>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test</h1>
+<p>Once you build and bring up the deployment, let's simulate an authentication attempt from a made-up application, <code>https://app.example.org</code>, by submitting the following request:</p>
+<pre lang="bash"><code>https://sso.example.org/cas/login?service=https://app.example.org
+</code></pre>
+<p>After authentication, you should see the following entries in the CAS log:</p>
+<pre lang="bash"><code>- &lt;Added ticket [CASMFA-004291] to registry.&gt;
+- &lt;Successfully submitted token via SMS and/or email to [misagh]&gt;
+</code></pre>
+<p>The screen should ask for the token:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/66712549-4d182b00-edaf-11e9-8ab8-2ce916577eac.png" alt="image"></p>
+<p>If you check your email, you should have received a token:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/66712619-78e7e080-edb0-11e9-97bc-0d908d1052d8.png" alt="image"></p>
+<p>Submit the generated token <code>CASMFA-004291</code> back to CAS and you should be allowed to proceed.</p>
+<h1>
+<a id="bonus" class="anchor" href="#bonus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bonus</h1>
+<p>To control the length of the generated token, use:</p>
+<pre lang="properties"><code># cas.authn.mfa.simple.tokenLength=6
+</code></pre>
+<p>You can take direct control of the token generation logic by <a href="https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html">designing your own configuration component</a> with the following bean in place:</p>
+<pre lang="java"><code>@Bean
+public UniqueTicketIdGenerator casSimpleMultifactorAuthenticationUniqueTicketIdGenerator() {
+    return new MyUniqueTicketIdGenerator();
+}
+</code></pre>
+<p>Implement the <code>MyUniqueTicketIdGenerator</code> as you see fit or better yet, use the <code>GroovyUniqueTicketIdGenerator</code> instead to hand off the implementation to an external Groovy script with the following body:</p>
+<pre lang="groovy"><code>def run(Object... args) {
+    def prefix = args[0]
+    def logger = args[1]
+    return ...
+}
+</code></pre>
+<p>You can also control the token validation logic by supplying the following bean that should respond to credentials of type <code>CasSimpleMultifactorTokenCredential</code>:</p>
+<pre lang="java"><code>@Bean
+public AuthenticationHandler casSimpleMultifactorAuthenticationHandler() {
+    return ...
+}
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

@@ -1,0 +1,161 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---rest-api-integrationssummary----learn-how-to-integrate-with-cas-using-its-rest-api-to-authenticate-exchange-tickets-and-get-access-to-user-profiles-and-attributestags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---rest-api-integrationssummary----learn-how-to-integrate-with-cas-using-its-rest-api-to-authenticate-exchange-tickets-and-get-access-to-user-profiles-and-attributestags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - REST API Integrations<br>
+summary:    Learn how to integrate with CAS using its REST API to authenticate, exchange tickets and get access to user profiles and attributes.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p><a href="https://apereo.github.io/cas/development/protocol/REST-Protocol.html">REST protocol support</a> in Apereo CAS has been available since the early days of CAS <code>3.x</code>. Since then, a lot of additional REST-based features and extensions are brought into the software to enable one to not only authenticate and/or exchange tokens but also add service definitions for relying parties or fetch attributes from remote REST endpoints, etc. The focus of this tutorial is to provide a brief overview of <em>some</em> of the REST-based features of CAS.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html">JSON Service Registry</a></li>
+<li><a href="https://apereo.github.io/cas/development/protocol/REST-Protocol.html">REST Protocol</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>Let's assume that we have the following service definition in <a href="https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html">CAS JSON service registry</a>:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId": "https://app.example.org",
+  "name": "ExampleApp",
+  "id": 1,
+  "description": "This service definition defined our example application.",
+}
+</code></pre>
+<p>Let's also instruct CAS to fetch attributes (i.e. <code>email</code>) from a static/stubbed attribute repository source:</p>
+<pre lang="properties"><code>cas.authn.attributeRepository.stub.attributes.email=casuser@example.org
+</code></pre>
+<p>Next, to enable the CAS REST protocol the overlay must primarily be prepped with the following modules:</p>
+<pre lang="groovy"><code>compile "org.apereo.cas:cas-server-support-rest:${project.'cas.version'}"
+compile "org.apereo.cas:cas-server-support-rest-services:${project.'cas.version'}"
+</code></pre>
+<h2>
+<a id="exchange-tokens" class="anchor" href="#exchange-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exchange Tokens</h2>
+<p>Let's invoke the REST API to authenticate a user and get back a ticket-granting ticket:</p>
+<pre lang="bash"><code>curl -k -X POST -H "Content-Type: Application/x-www-form-urlencoded" \
+  https://sso.example.org/cas/v1/tickets \
+  -d "username=casuser&amp;password=Mellon"
+</code></pre>
+<p>...where the response would be:</p>
+<pre lang="html"><code>&lt;!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;201 CREATED&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;&lt;h1&gt;TGT Created&lt;/h1&gt;
+    &lt;form action="https://sso.example.org/cas/v1/tickets/TGT-2-abcdefg"
+      method="POST"&gt;Service:&lt;input type="text" name="service" value=""&gt;
+      &lt;br&gt;&lt;input type="submit" value="Submit"&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The ticket produced in the response is embedded inside an HTML form. We can adjust the <code>Accept</code> header to produce a more JSON-friendly response:</p>
+<pre lang="bash"><code>curl -X POST -H "Content-Type: Application/x-www-form-urlencoded" \
+  -H "Accept: application/json" https://sso.example.org/cas/v1/tickets \
+  -d "username=casuser&amp;password=Mellon"
+...
+TGT-2-abcdefg
+</code></pre>
+<p>The ticket-granting ticket that is produced can be used to obtain a service ticket:</p>
+<pre lang="bash"><code>curl -X POST -H "Content-Type: Application/x-www-form-urlencoded" \
+  -H "Accept: application/json" https://sso.example.org/cas/v1/tickets/ \
+  TGT-2-abcdefg?service=https://www.google.com
+ST-1-VGF-yzB8
+</code></pre>
+<p>The service ticket can then be validated so we could obtain the user profile:</p>
+<pre lang="bash"><code>curl -k https://sso.example.org/cas/p3/serviceValidate\
+  ?service=https://www.google.com"&amp;"ticket=ST-1-VGF-yzB8
+</code></pre>
+<p>...where the response would be:</p>
+<pre lang="xml"><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+    &lt;cas:authenticationSuccess&gt;
+        &lt;cas:user&gt;casuser&lt;/cas:user&gt;
+        &lt;cas:attributes&gt;
+            &lt;cas:credentialType&gt;UsernamePasswordCredential&lt;/cas:credentialType&gt;
+            &lt;cas:isFromNewLogin&gt;true&lt;/cas:isFromNewLogin&gt;
+            ...
+            &lt;/cas:attributes&gt;
+    &lt;/cas:authenticationSuccess&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<p>You could also specify a <code>format=json</code> parameter to produce a more JSON-friendly response:</p>
+<pre lang="bash"><code>curl -k https://sso.example.org/cas/p3/serviceValidate\
+  ?service=https://www.google.com"&amp;"ticket=ST-1-VGF-yzB8"&amp;"format=json
+</code></pre>
+<h2>
+<a id="registering-applications" class="anchor" href="#registering-applications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registering Applications</h2>
+<p>REST calls to CAS to register applications must be authenticated using basic authentication where credentials are authenticated and accepted by the existing CAS authentication strategy, which in our case would be <code>casuser</code> and <code>Mellon</code>.</p>
+<p>Furthermore, the authenticated principal must be authorized with a pre-configured role/attribute name and value that is designated in the CAS configuration via the CAS properties:</p>
+<pre lang="properties"><code>cas.rest.attributeName=email
+cas.rest.attributeValue=.+example.*
+</code></pre>
+<p>The above outlines only users who carry an <code>email</code> attribute with a value that matches the above pattern can be authorized to add application definitions to CAS. In our case, we should be able to successfully do so with our sample <code>casuser</code> since the test account has a stubbed <code>email</code> attribute with a value of <code>casuser@example.org</code> that matches the above pattern.</p>
+<p>Finally, the body of the request must be the service definition that shall be registered in JSON format and of course, CAS must be configured to accept the particular service type defined in the body.</p>
+<p>So, the final call to CAS would be as such:</p>
+<pre lang="bash"><code>curl -k -H "Content-Type: application/json" -X POST \
+  https://sso.example.org/cas/v1/services \
+  -u casuser:Mellon -d@/path/to/app2.json
+</code></pre>
+<p>...where our <code>app2.json</code> would be as:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "https://app2.example.org.+",
+  "name" : "ExampleApp2",
+  "id" : 2,
+  "description": "This is our second application"
+}
+</code></pre>
+<p>Upon success, the CAS server would produce a <code>200</code> status code and its audit logs would indicate the successful registration of the application:</p>
+<pre lang="bash"><code>=============================================================
+WHO: casuser
+WHAT: AbstractRegisteredService(serviceId=https://app2.example.org.+...
+ACTION: SAVE_SERVICE_SUCCESS
+APPLICATION: CAS
+WHEN: Mon Jun 12 14:46:58 MST 2019
+CLIENT IP ADDRESS: 0:0:0:0:0:0:0:1
+SERVER IP ADDRESS: 0:0:0:0:0:0:0:1
+=============================================================
+</code></pre>
+<p>If you attempt the same operation with an unauthorized user:</p>
+<pre lang="bash"><code>curl -i -H "Content-Type: application/json" \
+  -X POST https://sso.example.org/cas/v1/services \
+  -u otheruser:somePassword -d@/path/to/app2.json
+</code></pre>
+<p>...you might see the following in the response with a <code>403</code> status code:</p>
+<pre lang="bash"><code>Request is not authorized
+</code></pre>
+<h2>
+<a id="restful-attribute-resolution" class="anchor" href="#restful-attribute-resolution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RESTful Attribute Resolution</h2>
+<p>CAS can be configured to fetch attributes from a remote REST endpoint. This functionality stands on its own, and does not require the presence of any extensions or modules in the overlay. It is offered by default, and activated only if the following CAS configuration is defined:</p>
+<pre lang="properties"><code>cas.authn.attributeRepository.rest[0].basicAuthUsername=uid
+cas.authn.attributeRepository.rest[0].basicAuthPassword=password
+cas.authn.attributeRepository.rest[0].method=GET
+cas.authn.attributeRepository.rest[0].url=https://rest.somewhere.org/casattributes
+</code></pre>
+<p>The authenticating user id is passed in form of a request parameter under <code>username</code>. The response is expected to be a JSON map as such:</p>
+<pre lang="json"><code>{
+  "name" : "JohnSmith",
+  "age" : 29,
+  "groups": ["g1", "g2", "g3"]
+}
+</code></pre>
+<p>Upon a successful authentication attempt, CAS would reach out to the REST endpoint to fetch attributes. The results are then merged with our stubbed collection of attributes and aggregated into one collection that would be available for attribute release. Specifically, in the end, the final collection of attributes for our <code>casuser</code> would be:</p>
+<pre lang="json"><code>{
+  "name" : "JohnSmith",
+  "age" : 29,
+  "email" : "casuser@example.org",
+  "groups": ["g1", "g2", "g3"]
+}
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

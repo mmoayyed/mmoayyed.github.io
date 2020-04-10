@@ -1,0 +1,65 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---service-redirection-strategiessummary----learn-to-customize-apereo-cas-to-modify-the-default-strategy-used-for-redirecting-the-authentication-flow-back-to-relying-partiestags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---service-redirection-strategiessummary----learn-to-customize-apereo-cas-to-modify-the-default-strategy-used-for-redirecting-the-authentication-flow-back-to-relying-partiestags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Service Redirection Strategies<br>
+summary:    Learn to customize Apereo CAS to modify the default strategy used for redirecting the authentication flow back to relying parties.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Per the <a href="https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html">CAS Protocol</a>, service tickets issued by a CAS server are expected<br>
+to be returned to the original service identifier provided in the initial authentication request via the <code>service</code> parameter. While this default behavior is enforced by<br>
+the Apereo CAS server, there may be situations where the ultimate redirection URL may need to be customized or altered for advanced integrations.</p>
+<p>In this short tutorial, we are briefly going to review the specifics of the redirection strategy and ways that it might be tuned. Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<p>A similar blog post on how tuning service matching strategies <a href="https://fawnoos.com/2019/10/28/cas61x-service-matching-strategy/">can be found here</a>.</p>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>The default redirection strategy is exact and enforced by <code>WebApplicationServiceResponseBuilder</code>, whose job is to build an<br>
+appropriate response to the authentication request. The builder<br>
+supports <em>normal</em> authentication requests from generic web applications and is capable of producing<br>
+responses as a <code>GET</code>, <code>POST</code>, etc. The definition of the builder can of course be<br>
+customized and replaced since it's defined as a Spring bean in the running application context.</p>
+<!-- raw HTML omitted -->
+<p>To supply your own builder, you should start by <a href="https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html">designing your own configuration component</a> to include the following bean:</p>
+<pre lang="java"><code>@Bean
+public ResponseBuilder&lt;WebApplicationService&gt; webApplicationServiceResponseBuilder() {
+    return new MyWebApplicationServiceResponseBuilder(...);
+}
+</code></pre>
+<p>The general outline of <code>MyWebApplicationServiceResponseBuilder</code> should have to follow the below example:</p>
+<pre lang="java"><code>public class MyWebApplicationServiceResponseBuilder 
+        extends WebApplicationServiceResponseBuilder {
+    
+    @Override
+    protected String determineServiceResponseUrl(WebApplicationService service) { 
+        if (shouldWeCustomizeRedirectionUrls(service)) {
+            return ...;
+        }
+        return super.determineServiceResponseUrl(service);
+    }
+}
+</code></pre>
+<p>Your task would then be to implement the <code>determineServiceResponseUrl()</code> method to provide your own custom logic.</p>
+<p>Alternatively, you can specify an override for the registered service definition:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "TEST",
+  "id" : 1,
+  "redirectUrl" : "https://somewhere.example.org",
+  "evaluationOrder" : 1
+}
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

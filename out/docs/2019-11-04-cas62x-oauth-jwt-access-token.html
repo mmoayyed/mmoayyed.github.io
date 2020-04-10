@@ -1,0 +1,238 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---oauth-jwt-access-tokenssummary----learn-to-customize-apereo-cas-to-issue-oauth-access-tokens-as-jwtstags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---oauth-jwt-access-tokenssummary----learn-to-customize-apereo-cas-to-issue-oauth-access-tokens-as-jwtstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - OAuth JWT Access Tokens<br>
+summary:    Learn to customize Apereo CAS to issue OAuth Access Tokens as JWTs.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>When CAS is configured to act as an OAuth identity provider, it begins to issue access tokens that are by default opaque identifiers. There is also the option to generate JWTs as access tokens on a per-application basis. Using JWTs, CAS can create JSON documents to encode all relevant parts of an access token into the token itself. The main benefit of this is that API servers can verify access tokens without doing a token lookup on every API request, making the API much more easily scalable. Also, this means that applications don’t need to be aware of<br>
+how CAS implements access tokens which makes it possible to change the implementation later without affecting clients.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON Service Registry</a></li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>First, let's create a few mock attributes that ought to be released to our sample yet-to-be-registered OAuth application:</p>
+<pre lang="properties"><code>cas.authn.attributeRepository.stub.attributes.cn=Misagh
+cas.authn.attributeRepository.stub.attributes.sn=Moayyed
+cas.authn.attributeRepository.stub.attributes.mail=mm1844@gmail.com
+</code></pre>
+<p>Once the OAuth module <a href="https://apereo.github.io/cas/development/installation/OAuth-OpenId-Authentication.html#configuration">is included in the WAR Overlay</a>, we can<br>
+begin to register a simple OAuth application with CAS using<br>
+the following <a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON service definition</a>:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "https://example.net/dashboard",
+  "name" : "OAUTH",
+  "id" : 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ]
+  },
+  "supportedGrantTypes": [ "java.util.HashSet", [ "password" ] ]
+}
+</code></pre>
+<p>A few things to note:</p>
+<ul>
+<li>Our application has the usual <code>clientId</code>, <code>clientSecret</code> and <code>redirectUri</code> (i.e. <code>serviceId</code>) defined.</li>
+<li>The <code>cn</code>, <code>mail</code>, and <code>sn</code> attributes are selectively defined to be released to the application.</li>
+<li>CAS will only interact with the application using the <code>password</code> grant, which we will use to request access tokens<br>
+either in plain or JWT format.</li>
+</ul>
+<h1>
+<a id="plain-access-tokens" class="anchor" href="#plain-access-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plain Access Tokens</h1>
+<p><a href="https://fawnoos.com/2018/09/05/effective-diagnostics/#start-simple">Let's start simple</a>, by using the <code>password</code> grant to request<br>
+an access token without any extra configurations:</p>
+<pre lang="bash"><code>$ curl https://sso.example.org/cas/oauth2.0/token?grant_type=password'&amp;'\
+    client_id=client'&amp;'client_secret=secret'&amp;'username=casuser'&amp;'password=Mellon | jq
+</code></pre>
+<p>The above request first authenticates the request using the provided <code>username</code> and <code>password</code>. Once the application policy is located<br>
+and verified by CAS, an access token can be provided in the response:</p>
+<pre lang="json"><code>{
+  "access_token": "AT-1-wiNsTgaHzXLUIyaaoFoip-znohWPihea",
+  "token_type": "bearer",
+  "expires_in": 28800,
+  "scope": ""
+}      
+</code></pre>
+<p>We can, of course, use the access token in exchange for user profile information:</p>
+<pre lang="bash"><code>curl -k --user client:secret https://sso.example.org/cas/oauth2.0/profile?\
+    access_token=AT-1-wiNsTgaHzXLUIyaaoFoip-znohWPihea
+</code></pre>
+<p>...where the result would give us access to allowed claims:</p>
+<pre lang="json"><code>{
+  "cn": "Misagh",
+  "mail": "mm1844@gmail.com",
+  "sn": "Moayyed",
+  "service": "client",
+  "id": "casuser",
+  "client_id": "client"
+}
+</code></pre>
+<h1>
+<a id="jwt-access-tokens" class="anchor" href="#jwt-access-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JWT Access Tokens</h1>
+<p>As a next step, let's modify our service definition to ask for access tokens as JWTs:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "https://example.net/dashboard",
+  "name" : "OAUTH",  
+  "jwtAccessToken": true, 
+  "id" : 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ]
+  },
+  "supportedGrantTypes": [ "java.util.HashSet", [ "password" ] ]
+}
+</code></pre>
+<p>With the addition of the <code>jwtAccessToken</code> field, CAS will render access tokens as JWTs that are by default signed and encrypted using (pre-generated, if undefined) keys. So, let's start simple and force CAS to disable signing and encryption of such tokens so we can<br>
+unpack them easier later for verification:</p>
+<pre lang="properties"><code># Force keys to be blank
+cas.authn.oauth.access-token.crypto.encryption.key=
+cas.authn.oauth.access-token.crypto.signing.key= 
+
+cas.authn.oauth.access-token.crypto.enabled=false
+cas.authn.oauth.access-token.crypto.signing-enabled=false
+cas.authn.oauth.access-token.crypto.encryption-enabled=false
+</code></pre>
+<p>Using the same command to request an access token, the response now delivers a JWT instead:</p>
+<pre lang="properties"><code>{
+  "access_token": "eyJhbGciOi...",
+  "token_type": "bearer",
+  "expires_in": 28800,
+  "scope": ""
+}
+</code></pre>
+<p>Since the JWT is plain this time around, we can easily unpack it using a service like <a href="https://jwt.io/">jwt.io</a> to verify the embedded JSON:</p>
+<pre lang="json"><code>{
+  "sub": "casuser",
+  "mail": "mm1844@gmail.com",
+  "roles": [],
+  "iss": "https://sso.example.org/cas",
+  "cn": "Misagh",
+  "nonce": "",
+  "client_id": "client",
+  "aud": "client",
+  "grant_type": "PASSWORD",
+  "permissions": [],
+  "scope": [],
+  "claims": [],
+  "scopes": [],
+  "state": "",
+  "sn": "Moayyed",
+  "exp": 1572837100,
+  "iat": 1572808300,
+  "jti": "AT-1-ibYxeSXhcU1N-0sF1JQXdgX4YAmBgCXY"
+}
+</code></pre>
+<p>Of course, we can exchange the very same JWT for user profile information just as we did with a plain access token:</p>
+<pre lang="json"><code>{
+  "cn": "Misagh",
+  "mail": "mm1844@gmail.com",
+  "sn": "Moayyed",
+  "service": "client",
+  "id": "casuser",
+  "client_id": "client"
+}
+</code></pre>
+<h2>
+<a id="signing--encryption" class="anchor" href="#signing--encryption" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Signing &amp; Encryption</h2>
+<p>If we wanted, we could turn on signing and encryption of our JWT access tokens:</p>
+<pre lang="properties"><code>cas.authn.oauth.accessToken.crypto.encryption.key=4fdqpa_mlx1XMtQR...
+cas.authn.oauth.accessToken.crypto.signing.key=FXdUERkUNGqmai8oociQOyrHCQVYSW...
+cas.authn.oauth.accessToken.crypto.enabled=true
+cas.authn.oauth.accessToken.crypto.signing-enabled=true
+cas.authn.oauth.accessToken.crypto.encryption-enabled=true
+</code></pre>
+<p>The same exercise can be repeated to make sure an encrypted/signed JWT can be decoded back to produce user profile information.</p>
+<p>Of course, keys can always belong to a specific service definition, overriding the global default. If we wanted to, we could modify our sample service definition as such:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "https://example.net/dashboard",
+  "name" : "OAUTH",  
+  "jwtAccessToken": true, 
+  "id" : 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ]
+  },
+  "supportedGrantTypes": [ "java.util.HashSet", [ "password" ] ],
+   "properties" : {
+      "@class" : "java.util.HashMap",
+      "accessTokenAsJwtSigningKey" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "..." ] ]
+      },
+      "accessTokenAsJwtEncryptionKey" : {
+           "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+           "values" : [ "java.util.HashSet", [ "..." ] ]
+      },
+      "accessTokenAsJwtSigningEnabled" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "true" ] ]
+      },
+      "accessTokenAsJwtEncryptionEnabled" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "true" ] ]
+      }
+    }
+}
+</code></pre>
+<p>All properties should be optional; You may only specify that which you intend to override.</p>
+<h2>
+<a id="what-about" class="anchor" href="#what-about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What About...?</h2>
+<p>While it's nice to allow JWT access tokens on a per-service basis, you may want to extend that behavior to all applications and make JWT access tokens the global default. To do, you would need to turn on the following setting:</p>
+<pre lang="properties"><code>cas.authn.oauth.accessToken.createAsJwt=true
+</code></pre>
+<p>When ciphers are turned on, JWT access tokens are by default (whether it's global or for a specific service) are always encrypted first and then signed. You can certainly<br>
+change the strategy type to reverse this behavior either globally or for a specific relying party:</p>
+<pre lang="properties"><code># cas.authn.oauth.accessToken.crypto.strategy-type=ENCRYPT_AND_SIGN
+cas.authn.oauth.accessToken.crypto.strategy-type=SIGN_AND_ENCRYPT
+</code></pre>
+<h2>
+<a id="bonus" class="anchor" href="#bonus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bonus</h2>
+<p>You may have noticed that our JSON service definition contains a client secret in plain text. However,  client secrets can also be kept as encrypted secrets; To be clear, authorized relying parties always have<br>
+access to and submit the client secret in plain text and CAS will auto-reverse the encryption of the secret found<br>
+in the service definition file for verification and matching.</p>
+<p>Skipping other details for brevity, our service file could take on the following form:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "client",
+  "clientSecret": "{cas-cipher}eyJhbGciOiJIUzUxMiIs...",
+  "serviceId" : "https://example.net/dashboard",
+  "name" : "OAUTH",  
+  "jwtAccessToken": true, 
+  "id" : 1
+ ...      
+}
+</code></pre>
+<p>All you'd have to do is to take a plain secret and use the <a href="https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html">CAS Command-line Shell</a> to transform it into encrypted<br>
+form. The encryption and signing keys for client secrets may be defined via the following settings:</p>
+<pre lang="properties"><code>cas.authn.oauth.crypto.encryption.key=...
+cas.authn.oauth.crypto.signing.key=...
+cas.authn.oauth.crypto.enabled=true
+cas.authn.oauth.crypto.signing-enabled=true
+cas.authn.oauth.crypto.encryption-enabled=true
+</code></pre>
+<!-- raw HTML omitted -->
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to <a href="https://www.apereo.org/content/apereo-membership">join the Apereo Foundation</a> and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

@@ -1,0 +1,88 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---keeping-healthy-with-spring-bootsummary----learn-how-you-may-keep-your-apereo-cas-deployment-healthy-monitoring-its-status-using-spring-boot-actuator-endpoints-and-health-indicatorstags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---keeping-healthy-with-spring-bootsummary----learn-how-you-may-keep-your-apereo-cas-deployment-healthy-monitoring-its-status-using-spring-boot-actuator-endpoints-and-health-indicatorstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Keeping Healthy with Spring Boot<br>
+summary:    Learn how you may keep your Apereo CAS deployment healthy, monitoring its status using Spring Boot actuator endpoints and health indicators.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>CAS, being a Spring-Boot application at heart, includes a number of endpoints to help you monitor and manage the server when it’s pushed to production. You can choose to manage and monitor the deployment using HTTP endpoints, referred to as <em>actuators</em>. This tutorial provides a basic overview of the <code>health</code> and <code>status</code> endpoints provided by both Spring Boot and CAS and also provides instructions on how such endpoints can be secured for access and win.</p>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+<p>CAS has traditionally presented a <code>status</code> endpoint, now at <code>/actuator/status</code>, which provides the user with basic server information and reports from all <code>Monitor</code> components; those that reported back on memory usage, connection information, etc. Having switched to Spring Boot, such components are transformed to use the native Spring Boot API known as <code>HealthIndicator</code>s and the <code>status</code> endpoint is mostly kept for legacy reasons and backward compatibility. The <code>status</code> endpoint now simply acts as a proxy by invoking the <code>health</code> endpoint internally to obtain and present data. If the <code>health</code> endpoint is turned off, you would only receive basic and very modest health data from <code>status</code> itself.</p>
+<p>More information about the health endpoint may be <a href="https://apereo.github.io/cas/development/configuration/Configuration-Properties.html#health-endpoint">found here</a>, and high-level notes discussing the monitoring capabilities of the Apereo CAS server can be <a href="https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html">found here</a>.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Let's try to enable both <code>status</code> and <code>health</code> first. The following settings should come in handy:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=status,health
+
+management.endpoint.status.enabled=true
+management.endpoint.health.enabled=true
+
+cas.monitor.endpoints.endpoint.defaults.access[0]=IP_ADDRESS
+cas.monitor.endpoints.endpoint.defaults.requiredIpAddresses[0]=127\\.0\\.0\\.1
+
+management.endpoint.health.show-details=always
+</code></pre>
+<p>The above collection of settings instruct CAS to:</p>
+<ul>
+<li>Expose <code>status</code> and <code>health</code> over the web as HTTP endpoints.</li>
+<li>Enable them both and ensure access to all endpoints by default is protected by IP addresses that match the given regular expression pattern.</li>
+<li>Ensure the <code>health</code> endpoint can always produce details from internal monitors and health indicators.</li>
+</ul>
+<p>If you invoke the <code>status</code> endpoint using <code>curl https://sso.example.org/cas/actuator/status | jq</code>:</p>
+<pre lang="json"><code>{
+  "status": 200,
+  "description": "OK",
+  "health": "UP",
+  "host": "misaghmoayyed",
+  "server": "https://sso.example.org",
+  "version": "6.1.0-RC2-SNAPSHOT - ..."
+}
+</code></pre>
+<p>Simple stuff. Let's invoke <code>health</code> with <code>curl https://sso.example.org/cas/actuator/health | jq</code>:</p>
+<pre lang="json"><code>{
+  "status": "UP",
+  "details": {
+    "memory": {
+      "status": "UP",
+      "details": {
+        "freeMemory": 4066209416,
+        "totalMemory": 4294967296
+      }
+    }
+  }
+}
+</code></pre>
+<p>Notice how <code>details</code> are <em>always</em> returned back in the response where we are getting data from one health indicator, reporting on memory usage and statistics.</p>
+<h2>
+<a id="health-indicators" class="anchor" href="#health-indicators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Health Indicators</h2>
+<p>The <code>health</code> endpoint provided by Spring Boot is set to check the status of your running CAS server. It is often used by monitoring software to alert someone when a production system goes down. Health information is collected from the content of a <em>registry</em> that has collected, at runtime, reports from <code>HealthIndicator</code> components and monitors.  Spring Boot includes a number of auto-configured <code>HealthIndicator</code>s and CAS presents a few of its own. The final system state is derived by an <em>aggregator</em> which sorts the statuses from each <code>HealthIndicator</code> based on an ordered list of statuses. The first status in the sorted list is used as the overall health status.</p>
+<!-- raw HTML omitted -->
+<p>Note that all health indicators (except the <code>memoryHealthIndicator</code>) are turned off by default whose capability can be individually controlled. For instance, we could turn off the memory monitor via:</p>
+<pre lang="properties"><code>management.health.memoryHealthIndicator.enabled=false
+</code></pre>
+<p>With the above setting, if you try to invoke the <code>health</code> endpoint again you may see:</p>
+<pre lang="json"><code>{
+  "status": "UP",
+  "details": {
+    "application": {
+      "status": "UP"
+    }
+  }
+}
+</code></pre>
+<p>...where details on memory usage are now removed, given the monitor underneath is disabled.</p>
+<p>More information on CAS health indicators and monitors can be <a href="https://apereo.github.io/cas/development/configuration/Configuration-Properties.html#health-endpoint">found here</a>. If you'd like to learn more details about this topic, see the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html#production-ready-health">Spring Boot documentation</a>.</p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

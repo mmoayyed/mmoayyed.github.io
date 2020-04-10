@@ -1,0 +1,206 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---kubernetes-deploymentssummary----playing-around-with-kubernetes-minikube-and-friends-to-demonstrate-ideas-on-how-apereo-cas-might-be-deployed-in-a-containerized-and-orchestrated-fashionpublished-truetags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---kubernetes-deploymentssummary----playing-around-with-kubernetes-minikube-and-friends-to-demonstrate-ideas-on-how-apereo-cas-might-be-deployed-in-a-containerized-and-orchestrated-fashionpublished-truetags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Kubernetes Deployments<br>
+summary:    Playing around with Kubernetes, Minikube, and friends to demonstrate ideas on how Apereo CAS might be deployed in a containerized and orchestrated fashion.<br>
+published: true<br>
+tags:       [CAS]</h2>
+<p>Continuing with Apereo CAS thriving in a <a href="http://localhost:4000/2020/01/31/cas6-docker-deployment/">containerized world</a> for deployments, this tutorial begins to demonstrate a quick walkthrough on how a CAS container can be deployed and managed by <a href="https://kubernetes.io/">Kubernetes</a>. While a brief introduction of Kubernetes and the surrounding development environment is presented, the main focus of the post is to outline the tricks and tips expected of a CAS deployer for a successful cloud-based deployment.</p>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li>Java 11</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> (The <code>master</code> branch specifically)</li>
+<li><a href="https://www.docker.com/get-started">Docker</a></li>
+<li><a href="https://github.com/kubernetes/minikube">Minikube</a></li>
+<li>MacOS Mojave</li>
+<li>
+<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> <code>6.1</code> for MacOS</li>
+</ul>
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+<p><a href="https://kubernetes.io/">Kubernetes (K8s)</a> is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery, and over the years, it has become quite the popular choice and mainstream for container orchestrations.</p>
+<p>The easiest way to start experimenting with Kubernetes is via <a href="https://kubernetes.io/">Minikube</a>. This is a tool that implements a local Kubernetes cluster on your desired OS of choice and its primary goals are to be the best tool for local Kubernetes application development and to support all Kubernetes features that fit. For this tutorial, we will be using a Minikube instance to get Apereo CAS, as a Spring Boot application at its core, deployed as quickly and comfortably as possible.</p>
+<h2>
+<a id="docker-image" class="anchor" href="#docker-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker Image</h2>
+<p>You should first begin by producing a <a href="https://fawnoos.com/2020/01/31/cas6-docker-deployment/">CAS Docker image</a>, to be deployed into our Kubernetes cluster. To move things along quickly, I have already produced a <a href="https://hub.docker.com/repository/docker/mmoayyed/cas">self-contained CAS image</a> that can be used for demo purposes. The image presents a CAS server, backed by an embedded Apache Tomcat instance, and is configured to respond to requests on port <code>8080</code> to keep things as simple as possible:</p>
+<pre lang="properties"><code>cas.server.name=http://cas.example.org:8080
+cas.server.prefix=${cas.server.name}/cas
+server.port=8080
+server.ssl.enabled=false
+</code></pre>
+<h2>
+<a id="minikube" class="anchor" href="#minikube" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Minikube</h2>
+<p>To successfully set up a Kubernetes cluster, you do need to have Minikube installed for your OS. I did follow the instructions posted here for <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos">Minikube on MacOS</a> and while the process was relatively simple, I did have to account for the following gotchas:</p>
+<ul>
+<li>Before the installation, it's best to disconnect from all VPN connections.</li>
+<li>Make sure you have a correct and compatible version of VirtualBox installed for your OS.</li>
+<li>If you already have VirtualBox installed, (as I did), do make sure previously-configured networks from VirtualBox are removed and cleaned up.</li>
+</ul>
+<p>With the above notes in mind, installing Minikube should be as simple as:</p>
+<pre lang="bash"><code>brew install minikube
+</code></pre>
+<!-- raw HTML omitted -->
+<p>You can try to verify the state of your installation via:</p>
+<pre lang="bash"><code>$ minikube version
+minikube version: v1.7.2
+commit: 50d543b5fcb0e1c0d7c27b1398a9a9790df09dfb
+
+...
+
+$ kubectl version
+Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.0", 
+GitCommit:"70132b0f130acc0bed193d9ba59dd186f0e634cf", GitTreeState:"clean", 
+BuildDate:"2019-12-13T11:51:44Z", GoVersion:"go1.13.4", 
+Compiler:"gc", Platform:"darwin/amd64"}
+</code></pre>
+<p>Next, you should be able to start the local cluster via:</p>
+<pre lang="bash"><code>$ minikube start
+
+    minikube v1.7.2 on Darwin 10.14.6
+    sing the hyperkit driver based on existing profile
+    Downloading driver docker-machine-driver-hyperkit:
+    ...
+    Downloading VM boot image ...
+    &gt; minikube-v1.7.0.iso.sha256: 65 B / 65 B [--------------] 100.00% ? p/s 0s
+    &gt; minikube-v1.7.0.iso: 166.68 MiB / 166.68 MiB [] 100.00% 10.23 MiB p/s 16s
+    Reconfiguring existing host ...
+    Starting existing hyperkit VM for "minikube" ...
+    ...
+    Launching Kubernetes ...
+    Enabling addons: default-storageclass, storage-provisioner
+    Done! kubectl is now configured to use "minikube"
+</code></pre>
+<p>You can always examine the state of your cluster using the dashboard:</p>
+<pre lang="bash"><code>minikube dashboard &amp;
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/1205228/74601036-ba67ff80-50b2-11ea-95b2-e72c661a207d.png" alt="image"></p>
+<p>Great! You now have a running Kubernetes cluster in the terminal. Minikube started a virtual machine for you, and a Kubernetes cluster is now running in that VM.</p>
+<h2>
+<a id="kubectl" class="anchor" href="#kubectl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kubectl</h2>
+<p>Our business with the Minikube local cluster is facilitated by the command-line tool <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl</a>. This tool allows you to verify and manage the state of your cluster. For example, you can ask for the cluster information and details using:</p>
+<pre lang="bash"><code>$ kubectl cluster-info
+Kubernetes master is running at https://192.168.64.2:8443
+KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+</code></pre>
+<p>You could also fetch a list of nodes:</p>
+<pre lang="bash"><code>$ kubectl get nodes
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   83s   v1.17.2
+</code></pre>
+<p>Once you have a running Kubernetes cluster, we can deploy our containerized CAS server on top of it. To do so, we need to create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes on how to create and update instances of CAS. Once you've created a Deployment, the Kubernetes master schedules mentioned application instances onto individual Nodes in the cluster.</p>
+<h2>
+<a id="deployments" class="anchor" href="#deployments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployments</h2>
+<p>A <em>Deployment</em>, in the Kubernetes vernacular, is responsible for creating and updating instances of our CAS server, keeping them running across Nodes Once the CAS server instance is created, a Kubernetes Deployment Controller continuously monitors that instances for failures. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces the instance with an instance on another Node in the cluster. This provides a self-healing mechanism to address machine failure or maintenance.</p>
+<p>To begin, let's recall our current collection of nodes:</p>
+<pre lang="bash"><code>$ kubectl get nodes
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   83s   v1.17.2
+</code></pre>
+<p>If you remember, we do have a <a href="https://hub.docker.com/repository/docker/mmoayyed/cas">self-contained CAS image</a> and the would-be running container based on that image operates on and exposes port <code>8080</code>. So, we should be able to describe our container to Kubernetes to run and deploy our application in the cluster using the Kubernetes YAML syntax; To avoid having to look at or edit YAML, we can ask <code>kubectl</code> to generate it for us.</p>
+<p>To create a deployment descriptor, we can use the following:</p>
+<pre lang="bash"><code>$ kubectl create deployment cas --image=mmoayyed/cas --dry-run -o=yaml &gt; deployment.yaml
+$ echo --- &gt;&gt; deployment.yaml
+$ kubectl create service clusterip cas --tcp=8080:8080 --dry-run -o=yaml &gt;&gt; deployment.yaml
+</code></pre>
+<p>Let's examine the <code>deployment.yaml</code> file to see what we can work with:</p>
+<pre lang="yaml"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cas
+  name: cas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cas
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cas
+    spec:
+      containers:
+      - image: mmoayyed/cas
+        name: cas
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cas
+  name: cas
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cas
+  type: ClusterIP
+status:
+  loadBalancer: {}
+</code></pre>
+<p>You can see the deployment descriptor listing details about how the container should run, how port-mappings should be handled, etc. Note also that the descriptor is broken down into two categories: The <em>Deployment</em> section and the <em>Service</em> section each of each are distinguished using the <code>Kind</code> flag. In summary, this will allow our CAS deployment to be managed and deployed as a <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service in Kubernetes</a>.</p>
+<h2>
+<a id="unleash-the-yaml" class="anchor" href="#unleash-the-yaml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unleash the YAML</h2>
+<p>Let's apply our YAML configuration to let Kubernetes begin its magic:</p>
+<pre lang="bash"><code>$ kubectl apply -f deployment.yaml
+
+deployment.apps/cas created
+service/cas created
+</code></pre>
+<p>Next, let's check to see if our CAS deployment is running:</p>
+<pre lang="bash"><code>$ kubectl get all
+
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/cas-7f97f4844b-b2qc5   1/1     Running   0          44s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/cas          ClusterIP   10.108.120.2   &lt;none&gt;        8080/TCP   44s
+service/kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP    49d
+
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/cas   1/1     1            1           44s
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/cas-7f97f4844b   1         1         1       44s
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Back in the dashboard, you should be able to see the deployment running in all greens:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/74601572-20578580-50b9-11ea-8875-d9061186abd3.png" alt="image"></p>
+<p>Now you need to be able to connect to CAS which is exposed as a <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service in Kubernetes</a>. We can use <code>kubectl port-forward</code> which allows using resource name, such as a pod name, to select a matching pod for port-forwarding. Let's find our CAS pod first:</p>
+<pre lang="bash"><code>$ kubectl get pods
+NAME                   READY   STATUS    RESTARTS   AGE
+cas-7f97f4844b-b2qc5   1/1     Running   0          15m
+</code></pre>
+<p>...and lets establish an SSH tunnel to that pod via:</p>
+<pre lang="bash"><code>$ kubectl port-forward cas-7f97f4844b-b2qc5 8080:8080
+Forwarding from 127.0.0.1:8080 -&gt; 8080
+Forwarding from [::1]:8080 -&gt; 8080
+</code></pre>
+<p>...and viola! our CAS server container is available under <code>http://localhost:8080/cas/login</code>:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/74601430-d15d2080-50b7-11ea-9425-0315245ead12.png" alt="image"></p>
+<p>We could also create the same tunnel using a Kubernetes deployment reference:</p>
+<pre><code>kubectl port-forward deployment/cas 8080:8080
+Forwarding from 127.0.0.1:8080 -&gt; 8080
+Forwarding from [::1]:8080 -&gt; 8080
+</code></pre>
+<p>...or by referencing our Kubernetes service:</p>
+<pre lang="bash"><code>$ kubectl port-forward svc/cas 8080:8080
+Forwarding from 127.0.0.1:8080 -&gt; 8080
+Forwarding from [::1]:8080 -&gt; 8080
+</code></pre>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

@@ -1,0 +1,53 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------cas-5-saml2-delegated-authn-tutorialsummary----learn-how-to-delegate-authentication-requests-to-external-saml2-identity-providerstags-------cas" class="anchor" href="#layout-----posttitle------cas-5-saml2-delegated-authn-tutorialsummary----learn-how-to-delegate-authentication-requests-to-external-saml2-identity-providerstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      CAS 5 SAML2 Delegated AuthN Tutorial<br>
+summary:    Learn how to delegate authentication requests to external SAML2 identity providers.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>This is a short and sweet tutorial on how to configure CAS to delegate authentication to an external SAML2 identity provider.<br>
+Most of the material is based on the <a href="https://apereo.github.io/cas/development/integration/Delegate-Authentication.html">available documentation</a>.</p>
+<p>This tutorial specifically focuses on:</p>
+<ul>
+<li>CAS <code>5.1.0-RC3-SNAPSHOT</code>
+</li>
+<li>Java 8</li>
+<li>Apache Tomcat <code>8.5.11</code>
+</li>
+<li><a href="http://developer.okta.com/standards/SAML/setting_up_a_saml_application_in_okta">Okta Developer account</a></li>
+</ul>
+<h1>
+<a id="deploy-cas" class="anchor" href="#deploy-cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploy CAS</h1>
+<p>Hop over to <a href="https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html">the overlay installation</a> and get CAS built and deployed. The CAS version I am using today is <code>5.1.0-RC3-SNAPSHOT</code>. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.</p>
+<h1>
+<a id="configure-cas" class="anchor" href="#configure-cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure CAS</h1>
+<p>Add the required module specified here in the <a href="https://apereo.github.io/cas/development/integration/Delegate-Authentication.html">documentation</a> to your build. Next, we need to teach CAS about the external SAML2 Identity Provider. The configuration displayed below simply wants to have CAS act as a sevice provider with its own unique entity id, keystore, etc. CAS itself will generate the relevant service-provider credentials, keystores and metadata and will then examine the identity provider metadata document to learn about endpoints, etc. So you only really have to provide the values and let the software handle the rest.</p>
+<pre lang="properties"><code>cas.authn.pac4j.saml[0].keystorePassword=pac4j-demo-passwd
+cas.authn.pac4j.saml[0].privateKeyPassword=pac4j-demo-passwd
+cas.authn.pac4j.saml[0].serviceProviderEntityId=urn:mace:saml:pac4j.org
+cas.authn.pac4j.saml[0].serviceProviderMetadataPath=/etc/cas/config/sp-metadata.xml
+cas.authn.pac4j.saml[0].keystorePath=/etc/cas/config/samlKeystore.jks
+cas.authn.pac4j.saml[0].identityProviderMetadataPath=https://dev-12345.oktapreview.com/app/486ngfgf/sso/saml/metadata
+</code></pre>
+<p>Note that the above settings are indexed, which means that if you needed to, you could delegate authentication to more than one identity provider. Also remember that metadata, keystores and such are only created if they are absent from the specified locations. You can certainly hand-massage them if needed, and CAS will let them be as they are without complaints.</p>
+<h1>
+<a id="configure-okta" class="anchor" href="#configure-okta" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Okta</h1>
+<p>Follow the documentation <a href="http://developer.okta.com/standards/SAML/setting_up_a_saml_application_in_okta">described here</a><br>
+to create a developer account and add a new application as a SAML2 IdP. At a minimum, you need to provide Okta with the SSO (ACS) url and entity id of the service provider, that being CAS in this case. You do have the entity id above and the ACS url takes on the following form:</p>
+<pre lang="bash"><code>https://sso.example.org/cas/login?client_name=SAML2Client
+</code></pre>
+<p>The configuration would look something like the following image:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1205228/24192129/9d0f828c-0f0b-11e7-8cec-698be1b31cee.png" alt="image"></p>
+<p>Finally you need to assign people/users to the SAML2 Identity Provider application to allow for authentication:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1205228/24192186/c09b0ad2-0f0b-11e7-9e6a-12752de7c125.png" alt="image"></p>
+<p>Okta is then able to provide you with a metadata for this instance, which you can then use to plug back into the above settings.</p>
+<h1>
+<a id="thats-it" class="anchor" href="#thats-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>That's It</h1>
+<p>When you deploy CAS, your default logs (though you could certainly turn on <code>DEBUG</code> to observe a lot more) would indicate something along the following lines:</p>
+<pre lang="bash"><code>2017-03-22 13:33:59,147 INFO [o.a.c.s.p.c.s.a.Pac4jAuthenticationEventExecutionPlanConfiguration] - &lt;Located and prepared [1] delegated authentication clients&gt;
+2017-03-22 13:33:59,182 INFO [o.a.c.s.p.c.s.a.Pac4jAuthenticationEventExecutionPlanConfiguration] - &lt;Registering delegated authentication clients...&gt;
+</code></pre>
+<p>...and when you get to the login page, you will see the following:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1205228/24192477/c4bb918a-0f0c-11e7-94b9-ac2187588b9c.png" alt="image"></p>
+<p>The same strategy simply applies to all other forms of delegated authentication, such as social identity providers or other CAS servers.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

@@ -1,0 +1,110 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---spring-boot-admin-integrationsummary----learn-to-manage-and-monitor-your-apereo-cas-deployment-using-the-spring-boot-admin-server-and-spring-boot-actuator-endpointstags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---spring-boot-admin-integrationsummary----learn-to-manage-and-monitor-your-apereo-cas-deployment-using-the-spring-boot-admin-server-and-spring-boot-actuator-endpointstags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Spring Boot Admin Integration<br>
+summary:    Learn to manage and monitor your Apereo CAS deployment using the Spring Boot Admin server and Spring Boot Actuator endpoints.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/codecentric/spring-boot-admin">Spring Boot Admin</a> is a community project to manage and monitor Spring Boot applications such as Apereo CAS. The admin server presents an AngularJS-based UI that interacts with the <a href="https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html">actuator endpoints</a> provided by Spring Boot in CAS. One CAS has registered itself with the admin server, either using the <em>Spring Admin Client</em> via HTTP or as part of discovery using technologies such as Eureka, Consul, etc, the admin server can begin to provide feature to monitor CAS for health status, JVM &amp; memory metrics, environment settings, thread dumps, audit data, logs, etc.</p>
+<p>While the CAS integration with the Spring Boot Admin server has been available for some time (likely since CAS <code>5.1.x</code>), in this tutorial we will focus on how to get the latest version of <a href="https://apereo.github.io/cas/development/installation/Configuring-Monitoring-Administration.html">Apereo CAS integrated with the Admin server</a>. At a high-level, we need to accomplish the following:</p>
+<ul>
+<li>Deploy and configure the Spring Boot Admin server</li>
+<li>Configure CAS to register with the Spring Boot Admin server</li>
+</ul>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.0.0-RC3</code>
+</li>
+<li>Java 11</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> (The <code>master</code> branch specifically)</li>
+<li><a href="https://github.com/apereo/cas-bootadmin-overlay">Spring Boot Admin overlay</a></li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+</ul>
+<h2>
+<a id="spring-boot-admin-server-configuration" class="anchor" href="#spring-boot-admin-server-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Boot Admin Server Configuration</h2>
+<p>The Spring Boot Admin server runs a standalone Spring Boot application on its own with a setup that is very similar to the CAS server itself. There is a <a href="https://github.com/apereo/cas-bootadmin-overlay">WAR overlay</a> that can be used to configure and deploy the server. Once you clone the Admin overlay project, you may need to create a <code>src/main/resources/application.properties</code> to control the behavior of the Admin server. By default, the application runs on port <code>8444</code> and does require SSL with a keystore that is expected at <code>file:/etc/cas/thekeystore</code>. The default settings should match the following:</p>
+<pre lang="properties"><code>server.port=8444
+
+server.ssl.key-store=file:/etc/cas/thekeystore
+server.ssl.key-store-password=changeit
+server.ssl.key-password=changeit
+
+# Protect the boot-admin endpoints for basic/form authn
+spring.security.user.name=casuser
+spring.security.user.password=e3f98098-edb5-4217-9dcb-ad04999a8794
+</code></pre>
+<p>Given the Admin server itself is based on top of Spring Boot, all relevant Spring Boot settings here do also apply to control the general behavior of the web application. There are also many other settings available to tweak the behavior of the Admin server functionality itself. For a more comprehensive list, please see the <a href="https://codecentric.github.io/spring-boot-admin/current">Spring Boot Admin documentation</a>.</p>
+<p>Once you're ready, execute the following:</p>
+<pre lang="bash"><code>./build.sh run
+</code></pre>
+<p>...at which point a successful startup attempt would demonstrate the following in the logs:</p>
+<pre><code>INFO [org.apereo.cas.CasSpringBootAdminServerWebApplication] - &lt;No active profile set, falling back to default profiles: default&gt;
+...
+INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - &lt;Tomcat started on port(s): 8444 (https) with context path ''&gt;
+...
+INFO [org.apereo.cas.CasSpringBootAdminServerWebApplication] - &lt;Started CasSpringBootAdminServerWebApplication in 20.798
+</code></pre>
+<p>...which allows you to navigate to Admin server in your browser at <code>https://admin.example.org:8444</code>:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47254172-3b859700-d46b-11e8-8ea2-9d42cb7407d6.png" alt="image"></p>
+<p>There is nothing registered with the Admin server yet. As the next step, we will connect our CAS server to the Admin server.</p>
+<h2>
+<a id="cas-server-configuration" class="anchor" href="#cas-server-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Server Configuration</h2>
+<p>Each individual CAS server is given the ability to auto-register itself with the Admin server. This is done using the following module that should go into the CAS overlay:</p>
+<pre lang="gradle"><code>compile "org.apereo.cas:cas-server-support-bootadmin-client:${project.'cas.version'}"
+</code></pre>
+<p>Of course, we need to teach CAS about our Admin server using the <code>cas.properties</code> file:</p>
+<pre lang="properties"><code>spring.boot.admin.client.enabled=true
+spring.boot.admin.client.url=https://admin.example.org:8444
+spring.boot.admin.client.instance.management-base-url=https://sso.example.org/cas
+</code></pre>
+<p>So, our CAS server is running on <code>https://sso.example.org/cas</code> which presents a number of <a href="https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html">actuator endpoints</a> that are used by the Admin server to monitor status and report results. Therefore, we will need to enable the endpoints in CAS in <code>cas.properties</code> so they may be consumable by the Admin server:</p>
+<pre lang="properties"><code>management.endpoints.enabled-by-default=true
+management.endpoints.web.exposure.include=*
+
+spring.security.user.name=casuser
+spring.security.user.password=Mellon
+
+cas.monitor.endpoints.endpoint.defaults.access=AUTHENTICATED
+</code></pre>
+<p>These settings are primarily offered and controlled by Spring Boot and accomplish the following:</p>
+<ul>
+<li>Enable all actuator endpoints by default.</li>
+<li>Expose all actuator endpoints over the web via http.</li>
+<li>Secure all actuator endpoints using basic authentication where the master credentials are <code>casuser</code> and <code>Mellon</code>.</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>To verify, you can try to hit a few of the endpoints to see the behavior in action:</p>
+<pre lang="bash"><code>curl -u casuser:Mellon -k https://sso.example.org/cas/actuator/status | jq
+</code></pre>
+<p>...where you get back:</p>
+<pre lang="json"><code>{
+  "status": 200,
+  "description": "OK",
+  "health": "UP",
+  "host": "misaghmoayyed",
+  "server": "https://sso.example.org/cas",
+  "version": "6.0.0-RC3 - ..."
+}
+</code></pre>
+<p>You can also try hitting <code>actuator/health</code>, <code>actuator/info</code> and <a href="https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html">many others</a>.</p>
+<p>Now that are endpoints are enabled and secured, we need to configure CAS to use our security credentials when contacting the Admin server as well:</p>
+<pre lang="properties"><code>spring.boot.admin.client.instance.metadata.user.name=casuser
+spring.boot.admin.client.instance.metadata.user.password=Mellon
+
+# In case Spring Boot Admin endpoints are protected via basic authn
+spring.boot.admin.client.username=casuser
+spring.boot.admin.client.password=e3f98098-edb5-4217-9dcb-ad04999a8794
+</code></pre>
+<!-- raw HTML omitted -->
+<p>When you build and deploy CAS next, the Admin server should properly recognize the registration request and display something like this:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47254581-58bd6400-d471-11e8-9eb4-75709190355e.png" alt="image"></p>
+<p>...where you can drill into the app and look at various screens and monitoring activity. For example, check out the available http web mappings and URLs:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47254701-a6869c00-d472-11e8-9e54-2123ae63c414.png" alt="image"></p>
+<p>...or logging configuration:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47254710-ca49e200-d472-11e8-94e8-7cb5a711f5a7.png" alt="image"></p>
+<p>There is a lot more you can do with the Admin server to add security, custom notifications, etc. Please see the <a href="https://codecentric.github.io/spring-boot-admin/current">Spring Boot Admin documentation</a>.</p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

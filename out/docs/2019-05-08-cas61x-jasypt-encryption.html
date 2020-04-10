@@ -1,0 +1,68 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---configuration-security-w-jasyptsummary----learn-how-to-secure-cas-configuration-settings-and-properties-with-jasypttags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---configuration-security-w-jasyptsummary----learn-how-to-secure-cas-configuration-settings-and-properties-with-jasypttags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Configuration Security w/ Jasypt<br>
+summary:    Learn how to secure CAS configuration settings and properties with Jasypt.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>If you are running CAS in standalone mode without the presence of the Spring Cloud configuration server, you can take advantage of built-in <a href="http://www.jasypt.org/">Jasypt functionality</a> to decrypt sensitive CAS settings.</p>
+<p>Jasypt is a java library which allows the deployer to add basic encryption capabilities to CAS. Jasypt supplies command-line tools useful for performing encryption, decryption, etc. In order to use the tools, you may download the Jasypt distribution. Once unzipped, you will find a <code>jasypt-$VERSION/bin</code> directory a number of <code>bat|sh</code> scripts that you can use for encryption/decryption operations <code>(encrypt|decrypt).(bat|sh)</code>.</p>
+<p>However, an easier approach might be to use the native <a href="https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html">CAS command-line shell</a>. The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>The <a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a> presents a few instructions on how to download and run the shell. Once you're in, you can take advantage of the following Jasypt-related commands:</p>
+<pre lang="bash"><code>help encrypt-value
+...
+help decrypt-value
+</code></pre>
+<p>So let's encrypt a setting:</p>
+<pre lang="bash"><code>cas&gt;encrypt-value value casuser::Misagh alg PBEWithMD5AndTripleDES \
+    provider SunJCE password ThisIsMyEncryptionKey iterations 1000
+
+==== Encrypted Value ====
+{cas-cipher}mMcg02NysblAcwYI+bFRpEcHBQaVQ51J
+</code></pre>
+<p>Nice. Let's verify that it can be decrypted back:</p>
+<pre lang="bash"><code>cas&gt;decrypt-value value {cas-cipher}mMcg02NysblAcwYI+bFRpEcHBQaVQ51J \
+    alg PBEWithMD5AndTripleDES provider SunJCE \
+    password ThisIsMyEncryptionKey iterations 1000
+
+==== Decrypted Value ====
+casuser::Misagh
+</code></pre>
+<p>Next, let's use our typical <code>cas.properties</code> file with the encrypted value:</p>
+<pre lang="properties"><code>cas.authn.accept.users={cas-cipher}mMcg02NysblAcwYI+bFRpEcHBQaVQ51J
+</code></pre>
+<p>Almost there...the last task is to instruct CAS to use the proper algorithm, decryption key, and other relevant parameters when attempting to decrypt settings.</p>
+<pre lang="properties"><code># cas.standalone.configurationSecurity.alg=PBEWithMD5AndTripleDES
+# cas.standalone.configurationSecurity.provider=SunJCE
+# cas.standalone.configurationSecurity.iterations=1000
+# cas.standalone.configurationSecurity.psw=ThisIsMyEncryptionKey
+</code></pre>
+<p>The above settings may be passed to CAS at runtime using either OS environment variables,<br>
+system properties or normal command-line arguments.</p>
+<h1>
+<a id="more" class="anchor" href="#more" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More...</h1>
+<p>The shell also presents a few more Jasypt-related commands to list out algorithms, providers, etc. If you use the <code>help</code> command, you'd be presented with a list of available commands some of which are the following:</p>
+<pre lang="bash"><code>cas&gt;help jasypt-list-algorithms
+...
+cas&gt;help jasypt-list-providers
+...
+cas&gt;help jasypt-test-algorithms
+...
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

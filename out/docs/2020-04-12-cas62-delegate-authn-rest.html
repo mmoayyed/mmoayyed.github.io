@@ -1,0 +1,72 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---bootstrapping-delegated-authentication-via-restsummary----learn-how-to-configure-and-bootstrap-your-cas-server-deployment-for-delegated-authentication-via-an-external-rest-apipublished-truetags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---bootstrapping-delegated-authentication-via-restsummary----learn-how-to-configure-and-bootstrap-your-cas-server-deployment-for-delegated-authentication-via-an-external-rest-apipublished-truetags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Bootstrapping Delegated Authentication via REST<br>
+summary:    Learn how to configure and bootstrap your CAS server deployment for delegated authentication via an external REST API.<br>
+published: true<br>
+tags:       [CAS]</h2>
+<p>Apereo CAS has been able to delegate authentication to external <a href="https://apereo.github.io/cas/development/integration/Delegate-Authentication.html">identity providers</a> for quite some time. Simply put, delegation is just a fancy word that means, whether automatically or at the click of a button, the browser is expected to redirect the user to an external identity provider (i.e. Twitter, GitHub, etc) and on the return trip back, CAS is tasked to parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.</p>
+<p>Registering the existence of such external identity providers is usually and most-commonly done via CAS settings. In this tutorial, we are going to take a look at alternative strategies for bootstrapping a CAS server deployment using an external REST API to feed and register our external identity providers with the CAS application runtime.</p>
+<p>Our starting position as follows:</p>
+<ul>
+<li>CAS <code>6.2.x</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li>Java 11</li>
+</ul>
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h2>
+<p>Hop over to <a href="https://github.com/apereo/cas-overlay-template">the CAS Overlay installation</a> and get CAS built and deployed. Once you have a functional build, remember to include the following extension modules:</p>
+<pre lang="groovy"><code>implementation "org.apereo.cas:cas-server-support-pac4j-webflow:${project.'cas.version'}"
+implementation "org.apereo.cas:cas-server-support-reports:${project.'cas.version'}"
+</code></pre>
+<p>The above two modules begin to activate delegated authentication functionality and reporting features with CAS. We'll specifically need the latter to take advantage of a few administrative endpoints to monitor the state of our deployment and reload the context as necessary.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Next, let's ensure access to our administrative endpoints:</p>
+<pre lang="properties"><code>management.endpoint.reloadContext.enabled=true
+management.endpoints.web.exposure.include=reloadContext
+
+cas.monitor.endpoints.endpoint.reloadContext.access=ANONYMOUS
+</code></pre>
+<p>The configuration above allows CAS to enable and have access to the <code>reloadContext</code> actuator endpoint, expose it over the web so we can invoke it using the likes of <code>curl</code>. For the sake of this tutorial, the endpoint is made available without any extra security.</p>
+<!-- raw HTML omitted -->
+<p>Next, we need to design a REST API that produces the configuration for our external identity providers. For simplicity, our API is going to respond to <code>GET</code> requests with the following payload:</p>
+<pre lang="json"><code>{
+    "callbackUrl": "https://sso.example.org/cas/login",
+    "properties": {
+        "github.id": "...",
+        "github.secret": "..."
+    }
+}
+</code></pre>
+<p>The structure and syntax of the payload are dictated to CAS by <a href="https://github.com/pac4j/pac4j">Pac4j</a> and its <code>PropertiesConfigFactory</code> component. The payload should specify the list of identity providers under <code>properties</code><br>
+and also indicate a callback URL that is the CAS server itself.</p>
+<p>Now that we have the REST API ready, all that is left is to register it with CAS itself:</p>
+<pre lang="properties"><code>cas.authn.pac4j.rest.url=https://api.example.org/delegatedauthn
+</code></pre>
+<p>With the above configuration, you should see something close to the below screenshot the very next time you build and run CAS:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/78877156-a82c9100-7a65-11ea-905f-fd100b67f89a.png" alt="image"></p>
+<h2>
+<a id="refresh--reload" class="anchor" href="#refresh--reload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Refresh &amp; Reload</h2>
+<p>In addition to GitHub, let's modify our API payload to also support delegating authentication to an external CAS server:</p>
+<pre lang="json"><code>{
+    "callbackUrl": "https://sso.example.org/cas/login",
+    "properties": {
+        "github.id": "...",
+        "github.secret": "...",
+
+        "cas.protocol": "CAS30",
+        "cas.loginUrl": "https://external.cas.org/cas/login"
+    }
+}
+</code></pre>
+<p>Once the change is made, we need to instruct CAS to reload the application context thus invoking our REST API one more time to bootstrap the runtime with the new payload:</p>
+<pre lang="bash"><code>curl -X POST -k https://sso.example.org/cas/actuator/reloadContext
+</code></pre>
+<p>Next, refresh the browser page and you should see the newly-registered CAS identity provider listed:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/78877711-8a136080-7a66-11ea-968a-9f1b0197791d.png" alt="image"></p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

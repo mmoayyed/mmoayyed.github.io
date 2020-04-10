@@ -1,0 +1,98 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------cas-multifactor-authentication-with-google-authenticatorsummary----a-short-walkthrough-to-demonstrate-how-one-might-turn-on-multifactor-authentication-with-cas-using-google-authenticator-leveraging-a-variety-of-triggerstags-------casmfa" class="anchor" href="#layout-----posttitle------cas-multifactor-authentication-with-google-authenticatorsummary----a-short-walkthrough-to-demonstrate-how-one-might-turn-on-multifactor-authentication-with-cas-using-google-authenticator-leveraging-a-variety-of-triggerstags-------casmfa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      CAS Multifactor Authentication with Google Authenticator<br>
+summary:    A short walkthrough to demonstrate how one might turn on multifactor authentication with CAS using Google Authenticator, leveraging a variety of triggers.<br>
+tags:       [CAS,MFA]</h2>
+<!-- raw HTML omitted -->
+<p>A number of CAS deployments that intend to turn on multifactor authentication support tend to do so via Google Authenticator. This is a quick and <em>simplified</em> guide to demonstrate an approach to that use case along with some additional explanations regarding specific multifactor triggers and bypass options supported in CAS today.</p>
+<p>Our task list is rather short:</p>
+<ol>
+<li>Configure LDAP authentication with CAS</li>
+<li>Trigger Google Authenticator for users who belong to the <code>mfa-eligible</code> group, indicated by the <code>memberOf</code> attribute on the LDAP user account.</li>
+<li>Design and explore bypass options that would override the above trigger where needed.</li>
+</ol>
+<h1>
+<a id="environment" class="anchor" href="#environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment</h1>
+<ul>
+<li>CAS <code>5.3.x</code>
+</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Maven WAR Overlay</a> (The <code>5.3</code> branch specifically)</li>
+</ul>
+<h1>
+<a id="configuring-authentication" class="anchor" href="#configuring-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring Authentication</h1>
+<p>Prior to configuring <em>multiple</em> factors of authentication, we need to first establish a primary mode of validating credentials. To kill two birds with one stone [1], we are going to o address yet another common use case and keep things simple by sticking with <a href="https://apereo.github.io/cas/development/installation/LDAP-Authentication.html">LDAP authentication</a>. The strategy here, as indicated by the CAS documentation, is to declare the intention/module in the build script and then configure the relevant <code>cas.authn.ldap[x]</code> settings for the directory server in use. Most commonly, that would translate into the following settings:</p>
+<pre lang="properties"><code>cas.authn.ldap[0].type=AUTHENTICATED
+cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.org
+cas.authn.ldap[0].baseDn=dc=example,dc=org
+cas.authn.ldap[0].searchFilter=cn={user}
+cas.authn.ldap[0].bindDn=cn=Directory Manager,dc=example,dc=org
+cas.authn.ldap[0].bindCredential=...
+</code></pre>
+<p>Note that the method of authentication, whether on its own or using separate attribute repositories and queries must have the ability to resolve the needed attribute which will be used later by CAS to trigger multifactor authentication. For this context, the simplest way would be to let LDAP authentication retrieve the attribute directly from the directory server.  The following setting allows us to do just that:</p>
+<pre lang="properties"><code>cas.authn.ldap[0].principalAttributeList=memberOf
+</code></pre>
+<p>At this point in the authentication flow, we have established an authenticated subject that would be populated with fetched attribute <code>memberOf</code>.</p>
+<h1>
+<a id="configuring-google-authenticator" class="anchor" href="#configuring-google-authenticator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring Google Authenticator</h1>
+<p>Here, our task is to enable <a href="https://apereo.github.io/cas/development/installation/GoogleAuthenticator-Authentication.html">Google Authenticator</a> in CAS. Practically, similar to the LDAP authentication configuration, this involves declaring the right module in the build and then providing specific Google Authenticator settings to CAS properties. Things such as the issuer, label, etc.</p>
+<p>Most commonly, the required settings would translate into the following:</p>
+<pre lang="properties"><code>cas.authn.mfa.gauth.issuer=CAS
+cas.authn.mfa.gauth.label=CASLabel
+</code></pre>
+<p>At this point, we have enabled Google Authenticator and we just need to find a way to instruct CAS to route the authentication flow over to Google Authenticator in the appropriate condition. This is where triggers come into place.</p>
+<h1>
+<a id="configuring-multifactor-authentication-triggers" class="anchor" href="#configuring-multifactor-authentication-triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring Multifactor Authentication Triggers</h1>
+<p>The entire purpose of a trigger here is to detect a condition by which the authentication flow should be rerouted. There are a large number of <a href="https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication-Triggers.html">triggers supported by CAS</a>, all of which kick into action and behave all the same regardless of the multifactor authentication provider. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute <code>memberOf</code> contain the value <code>mfa-eligible</code>:</p>
+<pre lang="properties"><code>cas.authn.mfa.globalPrincipalAttributeNameTriggers=memberOf
+cas.authn.mfa.globalPrincipalAttributeValueRegex=mfa-eligible
+</code></pre>
+<p>Notice that the conditions above do not indicate anything about Google Authenticator. If the above condition holds true, how does CAS know that the authentication flow should be routed to <em>Google Authenticator</em>?</p>
+<p>Per the CAS documentation:</p>
+<blockquote>
+<p>Trigger MFA based on a principal attribute(s) whose value(s) matches a regex pattern. Note that this behavior is only applicable if there is only a single MFA provider configured since that would allow CAS to know what provider to next activate.</p>
+</blockquote>
+<p>In other words, if the above condition holds true and CAS is to route to <em>a</em> multifactor authentication flow, that would obviously be one supported and provided by Google Authenticator since that's the only provider that is currently configured to CAS. Of course, if there are multiple providers available at runtime (i.e. U2F FIDO, YubiKey, etc) then we would need massage the condition since the automatic detection of the multifactor provider would not be immediately obvious...and that sort of thing would be outside the scope of this tutorial.</p>
+<h1>
+<a id="google-authenticator-device-registration" class="anchor" href="#google-authenticator-device-registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Google Authenticator Device Registration</h1>
+<p>Per the CAS documentation, you need to decide the type of registry that would hold onto devices registered with CAS, authorized to use Google Authenticator. A more common use case here would be to use a relational database to manage issued tokens and devices. There is very little for you to do here, since the device registration flow is built into CAS by default, allowing new devices to register themselves with the system by scanning a QR code and holding on the scratch codes that are produced by CAS.</p>
+<h1>
+<a id="multifactor-authentication-bypass" class="anchor" href="#multifactor-authentication-bypass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication Bypass</h1>
+<p>Once the above conditions determine that Google Authenticator may be activated as the next step in the authentication flow, CAS presents bypass rules are then consulted to calculate whether the provider should ignore the request and skip MFA conditionally. There are a variety of strategies you may choose to bypass multifactor authentication, one of which is a more static strategy of defining the ignore rule at the service policy level:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://.*",
+  "id" : 100,
+  "multifactorPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy",
+    "bypassEnabled" : "true"
+  }
+}
+</code></pre>
+<p>A more dynamic strategy, of course, would be to calculate the end result via a Groovy script. The outcome of the script, if <code>true</code> indicates that multifactor authentication for the requested provider should proceed. Otherwise <code>false</code> indicates that multifactor authentication for this provider should be skipped and bypassed.</p>
+<p>The path to the groovy script must surely be taught to CAS as a setting:</p>
+<pre lang="properties"><code>cas.authn.mfa.gauth.bypass.type=GROOVY
+cas.authn.mfa.gauth.bypass.groovy.location=file:/etc/cas/config/MultifactorBypass.groovy
+</code></pre>
+<p>...and a <code>MultifactorBypass.groovy</code> script would be:</p>
+<pre lang="groovy"><code>import java.util.*
+
+def boolean run(final Object... args) {
+    def authentication = args[0]
+    def principal = args[1]
+    def registeredService = args[2]
+    def provider = args[3]
+    def logger = args[4]
+    def httpRequest = args[5]
+
+    // Ignore MFA for everyone, except casuser
+    logger.info("Evaluating multifactor authn bypass rules for {}", principal)
+    return principal.id.equalsIgnoreCase("casuser")
+}
+</code></pre>
+<h1>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Summary</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>
+<p>[1] No birds were harmed during the production of this blog post.</p>

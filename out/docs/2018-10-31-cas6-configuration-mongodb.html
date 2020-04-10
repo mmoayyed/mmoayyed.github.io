@@ -1,0 +1,100 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---configuration-management-with-mongodbsummary----cas-distributed-configuration-management-using-mongodb-where-you-learn-how-to-store-and-secure-cas-configuration-settings-and-properties-inside-mongodbtags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---configuration-management-with-mongodbsummary----cas-distributed-configuration-management-using-mongodb-where-you-learn-how-to-store-and-secure-cas-configuration-settings-and-properties-inside-mongodbtags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Configuration Management with MongoDb<br>
+summary:    CAS distributed configuration management using MongoDb, where you learn how to store and secure CAS configuration settings and properties inside MongoDb.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p><a href="https://www.mongodb.com">MongoDB</a> is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.</p>
+<p>MongoDB is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting <a href="https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html#mongodb">CAS connected to MongoDB</a> to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside MongoDB databases.</p>
+<p>Our starting position is based on the following:</p>
+<ul>
+<li>CAS <code>6.0.0-RC4</code>
+</li>
+<li>Java 11</li>
+<li>
+<a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a> (The <code>master</code> branch specifically)</li>
+<li><a href="https://www.docker.com/get-started">Docker</a></li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+</ul>
+<h2>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDB</h2>
+<p>To run MongoDB for development and testing, we can use the provided Docker image:</p>
+<pre lang="bash"><code>docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root \
+  -e MONGO_INITDB_ROOT_PASSWORD=secret --name="mongodb-server" mongo:4.0-xenial
+docker ps
+</code></pre>
+<p>This runs a MongoDB database server which is useful for development but <strong>SHOULD NOT</strong> be used in production.</p>
+<p>To access the MongoDB instance using a UI, run:</p>
+<pre lang="bash"><code>docker run --link mongodb-server -d -p 8081:8081 \
+  -e 'ME_CONFIG_MONGODB_ADMINUSERNAME=root' \
+  -e 'ME_CONFIG_MONGODB_ADMINPASSWORD=secret' \
+  -e 'ME_CONFIG_MONGODB_SERVER=mongodb-server' mongo-express
+</code></pre>
+<p>The <code>ME_CONFIG_MONGODB_SERVER</code> is the address of the docker container that runs the MongoDB server. By default, Docker containers use the container as the DNS host name. So we can just specify the <code>mongodb-server</code> the name of the container that runs our MongoDB instance.</p>
+<p>Shell into the container:</p>
+<pre lang="bash"><code>CID=docker ps -aqf name=mongodb-server
+docker exec -it $CID /bin/bash
+</code></pre>
+<p>When inside the container:</p>
+<pre lang="bash"><code>mongo --host mongodb://root:secret@localhost:27017
+use database cas;
+
+# Create a database user for authentication
+db.createUser({user:"casuser", pwd:"Mellon", roles: ["readWrite", "dbAdmin"]})
+</code></pre>
+<p>When ready, point your browser to <code>http://localhost:8081</code> and let's create a few documents with CAS settings in them. MongoDb documents are required to be found in the collection <code>MongoDbProperty</code>, as the following document:</p>
+<pre lang="json"><code>{
+    "id": "...",
+    "name": "the-setting-name",
+    "value": "the-setting-value"
+}
+</code></pre>
+<p>So I am going to create a MongoDB database called <code>cas</code> inside which the <code>MongoDbProperty</code> needs to be created. Next, each of the below settings will be housed inside an indibidual MongoDB document that matches the above JSON structure:</p>
+<pre lang="properties"><code>cas.authn.accept.users=casuser::MongoDB
+management.endpoints.web.exposure.include=*
+management.endpoints.enabled-by-default=true
+cas.monitor.endpoints.endpoint.defaults.access=AUTHENTICATED
+spring.security.user.name=casuser
+spring.security.user.password=Mellon
+</code></pre>
+<p>The end result will look something like this:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47649468-9e291200-db92-11e8-8cac-c993411c697b.png" alt="image"></p>
+<!-- raw HTML omitted -->
+<p>You may also want to create an index on <code>name</code>:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/47649572-f3652380-db92-11e8-9762-aaef042c7c58.png" alt="image"></p>
+<p>That should do for now. Let's get CAS running.</p>
+<h2>
+<a id="cas" class="anchor" href="#cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS</h2>
+<p>Integration with MongoDB in CAS to manage configuration can be done in a number of ways:</p>
+<ul>
+<li>
+<p>If you have the <a href="https://fawnoos.com/2018/10/25/cas6-cloud-config-server/">Spring Cloud Config Server</a> deployed, MongoDB could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with MongoDB to fetch settings, etc.</p>
+</li>
+<li>
+<p>Alternatively, you may decide to connect your CAS server directly to MongoDB and fetch settings. This is the approach we are going to try in this tutorial for a quick win, but do note that the strategy is almost the same if we were to use the Cloud Config server.</p>
+</li>
+</ul>
+<p>So in order to enable a CAS integration with MongoDB <em>directly</em>, you want to start with the <a href="https://github.com/apereo/cas-overlay-template">CAS Overlay</a>, clone the project and then put the following settings into a <code>src/main/resources/bootstrap.properties</code> file:</p>
+<pre lang="properties"><code>spring.application.name=cas
+spring.profiles.active=mongodb
+cas.spring.cloud.mongo.uri=mongodb://casuser:Mellon@localhost:27017/cas
+</code></pre>
+<p>Of course, don't forget to include the required module in your CAS build:</p>
+<pre lang="gradle"><code>compile "org.apereo.cas:cas-server-support-configuration-cloud-mongo:${project.'cas.version'}"
+</code></pre>
+<p>Build and deploy. At this point, you should be able to log into CAS using <code>casuser</code> and <code>MongoDB</code> as the credentials!</p>
+<h3>
+<a id="refresh--reload" class="anchor" href="#refresh--reload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Refresh &amp; Reload</h3>
+<p>If a setting changes, MongoDB has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to <a href="https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html">refresh the configuration</a> as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to <em>refresh</em> its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.</p>
+<p>For example, start by changing the value of <code>cas.authn.accept.users</code> in MongoDB to something like <code>casuser::HelloWorld</code>. Then, execute the following command to refresh the CAS application context:</p>
+<pre lang="bash"><code>curl -k -u casuser:Mellon https://sso.example.org/cas/actuator/refresh -d {} -H "Content-Type: application/json"
+
+...
+["cas.authn.accept.users"]
+</code></pre>
+<p>At this point, you should be able to log into CAS using <code>casuser</code> and <code>HelloWorld</code> as the credentials!</p>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

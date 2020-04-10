@@ -1,0 +1,147 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------intro-to-cas-auto-configuration-strategysummary----a-short-and-painless-introduction-into-how-cas-uses-spring-boot-to-tickle-the-runtime-conditionallytags-------cas" class="anchor" href="#layout-----posttitle------intro-to-cas-auto-configuration-strategysummary----a-short-and-painless-introduction-into-how-cas-uses-spring-boot-to-tickle-the-runtime-conditionallytags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Intro To CAS Auto Configuration Strategy<br>
+summary:    A short and painless introduction into how CAS uses Spring Boot to tickle the runtime conditionally.<br>
+tags:       [CAS]</h2>
+<blockquote>
+<p>The post specifically applies to CAS 5.1.x which, as of this writing today, is still in development.</p>
+</blockquote>
+<p>If you scan the recent literature on <a href="https://apereo.github.io/cas/development/installation/Configuration-Management.html#auto-configuration-strategy">CAS configuration model and strategy</a>, you would notice that there is a great amount of emphasis on letting CAS modules dynamically alter the application context at runtime to activate features, massage webflow definitions and move settings around without asking for a whole lot of manual input.</p>
+<p>How does this all work?</p>
+<h1>
+<a id="java-based-configuration" class="anchor" href="#java-based-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java-based Configuration</h1>
+<p>Given CAS' adoption of <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a>, most if not all of the old XML configuration is transformed into <code>@Configuration</code> components. These are classes declared by each relevant module that are automatically picked up at runtime whose job is to declare and configure beans and register them into the application context. Another way of thinking about it is, components that are decorated with <code>@Configuration</code> are loose equivalents of old XML configuration files that are highly organized where <code>&lt;bean&gt;</code> tags are translated to java methods tagged with <code>@Bean</code> and configured dynamically.</p>
+<p>Sidestepping irrelevant details, here is an example:</p>
+<pre lang="java"><code>package org.apereo.cas.config;
+
+@Configuration("casCoreMonitorConfiguration")
+public class CasCoreMonitorConfiguration {
+
+    @ConditionalOnMissingBean(name = "healthCheckMonitor")
+    @Bean
+    public Monitor healthCheckMonitor() {
+        final List&lt;Monitor&gt; monitors = new ArrayList&lt;&gt;();
+
+        // Add monitors to the list as needed dynamically
+
+        return new HealthCheckMonitor(monitors);
+    }
+}
+</code></pre>
+<p>The above done in XML form manually in a <code>monitors-configuration.xml</code> file<br>
+would roughly translate into the following:</p>
+<pre lang="xml"><code>&lt;bean id="healthCheckMonitor" class="org.apereo.cas.monitor.HealthCheckMonitor"&gt;
+    &lt;property name="monitors"&gt;
+      &lt;list&gt;
+        &lt;!-- Add monitors to the list as needed dynamically. --&gt;
+      &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+<h1>
+<a id="configuration-registration" class="anchor" href="#configuration-registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@Configuration</code> Registration</h1>
+<p>How are <code>@Configuration</code> components picked up? Each CAS module declares its set of configuration components as such, <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html">per guidelines laid out by Spring Boot</a>:</p>
+<ul>
+<li>Create a <code>src/main/resources/META-INF/spring.factories</code> file</li>
+<li>Add the following into the file:</li>
+</ul>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.apereo.cas.config.CasCoreMonitorConfiguration
+</code></pre>
+<p>The above done in XML form would roughly translate into the following:</p>
+<pre lang="xml"><code>&lt;import resource="monitors-configuration.xml"/&gt;
+</code></pre>
+<p>Note that the you can use the same exact technique in CAS overlays to register your own configuration components, or remove/disable CAS' auto-configuration strategy. For instance, if you prefer to not let CAS bootstrap its monitoring configuration automatically, you can remove it from the registration process in the <code>application.properties</code> file:</p>
+<pre lang="properties"><code>spring.autoconfigure.exclude=org.apereo.cas.config.CasCoreMonitorConfiguration
+</code></pre>
+<h1>
+<a id="overrides-and-conditional" class="anchor" href="#overrides-and-conditional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overrides and <code>@Conditional</code>
+</h1>
+<p>What if you needed to override the definition of that <code>healthCheckMonitor</code> bean to add/remove monitors? Or perhaps entirely remove and disable it? This is where <code>@Conditional</code> components come to aid. Most component/bean definitions in CAS are registered with some form of <code>@Conditional</code> tag that indicates to the bootstrapping process to ignore them, if <em>a bean definition with the same id</em> is already defined. This means you can create your own configuration class, register it and the design a <code>@Bean</code> definition only to have the context utilize yours rather than what ships with CAS by default:</p>
+<pre lang="java"><code>package org.custom.mine.config;
+
+@Configuration("MyOwnMonitorConfiguration")
+public class MyOwnMonitorConfiguration {
+
+    @Bean
+    public Monitor healthCheckMonitor() {
+        final List&lt;Monitor&gt; monitors = new ArrayList&lt;&gt;();
+
+        // Do what you will to replace the provided CAS monitor.
+
+        return new HealthCheckMonitor(monitors);
+    }
+}
+</code></pre>
+<p>Make sure your component is registered:</p>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.custom.mind.config.MyOwnMonitorConfiguration
+</code></pre>
+<p>The trick here is, in order to override a bean definition, you need to know its name as your own structure identified by the method name must <em>exactly</em> match that of CAS or the process fails. This is where you look into the CAS source code to learn about various beans, etc.</p>
+<p>I <em>strongly</em> advise against making this sort of change, unless absolutely warranted and reasonable (To learn why, please read on).</p>
+<h1>
+<a id="what-else" class="anchor" href="#what-else" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What Else?</h1>
+<ul>
+<li>Your <code>@Bean</code> definitions can also be tagged with <code>@RefreshScope</code> to become auto-reloadable when the CAS context is refreshed as a result of an external property change.</li>
+<li>
+<code>@Configuration</code> classes can be assigned an order with <code>@Order(1234)</code> which would place them in an ordered queue waiting to be loaded in that sequence.</li>
+<li>To be more explicit, <code>@Configuration</code> classes can also be loaded exactly before/after another <code>@Configuration</code> component with <code>@AutoConfigureBefore</code> or <code>@AutoConfigureAfter</code> tags and annotations.</li>
+</ul>
+<h1>
+<a id="why-spring-boot" class="anchor" href="#why-spring-boot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why Spring Boot?</h1>
+<p>That is a fair question; Why prefer a Java-based configuration model over XML. Isn't XML, by intention and definition, more extensible and easier to modify and tweak? Why should you have to write Java-code to extend and modify the context?</p>
+<p>There are several advantages to this model.</p>
+<h2>
+<a id="compiled" class="anchor" href="#compiled" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compiled</h2>
+<p>Often times when you build the CAS application package via Maven or Gradle, the build process simply outputs <code>BUILD SUCCESS</code> at the end somehow tricking you into thinking "Great! My changes are going to work." where in fact that may be entirely false. All that message tells you is that the build tool was able to assemble and package a bunch of configuration files and form a binary archive at the end. The output is going to be all the same, even if you had a typo in the configuration, a missing tag or a bad configuration piece. Also, if a new CAS version decides [for whatever reason] to move that <code>HealthCheckMonitor</code> from <code>org.apereo.cas.monitor</code> into <code>org.apereo.cas.monitors</code> or even rename it to something else, then you end up with a broken configuration when you upgrade. Why? Because it's exactly that; just configuration. A small piece of fragmented code that tells the application how to behave a tad too late in the deployment lifecycle.</p>
+<p>Java-based configuration components are the exact opposite. They are <em>source code</em>. They compile. Any typos, mistakes or repackaging of the components will immediately stop the build from succeeding.</p>
+<p>Think of it this way; if you are designing the electrical system of a building:</p>
+<ul>
+<li>Would you prefer the wiring system stop you from making potentially fatal mistakes as you attempt to connect the cables and wires together?</li>
+<li>Or would you prefer to do the whole thing in one go, turn on the lights, have the entire building blow up only to (possibly, maybe) succeed later after a few more iterations?</li>
+</ul>
+<h2>
+<a id="automated" class="anchor" href="#automated" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automated</h2>
+<p>The above note really may not be all that attractive, unless you start to consider that Java-based configuration components can entirely automate the behavior of the application. They can be done once and for all, with small modest options here and there to tweak certain aspects of the feature, and then can ship with the application as first-class citizens only to be activated conditionally at deployer's command. They are not affected by trivial mistakes, copy-paste errors, maintenance burdens and steep learning curves.</p>
+<p>XML is a terribly poor choice as a programming language to automate configuration conditionally. If you were asked to turn on and configure a few different features in the application:</p>
+<ul>
+<li>Would you prefer to go to your build script, declare feature modules, tweak settings and run?</li>
+<li>Or would you prefer to go to the documentation, copy various [and large] pieces of XML fragments into [perhaps many] configuration files, build and run, trusting that the documentation is accurate for the deployment version, hoping that it all works so you don't have to understand what a <code>&lt;bean&gt;</code> is, praying you haven't fat fingered an ending XML tag?</li>
+</ul>
+<h2>
+<a id="self-documented" class="anchor" href="#self-documented" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Self-Documented</h2>
+<p>The best advantage of configuration automation is that it removes the amount of boilerplate documentation one may have to apply or maintain. There is no longer a need to look after various XML fragments in the documentation, maintain and update them or try to verbosely explain their behavior and function in tutorials and guides [and thus duplicating what Spring or Spring Webflow may have already done in their own documentation!]. The technical details of how Spring or Spring Webflow or LDAP/JDBC libraries work have been abstracted away into what is now commonly referred to as <em>Intentions</em>.</p>
+<p>To see this in action, see the contents of <a href="https://apereo.github.io/cas/4.1.x/installation/OAuth-OpenId-Authentication.html#add-the-oauth20wrappercontroller">this page</a> and compare with <a href="https://apereo.github.io/cas/development/installation/OAuth-OpenId-Authentication.html#configuration">this page</a>. The former expects a lot more from the deployer while the latter simply translates a deployer's intention into a small feature module/plugin. As a result, the documentation tends to get a lot more focused and compact.</p>
+<h2>
+<a id="modernized" class="anchor" href="#modernized" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modernized</h2>
+<p>It would not be unfair to say that that CAS 3.x software, released almost over a decade ago, laid down the sweet architectural foundations for an open and extensible platform with flexible APIs and outlined public injection points. At the time, using technologies such as Spring, JSP and Spring Webflow were superbly attractive and significantly useful in allowing adopters to modify the platform decoratively and extend it programmatically. As a result, many extensions and add-ons and customizations flourished into existence based on the CAS 3.x platform, making the software that much more attractive [and perhaps more complicated to reason about] for adopters' evaluation.</p>
+<p>Now a decade later, the CAS software has revitalized its roots and designs to ensure it can keep up with today's demands and resources and future's solid and stable technical trends. To that end, Spring Boot is simply the best choice available as a flexible and modern albeit opinionated platform on top of which CAS can continue to grow. With the shift towards cloud-friendly micro-services and such, CAS needed to stay on top of its game by allowing deployments to be <a href="https://12factor.net/">self-contained and self-sufficient</a> by employing technologies such as Spring Boot, <a href="http://projects.spring.io/spring-cloud/">Spring Cloud</a>, Thymeleaf and such so development and maintenance could sustain given project's resources and team availabilities and with the presence of more complicated use cases such as <a href="https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication.html">MFA</a>, etc.</p>
+<h1>
+<a id="why-not" class="anchor" href="#why-not" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why Not?</h1>
+<p>There are of course many difficulties and challenges inherent in this model as well, especially if you are new to Spring Boot and have an existing background with XML-based configuration.</p>
+<h2>
+<a id="learning-curve" class="anchor" href="#learning-curve" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Learning Curve</h2>
+<p>There is undoubtedly a learning curve here both for deployers and developers. Deployers who are used to the copy-paste XML configuration model may find the auto-configuration magic way too confusing and black-boxish while developers may find the same process to be composed of many moving and puzzling parts.</p>
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+<p>One could argue that XML-based configuration given its explicit nature could be reasoned about easier where injections of properties and settings into XML beans and such could be more comfortably understood and then tweaked. This is perfectly true that while the documentation has removed the boilerplate fragments needed to activate features, there is still <em>a most definitive need</em> to document and explain away <a href="https://apereo.github.io/cas/development/installation/Configuration-Properties.html">all the settings</a> that activate and control behavior in CAS. The strategy certainly is not to downplay the importance of good documentation and guides; it's to only highlight what is absolutely expected of the adopter to keep around and maintain in local deployments.</p>
+<p>It's also evident that producing good documentation is very much a time-consuming and delicate process, given various levels of technical expertise and skill. It takes time as the platform is still very very young. So by all means, <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">feel free to contribute</a>.</p>
+<h2>
+<a id="customizations" class="anchor" href="#customizations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customizations</h2>
+<p>The XML configuration was right in front of you, right? All you had to do was to change an element here and a property there and you were done. It’s quite true that the old model provides easier flexibility though perhaps at the cost of complexity as the platform grows larger.</p>
+<p>It should be noticed that the ability to configure the CAS application context via XML is <em>not removed</em>. There still exists a <code>deployerConfigContext.xml</code> that may be of assistance for truly special and customized needs and requirements. However, most everything is translated into auto-configuration modules with a specific set of externalized properties and settings that control behavior.</p>
+<p>So what do you do if you wanted to code an extension, or plug in a component/setting to modify behavior? The following options come to mind:</p>
+<ul>
+<li>
+<p><a href="https://apereo.github.io/cas/Support.html">Talk to the project</a>. Discuss use cases and requirements, <a href="https://github.com/apereo/cas">open up issues</a> and better yet <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">contribute patches and pull requests</a> to see your change become a first-class feature of the CAS product rather than something you specially have to control, maintain, document, teach and then understand.</p>
+</li>
+<li>
+<p>If the use case you have in mind truly applies to your own specific workflows and integration strategies, your best option is to <em>not</em> try to find a way based on the old XML-based configuration model to shoehorn your changes into CAS. That will simply result into long-term disastrous results. Follow the same pattern discussed here. If you find anything that is missing or have suggestions for things that need to be improved or made conditional to make extensions easier, discuss those with the project and contribute back. Write the code where it belongs.</p>
+</li>
+</ul>
+<p>If none of those options appeal to you, it’s likely that you may be heavily disappointed with the CAS software.</p>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this brief tutorial was of some assistance to you. If you have other suggestions for content and material or have questions about this particular post here, please get in touch.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

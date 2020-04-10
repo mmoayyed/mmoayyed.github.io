@@ -1,0 +1,103 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---managing-services-via-gitsummary----learn-to-configure-apereo-cas-to-fetch-application-policy-files-and-service-records-for-its-service-registry-from-remote-git-repositoriestags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---managing-services-via-gitsummary----learn-to-configure-apereo-cas-to-fetch-application-policy-files-and-service-records-for-its-service-registry-from-remote-git-repositoriestags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Managing Services via Git<br>
+summary:    Learn to configure Apereo CAS to fetch application policy files and service records for its service registry from remote git repositories.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Applications that are integrated with the Apereo CAS server typically are registered with the system as <a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON</a> or <a href="https://apereo.github.io/cas/development/services/YAML-Service-Management.html">YAML</a> files. Such files can be stored in a remote git repository to take advantage of all native operations and benefits of <em>distributed</em> source control such as version tracking, history, etc, given they are considered source code after all.</p>
+<p>Using a git-backed service registry, CAS is given the ability to pull down and <em>clone</em> a repository and watch for changes at defined intervals. In this tutorial, we are going to quickly review the steps required to <a href="https://apereo.github.io/cas/development/services/Git-Service-Management.html">manage application records via Git</a>.</p>
+<p>Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+<li><a href="https://stedolan.github.io/jq/">CLI JSON Processor <code>jq</code></a></li>
+</ul>
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+<p>Once you have prepped your CAS overlay with the correct <a href="https://apereo.github.io/cas/development/services/Git-Service-Management.html">auto-configuration module</a>, you will need to instruct CAS to try and connect to the repository:</p>
+<pre lang="properties"><code>cas.serviceRegistry.initFromJson=false
+
+cas.serviceRegistry.git.repositoryUrl=https://github.com/cas-server/sample-data
+cas.serviceRegistry.git.branchesToClone=master
+cas.serviceRegistry.git.activeBranch=master
+cas.serviceRegistry.git.cloneDirectory=file:/tmp/cas-service-registry
+cas.serviceRegistry.git.pushChanges=true
+</code></pre>
+<p>I am using a public repository on Github whose <code>master</code> branch. If you are working with a private git repository that requires credentials for access, you can specify those as well:</p>
+<pre lang="properties"><code># cas.serviceRegistry.git.username=
+# cas.serviceRegistry.git.password=
+</code></pre>
+<p>My current contains the following two files. One is a <code>Test-1.json</code> file at the root of the repository with the following content:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "TEST",
+  "id" : 1,
+  "evaluationOrder" : 1
+}
+</code></pre>
+<p>...and the other is a <code>SAMPLE-2.yaml</code> inside a <code>test</code> folder:</p>
+<pre lang="yaml"><code>--- !&lt;org.apereo.cas.services.RegexRegisteredService&gt;
+serviceId: "testId-yaml"
+name: "SAMPLE"
+id: 2
+description: "description"
+attributeReleasePolicy: !&lt;org.apereo.cas.services.ReturnAllAttributeReleasePolicy&gt; {}
+accessStrategy: !&lt;org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy&gt;
+  enabled: true
+  ssoEnabled: true
+</code></pre>
+<p>We expect that CAS would connect to the repository's <code>master</code> branch to pull down the above files regardless of where they are physically located in the repository directory structure.</p>
+<p>To make it easier to test the changes, I am also going to include the <a href="https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html#cas-endpoints">auto-configuration module for reporting</a> in the CAS overlay to take advantage of <code>registeredServices</code> <a href="https://apereo.github.io/cas/development/services/Service-Management.html#administrative-endpoints">actuator endpoint</a>. With the inclusion of this module, I can instruct CAS to enable it and allow anonymous requests for easy testing:</p>
+<pre lang="properties"><code>management.endpoints.web.exposure.include=registeredServices
+management.endpoint.registeredServices.enabled=true
+
+cas.monitor.endpoints.endpoint.registeredServices.access=ANONYMOUS
+</code></pre>
+<p>At this point, we should be ready to test.</p>
+<h2>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test</h2>
+<p>Once you build and bring up the deployment, the following should be apparent in the CAS <code>DEBUG</code> logs:</p>
+<pre lang="bash"><code>&lt;[Pull] -&gt; [1], total [2] [50]% Completed&gt;
+&lt;[Pull] -&gt; [2], total [2] [100]% Completed&gt;
+&lt;Finished [Pull] -&gt; [2], total [2] [100]% Completed&gt;
+&lt;Successfully pulled changes from the remote repository&gt;
+&lt;Adding registered service [testId-yaml] with name [SAMPLE] and internal identifier [2]&gt;
+&lt;Adding registered service [testId] with name [TEST] and internal identifier [1]&gt;
+&lt;Loaded [2] service(s) from [GitServiceRegistry].&gt;
+&lt;Service registry [GitServiceRegistry] contains [2] service definitions&gt;
+</code></pre>
+<p>Note that since CAS is by default configured to periodically reload the contents of the service registry, from time to time based on the pre-defined interval, the following log messages should appear:</p>
+<pre lang="bash"><code>Loaded [2] service(s) from [GitServiceRegistry].
+</code></pre>
+<p>...which means we can go to the repository and make a change to the <code>description</code> field of our YAML service file:</p>
+<pre lang="yaml"><code>--- !&lt;org.apereo.cas.services.RegexRegisteredService&gt;
+serviceId: "testId-yaml"
+name: "SAMPLE"
+id: 2
+description: "Description is updated to be more interesting"
+attributeReleasePolicy: !&lt;org.apereo.cas.services.ReturnAllAttributeReleasePolicy&gt; {}
+accessStrategy: !&lt;org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy&gt;
+  enabled: true
+  ssoEnabled: true
+</code></pre>
+<p>...and CAS should be able to <em>pull</em> down the change and reload the corresponding service file. To observe that change is activated, we can submit a request to CAS and ask for our service:</p>
+<pre lang="bash"><code>curl https://sso.example.org/cas/actuator/registeredServices/2 | jq
+</code></pre>
+<p>By default, the response type is always in JSON. If you prefer YAML, by all means:</p>
+<pre lang="bash"><code>curl  -H "Accept: application/vnd.cas.services+yaml" https://sso.example.org/cas/actuator/registeredServices/2
+</code></pre>
+<p>Of if you wish to force-reload the contents of the service registry:</p>
+<pre lang="bash"><code>curl https://sso.example.org/cas/actuator/registeredServices
+</code></pre>
+<h1>
+<a id="so" class="anchor" href="#so" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>So...</h1>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly <a href="https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/">are possible</a> as well. Feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p>Happy Coding,</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>

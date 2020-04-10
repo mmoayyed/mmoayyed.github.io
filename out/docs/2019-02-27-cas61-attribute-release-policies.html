@@ -1,0 +1,281 @@
+<hr>
+<h2>
+<a id="layout-----posttitle------apereo-cas---riffing-on-attribute-release-policiessummary----learn-how-to-release-the-kraken-of-attributes-to-cas-clients-relying-parties-and-service-providers-using-a-variety-of-attribute-release-policies-and-authentication-protocols-sampled-and-collected-here-to-fun-and-profittags-------cas" class="anchor" href="#layout-----posttitle------apereo-cas---riffing-on-attribute-release-policiessummary----learn-how-to-release-the-kraken-of-attributes-to-cas-clients-relying-parties-and-service-providers-using-a-variety-of-attribute-release-policies-and-authentication-protocols-sampled-and-collected-here-to-fun-and-profittags-------cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout:     post<br>
+title:      Apereo CAS - Riffing on Attribute Release Policies<br>
+summary:    Learn how to release the kraken of attributes to CAS clients, relying parties and service providers using a variety of attribute release policies and authentication protocols, sampled and collected here to fun and profit.<br>
+tags:       [CAS]</h2>
+<!-- raw HTML omitted -->
+<p>The process of dealing with attributes in Apereo CAS is twofold. First, CAS begins to fetch and resolve attributes from configured data sources, which may or may not be the same as the authentication source, usually as part of or right after the authentication transaction. Once attributes are found, they may be conditionally released to integrated service providers and registered clients and relying parties using a variety of <a href="https://apereo.github.io/cas/development/integration/Attribute-Release.html">attribute release policies</a>.</p>
+<p>In this blog post, I attempt to collect a number of attribute release policy samples and snippets that demonstrate the capabilities of the CAS attribute release engine to some degree. Some are rather modest and hopefully self-explanatory, and some are more advanced tapping into the particulars of a given authentication protocol to take advantage of fancier features such as <em>scopes</em>, <em>chains</em>, etc.</p>
+<!-- raw HTML omitted -->
+<p>In all such examples, the underlying assumptions are:</p>
+<ul>
+<li>The registration records for CAS-integrated applications are managed as stand-alone JSON files using the <a href="https://apereo.github.io/cas/development/services/JSON-Service-Management.html">JSON Service Registry</a>.</li>
+<li>Indicated attributes in all samples are fetched, resolved and made available from data sources and other attribute repositories. We assume the attribute is available in pool before it can be released.</li>
+</ul>
+<p>Let's begin. Our starting position is based on:</p>
+<ul>
+<li>CAS <code>6.1.x</code>
+</li>
+<li>Java <code>11</code>
+</li>
+<li><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></li>
+</ul>
+<ul>
+<li>A markdown unordered list which will be replaced with the ToC<br>
+{:toc}</li>
+</ul>
+<h2>
+<a id="scenarios" class="anchor" href="#scenarios" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scenarios</h2>
+<p>{:.no_toc}</p>
+<h3>
+<a id="saml2-metadata-re-bundle" class="anchor" href="#saml2-metadata-re-bundle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Metadata R&amp;E Bundle</h3>
+<p>CAS running as SAML2 identity provider, releasing the R&amp;E bundle of attributes to service providers found in a metadata aggregate in addition to a number of other <em>freelancing</em> attributes.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": ".+",
+  "name": "example",
+  "id": 1,
+  "evaluationOrder": 1,
+  "metadataLocation": "https://server-url/saml-metadata-aggregate.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [
+      "java.util.ArrayList",
+      [
+        { "@class": "org.apereo.cas.support.saml.services.InCommonRSAttributeReleasePolicy" },
+        { "@class": "org.apereo.cas.support.saml.services.RefedsRSAttributeReleasePolicy" },
+        {
+          "@class": "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "emplId", "department" ] ]
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h3>
+<a id="remapping-attributes-virtually" class="anchor" href="#remapping-attributes-virtually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remapping Attributes Virtually</h3>
+<p>Release <code>employeeId</code> as <code>UDC_IDENTIFIER</code> typically done for Ellucian Banner SSO Manager.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "https://example.banner.edu",
+  "name" : "banner",
+  "id" : 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+    "allowedAttributes" : {
+      "@class" : "java.util.TreeMap",
+      "employeeId" : "UDC_IDENTIFIER"
+    }
+  }
+}
+</code></pre>
+<h3>
+<a id="saml2-service-provider-w-transient-nameid" class="anchor" href="#saml2-service-provider-w-transient-nameid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Service Provider w/ Transient NameID</h3>
+<p>CAS running a SAML2 identity provider is set to release all attributes to the SAML2 service provider, while generating a transient name identifier.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "service-provider-entity-id",
+  "name" : "SAML",
+  "id" : 1,
+  "metadataLocation" : "/path/to/metadata.xml",
+  "requiredNameIdFormat": "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  },
+  "usernameAttributeProvider" : {
+    "@class" : "org.apereo.cas.services.AnonymousRegisteredServiceUsernameAttributeProvider",
+  }
+}
+</code></pre>
+<h3>
+<a id="saml2-service-provider-w-persistent-nameid" class="anchor" href="#saml2-service-provider-w-persistent-nameid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Service Provider w/ Persistent NameID</h3>
+<p>CAS running a SAML2 identity provider is set to release all attributes to the SAML2 service provider, while generating a persistent name identifier using a pre-defined salt.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "service-provider-entity-id",
+  "name" : "SAML",
+  "id" : 1,
+  "metadataLocation" : "/path/to/metadata.xml",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  },
+  "usernameAttributeProvider" : {
+    "@class" : "org.apereo.cas.services.AnonymousRegisteredServiceUsernameAttributeProvider",
+    "persistentIdGenerator" : {
+      "@class" : "org.apereo.cas.authentication.principal.ShibbolethCompatiblePersistentIdGenerator",
+      "salt" : "aGVsbG93b3JsZA==",
+    }
+  }
+}
+</code></pre>
+<h3>
+<a id="oauth-simple-relying-party" class="anchor" href="#oauth-simple-relying-party" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Simple Relying Party</h3>
+<p>CAS running as OAuth identity provider, releasing a number of attributes.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "https://app.example.org/dashboard/login",
+  "name" : "OAUTH",
+  "id" : 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "givenName" ] ]
+  }
+}
+</code></pre>
+<h3>
+<a id="openid-connect-chained-relying-party" class="anchor" href="#openid-connect-chained-relying-party" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenID Connect Chained Relying Party</h3>
+<p>CAS running as an OpenID Connect identity provider, releasing the dynamically-built attribute <code>user-x</code> off of <code>uid</code> as well as all other attributes (i.e. <em>claims</em>) defined by the standard <code>email</code> scope.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId": "^https://app.example.org/.*",
+  "name": "OIDC",
+  "id": 1000,
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [
+      "java.util.ArrayList",
+      [
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "uid", "givenName" ] ],
+          "order": 0  
+        },
+        {
+          "@class": "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+          "allowedAttributes": {
+            "@class": "java.util.TreeMap",
+            "user-x": "groovy { return attributes['uid'].get(0) + '-X' }"
+          },
+          "order": 1
+        },
+        {
+          "@class": "org.apereo.cas.oidc.claims.OidcEmailScopeAttributeReleasePolicy",
+          "order": 2
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h3>
+<a id="ws-fed-simple-relying-party" class="anchor" href="#ws-fed-simple-relying-party" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WS-FED Simple Relying Party</h3>
+<p>CAS running as a WS-FED identity provider releasing <code>employeeNumber</code> off of <code>givenName</code> via a custom namespace.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.ws.idp.services.WSFederationRegisteredService",
+  "serviceId" : "https://url.to.example/app.*",
+  "name" : "WSFED",
+  "id" : 2,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.ws.idp.services.CustomNamespaceWSFederationClaimsReleasePolicy",
+    "namespace": "https://github.com/apereo/cas",
+    "allowedAttributes" : {
+      "@class" : "java.util.TreeMap",
+      "employeeNumber" : "givenName"
+    }
+  },
+  "tokenType": "http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV1.1"
+}
+</code></pre>
+<h3>
+<a id="chained-attribute-consent" class="anchor" href="#chained-attribute-consent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Chained Attribute Consent</h3>
+<p>CAS is releasing attributes <code>cn</code>, <code>mail</code> and <code>sn</code> as well as <code>displayName</code> to a client, where the user is asked to consent to the release of attributes <code>displayName</code> and <code>cn</code>.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "https://example.app.org",
+  "name" : "ConsentChained",
+  "id" : 1,
+  "evaluationOrder" : 1,
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "mergingPolicy": "replace",
+    "policies": [ "java.util.ArrayList",
+      [
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ],
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["cn"]],
+            "enabled": true
+          }
+        },
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "displayName" ] ],
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["displayName"]],
+            "enabled": true
+          }
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h3>
+<a id="complicated-chained-attribute-consent" class="anchor" href="#complicated-chained-attribute-consent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Complicated Chained Attribute Consent</h3>
+<p>This one is way more complicated! CAS is releasing attributes:</p>
+<ul>
+<li>
+<code>cn</code>, <code>department</code>, <code>mail</code> and <code>sn</code> only if the value of each attribute has exactly 3 characters.</li>
+<li><code>displayName</code></li>
+</ul>
+<p>The user is asked to consent to the release of <code>cn</code>, <code>department</code> and <code>displayName</code> out of the calculated released bundle.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://app.example.org",
+  "name" : "example",
+  "id" : 1,
+  "evaluationOrder" : 1,
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "mergingPolicy": "replace",
+    "policies": [ "java.util.ArrayList",
+      [
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "department", "mail", "sn" ] ],
+          "attributeFilter" : {
+            "@class" : "org.apereo.cas.services.support.RegisteredServiceChainingAttributeFilter",
+            "filters": [ "java.util.ArrayList",
+              [
+                {
+                  "@class" : "org.apereo.cas.services.support.RegisteredServiceRegexAttributeFilter",
+                  "pattern" : "^\\w{3}$",
+                  "order": 1
+                }
+              ]
+            ]
+          },
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["cn", "department"]],
+            "enabled": true
+          }
+        },
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "displayName" ] ],
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["displayName"]],
+            "enabled": true
+          }
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h2>
+<a id="finale" class="anchor" href="#finale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finale</h2>
+<p>{:.no_toc}</p>
+<p>I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to <a href="https://apereo.github.io/cas/developer/Contributor-Guidelines.html">engage and contribute</a> as best as you can.</p>
+<p><a href="https://fawnoos.com">Misagh Moayyed</a></p>
