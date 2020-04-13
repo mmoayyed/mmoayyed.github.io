@@ -55,6 +55,11 @@ layout: default
             {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
           </p>
         </article>
+        
+        <hr>
+
+        {% endfor %}
+
 
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle"
@@ -67,10 +72,6 @@ layout: default
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
         
-        <hr>
-
-        {% endfor %}
-
         <!-- Pager -->
         <div class="clearfix">
           <a class="btn btn-warning float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
