@@ -11,6 +11,17 @@ tags:       [CAS]
 
 Per the [CAS Protocol](https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html), validating service tickets requires a `service` parameter that is expected to be the identifier of the service for which the service ticket was issued. In other words, CAS requires and enforces an exact match between the given service identifier and one that was supplied originally for ticket creation.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this short tutorial, we are briefly going to review the specifics of this matching strategy and ways that it might be customized. Our starting position is based on:
 
 - CAS `6.1.x`

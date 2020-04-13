@@ -7,6 +7,17 @@ tags:       [CAS]
 
 CAS [embraced Docker](https://github.com/apereo/cas-webapp-docker) a while ago by providing a sample `Dockerfile` template to kickstart the builds. Since then, both configuration and technology have evolved greatly to simplify Docker-based deployments of CAS in much easier and hassle-free ways. This tutorial begins to review strategies that exist today to allow a CAS adopter to create Docker images for a CAS deployment and run containers with ease.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
  Our starting position is based on the following:
 
 - CAS `6.2.x`

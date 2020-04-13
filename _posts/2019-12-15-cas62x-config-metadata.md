@@ -13,6 +13,17 @@ Based on the results of the most recent [CAS Survey](https://apereo.github.io/20
 with CAS deployers, one item that is frequently debated and requested from the project is better documentation especially around CAS settings and properties. In this blog
 post, I am going to demonstrate a few ways where one can query the CAS documentation to look up settings, review notes, examine default values, etc.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 # Foreword
 
 Let's address the obvious question:

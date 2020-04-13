@@ -13,6 +13,17 @@ tags:       [CAS]
 spam and abuse. It uses advanced risk analysis techniques to tell humans and bots apart. This brief 
 demonstrates how Apereo CAS may be configured to integrate with the Google reCAPTCHA API v2 and v3. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.2.x`

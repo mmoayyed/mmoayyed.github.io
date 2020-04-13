@@ -10,6 +10,17 @@ background: '/images/home/slide-1.jpg'
 
 CAS provides a facility for consuming and [recording authentication events](https://apereo.github.io/cas/development/installation/Configuring-Authentication-Events.html) into persistent storage. Events are primarily designed to be consumed by the developer and subsequent CAS modules and track a variety of types throughout the CAS lifecycle. While by default, all events are loaded and persisted in the underlying storage, there may be scenarios where one would prefer to dynamically filter out certain events. This quick blog posts demonstrates a strategy to activate event filtering in CAS.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.2.x`

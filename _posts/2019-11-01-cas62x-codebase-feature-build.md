@@ -5,12 +5,6 @@ summary:    An overview of how various CAS features modules today can be changed
 tags:       [CAS]
 ---
 
-<div class="alert alert-success">
-<strong>Collaborate</strong><br/>This blog is managed and hosted on GitHub. If you wish to update the contents of this post or if you have found an inaccuracy and wish to make corrections, we recommend that you please submit a pull request to <a href="https://github.com/apereo/apereo.github.io">this repository</a>.
-</div>
-
-# Overview
-
 This quick walkthrough effectively aims for the following objectives:
 
 - A quick development environment setup using IntelliJ IDEA.
@@ -18,6 +12,17 @@ This quick walkthrough effectively aims for the following objectives:
 - Changing feature modules and testing out behavior.
 - Testing changes and writing unit tests.
 - Stepping into the code using a debugger.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Development Environment
 

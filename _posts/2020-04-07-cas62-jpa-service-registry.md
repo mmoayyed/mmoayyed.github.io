@@ -8,6 +8,17 @@ tags:       [CAS]
 
 An identity provider such as Apereo CAS that provides single sign-on is fully powered on once you begin to integrate and onboard applications to take advantage of centralized functionality and policy management. These applications, also known as *services* in the CAS vernacular, and their associated policies can be managed by a CAS deployment using a variety of services and technologies. The core component of the service/application management facility is what is referred to as the *service registry* that stores application definitions into an underlying store such as a relational database. Thus, the registry acts as a facade and gatekeeper between the *business layers* of the system and the storage facility that in our case happens to be an Oracle database.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this tutorial, we will briefly take a look at [JPA Service Registry](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) support in CAS, with our starting position as follows:
 
 - CAS `6.2.x`

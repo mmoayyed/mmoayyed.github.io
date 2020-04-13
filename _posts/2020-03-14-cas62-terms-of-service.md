@@ -14,6 +14,17 @@ When it comes to terms of use with CAS, there are a few aspects you should consi
 2. How could we construct and present that policy?
 3. How do we manage and store user decisions?
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this tutorial, we will briefly take a look at [Acceptable Usage Policy](https://apereo.github.io/cas/development/webflow/Webflow-Customization-AUP.html) support in CAS, with our starting position as follows:
 
 - CAS `6.2.x`

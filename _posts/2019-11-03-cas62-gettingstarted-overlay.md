@@ -16,6 +16,17 @@ This tutorial specifically requires and focuses on:
   <strong>Need Help?</strong><br/>If you ever get stuck and are in need of additional assistance, start by reviewing the suggestions <a href="https://apereo.github.io/cas/6.2.x/installation/Troubleshooting-Guide.html">provided here</a>. You may also look at available support options <a href="https://apereo.github.io/cas/Support.html">provided here</a>.
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 * A markdown unordered list which will be replaced with the ToC
 {:toc}
 

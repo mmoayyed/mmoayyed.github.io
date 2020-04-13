@@ -12,6 +12,17 @@ background: '/images/home/slide-1.jpg'
 
 This is a short and sweet tutorial on how to get Apereo CAS deployed via Payara Micro.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.2.x`
