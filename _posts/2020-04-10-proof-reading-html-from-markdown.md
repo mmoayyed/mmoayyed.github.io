@@ -8,6 +8,17 @@ tags:       [CAS]
 
 If you have a set of Markdown documents hosted somewhere (i.e. [GitHub Pages](https://pages.github.com/)) and rendered in HTML format, it would be a good idea to validate and proof-read them all, to make sure image references, links, tags, etc are all working correctly before you publish. Doing so manually would take a lot of time and is quite a tedious task. So in this blog post, we are going to take a look at the [HTMLProofer](https://github.com/gjtorikian/html-proofer) tool to see how it can be used to validate our markdown documents. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Requirements
 
 - (Optional) Ruby
