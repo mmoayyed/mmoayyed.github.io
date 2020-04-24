@@ -68,7 +68,7 @@ These are excellent questions.
 
 As I have repeatedly outlined, it most often does not matter what *this* is. Maybe you are working on a brand new capability absent in the current software stack…or maybe you’re adding a new variation to an existing feature, like the ability to use a relational database instead of a NoSQL database…or perhaps you want the system to dance for you based on the native and traditional customs of the end-user’s current region determined by the browser’s locale…who knows. 
 
-Ordinarily, [it’s all good]( https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/). The worst that could happen is, *"No, sorry. Code this for you only"*. 
+Ordinarily, [it’s all good](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/). The worst that could happen is, *"No, sorry. Code this for you only"*. 
 
 ## Execute
 

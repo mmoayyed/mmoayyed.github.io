@@ -11,10 +11,6 @@ tags:       [CAS]
 </div>
 -->
 
-<div class="alert alert-success">
-  <strong>Collaborate</strong><br/>This blog is managed and hosted on GitHub. If you wish to update the contents of this post or if you have found an inaccuracy and wish to make corrections, we recommend that you please submit a pull request to <a href="https://github.com/apereo/apereo.github.io">this repository</a>.
-</div>
-
 According to [Wikipedia](https://www.wikiwand.com/en/Multitenancy), the term "software multitenancy" is defined as:
 
 > ...a software architecture in which a single instance of software runs on a server and serves multiple tenants. A tenant is a group of users who share a common access with specific privileges to the software instance.
@@ -56,7 +52,7 @@ I am of course assuming, rather obviously, that tenants support username/passwor
 
 The answer is, yes.
 
-Most authentication strategies in CAS are given a [predicate to examine the requested credential]( https://apereo.github.io/cas/development/installation/Configuration-Properties-Common.html#authentication-credential-selection) for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential.
+Most authentication strategies in CAS are given a [predicate to examine the requested credential]( https://apereo.github.io/cas/5.3.x/installation/Configuration-Properties-Common.html#authentication-credential-selection) for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential.
 
 So, we can design the following conditions for our MySQL and Active Directory authentication modes:
 
@@ -90,7 +86,7 @@ Simple, eh?
  
 In our quest to multi-tenancy, we need to design a strategy to release bundles of attributes to each tenant. One option is to simply register all applications with CAS and design attribute release policies for each. While reasonable, this approach might lead to some maintenance overhead, especially as you begin to design attribute release rules from a tenant perspective and as that number grows over time. To elaborate, let's say all applications managed by tenant A should receive the `firstName` attribute but only a few privileged applications in the same group need access to `lastName`. Are we to duplicate the same attribute release policy rules for each service definition with `firstName` as the allowed attribute and only in special cases then make room for `lastName`? Not quite. What might be more desirable is if we had a way to *share policy rules* across tenants and definitions to centralize configuration and policy.
 
-One option is to [use a Groovy script](https://apereo.github.io/cas/development/integration/Attribute-Release-Policies.html#groovy-script) shared across members of a given tenant. For instance, our release policy includes something like this:
+One option is to [use a Groovy script](https://apereo.github.io/cas/5.3.x/integration/Attribute-Release-Policies.html#groovy-script) shared across members of a given tenant. For instance, our release policy includes something like this:
 
 ```json
 {
@@ -120,11 +116,11 @@ def Map<String, List<Object>> run(final Object... args) {
 }
 ```
 
-You may also want to get even fancier by assigning [arbitrary tags to each service definition](https://apereo.github.io/cas/development/installation/Configuring-Service-Custom-Properties.html) to further control different sorts of centralized policies in the script.
+You may also want to get even fancier by assigning [arbitrary tags to each service definition](https://apereo.github.io/cas/5.3.x/installation/Configuring-Service-Custom-Properties.html) to further control different sorts of centralized policies in the script.
 
 # Themes
 
-Based on the [CAS documentation for dynamic themes](https://apereo.github.io/cas/development/installation/User-Interface-Customization-Themes.html),
+Based on the [CAS documentation for dynamic themes](https://apereo.github.io/cas/5.3.x/installation/User-Interface-Customization-Themes.html),
 
 > CAS can also utilize a service’s associated theme to selectively choose which set of UI views will be used to generate the standard views. This is especially useful in cases where the set of pages for a theme that is targeted for a different type of audience are entirely different structurally that simply using a simple theme is not practical to augment the default views.
 

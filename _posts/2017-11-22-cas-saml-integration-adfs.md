@@ -5,10 +5,6 @@ summary:    A short tutorial on how to integrate CAS, acting as a SAML identity 
 tags:       [CAS,SAML]
 ---
 
-<div class="alert alert-success">
-  <strong>Collaborate</strong><br/>This blog is managed and hosted on GitHub. If you wish to update the contents of this post or if you have found an inaccuracy and wish to make corrections, we recommend that you please submit a pull request to <a href="https://github.com/apereo/apereo.github.io">this repository</a>.
-</div>
-
 This is a short and sweet tutorial on how to integrate Apereo CAS, acting as a SAML identity provider, with ADFS.
  
 # Environment
@@ -18,7 +14,7 @@ This is a short and sweet tutorial on how to integrate Apereo CAS, acting as a S
 
 # CAS Configuration
 
-In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the [instructions provided here](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html). Remember to add the relevant module to the overlay along with the list of required build repositories. 
+In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the [instructions provided here](https://apereo.github.io/cas/5.2.x/installation/Configuring-SAML2-Authentication.html). Remember to add the relevant module to the overlay along with the list of required build repositories. 
 
 The SAML IdP configuration will need to minimally match the following settings:
 
@@ -30,9 +26,9 @@ cas.authn.samlIdp.metadata.location=file:/etc/cas/saml
 
 You will, of course, need to adjust your entityId and scope as needed. Upon startup, CAS will attempt to generate the appropriate metadata based on provided settings and produced artifacts will be placed at `/etc/cas/saml`. Of course, the running CAS process will need to have the right permissions in order to create this directory and the contents within it.
 
-To keep things simple, we will also configure CAS to use [LDAP authentication](https://apereo.github.io/cas/development/installation/LDAP-Authentication.html) such that the established single sign-on session is based on the authenticated principal whose is based on the `sAMAccountName` attribute.
+To keep things simple, we will also configure CAS to use [LDAP authentication](https://apereo.github.io/cas/5.2.x/installation/LDAP-Authentication.html) such that the established single sign-on session is based on the authenticated principal whose is based on the `sAMAccountName` attribute.
 
-The ADFS instance needs to be registered with CAS as a service provider. You can choose a variety of [service management options](https://apereo.github.io/cas/development/installation/Service-Management.html). For this tutorial, I will be using the [JSON Service Registry](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html) with the following snippet as the ADFS registration record:
+The ADFS instance needs to be registered with CAS as a service provider. You can choose a variety of [service management options](https://apereo.github.io/cas/5.2.x/installation/Service-Management.html). For this tutorial, I will be using the [JSON Service Registry](https://apereo.github.io/cas/5.2.x/installation/JSON-Service-Management.html) with the following snippet as the ADFS registration record:
 
 ```json
 {

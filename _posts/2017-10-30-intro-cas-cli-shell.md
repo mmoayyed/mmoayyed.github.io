@@ -11,11 +11,8 @@ tags:       [CAS]
 </div>
 -->
 
-<div class="alert alert-success">
-  <strong>Collaborate</strong><br/>This blog is managed and hosted on GitHub. If you wish to update the contents of this post or if you have found an inaccuracy and wish to make corrections, we recommend that you please submit a pull request to <a href="https://github.com/apereo/apereo.github.io">this repository</a>.
-</div>
 
-Amongst the new features of CAS `5.2.x` is a [command-line tool](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html) whose objective is to automate some of the more mundane deployment tasks by tapping into the CAS APIs to provide help on available settings/modules and various other utility functions. This shell engine that is based on [Spring Shell](https://projects.spring.io/spring-shell/) is presented as both a CLI utility and an interactive shell. 
+Amongst the new features of CAS `5.2.x` is a [command-line tool](https://apereo.github.io/cas/5.2.x/installation/Configuring-Commandline-Shell.html) whose objective is to automate some of the more mundane deployment tasks by tapping into the CAS APIs to provide help on available settings/modules and various other utility functions. This shell engine that is based on [Spring Shell](https://projects.spring.io/spring-shell/) is presented as both a CLI utility and an interactive shell. 
 
 In this post, I am going to provide an overview of the CAS Shell and enumerate a few utility functions that might prove useful during a CAS deployment.
  

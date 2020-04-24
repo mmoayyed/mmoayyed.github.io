@@ -14,7 +14,7 @@ In the most common use case, CAS is made entirely invisible to the end-user such
 Of course, you and I know that source could very well be ADFS; but that's just between you and me...and let's keep it that way!
 
 <div class="alert alert-success">
-  <strong>Usage Warning</strong><br/>If you are trying to figure how you may log into ADFS while CAS plays the role of a SAML2 identity provider, you are in the wrong place. Please <a href="https://apereo.github.io/2017/11/22/cas-saml-integration-adfs/">read this post</a> instead.
+  <strong>Usage Warning</strong><br/>If you are trying to figure how you may log into ADFS while CAS plays the role of a SAML2 identity provider, you are in the wrong place. Please <a href="https://fawnoos.com/2017/11/22/cas-saml-integration-adfs/">read this post</a> instead.
 </div>
 
 Our starting position is based on the following:
@@ -58,7 +58,7 @@ A few tips for the enlightened:
 - ADFS tends to sign responses using a signing certificate. The certificate will need to be obtained and shared with the CAS server with you physically defining its home and sharing that path with CAS, as is done in my example above with `adfs-signing.cer`.
 - Of course, CAS somehow needs to figure out the authenticated username from the ADFS-produced response. To do this, it tends to look at a specific claim within that response typically released as `upn`. That is to say, you need to ensure ADFS is releasing this attribute (or anything else you prefer) to CAS and then ensure CAS is using the same claim name when it begins to do its extraction magic.
 
-If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](https://apereo.github.io/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](https://apereo.github.io/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
+If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](https://fawnoos.com/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](https://fawnoos.com/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
 
 ## Mutating Attributes
 
