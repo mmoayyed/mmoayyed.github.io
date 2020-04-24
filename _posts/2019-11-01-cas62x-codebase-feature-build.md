@@ -267,120 +267,40 @@ cd ~/Workspace/cas
 
 Note the use of the `testCategoryType` parameter as well as the actual task that runs the tests (`test` vs `testRedis`). To learn more about other available categories and how they are executed, please [take a look here][cascitests].
 
-To make things more comfortable, you can put the above into some sort of bash function. Here's an outline of said function that supports a number of categories for CAS integration tests:
+To make things more comfortable, CAS ships with a ready-made script that handles all of this for you:
 
 ```bash
-function testcas() {
-  task="$1"
-  tests="$2"
-  debug="$3"
+./testcas.sh --help
 
-  case $task in
-  test|simple|run|basic|unit)
-    task="test"
-    category="SIMPLE"
-    ;;
-  memcached|memcache|kryo)
-    task="testMemcached"
-    category="MEMCACHED"
-    ;;
-  filesystem|files|file)
-    task="testFileSystem"
-    category="FILESYSTEM"
-    ;;
-  groovy)
-    task="testGroovy"
-    category="GROOVY"
-    ;;
-  ldap)
-    task="testLdap"
-    category="LDAP"
-    ;;
-  mongo|mongodb)
-    task="testMongoDb"
-    category="MONGODB"
-    ;;
-  couchdb)
-    task="testCouchDb"
-    category="COUCHDB"
-    ;;
-  rest|restful)
-    task="testRestful"
-    category="RESTFULAPI"
-    ;;
-  mysql)
-    task="testMySQL"
-    category="MYSQL"
-    ;;
-  cassandra)
-    task="testCassandra"
-    category="CASSANDRA"
-    ;;
-  mail|email)
-    task="testMail"
-    category="MAIL"
-    ;;
-  dynamodb|dynamo)
-    task="testDynamoDb"
-    category="DYNAMODB"
-    ;;
-  redis)
-    task="testRedis"
-    category="REDIS"
-    ;;
-  esac
+Usage: ./testcas.sh --category [category1,category2,...] [--help] \
+  [--ignore-failures] [--no-wrapper] [--no-retry] [--debug] [--coverage]
 
-  if [ -z "${tests}" ] || [ "${tests}" == "-" ]; then
-    tests=""
-  else
-    tests="--tests \"${tests}\""
-  fi
+Available test categories are:
 
-  if [ ! -z "${debug}" ]; then
-    debug="--debug-jvm"
-  fi
+simple, memcached,cassandra,groovy,kafka,ldap,rest,mfa,jdbc,mssql, \
+  oracle,radius,couchdb,mariadb,files,postgres,dynamodb,couchbase,uma, \
+  saml,mail,aws,activemq,oauth,oidc,redis,webflow,mongo,\
+  ignite,influxdb,zookeeper,mysql
 
-  # clear
-  echo -e "${BLUE}Running Gradle with task ${CYAN}[$task]${NORMAL}${BLUE}, category ${CYAN}[$category]${NORMAL} \
-${BLUE}including ${CYAN}[$tests]${NORMAL}${BLUE} with debug ${CYAN}[$debug]${NORMAL}"
-
-  cmd="gradle $task $debug -DtestCategoryType=$category $tests \
---build-cache --parallel -x javadoc -x check -DignoreTestFailures=false -DskipNestedConfigMetadataGen=true \
--DskipGradleLint=true -DshowStandardStreams=true \
---no-daemon --configure-on-demand "
-
-  echo -e "$cmd\n"
-  # set -E
-  # set -o functrace
-  # set -x
-  eval "$cmd"
-}
+Please see the test script for details.
 ```
 
 As an example, let CAS run all basic unit tests:
 
 ```bash
-testcas simple
+./testcas.sh --category simple
 ```
 
 Run all integration tests that are tagged as `Mail`:
 
 ```bash
-testcas mail
+./testcas.sh --category mail
 ```
 
-Run all MySQL tests that belong to the `SomeJpaTests` component in a particular CAS module inside and enable remote debugging over port `5005`:
+Run all MySQL tests that belong to the `SomeJpaTests` component and enable remote debugging over port `5005` without using the Gradle wrapper:
 
 ```bash
-cd path/to/some/cas/module
-testcas mysql org.apereo.cas.SomeJpaTests true
-```
-
-Run `verifyStuffHappensCorrectly` that belongs to the `SomeJpaTests` component in a particular CAS module inside and enable remote debugging over port `5005`:
-
-```bash
-cd path/to/some/cas/module
-testcas mysql org.apereo.cas.SomeJpaTests.verifyStuffHappensCorrectly true
+./testcas.sh --category mysql --debug --no-wrapper
 ```
 
 <div class="alert alert-info">
