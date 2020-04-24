@@ -7,6 +7,17 @@ tags:       [CAS]
 
 I have been consulting on variations of a deployment strategy and use case that involves CAS acting as an identity provider while also presenting the ability to [delegate authentication requests](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) to an external identity provider and act as a *proxy* in between. I had the erroneous assumption that client applications integrating with CAS in proxy mode must be those that speak the CAS protocol. This meant that while CAS itself may delegate authentication requests to a variety of identity providers that speak SAML2, OAuth2 and CAS protocols, etc the client application that ultimately would receive a response from the proxying CAS server can only understand a service ticket and the particular validation payload compliant with the CAS protocol semantics.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 This post is an attempt at explaining my rationale with a follow-up explanation of why I was wrong.
 
 # Delegated Authentication Flow
@@ -35,6 +46,17 @@ All *other* [authentication protocols supported by the CAS server](https://apere
 # The Protocol Dance
 
 Let's start with a client application that speaks SAML2. This client is configured in CAS [as a SAML2 service provider](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), while CAS itself is proxying Facebook as an external identity provider.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 This is a bit of a complicated scenario since you have about three protocols dancing together. The effective flow would be:
 
