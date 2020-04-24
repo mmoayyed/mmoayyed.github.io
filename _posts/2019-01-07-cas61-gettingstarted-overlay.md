@@ -83,6 +83,17 @@ This might be a good time to review the CAS project's [Release Policy](https://a
 
 The next piece describes the *dependencies* of the overlay build. These are the set of components almost always provided by the CAS project that will be packaged up and put into the final web application artifact. At a minimum, you need to have the `cas-server-webapp-${appServer}` module available because that is the web application into which you intend to inject your settings and customizations if any. Also, note that the module declarations are typically configured to download the CAS version instructed by the property `cas.version`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Here is an example:
 
 ```groovy
@@ -285,6 +296,16 @@ cas.ticket.registry.hazelcast.cluster.members=123.321.123.321,223.621.123.521,..
 
 As a rather common use case, the majority of CAS deployments that intend to turn on multifactor authentication support tend to do so via [Duo Security](https://apereo.github.io/cas/6.1.x/installation/DuoSecurity-Authentication.html). We will be going through the same exercise here where we let CAS trigger Duo Security for users who belong to the `mfa-eligible` group, indicated by the `memberOf` attribute on the LDAP user account.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Configuration
 

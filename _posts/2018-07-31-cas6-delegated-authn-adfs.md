@@ -24,7 +24,7 @@ Our starting position is based on the following:
 - [Maven Overlay](https://github.com/apereo/cas-overlay-template) (The `6.0` branch specifically)
 
 <div class="alert alert-info">
-  <strong>The Cutting Edge</strong><br/>Note that as of this writing today, CAS <code>6</code> is very much in development and is not officially released. While the functionality and instructions noted here, more or less remain the same for CAS <code>5</code>, you may want to take steps described here with a pinch of salt, and of course as always, <a href="https://apereo.github.io/2017/03/08/the-myth-of-ga-rel/">shake well before use</a>.
+  <strong>The Cutting Edge</strong><br/>Note that as of this writing today, CAS <code>6</code> is very much in development and is not officially released. While the functionality and instructions noted here, more or less remain the same for CAS <code>5</code>, you may want to take steps described here with a pinch of salt, and of course as always, <a href="https://fawnoos.com/2017/03/08/the-myth-of-ga-rel/">shake well before use</a>.
 </div>
 
 ## Configuration

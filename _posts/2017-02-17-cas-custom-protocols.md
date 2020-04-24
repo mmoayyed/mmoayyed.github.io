@@ -11,6 +11,17 @@ That's right. If you enjoy designing your own authentication protocols, integrat
 
 Today, [Apereo CAS](https://apereo.github.io/cas) presents itself as a multilingual platform supporting protocols such as CAS, SAML2, OAuth2 and OpenID Connect. There are even [plans and projections](https://github.com/apereo/cas/issues/2340) to provide support for the necessary parts of the `WS-*` protocol stack. Support and functionality for each of these protocols continually improves per every iteration and release of the software thanks to excellent community feedback and adoption. While almost all such protocols are similar in nature and intention, they all have their own specific bindings, parameters, payload and security requirements. So, in order for you to understand how to add support for yet another protocol into CAS, it's very important that you first begin to study and understand how existing protocols are supported in CAS. The strategy you follow and implement will most likely be very similar.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 It all starts with something rather trivial: The Bridge. Pay attention. This one actually does go somewhere.
 
 # The Bridge
@@ -22,6 +33,17 @@ This is a neat trick because to the SAML Service Provider, that fact that authen
 So the bridge for the most part is the "control tower" of the operation. It speaks both languages and protocols, and just like any decent translator, it knows about the quirks and specifics of each language and as such is able to dynamically translate the technical lingo.
 
 So far, so good.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # CAS Supported Protocols
 

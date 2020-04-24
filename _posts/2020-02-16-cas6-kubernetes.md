@@ -130,6 +130,17 @@ minikube   Ready    master   83s   v1.17.2
 
 Once you have a running Kubernetes cluster, we can deploy our containerized CAS server on top of it. To do so, we need to create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes on how to create and update instances of CAS. Once you've created a Deployment, the Kubernetes master schedules mentioned application instances onto individual Nodes in the cluster.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Deployments
 
 A *Deployment*, in the Kubernetes vernacular, is responsible for creating and updating instances of our CAS server, keeping them running across Nodes Once the CAS server instance is created, a Kubernetes Deployment Controller continuously monitors that instances for failures. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces the instance with an instance on another Node in the cluster. This provides a self-healing mechanism to address machine failure or maintenance.
@@ -234,6 +245,17 @@ replicaset.apps/cas-7f97f4844b   1         1         1       44s
 
 <div class="alert alert-success">
 <strong>Be Patient</strong><br/>You may need to execute the <code>kubectl get all</code> command a few more times until the pod shows its status as "Running".</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Back in the dashboard, you should be able to see the deployment running in all greens:
 

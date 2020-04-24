@@ -101,6 +101,17 @@ Note that you do not have to override every single certificate and/or artifact. 
 the appropriate file for overrides. The bottom line is, if an override is found for a service provider it would be used in combination with everything else.
 If there are no overrides, then the global artifact would be used for the requested operation.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Furthermore, note that the `/idp/metadata` endpoint does also accept a `service` parameter either by entity id or numeric identifier. This parameter
 is matched against the CAS service registry allowing the endpoint to calculate and combine any identity provider metadata overrides that may have been specified.
 

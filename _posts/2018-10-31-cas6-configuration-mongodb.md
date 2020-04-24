@@ -9,6 +9,17 @@ tags:       [CAS]
 
 [MongoDB](https://www.mongodb.com) is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 MongoDB is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting [CAS connected to MongoDB](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html#mongodb) to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside MongoDB databases.
 
 Our starting position is based on the following:

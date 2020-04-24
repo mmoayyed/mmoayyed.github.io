@@ -83,6 +83,17 @@ This might be a good time to review the CAS project's [Release Policy][releasepo
 
 The next piece describes the *dependencies* of the overlay build. These are the set of components almost always provided by the CAS project that will be packaged up and put into the final web application artifact. At a minimum, you need to have the `cas-server-webapp-${appServer}` module available because that is the web application into which you intend to inject your settings and customizations if any. Also, note that the module declarations are typically configured to download the CAS version instructed by the property `cas.version`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Here is an example:
 
 ```groovy
@@ -181,6 +192,17 @@ cas.authn.ldap[0].principalAttributeList=memberOf,cn,givenName,mail
 # Registering Applications
 
 Client applications that wish to use the CAS server for authentication must be registered with the server apriori. CAS provides a number of [facilities to keep track of the registration records][servicemgmt] and you may choose any that fits your needs best. In more technical terms, CAS deals with service management using two specific components: Individual implementations that support a form of a database are referred to as *Service Registry* components and they are many. There is also a parent component that sits on top of the configured service registry as more of an orchestrator that provides a generic facade and entry point for the rest of CAS without entangling all other operations and subsystems with the specifics and particulars of a storage technology.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 In this tutorial, we are going to try to configure CAS with [the JSON service registry][jsonservicemgmt].
 
@@ -351,6 +373,17 @@ You have a number of options when it comes to deploying the final `cas.war` file
 ## Deploy Behind a Proxy
 
 Using the embedded Apache Tomcat container provided by CAS automatically is the recommended approach in almost all cases (The embedded bit; not the Apache Tomcat bit) as the container configuration is entirely automated by CAS and its version is guaranteed to be compatible with the running CAS deployment. Furthermore, updates and maintenance of the servlet container are handled at the CAS project level where you as the adopter are only tasked with making sure your deployment is running the latest available release to take advantage of such updates.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 If you wish to run CAS via the embedded Apache Tomcat container behind a proxy or load balancer and have that entity terminate SSL, you will need to open up a communication channel between the proxy and CAS such that (as an example):
 

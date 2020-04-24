@@ -84,6 +84,17 @@ To understand the meaning and function behind various command-line arguments, pl
 
 Per [instructions posted here][buildprocess], the inclusion of a particular build module in the Gradle build script of the CAS web application should allow the build process to automatically allow the module to be packaged and become available to the runtime. You may include the module reference in the [`webapp.gradle`][webappgradlefile] file, which is the common parent to build descriptors that do stuff with CAS web applications. Making changes in this file will ensure that it will be included *by default* in the generic CAS web application, regardless of how it is configured to run using a servlet container, which means you need to be extra careful about the sort of changes you make here and what is kept and what is checked in for follow-up pull requests and reviews.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 So for reference and our task at hand, the file would look like the following:
 
 ```groovy
@@ -103,6 +114,17 @@ Once done, you may then commit the change to a relevant branch (of your fork, wh
 One of the very useful things you can include in your build is the ability to allow for remote debugging via `-DenableRemoteDebugging=true`. Both [IntelliJ IDEA](https://www.jetbrains.com/help/idea/run-debug-configuration-remote-debug.html) and eclipse allow you ways to connect to a port remotely and activate a debugger to step into the code and troubleshoot. This is hugely useful, especially in cases where you can make a change to a source file and *rebuild* the component live hot-reloading the `.class` file to allow the changes to kick in the very next time execution passes through without restarting the servlet container. Depending on how significant the change is, this should save you quite a bit of time.
 
 There are also many fancier tools such as [JRebel](https://zeroturnaround.com/software/jrebel/) that let you do the same with a lot more power and flexibility.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The remote debugging port by default is `5000` and should be auto-incremented in case the port is busy or occupied by some other process. You should get notices and prompts from the build, if and when that happens.
 
@@ -205,6 +227,17 @@ public class SomeCasComponentTests {
 ```
 
 Note that the test execution would always fail if the Redis database isn't installed, running and configured correctly for everyone else working on the same CAS codebase. To work around this, we have also added a condition for the test runner to only execute the test when the [CAS CI environment][castravisci] is handling the test execution. The CI environment, given the appropriate category, will bootstrap and initialize the required dependencies and systems (typically via Docker) for the tests to execute which allows you to run the tests locally with a (Redis) database of your own while allowing the CI process to handle the test execution all the same, automatically and with the needed external dependencies.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Again, for better examples simply scan the codebase to find similar test classes.
 
