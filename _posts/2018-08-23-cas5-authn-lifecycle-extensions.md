@@ -11,6 +11,17 @@ There may come a time in your CAS deployment where you realize that simple usern
 
 The authentication engine in Apereo CAS is most flexible, where there are specific phases throughout the lifecycle of a given in-process request that can be extended and massaged for prosperity and fancy use cases. In this tutorial, we'll quickly tap into a few of these phases, where our objectives are as follows:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 1. Before credentials are validated, we shall reach out to an external system (such as a REST API) to check for user account status. Depending on the response, we may decide to entirely block the request and prevent the user from actually authenticating.
 2. After a successful authentication attempt though before a single sign-on session is established, we would want to check the authentication result and reach out to an external API/system to determine whether we need to inform the user about any particular messages or warnings. Whatever the result, we do not intend to block the request and it would be great if the end-user is still given the ability to proceed, despite the forewarned dangers.
 
@@ -99,6 +110,17 @@ public class FancyPreProcessor implements AuthenticationPreProcessor {
 </div>
 
 All that is happening here is that the authentication engine keeps track of this pre-processor and invokes before it does anything else. Our `FancyPreProcessor` when invoked, simply goes in to contact needed systems and check for conditions as needed and finally proper errors are thrown back to CAS that halt the authentication flow and get translated by the upper layers into reasonable messages for the end-user.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Post-Processing Authentications
 

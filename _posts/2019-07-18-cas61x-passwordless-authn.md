@@ -11,6 +11,17 @@ tags:       [CAS]
 
 [Passwordless authentication](https://apereo.github.io/cas/development/installation/Passwordless-Authentication.html) in CAS allows users to login without having to type in a password. Instead, passwords take the form of tokens that expire after a configurable period and are shared with users using communication methods such as email or SMS. Using this strategy, users are simply asked for an identifier (i.e. username) which is used to locate the user record that contains forms of contact such as email and phone number.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 This is a short tutorial on how to set up CAS to use Passwordless Authentication to avoid the insecure practice of using a shared password for different services and improve user experience, especially for mobile devices and applications.
 
 Our starting position is based on:

@@ -13,6 +13,17 @@ According to the MaxMind website:
 
 There certainly is an [existing integration](https://apereo.github.io/cas/5.3.x/installation/GeoTracking-Authentication-Requests.html) already with MaxMind and CAS, which is primarily giving CAS the ability to cross-check a browser-provided IP address against the MaxMind database to geolocate the request and perform additional processing later on, such as auditing the event with richer information or executing [risk-based authentication decisions](https://apereo.github.io/cas/5.3.x/installation/Configuring-Adaptive-Authentication.html).
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our particular use case here was a bit different. We were presented with a MaxMind database file that contained a list of IP addresses known to be linked to VPN services and anonymous service providers. Our objective was to examine the request for the provided IP address, cross-check against the MaxMind database and ultimately present a warning to the user if a match is found. Our initial assumption was that such a warning is presented to the after the _primary authentication_ event inclusive of any and all multifactor authentication flows such as [Duo Security](https://apereo.github.io/cas/5.3.x/installation/DuoSecurity-Authentication.html).
 
 This sort of use case can easily be done in form of [webflow interrupts](https://apereo.github.io/cas/5.3.x/installation/Webflow-Customization-Interrupt.html). 

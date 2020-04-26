@@ -26,6 +26,17 @@ cas.authn.samlIdp.metadata.location=file:/etc/cas/saml
 
 You will, of course, need to adjust your entityId and scope as needed. Upon startup, CAS will attempt to generate the appropriate metadata based on provided settings and produced artifacts will be placed at `/etc/cas/saml`. Of course, the running CAS process will need to have the right permissions in order to create this directory and the contents within it.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 To keep things simple, we will also configure CAS to use [LDAP authentication](https://apereo.github.io/cas/5.2.x/installation/LDAP-Authentication.html) such that the established single sign-on session is based on the authenticated principal whose is based on the `sAMAccountName` attribute.
 
 The ADFS instance needs to be registered with CAS as a service provider. You can choose a variety of [service management options](https://apereo.github.io/cas/5.2.x/installation/Service-Management.html). For this tutorial, I will be using the [JSON Service Registry](https://apereo.github.io/cas/5.2.x/installation/JSON-Service-Management.html) with the following snippet as the ADFS registration record:
@@ -67,6 +78,17 @@ Start with adding a Claims Provider Trust. In the screenshot below, ours is call
 On the “Monitoring” tab, enter the URL of your CAS IdP metadata into the “Claims provider’s federation metadata URL:” field (i.e `https://cas.example.edu/cas/idp/metadata`).
 
 ![image](https://user-images.githubusercontent.com/1205228/33142888-2ef45d88-cf75-11e7-877c-17fb83758b57.png)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 On the “Identifiers” tab, enter a “Display name:” and enter the entity ID that you specified in your CAS IdP configuration into the ”Claims provider identifier” field (i.e. `https://cas.example.edu/idp`).
 

@@ -11,6 +11,17 @@ tags:       [CAS]
 
 An Apereo CAS server deployment can run into many errors at runtime during the authentication flow, some of which are by design and deliberately produced by the system and some can be created and massaged by custom code outside the core framework. Either way, there are flexibilities and extension points in place to allow a deployer to customize the authentication webflow when it comes to its error handling logic. This tutorial walks through a few strategies that expand on these features to create meaningful and specific error messages given locale and audience.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.1.x`
@@ -90,6 +101,17 @@ public class MyCasWebflowExceptionHandler
     }
 }
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 All implementations of `CasWebflowExceptionHandler` are *discovered* at runtime and then sorted based on their defined order. Those handlers
 that declare their support and capability in dealing with the defined exception are iterated through to respond to the error and produce a meaningful event.

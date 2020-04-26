@@ -7,6 +7,17 @@ tags:       [CAS,MFA]
 
 As a rather common use case, the majority of CAS deployments that intend to turn on multifactor authentication support tend to do so via Duo Security. This is a quick and *simplified* guide to demonstrate an approach to that use case along with some additional explanations regarding specific multifactor triggers supported in CAS today.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our task list is rather short:
 
 1. Configure LDAP authentication with CAS
@@ -65,6 +76,17 @@ Notice that the conditions above do not indicate anything about Duo Security. If
 Per the CAS documentation:
 
 > Trigger MFA based on a principal attribute(s) whose value(s) matches a regex pattern. Note that this behavior is only applicable if there is only a single MFA provider configured since that would allow CAS to know what provider to next activate.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 In other words, if the above condition holds true and CAS is to route to *a* multifactor authentication flow, that would obviously be one supported and provided by Duo Security since that's the only provider that is currently configured to CAS. Of course, if there are multiple providers available at runtime (i.e. Duo Security, YubiKey, etc) then we would need massage the condition since the automatic detection of the multifactor provider would not be immediately obvious...and that sort of thing would be outside the scope of this tutorial.
 

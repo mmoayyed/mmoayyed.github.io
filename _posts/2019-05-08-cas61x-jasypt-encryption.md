@@ -13,6 +13,17 @@ If you are running CAS in standalone mode without the presence of the Spring Clo
 
 Jasypt is a java library which allows the deployer to add basic encryption capabilities to CAS. Jasypt supplies command-line tools useful for performing encryption, decryption, etc. In order to use the tools, you may download the Jasypt distribution. Once unzipped, you will find a `jasypt-$VERSION/bin` directory a number of `bat|sh` scripts that you can use for encryption/decryption operations `(encrypt|decrypt).(bat|sh)`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 However, an easier approach might be to use the native [CAS command-line shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html). The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.
 
 Our starting position is based on:

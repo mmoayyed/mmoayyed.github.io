@@ -27,6 +27,17 @@ based on specialized requirements.
 
 Before diving into code, I **MUST** emphasize that developing custom extensions/addons, while certainly keeewl and exciting, would eventually lead to long-term maintenance/upgrade burdens. Consider direct contributions to the project if/when feasible and solve the problem where it needs solving.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 If you are going to write code, you might as well write it where it belongs.
 
 # Requirements

@@ -9,6 +9,17 @@ tags:       [CAS]
 
 As your CAS deployment moves through the deployment pipeline from dev to test to production, you can manage the configuration between those environments and be certain that applications have everything they need to run when they migrate through the use of an external configuration server provided by the [Spring Cloud project](https://github.com/spring-cloud/spring-cloud-config). While most CAS deployments tend to fall into the simpler category of managing CAS configuration directly alongside the CAS server deployment, this tutorial focuses on allowing CAS to work with the Spring Cloud Config server for distributed configuration management.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The [Spring Cloud Config server](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html) is an external and central configuration server to keep state and settings for all sorts of applications, CAS included. It provides an abstract way for CAS (and all of its other clients) to obtain settings from a variety of sources such as file system, git or svn repositories, MongoDb databases, Vault, etc. The beauty of this solution is that to the CAS web application server, (or the clients of the Spring Cloud Config server in general), it matters not where settings come from since CAS has no knowledge of the underlying property sources. It simply talks to the configuration server to locate settings and move on.
 
 In this walkthrough, we will focus on the following tasks:
@@ -238,6 +249,17 @@ health.config.enabled=true
 
 In summary, we have the Spring Cloud config enabled with a location to the Config server. Next, we teach CAS to activate the `qa` profile when it asks for configuration settings, and we switch the CAS server application profile to `default` to disable the standalone strategy of locating settings. As for the other settings, hold onto them right now and we'll review them in just a bit.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The `label` setting is useful for rolling back to previous versions of configuration; with the default Config Server implementation it can be a git label, branch name or commit id. A label can also be provided as a comma-separated list, in which case the items in the list are tried one-by-one until one succeeds. This can be useful when working on a feature branch, for instance, when you might want to align the config label with your branch, but make it optional.
 
 So at this point, our expectation is that CAS will load its own `application.properties` file by default which has a bunch of settings that for instance deal with SSL, keystores, ports, etc. Then we expect CAS to load any and all settings from the Spring Cloud config server that are associated with `cas` and `qa` where these settings should override anything that CAS by default handles and provides. This means that when it's all said and done, our CAS server should be running on port `8555` (as opposed to the default `8443`) and the static credentials used to authenticate users should include the username/password `casuser` and `QASomething` (as opposed to the default `casuser` and `Mellon`). 
@@ -249,6 +271,17 @@ If you have followed the story so far, crank up the your CAS server deployment a
 ### Refresh & Reload
 
 The CAS spring cloud configuration server is constantly monitoring changes to the underlying property sources automatically but has no way to broadcast those changes to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 In order to handle automatic updates to CAS settings from the Spring Cloud Config server, we can try the following:
 
@@ -311,6 +344,17 @@ There a few things that we have yet to address that would be outside the scope o
 
 If we have more than one CAS server we need to invoke the `refresh` endpoint for each and every single server node for it to refresh itself and pick up changes. To solve this problem, we can use Spring Cloud Bus. The bus acts as the communication channel across all CAS server nodes and can be backed via RabbitMQ, Kafka, Redis, etc. Each CAS server will be connected to the bus and gains a special endpoint called `bus-refresh`. Calling this endpoint will cause the receiving node to:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 - Get the latest configuration from the config server and update its configuration annotated by `@RefreshScope`
 - Send a message to the bus informing about refresh event
 - All subscribed CAS nodes will update their configuration as well
@@ -321,7 +365,20 @@ How does the Spring Cloud Config server detect changes from property sources? Co
 
 ## Final Thoughts
 
-So, as you can observe there is quite a lot involved here to make for a cloud-ready distributed configuration management system. For many CAS deployments, this might seem overkill as most simply just rely on a standalone type of deployment where there is only a couple of CAS server nodes each feeding off of a simple `cas.properties` file adjacent to the node itself. It is true that the setting up CAS in the cloud using the described strategies in this post can take quite a bit of time and expertise. Thus, evaluate options carefully before jumping into coolness. If you have a strategic vision of managing configuration in distributed cloud-ready fashion, this is a good long-term investment. If you are thinking about centralizing application configuration across your entire institution and manage the configuration in a distributed and real-time fashion, it's worth it to go through the setup. If you have use cases that require configuration changes in real-time without downtime and restarts in a distributed environment, it makes sense to explore such options. Otherwise, you may find the pain and the cons outweigh the pros.
+So, as you can observe there is quite a lot involved here to make for a cloud-ready distributed configuration management system. For many CAS deployments, this might seem overkill as most simply just rely on a standalone type of deployment where there is only a couple of CAS server nodes each feeding off of a simple `cas.properties` file adjacent to the node itself. It is true that the setting up CAS in the cloud using the described strategies in this post can take quite a bit of time and expertise. 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+Thus, evaluate options carefully before jumping into coolness. If you have a strategic vision of managing configuration in distributed cloud-ready fashion, this is a good long-term investment. If you are thinking about centralizing application configuration across your entire institution and manage the configuration in a distributed and real-time fashion, it's worth it to go through the setup. If you have use cases that require configuration changes in real-time without downtime and restarts in a distributed environment, it makes sense to explore such options. Otherwise, you may find the pain and the cons outweigh the pros.
 
 ## Finale
 

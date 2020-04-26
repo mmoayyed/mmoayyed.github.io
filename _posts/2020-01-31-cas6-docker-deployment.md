@@ -90,6 +90,17 @@ details, please review `gradle/dockerjib.gradle` file.
 
 If you prefer a more traditional approach via a native `Dockerfile`, there is one provided for you in the Overlay that can be built via:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ```bash
 ./docker-build.sh
 

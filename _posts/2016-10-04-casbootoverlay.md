@@ -25,6 +25,17 @@ Today, adopters are given 3 choices to deploy an overlay:
 2. Deploy the `<cas-war-file>` into an external container of choice, such as Apache Tomcat.
 3. [**NEW**] Run the CAS web application as an executable WAR via the Spring Boot's Maven/Gradle plugin, though you may be interested in [this issue](https://github.com/apereo/cas/issues/2334).
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The 3rd option is similar to the native `java -jar ...` command with the main difference that the Spring Boot plugin is able to recognize the presence of Spring Boot's `devtools` that is shipped with CAS by default and allows for ad-hoc live monitoring of CAS resources.
 
 This is specially helpful perhaps during UI design; such that you could keep modifying

@@ -87,6 +87,17 @@ docker run --name="html-proofer" --rm --workdir /root \
 
 The script above assumes that Markdown documents are found in the current directory inside a `_posts` folder which is then mapped onto the running container. HTML files will be generated in an `out` directory and of course, the location of the Ruby script is assumed to also be in the same directory. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 If you run the script, hopefully you will see the following output:
 
 ```

@@ -76,6 +76,17 @@ Now that we have the REST API ready, all that is left is to register it with CAS
 cas.authn.pac4j.rest.url=https://api.example.org/delegatedauthn
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 With the above configuration, you should see something close to the below screenshot the very next time you build and run CAS:
 
 ![image](https://user-images.githubusercontent.com/1205228/78877156-a82c9100-7a65-11ea-905f-fd100b67f89a.png)

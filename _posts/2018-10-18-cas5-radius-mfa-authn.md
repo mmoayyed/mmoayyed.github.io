@@ -9,6 +9,17 @@ tags:       [CAS,MFA]
 
 The ability to authenticate credentials using the RADIUS protocol and a compliant RADIUS server has been [available in CAS](https://apereo.github.io/cas/development/mfa/RADIUS-Authentication.html) for some time. In more recent CAS versions, this capability has been improved to support multifactor authentication scenarios by allowing CAS to recognize the `Access-Challenge` response type. This is a special signal sent by the RADIUS server requesting more information in order to allow access. The authentication flow is typically composed of the following steps:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 - Primary authentication via RADIUS typically using username+password credentials.
 - Capturing the `Access-Challenge` and the session `State` passed back from the RADIUS server.
 - RADIUS server provides the end-user with a one-time code, typically via SMS, email or mobile app.
@@ -114,6 +125,17 @@ cas.personDirectory.principalAttribute=uid
 ```
 
 We are instructing CAS to build the final authenticated Principal identified by the `uid` attribute (instead of whatever the user types into the login form as the credential id). We have some settings for the LDAP attribute repository that describe the LDAP server, and of course we have a section of settings for attribute mapping where we fetch `uid` and virtually rename/remap it to `uid` or we fetch `cn` and remap it to `commonName`, etc.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 After the primary authentication event, the attribute repository kicks in to determine the needed attributes for the user by running the query `uid={0}` against the LDAP server  where `{0}` is replaced with the authenticated user id (typically the credential id). Once the user entry is located, attributes are fetched and mapped and the authenticated `Principal` from the CAS perspective has an identifier determined by the `uid` attribute as well as at most four extra *person* attributes attached to it, which can then be used for attribute release.
 

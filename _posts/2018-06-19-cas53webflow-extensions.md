@@ -9,6 +9,17 @@ tags:       [CAS]
 
 Unlike previous versions, CAS 5 attempts to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and viola! CAS will take care of the rest.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 If you wish to learn how that is done internally and furthermore, how you may take advantage of the same approach to extend CAS webflows and introduce your own, this is the right post for you.
 
 This tutorial specifically requires and focuses on:
@@ -96,6 +107,17 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.cas.S
 # So...
 
 CAS itself handles Spring Webflow changes related to its first-class features by default automatically. That strategy equally applies, should you need to write your own configurers if you absolutely need to. Be sure to take extra as accidents may happen. What if you have two `WebflowConfigurer`s who all decide to inject actions and state into the same Spring Webflow areas? What if multiple `WebflowConfigurer`s are competing to set themselves up as starting points of the CAS webflow? Who wins, who mourns?
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Indeed, these are questions you ought to be thinking about as a *developer*. With power comes responsibility.
 

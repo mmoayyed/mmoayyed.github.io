@@ -17,6 +17,17 @@ I realize there are lots of "It Depends!" buried there. That's fine. You have to
 
 Very cool.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 I want to say something different here. While I like that motto quite a lot and I think it says it all within the right context, I have been thinking about its complement. While it’s good and a true sign of power when deployers and users can take the **platform** and do absolutely whatever they want with it, it would be even more fantastic and awesome if the **product** did “everything” they wanted in the first place forcing them to keep their customizations to a minimum. This perhaps sounds like stating the obvious, but in my view, it’s the very delineating factor between failure and success. Evolution is key to success, and any platform or product that wishes to stay alive and stay relevant must redefine its core mission and vision every once in a while and must always be in pursuit of new ground to explore newer and exciting opportunities to help its community. There is no point in maintaining and working on a “beautiful, elegant, small design” that pushes all the responsibility and the liability to its community. If you find yourself often repeating the phrase "That's not our core concern", it's time for you to joggle priorities and reevaluate concerns 'cause those are what your community cares about. Beautiful design, more often than not, is secondary.
 
 So, how do we deliver "everything"? How do we design the implementation of everything? Is it going to be a monolith? It’s going to be ugly? Big blob of mess and mud? Should it lead us to bloat? Must it be YOOOGE? Is [nose-picking banned for the Philippines police](http://www.bbc.com/news/blogs-news-from-elsewhere-37156962)?

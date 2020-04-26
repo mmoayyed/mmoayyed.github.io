@@ -168,6 +168,17 @@ It is **VERY IMPORTANT** that you contain and commit the entire overlay director
 
 We need to first establish a primary mode of validating credentials by sticking with [LDAP authentication][ldapauthn]. The strategy here, as indicated by the CAS documentation, is to declare the intention/module in the build script:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ```groovy
 compile "org.apereo.cas:cas-server-support-ldap:${casServerVersion}"
 ```
@@ -236,6 +247,17 @@ cas.serviceRegistry.json.location=file:/etc/cas/services
 # Ticketing
 
 A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets][ticketing] issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment][haguide]. Just like the service management facility, large variety of databases and storage options are supposed by CAS under the facade of a *Ticket Registry*.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 In this tutorial, we are going to configure CAS to use a [Hazelcast Ticket Registry][hazelcasttickets] with the assumption that our deployment is going to be deployed in an AWS-sponsored environment. Hazelcast Ticket Registry is often a decent choice when deploying CAS in a cluster and can take advantage of AWS's native support for Hazelcast in order to read node metadata properly and locate other CAS nodes in the same cluster in order to present a common, global and shared ticket registry. This is an ideal choice that requires very little manual work and/or troubleshooting, comparing to using options such as Multicast or manually noting down the address and location of each CAS server in the cluster.
 

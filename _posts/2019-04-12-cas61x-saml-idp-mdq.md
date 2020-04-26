@@ -12,6 +12,17 @@ tags:       [CAS]
 
 Per-entity metadata allows CAS acting as a SAML2 identity provider to consume only metadata for specific service providers as needed instead of having to load the entire XML aggregate. Metadata is delivered through a protocol called MDQ ("Metadata Query" resulting in a significantly lower memory footprint in addition to quicker startup times by not having to verify the entirety of the XML aggregate at startup.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this blog post, we will take a look at [InCommon MDQ server](https://spaces.at.internet2.edu/display/MDQ/The+Guide) and how Apereo CAS may be configured to fetch and validate service provider metadata on demand using MDQ and family.
 
 <div class="alert alert-warning">
@@ -47,6 +58,17 @@ The `serviceId` field above indicates that all SAML2 service provider entity ids
 <div class="alert alert-info">
 <strong>Evalaution Order</strong><br/>If you have more than one metadata provider, you will want to carefully examine the <code>evaluationOrder</code> of the above service definition to make sure it executes after all other metadata providers. If you do not do this, CAS will try to fetch your static entities from InCommon each time it is requested before falling back to your static metadata providers.
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 So if you could imagine that a service provider with the entity id of `https://studypages.com/saml-sp` sends an authentication request to CAS, the following picture is what you should expect:
 

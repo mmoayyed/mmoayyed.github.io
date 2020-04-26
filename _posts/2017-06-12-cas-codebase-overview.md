@@ -35,6 +35,17 @@ At a very high-level, the project is broken into the following categories:
 | `webapp-mgmt` | Artifacts that pertain to the configuration and deployment of the [CAS Service Management Web Application](https://apereo.github.io/cas/5.1.x/installation/Installing-ServicesMgmt-Webapp.html).           |
 | `webapp`      | Artifacts that pertain to the deployment of the core CAS web application and its many sisters.     |
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 As you drill into each category, you are presented with a hierarchy and a naming scheme that intends to explain what each project folder is all about. Note that the above organization is not only rather *pleasing* to the eye, but it also tries to reduce the initial *scare factor* to some degree. All visitors, friend and foe alike, who happen to step into the project space on Github are not immediately greeted with a structure that demonstrates 221+ things, forcing them to endlessly scroll downward to finally get to the actual `README.md` file. So, this model is a representation of the project's organization and essential components, gently and without risk to gradually boil the proverbial frog and get one acclimated for contributions.
 
 After all, that is what we want we to do. 
@@ -44,6 +55,17 @@ After all, that is what we want we to do.
 Core CAS components aside, there are a lot of other individual modules (i.e. `JAR` artifacts) which act as support modules or more accurately put, *intentions*. What is that about?
 
 In order to ease the maintenance burden of both code and documentation and to create a sustainable development environment for the project to grow and keep up with the times and additions of new [more complicated] features (i.e. multifactor authentication), CAS 5 took an orthogonal approach where most if not all CAS features are [automatically configured](https://fawnoos.com/2017/02/21/cas-autocfg-strategy/) by CAS itself, given deployer’s consent, relieving the deployer from having to deal with manual configuration. This is a model referred to as **Intention-driven configuration**.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Each support module essentially focuses on a single feature or intention or a particular variation of one. It latches onto the runtime and does what it should, inserting itself in all the right places dynamically in order to provide the intended functionality in an automated way. It's nice that one can fiddle with a variety of configuration files to make something work. It's a whole lot better though ambitious to *automate once, run everywhere*.
 
@@ -74,7 +96,20 @@ As the codebase is broken apart, it will slowly become apparent that certain mod
 
 ## When Enough Is Enough
 
-In certain literatures, it is argued that managing one big thing is much easier, conceptually, than managing 100 small things. That's not entirely false. It, decomposition, requires not only skill and command but also capacity, availability and self-control. All good things are usually done in moderation; so do not overdo. The boundaries of where one module stops and another begins should be designed and apparent at reasonable granular levels and no more, where you decide what *reasonable* and *granular* mean.
+In certain literatures, it is argued that managing one big thing is much easier, conceptually, than managing 100 small things. That's not entirely false. It, decomposition, requires not only skill and command but also capacity, availability and self-control. 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+All good things are usually done in moderation; so do not overdo. The boundaries of where one module stops and another begins should be designed and apparent at reasonable granular levels and no more, where you decide what *reasonable* and *granular* mean.
 
 ## Talk Is Cheap; Show Me The Code
 

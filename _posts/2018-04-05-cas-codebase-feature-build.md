@@ -9,6 +9,17 @@ tags:       [CAS]
 
 Following up on my previous blog post on [changing CAS source code in an overlay](https://fawnoos.com/2018/04/01/cas-overlays-supercharged/), in this exercise we are going to more or less repeat the same experience except that this time, we will be addressing the changes and workload from the perspective of the CAS codebase. This quick walkthrough effectively aims for the following objectives:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 - A quick development environment setup using IntelliJ IDEA.
 - Building and running the CAS web application using Gradle.
 - Changing feature modules and testing out behavior.
@@ -28,6 +39,17 @@ To set up the project in IntelliJ IDEA, it might be preferable to run `./gradlew
 # Running CAS
 
 The CAS web application itself can be started from the command-prompt using an embedded Apache Tomcat container. In fact, this process is no different than deploying CAS using the same embedded Apache Tomcat container which means you will need to follow the [instructions posted here](https://apereo.github.io/cas/developer/Build-Process-5X.html) in the way that certificates and other configurations are needed in `/etc/cas/config`, etc to ensure CAS can function as you need it. All features modules and behavior that would be stuffed into the web application artifact continue to read settings from the same location, as they would be when activated from an overlay. The process is exactly the same.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 I use the following alias in my bash profile to spin up CAS using an embedded Apache Tomcat container. You might want to do the same thing, or create the equivalent script for other operating systems to reduce time and keystrokes:
 
@@ -67,6 +89,17 @@ dependencies {
 ```
 
 Note the reference locates the module using its full path. The next time you run `bc`, the final CAS web application will have enabled reCAPTCHA functionality when it's booting up inside Apache Tomcat.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The remaining tasks are super similar to the earlier post; we locate the `ValidateCaptchaAction` component and make the relevant change there. We then run `bc` to run CAS locally again to test the change and lather-rinse-repeat until the desired functionality is there. Once done, you may the commit the change to a relevant branch (of your fork, which is something you should have done earlier when you cloned the codebase) and push upstream (again, to your fork) in order to prepare a pull request and send in the change.
 

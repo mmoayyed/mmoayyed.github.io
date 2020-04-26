@@ -48,6 +48,17 @@ Let's suppose that we would want to present a different policy based on user typ
 <strong>Clarification</strong><br>This attribute of course is not brought to CAS by storks. The assumption is that the underlying attribute store that provides user data contains an <code>affiliation</code> attribute and CAS is configured correctly to fetch and resolve this attribute for users.
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 To achieve this, first, we need to teach CAS about the `affiliation` attribute that distinguishes users for policy terms:
 
 ```properties

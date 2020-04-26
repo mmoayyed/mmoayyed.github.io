@@ -20,6 +20,17 @@ This tutorial specifically focuses on:
 
 Our starting position is a CAS server that is configured to hand off the authentication flow to an external identity provider [described here](https://apereo.github.io/cas/5.3.x/integration/Delegate-Authentication.html). Once the response from the identity provider is validated and a profile response has been collected, CAS will get access to a profile identifier plus a number of attributes that may have been released by the provider depending on the semantics of the protocol in question. In building the authenticated subject and linking that to the SSO session, CAS by default has options to either use what is called a *typed id* which is translated as `[InternalProviderName]+[Separator]+[ProfileId]` or simply the profile id itself. This means that when the SSO session is established, the CAS authenticated subject will be communicated to all integrated applications using one of those two options.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Of course, you may run into scenarios where neither id would actually make that much sense. For example, the internal identity may be a seemly pseudorandom integer that would not be all that practical for other applications. The better scenario as an option would be for CAS to simply look up the *real record* associated with that internal id, (assuming linking between the two records is made available already), and build the principal identifier and attributes according to the data store internal to CAS.
 
 This is tutorial on how to do just that.
@@ -50,6 +61,17 @@ public PrincipalFactory clientPrincipalFactory() {
 
 <div class="alert alert-info">
 <strong>Compile Dependencies</strong><br/>Note that in order for the CAS overlay build to compile our changes and put them to good use, the overlay must be prepared with the required module used during the compilation phase. Otherwise, there will be errors complaining about missing symbols, etc.</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Once you have the build compiling correctly, our next task would be to alter the body of our own `clientPrincipalFactory` bean definition to do what it needs, which is the establishment of the CAS principal based on provided ids, attributes, etc. You can certainly provide your own implementation of `PrincipalFactory`. What might be easier is if you were given the ability to change the implementation dynamically without having to rebuild CAS every time minor changes are required. To do this, aside from the default implementation of `PrincipalFactory`, CAS provides a built-in option to externalize all that logic to a Groovy script. The construction of that option would more or less look like this:
 

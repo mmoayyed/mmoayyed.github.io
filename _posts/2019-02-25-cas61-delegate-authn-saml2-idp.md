@@ -87,6 +87,17 @@ After authentication, CAS might greet with you with a *Hey! You logged in succes
 
 If you expand the link to see attributes currently resolved, you will see everything the identity provider has released to CAS as a service provider. Interestingly, CAS has also merged the values for `employeeNumber`, effectively turning it into a multi-valued attribute honor both sources of attributes.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ![image](https://user-images.githubusercontent.com/1205228/53325713-27cac100-38a1-11e9-94a4-363b3ec64cc5.png)
 
 ## Remap Attributes
@@ -145,6 +156,17 @@ Let's pretend that we are using the [JSON Service Registry](https://apereo.githu
 ## Service Access Strategy
 
 We know our identity provider is releasing a handful of attributes to CAS. Let's play around with CAS access strategies and design a rule for our example application to only grant entry access to the application if CAS has access to a `memberOf` attribute with a value of `Administrator`. We know of course that the identity provider is not releasing this attribute yet, so we promptly should be greeted with a *Sorry you are not allowed to proceed* type of error message.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Our application policy would look similar to this:
 

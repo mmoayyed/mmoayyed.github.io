@@ -9,6 +9,17 @@ tags:       [CAS]
 
 Apereo CAS has had built-in support for [JWTs](https://jwt.io/) for some time now in a variety of different ways. Notions of JWT support really date back to CAS `3.5.x` with the work [@epierce](https://github.com/epierce/cas-server-extension-token) did as a CAS extension to enable token authentication support. Since then, support for JWTs has significantly improved and grown over the years and continues to get better with an emerging number of use cases whose chief concern is improving performance and removing round-trip calls, among other things.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this tutorial, I am going to briefly review various forms of JWT functionality in CAS. Specifically, the following topics will be reviewed:
 
 - [JWT Authentication](https://apereo.github.io/cas/development/installation/JWT-Authentication.html): Allowing CAS to accept JWTs as credentials in non-interactive authentication modes mostly.
@@ -69,6 +80,17 @@ There are a variety of other parameters such as encryption methods and signing a
 
 CAS [needs to be taught](https://apereo.github.io/cas/development/installation/JWT-Authentication.html) the security properties of the JWT to unpack and validate it and produce the relevant authenticated session. For a given authentication request, CAS will try to find the matching record for the application in its registry that is capable of validating JWTs. If such a record is found and the request is in fact accompanied by JWT credentials, the credential is validated and the service ticket issued.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 My CAS overlay is already equipped with the [relevant configuration module](https://apereo.github.io/cas/development/installation/JWT-Authentication.html) and my application record using [the JSON service registry](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html) looks something like this:
 
 ```json
@@ -128,6 +150,17 @@ Grab the `ticket` from the `Location` header and proceed to validate it, as you 
 
 I want to be able to use my JWT to authenticate with CAS and get a service ticket issued to my application at `https://www.example.org`, but I also want the request to be verified via second-factor credentials and an MFA flow provided by Duo Security. How do I do that?
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 [Duo Security integration support](https://apereo.github.io/cas/development/installation/DuoSecurity-Authentication.html) of CAS is able to also support non-browser based multifactor authentication requests. In order to trigger this behavior, applications (i.e. `curl`, REST APIs, etc.) need to specify a special `Content-Type` to signal to CAS that the request is submitted from a non-web based environment. The multifactor authentication request is submitted to Duo Security in `auto` mode which effectively may translate into an out-of-band factor (push or phone) recommended by Duo as the best for the user’s devices.
 
 <div class="alert alert-warning">
@@ -186,7 +219,20 @@ Things work exactly the same as before, except that this time your device regist
 
 # JWT Service Tickets
 
-All operations so far have issued a regular service ticket back to the application that must be validated in a subsequent trip so the application can retrieve the authenticated user profile. In a different variation, it's possible for the service ticket itself to [take on the form of a JWT](https://apereo.github.io/cas/development/installation/Configure-ServiceTicket-JWT.html). JWT-based service tickets are issued to applications based on the same semantics defined by the CAS Protocol. CAS having received an authentication request via its `/login` endpoint will conditionally issue back JWT service tickets to the application in form of a `ticket` parameter via the requested http method.
+All operations so far have issued a regular service ticket back to the application that must be validated in a subsequent trip so the application can retrieve the authenticated user profile. In a different variation, it's possible for the service ticket itself to [take on the form of a JWT](https://apereo.github.io/cas/development/installation/Configure-ServiceTicket-JWT.html). 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+JWT-based service tickets are issued to applications based on the same semantics defined by the CAS Protocol. CAS having received an authentication request via its `/login` endpoint will conditionally issue back JWT service tickets to the application in form of a `ticket` parameter via the requested http method.
 
 <div class="alert alert-info">
   <strong>Let's REST</strong><br/>In case you are using the CAS REST APIs, you should know that service tickets issued as part of REST API operations <a href="https://apereo.github.io/cas/development/protocol/REST-Protocol.html#jwt-service-tickets">may also be JWTs</a>.

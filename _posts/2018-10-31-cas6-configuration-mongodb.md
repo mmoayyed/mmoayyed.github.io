@@ -114,6 +114,17 @@ Integration with MongoDB in CAS to manage configuration can be done in a number 
 
 - Alternatively, you may decide to connect your CAS server directly to MongoDB and fetch settings. This is the approach we are going to try in this tutorial for a quick win, but do note that the strategy is almost the same if we were to use the Cloud Config server.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 So in order to enable a CAS integration with MongoDB *directly*, you want to start with the [CAS Overlay](https://github.com/apereo/cas-overlay-template), clone the project and then put the following settings into a `src/main/resources/bootstrap.properties` file:
 
 ```properties

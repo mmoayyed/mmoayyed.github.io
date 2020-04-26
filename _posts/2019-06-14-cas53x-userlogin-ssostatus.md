@@ -11,6 +11,17 @@ tags:       [CAS]
 
 As users navigate back and forth between applications that are integrated with CAS, SSO sessions are established for each browser session where a special cookie is exchanged with the browser to maintain a link between the user SSO session and the underlying CAS server managing that state typically via its ticket registry. This special cookie typically is restricted to the CAS server only and is also signed and encrypted to protect replay attacks, etc.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Of course, users may log out of CAS removing the SSO session and the cookie, or the SSO session might timeout on its own thus invalidating the cookie state. In either scenario, a valid question might be:
 
 > How could an application determine whether an SSO session tied to the user's browser is still valid and accepted by CAS?
@@ -105,6 +116,17 @@ Finally, to invoke the script a client application would invoke the equivalent o
 ```bash
 curl https://sso.example.org/cas/isloggedin?tgc=[ticket-granting cookie value]
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Remember that the caller should be able to read the CAS cookie. Its only job is to pass it onto CAS, as the cookie content is entirely meaningless and the CAS server is the only authority who can decrypt and parse its contents.
 

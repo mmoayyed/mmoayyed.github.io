@@ -22,6 +22,17 @@ This is a tutorial on how to present such interruptions to your CAS audience, as
 
 First and foremost, there needs to be an engine of some sort that is able to produce notifications and interruptions. CAS supports a range of such engines that are backed by JSON & Groovy resources, REST endpoints or one you decide to create and inject into the runtime. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 For the purposes of this tutorial, I will be using the static JSON resource which is a perfectly suitable option for super small deployments or relevant during development and testing. The JSON resource path is taught to CAS via the following setting:
 
 ```properties

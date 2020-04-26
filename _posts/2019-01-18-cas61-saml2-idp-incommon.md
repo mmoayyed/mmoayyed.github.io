@@ -9,6 +9,17 @@ tags:       [CAS,SAML]
 
 Apereo CAS, acting as a SAML2 identity provider, has the capability to integrate with SAML2 service providers from metadata aggregates such as InCommon. To handle these types of integrations successfully, one must note that CAS services (aka relying parties) are fundamentally recognized by service identifiers taught to CAS typically via regular expressions using the `serviceId` field. This allows for common groupings of applications and services by URL patterns (i.e. *Everything that belongs to example.org is registered with CAS*). A bilateral SAML2 SP integration is fairly simple in this regard as one might find an easy one-to-one relationship between a `serviceId` from CAS and the `entityId` from a SAML2 SP. With aggregated metadata, this behavior becomes more complicated since a CAS relying-party definition typically represents a single group of applications while aggregated metadata, given its very nature, represents many different SAML2 services from a variety of organizations and domains.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this tutorial, we are going to review a number of use cases dealing with multilateral integrations from the SAML2 metadata aggregate offered by InCommon. We will also briefly address configuration of various attribute release policies, specifically those that may belong to the *Research and Scholarship* group of service providers expecting a standard pre-defined bundle of attributes.
 
 Our starting position is based on the following:
@@ -124,6 +135,17 @@ There is also the ability to observe and manage the service provider metadata ca
 </div>
 
 Let's demonstrate this with a few examples:
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 - Retrieve the current state of the service provider metadata cache for `coconut`:
 

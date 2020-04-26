@@ -114,6 +114,17 @@ If you examine the produced file, you will find a full list of CAS settings alon
 whether the setting requires a particular module in the build and whether that module is automatically included. There is additional metadata to explain
 whether the setting is required and one that is expected to be defined and tweaked by you, or optional with a default value.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <div class="alert alert-success">
 <strong>Note</strong><br/>If you really wanted to be creative, you could examine the <code>exportConfigMetadata</code> and observe how it builds the final
 report. Then, use the same strategy to dynamically build a web page, a PDF file or a markdown template of all settings.
@@ -208,6 +219,17 @@ tune and modify the *configuration metadata generation process* over time and th
 can be recognized, parsed and packed for wider use. We have added on layers and constructs to make sure settings be understood and picked up regardless of their physical 
 placement (i.e. inner classes) or complication of type (i.e. enums, collections, etc). In short, while the result is still far from perfect, it is a large improvement
 over the manual maintenance tasks previously discussed, given project's availability of resources and funding. 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Now that we have configuration metadata available as an API, there are many other things that can also be automated such as the automatic 
 generation of a CAS installation script or overlay perhaps using a graphical user interface in wizard-like fashion. The possibilities are quite exciting!

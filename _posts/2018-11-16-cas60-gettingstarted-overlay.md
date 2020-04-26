@@ -23,6 +23,17 @@ This tutorial specifically requires and focuses on:
 
 Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building it from source, overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself, override/insert specific behavior into it and then merge it all back together to produce the final (web application) artifact. You can find a lot more about how overlays work [here](https://apereo.github.io/cas/6.0.x/installation/WAR-Overlay-Installation.html).
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here](https://github.com/apereo/cas-overlay-template).
 
 <div class="alert alert-info">
@@ -101,6 +112,17 @@ gradlew clean
 ```
 
 The WAR Overlay project provides you with an embedded Gradle *wrapper* whose job is to first determine whether you have Gradle installed. If not, it will download and configure one for you based on the project's needs.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 So, how are you supposed to know what commands/goals can be passed to the build? You can hit the Gradle guides and docs to study these for sure, but the Overlay project also provides you with a shell script that wraps itself around the Gradle wrapper and provides an easy facade for you to remember commands and their use.
 
@@ -196,6 +218,17 @@ cas.authn.ldap[0].principalAttributeList=memberOf,cn,givenName,mail
 
 Client applications that wish to use the CAS server for authentication must be registered with the server apriori. CAS provides a number of [facilities to keep track of the registration records](https://apereo.github.io/cas/6.0.x/services/Service-Management.html#storage) and you may choose any that fits your needs best. In more technical terms, CAS deals with service management using two specific components: Individual implementations that support a form of a database are referred to as *Service Registry* components and they are many. There is also a parent component that sits on top of the configured service registry as more of an orchestrator that provides a generic facade and entry point for the rest of CAS without entangling all other operations and subsystems with the specifics and particulars of a storage technology.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this tutorial, we are going to try to configure CAS with [the JSON service registry](https://apereo.github.io/cas/6.0.x/services/JSON-Service-Management.html).
 
 ## Configuration
@@ -228,6 +261,17 @@ cas.serviceRegistry.json.location=file:/etc/cas/services
 # Ticketing
 
 A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets](https://apereo.github.io/cas/6.0.x/ticketing/Configuring-Ticketing-Components.html) issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment](https://apereo.github.io/cas/6.0.x/planning/High-Availability-Guide.html). Just like the service management facility, large variety of databases and storage options are supposed by CAS under the facade of a *Ticket Registry*.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 In this tutorial, we are going to configure CAS to use a [Hazelcast Ticket Registry](https://apereo.github.io/cas/6.0.x/ticketing/Hazelcast-Ticket-Registry.html) with the assumption that our deployment is going to be deployed in an AWS-sponsored environment. Hazelcast Ticket Registry is often a decent choice when deploying CAS in a cluster and can take advantage of AWS's native support for Hazelcast in order to read node metadata properly and locate other CAS nodes in the same cluster in order to present a common, global and shared ticket registry. This is an ideal choice that requires very little manual work and/or troubleshooting, comparing to using options such as Multicast or manually noting down the address and location of each CAS server in the cluster.
 
@@ -322,6 +366,17 @@ The `build/libs` directory contains the results of the overlay process. Since I 
 
 First, I will need to move the file to my project directory so that during the overlay process Gradle can use that instead of what is provided by default.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Here we go:
 
 ```bash
@@ -377,6 +432,17 @@ You have a number of options when it comes to deploying the final `cas.war` file
 ## Deploy Behind a Proxy
 
 Using the embedded Apache Tomcat container provided by CAS automatically is the recommended approach in almost all cases (The embedded bit; not the Apache Tomcat bit) as the container configuration is entirely automated by CAS and its version is guaranteed to be compatible with the running CAS deployment. Furthermore, updates and maintenance of the servlet container are handled at the CAS project level where you as the adopter are only tasked with making sure your deployment is running the latest available release to take advantage of such updates.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 If you wish to run CAS via the embedded Apache Tomcat container behind a proxy or load balancer and have that entity terminate SSL, you will need to open up a communication channel between the proxy and CAS such that (as an example):
 

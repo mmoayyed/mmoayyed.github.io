@@ -11,6 +11,17 @@ tags:       [CAS]
 
 For a highly-available CAS deployment, running CAS backed by the [Hazelcast Ticket Registry](https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html) can be a great option. In the simplest scenario, CAS server nodes are registered as Hazelcast cluster members via static discovery and that is fine for most deployments. Likewise, producing a CAS docker image and running it a container is fairly straight forward, what with the scaffolding and machinery put into the [CAS Overlay](https://github.com/apereo/cas-overlay-template) to produce images via the `jib` plugin or a native `Dockerfile`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 This blog post focuses on marrying up the two use cases; That is, getting CAS server nodes as Hazelcast cluster members to discover each other and form a cluster while running as Docker containers. We'll also be configuring CAS to connect to a Hazelcast Management Center deployment to observe cluster members and monitor configuration and activity.
 
 
@@ -77,6 +88,17 @@ cas.ticket.registry.hazelcast.management-center.url=http://host.docker.internal:
 ```
 
 `public-address` overrides the public address of a member. By default, a member selects its socket address as its public address. In this case, the public addresses of the members are not an address of the container's local network but an address defined by the host. This setting is optional to set and useful when you have a private cloud. Note that, the value for this element should be given in the format of `IP address:port`.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Also, from Docker `18.03` onwards the recommendation is to connect to the special DNS name `host.docker.internal` which resolves to the internal IP address used by the host. This is for development purpose and will not work in a production environment
  outside of Docker Desktop for Mac. You will need to adjust the url if you're using a different OS.

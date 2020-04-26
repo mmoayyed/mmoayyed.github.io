@@ -31,6 +31,17 @@ The *normal* flow for delegated authentication is something like this:
 - When successful, CAS Server establishes an SSO session, creates a  service ticket and redirects back to the client application with that ticket.
 - Client application validates the ticket and understands the user profile elements.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Once the response is processed by the external identity provider, note that the opinion is built into the CAS authentication flow to assume the next steps to be "creating a service ticket" and "redirecting back to the calling service/application with that ticket"; details which are dictated by the CAS protocol and obviously no longer apply if the client application is a SAML SP or OAuth2 client.
 
 # So...
@@ -73,6 +84,17 @@ This is a bit of a complicated scenario since you have about three protocols dan
 # So...
 
 The trick, if I could re-emphasize, is noting that all protocols are clients of the CAS server that interact with it using the CAS protocol. This is done at the request/browser level, as opposed to doing things internally via heavily customized webflows and such that would be entangled with one another. The protocol modules that exist in CAS make zero assumptions about the internal inner workings of the CAS authentication flow/engine. They treat it just like they would an external CAS server; the only difference is, they sit and live inside the CAS server directly and yet they remain completely agnostic of that fact. Simply put in our example, the SAML2 module basically says: "this incoming request needs to be authenticated. So I'll route it to a CAS server for authentication and when it comes back, I'll do my bit".
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 This surely continues to maintain SSO sessions as well for all follow-up requests, because the CAS server does not care about the calling party; whether external or internal, the SSO session will be established and available for everything else.
 

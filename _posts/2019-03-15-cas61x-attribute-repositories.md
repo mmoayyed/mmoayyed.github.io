@@ -11,6 +11,17 @@ tags:       [CAS]
 
 The ability to fetch attributes from external data stores has been present in CAS since the days of `3.x`. This functionality was and, to this day, is provided by an Apereo project called [Person Directory](https://github.com/apereo/person-directory) which is a Java framework for resolving persons and attributes from a variety of underlying sources. It consists of a collection of components that retrieve, cache, resolve, aggregate and merge person attributes from JDBC, LDAP and more. CAS attempts to take advantage of this framework through a concept called `PrincipalResolver` whose goal is to construct a final identifiable authenticated principal for CAS which carries a number of attributes inside it fetched from attribute repository sources. This meant that for instance, one could authenticate with LDAP in one query and then turn around the ask the same LDAP, a relational database and a Groovy script to fetch attributes for the resolved principal and combine all results into a final collection.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Note that in most cases, and starting around CAS `4.x`, the authentication engine has been enhanced to be able to retrieve and resolve attributes from the authentication source, which would eliminate the need for configuring a separate attribute repository especially if both the authentication and the attribute source are the same. Using separate resolvers and sources should only be required when sources are different, or when there is a need to tackle more advanced attribute resolution use cases such as cascading, merging, etc.
 
 <div class="alert alert-info">
@@ -101,6 +112,17 @@ and CAS should pick up the change and release the new attribute value to the exa
 
 The requirements for this use case are as follows:
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 - Disable attribute resolution from external attribute repositories via Person Directory.
 - Resolve attributes at release time for a given application only using the `MyJson` attribute repository.
 - Turn on global caching of attributes for `60` seconds.
@@ -143,6 +165,17 @@ The requirements for this use case are as follows:
 - Disable attribute resolution from external attribute repositories via Person Directory.
 - Resolve attributes at release time for a given application only using the `MyJson` attribute repository.
 - Turn on global caching of attributes for `5` seconds and service-level caching for `30` seconds.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The relevant properties for this use case are:
 
@@ -189,6 +222,17 @@ The requirements for this use case are as follows:
 - Combine all attributes into one collection as multi-valued attributes where necessary.
 - Turn on global caching of attributes for `30` seconds.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The relevant properties for this use case are:
 
 ```properties
@@ -223,6 +267,17 @@ Our service definition matches the following:
 
 The requirements for this use case are identical to the one above. The only difference is, we are going to ignore attributes resolved at authentication time from our `StaticSub` attribute repository for the example application and only hit our selected attribute repository, `MyJson`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our service definition matches the following:
 
 ```json
@@ -252,6 +307,17 @@ The requirements for this use case are as follows:
 - Resolve attributes at release time for a given application only using the `MyJson` attribute repository.
 - Combine all attributes into one collection as multi-valued attributes where necessary.
 - Turn on global caching of attributes for `30` seconds, and service-level caching for `30` minutes.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The relevant properties for this use case are:
 

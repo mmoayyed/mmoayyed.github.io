@@ -11,6 +11,17 @@ tags:       [CAS]
 
 [REST protocol support](https://apereo.github.io/cas/development/protocol/REST-Protocol.html) in Apereo CAS has been available since the early days of CAS `3.x`. Since then, a lot of additional REST-based features and extensions are brought into the software to enable one to not only authenticate and/or exchange tokens but also add service definitions for relying parties or fetch attributes from remote REST endpoints, etc. The focus of this tutorial is to provide a brief overview of *some* of the REST-based features of CAS.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.1.x`
@@ -81,6 +92,17 @@ curl -X POST -H "Content-Type: Application/x-www-form-urlencoded" \
 TGT-2-abcdefg
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The ticket-granting ticket that is produced can be used to obtain a service ticket:
 
 ```bash
@@ -131,6 +153,17 @@ cas.rest.attributeValue=.+example.*
 ```
 
 The above outlines only users who carry an `email` attribute with a value that matches the above pattern can be authorized to add application definitions to CAS. In our case, we should be able to successfully do so with our sample `casuser` since the test account has a stubbed `email` attribute with a value of `casuser@example.org` that matches the above pattern.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Finally, the body of the request must be the service definition that shall be registered in JSON format and of course, CAS must be configured to accept the particular service type defined in the body.
 

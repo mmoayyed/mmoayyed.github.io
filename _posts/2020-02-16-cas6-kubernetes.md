@@ -64,6 +64,17 @@ brew install minikube
 <strong>Minikube Symlinks</strong><br/>You may need to reset your symlinks via <code>brew link --overwrite minikube</code>
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 You can try to verify the state of your installation via:
 
 ```bash
@@ -223,6 +234,17 @@ $ kubectl apply -f deployment.yaml
 deployment.apps/cas created
 service/cas created
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Next, let's check to see if our CAS deployment is running:
 

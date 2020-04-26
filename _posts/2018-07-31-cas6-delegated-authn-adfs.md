@@ -7,6 +7,17 @@ tags:       [CAS]
 
 Apereo CAS has had support to [delegated authentication to Microsoft ADFS](https://apereo.github.io/cas/6.0.x/integration/ADFS-Integration.html) for quite some time now. This functionality, if memory serves me correctly, started around CAS `3.x` in form of an [extension](https://github.com/Unicon/cas-adfs-integration) which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The story is actually quite simple: The integration between the CAS Server and ADFS delegates user authentication from CAS Server to ADFS, making CAS Server an ADFS client. *Delegation* of course is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate ADFS endpoint and on the return trip back, CAS is tasked to parse the response and extract claims, etc in order to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system such as ADFS in this case and CAS simply begins to act as a client or *proxy* in between.
 
 In the most common use case, CAS is made entirely invisible to the end-user such that the redirect simply happens automatically and as far as the audience is concerned, there is only the external identity provider (i.e. ADFS) and the target application that is, of course, prepped to speak the CAS protocol. This is **important note** to consider: target applications are CASified applications. While the end-user just interacts with ADFS and the application, the application itself only interacts with CAS since of course, CAS is proxying the workflow in between. The application should not have to care about the source of the identity information and the intricacies of data extraction from various identity providers. It cannot. Its sole concern is to speak the CAS protocol and exchange a service ticket with the CAS server for the *right stuff* that CAS may have gathered from any number of sources.
@@ -57,6 +68,17 @@ A few tips for the enlightened:
 - Remember to register CAS as a client of ADFS by setting up a relying party trust under the id `urn:cas:sample`. You can choose any identifier you prefer, so long as CAS and ADFS both agree to use the same value. If you make changes, please be generous and share the value with both systems.
 - ADFS tends to sign responses using a signing certificate. The certificate will need to be obtained and shared with the CAS server with you physically defining its home and sharing that path with CAS, as is done in my example above with `adfs-signing.cer`.
 - Of course, CAS somehow needs to figure out the authenticated username from the ADFS-produced response. To do this, it tends to look at a specific claim within that response typically released as `upn`. That is to say, you need to ensure ADFS is releasing this attribute (or anything else you prefer) to CAS and then ensure CAS is using the same claim name when it begins to do its extraction magic.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](https://fawnoos.com/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](https://fawnoos.com/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
 

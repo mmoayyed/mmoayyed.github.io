@@ -9,6 +9,17 @@ tags:       [CAS]
 
 The process of dealing with attributes in Apereo CAS is twofold. First, CAS begins to fetch and resolve attributes from configured data sources, which may or may not be the same as the authentication source, usually as part of or right after the authentication transaction. Once attributes are found, they may be conditionally released to integrated service providers and registered clients and relying parties using a variety of [attribute release policies](https://apereo.github.io/cas/development/integration/Attribute-Release.html).
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 In this blog post, I attempt to collect a number of attribute release policy samples and snippets that demonstrate the capabilities of the CAS attribute release engine to some degree. Some are rather modest and hopefully self-explanatory, and some are more advanced tapping into the particulars of a given authentication protocol to take advantage of fancier features such as *scopes*, *chains*, etc.
 
 <div class="alert alert-info">

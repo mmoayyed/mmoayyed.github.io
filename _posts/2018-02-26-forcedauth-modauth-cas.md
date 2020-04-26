@@ -37,6 +37,17 @@ If supplied as part of a validation request:
 <div class="alert alert-info">
 <strong>Version Caveat</strong><br/>If you have deployed CAS <code>5.2.x</code>, you need to at least be on <code>5.2.3</code> for the renew parameter to function correctly.</div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 It goes without saying that `renew=true` works best if you wish to let the application make that decision when needed. Alternatively, you may also control this behavior centrally by [marking the relevant application/service](https://apereo.github.io/cas/5.2.x/installation/Configuring-Service-Access-Strategy.html#disable-service-sso-access) in the CAS service registry (JSON file, etc) such that it would not participate in SSO and would always be asked for credentials regardless of what the application says.
 
 # Real Life Example
@@ -126,6 +137,17 @@ If the request begins with `https://secure-dev.example.org/groups/reauth/` first
 This made mod_auth_cas use the last applicable `CASScope` directive which meant that the `MOD_AUTH_CAS_REAUTH` cookie was being set at `Path=/` instead of `Path=/groups/reauth/`.
 
 This might have been fine except for the way mod_auth_cas parses the values in the `Cookie` header.  It *tokenizes* the header on `;` then iterates through each cookie string by matching the number of characters equal to the length of the expected cookie name defined by the `CASCookie` directive.  If the cookie string starts with the `CASCookie` name, it skips the next character,  assuming that it's `=` and takes all remaining characters. So what was happening was that, given the cookie header `Cookie: BLARG=WuzzleWuzzle;MOD_AUTH_CAS_REAUTH=foofoofoofoo;`, mod_auth_cas was matching the cookie string `MOD_AUTH_CAS_REAUTH=foofoofoofoo` with the `CASCookie` name of `MOD_AUTH_CAS`.  Finding that, it skipped the `_` and returned `REAUTH=foofoofoofoo` as the CAS cookie value.  That isn't a valid format for a CAS cookie so it redirected back to CAS.  CAS, finding a valid `TGC`, then performed SSO and redirected back to the service.  The service ticket was never validated because mod_auth_cas checks for the presence of a cookie before it checks for the ticket parameter.  Finding the invalid cookie again, it redirected back to CAS and so on until the browser threw up its hands in defeat.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 So, just something to look out for:
 

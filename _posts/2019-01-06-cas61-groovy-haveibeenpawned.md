@@ -12,6 +12,17 @@ allowing you to check if your passwords linked to an email have been compromised
 or will continue to be safe. It does, however, allow you to have an idea of when data linked to your accounts might have been exposed, 
 and whether you changed (or not) your passwords since that point.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 A CAS deployment, as an entity that can support username/password credentials, can be integrated with this service such that after the user logs 
 in with a valid password, CAS may check it against the [service API](https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange) and present a page to the user notifying them if their password has been pwned suggesting they should change it, but allow them to continue.
 

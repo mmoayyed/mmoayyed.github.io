@@ -143,6 +143,17 @@ accessStrategy: !<org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy
 curl https://sso.example.org/cas/actuator/registeredServices/2 | jq
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 By default, the response type is always in JSON. If you prefer YAML, by all means:
 
 ```bash
