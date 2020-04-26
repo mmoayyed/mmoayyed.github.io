@@ -22,7 +22,9 @@
   .scroll-top {bottom: 30px; right:30px;}
 }
 @media (max-width: 1199px) {
-  #team-section .team-member-wrapper .single-team-member .img .opacity p {padding: 0 15px;}
+  #team-section .team-member-wrapper .single-team-member .img .opacity p {
+    padding: 0 15px;
+  }
   #team-section .team-member-wrapper .single-team-member .img .opacity {padding-top: 20px;}
   .habilidades_contenedor {margin-top: 100px;}
 }

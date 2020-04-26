@@ -712,6 +712,7 @@ animation-delay: .175s;
   /* padding: 0 15px; */
   overflow: hidden;
   margin-bottom: 20px;
+  margin-left: 30px;
 }
 #team-section .team-member-wrapper .single-team-member,
 #team-section .team-member-wrapper .single-team-member .img {
