@@ -137,9 +137,6 @@
     clear: both;
     display: none;
   }
-  #misagh {
-    margin-left: 0px;
-  }
 
   #main-contact-ask {
     margin-top: 150px;
@@ -148,8 +145,8 @@
   .team-member-body {
     max-width: unset; 
   }
-}
 
-@media screen and (min-width: 899px) {
-
+  #team-section .team-member-wrapper .float-left {
+    margin-left: unset;
+  }
 }
