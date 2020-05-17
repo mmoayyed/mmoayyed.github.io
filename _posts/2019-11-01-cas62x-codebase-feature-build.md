@@ -298,8 +298,6 @@ cd ~/Workspace/cas
     -DskipNestedConfigMetadataGen=true'
 ```
 
-Note the use of the `testCategoryType` parameter as well as the actual task that runs the tests (`test` vs `testRedis`). To learn more about other available categories and how they are executed, please [take a look here][cascitests].
-
 To make things more comfortable, CAS ships with a ready-made script that handles all of this for you:
 
 ```bash
