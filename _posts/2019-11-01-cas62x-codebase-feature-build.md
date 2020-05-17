@@ -282,7 +282,7 @@ Our Gradle test commands need to be slightly modified to only run the tests that
 clear
 cd ~/Workspace/cas
 ./gradlew clean testRedis -x test -x javadoc \
-    --build-cache --configure-on-demand -DtestCategoryType=REDIS
+    --build-cache --configure-on-demand
     -x check --parallel -DskipNestedConfigMetadataGen=true \
     -DskipNestedConfigMetadataGen=true'
 ```
@@ -292,8 +292,8 @@ Or, to run simple unit tests our test command would look like this:
 ```bash
 clear
 cd ~/Workspace/cas
-./gradlew clean test -x javadoc \
-    --build-cache --configure-on-demand -DtestCategoryType=SIMPLE
+./gradlew clean testSimple -x javadoc \
+    --build-cache --configure-on-demand
     -x check --parallel -DskipNestedConfigMetadataGen=true \
     -DskipNestedConfigMetadataGen=true'
 ```
