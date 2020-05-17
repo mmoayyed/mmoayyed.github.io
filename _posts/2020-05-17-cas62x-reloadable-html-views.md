@@ -8,6 +8,17 @@ tags:       [CAS]
 
 One of the more common customizations tasks in an Apereo CAS deployment is the branding and decoration of the HTML views presented to the user for login, logout, etc. These views in Apereo CAS are backed by the [Thymeleaf templating engine](https://www.thymeleaf.org/) and are embedded in the CAS web application archive. For customizations, the goal is to extract these views and bundles from the CAS web application archive, (as prepared and built via the installation overlay), make changes as necessary, and then refresh the browser to see the effects live without restarts or rebuilds.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is based on:
 
 - CAS `6.2.x`
@@ -65,6 +76,17 @@ To customize a view, we first need to bring the file into our setup and *overlay
 
 The output of the above command should indicate that `casLoginView.html` was fetched and copied to the appropriate location in the overlay. You can now begin to customize the page as necessary and examine the changes in the browser with a running CAS server.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 # Reloading HTML Changes
 
 The WAR overlay is equipped with the Spring Boot Gradle plugin allowing you to take advantage of the `bootRun` task. This task is specifically customized in the overlay to bring up CAS in an embedded Apache Tomcat container and to activate [Spring Boot Developer Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools), whose one of the key features is to watch classpath resources for changes and refresh and *restart* the application context somewhat invisibly to allow the possibility of dynamic reloads. 
@@ -84,6 +106,17 @@ When the system is up and running, navigate to your copy of `casLoginView.html` 
 # Views vs. Fragments
 
 Some HTML templates and views in CAS import bits and pieces of HTML *fragments* to maximize reusability, such as the header fragment present on all pages using a `header.html` fragment. There is also a general layout, `layout.html` for all template views that outlines the page skeleton consistently and globally. All such fragments and layouts are also candidates for customization as well as dynamic reloads. 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 They can be brought into the overlay in much the same way:
 
