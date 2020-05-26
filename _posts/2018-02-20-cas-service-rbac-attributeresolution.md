@@ -42,7 +42,7 @@ There is very little left for us to do other than to teach CAS about our specifi
 
 In the given `cas.properties` file, the following settings allow us to fetch attributes from LDAP:
 
-```properties
+```
 cas.authn.attributeRepository.ldap[0].baseDn=ou=people,dc=example,dc=org
 cas.authn.attributeRepository.ldap[0].ldapUrl=ldap://localhost:1385
 cas.authn.attributeRepository.ldap[0].userFilter=uid={0}
@@ -73,7 +73,7 @@ The  table `table_users` in our HyperSQL database contains the user attributes w
 
 The above schema is what's referred to as a *Multi-Row* setup in the Person Directory configuration. In other words, this is the sort of setup that has more than one row dedicated to a user entry and quite possibly similar to above, multiple rows carry out multiple values for a single attribute definition (i.e. `role`). In order to teach CAS about this setup, we could start with the following settings:
 
-```properties
+```
 cas.authn.attributeRepository.jdbc[0].attributes.role=personRole
 
 cas.authn.attributeRepository.jdbc[0].singleRow=false

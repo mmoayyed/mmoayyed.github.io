@@ -89,7 +89,7 @@ Most authentication strategies in CAS are given a [predicate to examine the requ
 
 So, we can design the following conditions for our MySQL and Active Directory authentication modes:
 
-```properties
+```
 ...
 cas.authn.jdbc.search[0].credentialCriteria=.+@tenantA\.org
 ...
@@ -105,7 +105,7 @@ Having configured authentication sources for each tenant, how could we retrieve 
 
 A number of authentication strategies in CAS have the ability to fetch attributes from the same source in which the account was found. In our case above, we want `firstName` and `lastName` to be retrieved from MySQL and `cn` and `givenName` from Active Directory once the authentication attempt is successful. The requirements are translated as below:
 
-```properties
+```
 ...
 cas.authn.jdbc.search[0].principalAttributeList=firstName,lastName
 ...

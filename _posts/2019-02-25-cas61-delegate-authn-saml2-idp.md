@@ -44,7 +44,7 @@ The initial setup is in fact simple; as the [documentation describes](https://ap
 
 ...and then in your `cas.properties`, instruct CAS to hand off authentication to the SAML2 identity provider:
 
-```properties
+```
 cas.authn.pac4j.saml[0].keystorePassword=pac4j-demo-passwd
 cas.authn.pac4j.saml[0].privateKeyPassword=pac4j-demo-passwd
 cas.authn.pac4j.saml[0].keystorePath=/etc/cas/config/samlKeystore.jks

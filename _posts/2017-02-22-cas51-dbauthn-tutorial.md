@@ -91,7 +91,7 @@ Follow the steps [described here](https://apereo.github.io/cas/development/insta
 
 For this tutorial, this is what I actually needed to make this work:
 
-```properties
+```
 cas.authn.jdbc.query[0].sql=SELECT * FROM USERS WHERE uid=?
 cas.authn.jdbc.query[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
 cas.authn.jdbc.query[0].dialect=org.hibernate.dialect.HSQLDialect
@@ -131,7 +131,7 @@ UPDATE USERS SET psw='ca541f57a3041c3b85c553d12d3e64a8' WHERE uid='mmoayyed';
 
 Then configure CAS to handle `MD5` password encoding:
 
-```properties
+```
 cas.authn.jdbc.query[0].passwordEncoder.type=DEFAULT
 cas.authn.jdbc.query[0].passwordEncoder.encodingAlgorithm=MD5
 cas.authn.jdbc.query[0].passwordEncoder.characterEncoding=UTF-8
@@ -159,7 +159,7 @@ Good job! Lets get some attributes now.
 
 Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
 
-```properties
+```
 cas.authn.attributeRepository.jdbc[0].singleRow=false
 cas.authn.attributeRepository.jdbc[0].sql=SELECT * FROM USERATTRS WHERE {0}
 cas.authn.attributeRepository.jdbc[0].username=uid

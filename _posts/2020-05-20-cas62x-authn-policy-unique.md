@@ -12,6 +12,17 @@ While consulting on a CAS deployment, ran across an interesting question that I 
 
 Since the days of CAS `5.2.x`, CAS has had an authentication policy named as *Unique Principal*, whose appetite can only be satisfied if and only if the requesting user has not already authenticated with CAS. Otherwise the authentication event is blocked, preventing multiple logins.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Let's explore this policy a little bit more, given the following starting position:
 
 - CAS `6.2.x`
@@ -27,6 +38,17 @@ cas.authn.policy.unique-principal.enabled=true
 ```
 
 This will activate the authentication policy but it does come at a cost; To do its job, CAS needs to query the ticket registry and all tickets present to determine whether the current user has established a authentication session anywhere. It examines the content of the ticket registry looking for ticket-granting tickets that may belong to the same user, and if it finds more than one, it will block the authentication attempt. This will surely add a performance burden to the deployment as querying the registry to examine available tickets is not a lighthearted operation. 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # So...
 

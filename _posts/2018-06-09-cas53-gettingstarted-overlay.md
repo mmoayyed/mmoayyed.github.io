@@ -243,7 +243,7 @@ We need to first establish a primary mode of validating credentials by sticking 
 
 ...and then configure the relevant `cas.authn.ldap[x]` settings for the directory server in use. Most commonly, that would translate into the following settings:
 
-```properties
+```
 cas.authn.ldap[0].type=AUTHENTICATED
 cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.org
 cas.authn.ldap[0].baseDn=dc=example,dc=org
@@ -254,7 +254,7 @@ cas.authn.ldap[0].bindCredential=...
 
 To resolve and fetch the needed attributes which will be used later by CAS for release, the simplest way would be to let LDAP authentication retrieve the attributes directly from the directory server.  The following setting allows us to do just that:
 
-```properties
+```
 cas.authn.ldap[0].principalAttributeList=memberOf,cn,givenName,mail
 ```
 

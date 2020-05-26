@@ -52,7 +52,7 @@ The initial setup is in fact super simple; as the [documentation describes](http
 
 ...and then in your `cas.properties`, instruct CAS to hand off authentication to ADFS:
 
-```properties
+```
 # cas.authn.wsfed[0].identityProviderUrl=https://sample.adfs.org/adfs/ls/
 # cas.authn.wsfed[0].identityProviderIdentifier=http://sample.adfs.org/adfs/services/trust
 # cas.authn.wsfed[0].relyingPartyIdentifier=urn:cas:mmoayyed

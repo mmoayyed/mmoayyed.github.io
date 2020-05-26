@@ -36,7 +36,7 @@ Our primary source for authentication is abstracted away with [JAAS](https://ape
 
 Once you have a [functional overlay](https://github.com/apereo/cas-overlay-template) build, the first step would be to prep the right number of configuration settings in order to handle authentication and attribute resolution. The following settings, summarily, should do the job:
 
-```properties
+```
 cas.authn.jaas[0].realm=CAS
 
 cas.authn.attribute-repository.ldap[0].attributes.uid=uid

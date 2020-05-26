@@ -38,7 +38,7 @@ Our starting position is based on the following:
 
 As the first step, we need to figure out an authentication strategy. For this tutorial, I taught CAS to use [JAAS for authentication](https://apereo.github.io/cas/5.3.x/installation/JAAS-Authentication.html) in my  `cas.properties`:
 
-```properties
+```
 cas.authn.jaas[0].realm=CAS
 cas.authn.jaas[0].loginConfigType=JavaLoginConfig
 cas.authn.jaas[0].loginConfigurationFile=/etc/cas/config/jaas.conf

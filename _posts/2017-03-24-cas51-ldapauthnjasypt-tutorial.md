@@ -42,7 +42,7 @@ Once you have added the LDAP module to your build as is described [here](https:/
 
 Here is what I did in the `cas.properties` file, along with all the other usual suspects:
 
-```properties
+```
 cas.authn.ldap[0].type=AUTHENTICATED
 cas.authn.ldap[0].ldapUrl=ldap://localhost:10389
 cas.authn.ldap[0].useSsl=false
@@ -122,7 +122,7 @@ Cool. Let's move on.
 
 So now that I have encrypted value in the `OUTPUT` section, I am going to slightly massage my configuration as such:
 
-```properties
+```
 ...
 cas.authn.ldap[0].bindCredential={cipher}mqWuN+/U7oofNhdSVNcEgmVcwGmxiOaS
 ...

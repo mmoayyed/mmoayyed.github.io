@@ -25,7 +25,7 @@ Hop over to [the overlay installation](https://apereo.github.io/cas/development/
 
 Add the required module specified here in the [documentation](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) to your build. Next, we need to teach CAS about the external SAML2 Identity Provider. The configuration displayed below simply wants to have CAS act as a sevice provider with its own unique entity id, keystore, etc. CAS itself will generate the relevant service-provider credentials, keystores and metadata and will then examine the identity provider metadata document to learn about endpoints, etc. So you only really have to provide the values and let the software handle the rest.
 
-```properties
+```
 cas.authn.pac4j.saml[0].keystorePassword=pac4j-demo-passwd
 cas.authn.pac4j.saml[0].privateKeyPassword=pac4j-demo-passwd
 cas.authn.pac4j.saml[0].serviceProviderEntityId=urn:mace:saml:pac4j.org
