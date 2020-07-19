@@ -66,7 +66,7 @@ The above settings instruct CAS to:
 ...and just to make things more interesting, I am going to create a *stub* attribute definition for `employeeNumber` with an always-hardcoded value of `4095712`:
 
 ```properties
-cas.authn.attributeRepository.stub.attributes.employeeNumber=4095712
+cas.authn.attribute-repository.stub.attributes.employeeNumber=4095712
 ```
 
 This is going to be rather interesting because I have also configured my Okta SAML2 IdP to release an attribute named `employeeNumber`. Let's see what happens with two systems competing for the same attribute.

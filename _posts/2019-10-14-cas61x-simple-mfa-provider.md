@@ -58,7 +58,7 @@ spring.mail.testConnection=true
 Then, let's instruct CAS to share tokens via email:
 
 ```properties
-cas.authn.attributeRepository.stub.attributes.mail=misagh@somewhere.com
+cas.authn.attribute-repository.stub.attributes.mail=misagh@somewhere.com
 
 cas.authn.mfa.simple.mail.from=wolverine@example.org
 cas.authn.mfa.simple.mail.subject=CAS MFA Token

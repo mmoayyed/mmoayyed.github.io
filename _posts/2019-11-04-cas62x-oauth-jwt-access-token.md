@@ -37,9 +37,9 @@ Our starting position is based on:
 First, let's create a few mock attributes that ought to be released to our sample yet-to-be-registered OAuth application:
 
 ```properties
-cas.authn.attributeRepository.stub.attributes.cn=Misagh
-cas.authn.attributeRepository.stub.attributes.sn=Moayyed
-cas.authn.attributeRepository.stub.attributes.mail=mm1844@gmail.com
+cas.authn.attribute-repository.stub.attributes.cn=Misagh
+cas.authn.attribute-repository.stub.attributes.sn=Moayyed
+cas.authn.attribute-repository.stub.attributes.mail=mm1844@gmail.com
 ```    
 
 Once the OAuth module [is included in the WAR Overlay](https://apereo.github.io/cas/development/installation/OAuth-OpenId-Authentication.html#configuration), we can 

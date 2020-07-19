@@ -43,16 +43,16 @@ There is very little left for us to do other than to teach CAS about our specifi
 In the given `cas.properties` file, the following settings allow us to fetch attributes from LDAP:
 
 ```
-cas.authn.attributeRepository.ldap[0].baseDn=ou=people,dc=example,dc=org
-cas.authn.attributeRepository.ldap[0].ldapUrl=ldap://localhost:1385
-cas.authn.attributeRepository.ldap[0].userFilter=uid={0}
-cas.authn.attributeRepository.ldap[0].useSsl=false
-cas.authn.attributeRepository.ldap[0].bindDn=...
-cas.authn.attributeRepository.ldap[0].bindCredential=...
+cas.authn.attribute-repository.ldap[0].baseDn=ou=people,dc=example,dc=org
+cas.authn.attribute-repository.ldap[0].ldapUrl=ldap://localhost:1385
+cas.authn.attribute-repository.ldap[0].userFilter=uid={0}
+cas.authn.attribute-repository.ldap[0].useSsl=false
+cas.authn.attribute-repository.ldap[0].bindDn=...
+cas.authn.attribute-repository.ldap[0].bindCredential=...
 
-cas.authn.attributeRepository.ldap[0].attributes.displayName=displayName
-cas.authn.attributeRepository.ldap[0].attributes.givenName=givenName
-cas.authn.attributeRepository.ldap[0].attributes.mail=email
+cas.authn.attribute-repository.ldap[0].attributes.displayName=displayName
+cas.authn.attribute-repository.ldap[0].attributes.givenName=givenName
+cas.authn.attribute-repository.ldap[0].attributes.mail=email
 ```
 
 The above configuration defined the very basic essentials as far as LDAP connection information while also teaching CAS the set of attributes that should be first *retrieved* and optionally *remapped*. In practice, CAS would begin to fetch `displayName`, `givenName` and `mail` from the directory server and then process the final collection to include `displayName`, `givenName` and `email`. From this point on, CAS only knows of the user's email address under the `email` attribute and needless to say, this is the attribute name that should be used everywhere else in the CAS configuration.
@@ -74,17 +74,17 @@ The  table `table_users` in our HyperSQL database contains the user attributes w
 The above schema is what's referred to as a *Multi-Row* setup in the Person Directory configuration. In other words, this is the sort of setup that has more than one row dedicated to a user entry and quite possibly similar to above, multiple rows carry out multiple values for a single attribute definition (i.e. `role`). In order to teach CAS about this setup, we could start with the following settings:
 
 ```
-cas.authn.attributeRepository.jdbc[0].attributes.role=personRole
+cas.authn.attribute-repository.jdbc[0].attributes.role=personRole
 
-cas.authn.attributeRepository.jdbc[0].singleRow=false
-cas.authn.attributeRepository.jdbc[0].columnMappings.attribute=value
+cas.authn.attribute-repository.jdbc[0].singleRow=false
+cas.authn.attribute-repository.jdbc[0].columnMappings.attribute=value
 
-cas.authn.attributeRepository.jdbc[0].sql=SELECT * FROM table_users WHERE {0}
-cas.authn.attributeRepository.jdbc[0].username=uid
-cas.authn.attributeRepository.jdbc[0].driverClass=...
-cas.authn.attributeRepository.jdbc[0].user=...
-cas.authn.attributeRepository.jdbc[0].password=...
-cas.authn.attributeRepository.jdbc[0].url=...
+cas.authn.attribute-repository.jdbc[0].sql=SELECT * FROM table_users WHERE {0}
+cas.authn.attribute-repository.jdbc[0].username=uid
+cas.authn.attribute-repository.jdbc[0].driverClass=...
+cas.authn.attribute-repository.jdbc[0].user=...
+cas.authn.attribute-repository.jdbc[0].password=...
+cas.authn.attribute-repository.jdbc[0].url=...
 ```
 
 Pay attention to how the `columnMappings` setting defines a set of 1-1 mappings between columns that contain the attribute name vs the attribute value. Furthermore and similar to the LDAP setup, we are teaching CAS to fetch the attribute `role` (again, determined based on the mappings defined) and virtually *rename* the attribute to `personRole`. Just like the LDAP setup and from this point on, CAS only knows of the user's role under the `personRole` attribute and needles to say, this is the attribute name that should be used everywhere else in the CAS configuration.

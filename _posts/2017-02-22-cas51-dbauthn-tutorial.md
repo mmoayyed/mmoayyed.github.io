@@ -160,19 +160,19 @@ Good job! Lets get some attributes now.
 Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
 
 ```
-cas.authn.attributeRepository.jdbc[0].singleRow=false
-cas.authn.attributeRepository.jdbc[0].sql=SELECT * FROM USERATTRS WHERE {0}
-cas.authn.attributeRepository.jdbc[0].username=uid
-cas.authn.attributeRepository.jdbc[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
-cas.authn.attributeRepository.jdbc[0].columnMappings.attrname=attrvalue
+cas.authn.attribute-repository.jdbc[0].singleRow=false
+cas.authn.attribute-repository.jdbc[0].sql=SELECT * FROM USERATTRS WHERE {0}
+cas.authn.attribute-repository.jdbc[0].username=uid
+cas.authn.attribute-repository.jdbc[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
+cas.authn.attribute-repository.jdbc[0].columnMappings.attrname=attrvalue
 ```
 
 Once CAS understands the schema, we should then specify which attributes really should be retrieved by CAS.
 
 ```properties
-cas.authn.attributeRepository.attributes.firstname=firstname
-cas.authn.attributeRepository.attributes.lastname=lastname
-# cas.authn.attributeRepository.attributes.phone=phone
+cas.authn.attribute-repository.attributes.firstname=firstname
+cas.authn.attribute-repository.attributes.lastname=lastname
+# cas.authn.attribute-repository.attributes.phone=phone
 ```
 
 Note how I am skipping over `phone`.
@@ -185,7 +185,7 @@ If we wanted to, we could virtually rename the attributes to for instance `TheFi
 There are multiple ways of [releasing attributes](https://apereo.github.io/cas/development/integration/Attribute-Release.html). For this tutorial, I am going to release them globally to all applications:
 
 ```properties
-cas.authn.attributeRepository.defaultAttributesToRelease=firstname,lastname
+cas.authn.attribute-repository.defaultAttributesToRelease=firstname,lastname
 ```
 
 Note how I am skipping over `phone`.

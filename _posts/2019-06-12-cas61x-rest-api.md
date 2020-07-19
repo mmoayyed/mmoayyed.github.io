@@ -48,7 +48,7 @@ Let's assume that we have the following service definition in [CAS JSON service 
 Let's also instruct CAS to fetch attributes (i.e. `email`) from a static/stubbed attribute repository source:
 
 ```properties
-cas.authn.attributeRepository.stub.attributes.email=casuser@example.org
+cas.authn.attribute-repository.stub.attributes.email=casuser@example.org
 ```
 
 Next, to enable the CAS REST protocol the overlay must primarily be prepped with the following modules:
@@ -220,10 +220,10 @@ Request is not authorized
 CAS can be configured to fetch attributes from a remote REST endpoint. This functionality stands on its own, and does not require the presence of any extensions or modules in the overlay. It is offered by default, and activated only if the following CAS configuration is defined:
 
 ```properties
-cas.authn.attributeRepository.rest[0].basicAuthUsername=uid
-cas.authn.attributeRepository.rest[0].basicAuthPassword=password
-cas.authn.attributeRepository.rest[0].method=GET
-cas.authn.attributeRepository.rest[0].url=https://rest.somewhere.org/casattributes
+cas.authn.attribute-repository.rest[0].basicAuthUsername=uid
+cas.authn.attribute-repository.rest[0].basicAuthPassword=password
+cas.authn.attribute-repository.rest[0].method=GET
+cas.authn.attribute-repository.rest[0].url=https://rest.somewhere.org/casattributes
 ```
 
 The authenticating user id is passed in form of a request parameter under `username`. The response is expected to be a JSON map as such:

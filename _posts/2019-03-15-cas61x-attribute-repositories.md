@@ -55,14 +55,14 @@ Our JSON attribute repository source, separate from the CAS authentication store
 Our external attribute repositories are then taught to CAS:
 
 ```properties
-cas.authn.attributeRepository.json[0].location=file://etc/cas/config/attribute-repository.json
-cas.authn.attributeRepository.json[0].id=MyJson
+cas.authn.attribute-repository.json[0].location=file://etc/cas/config/attribute-repository.json
+cas.authn.attribute-repository.json[0].id=MyJson
 
-cas.authn.attributeRepository.stub.id=StaticStub
-cas.authn.attributeRepository.stub.attributes.uid=mmoayyed
-cas.authn.attributeRepository.stub.attributes.displayName=Misagh Moayyed
-cas.authn.attributeRepository.stub.attributes.firstName=Misagh
-cas.authn.attributeRepository.stub.attributes.lastName=Moayyed
+cas.authn.attribute-repository.stub.id=StaticStub
+cas.authn.attribute-repository.stub.attributes.uid=mmoayyed
+cas.authn.attribute-repository.stub.attributes.displayName=Misagh Moayyed
+cas.authn.attribute-repository.stub.attributes.firstName=Misagh
+cas.authn.attribute-repository.stub.attributes.lastName=Moayyed
 ```
 
 Note that each attribute repository is given an `id` which can the be used as a filter to narrow the resolution logic down to matching repositories.
@@ -80,9 +80,9 @@ The requirements for this use case are as follows:
 The relevant properties for this use case are:
 
 ```properties
-cas.authn.attributeRepository.expirationTime=0
-cas.authn.attributeRepository.expirationTimeUnit=seconds
-cas.authn.attributeRepository.merger=multivalued
+cas.authn.attribute-repository.expirationTime=0
+cas.authn.attribute-repository.expirationTimeUnit=seconds
+cas.authn.attribute-repository.merger=multivalued
 
 cas.personDirectory.attributeResolutionEnabled=false
 ```
@@ -130,9 +130,9 @@ The requirements for this use case are as follows:
 The relevant properties for this use case are:
 
 ```properties
-cas.authn.attributeRepository.expirationTime=60
-cas.authn.attributeRepository.expirationTimeUnit=seconds
-cas.authn.attributeRepository.merger=multivalued
+cas.authn.attribute-repository.expirationTime=60
+cas.authn.attribute-repository.expirationTimeUnit=seconds
+cas.authn.attribute-repository.merger=multivalued
 
 cas.personDirectory.attributeResolutionEnabled=false
 ```
@@ -180,9 +180,9 @@ The requirements for this use case are as follows:
 The relevant properties for this use case are:
 
 ```properties
-cas.authn.attributeRepository.expirationTime=5
-cas.authn.attributeRepository.expirationTimeUnit=seconds
-cas.authn.attributeRepository.merger=multivalued
+cas.authn.attribute-repository.expirationTime=5
+cas.authn.attribute-repository.expirationTimeUnit=seconds
+cas.authn.attribute-repository.merger=multivalued
 
 cas.personDirectory.attributeResolutionEnabled=false
 ```
@@ -236,9 +236,9 @@ The requirements for this use case are as follows:
 The relevant properties for this use case are:
 
 ```properties
-cas.authn.attributeRepository.expirationTime=30
-cas.authn.attributeRepository.expirationTimeUnit=seconds
-cas.authn.attributeRepository.merger=multivalued
+cas.authn.attribute-repository.expirationTime=30
+cas.authn.attribute-repository.expirationTimeUnit=seconds
+cas.authn.attribute-repository.merger=multivalued
 
 cas.personDirectory.attributeResolutionEnabled=true
 cas.personDirectory.activeAttributeRepositoryIds=StaticStub
@@ -322,9 +322,9 @@ The requirements for this use case are as follows:
 The relevant properties for this use case are:
 
 ```properties
-cas.authn.attributeRepository.expirationTime=10
-cas.authn.attributeRepository.expirationTimeUnit=seconds
-cas.authn.attributeRepository.merger=multivalued
+cas.authn.attribute-repository.expirationTime=10
+cas.authn.attribute-repository.expirationTimeUnit=seconds
+cas.authn.attribute-repository.merger=multivalued
 
 cas.personDirectory.attributeResolutionEnabled=true
 cas.personDirectory.activeAttributeRepositoryIds=StaticStub
