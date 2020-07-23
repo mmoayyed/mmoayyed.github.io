@@ -34,7 +34,9 @@ layout: default
         {{ content }}
 
         <!-- Home Post List -->
+        
         {% for post in site.posts limit : 15 %}
+        {% assign remainder = forloop.index | modulo: 3 %}
 
         <article class="post-preview">
           <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
@@ -54,6 +56,23 @@ layout: default
             on
             {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
           </p>
+          
+
+          {% if remainder == 0 %}
+
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-format="fluid"
+              data-ad-layout-key="-ef+6k-30-ac+ty"
+              data-ad-client="ca-pub-8081398210264173"
+              data-ad-slot="4520478878"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+
+          {% endif %}
+
         </article>
         
         <hr>
