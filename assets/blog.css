@@ -53,15 +53,17 @@ a, a:hover, .navbar-nav>li>a.active {
 
 .post-subtitle {
     font-style: italic;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: unset;
 }
 
 header.masthead {
     margin-bottom: 5px;
+    max-height: 300pt;
 }
 
-.post-preview>.post-meta {
-    font-size: 12px;
+.post-meta {
+    font-size: 10pt;
 }
 
 .blogpost img {
@@ -119,6 +121,10 @@ code {
     display: none;
 }
 
+.blognavbar {
+    margin-left: 8%;
+}
+
 .blog-logo {
     margin-left:19%;
 }
@@ -130,6 +136,25 @@ code {
 .ui-dialog {
     font-size: 12pt;
 }
+
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    border-radius: 10px;
+    font-size: 12pt;
+}
+
+a.post-preview-link {
+    text-decoration: none;
+    color: unset;
+}
+
+.card:hover {
+    border-color: #eea236;
+    border-width: 1.2px;
+}
+
 
 @media only screen and (max-width: 1500px) {
     .title {

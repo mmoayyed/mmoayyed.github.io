@@ -9,6 +9,9 @@ var imageNumber=Math.floor(Math.random() * totalNumberOfImages) + 1;
 $('#main-banner-slider').css("background-image", "url(images/home/slide-" + imageNumber + ".jpg)");
 
 switch (imageNumber) {
+    case 4:
+        $('.hero__title').css('padding-top', '300px');
+        break;
     case 7:
         $('.hero').css('height', '1100px');
         $('.hero__title').css('padding-top', '450px');

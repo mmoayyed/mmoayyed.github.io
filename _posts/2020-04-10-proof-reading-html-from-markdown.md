@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Validate Generated HTML from Markdown
-summary:    HTMLProofer is a set of tests to validate your HTML output. These tests check if your image references are legitimate, if they have alt tags or if your internal links are working, and so on. It's intended to be an all-in-one checker for your output. In this post, you will learn how to validate and verify your HTML documents that are generated from markdown sources.
+summary:    In this post, you will learn how to validate and verify your HTML documents that are generated from markdown sources using HTMLProofer.
 published: true
 tags:       [CAS]
 ---

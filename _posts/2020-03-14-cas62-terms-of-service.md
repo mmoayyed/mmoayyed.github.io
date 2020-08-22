@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Acceptable Usage Policy
-summary:    Learn how to activate different forms of acceptable usage policy and terms of service based on a variety of conditions and variables such as user affiliation, weather forecasts and more.
+summary:    Activate different forms of acceptable usage policy and terms of service conditionally based on user affiliation, etc.
 published: true
 tags:       [CAS]
 ---

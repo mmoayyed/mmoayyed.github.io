@@ -219,7 +219,7 @@ Request is not authorized
 
 CAS can be configured to fetch attributes from a remote REST endpoint. This functionality stands on its own, and does not require the presence of any extensions or modules in the overlay. It is offered by default, and activated only if the following CAS configuration is defined:
 
-```properties
+```
 cas.authn.attribute-repository.rest[0].basicAuthUsername=uid
 cas.authn.attribute-repository.rest[0].basicAuthPassword=password
 cas.authn.attribute-repository.rest[0].method=GET

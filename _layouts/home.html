@@ -4,11 +4,12 @@ layout: default
 
 <!-- Page Header -->
 {% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+<header class="masthead"
+  style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
   {% else %}
   <header class="masthead">
     {% endif %}
-    
+
     <div class="container">
       <div>
         <div class="mx-auto">
@@ -34,66 +35,249 @@ layout: default
         {{ content }}
 
         <!-- Home Post List -->
-        
-        {% for post in site.posts limit : 15 %}
-        {% assign remainder = forloop.index | modulo: 3 %}
-
-        <article class="post-preview">
-          <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-            <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.summary %}
-            <h3 class="post-subtitle">{{ post.summary }}</h3>
-            {% else %}
-            <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-            {% endif %}
-          </a>
-          <p class="post-meta">Posted by
-            {% if post.author %}
-            {{ post.author }}
-            {% else %}
-            {{ site.author }}
-            {% endif %}
-            on
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
-          </p>
-          
-
-          {% if remainder == 0 %}
-
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-format="fluid"
-              data-ad-layout-key="-ef+6k-30-ac+ty"
-              data-ad-client="ca-pub-8081398210264173"
-              data-ad-slot="4520478878"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-
-          {% endif %}
-
-        </article>
-        
-        <hr>
-
-        {% endfor %}
-
-
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="fluid"
-            data-ad-layout-key="-ef+6k-30-ac+ty"
-            data-ad-client="ca-pub-8081398210264173"
-            data-ad-slot="4520478878"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        
+
+        <!-- First -->
+        <div class="card-deck" style="padding-top: 10pt;">
+          {% for post in site.posts limit : 3 %}
+          <div class="card">
+            <!-- {% if forloop.first  %}
+            <div class="card-header">Featured</div>
+            {% endif %}  -->
+            <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <div class="card-body text-center">
+                <h4 class="card-title">{{ post.title }}</h4>
+
+                <span class="post-meta">Posted by
+                  <!-- {% if post.author %}
+                  {{ post.author }}
+                  {% else %}
+                  {{ site.author }}
+                  {% endif %} -->
+                  on
+                  {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+                </span>
+
+                <p class="card-text">
+                  {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+                </p>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ef+6k-30-ac+ty"
+                data-ad-client="ca-pub-8081398210264173"
+                data-ad-slot="4520478878"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+
+        <!-- Second -->
+        <div class="card-deck" style="padding-top: 10pt;">
+          {% for post in site.posts limit : 3 offset : 3 %}
+          <div class="card">
+            <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <div class="card-body text-center">
+                <h4 class="card-title">{{ post.title }}</h4>
+
+                <span class="post-meta">Posted by
+                  <!-- {% if post.author %}
+                  {{ post.author }}
+                  {% else %}
+                  {{ site.author }}
+                  {% endif %} -->
+                  on
+                  {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+                </span>
+
+                <p class="card-text">
+                  {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+                </p>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ef+6k-30-ac+ty"
+                data-ad-client="ca-pub-8081398210264173"
+                data-ad-slot="4520478878"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+
+        <!-- Third -->
+        <div class="card-deck" style="padding-top: 10pt;">
+          {% for post in site.posts limit : 3 offset : 6 %}
+          <div class="card">
+            <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <div class="card-body text-center">
+                <h4 class="card-title">{{ post.title }}</h4>
+
+                <span class="post-meta">Posted by
+                  <!-- {% if post.author %}
+                  {{ post.author }}
+                  {% else %}
+                  {{ site.author }}
+                  {% endif %} -->
+                  on
+                  {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+                </span>
+
+                <p class="card-text">
+                  {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+                </p>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ef+6k-30-ac+ty"
+                data-ad-client="ca-pub-8081398210264173"
+                data-ad-slot="4520478878"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+
+
+        <!-- Fourth -->
+        <div class="card-deck" style="padding-top: 10pt;">
+          {% for post in site.posts limit : 3 offset : 9 %}
+          <div class="card">
+            <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <div class="card-body text-center">
+                <h4 class="card-title">{{ post.title }}</h4>
+
+                <span class="post-meta">Posted by
+                  <!-- {% if post.author %}
+                  {{ post.author }}
+                  {% else %}
+                  {{ site.author }}
+                  {% endif %} -->
+                  on
+                  {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+                </span>
+
+                <p class="card-text">
+                  {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+                </p>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ef+6k-30-ac+ty"
+                data-ad-client="ca-pub-8081398210264173"
+                data-ad-slot="4520478878"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+
+        <!-- Fifth -->
+        <div class="card-deck" style="padding-top: 10pt;">
+          {% for post in site.posts limit : 3 offset : 12 %}
+          <div class="card">
+            <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <div class="card-body text-center">
+                <h4 class="card-title">{{ post.title }}</h4>
+
+                <span class="post-meta">Posted by
+                  <!-- {% if post.author %}
+                  {{ post.author }}
+                  {% else %}
+                  {{ site.author }}
+                  {% endif %} -->
+                  on
+                  {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+                </span>
+
+                <p class="card-text">
+                  {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+                </p>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ef+6k-30-ac+ty"
+                data-ad-client="ca-pub-8081398210264173"
+                data-ad-slot="4520478878"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+
+
         <!-- Pager -->
+        <p />
         <div class="clearfix">
-          <a class="btn btn-warning float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
+          <a class="btn btn-warning float-center" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
         </div>
 
         {% include search.html %}
