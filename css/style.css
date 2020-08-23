@@ -705,7 +705,7 @@ animation-delay: .175s;
 
  ***/
 #team-section .team-member-wrapper {
-  margin: 35px 0 0 0;
+  margin: 45px 0 0 0;
 }
 #team-section .team-member-wrapper .float-left {
   width: 30.0%;
@@ -1775,4 +1775,8 @@ footer p {
 
 .blog-post-preview:hover {
   border-color:  #faaa5e;
+}
+
+.blog-post-preview a {
+  color: unset;
 }
