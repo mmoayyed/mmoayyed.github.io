@@ -1780,3 +1780,7 @@ footer p {
 .blog-post-preview a {
   color: unset;
 }
+
+.post {
+  padding-left: 5pt;
+}

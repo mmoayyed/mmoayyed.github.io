@@ -149,4 +149,8 @@
   #team-section .team-member-wrapper .float-left {
     margin-left: unset;
   }
+
+  .blog-post-preview {
+    width: unset;
+  }
 }
