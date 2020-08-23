@@ -1,0 +1,47 @@
+<div class="card-deck" style="padding-top: 10pt;">
+    {% for post in site.posts limit : 3 offset : include.offset %}
+    <div class="card animate__animated animate__pulse filter  {{ post.tags | join: ' '}}">
+      <!-- {% if forloop.first  %}
+      <div class="card-header">Featured</div>
+      {% endif %}  -->
+      <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+        <div class="card-body text-center">
+          <h4 class="card-title">{{ post.title }} </h4>
+
+          <span class="post-meta">Posted
+            <!-- {% if post.author %}
+            {{ post.author }}
+            {% else %}
+            {{ site.author }}
+            {% endif %} -->
+            on
+            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+          </span>
+
+          <p class="card-text">
+            {% if post.summary %}
+          <h4 class="post-subtitle">{{ post.summary }}</h4>
+          {% else %}
+          <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+          {% endif %}
+          </p>
+
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-ef+6k-30-ac+ty"
+          data-ad-client="ca-pub-8081398210264173"
+          data-ad-slot="4520478878"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>

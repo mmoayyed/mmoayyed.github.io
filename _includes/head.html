@@ -36,7 +36,20 @@
   <script src="{{"/assets/tipuesearch/tipuesearch_set.js" | relative_url }}"></script>
   <script src="{{"/assets/tipuesearch/tipuesearch.min.js" | relative_url }}"></script>
   
+  <link rel="stylesheet" href="{{"/assets/vendor/animate/animate.min.css" | relative_url }}">
+
   <script data-ad-client="ca-pub-8081398210264173" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
   <link rel="stylesheet" type="text/css" href="{{"/assets/blog.css" | relative_url }}">
+  <script>
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        if(value == "all") {
+            $('.filter').show('1000');
+        } else {
+            $(".filter").not('.' + value).hide('1000');
+            $('.filter').filter('.' + value).show('1000');
+        }
+    });
+  </script>
 </head>
