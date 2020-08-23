@@ -705,7 +705,7 @@ animation-delay: .175s;
 
  ***/
 #team-section .team-member-wrapper {
-  margin: 20px 0 0 0;
+  margin: 35px 0 0 0;
 }
 #team-section .team-member-wrapper .float-left {
   width: 30.0%;
@@ -1760,4 +1760,19 @@ footer p {
 
 #misaghimg {
   padding-right: 15px;
+}
+
+.blog-post-preview {
+  border-width: 1pt;
+  border-style: solid;
+  height: 250pt;
+  border-radius: 25px;
+  border-color: lightgray;
+  margin-top: 40pt;
+  margin-right: 10pt;
+  width: 31.33%;
+}
+
+.blog-post-preview:hover {
+  border-color:  #faaa5e;
 }

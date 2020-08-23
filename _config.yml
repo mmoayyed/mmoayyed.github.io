@@ -23,7 +23,7 @@ email: info@fawnoos.com
 author: Misagh Moayyed
 description: >- # this means to ignore newlines until "baseurl:"
   Fawnoos || Open-Source Identity and Access Management Consulting Services
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://fawnoos.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: misagh84
 github_username:  mmoayyed
