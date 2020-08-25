@@ -181,6 +181,10 @@ a.post-preview-link {
 }
 
 @media only screen and (max-width: 990px) {
+
+    .title {
+        font-size: 24px;
+    }
     body {
         /* font-size: 16px; */
     }
@@ -204,5 +208,11 @@ a.post-preview-link {
 
     .blog-logo {
         margin-left: unset;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 20px;
     }
 }

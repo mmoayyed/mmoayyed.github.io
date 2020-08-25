@@ -21,6 +21,8 @@ header.masthead {
   .site-heading {
     padding: 200px 0 150px;
     color: white;
+    position: relative;
+    top: -20px;
     @media only screen and (min-width: 768px) {
       padding: 200px 0;
     }
