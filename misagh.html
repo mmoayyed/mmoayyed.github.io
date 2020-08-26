@@ -1,484 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+background-color: '#212529'
+searchbutton: false
+ignorefooter: 'true'
+---
 
-<head>
-	<meta charset="UTF-8">
-	<!-- For IE -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% include pageheader.html %}
 
-	<!-- For Resposive Device -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="robots" content="index,follow">
+<link rel="stylesheet" type="text/css" href="{{"css/style.css" | relative_url }}">
+<link rel="stylesheet" type="text/css" href="{{"css/responsive.css" | relative_url }}">
 
-	<meta name="description"
-		content="Fawnoos || open-source identity and access management software consulting services">
-	<meta name="keywords"
-		content="fawnoos, fawnous, apache, opensource, open-source, oss, software, identity, access management, consulting, consultant, cas, apereo, shibboleth, saml, oauth, openid connect, pac4j, login, syncope, single signon, sso, authentication, authorization, java, developer, github" />
+<section id="about-us">
+<div class="container">
+	<div class="theme-title">
+		<h2>Hi, I'm Misagh</h2>
+	</div>
 
-	<title>Fawnoos || Open-Source Identity and Access Management Consulting Services</title>
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
-
-	<!-- Main style sheet -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- responsive style sheet -->
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-
-	<script data-ad-client="ca-pub-8081398210264173" async
-		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-</head>
-
-<body>
-	<div class="main-page-wrapper">
-
-
-
-		<!-- 
-			=============================================
-				Theme Header
-			============================================== 
-			-->
-		<header class="theme-main-header" style="background: #1e1e1e;">
-			<div class="container">
-				<a href="index.html" class="logo float-left tran4s">
-					<img src="images/logo/logo.png"
-						title="Fawnoos || Open-Source Identity and Access Management Consulting Services"></a>
-
-				<!-- ========================= Theme Feature Page Menu ======================= -->
-				<nav class="navbar float-right theme-main-menu one-page-menu">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-							data-target="#navbar-collapse-1" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span>
-							<i class="fa fa-bars" aria-hidden="true"></i>
-						</button>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="/">HOME</a></li>
-							<li><a href="/blog">BLOG</a></li>
-							<li><a class="active" href="#contact-section-header">CONTACT</a></li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</header>
-
-
-		<!--
-			=====================================================
-				About us Section
-			=====================================================
-			-->
-
-		<section id="about-us" style="margin-top: 70px">
-
-			<p id="team-section-header" />
-			<div id="team-section">
-				<div class="container">
-					<div class="theme-title">
-						<h2>Hi, I'm Misagh</h2>
-					</div>
-					<div class="clear-fix team-member-wrapper">
-						<div id="misagh" class="float-left">
-							<div class="single-team-member">
-								<div class="img">
-									<img id="misaghimg" style="border-radius:25%;" class="teammember"
-										src="images/team/1.png"
-										title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
-								</div>
-							</div>
-						</div>
-
-						<div class="team-member-body">
-							<p>I'm Misagh Moayyed
-								(<a target="_blank" title="Not sure how to pronounce my name? Listen to Google Translate!" href="						https://translate.google.com/#view=home&op=translate&sl=fa&tl=ar&text=%D9%85%DB%8C%D8%AB%D8%A7%D9%82%D9%92%20%D9%85%D8%A4%D9%8A%D9%91%D9%90%D8%AF%D9%92">میثاقْ مؤيِّدْ</a>); a software engineer
-								and independent consultant.</p>
-							<p><br></p>
-							<p>My primary focus is on analysis, specification and development of open-source software
-								solutions in the field of identity and access management (IAM), and I specialize in
-								dealing with identity management, federated authentication, provisioning, access
-								management, single sign-on, application integrations and authentication protocols,
-								authorization strategies, etc.</p>
-							<br>
-
-							<p>
-								These days, in addition to other side adventures I work as a <a
-									href="https://www.tirasa.net/tirasa/team/misagh-moayyed">Software Architect at
-									Tirasa</a> and continue to serve as the Apereo CAS project's chairman and technical
-								lead. For a complete resume, please visit <a href="https://www.linkedin.com/mmoayyed">my
-									LinkedIn profile</a>.
-							</p>
-							<br>
-							<p>
-								I have been working as a software engineer since 2002, got <a
-									href="https://github.com/mmoayyed">involved with open-source</a> in
-								2008 and work as an active open-source contributor and frequent
-								committer to quite a few open-source IAM solutions, some of which are listed below:
-							</p>
-						</div>
-
-
-						<div class="row">
-							
-								<div class="col-sm-3 single-about-content">
-									<div class="icon round-border tran3s">
-										<img class="projecticon" src="images/project/cas.png"
-											title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
-									</div>
-									<h5><a href="#" class="tran3s">Apereo CAS</a></h5>
-								</div>
-							
-							
-								<div class="col-sm-3 single-about-content">
-									<div class="icon round-border tran3s">
-										<img class="projecticon" src="images/project/shibboleth.png"
-											title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
-									</div>
-									<h5><a href="#" class="tran3s">Shibboleth</a></h5>
-								</div>
-						
-							
-								<div class="col-sm-3 single-about-content">
-									<div class="icon round-border tran3s">
-										<img class="projecticon" src="images/project/pac4j.png"
-											title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
-									</div>
-									<h5><a href="#" class="tran3s">Pac4j</a></h5>
-								</div>
-							
-							
-								<div class="col-sm-3 single-about-content">
-									<div class="icon round-border tran3s">
-										<img class="projecticon" src="images/project/syncope.png"
-											title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
-									</div>
-									<h5><a href="#" class="tran3s">Syncope</a></h5>
-								</div>
-						</div>
-						<p>
-							I am an avid blogger and frequently publish posts on the <a href="/blog">Fawnoos
-								Blog</a> about interesting technologies, client projects, open-source developments,
-							etc. You will find a brief list of topics and themes below:
-						</p> <br>
-
-						<div class="tagcloud06">
-							<ul>
-								<li><a href="#"><span>CAS</span></a></li>
-								<li><a href="#"><span>SAML2</span></a></li>
-								<li><a href="#"><span>OpenID Connect</span></a></li>
-								<li><a href="#"><span>OAuth</span></a></li>
-								<li><a href="#"><span>JDK</span></a></li>
-								<li><a href="#"><span>Groovy</span></a></li>
-								<li><a href="#"><span>Apache Ant</span></a></li>
-								<li><a href="#"><span>Maven</span></a></li>
-								<li><a href="#"><span>Gradle</span></a></li>
-								<li><a href="#"><span>Spring</span></a></li>
-								<li><a href="#"><span>Markdown</span></a></li>
-								<li><a href="#"><span>Spring Webflow</span></a></li>
-								<li><a href="#"><span>Spring Security</span></a></li>
-								<li><a href="#"><span>JUnit</span></a></li>
-								<li><a href="#"><span>Git</span></a></li>
-								<li><a href="#"><span>Docker</span></a></li>
-								<li><a href="#"><span>Kubernetes</span></a></li>
-								<li><a href="#"><span>Apache Tomcat</span></a></li>
-								<li><a href="#"><span>Spring Boot</span></a></li>
-								<li><a href="#"><span>Thymeleaf</span></a></li>
-								<li><a href="#"><span>Hibernate</span></a></li>
-							</ul>
-						</div>
-
-					</div>
-					<p id="presentations" />
-					<div class="theme-title">
-						<h2>Presentations</h2>
-						<br>
-						<sub>Presentaion slides can be
-							found <a href="https://www.slideshare.net/MisaghMoayyed/presentations">here</a>.</sub>
-					</div>
-					<div class="clear-fix team-member-wrapper">
-						
-						<br>
-						<p>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=FvPip9chQmQ">Status of CAS Project</a></li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2020</sub>
-								</p>
-								<p>
-									<sub>Apereo CAS overview prepared for Open Apereo 2020 Virtual Conference</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://youtu.be/l-5N89Rpsq0">Sharing Best Practices with Git and
-											GitHub</a></li>
-								</ul>
-								<p>
-									<sub>Apereo Webinar - 2017</sub>
-								</p>
-								<p>
-									<sub>Matthew Bucket (University of Oxford and Sakai PMC) and Misagh Moayyed (CAS
-										PMC) discuss best practice with Git and Github.</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=P_GTXEAt5oU">Status of CAS Project</a>
-									</li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2015</sub>
-								</p>
-								<p>
-									<sub>Misagh Moayyed (CAS PMC) presents an overview of the CAS project status and
-										activity.</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=NsVVvxW7pBw&t=23s">CAS and PeopleSoft
-											Integration</a></li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2014</sub>
-								</p>
-								<p>
-									<sub>Misagh Moayyed (CAS PMC) describes how to CASify PeopleSoft.</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=K-tLvDAIZIA">Status of CAS Project</a>
-									</li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2014</sub>
-								</p>
-								<p>
-									<sub>Misagh Moayyed (CAS PMC) presents an overview of the CAS project status and
-										activity.</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=tpiZru_SJpI">CAS 3 and Beyond</a></li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2014</sub>
-								</p>
-								<p>
-									<sub>This session will provide an overview of a CAS v2 upgrade. The objective is to
-										present an evaluation of the existing CAS v2 environment and how various
-										functional, technical and user-interface requirements are implemented in the new
-										CAS 3 installation.</sub>
-								</p>
-
-							</div>
-							<br>
-							<div>
-								<ul style="list-style-type: square;">
-									<li><a href="https://www.youtube.com/watch?v=pE3D6ddpiL8">2FA with CAS: A tale of
-											two factors</a></li>
-								</ul>
-								<p>
-									<sub>Open Apereo Conference - 2014</sub>
-								</p>
-								<p>
-									<sub>This session will describe the latest extensions developed to enable multifactor authentication with CAS. The presentation will involve an overview of requirements, features and technical designs and may also touch upon feasibility of further contribution to the CAS community as well as a general roadmap.</sub>
-								</p>
-
-							</div>
-						</p>
-					</div>
+	<div class="clear-fix team-member-wrapper">
+		<div id="misagh" class="float-left">
+			<div class="single-team-member">
+				<div class="img">
+					<img id="misaghimg" style="border-radius:25%;" class="teammember"
+						src="{{"/images/team/1.png" | relative_url }}"
+						title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
 				</div>
 			</div>
+		</div>
 
-		</section>
+		<div class="team-member-body">
+			<br />
+			<p>I'm Misagh Moayyed
+				(<a target="_blank" title="Not sure how to pronounce my name? Listen to Google Translate!"
+					href="						https://translate.google.com/#view=home&op=translate&sl=fa&tl=ar&text=%D9%85%DB%8C%D8%AB%D8%A7%D9%82%D9%92%20%D9%85%D8%A4%D9%8A%D9%91%D9%90%D8%AF%D9%92">میثاقْ
+					مؤيِّدْ</a>); a software engineer
+				and independent consultant.</p>
+			<p><br></p>
+			<p>My primary focus is on analysis, specification and development of open-source software
+				solutions in the field of identity and access management (IAM), and I specialize in
+				dealing with identity management, federated authentication, provisioning, access
+				management, single sign-on, application integrations and authentication protocols,
+				authorization strategies, etc.</p>
+			<br>
 
-
-		<!--
-			=====================================================
-				Contact Section
-			=====================================================
-			-->
-		<p id="contact-section-header" />
-		<div id="contact-section" style="margin-top: -70px;">
-			<div class="container">
-				<div class="clear-fix contact-address-content">
-					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-						<div class="left-side">
-							<h2>Contact Info</h2>
-							<p>Have a question about projects, services, rates, or anything else? Feel free to get in
-								touch and drop us a note.</p>
-							<ul>
-								<li>
-									<div class="icon tran3s round-border p-color-bg"><i class="fa fa-envelope-o"
-											aria-hidden="true"></i></div>
-									<h6>Email</h6>
-									<p><code><a href="mailto:info@fawnoos.com">info@fawnoos.com</code></a></p>
-								</li>
-								<!-- <li>
-										<div class="icon tran3s round-border p-color-bg"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-										<h6>Twitter</h6>
-										<p><code>@misagh84</code></p>
-									</li>  -->
-								<!-- <li>
-										<div class="icon tran3s round-border p-color-bg"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-										<h6>Email</h6>
-										<p><code>info@fawnoos.com</code></p>
-									</li> -->
-							</ul>
-						</div>
-
-						<div>
-
-							<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-							<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8081398210264173"
-								data-ad-slot="4304756452" data-ad-format="auto" data-full-width-responsive="true"></ins>
-							<script>
-								(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-
-						</div>
-
-					</div>
+			<p>
+				These days, in addition to other side adventures I work as a <a
+					href="https://www.tirasa.net/tirasa/team/misagh-moayyed">Software Architect at
+					Tirasa</a> and continue to serve as the Apereo CAS project's chairman and technical
+				lead. For a complete resume, please visit <a href="https://www.linkedin.com/mmoayyed">my
+					LinkedIn profile</a>.
+			</p>
+			<br>
+			<p>
+				I have been working as a software engineer since 2002, got <a
+					href="https://github.com/mmoayyed">involved with open-source</a> in
+				2008 and work as an active open-source contributor and frequent
+				committer to quite a few open-source IAM solutions, some of which are listed below:
+			</p>
+		</div>
 
 
+		<div class="row">
+
+			
+			<div class="col-sm-3 single-about-content" style="margin-top: 10px;">
+				<div class="icon round-border tran3s">
+					<img class="projecticon" src="{{"/images/project/cas.png" | relative_url }}"
+						title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
 				</div>
+				<h5><a href="#" class="tran3s">Apereo CAS</a></h5>
+			</div>
+			
+			<div class="col-sm-3 single-about-content" style="margin-top: 10px;">
+				<div class="icon round-border tran3s">
+					<img class="projecticon" src="{{"/images/project/shibboleth.png" | relative_url }}"
+					title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
+				</div>
+				<h5><a href="#" class="tran3s">Shibboleth</a></h5>
+			</div>
+			
+			
+			<div class="col-sm-3 single-about-content" style="margin-top: 10px;">
+				<div class="icon round-border tran3s">
+					<img class="projecticon" src="{{"/images/project/pac4j.png" | relative_url }}"
+					title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
+				</div>
+				<h5><a href="#" class="tran3s">Pac4j</a></h5>
+			</div>
+			
+			
+			<div class="col-sm-3 single-about-content" style="margin-top: 10px;">
+				<div class="icon round-border tran3s">
+					<img class="projecticon" src="{{"/images/project/syncope.png" | relative_url }}"
+					title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
+				</div>
+				<h5><a href="#" class="tran3s">Syncope</a></h5>
+			</div>
+		
+		</div>
+		
+		<p style="margin-top: -80px;">
+			I am an avid blogger and frequently publish posts on the <a href="/blog">Fawnoos
+				Blog</a> about interesting technologies, client projects, open-source developments,
+			etc. You will find a brief list of topics and themes below:
+		</p> <br>
 
+		<div class="tagcloud06">
+			<ul>
+				<li><a href="#"><span>CAS</span></a></li>
+				<li><a href="#"><span>SAML2</span></a></li>
+				<li><a href="#"><span>OpenID Connect</span></a></li>
+				<li><a href="#"><span>OAuth</span></a></li>
+				<li><a href="#"><span>JDK</span></a></li>
+				<li><a href="#"><span>Groovy</span></a></li>
+				<li><a href="#"><span>Apache Ant</span></a></li>
+				<li><a href="#"><span>Maven</span></a></li>
+				<li><a href="#"><span>Gradle</span></a></li>
+				<li><a href="#"><span>Spring</span></a></li>
+				<li><a href="#"><span>Markdown</span></a></li>
+				<li><a href="#"><span>Spring Webflow</span></a></li>
+				<li><a href="#"><span>Spring Security</span></a></li>
+				<li><a href="#"><span>JUnit</span></a></li>
+				<li><a href="#"><span>Git</span></a></li>
+				<li><a href="#"><span>Docker</span></a></li>
+				<li><a href="#"><span>Kubernetes</span></a></li>
+				<li><a href="#"><span>Apache Tomcat</span></a></li>
+				<li><a href="#"><span>Spring Boot</span></a></li>
+				<li><a href="#"><span>Thymeleaf</span></a></li>
+				<li><a href="#"><span>Hibernate</span></a></li>
+			</ul>
+		</div>
 
+	</div>
+	<p id="presentations" />
+	<div class="theme-title">
+		<h2>Presentations</h2>
+		<br>
+		<sub>Presentaion slides can be
+			found <a href="https://www.slideshare.net/MisaghMoayyed/presentations">here</a>.</sub>
+	</div>
+
+	<div class="card-deck" style="padding-top: 10pt;">
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">Apereo CAS Project Overview</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/FvPip9chQmQ" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">Apereo CAS overview prepared for Open Apereo 2020 Virtual Conference.</p>
+				<span class="post-meta">Open Apereo Conference - 2020</span>
 			</div>
 		</div>
 
 
-
-		<!--
-			=====================================================
-				Footer
-			=====================================================
-			-->
-		<footer>
-			<div class="container">
-				<a href="index.html" class="logo"><img src="images/logo/logo.png"
-						title="Fawnoos || Open-Source Identity and Access Management Consulting Services"></a>
-
-				<ul>
-
-					<li><a href="mailto:info@fawnoos.com" class="tran3s round-border"><i class="fa fa-envelope-square"
-								aria-hidden="true"></i></a></li>
-					<li><a href="https://github.com/mmoayyed" class="tran3s round-border"><i class="fa fa-github"
-								aria-hidden="true"></i></a></li>
-					<li><a href="https://patreon.com/misagh" class="tran3s round-border"><i class="fa fa-usd"
-								aria-hidden="true"></i></a></li>
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> -->
-					<li><a href="https://twitter.com/misagh84" class="tran3s round-border"><i class="fa fa-twitter"
-								aria-hidden="true"></i></a></li>
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> -->
-					<li><a href="https://www.linkedin.com/mmoayyed" class="tran3s round-border"><i
-								class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-					<li><a href="https://www.slideshare.net/MisaghMoayyed" class="tran3s round-border"><i
-								class="fa fa-slideshare" aria-hidden="true"></i></a></li>
-
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-skype" aria-hidden="true"></i></a></li> -->
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> -->
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li> -->
-					<!-- <li><a href="#" class="tran3s round-border"><i class="fa fa-rss" aria-hidden="true"></i></a></li> -->
-				</ul>
-				<p>Copyright @2019 All rights reserved | This template is made with
-					<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-						target="_blank">Colorlib</a>
-					<br>All background images are available on <a href="https://unsplash.com"
-						target="_blank">Unsplash</a>
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">Best Practices with Git & GitHub</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/l-5N89Rpsq0" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
 				</p>
-
+				<p class="card-text">Matthew Bucket (University of Oxford and Sakai PMC) and Misagh Moayyed (CAS
+					PMC) discuss best practice with Git and Github.</p>
+				<span class="post-meta">Apereo Webinar - 2017</span>
 			</div>
-		</footer>
+		</div>
 
 
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">Apereo CAS Project Overview</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/P_GTXEAt5oU" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">Misagh Moayyed (CAS PMC) presents an overview of the CAS project status and
+					activity.</p>
+				<span class="post-meta">Open Apereo Conference - 2015</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card-deck" style="padding-top: 10pt;">
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">CAS and PeopleSoft Integration</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/NsVVvxW7pBw" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">Misagh Moayyed (CAS PMC) describes how to CASify PeopleSoft.</p>
+				<span class="post-meta">Open Apereo Conference - 2014</span>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">Apereo CAS Project Status</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/K-tLvDAIZIA" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">Misagh Moayyed (CAS PMC) presents an overview of the CAS project status and
+					activity.</p>
+				<span class="post-meta">Open Apereo Conference - 2014</span>
+			</div>
+		</div>
 
 
-
-		<!-- Scroll Top Button -->
-		<button class="scroll-top tran3s p-color-bg">
-			<i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-		</button>
-
-
-
-
-		<!-- Js File_________________________________ -->
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149384768-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-149384768-1');
-		</script>
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">CAS 3 and Beyond</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/tpiZru_SJpI" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">This session presents an evaluation of a CAS v2 environment and how various
+					functional, technical and user-interface requirements are implemented in the new CAS 3 installation.
+				</p>
+				<span class="post-meta">Open Apereo Conference - 2014</span>
+			</div>
+		</div>
+	</div>
 
 
-		<!-- j Query -->
-		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+	<div class="card-deck" style="padding-top: 10pt;">
+		<div class="card">
+			<div class="card-body text-center">
+				<h4 class="card-title">2FA with CAS: A tale of two factors</h4>
+				<p class="card-text">
+					<iframe src="https://www.youtube.com/embed/pE3D6ddpiL8" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+				<p class="card-text">This session will describe the latest extensions developed to enable multifactor
+					authentication with CAS v3.</p>
+				<span class="post-meta">Open Apereo Conference - 2014</span>
+			</div>
+		</div>
+		<div class="card" style="border: 0">
+			
+		</div>
+		<div class="card" style="border: 0">
+			
+		</div>
+	</div>
+</div>
+</section>	
 
-		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="vendor/bootstrap/bootstrap.min.js"></script>
-
-		<!-- Vendor js _________ -->
-
-		<!-- revolution -->
-		<script src="vendor/revolution/jquery.themepunch.tools.min.js"></script>
-		<script src="vendor/revolution/jquery.themepunch.revolution.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.slideanims.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.layeranimation.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.navigation.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.kenburn.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.actions.min.js"></script>
-		<script type="text/javascript" src="vendor/revolution/revolution.extension.video.min.js"></script>
-
-		<!-- Google map js -->
-		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8VrXgGZ3QSC-0XubNhuB2uKKCwqVaD0&callback=goMap" type="text/javascript"></script>
-		<script src="vendor/gmaps.min.js"></script> -->
-		<!-- owl.carousel -->
-		<script type="text/javascript" src="vendor/owl-carousel/owl.carousel.min.js"></script>
-		<!-- mixitUp -->
-		<script type="text/javascript" src="vendor/jquery.mixitup.min.js"></script>
-		<!-- Progress Bar js -->
-		<script type="text/javascript" src="vendor/skills-master/jquery.skills.js"></script>
-		<!-- Validation -->
-		<!-- <script type="text/javascript" src="vendor/contact-form/validate.js"></script>
-		<script type="text/javascript" src="vendor/contact-form/jquery.form.js"></script> -->
-
-
-		<!-- Theme js -->
-
-		<script type="text/javascript" src="js/fawnoos.js"></script>
-		<script type="text/javascript" src="js/theme.js"></script>
-		<!-- <script type="text/javascript" src="js/map-script.js"></script> -->
-
-	</div> <!-- /.main-page-wrapper -->
-</body>
-
-</html>
+{% include contactus.html %}
