@@ -10,6 +10,17 @@ tags:       [CAS]
 
 In this post, we will take a look at how Apereo CAS can be [deployed via Docker](https://fawnoos.com/2020/01/31/cas6-docker-deployment/) and sit behind Traefik. A dockerized CAS deployment is an existing CAS overlay project wrapped in Spring Boot, Docker, and Docker Compose. This setup requires a few extra modifications in order to allow an additional integration with Traefik for http and https access.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Our starting position is as follows:
 
 - CAS `6.3.x`
@@ -37,6 +48,17 @@ Ports detection works as follows:
 
 - If a container exposes only one port, then Traefik uses this port for private communication.
 - If a container exposes multiple ports, or does not expose any port, then you must manually specify which port Traefik should use for communication by using the label `traefik.http.services.cas.loadbalancer.server.port` 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Note that the CAS `Dockerfile` found in the overlay project does include `EXPOSE 8080 8443` for port exposure.
 
@@ -69,6 +91,17 @@ The labels will be read later by Traefik to auto-configure the service. Specific
 - `traefik.enable` ensures that Traefik sees our CAS container and routes traffic to it. This directive can be replaced with `exposedByDefault = true` in the Traefik configuration. 
 - `traefik.http.routers.cas.rule` create a `cas` *router* rule for Traefik that allows it to route traffic to the CAS container if the host header matches `auth.example.org`.
 - `traefik.http.services.cas.loadbalancer.server.port` specifies the target destination port for traffic into the running service.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The Traefik container itself is exposed over port `80` for routing traffic and we also allow for port `8080` which grants access to the Traefik dashboard. We are also mapping two volumes:
 
@@ -106,6 +139,17 @@ docker-compose down && docker-compose up --build
 Please be patient, as doing a build for the first time might take a while depending on your bandwidth. Once ready, you should be able to browse to `http://localhost:8080/dashboard` and access the Traefik dashboard:
 
 ![image](https://user-images.githubusercontent.com/1205228/94335683-13edc080-ffea-11ea-8d6a-34843e483c31.png)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 We can also examine our `CAS` router and its configuration:
 
@@ -159,6 +203,17 @@ The most notable differences are,
 - We are mapping the server private key and certificate into the Traefik container to support HTTPS requests. Certificates and keys can be generated using `openssl` and Traefik also has excellent support for [Let's Encrypt](https://doc.traefik.io/traefik/https/acme/) and other ACME providers for automatic certificate generation.
 - An additional `certificates.toml` how the above private key and certificate should be loaded by Traefik.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The `certificates.toml` file simply points to the certificates that are mapped inside the Traefik container:
 
 ```toml
@@ -208,6 +263,17 @@ level = "INFO"
 If you rebuild and launch the containers again, the Traefik dashboard should indicate that port `443` is enabled to serve secure traffic:
 
 ![image](https://user-images.githubusercontent.com/1205228/94336201-20741800-ffee-11ea-9875-ca13f2065f46.png)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Of course, our router setup also should indicate that TLS is now activated:
 
