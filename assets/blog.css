@@ -60,6 +60,7 @@ a, a:hover, .navbar-nav>li>a.active {
 header.masthead {
     margin-bottom: 5px;
     max-height: 268pt;
+    z-index:-1;
 }
 
 .post-meta {
