@@ -169,6 +169,7 @@ a.post-preview-link {
     #mainNav {
         background-color: rgb(7, 6, 6);
         border: none;
+        margin-top: 10px;
     }
 
     .row {
