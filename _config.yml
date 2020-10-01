@@ -54,6 +54,7 @@ plugins:
 exclude:
   - .sass-cache/
   - .jekyll-cache/
+  - .history
   - gemfiles/
 #   - Gemfile
   - Gemfile.lock
