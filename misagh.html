@@ -10,11 +10,19 @@ ignorefooter: 'true'
 <link rel="stylesheet" type="text/css" href="{{"css/style.css" | relative_url }}">
 <link rel="stylesheet" type="text/css" href="{{"css/responsive.css" | relative_url }}">
 
-<script>$('.masthead').css("z-index", "-1");</script>
+<script>
+	$('.masthead').css("z-index", "-1");
+	$('.logo').css("margin-top", "6px");
+	$('.logo').css("margin-left", "6px");
+	$('.navbar-toggle').css('margin-top', "0px");
+	$('.navbar-toggle').css('margin-right', "0px");
+	$('.navbar-nav>li').css('margin-left', "20px");
+	$('nav').removeClass('navbar');
+</script>
 
 <section id="about-us">
 <div class="container">
-	<div class="theme-title">
+	<div style="text-align: center; margin: 35px 0 0 0;">
 		<h2>Hi, I'm Misagh</h2>
 	</div>
 
@@ -22,7 +30,7 @@ ignorefooter: 'true'
 		<div id="misagh" class="float-left">
 			<div class="single-team-member">
 				<div class="img">
-					<img id="misaghimg" style="border-radius:25%;" class="teammember"
+					<img id="misaghimg" style="border-radius:25%; min-width: 360px; margin-top: 10px;" class="teammember"
 						src="{{"/images/team/1.png" | relative_url }}"
 						title="Fawnoos || Open-Source Identity and Access Management Consulting Services">
 				</div>
