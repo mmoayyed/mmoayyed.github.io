@@ -6,15 +6,15 @@ published: true
 tags:       [Shib]
 ---
 
-One of the more popular ways of packaging and running the Shibboleth Identity is with Docker. A Docker-based build environment can be particularly useful during development and testing, especially when building add-ons and extending the capabilities of the identity provider with custom code. A build powered by Docker can simulate the deployment environment by packaging the Shibboleth Identity Provider in an Apache Tomcat server with the proper TLS setup, an LDAP server for authentication and attribute release, and maybe a sample service provider and more in a recyclable automated way. 
+One of the more popular ways of packaging and running the Shibboleth Identity Provider is with Docker. A Docker-based build environment can be particularly useful during development and testing, especially when building add-ons and extending the capabilities of the identity provider with custom code. A build powered by Docker can simulate the deployment environment by packaging the Shibboleth Identity Provider in an Apache Tomcat server with the proper TLS setup, an LDAP server for authentication and attribute release, and maybe a sample service provider and more in a recyclable automated way. 
 
 When building this sort of development environment, it's often very helpful to attach a debugger to the running Shibboleth IdP container to step into the code and diagnose issues. This implies that the container and the server environment hosting the IdP web application must be prepped and capable of responding to debugger requests from the host machine. 
 
 ## Apache Tomcat Remote Debugging
 
-Apache Tomcat that hosts the Shibboleth Identity Provider's web application can be configured to allow a development environment like eclipse or IntelliJ IDEA to connect and attach remotely using [`JPDA`](https://cwiki.apache.org/confluence/x/8CklBg) (Java Platform Debugger Architecture) and step into the code. In doing so, that are two adjustments that must be applied to the Apache Tomcat configuration.
+Apache Tomcat that hosts the Shibboleth Identity Provider's web application can be configured to allow a development environment like eclipse or IntelliJ IDEA to connect and attach remotely using [`JPDA`](https://cwiki.apache.org/confluence/x/8CklBg) (Java Platform Debugger Architecture) and step into the code. In doing so, there are two adjustments that must be applied to the Apache Tomcat configuration.
 
-First, `JPDA_ADDRESS` and `JPDA_TRANSPORT` (optional) must be defined as environment variables. The address should be a port number (default is `8000`) which is the entry point for Tomcat debugging interfaces.
+First, `JPDA_ADDRESS` and `JPDA_TRANSPORT` (optional) should be defined as environment variables. The address should be a port number (default is `8000`) which is the entry point for Tomcat debugging interfaces to which an external debugger from a development environment can be attached.
 
 ```bash
 export JPDA_ADDRESS=5005
@@ -22,7 +22,7 @@ export JPDA_TRANSPORT=dt_socket
 ```
 
 <div class="alert alert-info">
-  <strong>JDK 11</strong><br/>Note that from Java 9, the JDWP socket connector accepts <a href="https://bugs.openjdk.java.net/browse/JDK-8175050">only local connections</a> by default. To bypass this restriction for development purposes, specially if the Shibboleth container is running against JDK 11, the JPDA address must be specified as <code>export JPDA_ADDRESS="*:5005"</code> instead.
+  <strong>JDK Note</strong><br/>Note that from Java 9, the JDWP socket connector accepts <a href="https://bugs.openjdk.java.net/browse/JDK-8175050">only local connections</a> by default. To bypass this restriction for development purposes, specially if the Shibboleth container is running against JDK 11, the JPDA address must be specified as <code>export JPDA_ADDRESS="*:5005"</code> instead.
 </div>
 
 Next, the command used to run Apache Tomcat must be altered to invoke JPDA:
