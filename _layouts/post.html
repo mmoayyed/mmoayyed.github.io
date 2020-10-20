@@ -16,7 +16,7 @@ layout: default
             <span class="meta">Posted by
               <a href="#">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a>
               on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
-              content=page.content %}
+              content=page.content %} &middot; <a href='/feed.xml'><i class="fas fa-rss"></i></a>
             </span>
           </div>
         </div>
