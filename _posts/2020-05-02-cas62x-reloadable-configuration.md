@@ -31,7 +31,7 @@ Our starting position is based on:
 
 # Initial Setup
 
-Let's start with a simple use case: our CAS server should have the option to hand off authentication requests to an external CAS server. To enable [delegated authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html), we would start by including the proper extension module in the overlay:
+Let's start with a simple use case: our CAS server should have the option to hand off authentication requests to an external CAS server. To enable [delegated authentication](https://apereo.github.io/cas/6.2.x/integration/Delegate-Authentication.html), we would start by including the proper extension module in the overlay:
 
 ```gradle
 compile "org.apereo.cas:cas-server-support-pac4j-webflow:${project.'cas.version'}"

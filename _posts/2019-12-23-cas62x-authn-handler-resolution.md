@@ -35,7 +35,7 @@ Our starting position is based on:
 
 # Credential Criteria
 
-Most authentication strategies in CAS are given a [predicate to examine the requested credential](https://apereo.github.io/cas/development/configuration/Configuration-Properties-Common.html#authentication-credential-selection) for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential:
+Most authentication strategies in CAS are given a [predicate to examine the requested credential](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Properties-Common.html#authentication-credential-selection) for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential:
 
 ```properties                                     
 ...
@@ -122,7 +122,7 @@ def supports(Object[] args) {
 # Bonus
 
 The most extreme option of all is to simply supply your overall strategy for authentication management and override the CAS-provided engine. 
-To do this, you should start by [designing your configuration component](https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html) to include the following bean:
+To do this, you should start by [designing your configuration component](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Management-Extensions.html) to include the following bean:
 
 ```java
 @Bean

@@ -19,7 +19,7 @@ An identity provider such as Apereo CAS that provides single sign-on is fully po
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-In this tutorial, we will briefly take a look at [JPA Service Registry](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) support in CAS, with our starting position as follows:
+In this tutorial, we will briefly take a look at [JPA Service Registry](https://apereo.github.io/cas/6.2.x/services/JPA-Service-Management.html) support in CAS, with our starting position as follows:
 
 - CAS `6.2.x`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
@@ -78,7 +78,7 @@ So back to the task at hand, we will keep this container running in the backgrou
 
 ### CAS Configuration
 
-You should start by including the [indicated module](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) in your [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template). Of course, we have to introduce CAS and our Oracle database to each other using the following settings:
+You should start by including the [indicated module](https://apereo.github.io/cas/6.2.x/services/JPA-Service-Management.html) in your [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template). Of course, we have to introduce CAS and our Oracle database to each other using the following settings:
 
 ```properties
 cas.jdbc.showSql=true
@@ -118,7 +118,7 @@ In the above settings, we are instructing CAS to achieve the following:
 So at this point, we have a running CAS server talking to our Oracle database. However, as the log message above indicates, we have no services available in our registry so let's populate our database instance by importing a few application definitions.
 
 <div class="alert alert-info">
-<strong>Manual Entries</strong><br/>If you don't have any application records to import and would rather begin by manually adding applications to your CAS instance and Oracle database, you should begin by taking a look at the <a href="https://apereo.github.io/cas/development/services/Installing-ServicesMgmt-Webapp.html">Management Web Application</a>. Do <b>NOT</b> try to insert database records manually using <code>INSERT</code> statements; that has the potetial to corrupt the database state very quickly.
+<strong>Manual Entries</strong><br/>If you don't have any application records to import and would rather begin by manually adding applications to your CAS instance and Oracle database, you should begin by taking a look at the <a href="https://apereo.github.io/cas/6.2.x/services/Installing-ServicesMgmt-Webapp.html">Management Web Application</a>. Do <b>NOT</b> try to insert database records manually using <code>INSERT</code> statements; that has the potetial to corrupt the database state very quickly.
 </div>
 
 ### Import Applications

@@ -30,7 +30,7 @@ In this tutorial, we will briefly take a look at [Acceptable Usage Policy](https
 - CAS `6.2.x`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 - Java 11
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html)
 
 ## Configuration
 

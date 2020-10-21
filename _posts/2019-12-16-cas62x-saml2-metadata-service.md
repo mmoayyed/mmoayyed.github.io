@@ -32,7 +32,7 @@ Our starting position is based on:
 
 # The Basics
 
-Start with the [CAS Overlay](https://github.com/apereo/cas-overlay-template), clone the project and follow [the notes here](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html) to get CAS acting as SAML2 identity provider. In its simplest form, it comes to 
+Start with the [CAS Overlay](https://github.com/apereo/cas-overlay-template), clone the project and follow [the notes here](https://apereo.github.io/cas/6.2.x/installation/Configuring-SAML2-Authentication.html) to get CAS acting as SAML2 identity provider. In its simplest form, it comes to 
 down to the following settings:
 
 ```properties
@@ -61,7 +61,7 @@ Permissions Size User   Group Date Modified Name
 .rw-r--r--  1.7k Misagh wheel  1 Dec 17:45  idp-signing.key
 ```
 
-Next, we could use [JSON service registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html) to manage 
+Next, we could use [JSON service registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) to manage 
 our SAML2 service provider definitions. Here is what our service definition might look like for 
 SAML2 service provider in a `SAML-1.json` file:
 
