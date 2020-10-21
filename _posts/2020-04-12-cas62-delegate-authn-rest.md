@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-Apereo CAS has been able to delegate authentication to external [identity providers](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) for quite some time. Simply put, delegation is just a fancy word that means, whether automatically or at the click of a button, the browser is expected to redirect the user to an external identity provider (i.e. Twitter, GitHub, etc) and on the return trip back, CAS is tasked to parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
+Apereo CAS has been able to delegate authentication to external [identity providers](https://apereo.github.io/cas/6.2.x/integration/Delegate-Authentication.html) for quite some time. Simply put, delegation is just a fancy word that means, whether automatically or at the click of a button, the browser is expected to redirect the user to an external identity provider (i.e. Twitter, GitHub, etc) and on the return trip back, CAS is tasked to parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

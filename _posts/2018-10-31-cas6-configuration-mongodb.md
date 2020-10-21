@@ -20,7 +20,7 @@ tags:       [CAS]
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-MongoDB is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting [CAS connected to MongoDB](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html#mongodb) to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside MongoDB databases.
+MongoDB is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting [CAS connected to MongoDB](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Server-Management.html#mongodb) to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside MongoDB databases.
 
 Our starting position is based on the following:
 
@@ -143,7 +143,7 @@ Build and deploy. At this point, you should be able to log into CAS using `casus
 
 ### Refresh & Reload
 
-If a setting changes, MongoDB has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
+If a setting changes, MongoDB has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
 
 For example, start by changing the value of `cas.authn.accept.users` in MongoDB to something like `casuser::HelloWorld`. Then, execute the following command to refresh the CAS application context:
 

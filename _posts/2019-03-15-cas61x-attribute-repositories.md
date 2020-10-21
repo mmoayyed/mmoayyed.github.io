@@ -35,7 +35,7 @@ Our starting position is based on:
 - CAS `6.1.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html)
 - Using CAS default credentials, `casuser` and `Mellon` via static authentication.
 
 ## Baseline Configuration

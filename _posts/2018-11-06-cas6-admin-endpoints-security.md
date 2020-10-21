@@ -34,7 +34,7 @@ In essence, actuator endpoints bring production-ready features to CAS. Monitorin
 <div class="alert alert-info">
 <strong>Definition</strong><br/>An actuator is a manufacturing term, referring to a mechanical device for moving or controlling something. Actuators can generate a large amount of motion from a small change.</div>
 
-The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
+The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/6.0.x/monitoring/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
 
 # Endpoints
 
@@ -129,7 +129,7 @@ cas.monitor.endpoints.endpoint.status.requiredIpAddresses=1.2.3.4
 
 ## Dashboard
 
-Note that all GUIs related to CAS endpoints are removed and will be slightly transitioned over to the [CAS Management Web Application](https://apereo.github.io/cas/development/services/Installing-ServicesMgmt-Webapp.html). However, while the screens may be gone the underlying functionality remains all the same. For example, provided the endpoint is correctly enabled and secured you can invoke the `statistics` endpoint to get the required data:
+Note that all GUIs related to CAS endpoints are removed and will be slightly transitioned over to the [CAS Management Web Application](https://apereo.github.io/cas/6.0.x/services/Installing-ServicesMgmt-Webapp.html). However, while the screens may be gone the underlying functionality remains all the same. For example, provided the endpoint is correctly enabled and secured you can invoke the `statistics` endpoint to get the required data:
 
 ```bash
 curl -k https://sso.example.org/cas/actuator/statistics | jq

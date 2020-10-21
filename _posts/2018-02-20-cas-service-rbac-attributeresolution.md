@@ -98,7 +98,7 @@ At this point, you should be able to authenticate into CAS and observe in the lo
 displayName=Test User, givenName=CAS, email=casuser@example.org}] ...>
 ```
 
-If you [need to troubleshoot](https://apereo.github.io/cas/development/installation/Troubleshooting-Guide.html), the best course of action would be to adjust logs to produce `DEBUG` information.
+If you [need to troubleshoot](https://apereo.github.io/cas/5.2.x/installation/Troubleshooting-Guide.html), the best course of action would be to adjust logs to produce `DEBUG` information.
 
 # Application Registration
 

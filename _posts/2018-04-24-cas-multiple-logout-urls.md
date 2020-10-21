@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-CAS has had [support for single logout](https://apereo.github.io/cas/development/installation/Logout-Single-Signout.html) for quite a while. This feature basically means that CAS is able to invalidate client application sessions in addition to its own SSO session, assuming client applications are ready to honor and accept logout requests with special configuration. When a CAS session ends, it notifies each of the services that the SSO session is no longer valid, and that relying parties need to invalidate their own session by processing a special logout request. Remember that the callback submitted to each CAS-protected application is simply *a notification*; nothing more. It is the *responsibility of the application* to intercept that notification and properly destroy the user authentication session, either manually, via a specific endpoint or more commonly via a CAS client library that supports SLO.
+CAS has had [support for single logout](https://apereo.github.io/cas/5.3.x/installation/Logout-Single-Signout.html) for quite a while. This feature basically means that CAS is able to invalidate client application sessions in addition to its own SSO session, assuming client applications are ready to honor and accept logout requests with special configuration. When a CAS session ends, it notifies each of the services that the SSO session is no longer valid, and that relying parties need to invalidate their own session by processing a special logout request. Remember that the callback submitted to each CAS-protected application is simply *a notification*; nothing more. It is the *responsibility of the application* to intercept that notification and properly destroy the user authentication session, either manually, via a specific endpoint or more commonly via a CAS client library that supports SLO.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -29,7 +29,7 @@ This tutorial deals with:
 - CAS `5.3.0-RC4`
 - Java 8
 - [Maven](https://github.com/apereo/cas-overlay-template) Or [Gradle](https://github.com/apereo/cas-gradle-overlay-template) WAR Overlays
-- [Single Logout](https://apereo.github.io/cas/development/installation/Logout-Single-Signout.html)
+- [Single Logout](https://apereo.github.io/cas/5.3.x/installation/Logout-Single-Signout.html)
 
 # Single Logout URL
 

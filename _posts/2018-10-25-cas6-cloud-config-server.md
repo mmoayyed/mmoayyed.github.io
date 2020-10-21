@@ -20,7 +20,7 @@ As your CAS deployment moves through the deployment pipeline from dev to test to
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-The [Spring Cloud Config server](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html) is an external and central configuration server to keep state and settings for all sorts of applications, CAS included. It provides an abstract way for CAS (and all of its other clients) to obtain settings from a variety of sources such as file system, git or svn repositories, MongoDb databases, Vault, etc. The beauty of this solution is that to the CAS web application server, (or the clients of the Spring Cloud Config server in general), it matters not where settings come from since CAS has no knowledge of the underlying property sources. It simply talks to the configuration server to locate settings and move on.
+The [Spring Cloud Config server](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Server-Management.html) is an external and central configuration server to keep state and settings for all sorts of applications, CAS included. It provides an abstract way for CAS (and all of its other clients) to obtain settings from a variety of sources such as file system, git or svn repositories, MongoDb databases, Vault, etc. The beauty of this solution is that to the CAS web application server, (or the clients of the Spring Cloud Config server in general), it matters not where settings come from since CAS has no knowledge of the underlying property sources. It simply talks to the configuration server to locate settings and move on.
 
 In this walkthrough, we will focus on the following tasks:
 
@@ -270,7 +270,7 @@ If you have followed the story so far, crank up the your CAS server deployment a
 
 ### Refresh & Reload
 
-The CAS spring cloud configuration server is constantly monitoring changes to the underlying property sources automatically but has no way to broadcast those changes to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
+The CAS spring cloud configuration server is constantly monitoring changes to the underlying property sources automatically but has no way to broadcast those changes to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events, CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

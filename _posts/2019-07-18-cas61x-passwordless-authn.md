@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-[Passwordless authentication](https://apereo.github.io/cas/development/installation/Passwordless-Authentication.html) in CAS allows users to login without having to type in a password. Instead, passwords take the form of tokens that expire after a configurable period and are shared with users using communication methods such as email or SMS. Using this strategy, users are simply asked for an identifier (i.e. username) which is used to locate the user record that contains forms of contact such as email and phone number.
+[Passwordless authentication](https://apereo.github.io/cas/6.1.x/installation/Passwordless-Authentication.html) in CAS allows users to login without having to type in a password. Instead, passwords take the form of tokens that expire after a configurable period and are shared with users using communication methods such as email or SMS. Using this strategy, users are simply asked for an identifier (i.e. username) which is used to locate the user record that contains forms of contact such as email and phone number.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -32,7 +32,7 @@ Our starting position is based on:
 
 # Configuration
 
-Once you have decorated the CAS WAR Overlay with the proper [extension module](https://apereo.github.io/cas/development/installation/Passwordless-Authentication.html), you will need to adjust your CAS configuration (i.e. `cas.properties` file) to tune the feature for the following:
+Once you have decorated the CAS WAR Overlay with the proper [extension module](https://apereo.github.io/cas/6.1.x/installation/Passwordless-Authentication.html), you will need to adjust your CAS configuration (i.e. `cas.properties` file) to tune the feature for the following:
 
 ## User Accounts
 

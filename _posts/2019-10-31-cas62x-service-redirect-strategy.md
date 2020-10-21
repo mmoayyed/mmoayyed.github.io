@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-Per the [CAS Protocol](https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html), service tickets issued by a CAS server are expected
+Per the [CAS Protocol](https://apereo.github.io/cas/6.2.x/protocol/CAS-Protocol-Specification.html), service tickets issued by a CAS server are expected
 to be returned to the original service identifier provided in the initial authentication request via the `service` parameter. While this default behavior is enforced by 
 the Apereo CAS server, there may be situations where the ultimate redirection URL may need to be customized or altered for advanced integrations.
 
@@ -44,7 +44,7 @@ customized and replaced since it's defined as a Spring bean in the running appli
 <strong>Caution</strong><br/>Altering the internal mechanics of a CAS server may lead to a problematic insecure configuration and <i>may</i> also jeopradize the population of giant pandas. Such customizations should only be applied if absolutely necessary when all other alternatives are considered and ruled out.
 </div>
 
-To supply your own builder, you should start by [designing your own configuration component](https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html) to include the following bean:
+To supply your own builder, you should start by [designing your own configuration component](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Management-Extensions.html) to include the following bean:
 
 ```java
 @Bean

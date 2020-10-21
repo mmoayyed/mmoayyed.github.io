@@ -8,7 +8,7 @@ tags:       [CAS]
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
 This is a short and sweet tutorial on how to configure CAS to delegate authentication to an external SAML2 identity provider.
-Most of the material is based on the [available documentation](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html).
+Most of the material is based on the [available documentation](https://apereo.github.io/cas/5.1.x/integration/Delegate-Authentication.html).
 
 This tutorial specifically focuses on:
 

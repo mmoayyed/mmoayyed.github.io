@@ -27,7 +27,7 @@ Our starting position is based on:
 
 # Configuration
 
-In most cases, when you run CAS in [standalone mode](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html#standalone) specially, the default configuration directory on the filesystem (i.e. `/etc/cas/config`) may include `(cas|application).(yaml|yml|properties)` files that can be used to control behavior. You could design your configuration management scheme such that all *common* properties across all deployment environments and tiers are managed inside the likes of `cas.properties` file, while tier-specific settings are separated out into their own individual configuration file, such as `development.properties` and `production.properties` file. 
+In most cases, when you run CAS in [standalone mode](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Server-Management.html#standalone) specially, the default configuration directory on the filesystem (i.e. `/etc/cas/config`) may include `(cas|application).(yaml|yml|properties)` files that can be used to control behavior. You could design your configuration management scheme such that all *common* properties across all deployment environments and tiers are managed inside the likes of `cas.properties` file, while tier-specific settings are separated out into their own individual configuration file, such as `development.properties` and `production.properties` file. 
 
 For example, let's suppose that there are two different deployment environments for development and production where each should contain a different value for the CAS setting `cas.authn.accept.users`. To achieve this, this setting needs to be extracted from the common `cas.properties` file and be put inside `development.properties` and `production.properties` files with relevant values:
 
@@ -61,7 +61,7 @@ java -jar -Dspring.profiles.include=production build/libs/cas.war
 <strong>Note</strong><br/>The above command demonstrates an example with CAS running with an embedded server container, where the <code>spring.profiles.include</code> is passed directly on the command-line. If you are deploying CAS using an external server container, the  setting can be passed to CAS as an environment property as well to make things slightly more comfortable.
 </div>
 
-Study [this reference](https://apereo.github.io/cas/development/configuration/Configuration-Management.html) for more details.
+Study [this reference](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Management.html) for more details.
 
 # So...
 

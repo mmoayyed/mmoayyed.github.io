@@ -7,7 +7,7 @@ tags:       [CAS,SAML]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-[MongoDB](https://www.mongodb.com) is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata and is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting [CAS connected to MongoDB](https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata.html#mongodb) to store SAML2 identity provider *and* service provider metadata documents.
+[MongoDB](https://www.mongodb.com) is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata and is supported in CAS in many different ways. In this walkthrough, we are going to take a pass at getting [CAS connected to MongoDB](https://apereo.github.io/cas/6.0.x/installation/Configuring-SAML2-DynamicMetadata.html#mongodb) to store SAML2 identity provider *and* service provider metadata documents.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -80,7 +80,7 @@ That should do for now. Let's get CAS running.
 
 ### SAML2 Service Provider Metadata
 
-So in order to enable a CAS integration with MongoDB *directly*, you want to start with the [CAS Overlay](https://github.com/apereo/cas-overlay-template), clone the project and follow [the notes here](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html) to get CAS acting as SAML2 identity provider. In its simplest form, it comes to down to the following settings:
+So in order to enable a CAS integration with MongoDB *directly*, you want to start with the [CAS Overlay](https://github.com/apereo/cas-overlay-template), clone the project and follow [the notes here](https://apereo.github.io/cas/6.0.x/installation/Configuring-SAML2-Authentication.html) to get CAS acting as SAML2 identity provider. In its simplest form, it comes to down to the following settings:
 
 ```properties
 cas.authn.samlIdp.entityId=https://sso.example.org/idp
@@ -94,7 +94,7 @@ cas.authn.samlIdp.metadata.location=file:/etc/cas/config/saml
 compile "org.apereo.cas:cas-server-support-saml-idp:${project.'cas.version'}"
 ```
 
-To keep things simple, we could use the [JSON service registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html) to manage our SAML2 service provider definitions. Here is what our service definition might look like for SAML2 service provider in a `SAML-1.json` file:
+To keep things simple, we could use the [JSON service registry](https://apereo.github.io/cas/6.0.x/services/JSON-Service-Management.html) to manage our SAML2 service provider definitions. Here is what our service definition might look like for SAML2 service provider in a `SAML-1.json` file:
 
 ```json
 {
@@ -107,7 +107,7 @@ To keep things simple, we could use the [JSON service registry](https://apereo.g
 }
 ```
 
-The metadata location in the registration record above simply needs to be specified as `mongodb://` to signal to CAS that SAML metadata for our service provider must be fetched from MongoDB data sources defined in CAS configuration. As the next step, let's [teach CAS](https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata.html#mongodb)) about our MongoDB setup. Just like before, you'd need this module in your CAS build:
+The metadata location in the registration record above simply needs to be specified as `mongodb://` to signal to CAS that SAML metadata for our service provider must be fetched from MongoDB data sources defined in CAS configuration. As the next step, let's [teach CAS](https://apereo.github.io/cas/6.0.x/installation/Configuring-SAML2-DynamicMetadata.html#mongodb)) about our MongoDB setup. Just like before, you'd need this module in your CAS build:
 
 ```gradle
 compile "org.apereo.cas:cas-server-support-saml-idp-metadata-mongo:${project.'cas.version'}"
@@ -160,7 +160,7 @@ Here is the drill:
 - The metadata, signing and encryption *certificates* may be base64-encoded.
 - The signing and encryption *keys* **MUST** be signed and encrypted using CAS crypto settings and keys.
 
-The signing secret key and the encryption secret key are both JWKs of size 512 and 256. We can use the [command-line shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html) to create the two keys:
+The signing secret key and the encryption secret key are both JWKs of size 512 and 256. We can use the [command-line shell](https://apereo.github.io/cas/6.0.x/installation/Configuring-Commandline-Shell.html) to create the two keys:
 
 ```bash
 cas> generate-key key-size 512

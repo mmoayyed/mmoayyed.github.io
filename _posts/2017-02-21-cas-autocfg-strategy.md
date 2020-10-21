@@ -152,7 +152,7 @@ XML is a terribly poor choice as a programming language to automate configuratio
 
 The best advantage of configuration automation is that it removes the amount of boilerplate documentation one may have to apply or maintain. There is no longer a need to look after various XML fragments in the documentation, maintain and update them or try to verbosely explain their behavior and function in tutorials and guides [and thus duplicating what Spring or Spring Webflow may have already done in their own documentation!]. The technical details of how Spring or Spring Webflow or LDAP/JDBC libraries work have been abstracted away into what is now commonly referred to as *Intentions*.
 
-To see this in action, see the contents of [this page](https://apereo.github.io/cas/4.1.x/installation/OAuth-OpenId-Authentication.html#add-the-oauth20wrappercontroller) and compare with [this page](https://apereo.github.io/cas/development/installation/OAuth-OpenId-Authentication.html#configuration). The former expects a lot more from the deployer while the latter simply translates a deployer's intention into a small feature module/plugin. As a result, the documentation tends to get a lot more focused and compact.
+To see this in action, see the contents of [this page](https://apereo.github.io/cas/4.1.x/installation/OAuth-OpenId-Authentication.html#add-the-oauth20wrappercontroller) and compare with [this page](https://apereo.github.io/cas/5.1.x/installation/OAuth-OpenId-Authentication.html#configuration). The former expects a lot more from the deployer while the latter simply translates a deployer's intention into a small feature module/plugin. As a result, the documentation tends to get a lot more focused and compact.
 
 ## Modernized
 

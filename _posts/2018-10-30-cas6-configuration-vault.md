@@ -9,7 +9,7 @@ tags:       [CAS]
 
 [Vault](https://www.vaultproject.io/) is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, certificates, and more. Vault provides a unified interface to any secret while providing tight access control and recording a detailed audit log.
 
-The CAS integration with vault [has been available](https://apereo.github.io/cas/development/configuration/Configuration-Properties-Security.html#vault) for some time. In this walkthrough, we are going to take a pass at getting CAS connected to Vault to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside Vault.
+The CAS integration with vault [has been available](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Properties-Security.html#vault) for some time. In this walkthrough, we are going to take a pass at getting CAS connected to Vault to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside Vault.
 
 <div class="alert alert-success">
   <strong>More HashiCorp</strong><br/>You may also be interested in a CAS integration with <a href="https://fawnoos.com/2018/10/22/cas6-consul-discovery/">HashCorp Consul</a>.
@@ -115,7 +115,7 @@ Build and deploy. At this point, you should be able to log into CAS using `casus
 
 ### Refresh & Reload
 
-If a secret changes, Vault has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
+If a secret changes, Vault has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

@@ -26,7 +26,7 @@ Of course, users may log out of CAS removing the SSO session and the cookie, or 
 
 > How could an application determine whether an SSO session tied to the user's browser is still valid and accepted by CAS?
 
-A more traditional approach would be to try to take advantage of the `gateway` feature of the [CAS protocol](https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html):
+A more traditional approach would be to try to take advantage of the `gateway` feature of the [CAS protocol](https://apereo.github.io/cas/5.3.x/protocol/CAS-Protocol-Specification.html):
 
 > If this parameter is set, CAS will not ask the client for credentials. If the client has a pre-existing single sign-on session with CAS, or if a single sign-on session can be established through non-interactive means (i.e. trust authentication), CAS MAY redirect the client to the URL specified by the service parameter, appending a valid service ticket...If the client does not have a single sign-on session with CAS, and a non-interactive authentication cannot be established, CAS MUST redirect the client to the URL specified by the service parameter with no “ticket” parameter appended to the URL.
 
