@@ -29,11 +29,11 @@ end
 # url_ignore - ignore links content not in branch
 # file_ignore - ignore CAS spec b/c it has lots of bad anchor links, only *.html files are processed
 options = {
-            :file_ignore =>  [ %r{.*/CAS-Protocol-Specification.html} ],
-            :disable_external => true,
+            # :file_ignore =>  [ %r{.*/CAS-Protocol-Specification.html} ],
+            # :disable_external => true,
             :only_4xx => true,
             :empty_alt_ignore => true,
-            :url_ignore => [ %r{^/cas}, %r{^../images/}, %r{^../../developer/} ],
+            # :url_ignore => [ %r{^/cas}, %r{^../images/}, %r{^../../developer/} ],
           }
 # test your out dir!
 HTMLProofer.check_directory("./out", options).run

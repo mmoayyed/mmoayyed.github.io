@@ -13,7 +13,7 @@ and *inherits* everything else from a pre-built pre-configured instance. Not onl
 one to keep track of intentional changes, but also makes it easier to upgrade
 the software in place by simply bumping the CAS version in the overlay script.
 
-CAS 5 itself is entirely based on Spring Boot. Today, CAS 5 overlays for both [Maven](https://github.com/apereo/cas-overlay-template/tree/5.0) and [Gradle](https://github.com/apereo/cas-gradle-overlay-template/tree/5.0) too are modified to accommodate easier deployment options via Spring Boot.
+CAS 5 itself is entirely based on Spring Boot. Today, CAS 5 overlays for both [Maven](https://github.com/apereo/cas-overlay-template/tree/5.0) and [Gradle](https://github.com/apereo/cas-gradle-overlay-template/tree/5.0.x) too are modified to accommodate easier deployment options via Spring Boot.
 
 Here's how.
 
