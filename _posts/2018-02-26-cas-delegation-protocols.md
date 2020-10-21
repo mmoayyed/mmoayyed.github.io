@@ -5,7 +5,7 @@ summary:    A short overview of how Apereo CAS may support multiple authenticati
 tags:       [CAS]
 ---
 
-I have been consulting on variations of a deployment strategy and use case that involves CAS acting as an identity provider while also presenting the ability to [delegate authentication requests](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) to an external identity provider and act as a *proxy* in between. I had the erroneous assumption that client applications integrating with CAS in proxy mode must be those that speak the CAS protocol. This meant that while CAS itself may delegate authentication requests to a variety of identity providers that speak SAML2, OAuth2 and CAS protocols, etc the client application that ultimately would receive a response from the proxying CAS server can only understand a service ticket and the particular validation payload compliant with the CAS protocol semantics.
+I have been consulting on variations of a deployment strategy and use case that involves CAS acting as an identity provider while also presenting the ability to [delegate authentication requests](https://apereo.github.io/cas/5.2.x/integration/Delegate-Authentication.html) to an external identity provider and act as a *proxy* in between. I had the erroneous assumption that client applications integrating with CAS in proxy mode must be those that speak the CAS protocol. This meant that while CAS itself may delegate authentication requests to a variety of identity providers that speak SAML2, OAuth2 and CAS protocols, etc the client application that ultimately would receive a response from the proxying CAS server can only understand a service ticket and the particular validation payload compliant with the CAS protocol semantics.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -52,11 +52,11 @@ If the client application were to submit an authentication request using a proto
 
 It turns out that given the CAS design, client applications can speak any type of protocol that CAS itself supports today regardless of the authentication flow. For better or worse, this feature has to do with how *secondary* protocols (those other than CAS itself) are implemented.
 
-All *other* [authentication protocols supported by the CAS server](https://apereo.github.io/cas/development/protocol/Protocol-Overview.html) happen to be *clients* of the CAS server itself. The SAML2 module, OAuth2 module and anything else supported in CAS accept the original authentication request at the relevant endpoint, then route that request to the CAS server turning themselves into individual tiny CAS clients. At the end of the day and just like before, the CAS server creates a service ticket and issues a request back to the calling application, which in this case happens to be itself and the relevant endpoint inside itself that is to going to pick up the request and resume.
+All *other* [authentication protocols supported by the CAS server](https://apereo.github.io/cas/5.2.x/protocol/Protocol-Overview.html) happen to be *clients* of the CAS server itself. The SAML2 module, OAuth2 module and anything else supported in CAS accept the original authentication request at the relevant endpoint, then route that request to the CAS server turning themselves into individual tiny CAS clients. At the end of the day and just like before, the CAS server creates a service ticket and issues a request back to the calling application, which in this case happens to be itself and the relevant endpoint inside itself that is to going to pick up the request and resume.
 
 # The Protocol Dance
 
-Let's start with a client application that speaks SAML2. This client is configured in CAS [as a SAML2 service provider](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), while CAS itself is proxying Facebook as an external identity provider.
+Let's start with a client application that speaks SAML2. This client is configured in CAS [as a SAML2 service provider](https://apereo.github.io/cas/5.2.x/installation/Configuring-SAML2-Authentication.html), while CAS itself is proxying Facebook as an external identity provider.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

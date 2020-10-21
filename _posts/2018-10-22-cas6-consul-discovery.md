@@ -9,17 +9,17 @@ tags:       [CAS]
 
 Consul is a distributed, highly-available, and multi-datacenter aware tool for service discovery, configuration, and orchestration. Consul enables rapid deployment, configuration, and maintenance of service-oriented architectures at a massive scale. For more information, please see the [consul documentation](https://www.consul.io/).
 
-The [CAS integration with Consul](https://apereo.github.io/cas/development/installation/Service-Discovery-Guide-Consul.html) has been available for some time and comes in multiple flavors. First, the server can use Consul for service discovery which is one of the key tenets of a cloud-based HA architecture. As Josh Long puts it:
+The [CAS integration with Consul](https://apereo.github.io/cas/6.0.x/installation/Service-Discovery-Guide-Consul.html) has been available for some time and comes in multiple flavors. First, the server can use Consul for service discovery which is one of the key tenets of a cloud-based HA architecture. As Josh Long puts it:
 
 > A service registry is a phone book for your microservices. Each service registers itself with the service registry and tells the registry where it lives (host, port, node name) and perhaps other service-specific metadata - things that other services can use to make informed decisions about it.
 
 In our case, we could have each CAS server instance in a cluster register itself with the discovery server automatically, (i.e. the CAS server is a client of the discovery server), and then have individual discovery-aware CAS clients query the discovery server to figure out the availability and location of each CAS server node. Throw in a software load-balancer like [Netflix Ribbon](https://github.com/Netflix/ribbon) and things begin to get interesting.
 
 <div class="alert alert-success">
-  <strong>Netflix Eureka</strong><br/>A similiar integration with <a href="https://apereo.github.io/cas/development/installation/Service-Discovery-Guide-Eureka.html">Netflix Eureka Server</a> is also available and supported by CAS.
+  <strong>Netflix Eureka</strong><br/>A similiar integration with <a href="https://apereo.github.io/cas/6.0.x/installation/Service-Discovery-Guide-Eureka.html">Netflix Eureka Server</a> is also available and supported by CAS.
 </div>
 
-The other available [CAS integration with Consul](https://apereo.github.io/cas/development/installation/Service-Discovery-Guide-Consul.html) deals with managing distributed configuration using the Consul Key/Value store. Consul provides a Key/Value Store for storing configuration and other metadata. CAS takes advantage of the [Spring Cloud Consul Config integration library](http://cloud.spring.io/spring-cloud-consul/single/spring-cloud-consul.html) to fetch such configuration and metadata as an alternative to the [Config Server and Client](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html). 
+The other available [CAS integration with Consul](https://apereo.github.io/cas/6.0.x/installation/Service-Discovery-Guide-Consul.html) deals with managing distributed configuration using the Consul Key/Value store. Consul provides a Key/Value Store for storing configuration and other metadata. CAS takes advantage of the [Spring Cloud Consul Config integration library](http://cloud.spring.io/spring-cloud-consul/single/spring-cloud-consul.html) to fetch such configuration and metadata as an alternative to the [Config Server and Client](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Server-Management.html). 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

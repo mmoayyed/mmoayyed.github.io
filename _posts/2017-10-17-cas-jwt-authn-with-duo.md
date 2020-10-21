@@ -235,7 +235,7 @@ All operations so far have issued a regular service ticket back to the applicati
 JWT-based service tickets are issued to applications based on the same semantics defined by the CAS Protocol. CAS having received an authentication request via its `/login` endpoint will conditionally issue back JWT service tickets to the application in form of a `ticket` parameter via the requested http method.
 
 <div class="alert alert-info">
-  <strong>Let's REST</strong><br/>In case you are using the CAS REST APIs, you should know that service tickets issued as part of REST API operations <a href="https://apereo.github.io/cas/development/protocol/REST-Protocol.html#jwt-service-tickets">may also be JWTs</a>.
+  <strong>Let's REST</strong><br/>In case you are using the CAS REST APIs, you should know that service tickets issued as part of REST API operations <a href="https://apereo.github.io/cas/5.2.x/protocol/REST-Protocol.html#jwt-service-tickets">may also be JWTs</a>.
 </div>
 
 ## Configure JWTs

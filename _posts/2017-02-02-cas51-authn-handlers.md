@@ -5,7 +5,7 @@ summary:    Learn and master writing custom authentication handlers/schemes in C
 tags:       [CAS]
 ---
 
-While [authentication support](https://apereo.github.io/cas/development/installation/Configuring-Authentication-Components.html)
+While [authentication support](https://apereo.github.io/cas/5.1.x/installation/Configuring-Authentication-Components.html)
 in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case 
 is the task of designing custom authentication schemes.
 

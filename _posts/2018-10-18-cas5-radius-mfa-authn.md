@@ -7,7 +7,7 @@ tags:       [CAS,MFA]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-The ability to authenticate credentials using the RADIUS protocol and a compliant RADIUS server has been [available in CAS](https://apereo.github.io/cas/development/mfa/RADIUS-Authentication.html) for some time. In more recent CAS versions, this capability has been improved to support multifactor authentication scenarios by allowing CAS to recognize the `Access-Challenge` response type. This is a special signal sent by the RADIUS server requesting more information in order to allow access. The authentication flow is typically composed of the following steps:
+The ability to authenticate credentials using the RADIUS protocol and a compliant RADIUS server has been [available in CAS](https://apereo.github.io/cas/5.3.x/installation/RADIUS-Authentication.html) for some time. In more recent CAS versions, this capability has been improved to support multifactor authentication scenarios by allowing CAS to recognize the `Access-Challenge` response type. This is a special signal sent by the RADIUS server requesting more information in order to allow access. The authentication flow is typically composed of the following steps:
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

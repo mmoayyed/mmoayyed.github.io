@@ -8,7 +8,7 @@ tags:       [CAS]
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
 This is a short and sweet tutorial on how to configure CAS to authenticate against a database and then resolve/release attributes.
-Most of the material is based on the [available documentation](https://apereo.github.io/cas/development/installation/Database-Authentication.html).
+Most of the material is based on the [available documentation](https://apereo.github.io/cas/5.1.x/installation/Database-Authentication.html).
 
 This tutorial specifically focuses on:
 
