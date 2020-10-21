@@ -7,7 +7,7 @@ tags:       [CAS]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-The process of dealing with attributes in Apereo CAS is twofold. First, CAS begins to fetch and resolve attributes from configured data sources, which may or may not be the same as the authentication source, usually as part of or right after the authentication transaction. Once attributes are found, they may be conditionally released to integrated service providers and registered clients and relying parties using a variety of [attribute release policies](https://apereo.github.io/cas/development/integration/Attribute-Release.html).
+The process of dealing with attributes in Apereo CAS is twofold. First, CAS begins to fetch and resolve attributes from configured data sources, which may or may not be the same as the authentication source, usually as part of or right after the authentication transaction. Once attributes are found, they may be conditionally released to integrated service providers and registered clients and relying parties using a variety of [attribute release policies](https://apereo.github.io/cas/6.1.x/integration/Attribute-Release.html).
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -28,7 +28,7 @@ In this blog post, I attempt to collect a number of attribute release policy sam
 
 In all such examples, the underlying assumptions are:
 
-- The registration records for CAS-integrated applications are managed as stand-alone JSON files using the [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html).
+- The registration records for CAS-integrated applications are managed as stand-alone JSON files using the [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html).
 - Indicated attributes in all samples are fetched, resolved and made available from data sources and other attribute repositories. We assume the attribute is available in pool before it can be released.
 
 Let's begin. Our starting position is based on:

@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-[REST protocol support](https://apereo.github.io/cas/development/protocol/REST-Protocol.html) in Apereo CAS has been available since the early days of CAS `3.x`. Since then, a lot of additional REST-based features and extensions are brought into the software to enable one to not only authenticate and/or exchange tokens but also add service definitions for relying parties or fetch attributes from remote REST endpoints, etc. The focus of this tutorial is to provide a brief overview of *some* of the REST-based features of CAS.
+[REST protocol support](https://apereo.github.io/cas/6.1.x/protocol/REST-Protocol.html) in Apereo CAS has been available since the early days of CAS `3.x`. Since then, a lot of additional REST-based features and extensions are brought into the software to enable one to not only authenticate and/or exchange tokens but also add service definitions for relying parties or fetch attributes from remote REST endpoints, etc. The focus of this tutorial is to provide a brief overview of *some* of the REST-based features of CAS.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -29,7 +29,7 @@ Our starting position is based on:
 - [CLI JSON Processor `jq`](https://stedolan.github.io/jq/)
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 - [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html)
-- [REST Protocol](https://apereo.github.io/cas/development/protocol/REST-Protocol.html)
+- [REST Protocol](https://apereo.github.io/cas/6.1.x/protocol/REST-Protocol.html)
 
 # Configuration
 

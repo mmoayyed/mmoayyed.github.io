@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-Per the [CAS Protocol](https://apereo.github.io/cas/development/protocol/CAS-Protocol-Specification.html), validating service tickets requires a `service` parameter that is expected to be the identifier of the service for which the service ticket was issued. In other words, CAS requires and enforces an exact match between the given service identifier and one that was supplied originally for ticket creation.
+Per the [CAS Protocol](https://apereo.github.io/cas/6.1.x/protocol/CAS-Protocol-Specification.html), validating service tickets requires a `service` parameter that is expected to be the identifier of the service for which the service ticket was issued. In other words, CAS requires and enforces an exact match between the given service identifier and one that was supplied originally for ticket creation.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -36,7 +36,7 @@ The default service matching strategy is exact and enforced by `DefaultServiceMa
 <strong>Caution</strong><br/>Altering the internal mechanics of a CAS server may lead to a problematic insecure configuration and <i>may</i> also jeopradize the population of giant pandas. Such customizations should only be applied if absolutely necessary when all other alternatives are considered and ruled out.
 </div>
 
-To do so, you should start by [designing your own configuration component](https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html) to include the following bean:
+To do so, you should start by [designing your own configuration component](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Management-Extensions.html) to include the following bean:
 
 ```java
 @Bean

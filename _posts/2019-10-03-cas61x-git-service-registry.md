@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-Applications that are integrated with the Apereo CAS server typically are registered with the system as [JSON](https://apereo.github.io/cas/development/services/JSON-Service-Management.html) or [YAML](https://apereo.github.io/cas/development/services/YAML-Service-Management.html) files. Such files can be stored in a remote git repository to take advantage of all native operations and benefits of *distributed* source control such as version tracking, history, etc, given they are considered source code after all.
+Applications that are integrated with the Apereo CAS server typically are registered with the system as [JSON](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html) or [YAML](https://apereo.github.io/cas/6.1.x/services/YAML-Service-Management.html) files. Such files can be stored in a remote git repository to take advantage of all native operations and benefits of *distributed* source control such as version tracking, history, etc, given they are considered source code after all.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -22,7 +22,7 @@ Applications that are integrated with the Apereo CAS server typically are regist
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-Using a git-backed service registry, CAS is given the ability to pull down and *clone* a repository and watch for changes at defined intervals. In this tutorial, we are going to quickly review the steps required to [manage application records via Git](https://apereo.github.io/cas/development/services/Git-Service-Management.html).
+Using a git-backed service registry, CAS is given the ability to pull down and *clone* a repository and watch for changes at defined intervals. In this tutorial, we are going to quickly review the steps required to [manage application records via Git](https://apereo.github.io/cas/6.1.x/services/Git-Service-Management.html).
 
 Our starting position is based on:
 
@@ -33,7 +33,7 @@ Our starting position is based on:
 
 # Configuration
 
-Once you have prepped your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/development/services/Git-Service-Management.html), you will need to instruct CAS to try and connect to the repository:
+Once you have prepped your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/6.1.x/services/Git-Service-Management.html), you will need to instruct CAS to try and connect to the repository:
 
 ```properties
 cas.serviceRegistry.initFromJson=false
@@ -91,7 +91,7 @@ We expect that CAS would connect to the repository's `master` branch to pull dow
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-To make it easier to test the changes, I am also going to include the [auto-configuration module for reporting](https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html#cas-endpoints) in the CAS overlay to take advantage of `registeredServices` [actuator endpoint](https://apereo.github.io/cas/development/services/Service-Management.html#administrative-endpoints). With the inclusion of this module, I can instruct CAS to enable it and allow anonymous requests for easy testing:
+To make it easier to test the changes, I am also going to include the [auto-configuration module for reporting](https://apereo.github.io/cas/6.1.x/monitoring/Monitoring-Statistics.html#cas-endpoints) in the CAS overlay to take advantage of `registeredServices` [actuator endpoint](https://apereo.github.io/cas/6.1.x/services/Service-Management.html#administrative-endpoints). With the inclusion of this module, I can instruct CAS to enable it and allow anonymous requests for easy testing:
 
 ```properties
 management.endpoints.web.exposure.include=registeredServices

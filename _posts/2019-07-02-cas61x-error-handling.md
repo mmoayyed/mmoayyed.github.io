@@ -70,7 +70,7 @@ authenticationFailure.MyFancyException=Noooo...too much fanciness!
 
 # Webflow Exception Handling
 
-Webflow authentication errors may also be directly handled by tapping into the webflow error handling logic. This is the most flexible and yet more complicated approach that requires one to [extend the CAS configuration](https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html) to then inject the following component into the runtime:
+Webflow authentication errors may also be directly handled by tapping into the webflow error handling logic. This is the most flexible and yet more complicated approach that requires one to [extend the CAS configuration](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Management-Extensions.html) to then inject the following component into the runtime:
 
 ```java
 @Bean

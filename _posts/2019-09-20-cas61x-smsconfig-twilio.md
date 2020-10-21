@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-CAS has the ability to [send notifications via SMS](https://apereo.github.io/cas/development/notifications/SMS-Messaging-Configuration.html) for a variety of functions such as one-time passwords for multifactor authentication, service expiration notifications, and more. In this tutorial, 
+CAS has the ability to [send notifications via SMS](https://apereo.github.io/cas/6.1.x/notifications/SMS-Messaging-Configuration.html) for a variety of functions such as one-time passwords for multifactor authentication, service expiration notifications, and more. In this tutorial, 
 we are going to take a look at configuring CAS for [SMS notifications via Twilio](https://www.twilio.com/) where we'll be using notifications to notify relevant contacts when services in the service registry are considered expired. 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -28,7 +28,7 @@ Our starting position is based on:
 - CAS `6.1.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html)
 
 # Configuration
 
@@ -59,13 +59,13 @@ Once we have CAS up and running, let's start with the following sample service f
 }
 ```    
 
-We have set up [contacts for our service](https://apereo.github.io/cas/development/services/Configuring-Service-Contacts.html).
+We have set up [contacts for our service](https://apereo.github.io/cas/6.1.x/services/Configuring-Service-Contacts.html).
 These are the folks primarily in charge of this application who shall be notified once the service is considered expired. More importantly,
 we have set up an expiration policy for the service where it will be considered expired and **removed** from the registry on the specified expiration date, `2019-09-22`.
 
 ## SMS Configuration via Twilio
 
-Once our overlay is prepped with the [configuration module for Twilio](https://apereo.github.io/cas/development/notifications/SMS-Messaging-Configuration.html), we'll need to teach CAS about our [Twilio subscription](https://www.twilio.com/) using the following settings:
+Once our overlay is prepped with the [configuration module for Twilio](https://apereo.github.io/cas/6.1.x/notifications/SMS-Messaging-Configuration.html), we'll need to teach CAS about our [Twilio subscription](https://www.twilio.com/) using the following settings:
 
 ```properties 
 # cas.smsProvider.twilio.accountId=...

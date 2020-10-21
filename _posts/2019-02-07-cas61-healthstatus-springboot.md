@@ -31,7 +31,7 @@ Our starting position is based on the following:
 
 CAS has traditionally presented a `status` endpoint, now at `/actuator/status`, which provides the user with basic server information and reports from all `Monitor` components; those that reported back on memory usage, connection information, etc. Having switched to Spring Boot, such components are transformed to use the native Spring Boot API known as `HealthIndicator`s and the `status` endpoint is mostly kept for legacy reasons and backward compatibility. The `status` endpoint now simply acts as a proxy by invoking the `health` endpoint internally to obtain and present data. If the `health` endpoint is turned off, you would only receive basic and very modest health data from `status` itself.
 
-More information about the health endpoint may be [found here](https://apereo.github.io/cas/development/configuration/Configuration-Properties.html#health-endpoint), and high-level notes discussing the monitoring capabilities of the Apereo CAS server can be [found here](https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html).
+More information about the health endpoint may be [found here](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Properties.html#health-endpoint), and high-level notes discussing the monitoring capabilities of the Apereo CAS server can be [found here](https://apereo.github.io/cas/6.1.x/monitoring/Monitoring-Statistics.html).
 
 ## Configuration
 
@@ -116,7 +116,7 @@ With the above setting, if you try to invoke the `health` endpoint again you may
 
 ...where details on memory usage are now removed, given the monitor underneath is disabled.
 
-More information on CAS health indicators and monitors can be [found here](https://apereo.github.io/cas/development/configuration/Configuration-Properties.html#health-endpoint). If you'd like to learn more details about this topic, see the [Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html#production-ready-health).
+More information on CAS health indicators and monitors can be [found here](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Properties.html#health-endpoint). If you'd like to learn more details about this topic, see the [Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html#production-ready-health).
 
 ## Finale
 

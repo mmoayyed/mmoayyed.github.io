@@ -30,7 +30,7 @@ Our starting position is based on the following:
 
 ## CAS Configuration
 
-In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the instructions provided [here](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html). Remember to add the relevant module to the overlay along with the list of required build repositories.
+In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the instructions provided [here](https://apereo.github.io/cas/6.1.x/installation/Configuring-SAML2-Authentication.html). Remember to add the relevant module to the overlay along with the list of required build repositories.
 
 The SAML2 IdP configuration will need to minimally match the following settings:
 
@@ -40,7 +40,7 @@ cas.authn.samlIdp.scope=example.org
 cas.authn.samlIdp.metadata.location=file:/etc/cas/saml
 ```
 
-You will, of course, need to adjust your entityId and scope as needed. Upon startup, CAS will attempt to generate the appropriate metadata based on provided settings and produced artifacts will be placed at `/etc/cas/saml`. Of course, the running CAS process will need to have the right permissions in order to create this directory and the contents within it. Furthermore, to keep things simple, this post will assume that CAS is already configured to use [LDAP authentication](https://apereo.github.io/cas/development/installation/LDAP-Authentication.html) and is set to fetch all needed attributes such as `givenName`, `eduPersonPrincipalName` from LDAP, etc. We shall also assume that relying party registration records are handled in CAS via the [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html).
+You will, of course, need to adjust your entityId and scope as needed. Upon startup, CAS will attempt to generate the appropriate metadata based on provided settings and produced artifacts will be placed at `/etc/cas/saml`. Of course, the running CAS process will need to have the right permissions in order to create this directory and the contents within it. Furthermore, to keep things simple, this post will assume that CAS is already configured to use [LDAP authentication](https://apereo.github.io/cas/6.1.x/installation/LDAP-Authentication.html) and is set to fetch all needed attributes such as `givenName`, `eduPersonPrincipalName` from LDAP, etc. We shall also assume that relying party registration records are handled in CAS via the [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html).
 
 ## Relying-Party Integrations
 
@@ -171,7 +171,7 @@ curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMeta
 curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache
 ```
 
-Better details [may be found here](https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata.html#administrative-endpoints).
+Better details [may be found here](https://apereo.github.io/cas/6.1.x/installation/Configuring-SAML2-DynamicMetadata.html#administrative-endpoints).
 
 ## Finale
 

@@ -22,7 +22,7 @@ CAS can be enabled with a variety of messaging systems to distribute and share t
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-In this tutorial, we are going to briefly review the JMS configuration in Apereo CAS and steps required to use message queues to [distribute tickets and tokens](https://apereo.github.io/cas/development/ticketing/Messaging-JMS-Ticket-Registry.html) across a cluster. Our starting position is based on:
+In this tutorial, we are going to briefly review the JMS configuration in Apereo CAS and steps required to use message queues to [distribute tickets and tokens](https://apereo.github.io/cas/6.1.x/ticketing/Messaging-JMS-Ticket-Registry.html) across a cluster. Our starting position is based on:
 
 - CAS `6.1.x`
 - Java `11`
@@ -43,7 +43,7 @@ That should be all, for now.
 
 ## CAS
 
-Once you have prepped your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/development/ticketing/Messaging-JMS-Ticket-Registry.html), you will need to instruct CAS to try and connect to ActiveMQ for which you will need, at a minimum, the following settings:
+Once you have prepped your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/6.1.x/ticketing/Messaging-JMS-Ticket-Registry.html), you will need to instruct CAS to try and connect to ActiveMQ for which you will need, at a minimum, the following settings:
 
 ```properties
 spring.activemq.broker-url=tcp://localhost:61616

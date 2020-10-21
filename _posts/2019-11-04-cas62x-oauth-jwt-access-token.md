@@ -28,7 +28,7 @@ Our starting position is based on:
 
 - CAS `6.2.x`
 - Java `11`
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html)
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 - [CLI JSON Processor `jq`](https://stedolan.github.io/jq/)
 
@@ -42,9 +42,9 @@ cas.authn.attribute-repository.stub.attributes.sn=Moayyed
 cas.authn.attribute-repository.stub.attributes.mail=mm1844@gmail.com
 ```    
 
-Once the OAuth module [is included in the WAR Overlay](https://apereo.github.io/cas/development/installation/OAuth-OpenId-Authentication.html#configuration), we can 
+Once the OAuth module [is included in the WAR Overlay](https://apereo.github.io/cas/6.2.x/installation/OAuth-OpenId-Authentication.html#configuration), we can 
 begin to register a simple OAuth application with CAS using 
-the following [JSON service definition](https://apereo.github.io/cas/development/services/JSON-Service-Management.html):
+the following [JSON service definition](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html):
 
 ```json
 {
@@ -285,7 +285,7 @@ Skipping other details for brevity, our service file could take on the following
 }
 ```
 
-All you'd have to do is to take a plain secret and use the [CAS Command-line Shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html) to transform it into encrypted 
+All you'd have to do is to take a plain secret and use the [CAS Command-line Shell](https://apereo.github.io/cas/6.2.x/installation/Configuring-Commandline-Shell.html) to transform it into encrypted 
 form. The encryption and signing keys for client secrets may be defined via the following settings:
 
 ```properties 

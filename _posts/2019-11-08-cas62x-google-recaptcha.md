@@ -39,7 +39,7 @@ Let's register our CAS server instance with Google to obtain a few integration k
 
 ![image](https://user-images.githubusercontent.com/1205228/68384146-66bf4f00-0170-11ea-83be-0839615921fc.png)
 
-Next, once [the reCAPTCHA module](https://apereo.github.io/cas/development/integration/Configuring-Google-reCAPTCHA.html) is included in the WAR Overlay, we can begin to register the integration keys with CAS configuration:
+Next, once [the reCAPTCHA module](https://apereo.github.io/cas/6.2.x/integration/Configuring-Google-reCAPTCHA.html) is included in the WAR Overlay, we can begin to register the integration keys with CAS configuration:
 
 ```properties
 cas.googleRecaptcha.siteKey=6Let...
@@ -72,7 +72,7 @@ cas.googleRecaptcha.score=0.5
 ## Bonus
 
 You can of course inject your own reCAPTCHA validation logic into CAS for more advanced scenarios. To supply your own validator, you should 
-start by [designing your own configuration component](https://apereo.github.io/cas/development/configuration/Configuration-Management-Extensions.html) to 
+start by [designing your own configuration component](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Management-Extensions.html) to 
 include the following bean:
 
 ```java

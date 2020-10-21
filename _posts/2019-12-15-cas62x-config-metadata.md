@@ -56,7 +56,7 @@ Our starting position is based on:
 
 # Interactive Shell
 
-One approach would be to use the [CAS Command-line Shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html). If you examine the [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template), you will find a Gradle task for running the shell. Let's give it a try:
+One approach would be to use the [CAS Command-line Shell](https://apereo.github.io/cas/6.2.x/installation/Configuring-Commandline-Shell.html). If you examine the [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template), you will find a Gradle task for running the shell. Let's give it a try:
 
 ```bash
 gradlew runShell

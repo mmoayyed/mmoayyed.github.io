@@ -24,7 +24,7 @@ Jasypt is a java library which allows the deployer to add basic encryption capab
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-However, an easier approach might be to use the native [CAS command-line shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html). The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.
+However, an easier approach might be to use the native [CAS command-line shell](https://apereo.github.io/cas/6.1.x/installation/Configuring-Commandline-Shell.html). The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.
 
 Our starting position is based on:
 

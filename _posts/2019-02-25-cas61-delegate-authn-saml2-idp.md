@@ -7,7 +7,7 @@ tags:       [CAS,SAML]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-Apereo CAS has had support to [delegate authentication to external SAML2 identity providers](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS `3.x` as an extension based on the [pac4j](https://github.com/pac4j/pac4j) project which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
+Apereo CAS has had support to [delegate authentication to external SAML2 identity providers](https://apereo.github.io/cas/6.1.x/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS `3.x` as an extension based on the [pac4j](https://github.com/pac4j/pac4j) project which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -32,7 +32,7 @@ Let's begin. Our starting position is based on:
 
 ## Configuration
 
-The initial setup is in fact simple; as the [documentation describes](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) you simply need to add the required dependency in your overlay:
+The initial setup is in fact simple; as the [documentation describes](https://apereo.github.io/cas/6.1.x/integration/Delegate-Authentication.html) you simply need to add the required dependency in your overlay:
 
 ```xml
 <dependency>
@@ -119,7 +119,7 @@ With those settings, if you go through the same sequence again you might see som
 
 ## Identity Provider Authorization
 
-Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
+Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
 
 ```json
 {

@@ -46,7 +46,7 @@ cas.authn.pac4j.cas[0].clientName=External CAS
 cas.authn.pac4j.cas[0].enabled=true
 ```
 
-Also, to allow for [configuration reloadability](https://apereo.github.io/cas/development/configuration/Configuration-Management-Reload.html), we would need the following module as well:
+Also, to allow for [configuration reloadability](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Management-Reload.html), we would need the following module as well:
 
 ```gradle
 compile "org.apereo.cas:cas-server-core-events-configuration:${project.'cas.version'}"
