@@ -5,9 +5,7 @@ summary:    Master writing custom authentication handlers/schemes in CAS and lea
 tags:       [CAS]
 ---
 
-<div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
-
-While [authentication support](https://apereo.github.io/cas/5.3.x/installation/Configuring-Authentication-Components.html)
+While [authentication support](https://apereo.github.io/cas/6.2.x/installation/Configuring-Authentication-Components.html)
 in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case
 is the task of designing custom authentication schemes.
 
@@ -33,9 +31,9 @@ This post is intended for Java developers with a basic-to-medium familiarity wit
 
 This tutorial specifically requires and focuses on:
 
-- CAS `5.3.x`
-- Java 8
-- [Maven WAR Overlay](https://apereo.github.io/cas/5.3.x/installation/Maven-Overlay-Installation.html)
+- CAS `6.2.x`
+- Java 11
+- [WAR Overlay](https://apereo.github.io/cas/6.2.x/installation/Maven-Overlay-Installation.html)
 
 # Customized Authentication
 
@@ -57,11 +55,14 @@ With the assumption that the type of credentials used here deal with the traditi
 ```java
 public class MyAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
     ...
-    protected HandlerResult authenticateUsernamePasswordInternal(final UsernamePasswordCredential credential,
-                                                                 final String originalPassword) {
+    protected AuthenticationHandlerExecutionResult authenticateUsernamePasswordInternal(
+        final UsernamePasswordCredential credential,
+        final String originalPassword) {
+        
         if (everythingLooksGood()) {
             return createHandlerResult(credential,
-                    this.principalFactory.createPrincipal(username), new ArrayList<>());
+                this.principalFactory.createPrincipal(username), 
+                new ArrayList<>());
         }
         throw new FailedLoginException("Sorry, you have failed!");
     }
@@ -114,7 +115,7 @@ public class MyAuthenticationEventExecutionPlanConfiguration
 
     @Bean
     public AuthenticationHandler myAuthenticationHandler() {
-        final MyAuthenticationHandler handler = new MyAuthenticationHandler();
+        var handler = new MyAuthenticationHandler();
         /*
             Configure the handler by invoking various setter methods.
             Note that you also have full access to the collection of resolved CAS settings.
@@ -138,7 +139,8 @@ public class MyAuthenticationEventExecutionPlanConfiguration
 Now that we have properly created and registered our handler with the CAS authentication machinery, we just need to ensure that CAS is able to pick up our special configuration. To do so, create a `src/main/resources/META-INF/spring.factories` file and reference the configuration class in it as such:
 
 ```properties
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.cas.MyAuthenticationEventExecutionPlanConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+   com.example.cas.MyAuthenticationEventExecutionPlanConfiguration
 ```
 
 Note that the configuration registration step is not of CAS doing. It's a mechanism provided to CAS via [Spring Boot](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html)
@@ -189,9 +191,9 @@ public class FancyPersonAttributeDao extends BasePersonAttributeDao {
 
     @Override
     public Set<IPersonAttributes> getPeopleWithMultivaluedAttributes(final Map<String, List<Object>> map) {
-        final Set<IPersonAttributes> people = new LinkedHashSet();
-        final String username = this.usernameAttributeProvider.getUsernameFromQuery(map);
-        final IPersonAttributes person = this.getPerson(username);
+        var people = new LinkedHashSet<IPersonAttributes>();
+        var username = this.usernameAttributeProvider.getUsernameFromQuery(map);
+        var person = this.getPerson(username);
         if (person != null) {
             people.add(person);
         }
@@ -243,14 +245,6 @@ public PersonDirectoryAttributeRepositoryPlanConfigurer fancyAttributeRepository
 ```
 
 Of course, if you decide to move the definition and registration steps into a separate `@Configuration` class, then the location of that component will need to be taught to the runtime using the same `src/main/resources/META-INF/spring.factories` file noted above.
-
-# What About...?
-
-- [CAS Multifactor Authentication with Duo Security](https://fawnoos.com/2018/01/08/cas-mfa-duosecurity/)
-- [CAS 5 LDAP AuthN and Jasypt Configuration](https://fawnoos.com/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
-- [CAS 5 SAML2 Delegated AuthN Tutorial](https://fawnoos.com/2017/03/22/cas51-delauthn-tutorial/)
-- [CAS 5 Linking Accounts with Delegated AuthN](https://fawnoos.com/2018/04/20/cas-delegated-authn-account-linking/)
-- [CAS Multifactor Authentication with Google Authenticator](https://fawnoos.com/2018/06/10/cas-mfa-google-authenticator/)
 
 # So...
 

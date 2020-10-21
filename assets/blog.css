@@ -217,12 +217,14 @@ a.post-preview-link {
     }
 }
 
+
 @media only screen and (max-width: 500px) {
     .title {
         font-size: 20px;
     }
     .blognavbar {
         margin-top: 4%;
+        background: rgb(7, 6, 6);
     }
     
 }
