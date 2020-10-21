@@ -33,7 +33,7 @@ This tutorial specifically requires and focuses on:
 
 - CAS `6.2.x`
 - Java 11
-- [WAR Overlay](https://apereo.github.io/cas/6.2.x/installation/Maven-Overlay-Installation.html)
+- [WAR Overlay](https://apereo.github.io/cas/6.2.x/installation/WAR-Overlay-Installation.html)
 
 # Customized Authentication
 
