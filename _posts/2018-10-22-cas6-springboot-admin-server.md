@@ -7,7 +7,7 @@ tags:       [CAS]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-[Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a community project to manage and monitor Spring Boot applications such as Apereo CAS. The admin server presents an AngularJS-based UI that interacts with the [actuator endpoints](https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html) provided by Spring Boot in CAS. One CAS has registered itself with the admin server, either using the *Spring Admin Client* via HTTP or as part of discovery using technologies such as Eureka, Consul, etc, the admin server can begin to provide feature to monitor CAS for health status, JVM & memory metrics, environment settings, thread dumps, audit data, logs, etc.
+[Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a community project to manage and monitor Spring Boot applications such as Apereo CAS. The admin server presents an AngularJS-based UI that interacts with the [actuator endpoints](https://apereo.github.io/cas/6.0.x/monitoring/Monitoring-Statistics.html) provided by Spring Boot in CAS. One CAS has registered itself with the admin server, either using the *Spring Admin Client* via HTTP or as part of discovery using technologies such as Eureka, Consul, etc, the admin server can begin to provide feature to monitor CAS for health status, JVM & memory metrics, environment settings, thread dumps, audit data, logs, etc.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -20,7 +20,7 @@ tags:       [CAS]
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-While the CAS integration with the Spring Boot Admin server has been available for some time (likely since CAS `5.1.x`), in this tutorial we will focus on how to get the latest version of [Apereo CAS integrated with the Admin server](https://apereo.github.io/cas/development/installation/Configuring-Monitoring-Administration.html). At a high-level, we need to accomplish the following:
+While the CAS integration with the Spring Boot Admin server has been available for some time (likely since CAS `5.1.x`), in this tutorial we will focus on how to get the latest version of [Apereo CAS integrated with the Admin server](https://apereo.github.io/cas/5.1.x/installation/Configuring-Monitoring-Administration.html). At a high-level, we need to accomplish the following:
 
 - Deploy and configure the Spring Boot Admin server
 - Configure CAS to register with the Spring Boot Admin server
@@ -89,7 +89,7 @@ spring.boot.admin.client.url=https://admin.example.org:8444
 spring.boot.admin.client.instance.management-base-url=https://sso.example.org/cas
 ```
 
-So, our CAS server is running on `https://sso.example.org/cas` which presents a number of [actuator endpoints](https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html) that are used by the Admin server to monitor status and report results. Therefore, we will need to enable the endpoints in CAS in `cas.properties` so they may be consumable by the Admin server:
+So, our CAS server is running on `https://sso.example.org/cas` which presents a number of [actuator endpoints](https://apereo.github.io/cas/6.0.x/monitoring/Monitoring-Statistics.html) that are used by the Admin server to monitor status and report results. Therefore, we will need to enable the endpoints in CAS in `cas.properties` so they may be consumable by the Admin server:
 
 ```properties
 management.endpoints.enabled-by-default=true
@@ -130,7 +130,7 @@ curl -u casuser:Mellon -k https://sso.example.org/cas/actuator/status | jq
 }
 ```
 
-You can also try hitting `actuator/health`, `actuator/info` and [many others](https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html).
+You can also try hitting `actuator/health`, `actuator/info` and [many others](https://apereo.github.io/cas/6.0.x/monitoring/Monitoring-Statistics.html).
 
 Now that are endpoints are enabled and secured, we need to configure CAS to use our security credentials when contacting the Admin server as well:
 

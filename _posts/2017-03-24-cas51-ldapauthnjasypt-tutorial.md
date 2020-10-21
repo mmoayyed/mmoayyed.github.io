@@ -6,7 +6,7 @@ tags:       [CAS]
 ---
 
 This is a short and sweet tutorial on how to configure CAS for LDAP authentication and secure bind credentials via Jasypt encryption.
-Most of the material is based on the available documentation [here](https://apereo.github.io/cas/development/installation/Configuration-Properties-Security.html) and [here](https://apereo.github.io/cas/development/installation/LDAP-Authentication.html).
+Most of the material is based on the available documentation [here](https://apereo.github.io/cas/5.1.x/installation/Configuration-Properties-Security.html) and [here](https://apereo.github.io/cas/5.1.x/installation/LDAP-Authentication.html).
 
 This tutorial specifically focuses on:
 
@@ -16,7 +16,7 @@ This tutorial specifically focuses on:
 - Apache Tomcat `8.5.x`
 - [Jasypt CLI](http://www.jasypt.org/cli.html). You can download the distribution [from here](http://www.jasypt.org/download.html).
 
-This tutorial assumes that you are running CAS in its `standalone` mode, [described here](https://apereo.github.io/cas/development/installation/Configuration-Server-Management.html).
+This tutorial assumes that you are running CAS in its `standalone` mode, [described here](https://apereo.github.io/cas/5.1.x/installation/Configuration-Server-Management.html).
 
 # LDAP Setup
 
@@ -34,11 +34,11 @@ Sweet! Moving on...
 
 # Deploy CAS
 
-Hop over to [the overlay installation](https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC3-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
+Hop over to [the overlay installation](https://apereo.github.io/cas/5.1.x/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC3-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
 
 # Configure CAS
 
-Once you have added the LDAP module to your build as is described [here](https://apereo.github.io/cas/development/installation/LDAP-Authentication.html), you then need to teach CAS about the running LDAP server.
+Once you have added the LDAP module to your build as is described [here](https://apereo.github.io/cas/5.1.x/installation/LDAP-Authentication.html), you then need to teach CAS about the running LDAP server.
 
 Here is what I did in the `cas.properties` file, along with all the other usual suspects:
 
@@ -128,7 +128,7 @@ cas.authn.ldap[0].bindCredential={cipher}mqWuN+/U7oofNhdSVNcEgmVcwGmxiOaS
 ...
 ```
 
-Finally, we need to teach CAS to handle the reverse of this operation. Consulting the docs [here](https://apereo.github.io/cas/development/installation/Configuration-Properties-Security.html), I ended up adjusting my configuration as such:
+Finally, we need to teach CAS to handle the reverse of this operation. Consulting the docs [here](https://apereo.github.io/cas/5.1.x/installation/Configuration-Properties-Security.html), I ended up adjusting my configuration as such:
 
 ```properties
 cas.standalone.config.security.alg=PBEWithMD5AndTripleDES

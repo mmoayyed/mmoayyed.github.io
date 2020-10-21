@@ -246,7 +246,7 @@ cas.serviceRegistry.json.location=file:/etc/cas/services
 
 # Ticketing
 
-A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets](https://apereo.github.io/cas/6.1.x/ticketing/Configuring-Ticketing-Components.html) issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment](https://apereo.github.io/cas/6.1.x/planning/High-Availability-Guide.html). Just like the service management facility, large variety of databases and storage options are supposed by CAS under the facade of a *Ticket Registry*.
+A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets](https://apereo.github.io/cas/6.1.x/ticketing/Configuring-Ticketing-Components.html) issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment](https://apereo.github.io/cas/6.1.x/high_availability/High-Availability-Guide.html). Just like the service management facility, large variety of databases and storage options are supposed by CAS under the facade of a *Ticket Registry*.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -294,7 +294,7 @@ cas.ticket.registry.hazelcast.cluster.members=123.321.123.321,223.621.123.521,..
 
 # Multifactor Authentication via Duo Security
 
-As a rather common use case, the majority of CAS deployments that intend to turn on multifactor authentication support tend to do so via [Duo Security](https://apereo.github.io/cas/6.1.x/installation/DuoSecurity-Authentication.html). We will be going through the same exercise here where we let CAS trigger Duo Security for users who belong to the `mfa-eligible` group, indicated by the `memberOf` attribute on the LDAP user account.
+As a rather common use case, the majority of CAS deployments that intend to turn on multifactor authentication support tend to do so via [Duo Security](https://apereo.github.io/cas/6.1.x/mfa/DuoSecurity-Authentication.html). We will be going through the same exercise here where we let CAS trigger Duo Security for users who belong to the `mfa-eligible` group, indicated by the `memberOf` attribute on the LDAP user account.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

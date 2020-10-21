@@ -9,7 +9,7 @@ tags:       [CAS]
 
 # Overview
 
-CAS has long had support for centralized authorization and [access control policies](https://apereo.github.io/cas/development/installation/Configuring-Service-Access-Strategy.html) on a per-application basis, I believe starting from CAS `4.2.x`. These policies come in a variety of strategies with a number of options to control application access, SSO participation, the presence of a certain number of required claims before access can be granted and so on. In the event that the policy denies user access, it may often be desirable to redirect the authentication flow to a URL that would have instructions for the end-user and it might even be ideal if the construction of that URL could be customized in dynamic ways for better user experience.
+CAS has long had support for centralized authorization and [access control policies](https://apereo.github.io/cas/5.3.x/installation/Configuring-Service-Access-Strategy.html) on a per-application basis, I believe starting from CAS `4.2.x`. These policies come in a variety of strategies with a number of options to control application access, SSO participation, the presence of a certain number of required claims before access can be granted and so on. In the event that the policy denies user access, it may often be desirable to redirect the authentication flow to a URL that would have instructions for the end-user and it might even be ideal if the construction of that URL could be customized in dynamic ways for better user experience.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -27,13 +27,13 @@ This tutorial specifically focuses on:
 - CAS `5.3.0-RC4`
 - Java 8
 - [Maven](https://github.com/apereo/cas-overlay-template) Or [Gradle](https://github.com/apereo/cas-gradle-overlay-template) WAR Overlays
-- [Delegated Authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html)
+- [Delegated Authentication](https://apereo.github.io/cas/5.3.x/integration/Delegate-Authentication.html)
 
 You may also be interested in this related blog post, detailing [attribute-based access control](https://fawnoos.com/2018/02/20/cas-service-rbac-attributeresolution/) in CAS.
 
 # Use Case
 
-Given our starting position of defining a customized unauthorized redirect URL in situations where access to a CAS-enabled service is denied, you should take note of the following service definition that may be recognized as part of CAS using a [JSON service registry](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html):
+Given our starting position of defining a customized unauthorized redirect URL in situations where access to a CAS-enabled service is denied, you should take note of the following service definition that may be recognized as part of CAS using a [JSON service registry](https://apereo.github.io/cas/5.3.x/installation/JSON-Service-Management.html):
 
 ```json
 {
@@ -79,7 +79,7 @@ However, one issue remains which is the ability to customize the redirect URL in
 
 # Dynamic Unauthorized URLs
 
-We can start by preparing CAS with a [customized configuration component](https://apereo.github.io/cas/development/installation/Configuration-Management-Extensions.html) that would house our customizations for this use case. Once that is done, take note of the following bean definition posted in `CasSupportActionsConfiguration.java` today:
+We can start by preparing CAS with a [customized configuration component](https://apereo.github.io/cas/5.3.x/installation/Configuration-Management-Extensions.html) that would house our customizations for this use case. Once that is done, take note of the following bean definition posted in `CasSupportActionsConfiguration.java` today:
 
 ```java
 @RefreshScope

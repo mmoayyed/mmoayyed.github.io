@@ -87,7 +87,7 @@ public class CustomConfiguration
 
 ## CAS 5.1.x
 
-Same exact strategy as `5.0.x`, except that now you're given the freedom to put the Java component anywhere inside any package in the overlay project, provided it's [correctly registered](https://apereo.github.io/cas/development/installation/Configuration-Management-Extensions.html) with the CAS auto configuration engine.
+Same exact strategy as `5.0.x`, except that now you're given the freedom to put the Java component anywhere inside any package in the overlay project, provided it's correctly registered with the CAS auto configuration engine.
 
 ## CAS 5.2.x, 5.3.x
 

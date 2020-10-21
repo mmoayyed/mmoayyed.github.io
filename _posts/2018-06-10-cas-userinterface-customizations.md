@@ -31,7 +31,7 @@ Our starting position is based on the following:
 
 # Overlay Setup
 
-Let's assume that application registration records are going to be managed as [flat JSON files](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html):
+Let's assume that application registration records are going to be managed as [flat JSON files](https://apereo.github.io/cas/5.3.x/installation/JSON-Service-Management.html):
 
 ```xml
 <dependency>
@@ -239,7 +239,7 @@ To see the theme in action, navigate to `https://sso.example.edu/cas/login?servi
 
 ## Themed Views
 
-CAS can also utilize a service’s associated `theme` property to selectively choose which set of UI views will be used to generate the standard views (i.e. `casLoginView.html`, etc). This is especially useful in cases where the set of pages for a theme that is targeted for a different type of audience are entirely different structurally, such that simply using a simple theme is not practical. So far, we have only seen basic CSS and Javascript files associated with a theme but what if you wanted the `dracula` theme activated for a service to present a different footer? Surely, the capabilities of a theme must go beyond CSS and Javascript, right? [Is that possible?](https://fawnoos.com/2017/02/18/onthe-theoryof-possibility/)
+CAS can also utilize a service’s associated `theme` property to selectively choose which set of UI views will be used to generate the standard views (i.e. `casLoginView.html`, etc). This is especially useful in cases where the set of pages for a theme that is targeted for a different type of audience are entirely different structurally, such that simply using a simple theme is not practical. So far, we have only seen basic CSS and Javascript files associated with a theme but what if you wanted the `dracula` theme activated for a service to present a different footer? Surely, the capabilities of a theme must go beyond CSS and Javascript, right? [Is that possible?](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/)
 
 Yes. Views associated with a particular theme by default are expected to be found at `src/main/resources/templates/<theme-id>`. For example, in addition, the CSS and Javascript files for the `dracula` theme, you can clone the default set of CAS views into a new directory at `src/main/resources/templates/dracula`. When CAS begins to render the UI for `https://app.example.org`, it would then look inside `src/main/resources/templates/dracula` to find the requested view (i.e. `casLoginView.html`) allowing you to control the HTML view on a per-application basis. A themed view will only be used if and once found; otherwise, the defaults will continue to run as expected.
 
@@ -286,7 +286,7 @@ def String run(final Object... args) {
 }
 ```
 
-In the above script, you have access to the `service` object that represents the requesting application (i.e. `service.id` would get you the service URL) as well as the current request query strings and headers and of course, a pointer to the entire body of the registered service definition just in case you need to run some additional checks or control the behavior even more dynamically via [CAS custom properties](https://apereo.github.io/cas/development/installation/Configuring-Service-Custom-Properties.html).
+In the above script, you have access to the `service` object that represents the requesting application (i.e. `service.id` would get you the service URL) as well as the current request query strings and headers and of course, a pointer to the entire body of the registered service definition just in case you need to run some additional checks or control the behavior even more dynamically via [CAS custom properties](https://apereo.github.io/cas/5.3.x/installation/Configuring-Service-Custom-Properties.html).
 
 # So...
 

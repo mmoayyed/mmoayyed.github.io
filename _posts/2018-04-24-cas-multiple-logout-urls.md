@@ -52,7 +52,7 @@ This is, of course, the simplest option and means that if CAS has established se
 
 One should note that the `logoutUrl` above not only static but also singular. With configuration only, there is not a way for one to specify more than one URL in cases where that might be needed. While the service configuration above presents a rather simplified version of the feature, CAS itself provides the internal mechanics to recognize and handle a collection of logout URLs for a given application. Our task here would be to extend the configuration slightly to implement this scenario and inject the behavior into the runtime.
 
-We can start by preparing CAS with a [customized configuration component](https://apereo.github.io/cas/development/installation/Configuration-Management-Extensions.html) that would house our customizations for this use case. Once that is done, take note of the following bean definition posted in `CasCoreLogoutConfiguration.java` today:
+We can start by preparing CAS with a [customized configuration component](https://apereo.github.io/cas/5.3.x/installation/Configuration-Management-Extensions.html) that would house our customizations for this use case. Once that is done, take note of the following bean definition posted in `CasCoreLogoutConfiguration.java` today:
 
 
 ```java
@@ -92,7 +92,7 @@ public class CustomSingleLogoutServiceLogoutUrlBuilder extends DefaultSingleLogo
 }
 ```
 
-That should do it. The very next time you build and deploy the changes, CAS should pick up our own bean definition and accompanying implementation class. It should be obvious that inside the class above, you have options to calculate the logout URLs as you wish since the builder object is expected to return a collection of URLs. To fully make this behavior dynamic, you may want to invest time researching [service custom properties](https://apereo.github.io/cas/development/installation/Configuring-Service-Custom-Properties.html) and externalize the logout function with special tags designed as properties that would then be consumed and processed in the above component.
+That should do it. The very next time you build and deploy the changes, CAS should pick up our own bean definition and accompanying implementation class. It should be obvious that inside the class above, you have options to calculate the logout URLs as you wish since the builder object is expected to return a collection of URLs. To fully make this behavior dynamic, you may want to invest time researching [service custom properties](https://apereo.github.io/cas/5.3.x/installation/Configuring-Service-Custom-Properties.html) and externalize the logout function with special tags designed as properties that would then be consumed and processed in the above component.
 
 # So...
 

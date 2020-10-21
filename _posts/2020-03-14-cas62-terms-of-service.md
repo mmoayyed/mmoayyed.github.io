@@ -25,16 +25,16 @@ When it comes to terms of use with CAS, there are a few aspects you should consi
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-In this tutorial, we will briefly take a look at [Acceptable Usage Policy](https://apereo.github.io/cas/development/webflow/Webflow-Customization-AUP.html) support in CAS, with our starting position as follows:
+In this tutorial, we will briefly take a look at [Acceptable Usage Policy](https://apereo.github.io/cas/6.2.x/webflow/Webflow-Customization-AUP.html) support in CAS, with our starting position as follows:
 
 - CAS `6.2.x`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 - Java 11
-- [JSON Service Registry](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
 
 ## Configuration
 
-There is support for a wide variety of technologies and platforms in CAS, such as LDAP, JDBC, etc to manage AUP decisions. Support for each technology generally means that it's capable of fetching policies for the user and storing the choice back. To start simple, let's begin with the [default option](https://apereo.github.io/cas/development/webflow/Webflow-Customization-AUP.html) which tracks user decisions in the runtime memory. 
+There is support for a wide variety of technologies and platforms in CAS, such as LDAP, JDBC, etc to manage AUP decisions. Support for each technology generally means that it's capable of fetching policies for the user and storing the choice back. To start simple, let's begin with the [default option](https://apereo.github.io/cas/6.2.x/webflow/Webflow-Customization-AUP.html) which tracks user decisions in the runtime memory. 
 
 The default policy looks for the user's previous choice and also examines user attributes to look for an attribute indicating the policy acceptance status. If the user has already consented to the policy or the policy status indicates acceptance, then the authentication flow will resume to the next step. Otherwise, a decision must be made by the user and the flow will be interrupted where the following screen would be presented:
 

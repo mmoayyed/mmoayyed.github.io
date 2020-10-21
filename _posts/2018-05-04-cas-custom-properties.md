@@ -60,7 +60,7 @@ public class CustomConfigurationProperties {
 }
 ```
 
-Next, you need to [extend the CAS configuration](https://apereo.github.io/cas/development/installation/Configuration-Management-Extensions.html) to have your configuration settings be recognized by the runtime:
+Next, you need to [extend the CAS configuration](https://apereo.github.io/cas/5.3.x/installation/Configuration-Management-Extensions.html) to have your configuration settings be recognized by the runtime:
 
 ```java
 @Configuration("SomethingConfiguration")

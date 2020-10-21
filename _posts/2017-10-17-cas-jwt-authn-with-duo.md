@@ -22,9 +22,9 @@ Apereo CAS has had built-in support for [JWTs](https://jwt.io/) for some time no
 
 In this tutorial, I am going to briefly review various forms of JWT functionality in CAS. Specifically, the following topics will be reviewed:
 
-- [JWT Authentication](https://apereo.github.io/cas/development/installation/JWT-Authentication.html): Allowing CAS to accept JWTs as credentials in non-interactive authentication modes mostly.
-- JWTs with [Duo Security Multifactor Authentication](https://apereo.github.io/cas/development/installation/DuoSecurity-Authentication.html): Exploring an approach where a non-interactive authentication request may be routed to a multifactor authentication flow and back.
-- [JWTs as Service Tickets](https://apereo.github.io/cas/development/installation/Configure-ServiceTicket-JWT.html): Allowing CAS to transform service tickets issued for applications into JWTs.
+- [JWT Authentication](https://apereo.github.io/cas/5.2.x/installation/JWT-Authentication.html): Allowing CAS to accept JWTs as credentials in non-interactive authentication modes mostly.
+- JWTs with [Duo Security Multifactor Authentication](https://apereo.github.io/cas/5.2.x/installation/DuoSecurity-Authentication.html): Exploring an approach where a non-interactive authentication request may be routed to a multifactor authentication flow and back.
+- [JWTs as Service Tickets](https://apereo.github.io/cas/5.2.x/installation/Configure-ServiceTicket-JWT.html): Allowing CAS to transform service tickets issued for applications into JWTs.
 
 
 # Environment
@@ -40,7 +40,7 @@ CAS provides support for token-based authentication on top of JWTs, where an aut
 
 ## Let There Be JWT
 
-To generate a JWT, I ended up using the [CAS Command-line Shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html):
+To generate a JWT, I ended up using the [CAS Command-line Shell](https://apereo.github.io/cas/5.2.x/installation/Configuring-Commandline-Shell.html):
 
 ```bash
 cd cas-overlay-template
@@ -78,7 +78,7 @@ There are a variety of other parameters such as encryption methods and signing a
 
 ## Configure Application
 
-CAS [needs to be taught](https://apereo.github.io/cas/development/installation/JWT-Authentication.html) the security properties of the JWT to unpack and validate it and produce the relevant authenticated session. For a given authentication request, CAS will try to find the matching record for the application in its registry that is capable of validating JWTs. If such a record is found and the request is in fact accompanied by JWT credentials, the credential is validated and the service ticket issued.
+CAS [needs to be taught](https://apereo.github.io/cas/5.2.x/installation/JWT-Authentication.html) the security properties of the JWT to unpack and validate it and produce the relevant authenticated session. For a given authentication request, CAS will try to find the matching record for the application in its registry that is capable of validating JWTs. If such a record is found and the request is in fact accompanied by JWT credentials, the credential is validated and the service ticket issued.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -91,7 +91,7 @@ CAS [needs to be taught](https://apereo.github.io/cas/development/installation/J
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-My CAS overlay is already equipped with the [relevant configuration module](https://apereo.github.io/cas/development/installation/JWT-Authentication.html) and my application record using [the JSON service registry](https://apereo.github.io/cas/development/installation/JSON-Service-Management.html) looks something like this:
+My CAS overlay is already equipped with the [relevant configuration module](https://apereo.github.io/cas/5.2.x/installation/JWT-Authentication.html) and my application record using [the JSON service registry](https://apereo.github.io/cas/5.2.x/installation/JSON-Service-Management.html) looks something like this:
 
 ```json
 {
@@ -161,7 +161,7 @@ I want to be able to use my JWT to authenticate with CAS and get a service ticke
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-[Duo Security integration support](https://apereo.github.io/cas/development/installation/DuoSecurity-Authentication.html) of CAS is able to also support non-browser based multifactor authentication requests. In order to trigger this behavior, applications (i.e. `curl`, REST APIs, etc.) need to specify a special `Content-Type` to signal to CAS that the request is submitted from a non-web based environment. The multifactor authentication request is submitted to Duo Security in `auto` mode which effectively may translate into an out-of-band factor (push or phone) recommended by Duo as the best for the user’s devices.
+[Duo Security integration support](https://apereo.github.io/cas/5.2.x/installation/DuoSecurity-Authentication.html) of CAS is able to also support non-browser based multifactor authentication requests. In order to trigger this behavior, applications (i.e. `curl`, REST APIs, etc.) need to specify a special `Content-Type` to signal to CAS that the request is submitted from a non-web based environment. The multifactor authentication request is submitted to Duo Security in `auto` mode which effectively may translate into an out-of-band factor (push or phone) recommended by Duo as the best for the user’s devices.
 
 <div class="alert alert-warning">
   <strong>YMMV</strong><br/>If you are using a different kind of multifactor authentication provider, you will need to verify whether it's able to support such behaviors.
@@ -169,11 +169,11 @@ I want to be able to use my JWT to authenticate with CAS and get a service ticke
 
 ## Configure Duo Security
 
-My overlay is prepped with the [relevant configuration module](https://apereo.github.io/cas/development/installation/DuoSecurity-Authentication.html) of course and settings that include integration keys, secret keys, etc.
+My overlay is prepped with the [relevant configuration module](https://apereo.github.io/cas/5.2.x/installation/DuoSecurity-Authentication.html) of course and settings that include integration keys, secret keys, etc.
 
 ## Application MFA Trigger
 
-I am also going to configure [an application-based trigger](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication-Triggers.html#applications) for `https://www.example.org` so that authentication requests are routed to the relevant multifactor authentication provider.
+I am also going to configure [an application-based trigger](https://apereo.github.io/cas/5.2.x/installation/Configuring-Multifactor-Authentication-Triggers.html#applications) for `https://www.example.org` so that authentication requests are routed to the relevant multifactor authentication provider.
 
 So my application record will take on the following form:
 
@@ -219,7 +219,7 @@ Things work exactly the same as before, except that this time your device regist
 
 # JWT Service Tickets
 
-All operations so far have issued a regular service ticket back to the application that must be validated in a subsequent trip so the application can retrieve the authenticated user profile. In a different variation, it's possible for the service ticket itself to [take on the form of a JWT](https://apereo.github.io/cas/development/installation/Configure-ServiceTicket-JWT.html). 
+All operations so far have issued a regular service ticket back to the application that must be validated in a subsequent trip so the application can retrieve the authenticated user profile. In a different variation, it's possible for the service ticket itself to [take on the form of a JWT](https://apereo.github.io/cas/5.2.x/installation/Configure-ServiceTicket-JWT.html). 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -242,7 +242,7 @@ JWT-based service tickets are issued to applications based on the same semantics
 
 In order for CAS to transform service tickets into JWTs, essentially we need to execute the reverse of the above configuration steps. We will need to ensure CAS is provided with relevant keys to generate JWTs and these keys are in turn used by the application to unpack the *JWTness* of generated service ticket. 
 
-The overlay also needs to be equipped with [the relevant extension module](https://apereo.github.io/cas/development/installation/Configure-ServiceTicket-JWT.html) of course to allow for this functionality.
+The overlay also needs to be equipped with [the relevant extension module](https://apereo.github.io/cas/5.2.x/installation/Configure-ServiceTicket-JWT.html) of course to allow for this functionality.
 
 You may generate the required secrets manually per the above link. In this example, I left them undefined in my properties which forces CAS to generate a few on its own and warn me about them when it starts up:
 

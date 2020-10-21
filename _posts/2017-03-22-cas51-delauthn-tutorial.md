@@ -19,11 +19,11 @@ This tutorial specifically focuses on:
 
 # Deploy CAS
 
-Hop over to [the overlay installation](https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC3-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
+Hop over to [the overlay installation](https://apereo.github.io/cas/5.1.x/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC3-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
 
 # Configure CAS
 
-Add the required module specified here in the [documentation](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) to your build. Next, we need to teach CAS about the external SAML2 Identity Provider. The configuration displayed below simply wants to have CAS act as a sevice provider with its own unique entity id, keystore, etc. CAS itself will generate the relevant service-provider credentials, keystores and metadata and will then examine the identity provider metadata document to learn about endpoints, etc. So you only really have to provide the values and let the software handle the rest.
+Add the required module specified here in the [documentation](https://apereo.github.io/cas/5.1.x/integration/Delegate-Authentication.html) to your build. Next, we need to teach CAS about the external SAML2 Identity Provider. The configuration displayed below simply wants to have CAS act as a sevice provider with its own unique entity id, keystore, etc. CAS itself will generate the relevant service-provider credentials, keystores and metadata and will then examine the identity provider metadata document to learn about endpoints, etc. So you only really have to provide the values and let the software handle the rest.
 
 ```
 cas.authn.pac4j.saml[0].keystorePassword=pac4j-demo-passwd

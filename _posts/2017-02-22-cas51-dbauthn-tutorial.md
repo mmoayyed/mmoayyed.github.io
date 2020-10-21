@@ -42,7 +42,7 @@ Great. Moving on...
 
 # Create Schema
 
-In my setup, I have two tables: one called `USERS` where user accounts are kept and another called `USERATTRS` where user attributes are kept. My `USERS` table is rather simple, but the `USERATTRS` follows something of a *multi-row* setup. You want to learn more about this setup [here](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory).
+In my setup, I have two tables: one called `USERS` where user accounts are kept and another called `USERATTRS` where user attributes are kept. My `USERS` table is rather simple, but the `USERATTRS` follows something of a *multi-row* setup. You want to learn more about this setup [here](https://apereo.github.io/cas/5.1.x/integration/Attribute-Resolution.html#person-directory).
 
 So here goes the SQL:
 
@@ -81,13 +81,13 @@ Note that for the time being, I am just keeping the password as plain-text in th
 
 # Deploy CAS
 
-Hop over to [the overlay installation](https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC2-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
+Hop over to [the overlay installation](https://apereo.github.io/cas/5.1.x/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC2-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
 
 # Configure CAS
 
-Follow the steps [described here](https://apereo.github.io/cas/development/installation/Database-Authentication.html) to add the needed CAS modules. Once the module/dependency is added to your build, hop over to [the settings page](https://apereo.github.io/cas/development/installation/Configuration-Properties.html#database-authentication) and add the properties. 
+Follow the steps [described here](https://apereo.github.io/cas/5.1.x/installation/Database-Authentication.html) to add the needed CAS modules. Once the module/dependency is added to your build, hop over to [the settings page](https://apereo.github.io/cas/5.1.x/installation/Configuration-Properties.html#database-authentication) and add the properties. 
 
-*Note that I did not have to add any additional JARs and such for database drivers. CAS ships with a few [automatically and by default](https://apereo.github.io/cas/development/installation/JDBC-Drivers.html)*
+*Note that I did not have to add any additional JARs and such for database drivers. CAS ships with a few [automatically and by default](https://apereo.github.io/cas/5.1.x/installation/JDBC-Drivers.html)*
 
 For this tutorial, this is what I actually needed to make this work:
 
@@ -157,7 +157,7 @@ Good job! Lets get some attributes now.
 
 # Attributes
 
-Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
+Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/5.1.x/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. Today, CAS is unable to retrieve attributes as part of authentication directly so we need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
 
 ```
 cas.authn.attribute-repository.jdbc[0].singleRow=false
@@ -182,7 +182,7 @@ If we wanted to, we could virtually rename the attributes to for instance `TheFi
 
 # Release Attributes
 
-There are multiple ways of [releasing attributes](https://apereo.github.io/cas/development/integration/Attribute-Release.html). For this tutorial, I am going to release them globally to all applications:
+There are multiple ways of [releasing attributes](https://apereo.github.io/cas/5.1.x/integration/Attribute-Release.html). For this tutorial, I am going to release them globally to all applications:
 
 ```properties
 cas.authn.attribute-repository.defaultAttributesToRelease=firstname,lastname

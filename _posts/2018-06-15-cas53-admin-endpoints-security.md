@@ -25,7 +25,7 @@ This tutorial specifically requires and focuses on:
 - CAS `5.3.x`
 - Java 8
 - [CLI JSON Processor `jq`](https://stedolan.github.io/jq/)
-- [Maven WAR Overlay](https://apereo.github.io/cas/development/installation/Maven-Overlay-Installation.html)
+- [Maven WAR Overlay](https://apereo.github.io/cas/5.3.x/installation/Maven-Overlay-Installation.html)
 
 # Actua...What?
 
@@ -34,7 +34,7 @@ In essence, actuator endpoints bring production-ready features to CAS. Monitorin
 <div class="alert alert-info">
 <strong>Definition</strong><br/>An actuator is a manufacturing term, referring to a mechanical device for moving or controlling something. Actuators can generate a large amount of motion from a small change.</div>
 
-The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/development/installation/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
+The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/5.3.x/installation/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
 
 # Endpoints
 

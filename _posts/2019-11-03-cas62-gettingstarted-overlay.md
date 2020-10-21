@@ -449,11 +449,11 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[duo]: https://apereo.github.io/cas/6.2.x/installation/DuoSecurity-Authentication.html
+[duo]: https://apereo.github.io/cas/6.2.x/mfa/DuoSecurity-Authentication.html
 [hazelcasttickets]: https://apereo.github.io/cas/6.2.x/ticketing/Hazelcast-Ticket-Registry.html
 [contribute]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 [localization]: https://apereo.github.io/cas/6.2.x/ux/User-Interface-Customization-Localization.html
-[haguide]: https://apereo.github.io/cas/6.2.x/planning/High-Availability-Guide.html
+[haguide]: https://apereo.github.io/cas/6.2.x/high_availability/High-Availability-Guide.html
 [ticketing]: https://apereo.github.io/cas/6.2.x/ticketing/Configuring-Ticketing-Components.html
 [jsonservicemgmt]: https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html
 [servicemgmt]: https://apereo.github.io/cas/6.2.x/services/Service-Management.html#storage

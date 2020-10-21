@@ -12,10 +12,6 @@ This tutorial specifically requires and focuses on:
 - CAS `5.0.x`
 - Java 8
 
-<!--
-Furthermore, this tutorial assumes that you are running CAS in its `standalone` mode, [described here](https://apereo.github.io/cas/5.0.x/installation/Configuration-Server-Management.html).
--->
-
 # Overlay...What?
 
 Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building it from source, overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself, override/insert specific behavior into it and then merge it all back together to produce the final (web application) artifact. You can find a lot more about how overlays work [here](https://apereo.github.io/cas/5.0.x/installation/Maven-Overlay-Installation.html).
@@ -121,12 +117,12 @@ What do these commands do?
 
 | Type                    | Description
 |-------------------------|-------------------------------------------------------------------------
-| `copy`                  | Copies the configuration from the local `etc/cas/config` directory to `/etc/cas/config`. [See this guide](https://apereo.github.io/cas/5.0.x/installation/Configuration-Server-Management.html) to learn more.
+| `copy`                  | Copies the configuration from the local `etc/cas/config` directory to `/etc/cas/config`. [See this guide](https://apereo.github.io/cas/5.0.x/installation/Configuration-Management.html) to learn more.
 | `clean`                 | Deletes any previously-built and leftover artifacts from the `target` directory.
 | `package`               | Runs `clean` and `copy`. Then packages the CAS web application artifact and run through the overlay to inject local customizations. The outcome is a `target/cas.war` file which is ready to be deployed.
 | `run`                   | Invokes `package` and then deploys and runs the CAS web application via its own embedded server container.
 | `debug`                 | Same thing as `run`, except that you can remote-debug the CAS web application over port `5000`.
-| `bootrun`               | Same thing as `run`, except the deployment is managed by the [Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html). This command has very specialized and limited use cases. Please [review this issue](https://github.com/apereo/cas/issues/2334) to learn more.
+| `bootrun`               | Same thing as `run`, except the deployment is managed by the [Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html). This command has very specialized and limited use cases. 
 
 <div class="alert alert-info">
   <strong>Remember</strong><br/>Docs grow old. Always consult the overlay project's <code>README</code> file to keep to date.

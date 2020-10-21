@@ -54,7 +54,7 @@ At this point in the authentication flow, we have established an authenticated s
 
 # Configuring Google Authenticator
 
-Here, our task is to enable [Google Authenticator](https://apereo.github.io/cas/development/installation/GoogleAuthenticator-Authentication.html) in CAS. Practically, similar to the LDAP authentication configuration, this involves declaring the right module in the build and then providing specific Google Authenticator settings to CAS properties. Things such as the issuer, label, etc.
+Here, our task is to enable [Google Authenticator](https://apereo.github.io/cas/5.3.x/installation/GoogleAuthenticator-Authentication.html) in CAS. Practically, similar to the LDAP authentication configuration, this involves declaring the right module in the build and then providing specific Google Authenticator settings to CAS properties. Things such as the issuer, label, etc.
 
 Most commonly, the required settings would translate into the following:
 
@@ -67,7 +67,7 @@ At this point, we have enabled Google Authenticator and we just need to find a w
 
 # Configuring Multifactor Authentication Triggers
 
-The entire purpose of a trigger here is to detect a condition by which the authentication flow should be rerouted. There are a large number of [triggers supported by CAS](https://apereo.github.io/cas/development/installation/Configuring-Multifactor-Authentication-Triggers.html), all of which kick into action and behave all the same regardless of the multifactor authentication provider. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute `memberOf` contain the value `mfa-eligible`:
+The entire purpose of a trigger here is to detect a condition by which the authentication flow should be rerouted. There are a large number of [triggers supported by CAS](https://apereo.github.io/cas/5.3.x/installation/Configuring-Multifactor-Authentication-Triggers.html), all of which kick into action and behave all the same regardless of the multifactor authentication provider. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute `memberOf` contain the value `mfa-eligible`:
 
 ```properties
 cas.authn.mfa.globalPrincipalAttributeNameTriggers=memberOf

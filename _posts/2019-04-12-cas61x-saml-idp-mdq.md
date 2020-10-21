@@ -23,7 +23,7 @@ Per-entity metadata allows CAS acting as a SAML2 identity provider to consume on
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-In this blog post, we will take a look at [InCommon MDQ server](https://spaces.at.internet2.edu/display/MDQ/The+Guide) and how Apereo CAS may be configured to fetch and validate service provider metadata on demand using MDQ and family.
+In this blog post, we will take a look at [InCommon MDQ server](https://spaces.at.internet2.edu/display/MDQ) and how Apereo CAS may be configured to fetch and validate service provider metadata on demand using MDQ and family.
 
 <div class="alert alert-warning">
 <strong>Preview Phase</strong><br/>The signing certificate (public key) for the Technology Preview version of this service may be changed with little notice. The production public key and its certificate will be stable and long-lived.
@@ -34,11 +34,11 @@ Our starting position is based on:
 - CAS `6.1.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html)
 
 # Configuration
 
-Once you have configured CAS to act as a [SAML2 identity provider](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html), the following service definition can be a reasonable starting template for fetching service provider metadata from InCommon's MDQ server:
+Once you have configured CAS to act as a [SAML2 identity provider](https://apereo.github.io/cas/6.1.x/installation/Configuring-SAML2-Authentication.html), the following service definition can be a reasonable starting template for fetching service provider metadata from InCommon's MDQ server:
 
 ```json
 {

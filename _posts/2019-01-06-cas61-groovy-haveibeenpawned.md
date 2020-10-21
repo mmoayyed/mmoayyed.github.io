@@ -7,7 +7,7 @@ tags:       [CAS]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-[Have I been pwned](https://haveibeenpwned.com/) is an online service that tracks security breaches and other datalogs on the internet, 
+[Have I been pwned](https://haveibeenpwned.com/API/v2) is an online service that tracks security breaches and other datalogs on the internet, 
 allowing you to check if your passwords linked to an email have been compromised. This is a very simple method and does not guarantee that your stuff is safe, 
 or will continue to be safe. It does, however, allow you to have an idea of when data linked to your accounts might have been exposed, 
 and whether you changed (or not) your passwords since that point.
