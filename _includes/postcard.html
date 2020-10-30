@@ -1,6 +1,7 @@
 <div class="card-deck" style="padding-top: 10pt;">
     {% for post in site.posts limit : 3 offset : include.offset %}
-    <div class="card animate__animated animate__pulse filter  {{ post.tags | join: ' '}}">
+    <!-- <div class="card animate__animated animate__pulse filter  {{ post.tags | join: ' '}}"> -->
+    <div class="card filter  {{ post.tags | join: ' '}}">
       <!-- {% if forloop.first  %}
       <div class="card-header">Featured</div>
       {% endif %}  -->

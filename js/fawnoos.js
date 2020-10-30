@@ -4,8 +4,9 @@ for the website background. Image are expected to be found
 inside the img/hanna directory using the filename format bg-{number}.jpg
 /**********************************************************/
 
-var totalNumberOfImages = 10;
-var imageNumber=Math.floor(Math.random() * totalNumberOfImages) + 1;
+var imageNumbers = Array(1,2,3,5,6,7,9,10);
+var imageNumber = imageNumbers[Math.floor(Math.random() * imageNumbers.length)];
+
 $('#main-banner-slider').css("background-image", "url(images/home/slide-" + imageNumber + ".jpg)");
 
 switch (imageNumber) {

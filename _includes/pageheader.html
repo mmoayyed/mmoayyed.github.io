@@ -9,7 +9,12 @@
       <div>
         <div class="mx-auto">
           <div class="post-heading">
-            <h2 class="title">{{ page.title }} </h2>
+            <h2 class="title">
+              {{ page.title }} 
+              {% if page.rssLink %}
+              {{ page.rssLink }} 
+              {% endif %}
+            </h2>
             {% if page.subtitle %}
             <h2 class="post-subtitle">{{ page.subtitle }}</h2>
             {% endif %}
