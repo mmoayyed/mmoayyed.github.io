@@ -54,7 +54,7 @@ Our JSON attribute repository source, separate from the CAS authentication store
 
 Our external attribute repositories are then taught to CAS:
 
-```properties
+```
 cas.authn.attribute-repository.json[0].location=file://etc/cas/config/attribute-repository.json
 cas.authn.attribute-repository.json[0].id=MyJson
 

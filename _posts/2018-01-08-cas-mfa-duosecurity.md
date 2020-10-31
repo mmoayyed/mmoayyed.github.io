@@ -32,7 +32,7 @@ Our task list is rather short:
 
 Prior to configuring *multiple* factors of authentication, we need to first establish a primary mode of validating credentials. To kill two birds with one stone [1], we are going to o address yet another common use case and keep things simple by sticking with [LDAP authentication](https://apereo.github.io/cas/5.2.x/installation/LDAP-Authentication.html). The strategy here, as indicated by the CAS documentation, is to declare the intention/module in the build script and then configure the relevant `cas.authn.ldap[x]` settings for the directory server in use. Most commonly, that would translate into the following settings:
 
-```properties
+```
 cas.authn.ldap[0].type=AUTHENTICATED
 cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.org 
 cas.authn.ldap[0].baseDn=dc=example,dc=org
@@ -43,7 +43,7 @@ cas.authn.ldap[0].bindCredential=...
 
 Note that the method of authentication, whether on its own or using separate attribute repositories and queries must have the ability to resolve the needed attribute which will be used later by CAS to trigger multifactor authentication. For this context, the simplest way would be to let LDAP authentication retrieve the attribute directly from the directory server.  The following setting allows us to do just that:
 
-```properties
+```
 cas.authn.ldap[0].principalAttributeList=memberOf
 ```
 
@@ -53,7 +53,7 @@ At this point in the authentication flow, we have established an authenticated s
 
 Here, our task is to enable [Duo Security](https://apereo.github.io/cas/5.2.x/installation/DuoSecurity-Authentication.html) in CAS. Practically, similar to the LDAP authentication configuration, this involves declaring the right module in the build and then providing specific Duo Security settings to CAS properties. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription. Most commonly, that would translate into the following settings:
 
-```properties
+```
 cas.authn.mfa.duo[0].duoSecretKey=
 cas.authn.mfa.duo[0].duoApplicationKey=
 cas.authn.mfa.duo[0].duoIntegrationKey=

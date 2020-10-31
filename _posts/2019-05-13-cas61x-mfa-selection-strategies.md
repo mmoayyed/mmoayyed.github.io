@@ -54,7 +54,7 @@ The first and default strategy is to assign ranks to each provider. Ranking of a
 
 In practice, this would be:
 
-```properties
+```
 ...
 cas.authn.mfa.duo[0].rank=1
 ...

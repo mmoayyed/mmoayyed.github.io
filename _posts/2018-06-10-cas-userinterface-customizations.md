@@ -115,7 +115,7 @@ This instructs CAS to locate views at the specified location. This location can 
 
 As a native CAS feature, Views and HTML files also may be externalized outside the web application conditionally and individually, provided the external path via CAS settings is defined. If a view template file is not found at the externalized path, the default one that ships with CAS will be used as the fallback.
 
-```properties
+```
 cas.view.templatePrefixes[0]=file:///etc/cas/templates
 ```
 
