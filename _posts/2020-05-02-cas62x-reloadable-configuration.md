@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-When it comes to managing and tracking CAS settings, there is a plethora options to choose from for the modest as well as the enterprise-ready. Quickly put, CAS settings can be managed via key-value stores in form of standalone properties or YAML files. Such files can be split up per environment profile, can be fed directly to CAS at runtime or via command-line parameters, environment variables, inline JSON feeds, JVM system properties, [slurpped via Groovy](https://fawnoos.com/2018/11/02/cas6-groovy-config-slurper/) or even managed inside a separate and external [configuration server](https://fawnoos.com/2018/10/25/cas6-cloud-config-server/) which feed data to a CAS server from many other storage services and databases on a per-profile basis. All of this capability is provided by and built on top of Spring Boot and Spring Cloud frameworks that provide quite a flexible design in keeping track of one's application settings.
+When it comes to managing and tracking CAS settings, there is a plethora options to choose from for the modest as well as the enterprise-ready. Quickly put, CAS settings can be managed via key-value stores in form of standalone properties or YAML files. Such files can be split up per environment profile, can be fed directly to CAS at runtime or via command-line parameters, environment variables, inline JSON feeds, JVM system properties, [slurpped via Groovy](/2018/11/02/cas6-groovy-config-slurper/) or even managed inside a separate and external [configuration server](/2018/10/25/cas6-cloud-config-server/) which feed data to a CAS server from many other storage services and databases on a per-profile basis. All of this capability is provided by and built on top of Spring Boot and Spring Cloud frameworks that provide quite a flexible design in keeping track of one's application settings.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -94,7 +94,7 @@ At this point, if you simply refresh the browser screen the label should have ch
 
 ## Spring Boot Admin
 
-Once you have the Spring Boot Admin web application [up and running](https://fawnoos.com/2018/10/22/cas6-springboot-admin-server/), you can browse over to the *Configuration Properties* panel to see all CAS settings. To make the same change, hop over to the *Environment* panel and under *Environment Manager* type in `cas.authn.pac4j.cas[0].clientName` for the property name and *Fancy CAS Here* for the value:
+Once you have the Spring Boot Admin web application [up and running](/2018/10/22/cas6-springboot-admin-server/), you can browse over to the *Configuration Properties* panel to see all CAS settings. To make the same change, hop over to the *Environment* panel and under *Environment Manager* type in `cas.authn.pac4j.cas[0].clientName` for the property name and *Fancy CAS Here* for the value:
 
 ![image](https://user-images.githubusercontent.com/1205228/61623008-27392980-ac8b-11e9-8c9d-fa377f27f976.png)
 

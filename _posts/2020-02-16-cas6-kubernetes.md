@@ -37,7 +37,7 @@ The easiest way to start experimenting with Kubernetes is via [Minikube](https:/
 
 ## Docker Image
 
-You should first begin by producing a [CAS Docker image](https://fawnoos.com/2020/01/31/cas6-docker-deployment/), to be deployed into our Kubernetes cluster. To move things along quickly, I have already produced a [self-contained CAS image](https://hub.docker.com/repository/docker/mmoayyed/cas) that can be used for demo purposes. The image presents a CAS server, backed by an embedded Apache Tomcat instance, and is configured to respond to requests on port `8080` to keep things as simple as possible:
+You should first begin by producing a [CAS Docker image](/2020/01/31/cas6-docker-deployment/), to be deployed into our Kubernetes cluster. To move things along quickly, I have already produced a [self-contained CAS image](https://hub.docker.com/repository/docker/mmoayyed/cas) that can be used for demo purposes. The image presents a CAS server, backed by an embedded Apache Tomcat instance, and is configured to respond to requests on port `8080` to keep things as simple as possible:
 
 ```properties
 cas.server.name=http://cas.example.org:8080

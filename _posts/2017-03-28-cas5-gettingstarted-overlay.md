@@ -277,7 +277,7 @@ If I look at `target/cas/WEB-INF/classes/messages.properties` after the build, I
 
 # Deploy
 
-You have a number of options when it comes to deploying the final `cas.war` file. [This post](https://fawnoos.com/2016/10/04/casbootoverlay/) should help.
+You have a number of options when it comes to deploying the final `cas.war` file. [This post](/2016/10/04/casbootoverlay/) should help.
 
 # So...
 

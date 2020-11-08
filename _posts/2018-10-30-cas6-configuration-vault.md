@@ -12,7 +12,7 @@ tags:       [CAS]
 The CAS integration with vault [has been available](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Properties-Security.html#vault) for some time. In this walkthrough, we are going to take a pass at getting CAS connected to Vault to store properties and settings. We will also try to reload settings dynamically in real-time as they are changed and updated inside Vault.
 
 <div class="alert alert-success">
-  <strong>More HashiCorp</strong><br/>You may also be interested in a CAS integration with <a href="https://fawnoos.com/2018/10/22/cas6-consul-discovery/">HashCorp Consul</a>.
+  <strong>More HashiCorp</strong><br/>You may also be interested in a CAS integration with <a href="/2018/10/22/cas6-consul-discovery/">HashCorp Consul</a>.
 </div>
 
 Our starting position is based on the following:
@@ -62,7 +62,7 @@ That should do for now. Let's get CAS running.
 
 Integration with Vault in CAS is handled using [Spring Cloud Vault](https://cloud.spring.io/spring-cloud-vault/) and can be done in a number of ways:
 
-- If you have the [Spring Cloud Config Server](https://fawnoos.com/2018/10/25/cas6-cloud-config-server/) deployed, Vault could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with Vault to fetch settings, etc.
+- If you have the [Spring Cloud Config Server](/2018/10/25/cas6-cloud-config-server/) deployed, Vault could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with Vault to fetch settings, etc.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

@@ -230,7 +230,7 @@ Believe me, it works. (The technique, not the dubstep).
 
 ![image](https://user-images.githubusercontent.com/1205228/45082890-9b202100-b10f-11e8-9e28-c02251d3271a.png)
 
-[This](https://fawnoos.com/2017/03/08/the-myth-of-ga-rel/).
+[This](/2017/03/08/the-myth-of-ga-rel/).
 
 # So...
 

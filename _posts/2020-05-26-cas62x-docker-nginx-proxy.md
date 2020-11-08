@@ -9,7 +9,7 @@ tags:       [CAS]
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This post is largely inspired by <a href="https://blog.ssdnodes.com/blog/host-multiple-websites-docker-nginx/">this guide.</a>
 </div>
 
-A [dockerized CAS deployment](https://fawnoos.com/2020/01/31/cas6-docker-deployment/) allows one to run multiple CAS servers on a single VM, where each server might be configured differently to address different needs for authentication policy, attribute release, etc. To avoid conflicts and achieve better separation of concerns, we can use Docker and NGINX to host multiple CAS containers behind a proxy, in their isolated network and let the proxy offload the SSL context onto the Docker container running CAS and correctly route traffic. 
+A [dockerized CAS deployment](/2020/01/31/cas6-docker-deployment/) allows one to run multiple CAS servers on a single VM, where each server might be configured differently to address different needs for authentication policy, attribute release, etc. To avoid conflicts and achieve better separation of concerns, we can use Docker and NGINX to host multiple CAS containers behind a proxy, in their isolated network and let the proxy offload the SSL context onto the Docker container running CAS and correctly route traffic. 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

@@ -54,7 +54,7 @@ After all, that is what we want we to do.
 
 Core CAS components aside, there are a lot of other individual modules (i.e. `JAR` artifacts) which act as support modules or more accurately put, *intentions*. What is that about?
 
-In order to ease the maintenance burden of both code and documentation and to create a sustainable development environment for the project to grow and keep up with the times and additions of new [more complicated] features (i.e. multifactor authentication), CAS 5 took an orthogonal approach where most if not all CAS features are [automatically configured](https://fawnoos.com/2017/02/21/cas-autocfg-strategy/) by CAS itself, given deployer’s consent, relieving the deployer from having to deal with manual configuration. This is a model referred to as **Intention-driven configuration**.
+In order to ease the maintenance burden of both code and documentation and to create a sustainable development environment for the project to grow and keep up with the times and additions of new [more complicated] features (i.e. multifactor authentication), CAS 5 took an orthogonal approach where most if not all CAS features are [automatically configured](/2017/02/21/cas-autocfg-strategy/) by CAS itself, given deployer’s consent, relieving the deployer from having to deal with manual configuration. This is a model referred to as **Intention-driven configuration**.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

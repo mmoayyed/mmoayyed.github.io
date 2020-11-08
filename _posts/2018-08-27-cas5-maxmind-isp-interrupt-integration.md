@@ -33,7 +33,7 @@ This sort of use case can easily be done in form of [webflow interrupts](https:/
 This sounds exactly like what we could use. We just need to provide our own particular interrupt services that handle the cross-examination of the IP address with MaxMind and we should be good to go. Let's do it.
 
 <div class="alert alert-info">
-  <strong>Collaborate</strong><br/>If you want to learn more about webflow interrupts, please see <a href="https://fawnoos.com/2017/08/30/cas-loginflow-interrupt/">this post</a>.
+  <strong>Collaborate</strong><br/>If you want to learn more about webflow interrupts, please see <a href="/2017/08/30/cas-loginflow-interrupt/">this post</a>.
 </div>
 
 Our starting position is based on the following:

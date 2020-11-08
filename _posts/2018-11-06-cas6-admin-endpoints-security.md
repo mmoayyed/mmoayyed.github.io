@@ -150,7 +150,7 @@ curl -k https://sso.example.org/cas/actuator/statistics | jq
 }
 ```
 
-Over time, this data should become accessible via the management application. Remember that for endpoints which are native to and provided by Spring Boot, you may always try the [Spring Boot Admin Server](https://fawnoos.com/2018/10/22/cas6-springboot-admin-server/).
+Over time, this data should become accessible via the management application. Remember that for endpoints which are native to and provided by Spring Boot, you may always try the [Spring Boot Admin Server](/2018/10/22/cas6-springboot-admin-server/).
 
 # So...
 

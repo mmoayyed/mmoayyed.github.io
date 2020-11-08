@@ -429,13 +429,13 @@ Now that you have the `footer.html` brought into the overlay, you can simply mod
 
 # Deploy
 
-You have a number of options when it comes to deploying the final `cas.war` file. [This post](https://fawnoos.com/2016/10/04/casbootoverlay/) should help. The easiest approach would be to simply use the `build.sh run` command and have the overlay be deployed inside an embedded container.
+You have a number of options when it comes to deploying the final `cas.war` file. [This post](/2016/10/04/casbootoverlay/) should help. The easiest approach would be to simply use the `build.sh run` command and have the overlay be deployed inside an embedded container.
 
 # What About...?
 
-- [CAS Multifactor Authentication with Duo Security](https://fawnoos.com/2018/01/08/cas-mfa-duosecurity/)
-- [CAS 5 LDAP AuthN and Jasypt Configuration](https://fawnoos.com/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
-- [CAS 5 SAML2 Delegated AuthN Tutorial](https://fawnoos.com/2017/03/22/cas51-delauthn-tutorial/)
+- [CAS Multifactor Authentication with Duo Security](/2018/01/08/cas-mfa-duosecurity/)
+- [CAS 5 LDAP AuthN and Jasypt Configuration](/2017/03/24/cas51-ldapauthnjasypt-tutorial/)
+- [CAS 5 SAML2 Delegated AuthN Tutorial](/2017/03/22/cas51-delauthn-tutorial/)
 
 For more content, [please see this link](https://apereo.github.io/tags/#CAS).
 

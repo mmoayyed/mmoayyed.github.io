@@ -70,7 +70,7 @@ cas.authn.accept.users="test::prod"
 cas.common.setting="value"
 ```
 
-For small configuration changes between tiers, this is arguably simpler than having, for example, `cas.properties`, `dev.properties` and `prod.properties` files. For anything else larger and more complicated, you still may want to think about separating settings into multiple files or perhaps consider using the [Spring Cloud Config Server](https://fawnoos.com/2018/10/25/cas6-cloud-config-server/).
+For small configuration changes between tiers, this is arguably simpler than having, for example, `cas.properties`, `dev.properties` and `prod.properties` files. For anything else larger and more complicated, you still may want to think about separating settings into multiple files or perhaps consider using the [Spring Cloud Config Server](/2018/10/25/cas6-cloud-config-server/).
 
 ## Finale
 

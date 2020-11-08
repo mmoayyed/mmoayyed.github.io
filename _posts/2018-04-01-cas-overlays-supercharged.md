@@ -51,7 +51,7 @@ Any time you are about to tap into CAS internals, you should pause and reconside
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-Though put in somewhat extreme terms, consider this a best malpractice that if your CAS deployment overlay contains any `.java` code, chances are you are doing something *wrong*. There should be [better routes and strategies](https://fawnoos.com/2017/09/10/stop-writing-code/) on how to deliver the same end result and those should not solely and exclusively belong to your deployment. You are not that special. Given timeline and budget if you find no other strategy, always label the changes to be temporary and work as hard as you can to remove it. I could not tell you how many times I have been involved in deployments where the prospect has made significant modifications to CAS internals and...
+Though put in somewhat extreme terms, consider this a best malpractice that if your CAS deployment overlay contains any `.java` code, chances are you are doing something *wrong*. There should be [better routes and strategies](/2017/09/10/stop-writing-code/) on how to deliver the same end result and those should not solely and exclusively belong to your deployment. You are not that special. Given timeline and budget if you find no other strategy, always label the changes to be temporary and work as hard as you can to remove it. I could not tell you how many times I have been involved in deployments where the prospect has made significant modifications to CAS internals and...
 
 - Has no clue how the changes work.
 - ...or the person responsible for the changes is no longer with the organization.
@@ -211,7 +211,7 @@ As you can see, there are inherent dangers in this approach:
 
 But there is light at the end of the tunnel. Now that you have made a reasonable change and are satisfied with its behavior, the next best course of action would be to remove the file altogether (and every other change you made along with it) and contribute the fix back to the CAS codebase. This is *NOT* the sort of change that should be specialized for any single deployment and in the interest of "*It Should Just Work*", the behavior of `ValidateCaptchaAction` should just do the correct thing by default, removing any learning curve or need for one to make changes.
 
-As a [follow-up to this blog post](https://fawnoos.com/2018/04/05/cas-codebase-feature-build), I will outline how the change can be developed and tested from the perspective of the CAS codebase itself.
+As a [follow-up to this blog post](/2018/04/05/cas-codebase-feature-build), I will outline how the change can be developed and tested from the perspective of the CAS codebase itself.
 
 Stay tuned!
 

@@ -110,7 +110,7 @@ That should do for now. Let's get CAS running.
 
 Integration with MongoDB in CAS to manage configuration can be done in a number of ways:
 
-- If you have the [Spring Cloud Config Server](https://fawnoos.com/2018/10/25/cas6-cloud-config-server/) deployed, MongoDB could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with MongoDB to fetch settings, etc.
+- If you have the [Spring Cloud Config Server](/2018/10/25/cas6-cloud-config-server/) deployed, MongoDB could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with MongoDB to fetch settings, etc.
 
 - Alternatively, you may decide to connect your CAS server directly to MongoDB and fetch settings. This is the approach we are going to try in this tutorial for a quick win, but do note that the strategy is almost the same if we were to use the Cloud Config server.
 

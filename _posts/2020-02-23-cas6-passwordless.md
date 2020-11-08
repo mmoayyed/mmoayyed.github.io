@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-Since the introduction of [Passwordless Authentication](https://fawnoos.com/2019/07/18/cas61x-passwordless-authn/) in CAS `6.1.x`, a lot of additional and useful improvements are added to make this integration seamlessly integrate with other forms of authentication such as delegation or multifactor. This blog post intends to demonstrate a few advanced variations of passwordless authentication in combination with other authentication flows and forms.
+Since the introduction of [Passwordless Authentication](/2019/07/18/cas61x-passwordless-authn/) in CAS `6.1.x`, a lot of additional and useful improvements are added to make this integration seamlessly integrate with other forms of authentication such as delegation or multifactor. This blog post intends to demonstrate a few advanced variations of passwordless authentication in combination with other authentication flows and forms.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

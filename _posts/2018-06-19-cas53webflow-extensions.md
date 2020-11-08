@@ -28,7 +28,7 @@ This tutorial specifically requires and focuses on:
 - Java 8
 - [Maven WAR Overlay](https://apereo.github.io/cas/5.3.x/installation/Maven-Overlay-Installation.html)
 
-This post *might* equally apply to CAS `5.2.x`. YMMV. To learn the same answers with CAS `5.0.x`, please [see this post](https://fawnoos.com/2017/10/07/webflow-extcfg/).
+This post *might* equally apply to CAS `5.2.x`. YMMV. To learn the same answers with CAS `5.0.x`, please [see this post](/2017/10/07/webflow-extcfg/).
 
 # Webflow Configurers
 

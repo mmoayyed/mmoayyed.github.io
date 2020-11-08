@@ -8,7 +8,7 @@ tags:       [CAS]
 
 [Traefik](https://doc.traefik.io/traefik/) is an open-source cloud-native, modern reverse proxy and edge Router that makes publishing services quite simple. Its key characteristic is that it can automatically discover the right configuration for services as it inspects infrastructure to find relevant information on which service serves which request.
 
-In this post, we will take a look at how Apereo CAS can be [deployed via Docker](https://fawnoos.com/2020/01/31/cas6-docker-deployment/) and sit behind Traefik. A dockerized CAS deployment is an existing CAS overlay project wrapped in Spring Boot, Docker, and Docker Compose. This setup requires a few extra modifications in order to allow an additional integration with Traefik for http and https access.
+In this post, we will take a look at how Apereo CAS can be [deployed via Docker](/2020/01/31/cas6-docker-deployment/) and sit behind Traefik. A dockerized CAS deployment is an existing CAS overlay project wrapped in Spring Boot, Docker, and Docker Compose. This setup requires a few extra modifications in order to allow an additional integration with Traefik for http and https access.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

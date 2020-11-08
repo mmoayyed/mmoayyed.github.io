@@ -131,7 +131,7 @@ public AuthenticationManager casAuthenticationManager() {
 }
 ```
 
-You should only take up this option as a last resort, [and maybe not even then](https://fawnoos.com/2017/09/10/stop-writing-code/).
+You should only take up this option as a last resort, [and maybe not even then](/2017/09/10/stop-writing-code/).
 
 # So...
 

@@ -25,7 +25,7 @@ In the most common use case, CAS is made entirely invisible to the end-user such
 Of course, you and I know that source could very well be ADFS; but that's just between you and me...and let's keep it that way!
 
 <div class="alert alert-success">
-  <strong>Usage Warning</strong><br/>If you are trying to figure how you may log into ADFS while CAS plays the role of a SAML2 identity provider, you are in the wrong place. Please <a href="https://fawnoos.com/2017/11/22/cas-saml-integration-adfs/">read this post</a> instead.
+  <strong>Usage Warning</strong><br/>If you are trying to figure how you may log into ADFS while CAS plays the role of a SAML2 identity provider, you are in the wrong place. Please <a href="/2017/11/22/cas-saml-integration-adfs/">read this post</a> instead.
 </div>
 
 Our starting position is based on the following:
@@ -35,7 +35,7 @@ Our starting position is based on the following:
 - [Maven Overlay](https://github.com/apereo/cas-overlay-template) (The `6.0` branch specifically)
 
 <div class="alert alert-info">
-  <strong>The Cutting Edge</strong><br/>Note that as of this writing today, CAS <code>6</code> is very much in development and is not officially released. While the functionality and instructions noted here, more or less remain the same for CAS <code>5</code>, you may want to take steps described here with a pinch of salt, and of course as always, <a href="https://fawnoos.com/2017/03/08/the-myth-of-ga-rel/">shake well before use</a>.
+  <strong>The Cutting Edge</strong><br/>Note that as of this writing today, CAS <code>6</code> is very much in development and is not officially released. While the functionality and instructions noted here, more or less remain the same for CAS <code>5</code>, you may want to take steps described here with a pinch of salt, and of course as always, <a href="/2017/03/08/the-myth-of-ga-rel/">shake well before use</a>.
 </div>
 
 ## Configuration
@@ -80,7 +80,7 @@ A few tips for the enlightened:
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](https://fawnoos.com/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](https://fawnoos.com/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
+If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
 
 ## Mutating Attributes
 

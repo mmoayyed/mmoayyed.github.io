@@ -71,7 +71,7 @@ either in plain or JWT format.
 
 # Plain Access Tokens
 
-[Let's start simple](https://fawnoos.com/2018/09/05/effective-diagnostics/#start-simple), by using the `password` grant to request 
+[Let's start simple](/2018/09/05/effective-diagnostics/#start-simple), by using the `password` grant to request 
 an access token without any extra configurations:
 
 ```bash

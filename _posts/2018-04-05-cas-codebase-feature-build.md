@@ -7,7 +7,7 @@ tags:       [CAS]
 
 # Overview
 
-Following up on my previous blog post on [changing CAS source code in an overlay](https://fawnoos.com/2018/04/01/cas-overlays-supercharged/), in this exercise we are going to more or less repeat the same experience except that this time, we will be addressing the changes and workload from the perspective of the CAS codebase. This quick walkthrough effectively aims for the following objectives:
+Following up on my previous blog post on [changing CAS source code in an overlay](/2018/04/01/cas-overlays-supercharged/), in this exercise we are going to more or less repeat the same experience except that this time, we will be addressing the changes and workload from the perspective of the CAS codebase. This quick walkthrough effectively aims for the following objectives:
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

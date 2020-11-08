@@ -30,7 +30,7 @@ In this short tutorial, we are briefly going to review the specifics of the redi
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
-A similar blog post on how tuning service matching strategies [can be found here](https://fawnoos.com/2019/10/28/cas61x-service-matching-strategy/).
+A similar blog post on how tuning service matching strategies [can be found here](/2019/10/28/cas61x-service-matching-strategy/).
 
 # Configuration
 
