@@ -15,7 +15,7 @@ This tutorial specifically requires and focuses on:
 
 # Overview
 
-To get started with a CAS deployment, adopters typically start with a plain [Gradle-based overlay project](overlayrepo) on GitHub and use that as a baseline for future modifications. While this has been the traditional and recommended approach for many years, it can also be rather challenging for a relatively-novice user new to the ecosystem to download, modify and prepare an overlay project to include all required customizations. Given the overlay project's static nature, it can also be challenging for project owners and maintainers to keep it up-to-date or offer additional enhancements and automation without affecting the baseline template.
+To get started with a CAS deployment, adopters typically start with a plain [Gradle-based overlay project][overlayrepo] on GitHub and use that as a baseline for future modifications. While this has been the traditional and recommended approach for many years, it can also be rather challenging for a relatively-novice user new to the ecosystem to download, modify and prepare an overlay project to include all required customizations. Given the overlay project's static nature, it can also be challenging for project owners and maintainers to keep it up-to-date or offer additional enhancements and automation without affecting the baseline template.
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"

@@ -34,7 +34,7 @@ This tutorial specifically requires and focuses on:
 
 Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building it from source, overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself, override/insert specific behavior into it and then merge it all back together to produce the final (web application) artifact. You can find a lot more about how overlays work [here][overlaysetup].
 
-Please note that a CAS WAR Overlay can also be generated on demand using the [CAS Initializr](2020/11/14/cas63-cas-initializr/).
+Please note that a CAS WAR Overlay can also be generated on demand using the [CAS Initializr](/2020/11/14/cas63-cas-initializr/).
 
 The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `6.2`.
 
