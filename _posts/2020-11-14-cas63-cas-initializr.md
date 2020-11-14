@@ -28,7 +28,7 @@ To get started with a CAS deployment, adopters typically start with a plain [Gra
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-To address such scenarios, [Apereo CAS Initializr][initializr] offers a fast way to pull in all the dependencies and modules needed for a CAS deployment and providers friendly and programmatic API to generate an overlay structure and required build files. The underlying framework that handles the project generation task [can be found here](https://github.com/spring-io/initializr).
+To address such scenarios, [Apereo CAS Initializr][initializr] offers a fast way to pull in all the dependencies and modules needed for a CAS deployment and provides friendly and programmatic API to generate an overlay structure and required build files. The underlying framework that handles the project generation task [can be found here](https://github.com/spring-io/initializr).
 
 Let's review the setup.
 
