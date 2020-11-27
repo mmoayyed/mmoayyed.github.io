@@ -5,9 +5,18 @@ summary:    Learn how to Duo Security for multifactor authentication with Apereo
 tags:       [CAS]
 ---
 
-Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. Support for Duo Security can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. Furthermore, recent versions of CAS can provide integration support for Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi).
+Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. Support for Duo Security can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. Furthermore, recent versions of CAS can provide integration support for Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi). In this walkthrough, we'll take a look at the Duo Security integration setup with CAS and will also review options for command-line or API access. 
 
-In this walkthrough, we'll take a look at the Duo Security integration setup with CAS and will also review options for command-line or API access. 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 This tutorial specifically requires and focuses on:
 
@@ -35,7 +44,24 @@ import os, hashlib
 print hashlib.sha1(os.urandom(32)).hexdigest()
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The *Universal Prompt* variant no longer requires you to generate and use a application key value. Instead, it requires a client id and client secret, which are known and taught to CAS using the integration key and secret key configuration settings. You will need to get your integration key, secret key, and API hostname from Duo Security when you register CAS as a protected application. In the CAS settings, the absence of `duo-application-key` indicates that Universal Prompt should be used instead of the WebSDK integration mode.
+
+```
+cas.authn.mfa.duo[0].duo-secret-key=...
+cas.authn.mfa.duo[0].duo-integration-key=...
+cas.authn.mfa.duo[0].duo-api-host=..
+```
 
 Furthermore, let's make sure that all requests from all applications should be asked for multifactor authentication with Duo Security:
 
@@ -51,7 +77,7 @@ For testing and demo purposes, I am using the [Bootiful CAS Client](https://gith
 
 ```groovy
 @RequestMapping(value = '/json', method = RequestMethod.GET, produces = "application/json")
-  def json(HttpServletRequest request) {
+def json(HttpServletRequest request) {
     return request.userPrincipal
 }
 ```
@@ -67,6 +93,17 @@ request-wrapper-url-patterns: [/protected, /protected2, /json]
 assertion-thread-local-url-patterns: [/*]
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Of course, don't forget that the application (i.e. `https://localhost:8444`) must be [registered with CAS](https://apereo.github.io/cas/development/services/Service-Management.html) before proceeding to the next step.
 
 ## Test
@@ -76,10 +113,22 @@ The Duo Security module of CAS can also support non-browser multifactor authenti
 Once the CAS server and the client application are running, we can try a programmatic command-line access request to our `/json` endpoint:
 
 ```bash
-curl -k --location --header "Content-Type: application/cas" https://localhost:8444/json -L -u casuser:Mellon | jq
+curl -k --location --header "Content-Type: application/cas" \
+  https://localhost:8444/json -L -u casuser:Mellon | jq
 ```
 
 In this example, `curl` attempts to authenticate into our API by first exercising basic authentication while identifying the request content type as `application/cas`. The request is passed along to CAS which authenticates the user credentials and performs Duo MFA using a push notification. Once the user accepts and acknowledges the notification, the MFA sequence will complete to finally return the authenticated user profile to our endpoint:
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ```json
 {
