@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Protect APIs via Duo Security MFA
-summary:    Learn how to Duo Security for multifactor authentication with Apereo CAS to protect application APIs and REST endpoints in non-browser MFA sequences.
+summary:    Learn how to use Duo Security for multifactor authentication with Apereo CAS to protect application APIs and REST endpoints in non-browser MFA sequences.
 tags:       [CAS]
 ---
 
