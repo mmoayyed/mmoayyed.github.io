@@ -7,6 +7,17 @@ tags:       [CAS]
 
 Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. In scenarios where CAS is also acting as a SAML2 identity provider, there may be a requirement to support the [REFEDS MFA Profile](https://refeds.org/profile/mfa) and enforce Duo Security multifactor authentication on service providers that require the REFEDS authentication context class. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 This use case is the exact focus of this post which is based on:
 
 - CAS `6.3.x`
@@ -30,6 +41,17 @@ The *WebSDK* variant for Duo Security allows CAS to host the Duo Security authen
 import os, hashlib
 print hashlib.sha1(os.urandom(32)).hexdigest()
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Of course, you should also make sure that CAS can [act as a SAML2 identity provider](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html). If you look around the blog, you will find a good number of posts that discuss this topic and its many variants, some of which are listed below:
 
@@ -69,6 +91,17 @@ To handle the above requirement, we need to adjust the CAS configuration to link
 ```
 cas.authn.saml-idp.authentication-context-class-mappings[0]=https://refeds.org/profile/mfa->mfa-duo
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8081398210264173"
+     data-ad-slot="3789603713"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The above setting indicates to CAS that authentication requests that carry the REFEDS MFA profile should be put through multifactor authentication with Duo Security. At the end of this authentication flow, the service provider should be able to examine the SAML2 response for the correct `AuthnContextClassRef` value:
 
