@@ -22,7 +22,7 @@ Of course, *delegation* is just a fancy word that ultimately means, whether auto
 
 In this blog post, we will start from a modest OpenID Connect client application that is integrated with CAS and will be using [Amazon Cognito](https://aws.amazon.com/cognito/) as our external OpenID Connect identity provider to accommodate the following authentication flow:
 
-{% include image.html img="https://user-images.githubusercontent.com/1205228/102455968-bcde1180-4055-11eb-83d0-267d0046f9f6.png" title="CAS Login Flow" %}
+{% include image.html img="https://user-images.githubusercontent.com/1205228/102455968-bcde1180-4055-11eb-83d0-267d0046f9f6.png" width="90%" title="CAS Login Flow" %}
 
 - User accesses OpenID Connect client application.
 - User is redirected to CAS, acting as an OpenID Connect identity provider.
