@@ -33,7 +33,7 @@ options = {
             # :disable_external => true,
             :only_4xx => true,
             :empty_alt_ignore => true,
-            :url_ignore => [ %r{^/2}]
+            :url_ignore => [ %r{(^/2)}]
           }
 # test your out dir!
 HTMLProofer.check_directory("./out", options).run

@@ -1,0 +1,11 @@
+<div class="image-wrapper" >
+    {% if include.url %}
+        <a href="{{ include.url }}" title="{{ include.title }}" target="_blank"></a>
+    {% endif %}
+        
+    <img src="{{ include.img }}" title="{{ include.title }} - Fawnoos || Open-Source Identity and Access Management Consulting Services" />
+
+    {% if include.url %}
+    </a>
+    {% endif %}
+  </div>
