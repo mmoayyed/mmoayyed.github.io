@@ -7,7 +7,7 @@ tags:       [CAS]
 
 This blog post demonstrates how to set up a [Vue.js](https://vuejs.org/) SPA application to authenticate and authorize using OpenID Connect Code flow with PKCE. The [Vue OIDC Client](https://github.com/soukoku/vue-oidc-client) sample application is used to implement the client-side authentication logic and validation logic and the Apereo CAS server is used to act as an OpenID Connect identity provider.
 
-{% include googlead1.html  %}
+{% include googlead2.html  %}
 
 Our starting position is as follows:
 

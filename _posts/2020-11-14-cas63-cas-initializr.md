@@ -192,6 +192,8 @@ This scenario should demonstrate the power of generating an overlay based on dyn
 
 One great thing about the CAS Initializr is that it can automatically present a starting template for all relevant and required properties that affect module selections. At generation time, the system can determine the set of properties that control behavior for selected modules and it can automatically present a configuration template in `cas.properties` to include all affected settings along with their description, type, default value, deprecation status, and more.
 
+{% include googlead2.html  %}
+
 ```
 etc
 └── cas
