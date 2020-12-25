@@ -5,7 +5,7 @@ summary:    Learn how to use Amazon Cognito as an external OpenID Connect identi
 tags:       [CAS]
 ---
 
-Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
+Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers](https://apereo.github.io/cas/6.3.x/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
 Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
 
@@ -30,7 +30,7 @@ Our starting position is as follows:
 
 ## Configuration
 
-Once you have the correct modules in the WAR overlay for [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html) and [Delegated Authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html), you will need to make sure CAS is able to hand off authentication to the Amazon Cognito identity provider:
+Once you have the correct modules in the WAR overlay for [OpenID Connect](https://apereo.github.io/cas/6.3.x/installation/OIDC-Authentication.html) and [Delegated Authentication](https://apereo.github.io/cas/6.3.x/integration/Delegate-Authentication.html), you will need to make sure CAS is able to hand off authentication to the Amazon Cognito identity provider:
 
 ```
 cas.authn.pac4j.oidc[0].generic.id=abcdefgh
@@ -40,7 +40,7 @@ cas.authn.pac4j.oidc[0].generic.discovery-uri=\
 cas.authn.pac4j.oidc[0].generic.client-name=AwsCognitoOidcClient
 ```
 
-Of course, we also need to make sure our OpenID Connect client application is [registered with CAS](https://apereo.github.io/cas/development/services/JSON-Service-Management.html):
+Of course, we also need to make sure our OpenID Connect client application is [registered with CAS](https://apereo.github.io/cas/6.3.x/services/JSON-Service-Management.html):
 
 {% include googlead1.html  %}
 

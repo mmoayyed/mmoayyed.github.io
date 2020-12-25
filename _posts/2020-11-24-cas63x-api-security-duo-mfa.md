@@ -19,7 +19,7 @@ This tutorial specifically requires and focuses on:
 
 ## CAS Server
 
-The CAS overlay should be prepped with a method for primary authentication, such as [Basic Auth](https://apereo.github.io/cas/development/installation/Basic-Authentication.html). This is especially appropriate for command-line access if we are to access APIs using `curl` with the combination of Basic Auth as well as Duo MFA. Furthermore, CAS overlay must include the [appropriate module](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html) for Duo Security in the build, and integration settings must be obtained from the Duo admin console and be provided as CAS properties:
+The CAS overlay should be prepped with a method for primary authentication, such as [Basic Auth](https://apereo.github.io/cas/6.3.x/installation/Basic-Authentication.html). This is especially appropriate for command-line access if we are to access APIs using `curl` with the combination of Basic Auth as well as Duo MFA. Furthermore, CAS overlay must include the [appropriate module](https://apereo.github.io/cas/6.3.x/mfa/DuoSecurity-Authentication.html) for Duo Security in the build, and integration settings must be obtained from the Duo admin console and be provided as CAS properties:
 
 ```
 cas.authn.mfa.duo[0].duo-secret-key=...
@@ -77,7 +77,7 @@ assertion-thread-local-url-patterns: [/*]
 
 {% include googlead1.html  %}
 
-Of course, don't forget that the application (i.e. `https://localhost:8444`) must be [registered with CAS](https://apereo.github.io/cas/development/services/Service-Management.html) before proceeding to the next step.
+Of course, don't forget that the application (i.e. `https://localhost:8444`) must be [registered with CAS](https://apereo.github.io/cas/6.3.x/services/Service-Management.html) before proceeding to the next step.
 
 ## Test
 

@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-[Prometheus](https://prometheus.io/) is an open-source monitoring system designed to pull and scrap metrics data over HTTP periodically at a configured interval. It also presents a simple user interface to visualize, query, and monitor all the metrics. Prometheus is natively [supported by Apereo CAS](https://apereo.github.io/cas/development/monitoring/Configuring-Metrics.html) by taking advantage of Spring Boot's actuator metrics exported and supported by the Micrometer library; a framework that presents metrics data to a variety of external monitoring systems. 
+[Prometheus](https://prometheus.io/) is an open-source monitoring system designed to pull and scrap metrics data over HTTP periodically at a configured interval. It also presents a simple user interface to visualize, query, and monitor all the metrics. Prometheus is natively [supported by Apereo CAS](https://apereo.github.io/cas/6.3.x/monitoring/Configuring-Metrics.html) by taking advantage of Spring Boot's actuator metrics exported and supported by the Micrometer library; a framework that presents metrics data to a variety of external monitoring systems. 
 
 {% include googlead1.html  %}
 

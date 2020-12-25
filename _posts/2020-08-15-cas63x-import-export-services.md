@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-Apereo CAS offers a large menu of options for [managing client application registration records](https://apereo.github.io/cas/development/services/Service-Management.html). One popular option especially applicable to distributed deployments of the CAS server is to store application policies inside a [relational database](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) such as MySQL, Oracle, etc. In this use case, while CAS can be configured to automatically generate the necessary schemas and table structures required to manage application data, it might be challenging to properly import existing applications into the database or export the current dataset into a friendly format for reviews and audits. Rather than playing around with database native tooling or manually fiddling with fancy SQL statements, (a very-discouraged endeavor), the CAS server itself offers a few additional tools that allow one to import or export the contents of the service registry regardless of the type of storage service.
+Apereo CAS offers a large menu of options for [managing client application registration records](https://apereo.github.io/cas/6.3.x/services/Service-Management.html). One popular option especially applicable to distributed deployments of the CAS server is to store application policies inside a [relational database](https://apereo.github.io/cas/6.3.x/services/JPA-Service-Management.html) such as MySQL, Oracle, etc. In this use case, while CAS can be configured to automatically generate the necessary schemas and table structures required to manage application data, it might be challenging to properly import existing applications into the database or export the current dataset into a friendly format for reviews and audits. Rather than playing around with database native tooling or manually fiddling with fancy SQL statements, (a very-discouraged endeavor), the CAS server itself offers a few additional tools that allow one to import or export the contents of the service registry regardless of the type of storage service.
 
 {% include googlead1.html  %}
 
@@ -19,7 +19,7 @@ Our starting position is as follows:
 
 # Setup
 
-The service management facilities in Apereo CAS can be controlled and massaged using several [actuator endpoints](https://apereo.github.io/cas/development/services/Service-Management.html#administrative-endpoints). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the service registry, export entries as a zip file or import a pre-existing application policy file into the registry without having to deal with the specifics of the storage technology used by CAS.
+The service management facilities in Apereo CAS can be controlled and massaged using several [actuator endpoints](https://apereo.github.io/cas/6.3.x/services/Service-Management.html#administrative-endpoints). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the service registry, export entries as a zip file or import a pre-existing application policy file into the registry without having to deal with the specifics of the storage technology used by CAS.
 
 For example, let's imagine that a CAS server deployment is backed by a MySQL database to manage application policies. To start, we can verify the initial empty state of the service registry by invoking an actuator endpoint that reports back the registry contents:
 
@@ -80,7 +80,7 @@ curl -u casuser:Mellon https://sso.example.org/cas/actuator/exportRegisteredServ
 
 # So...
 
-Remember that the strategies outlined in this guide apply to all types of technologies and services that can [manage application definitions](https://apereo.github.io/cas/development/services/Service-Management.html#storage) in Apereo CAS. They are not limited to relational databases, and should work all the same if your deployment uses MongoDb, Cassandra or any other technology as the backing solution for the CAS service registry. 
+Remember that the strategies outlined in this guide apply to all types of technologies and services that can [manage application definitions](https://apereo.github.io/cas/6.3.x/services/Service-Management.html#storage) in Apereo CAS. They are not limited to relational databases, and should work all the same if your deployment uses MongoDb, Cassandra or any other technology as the backing solution for the CAS service registry. 
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly [are possible](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/) as well. Feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
 

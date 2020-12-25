@@ -20,7 +20,7 @@ Our starting position is as follows:
 
 ## CAS Configuration
 
-Once you have the correct modules in the WAR overlay for [OpenID Connect](https://apereo.github.io/cas/development/installation/OIDC-Authentication.html), you will need to make sure the client application is [registered with CAS](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) as a relying party:
+Once you have the correct modules in the WAR overlay for [OpenID Connect](https://apereo.github.io/cas/6.3.x/installation/OIDC-Authentication.html), you will need to make sure the client application is [registered with CAS](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) as a relying party:
 
 ```json
 {

@@ -18,7 +18,7 @@ Our starting position is as follows:
 
 ## CAS Configuration
 
-Actuator endpoints that are provided by CAS are available in a [separate extension module](https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html) that must be included in the build configuration of the CAS WAR overlay. Once included, we can begin by enabling the `status` actuator endpoint and exposing it over HTTP. We will also mark the endpoint's access rule as `AUTHENTICATED` to disable anonymous access
+Actuator endpoints that are provided by CAS are available in a [separate extension module](https://apereo.github.io/cas/6.3.x/monitoring/Monitoring-Statistics.html) that must be included in the build configuration of the CAS WAR overlay. Once included, we can begin by enabling the `status` actuator endpoint and exposing it over HTTP. We will also mark the endpoint's access rule as `AUTHENTICATED` to disable anonymous access
 
 ```properties
 management.endpoint.status.enabled=true

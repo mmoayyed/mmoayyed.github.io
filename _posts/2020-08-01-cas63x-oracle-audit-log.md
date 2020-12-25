@@ -6,7 +6,7 @@ published: true
 tags:       [CAS]
 ---
 
-Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/development/installation/Audits.html) that capture events such as creation and removal of tokens, authentication sessions, requests and responses, and a lot more. Each audited operation typically carries a subject, an action, date/time of the event as well as other peripheral types of information such as client and server IP addresses, etc. Audit events can of course be managed and stored in a variety of database types, the most common of which happens to be [relational databases](https://apereo.github.io/cas/development/installation/Audits.html#database-audits) such as MySQL, Oracle, etc.
+Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/6.3.x/installation/Audits.html) that capture events such as creation and removal of tokens, authentication sessions, requests and responses, and a lot more. Each audited operation typically carries a subject, an action, date/time of the event as well as other peripheral types of information such as client and server IP addresses, etc. Audit events can of course be managed and stored in a variety of database types, the most common of which happens to be [relational databases](https://apereo.github.io/cas/6.3.x/installation/Audits.html#database-audits) such as MySQL, Oracle, etc.
 
 This post demonstrates an overview of how audit events can be stored in an Oracle relational database and reviews the configuration required for Oracle databases to correctly retrieve,  filter and clean up audit history.
 
@@ -21,7 +21,7 @@ Our starting position is as follows:
 
 # Initial Setup
 
-Support for storing audit data into a relational database is first enabled by including the appropriate auto-configuration module in the build script of the [CAS WAR Overlay](https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html):
+Support for storing audit data into a relational database is first enabled by including the appropriate auto-configuration module in the build script of the [CAS WAR Overlay](https://apereo.github.io/cas/6.3.x/installation/WAR-Overlay-Installation.html):
 
 ```gradle
 implementation "org.apereo.cas:cas-server-support-audit-jdbc:${project.'cas.version'}"
@@ -41,7 +41,7 @@ cas.audit.jdbc.ddl-auto: create-drop
 ```
 
 <div class="alert alert-info">
-  <strong>Schema Generation</strong><br/>Note the presence of the <code>ddl-auto</code> field which allows Hibernate to automatically generate the database schema required for audits. This mode will also automatically drop the generated schemas at the end of every session, and is <strong>primarily useful for development and testing</strong>. To learn more about other appropriate options for production, <a href="https://apereo.github.io/cas/development/configuration/Configuration-Properties-Common.html#ddl-configuration">see this</a>.
+  <strong>Schema Generation</strong><br/>Note the presence of the <code>ddl-auto</code> field which allows Hibernate to automatically generate the database schema required for audits. This mode will also automatically drop the generated schemas at the end of every session, and is <strong>primarily useful for development and testing</strong>. To learn more about other appropriate options for production, <a href="https://apereo.github.io/cas/6.3.x/configuration/Configuration-Properties-Common.html#ddl-configuration">see this</a>.
 </div>
 
 That might be just enough; however, depending on how the Oracle database may be installed and configured, you may receive an error complaining about <code>ORA-01843: Not a Valid Month</code>. What is that about?
@@ -74,7 +74,7 @@ The above settings instruct CAS to schedule the cleaner process, running it ever
 
 ## Viewing Audits
 
-The audit management facilities in Apereo CAS can be fetched using [actuator endpoints](https://apereo.github.io/cas/development/installation/Audits.html#administrative-endpoints). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the audit database and report back records based on configurable filtering criteria.
+The audit management facilities in Apereo CAS can be fetched using [actuator endpoints](https://apereo.github.io/cas/6.3.x/installation/Audits.html#administrative-endpoints). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the audit database and report back records based on configurable filtering criteria.
 
 
 {% include googlead1.html  %}

@@ -17,7 +17,7 @@ This use case is the exact focus of this post which is based on:
 
 ## CAS Configuration
 
-The CAS overlay must include the [appropriate module](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html) for Duo Security in the build, and integration settings must be obtained from the Duo admin console and be provided as CAS properties:
+The CAS overlay must include the [appropriate module](https://apereo.github.io/cas/6.3.x/mfa/DuoSecurity-Authentication.html) for Duo Security in the build, and integration settings must be obtained from the Duo admin console and be provided as CAS properties:
 
 ```
 cas.authn.mfa.duo[0].duo-secret-key=...
@@ -35,7 +35,7 @@ print hashlib.sha1(os.urandom(32)).hexdigest()
 
 {% include googlead1.html  %}
 
-Of course, you should also make sure that CAS can [act as a SAML2 identity provider](https://apereo.github.io/cas/development/installation/Configuring-SAML2-Authentication.html). If you look around the blog, you will find a good number of posts that discuss this topic and its many variants, some of which are listed below:
+Of course, you should also make sure that CAS can [act as a SAML2 identity provider](https://apereo.github.io/cas/6.3.x/installation/Configuring-SAML2-Authentication.html). If you look around the blog, you will find a good number of posts that discuss this topic and its many variants, some of which are listed below:
 
 - [Apereo CAS - SAML2 Metadata Query Protocol](/2019/04/12/cas61x-saml-idp-mdq/)
 - [Apereo CAS - SAML2 Identity Provider Integration w/ InCommon](/2019/01/18/cas61-saml2-idp-incommon/)
