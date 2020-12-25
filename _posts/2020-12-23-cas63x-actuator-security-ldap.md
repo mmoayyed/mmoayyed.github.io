@@ -106,7 +106,7 @@ cas.monitor.endpoints.ldap.ldap-authz.group-prefix=GRP_
 spring.security.user.roles=GRP_HR_ADMIN
 ```
 
-{% include googlead1.html  %}
+{% include googlead2.html  %}
 
 The `{user}` parameter will be replaced with the user DN at runtime to locate group membership. For each membership entry the value of the `businessCategory` is used to build the role, along with the prefix `GRP_`. For example, `cn=casuser,ou=People,dc=example,dc=org` is a member of the group `cn=HR Managers,ou=Groups,dc=example,dc=org`, as specified by the `uniquemember` attribute. The `businessCategory` for this membership is set to `HR_ADMIN`, which permits CAS to build the final role as `GRP_HR_ADMIN` and allows the endpoint request to pass authorization and gain access.
 
