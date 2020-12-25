@@ -7,16 +7,7 @@ tags:       [CAS]
 
 A fairly common CAS deployment use case is to enforce access to a particular set of applications via user attributes and roles. Once the authentication/authorization server passed on the required attributes and entitlements to the application, each service might individually be tasked with controlling entry access, and once authorized, enforcement of a set of specific functions inside the application which the user may be allowed to carry out. The purpose of this tutorial is to present an alternative to the first scenario, by providing options to centrally control and manage that ruleset that allows the user to enter an application that is integrated with Apereo CAS.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our task list is rather short:
 
@@ -104,16 +95,7 @@ If you [need to troubleshoot](https://apereo.github.io/cas/5.2.x/installation/Tr
 
 The CAS service management facility allows CAS server administrators to declare and configure which services/applications may make use of CAS in different ways. The core component of the service management facility is the service registry that stores one or more registered services containing metadata that drives a number of CAS behaviors including authorization rules.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To keep this tutorial simple, we are going to use the [JSON Service Registry](https://apereo.github.io/cas/5.2.x/installation/JSON-Service-Management.html). This registry reads services definitions from JSON configuration files on startup. JSON files are expected to be found inside a configured directory location and this registry will recursively look through the directory structure to find relevant JSON files.
 

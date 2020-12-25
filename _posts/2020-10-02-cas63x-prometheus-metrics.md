@@ -8,16 +8,7 @@ tags:       [CAS]
 
 [Prometheus](https://prometheus.io/) is an open-source monitoring system designed to pull and scrap metrics data over HTTP periodically at a configured interval. It also presents a simple user interface to visualize, query, and monitor all the metrics. Prometheus is natively [supported by Apereo CAS](https://apereo.github.io/cas/development/monitoring/Configuring-Metrics.html) by taking advantage of Spring Boot's actuator metrics exported and supported by the Micrometer library; a framework that presents metrics data to a variety of external monitoring systems. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this post, we will take a look at how Apereo CAS can export metrics over to Prometheus using Spring Boot actuators. Our starting position is as follows:
 
@@ -47,16 +38,7 @@ management.endpoints.web.exposure.include=prometheus
 cas.monitor.endpoints.endpoint.defaults.access=ANONYMOUS
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 <div class="alert alert-warning">
   <strong>WATCH OUT!</strong><br/>The above collection of settings <strong>MUST</strong> only be used for demo purposes and serve as an <strong>EXAMPLE</strong>. It is not wise to enable and expose all actuator endpoints to the web and certainly, the security of the exposed endpoints should be taken into account very seriously. None of the CAS or Spring Boot actuator endpoints are enabled by default. For production, you should carefully choose which endpoints to expose.
@@ -94,16 +76,7 @@ scrape_configs:
 
 A few things should be pointed out:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 - The `target` element should point to the hostname and port of the running CAS server using the syntax `IP:PORT`. We are specifying the `scheme` as `https` and should specify our CAS server port that is `8443`. Since Prometheus will run as a Docker container, using `localhost` will certainly not work for the host ip address. Instead, `host.docker.internal` can be used (for testing and development purposes only) to indicate the IP address of the host machine that runs our CAS server. 
 - The `insecure_skip_verify` is turned on to skip and disable SSL validation errors. This flag *should only* be used for development and demo purposes.
@@ -123,16 +96,7 @@ You can now navigate to the Prometheus dashboard `http://localhost:9090/new/targ
 
 ![image](https://user-images.githubusercontent.com/1205228/94362564-1e32bc00-00c9-11eb-9b1f-69b7faeab485.png)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Furthermore, you can add graphs based on the metric of choice to visualize metrics data over time:
 
@@ -154,16 +118,7 @@ Next, navigate to `http://localhost:3000/datasources` to set up a datasource for
 
 ![image](https://user-images.githubusercontent.com/1205228/94363706-00695500-00d1-11eb-9b79-4e0945b80f14.png)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Note the URL address of the Prometheus server is `http://172.17.0.2:9090`, where the host is specified as the IP address of the running Prometheus Docker container. You can obtain this IP address via the following command:
 

@@ -14,16 +14,7 @@ When it comes to terms of use with CAS, there are a few aspects you should consi
 2. How could we construct and present that policy?
 3. How do we manage and store user decisions?
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this tutorial, we will briefly take a look at [Acceptable Usage Policy](https://apereo.github.io/cas/6.2.x/webflow/Webflow-Customization-AUP.html) support in CAS, with our starting position as follows:
 
@@ -48,16 +39,7 @@ Let's suppose that we would want to present a different policy based on user typ
 <strong>Clarification</strong><br>This attribute of course is not brought to CAS by storks. The assumption is that the underlying attribute store that provides user data contains an <code>affiliation</code> attribute and CAS is configured correctly to fetch and resolve this attribute for users.
 </div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To achieve this, first, we need to teach CAS about the `affiliation` attribute that distinguishes users for policy terms:
 

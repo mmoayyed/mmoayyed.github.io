@@ -64,16 +64,7 @@ Integration with Vault in CAS is handled using [Spring Cloud Vault](https://clou
 
 - If you have the [Spring Cloud Config Server](/2018/10/25/cas6-cloud-config-server/) deployed, Vault could be one of its many sources for settings and properties. In this scenario, you will just need to make sure the CAS server can talk to the Spring Cloud Config Server correctly, and the Config Server is then in charge of communicating with Vault to fetch settings, etc.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 - Alternatively, you may decide to connect your CAS server directly to Vault and fetch settings. This is the approach we are going to try in this tutorial for a quick win, but do note that the strategy is almost the same if we were to use the Cloud Config server.
 
@@ -117,16 +108,7 @@ Build and deploy. At this point, you should be able to log into CAS using `casus
 
 If a secret changes, Vault has no way to broadcast the updated value(s) to its own clients, such as the CAS server itself. Therefore, in order to broadcast such change events CAS presents various endpoints that allow the user to [refresh the configuration](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Management-Reload.html) as needed. This means that an adopter would simply change a required CAS setting and then would submit a request to CAS to *refresh* its current state. At runtime! All CAS internal components that are affected by the external change are quietly reloaded and the setting takes immediate effect, completely removing the need for container restarts or CAS re-deployments.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 For example, start by changing the value of `cas.authn.accept.users` in Vault to something like `casuser::HelloWorld`. Then, execute the following command to refresh the CAS application context:
 

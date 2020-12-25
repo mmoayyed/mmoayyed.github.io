@@ -37,16 +37,7 @@ This should present you with the general welcome message as well as a list of co
 
 One of the more useful utilities baked into CAS CLI tool is the ability to search for CAS settings and get better documentation and help on each. All individual CAS properties in most cases carry relevant Javadocs, examples, and links embedded right alongside the field in the housing component. The CAS build process upon every release attempts to collect all settings and their documentation into a JSON metadata file that can be queried by the CLI tool for more info. This of course not only includes CAS specific settings (i.e. `cas.authn.xyz=something`) but also all other Spring Boot settings and just about any other component that exposes its settings via a `@ConfigurationProperties`. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If you want to learn more about how this is done, please [see this article](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html).
 

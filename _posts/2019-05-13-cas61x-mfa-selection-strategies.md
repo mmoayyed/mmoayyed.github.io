@@ -11,16 +11,7 @@ tags:       [CAS]
 
 Sometimes, it takes more than one multifactor provider to change a lightbulb. With CAS, it is certainly possible to configure more than one provider integration at the same time. The trick, however, is to decide the appropriate provider, should more than one qualify for the same transaction. Imagine you have an application registered with CAS whose multifactor authentication policy is equally deserving of, let's say, Duo Security as well as Google Authenticator. How would you go about choosing one that makes the most sense? 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on:
 
@@ -63,16 +54,7 @@ cas.authn.mfa.gauth.rank=10
 
 When CAS sees that the application policy allows for both `mfa-duo` and `mfa-gauth`, it evaluates the rank for each and picks the one that outranks the other. In the above example, Google Authenticator will be chosen over Duo Security. If ranks are equal, that would be the equivalent of *I am feeling lucky* behavior, which is to say unspecified.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Ranking strategies are fine if you are willing to make a decision on behalf of all users. This is CAS, forming an opinion based on pre-defined configuration without taking into account user choice.
 

@@ -8,6 +8,8 @@ tags:       [Shib]
 
 One of the more popular ways of packaging and running the Shibboleth Identity Provider is with Docker. A Docker-based build environment can be particularly useful during development and testing, especially when building add-ons and extending the capabilities of the identity provider with custom code. A build powered by Docker can simulate the deployment environment by packaging the Shibboleth Identity Provider in an Apache Tomcat server with the proper TLS setup, an LDAP server for authentication and attribute release, and maybe a sample service provider and more in a recyclable automated way. 
 
+{% include googlead1.html  %}
+
 When building this sort of development environment, it's often very helpful to attach a debugger to the running Shibboleth IdP container to step into the code and diagnose issues. This implies that the container and the server environment hosting the IdP web application must be prepped and capable of responding to debugger requests from the host machine. 
 
 ## Apache Tomcat Remote Debugging
@@ -20,6 +22,8 @@ First, `JPDA_ADDRESS` and `JPDA_TRANSPORT` (optional) should be defined as envir
 export JPDA_ADDRESS=5005
 export JPDA_TRANSPORT=dt_socket
 ```
+
+{% include googlead1.html  %}
 
 <div class="alert alert-info">
   <strong>JDK Note</strong><br/>Note that from Java 9, the JDWP socket connector accepts <a href="https://bugs.openjdk.java.net/browse/JDK-8175050">only local connections</a> by default. To bypass this restriction for development purposes, specially if the Shibboleth container is running against JDK 11, the JPDA address must be specified as <code>export JPDA_ADDRESS="*:5005"</code> instead.
@@ -42,6 +46,8 @@ EXPOSE 5005
 ## Port Mappings
 
 Finally, you must make sure that port `5005` is properly mapped when you run the Shibboleth Identity Provider container. The development environment I have today is backed by the Gradle build tool and a [special plugin](https://plugins.gradle.org/plugin/de.gesellix.docker) that empowers it with Docker. To handle the port mappings, my `build.gradle` file contains this block:
+
+{% include googlead1.html  %}
 
 ```groovy
 task runShibContainer(type: DockerRunTask) {
@@ -69,6 +75,8 @@ The important bit in the above block is the mapping of port `5005` to the contai
 Once the container is up and running, you should be able to configure a *Remote Run/Debug Configuration* in your IDEA development environment to attach a debugger to port `5005`:
 
 ![image](https://user-images.githubusercontent.com/1205228/95970890-58b48c80-0e1d-11eb-85e9-a1c6a7c51668.png)
+
+{% include googlead1.html  %}
 
 Other IDEs such as eclipse or NetBeans can be configured all the same.
 

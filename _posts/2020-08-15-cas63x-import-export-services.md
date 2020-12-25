@@ -8,16 +8,7 @@ tags:       [CAS]
 
 Apereo CAS offers a large menu of options for [managing client application registration records](https://apereo.github.io/cas/development/services/Service-Management.html). One popular option especially applicable to distributed deployments of the CAS server is to store application policies inside a [relational database](https://apereo.github.io/cas/development/services/JPA-Service-Management.html) such as MySQL, Oracle, etc. In this use case, while CAS can be configured to automatically generate the necessary schemas and table structures required to manage application data, it might be challenging to properly import existing applications into the database or export the current dataset into a friendly format for reviews and audits. Rather than playing around with database native tooling or manually fiddling with fancy SQL statements, (a very-discouraged endeavor), the CAS server itself offers a few additional tools that allow one to import or export the contents of the service registry regardless of the type of storage service.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -42,16 +33,7 @@ curl -u casuser:Mellon https://sso.example.org/cas/actuator/registeredServices |
 </div>
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 
 Next, let's prepare a sample JSON file to represent an application registration record:
@@ -89,16 +71,7 @@ curl -u casuser:Mellon -X POST -H "application/vnd.cas.services+yaml" \
 
 Once entries are imported, you can invoke the previous `registeredServices` actuator endpoint to peek at the content, or you could also ask for an export of the entire service registry as a zip file:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 
 ```bash

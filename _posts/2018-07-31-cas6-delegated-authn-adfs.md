@@ -7,16 +7,7 @@ tags:       [CAS]
 
 Apereo CAS has had support to [delegated authentication to Microsoft ADFS](https://apereo.github.io/cas/6.0.x/integration/ADFS-Integration.html) for quite some time now. This functionality, if memory serves me correctly, started around CAS `3.x` in form of an [extension](https://github.com/Unicon/cas-adfs-integration) which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The story is actually quite simple: The integration between the CAS Server and ADFS delegates user authentication from CAS Server to ADFS, making CAS Server an ADFS client. *Delegation* of course is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate ADFS endpoint and on the return trip back, CAS is tasked to parse the response and extract claims, etc in order to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system such as ADFS in this case and CAS simply begins to act as a client or *proxy* in between.
 
@@ -69,16 +60,7 @@ A few tips for the enlightened:
 - ADFS tends to sign responses using a signing certificate. The certificate will need to be obtained and shared with the CAS server with you physically defining its home and sharing that path with CAS, as is done in my example above with `adfs-signing.cer`.
 - Of course, CAS somehow needs to figure out the authenticated username from the ADFS-produced response. To do this, it tends to look at a specific claim within that response typically released as `upn`. That is to say, you need to ensure ADFS is releasing this attribute (or anything else you prefer) to CAS and then ensure CAS is using the same claim name when it begins to do its extraction magic.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If you are interested to learn more about the settings, I recommend checking out the [CAS commandline shell](/2017/10/30/intro-cas-cli-shell/) or better yet, use the [CAS administrator dashboards](/2018/06/15/cas53-admin-endpoints-security/) to look up documentation and *configuration metadata* by querying for settings.
 

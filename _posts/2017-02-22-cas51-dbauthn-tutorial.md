@@ -10,6 +10,8 @@ tags:       [CAS]
 This is a short and sweet tutorial on how to configure CAS to authenticate against a database and then resolve/release attributes.
 Most of the material is based on the [available documentation](https://apereo.github.io/cas/5.1.x/installation/Database-Authentication.html).
 
+{% include googlead1.html  %}
+
 This tutorial specifically focuses on:
 
 - CAS `5.1.0-RC2-SNAPSHOT`
@@ -43,6 +45,8 @@ Great. Moving on...
 # Create Schema
 
 In my setup, I have two tables: one called `USERS` where user accounts are kept and another called `USERATTRS` where user attributes are kept. My `USERS` table is rather simple, but the `USERATTRS` follows something of a *multi-row* setup. You want to learn more about this setup [here](https://apereo.github.io/cas/5.1.x/integration/Attribute-Resolution.html#person-directory).
+
+{% include googlead1.html  %}
 
 So here goes the SQL:
 
@@ -83,6 +87,8 @@ Note that for the time being, I am just keeping the password as plain-text in th
 
 Hop over to [the overlay installation](https://apereo.github.io/cas/5.1.x/installation/Maven-Overlay-Installation.html) and get CAS built and deployed. The CAS version I am using today is `5.1.0-RC2-SNAPSHOT`. It does not matter whether you end up using Maven or Gradle. Choose what fits you best. When you have a baseline functioning build, continue on.
 
+{% include googlead1.html  %}
+
 # Configure CAS
 
 Follow the steps [described here](https://apereo.github.io/cas/5.1.x/installation/Database-Authentication.html) to add the needed CAS modules. Once the module/dependency is added to your build, hop over to [the settings page](https://apereo.github.io/cas/5.1.x/installation/Configuration-Properties.html#database-authentication) and add the properties. 
@@ -100,6 +106,8 @@ cas.authn.jdbc.query[0].password=
 cas.authn.jdbc.query[0].driverClass=org.hsqldb.jdbcDriver
 cas.authn.jdbc.query[0].fieldPassword=psw
 ```
+
+{% include googlead1.html  %}
 
 I also need to disable static authentication. It would also be very nice if I could turn on `DEBUG` logs and see what CAS attempts to do:
 
@@ -145,6 +153,8 @@ Once you get CAS built and deployed, logs should indicate something like this:
 2017-02-21 14:44:31,884 DEBUG [org.apereo.cas.configuration.support.Beans] - <Creating default password encoder with encoding alg [MD5] and character encoding [UTF-8]>
 ```
 
+{% include googlead1.html  %}
+
 Build and deploy. Log in with `mmoayyed` and `TheBestPasswordEver` and you should be in. Logs may indicate:
 
 ```bash
@@ -168,6 +178,8 @@ cas.authn.attribute-repository.jdbc[0].columnMappings.attrname=attrvalue
 ```
 
 Once CAS understands the schema, we should then specify which attributes really should be retrieved by CAS.
+
+{% include googlead1.html  %}
 
 ```properties
 cas.authn.attribute-repository.attributes.firstname=firstname
@@ -201,6 +213,8 @@ For this to actually be tested, we need a client to which we can release attribu
 ```
 
 Which shows that CAS has been able to understand the schema and map columns to attributes. Logging into the client application also shows me:
+
+{% include googlead1.html  %}
 
 ![image](https://cloud.githubusercontent.com/assets/1205228/23163353/5c39f42a-f847-11e6-806e-6d4e3ca88805.png)
 

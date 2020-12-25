@@ -11,16 +11,7 @@ tags:       [CAS]
 
 CAS has long had support for centralized authorization and [access control policies](https://apereo.github.io/cas/5.3.x/installation/Configuring-Service-Access-Strategy.html) on a per-application basis, I believe starting from CAS `4.2.x`. These policies come in a variety of strategies with a number of options to control application access, SSO participation, the presence of a certain number of required claims before access can be granted and so on. In the event that the policy denies user access, it may often be desirable to redirect the authentication flow to a URL that would have instructions for the end-user and it might even be ideal if the construction of that URL could be customized in dynamic ways for better user experience.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This tutorial specifically focuses on:
 

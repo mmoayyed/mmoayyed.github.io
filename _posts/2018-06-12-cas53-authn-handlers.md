@@ -11,16 +11,7 @@ While [authentication support](https://apereo.github.io/cas/5.3.x/installation/C
 in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case
 is the task of designing custom authentication schemes.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This post:
 
@@ -75,16 +66,7 @@ Note that:
 from the same place as the original user/principal account store, the final `Principal` object that is resolved here must then be able to carry all
 those attributes and claims inside it at construction time.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 - The last parameter, `new ArrayList<>()`, is effectively a collection of warnings that are eventually worked into the authentication chain and conditionally shown to the user. Examples of such warnings include password status nearing an expiration date, etc.
 
@@ -144,16 +126,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.cas.M
 Note that the configuration registration step is not of CAS doing. It's a mechanism provided to CAS via [Spring Boot](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html)
 and it's an efficient way to pick up and register components into the runtime application context without the additional overhead of component-scanning and such.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 At runtime, CAS will try to automatically detect all components and beans that advertise themselves as `AuthenticationEventExecutionPlanConfigurer`s. Each detected `AuthenticationEventExecutionPlanConfigurer` is then invoked to register its own authentication execution plan. The result of this operation at the end will produce a ready-made collection of authentication handlers that are ready to be invoked by CAS in the given order defined if any.
 

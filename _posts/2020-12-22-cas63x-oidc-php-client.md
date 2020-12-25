@@ -8,16 +8,7 @@ tags:       [CAS]
 This blog post demonstrates how to set up a basic PHP application to authenticate and authorize using OpenID Connect Code flow. The [PHP OpenID Connect Client](https://github.com/jumbojett/OpenID-Connect-PHP) is used to implement the client-side authentication and validation logic and the Apereo CAS server is used to act as an OpenID Connect identity provider.
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -54,16 +45,7 @@ composer require jumbojett/openid-connect-php
 
 The typical PHP setup in a `client.php` file is as follows:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```php
 <?php
@@ -108,16 +90,7 @@ We can start the process by presenting a welcome screen to the user:
 
 Once we begin the process, the authentication flow will redirect the browser to CAS. After a successful authentication attempt, w are asked to consent to the release of the requested scopes and claims:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 {% include image.html img="https://user-images.githubusercontent.com/1205228/102709189-45aab680-42bd-11eb-8fc2-460b885eb966.png" width="60%" title="Apereo CAS OpenID Connect Consent" %}
 

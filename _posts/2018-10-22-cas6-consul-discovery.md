@@ -21,16 +21,7 @@ In our case, we could have each CAS server instance in a cluster register itself
 
 The other available [CAS integration with Consul](https://apereo.github.io/cas/6.0.x/installation/Service-Discovery-Guide-Consul.html) deals with managing distributed configuration using the Consul Key/Value store. Consul provides a Key/Value Store for storing configuration and other metadata. CAS takes advantage of the [Spring Cloud Consul Config integration library](http://cloud.spring.io/spring-cloud-consul/single/spring-cloud-consul.html) to fetch such configuration and metadata as an alternative to the [Config Server and Client](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Server-Management.html). 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To learn more about the Consul Key/Value store, please [see this page](https://www.consul.io/api/kv.html).
 
@@ -56,16 +47,7 @@ By default, Consul allows connections to these ports only from the loopback inte
 - CLI RPC (default port: `8400`): handles requests from CLI
 - DNS (default port: `8600`): answers DNS queries
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our Docker command runs a completely in-memory Consul server agent with default bridge networking and no services exposed on the host, which is useful for development but **SHOULD NOT** be used in production. Once you have the server running, you can point your browser to `http://localhost:8500/ui` where you will see something like this:
 
@@ -151,16 +133,7 @@ With the above code snippet, our sample CAS client defines a Spring MVC REST end
 
 Consul provides a Key/Value Store for storing configuration and other metadata. Configuration is loaded into the CAS environment during the special *bootstrap* phase at runtime. Configuration is stored in the `/config` folder by default. Multiple `PropertySource` instances are created based on the application’s name and the active profiles that mimic the Spring Cloud Config order of resolving properties.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 For example, an application with the name `cas` and with the `dev` profile will have the following property sources created:
 
@@ -189,16 +162,7 @@ INFO [RefreshEventListener] - <Refresh keys changed: [cas.authn.accept.users]>
 
 After the change is picked up, you should be able to log into CAS using `casuser` and `Misagh` as the credentials! Just as well, we can delete the setting from Consul, let CAS pick up the change and we should be able to fall back onto the default credentials for static authentication which are `casuser` and `Mellon`.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 How is this possible? There is a thing called *Consul Config Watch* which in CAS takes advantage of the ability of consul to watch a key prefix. It makes a blocking Consul HTTP API call to determine if any relevant configuration data has changed for the current application. If there is new configuration data a `Refresh Event` is published and captured by CAS to refresh the status of the application context, as is demonstrated by the logs. 
 

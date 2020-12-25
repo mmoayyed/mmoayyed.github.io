@@ -17,16 +17,7 @@ This tutorial specifically requires and focuses on:
 
 To get started with a CAS deployment, adopters typically start with a plain [Gradle-based overlay project][overlayrepo] on GitHub and use that as a baseline for future modifications. While this has been the traditional and recommended approach for many years, it can also be rather challenging for a relatively-novice user new to the ecosystem to download, modify and prepare an overlay project to include all required customizations. Given the overlay project's static nature, it can also be challenging for project owners and maintainers to keep it up-to-date or offer additional enhancements and automation without affecting the baseline template.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To address such scenarios, [Apereo CAS Initializr][initializr] offers a fast way to pull in all the dependencies and modules needed for a CAS deployment and provides friendly and programmatic API to generate an overlay structure and required build files. The underlying framework that handles the project generation task [can be found here](https://github.com/spring-io/initializr).
 
@@ -79,16 +70,7 @@ IntelliJ IDEA provides an Initializr project wizard that integrates with the CAS
 
 ![image](https://user-images.githubusercontent.com/1205228/98470078-9e842b00-21f8-11eb-9e40-6641f08da89c.png)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once you have provided the basic project information, you can select the modules advertised by the CAS Initializr:
 
@@ -184,16 +166,7 @@ dependencies {
 }
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 As the comment indicates, there is no need to repeat the CAS version number when declaring dependencies, as those should be automatically found and imported using the referenced BOM.
 
@@ -230,16 +203,7 @@ etc
 
 Of course, such settings are all disabled by default and one would still need to go through them to figure out the specifics of each. Having them at hand in one spot should make it relatively comfortable for one to configure, compared to copy/paste from the official CAS documentation and references. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 You should also notice that the above structure presents two additional *reference* files; one that contains a template of all configuration properties available to the CAS server that are not controlled or owned by the CAS server, and one that lists every setting in control of the CAS project itself. These are reference material and can be treated as dictionaries for when you needed to look up a particular setting, its description, or default value which are produced based on available [configuration metadata](/2019/12/15/cas62x-config-metadata/).
 
@@ -255,16 +219,7 @@ The CAS Initializr can dynamically generate a starting project based on requeste
 
 CAS Initializr at this point is mainly a backend service and a few APIs. However, one could imagine that a graphical and modern user interface could be built on top of available APIs to help with the project generation task, especially for project newcomers.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ## Low Maintenance Cost
 

@@ -13,16 +13,7 @@ Based on the results of the most recent [CAS Survey](https://apereo.github.io/20
 with CAS deployers, one item that is frequently debated and requested from the project is better documentation especially around CAS settings and properties. In this blog
 post, I am going to demonstrate a few ways where one can query the CAS documentation to look up settings, review notes, examine default values, etc.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 # Foreword
 
@@ -114,16 +105,7 @@ If you examine the produced file, you will find a full list of CAS settings alon
 whether the setting requires a particular module in the build and whether that module is automatically included. There is additional metadata to explain
 whether the setting is required and one that is expected to be defined and tweaked by you, or optional with a default value.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 <div class="alert alert-success">
 <strong>Note</strong><br/>If you really wanted to be creative, you could examine the <code>exportConfigMetadata</code> and observe how it builds the final
@@ -220,16 +202,7 @@ can be recognized, parsed and packed for wider use. We have added on layers and 
 placement (i.e. inner classes) or complication of type (i.e. enums, collections, etc). In short, while the result is still far from perfect, it is a large improvement
 over the manual maintenance tasks previously discussed, given project's availability of resources and funding. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Now that we have configuration metadata available as an API, there are many other things that can also be automated such as the automatic 
 generation of a CAS installation script or overlay perhaps using a graphical user interface in wizard-like fashion. The possibilities are quite exciting!

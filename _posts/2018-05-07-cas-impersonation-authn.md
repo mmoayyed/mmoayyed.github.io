@@ -9,16 +9,7 @@ tags:       [CAS]
 
 The Apereo CAS server has had support for impersonation for a quite a while now, starting with CAS `5.1.x`. This feature usually referred to as [*Surrogate Authentication*](https://apereo.github.io/cas/5.3.x/installation/Surrogate-Authentication.html) or *sudo for the web* long existed before the CAS 5 series in form of an extension and gradually and eventually found its way into the mainline distribution through community contributions, having been tested and tried in production battlegrounds.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The idea behind this feature is fairly simple; sometimes you want to be someone else perhaps for the purposes of duplicating a troublesome scenario or troubleshooting a bad user experience, etc. In such scenarios, your own identity and credentials are first verified and assuming you have the authorization to impersonate someone else, you proceed to adopt that person's identity in order to duplicate their user experience and workflow. 
 
@@ -63,16 +54,7 @@ So far, so good.
 
 Our handling of [impersonated authentication attempts](https://apereo.github.io/cas/5.3.x/installation/Surrogate-Authentication.html) scenarios is rather unique. Sometimes, we know beforehand the identity of the user whom we plan to impersonate. Other times, it would be nice to be presented with a menu to choose our target impersonatee. Of course, a mere successful authentication attempt is not enough; not only do we need to be authorized to start impersonation attempts, but also we need special permissions for each impersonated user account. For the purposes of this tutorial, we shall attempt to kill both such birds with one stone; LDAP.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Furthermore, we will need to establish a special sort of syntax instructing CAS to display a list of potential impersonatee accounts authorized for our use as well as one that simply bypasses that menu list and executes the requested impersonation attempt. Per CAS, we may be able to use the *plus syntax* which sort of goes like this:
 

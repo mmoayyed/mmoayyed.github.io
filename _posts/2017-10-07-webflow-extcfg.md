@@ -15,16 +15,7 @@ Some answers follow.
 
 Stop worrying. Stop coding. You are no longer required to become a Spring Webflow ninja or Java champion overnight to apply a myriad of XML configuration snippets here and there to get something to work. That's all taken care of for you. Sit back and relax.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 More importantly, avoid making ad-hoc changes to the Webflow as much as possible. Consider how the change you have in mind might be more suitable as a direct contribution to CAS itself so you can just take advantage of its configuration; NOT its maintenance.
 
@@ -49,16 +40,7 @@ So in the olden days, the following recipe was *more or less* what was done:
 2. Declare a Spring bean definition in `XML` that configures that action class.
 3. Modify the Spring Webflow configuration to point to that action at the right injection point.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Wait. I may have missed a few steps. The recipe did also include:
 

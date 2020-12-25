@@ -9,16 +9,7 @@ tags:       [CAS,MFA]
 
 A number of CAS deployments that intend to turn on multifactor authentication support tend to do so via Google Authenticator. This is a quick and *simplified* guide to demonstrate an approach to that use case along with some additional explanations regarding specific multifactor triggers and bypass options supported in CAS today.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our task list is rather short:
 
@@ -76,16 +67,7 @@ cas.authn.mfa.globalPrincipalAttributeValueRegex=mfa-eligible
 
 Notice that the conditions above do not indicate anything about Google Authenticator. If the above condition holds true, how does CAS know that the authentication flow should be routed to *Google Authenticator*?
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Per the CAS documentation:
 

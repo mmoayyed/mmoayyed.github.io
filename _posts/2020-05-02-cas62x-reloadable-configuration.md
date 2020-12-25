@@ -8,16 +8,7 @@ tags:       [CAS]
 
 When it comes to managing and tracking CAS settings, there is a plethora options to choose from for the modest as well as the enterprise-ready. Quickly put, CAS settings can be managed via key-value stores in form of standalone properties or YAML files. Such files can be split up per environment profile, can be fed directly to CAS at runtime or via command-line parameters, environment variables, inline JSON feeds, JVM system properties, [slurpped via Groovy](/2018/11/02/cas6-groovy-config-slurper/) or even managed inside a separate and external [configuration server](/2018/10/25/cas6-cloud-config-server/) which feed data to a CAS server from many other storage services and databases on a per-profile basis. All of this capability is provided by and built on top of Spring Boot and Spring Cloud frameworks that provide quite a flexible design in keeping track of one's application settings.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 A reasonable question one might casually wonder about could be: "If I make a change to CAS configuration, can the server recognize it automatically without a restart?"
 
@@ -67,16 +58,7 @@ Let's say you're disappointed with the chosen name of the external CAS server as
 cas.authn.pac4j.cas[0].clientName=Interesting CAS
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If you watch your logs next once you have saved the file, you would likely see something similar to the below lines:
 
@@ -101,16 +83,7 @@ Once you have the Spring Boot Admin web application [up and running](/2018/10/22
 
 ...and at this point, if you simply refresh the browser screen:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ![image](https://user-images.githubusercontent.com/1205228/61623183-6c5d5b80-ac8b-11e9-8490-9169d36aaf5b.png)
 

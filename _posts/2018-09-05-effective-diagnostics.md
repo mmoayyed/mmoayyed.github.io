@@ -9,16 +9,7 @@ tags:       [Blog]
 
 As an IAM consultant, a good portion of my time throughout the day is spent troubleshooting issues, analyzing logs, helping client and colleagues figure out how to make sense of a seemingly impossible situation when it comes to production system failures, behavioral weirdness or just simply getting something to work per a piece of documentation. I have found that having a documented set of steps and methods proves helpful at a high level as you set out a strategy to solve *almost any* issue dealing with software.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this blog post, I am sharing a few tactics I have learned and gathered over the years to help boost up my problem-solving foo and I hope that these continue to serve as helpful reminders for you as you troubleshoot software issues or diagnose deployment failures. Please note that these techniques are not listed in any particular order and all weigh more or less equally in terms of importance and priority. *Use what works best for you, in the order that works best for you*.
 
@@ -58,16 +49,7 @@ Then we broke the use case down:
 
 So, we started to work down the list: *Can the URL be accessed without Tomcat's interference? What browser version/type is used? Is our test certificate sane and valid?*, etc. Our very best initial outcome simply was the success of getting to a particular URL. We did not necessarily care what the URL looked like, whether it could or should be changed or rewritten, how one could end up at that URL, web access vs non-web access, etc. All those details were entirely irrelevant and we would get to them later.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Things must be simple before they are complicated.
 
@@ -83,16 +65,7 @@ Also:
 
 - Nuke all logs before you start the next test attempt. **ALWAYS** start clean. When you or anyone else analyzes diagnostics data, there should never be a question of *Wait. Is this recent? Is this actually my attempt at doing X? It says there is an error, but the date goes back to 2 years ago. How?*. Put a stop to all that. Stop wasting time. Save lives.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If there is one take away in this section for you, dear reader, and one that you should take to heart, internalize, build statues for in tribute and pray to in the morning when you wake up, is this: **REVIEW LOGS**.
 
@@ -117,16 +90,7 @@ If you can afford it, another helpful technique is to find environments and/or s
 
 Again, you want to find a solution that works and start comparing to identify differences and variables. Find working examples. Try different versions of software components with the same configuration you have today.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once you have spotted the difference, it's important that you establish a baseline first *and then* start tweaking that baseline one small step at a time in configuration and elsewhere to find the missing element or changing behavior. If you thought option `X` in the configuration does blah, it's important to figure out why it does or does not do as advertised. Identify what works and what doesn't. Getting something to work is important and is one best case scenario sure, but you should not have to stop there, as there will come a time where you would have to go above and beyond option X and getting something to work might bring about other (usually security-related) consequences of which you should be mindful.
 
@@ -138,16 +102,7 @@ So, thus far you have identified the key components, broke down the use case, ex
 
 In my earlier anecdote of dealing with Apache Tomcat and `clientAuth`, all the steps led us to a suspicious realm configuration that was not activated quite correctly. We knew the realm worked and we know it was recognized by Apache Tomcat, yet it was never invoked at the right moment. So we started out by configuring Apache Tomcat for [remote debugging](https://blog.trifork.com/2014/07/14/how-to-remotely-debug-application-running-on-tomcat-from-within-intellij-idea/), got the source code, compiled it and connected it via IntelliJ IDEA to a live running Tomcat instance so we could step through each statement. This method allowed us to debug the application, the realm, specific portion of Apache Tomcat code dealing with the realm...and surely, the cat.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 What I am trying to say here is that, (if you have access and a permitting license), you must be prepared for stepping down into the code to either trace the flow and logic statically by simply reading (between) the lines or begin a remote debugging session as we did to figure out how it is actually executing. Logs, comparable solutions and such can only take you so far. In the end, code speaks the truth.
 
@@ -161,16 +116,7 @@ A very good discipline is to use a starting template for sharing such reports. A
 
 State the problem description. *What* are you trying to do? *Why* are you doing it at all? This is where you begin to explain the use case at hand, and circumstances that led you to it.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Be brief but precise:
 
@@ -211,16 +157,7 @@ Stick to a template. Less guesswork leads to quicker responses and better outcom
 
 This particular item may not be all too relevant when it comes to troubleshooting software, as issue resolution is usually time-sensitive and a task with a fair amount of pressure and stress, but I personally find this to be very valuable during design or coding sessions. At times, where you are stumped for a solution and have been staring at the screen and logs for a long time, unsure of how to connect certain pieces together and pigeonholed into a particular line of thinking, it is very useful to leave it all behind for a period of time and switch to a more *physical activity*. Go for a walk around the neighborhood's park, take a nap, shoot a few free throws, etc and allow your brain to reset itself and subconsciously work on the problem in the background. Once you come back, you would have the equivalent of a second pair of eyes and a fresh perspective on how to attack the problem.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In the same category, I find that re-iterating the problem and insofar solutions using a whiteboard, pen/pencil, chatting with a colleague or just about any other type of physical activity outside the use of electronics has the same effect. This effectively tickles your brain to get moving on a solution without you actively realizing it, and of course, a short break every once in a while can do a lot of good. My personal best is around 40-minute mark where I get up, walk around and try to do something totally different and silly, like attempting to train the pigeons outside to dubstep. 
 

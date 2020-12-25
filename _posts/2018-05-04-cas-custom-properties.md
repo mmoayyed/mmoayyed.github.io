@@ -11,16 +11,7 @@ tags:       [CAS]
 
 Starting with version `5.3.x`, CAS begins to own its own configuration namespace rather more seriously, rejecting any settings that are no longer supported or recognized. While this works quite well for configuration settings that tend to get deprecated and moved about from release to release, it also has a side-effect of not allowing any custom settings to be defined by the adopter. In practice, adding custom settings to a `cas` namespace is likely less than ideal, as it would be best to denote localized changes using their own specific namespaces and settings. So, in this tutorial, a short overview of extending CAS to use customized properties is presented as well as an alternative simplified strategy to introduce configuration options into the runtime without dabbling into much code.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on the following:
 

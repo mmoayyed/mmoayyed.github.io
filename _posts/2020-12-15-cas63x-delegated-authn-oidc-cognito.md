@@ -9,16 +9,7 @@ Apereo CAS has had support to delegate authentication to [external OpenID Connec
 
 Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this blog post, we will start from a modest OpenID Connect client application that is integrated with CAS and will be using [Amazon Cognito](https://aws.amazon.com/cognito/) as our external OpenID Connect identity provider to accommodate the following authentication flow:
 
@@ -51,16 +42,7 @@ cas.authn.pac4j.oidc[0].generic.client-name=AwsCognitoOidcClient
 
 Of course, we also need to make sure our OpenID Connect client application is [registered with CAS](https://apereo.github.io/cas/development/services/JSON-Service-Management.html):
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```json
 {
@@ -104,16 +86,7 @@ Of course, we also need to make sure our OpenID Connect client application is [r
 
 Notice that our service definition intentionally does not define any authorized scopes. Typically, defined scopes for a given service definition control and build attribute release policies internally in CAS and the mere definition of authorized scopes for a client application is sufficient in many cases to let CAS formulate the correct attribute/claim release policies. Such attribute release policies allow one to release standard claims, remap attributes to standard claims, or define custom claims and scopes altogether.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In our case above, we are taking advantage of an advanced variation of this configuration to define and use free-form attribute release policies outside the confines of a scope to freely build and release claims/attributes. We are chaining multiple release policies together, allowing CAS to iterate through the chain and collect, cascade, and merge results at every step, in the following sequence:
 

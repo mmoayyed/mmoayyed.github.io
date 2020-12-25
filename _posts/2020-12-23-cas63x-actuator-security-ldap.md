@@ -7,17 +7,7 @@ tags:       [CAS]
 
 CAS, being a Spring-Boot application at heart, includes several actuator endpoints to help you monitor and manage the server when it’s pushed to production. Such actuator endpoints can be secured in a variety of ways the most common of which would be username/password via basic authentication. In this blog post, we will examine the security configuration of actuator endpoints secured whose access is controlled via LDAP.
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -43,17 +33,7 @@ At this point, if you attempt to access the `status` endpoint,
 curl https://sso.example.org/cas/actuator/status | jq 
 ```
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ...you should see the following output:
 
@@ -101,17 +81,7 @@ curl -u ldapuser:ldappassword https://sso.example.org/cas/actuator/status | jq
 
 Of course, not all valid accounts in LDAP should always be allowed access to an endpoint. What is often more desirable is the ability to limit access to a selection of authorized users based on predefined roles. For example, let's say that all valid users in LDAP who carry an `sn` attribute with a value of `admin` should be authorized for access, and all others should be denied. So let's teach CAS about this setup:
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```properties
 cas.monitor.endpoints.ldap.ldap-authz.base-dn=ou=people,dc=example,dc=org
@@ -136,17 +106,7 @@ cas.monitor.endpoints.ldap.ldap-authz.group-prefix=GRP_
 spring.security.user.roles=GRP_HR_ADMIN
 ```
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The `{user}` parameter will be replaced with the user DN at runtime to locate group membership. For each membership entry the value of the `businessCategory` is used to build the role, along with the prefix `GRP_`. For example, `cn=casuser,ou=People,dc=example,dc=org` is a member of the group `cn=HR Managers,ou=Groups,dc=example,dc=org`, as specified by the `uniquemember` attribute. The `businessCategory` for this membership is set to `HR_ADMIN`, which permits CAS to build the final role as `GRP_HR_ADMIN` and allows the endpoint request to pass authorization and gain access.
 

@@ -19,16 +19,7 @@ This quick walkthrough effectively aims for the following objectives:
 
 Follow the [instructions posted here][buildprocess] to obtain the CAS source code. Remember to indicate the relevant `branch` in the commands indicated to obtain the right source code for the CAS version at hand. In this tutorial and just like before, the branch to use would be `6.0.x` (at the time of writing this post, the appropriate branch is `master`).
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To understand what branches are available, [see this link](https://github.com/apereo/cas/branches). Your CAS version is closely tied to the branches listed in the codebase. For example, if you are deploying CAS `5.1.8`, then the relevant branch to check out would be `5.1.x`. Remember that branches always contain the most recent changeset and version of the release line. You might be deploying `5.1.8` while the `5.1.x` might be marching towards `5.1.10`. This requires that you first upgrade to the latest available patch release for the CAS version at hand and if the problem or use case continues to manifest, you can then check out the appropriate source branch and get fancy <sub>[1]</sub>.
 
@@ -60,16 +51,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11+28, mixed mode)
 
 The CAS web application itself can be started from the command-prompt using an embedded Apache Tomcat container. In fact, this process is no different from deploying CAS using the same embedded Apache Tomcat container which means you will need to follow the [instructions posted here][buildprocess] in the way that certificates and other configurations are needed in `/etc/cas/config`, etc to ensure CAS can function as you need it. All feature modules and behavior that would be stuffed into the web application artifact continue to read settings from the same location, as they would be when activated from an overlay. The process is exactly the same.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 I use the following alias in my bash profile to spin up CAS using an embedded Apache Tomcat container. You might want to do the same thing:
 
@@ -98,16 +80,7 @@ To understand the meaning and function behind various command-line arguments, pl
 
 Per [instructions posted here][buildprocess], the inclusion of a particular build module in the Gradle build script of the CAS web application should allow the build process to automatically allow the module to be packaged and become available to the runtime. You may include the module reference in the [`webapp.gradle`][webappgradlefile] file, which is the common parent to build descriptors that do stuff with CAS web applications. Making changes in this file will ensure that it will be included *by default* in the generic CAS web application, regardless of how it is configured to run using a servlet container, which means you need to be extra careful about the sort of changes you make here and what is kept and what is checked in for follow-up pull requests and reviews.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 So for reference and our task at hand, the file would look like the following:
 
@@ -131,16 +104,7 @@ There are also much fancier tools such as [JRebel](https://zeroturnaround.com/so
 
 The remote debugging port by default is `5000` and should be auto-incremented in case the port is busy or occupied by some other process. You should get notices and prompts from the build, if and when that happens.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 A very useful flag that you may consider adding to your shell alias is `-DremoteDebuggingSuspend=true`, which allows you to suspend the JVM until a debugger tool is attached to the running process. This is handy in situations where you need to debug and troubleshoot a particular component or behavior that executes early during startup (i.e. fetching CAS configuration settings or servlet container bootstrapping) and you don't want the runtime to proceed too quickly and forcing you to miss the troubleshooting window.
 
@@ -171,16 +135,7 @@ Be patient. This might take some time.
 
 A rather important flag in the above build is `-DskipBootifulArtifact=true`. This stops the Gradle build from applying the Spring Boot plugin to bootify application components, mainly the various CAS web application artifacts. This is required because the [CAS Overlay][overlay] needs to operate on a *vanilla* web application untouched by Spring Boot plugins (a.k.a *non-bootiful*) before it can explode and repackage it with Spring Boot. Note that the CAS build and release processes automatically take this flag into account when snapshots or releases are published and more conveniently, whether you are working on the CAS codebase or overlay, you get to work with the same bootiful web application without any extra hassle.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once the artifacts are successfully installed, you can pick up the `-SNAPSHOT` artifacts in overlay by changing the CAS version and resume testing.
 
@@ -257,16 +212,7 @@ public class SomeCasComponentTests {
 
 Note that the test execution would always fail if the Redis database isn't installed, running and configured correctly for everyone else working on the same CAS codebase. To work around this, we have also added a condition for the test runner to only execute the test when the [CAS CI environment][castravisci] is handling the test execution. The CI environment, given the appropriate category, will bootstrap and initialize the required dependencies and systems (typically via Docker) for the tests to execute which allows you to run the tests locally with a (Redis) database of your own while allowing the CI process to handle the test execution all the same, automatically and with the needed external dependencies.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Again, for better examples simply scan the codebase to find similar test classes.
 

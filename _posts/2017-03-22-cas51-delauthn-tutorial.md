@@ -10,6 +10,8 @@ tags:       [CAS]
 This is a short and sweet tutorial on how to configure CAS to delegate authentication to an external SAML2 identity provider.
 Most of the material is based on the [available documentation](https://apereo.github.io/cas/5.1.x/integration/Delegate-Authentication.html).
 
+{% include googlead1.html  %}
+
 This tutorial specifically focuses on:
 
 - CAS `5.1.0-RC3-SNAPSHOT`
@@ -34,6 +36,8 @@ cas.authn.pac4j.saml[0].keystorePath=/etc/cas/config/samlKeystore.jks
 cas.authn.pac4j.saml[0].identityProviderMetadataPath=https://dev-12345.oktapreview.com/app/486ngfgf/sso/saml/metadata
 ```
 
+{% include googlead1.html  %}
+
 Note that the above settings are indexed, which means that if you needed to, you could delegate authentication to more than one identity provider. Also remember that metadata, keystores and such are only created if they are absent from the specified locations. You can certainly hand-massage them if needed, and CAS will let them be as they are without complaints.
 
 # Configure Okta
@@ -49,6 +53,8 @@ The configuration would look something like the following image:
 
 ![image](https://cloud.githubusercontent.com/assets/1205228/24192129/9d0f828c-0f0b-11e7-8cec-698be1b31cee.png)
 
+{% include googlead1.html  %}
+
 Finally you need to assign people/users to the SAML2 Identity Provider application to allow for authentication:
 
 ![image](https://cloud.githubusercontent.com/assets/1205228/24192186/c09b0ad2-0f0b-11e7-9e6a-12752de7c125.png)
@@ -58,6 +64,8 @@ Okta is then able to provide you with a metadata for this instance, which you ca
 # That's It
 
 When you deploy CAS, your default logs (though you could certainly turn on `DEBUG` to observe a lot more) would indicate something along the following lines:
+
+{% include googlead1.html  %}
 
 ```bash
 2017-03-22 13:33:59,147 INFO [o.a.c.s.p.c.s.a.Pac4jAuthenticationEventExecutionPlanConfiguration] - <Located and prepared [1] delegated authentication clients>

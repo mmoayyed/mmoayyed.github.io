@@ -7,16 +7,7 @@ tags:       [CAS]
 
 Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. Support for Duo Security can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. Furthermore, recent versions of CAS can provide integration support for Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi). In this walkthrough, we'll take a look at the Duo Security integration setup with CAS and will also review options for command-line or API access. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This tutorial specifically requires and focuses on:
 
@@ -44,16 +35,7 @@ import os, hashlib
 print hashlib.sha1(os.urandom(32)).hexdigest()
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The *Universal Prompt* variant no longer requires you to generate and use a application key value. Instead, it requires a client id and client secret, which are known and taught to CAS using the integration key and secret key configuration settings. You will need to get your integration key, secret key, and API hostname from Duo Security when you register CAS as a protected application. In the CAS settings, the absence of `duo-application-key` indicates that Universal Prompt should be used instead of the WebSDK integration mode.
 
@@ -93,16 +75,7 @@ request-wrapper-url-patterns: [/protected, /protected2, /json]
 assertion-thread-local-url-patterns: [/*]
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Of course, don't forget that the application (i.e. `https://localhost:8444`) must be [registered with CAS](https://apereo.github.io/cas/development/services/Service-Management.html) before proceeding to the next step.
 
@@ -119,16 +92,7 @@ curl -k --location --header "Content-Type: application/cas" \
 
 In this example, `curl` attempts to authenticate into our API by first exercising basic authentication while identifying the request content type as `application/cas`. The request is passed along to CAS which authenticates the user credentials and performs Duo MFA using a push notification. Once the user accepts and acknowledges the notification, the MFA sequence will complete to finally return the authenticated user profile to our endpoint:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```json
 {

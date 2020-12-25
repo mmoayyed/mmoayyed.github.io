@@ -15,25 +15,7 @@ How does this all work?
 
 Given CAS' adoption of [Spring Boot](https://github.com/spring-projects/spring-boot), most if not all of the old XML configuration is transformed into `@Configuration` components. These are classes declared by each relevant module that are automatically picked up at runtime whose job is to declare and configure beans and register them into the application context. Another way of thinking about it is, components that are decorated with `@Configuration` are loose equivalents of old XML configuration files that are highly organized where `<bean>` tags are translated to java methods tagged with `@Bean` and configured dynamically.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-Sidestepping irrelevant details, here is an example:
-
-```java
-package org.apereo.cas.config;
-
-@Configuration("casCoreMonitorConfiguration")
-public class CasCoreMonitorConfiguration {
-
+{% include googlead1.html  %}
     @ConditionalOnMissingBean(name = "healthCheckMonitor")
     @Bean
     public Monitor healthCheckMonitor() {

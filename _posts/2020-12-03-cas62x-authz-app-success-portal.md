@@ -12,16 +12,7 @@ I collaborated on an interesting CAS use case that asked for the following behav
 
 Sure, [we could](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/). In this post, I will review the steps required to handle this use case at a high level while also briefly reviewing access and authorization strategies with CAS registered applications using modest attribute-based access control (ABAC).
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -57,16 +48,7 @@ Such applications are managed and tracked by CAS using its own [service registry
 2. Remove all registered applications that do not pass the access strategy authorization tests.
 3. Pass the final collection of applications to the view layer.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 All of the above can be done at the right entry point by extending the CAS Spring Webflow to override the `GenericSuccessViewAction` that is responsible for executing and rendering the view after successful attempts.
 
@@ -133,16 +115,7 @@ return false;
 
 To display our list of authorized applications in a mini-portal fashion, we should begin by customizing `casGenericSuccessView.html` file that is rendered on successful authentication attempts. The page should have access to the `authorizedServices` flow scope variable, and can loop through the results to display the applications:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```html
 You have access to the following applications:

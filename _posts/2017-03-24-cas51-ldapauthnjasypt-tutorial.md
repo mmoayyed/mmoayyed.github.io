@@ -16,6 +16,8 @@ This tutorial specifically focuses on:
 - Apache Tomcat `8.5.x`
 - [Jasypt CLI](http://www.jasypt.org/cli.html). You can download the distribution [from here](http://www.jasypt.org/download.html).
 
+{% include googlead1.html  %}
+
 This tutorial assumes that you are running CAS in its `standalone` mode, [described here](https://apereo.github.io/cas/5.1.x/installation/Configuration-Server-Management.html).
 
 # LDAP Setup
@@ -42,6 +44,8 @@ Once you have added the LDAP module to your build as is described [here](https:/
 
 Here is what I did in the `cas.properties` file, along with all the other usual suspects:
 
+{% include googlead1.html  %}
+
 ```
 cas.authn.ldap[0].type=AUTHENTICATED
 cas.authn.ldap[0].ldapUrl=ldap://localhost:10389
@@ -67,6 +71,8 @@ Once you get CAS built and deployed, logs should indicate something like this:
 2017-03-22 16:01:06,915 INFO [o.a.c.c.LdapAuthenticationConfiguration] - <Ldap authentication for [LdapAuthenticationHandler] is to chain principal resolvers via [[org.apereo.cas.authentication.principal.resolvers.ChainingPrincipalResolver@1452f4cb[chain=[org.apereo.cas.authentication.principal.resolvers.PersonDirectoryPrincipalResolver@1b7c5e6a[returnNullIfNoAttributes=false,principalAttributeName=<null>], org.apereo.cas.authentication.principal.resolvers.EchoingPrincipalResolver@6824495c[]]]]] for attribute resolution>
 ```
 
+{% include googlead1.html  %}
+
 Great. Next, pull up CAS in your browser and log in with `jsmith` and `password` and you should be in. Viola!
 
 # Jasypt Encryption
@@ -83,6 +89,8 @@ Note that there is nothing stopping you from encrypting any other setting!
 Once you download the [Jasypt CLI](http://www.jasypt.org/cli.html), at a minimum you need to decide which algorithm you want to use for encryption and what your encryption key/password should be which is the thing that is later taught to CAS to decode the value. In the `bin` directory of the distribution, you can invoke `./listAlgorithms.sh|bat` to see what may be possible for algorithms and then use the `./encrypt.sh|bat` to encrypt values.
 
 So for me to encrypt the value of `bindCredential`, I ran the following command:
+
+{% include googlead1.html  %}
 
 ```bash
 ./encrypt.sh input=password algorithm=PBEWithMD5AndTripleDES password=MySuperPassword
@@ -133,6 +141,8 @@ Finally, we need to teach CAS to handle the reverse of this operation. Consultin
 ```properties
 cas.standalone.config.security.alg=PBEWithMD5AndTripleDES
 ```
+
+{% include googlead1.html  %}
 
 Using the embedded tomcat container, I configured my "run CAS" command to pass along the encryption key as a command-line parameter. If you prefer, you could do the same thing with environment variables and system properties.
 

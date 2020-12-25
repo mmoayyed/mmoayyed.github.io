@@ -9,16 +9,7 @@ tags:       [CAS]
 
 CAS, being a Spring-Boot application at heart, includes a number of additional features to help you monitor and manage the server when it’s pushed to production. You can choose to manage and monitor the deployment using HTTP endpoints, referred to as *actuators*. This tutorial provides a basic overview of the endpoints provided by both Spring Boot and CAS and also provides instructions on how such endpoints can be secured for access and win.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This tutorial specifically requires and focuses on:
 
@@ -127,16 +118,7 @@ org.pac4j.core.exception.CredentialsException: Unauthorized IP address: 0:0:0:0:
 
 CAS endpoints prior to the adoption of Spring Boot and family (i.e. CAS v4 and priors) were always protected by an IP pattern which more or less was a regular expression pattern. Today and by default, this same protection mechanism is kept as well where all CAS endpoints are considered disabled whose security is exclusively controlled by the IP pattern noted above. In other words, in the event that access to an endpoint is allowed, (i.e endpoint is enabled and is not marked as sensitive), CAS will attempt to control access by enforcing rules via IP address matching, delegating to itself, etc.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Note that while almost all CAS endpoints can be secured via other means (such as a CAS server), the `/status` endpoint is always protected by an IP pattern allowing monitoring and CLI tools to easily query the endpoint from a protected recognized IP address.
 
@@ -298,16 +280,7 @@ Of course, this is just basic authentication with a pre-defined pair of credenti
 
 As an FYI, as of this writing, the CAS version at hand depends on Spring Boot `1.5.x` to deliver endpoints and get them secured. Starting with Spring Boot v2, there is no separate auto-configuration for user-defined endpoints and actuator endpoints. Security is strictly controlled and provided by Spring Security if the library is included in CAS and found on the classpath whereby the auto-configuration secures all endpoints by default. Spring Boot then relies on Spring Security’s content-negotiation strategy to determine whether to use a basic authentication mode or form-based login and just like before, a user with a default username and generated password is added, which can be used to log in.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 All of that is to say, endpoint security is one area that might get heavily refactored and redesigned in the future once CAS upgrades to Spring Boot v2. This would basically affect CAS configuration in the way that `enabled` or `sensitive` properties are defined; they might get removed or renamed, etc. There will be follow-up announcements and notes on the subject once the upgrade is available in due time and for now.
 

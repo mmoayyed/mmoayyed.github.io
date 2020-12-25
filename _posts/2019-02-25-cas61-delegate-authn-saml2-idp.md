@@ -9,16 +9,7 @@ tags:       [CAS,SAML]
 
 Apereo CAS has had support to [delegate authentication to external SAML2 identity providers](https://apereo.github.io/cas/6.1.x/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS `3.x` as an extension based on the [pac4j](https://github.com/pac4j/pac4j) project which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate SAML2 endpoint and on the return trip back, CAS is tasked to parse the response and extract attributes, etc in order to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or *proxy* in between.
 
@@ -87,16 +78,7 @@ After authentication, CAS might greet with you with a *Hey! You logged in succes
 
 If you expand the link to see attributes currently resolved, you will see everything the identity provider has released to CAS as a service provider. Interestingly, CAS has also merged the values for `employeeNumber`, effectively turning it into a multi-valued attribute honor both sources of attributes.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ![image](https://user-images.githubusercontent.com/1205228/53325713-27cac100-38a1-11e9-94a4-363b3ec64cc5.png)
 
@@ -138,16 +120,7 @@ Let's pretend that we are using the [JSON Service Registry](https://apereo.githu
 }
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 <div class="alert alert-info">
   <strong>Remember</strong><br/>For backward compatibility reasons, leaving the <code>allowedProviders</code> as empty does not prevent a service definition for using an external identity provider...yet. While this behavior may change in future CAS versions, (and you can expect warnings in the CAS logs if you leave this field as empty), you can still stop a service from using delegated authentication by assigning it an invalid/non-existing identity provider (i.e. client name).
@@ -157,16 +130,7 @@ Let's pretend that we are using the [JSON Service Registry](https://apereo.githu
 
 We know our identity provider is releasing a handful of attributes to CAS. Let's play around with CAS access strategies and design a rule for our example application to only grant entry access to the application if CAS has access to a `memberOf` attribute with a value of `Administrator`. We know of course that the identity provider is not releasing this attribute yet, so we promptly should be greeted with a *Sorry you are not allowed to proceed* type of error message.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our application policy would look similar to this:
 

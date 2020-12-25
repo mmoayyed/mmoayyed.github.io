@@ -11,57 +11,12 @@ That's right. If you enjoy designing your own authentication protocols, integrat
 
 Today, [Apereo CAS](https://apereo.github.io/cas) presents itself as a multilingual platform supporting protocols such as CAS, SAML2, OAuth2 and OpenID Connect. There are even plans and projections to provide support for the necessary parts of the `WS-*` protocol stack. Support and functionality for each of these protocols continually improves per every iteration and release of the software thanks to excellent community feedback and adoption. While almost all such protocols are similar in nature and intention, they all have their own specific bindings, parameters, payload and security requirements. So, in order for you to understand how to add support for yet another protocol into CAS, it's very important that you first begin to study and understand how existing protocols are supported in CAS. The strategy you follow and implement will most likely be very similar.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-It all starts with something rather trivial: The Bridge. Pay attention. This one actually does go somewhere.
-
-# The Bridge
-
-If you have ever deployed the [ShibCas AuthN plugin](https://github.com/Unicon/shib-cas-authn3) to *bridge* the gap between the Shibboleth IdP and Apereo CAS, then you are very familiar with this pattern. The plugin simply acts as a link between the two platforms, allowing authentication requests from the IdP to be routed "invisibly" to CAS and then back. It sits between the two platforms and knows how to translate one protocol (SAML) to another (CAS) and then does it all in reverse order on the trip back to the SAML service provider.
-
-This is a neat trick because to the SAML Service Provider, that fact that authentication from the IdP is delegated to somewhere else is entirely irrelevant and unimportant. Likewise, the IdP also does not care what external authentication system handles and honors that request. All it cares about is, "I routed the request to X. As long as X gives me back the right stuff, I should be fine to resume".
-
+{% include googlead1.html  %}
 So the bridge for the most part is the "control tower" of the operation. It speaks both languages and protocols, and just like any decent translator, it knows about the quirks and specifics of each language and as such is able to dynamically translate the technical lingo.
 
 So far, so good.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-# CAS Supported Protocols
-
-If you understand the above strategy, then you would be glad to learn that almost all protocols supported by CAS operate with the same exact intentions. A given CAS deployment is equipped with an embedded “plugin” that knows how to speak SAML2 and CAS, OAuth2 and CAS, or OpenID Connect and CAS or whatever. The right-hand side of that equation is always CAS when you consider, as an example, the following authentication flow with an OAuth2-enabled client application:
-
-1. The CAS deployment has turned on the OAuth2 plugin.
-2. An OAuth2 authorization request is submitted to the relevant CAS endpoint.
-3. The OAuth2 plugin verifies the request and translates it to a CAS authentication request!
-4. The authentication request is routed to the relevant CAS login endpoint.
-5. User authenticates and CAS routes the flow back to the OAuth2 plugin, having issued a service ticket for the plugin.
-6. The OAuth2 plugin attempts to validate that ticket to retrieve the necessary user profile and attributes.
-7. The OAuth2 plugin then proceeds to issue the right OAuth2 response by translating and transforming the profile and validated assertions into what the client application may need.
-
-## Notes 
-
-1. The right-hand side of the flow is always CAS, because the plugin always translates protocol requests into CAS requests. 
-2. Another way of looking at it is that all protocol plugins and modules are themselves clients of the CAS server! They are issued service tickets and they proceed to validate them just like any other CAS-enabled client.
-3. Just like above, to the OAuth2-enabled client all such details are totally transparent and as long as “the right stuff” is produced back to the client, it shall not care.
+{% include googlead1.html  %}ike above, to the OAuth2-enabled client all such details are totally transparent and as long as “the right stuff” is produced back to the client, it shall not care.
 
 ## Advantages
 

@@ -13,16 +13,7 @@ This quick walkthrough effectively aims for the following objectives:
 - Testing changes and writing unit tests.
 - Stepping into the code using a debugger.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 # Development Environment
 
@@ -80,31 +71,13 @@ Since you're running `bootRun` under the `cas-server-webapp-tomcat` module, the 
 
 To understand the meaning and function behind various command-line arguments, please see [instructions posted here][buildprocess]. You may optionally decide to tweak each setting if you are interested in a particular build variant, such as generating javadocs, running tests, etc. One particular flag of interest is the addition of `enableRemoteDebugging`, which allows you, later on, to connect a remote debugger to CAS on a specific port (i.e. `5000`) and step into the code. More on that later.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 # Testing Modules
 
 Per [instructions posted here][buildprocess], the inclusion of a particular build module in the Gradle build script of the CAS web application should allow the build process to automatically allow the module to be packaged and become available to the runtime. You may include the module reference in the [`webapp.gradle`][webappgradlefile] file, which is the common parent to build descriptors that do stuff with CAS web applications. Making changes in this file will ensure that it will be included *by default* in the generic CAS web application, regardless of how it is configured to run using a servlet container, which means you need to be extra careful about the sort of changes you make here and what is kept and what is checked in for follow-up pull requests and reviews.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 So for reference and our task at hand, the file would look like the following:
 
@@ -118,16 +91,7 @@ dependencies {
 
 Note the reference locates the module using its full path. The next time you run `bc`, the final CAS web application will have enabled `some-module` functionality when it's booting up inside Apache Tomcat allowing you to make changes to the said module and begin testing. The same command, `bc`, can be used over and over again to run CAS locally and test the change until the desired functionality is there.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once done, you may then commit the change to a relevant branch (of your fork, which is something you should have done earlier when you cloned the codebase) and push upstream (again, to your fork) in order to prepare a pull request and send in the change targeted at the right destination branch. More info on that workflow [is available here][contribguide].
 
@@ -154,16 +118,7 @@ One of the very useful things you can include in your build is the ability to al
 
 There are also many fancier tools such as [JRebel](https://zeroturnaround.com/software/jrebel/) that let you do the same with a lot more power and flexibility.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The remote debugging port by default is `5000` and should be auto-incremented in case the port is busy or occupied by some other process. You should get notices and prompts from the build, if and when that happens.
 
@@ -194,16 +149,7 @@ alias bci='clear; cd ~/Workspace/cas \
 
 Be patient. This might take some time.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 A rather important flag in the above build is `-DskipBootifulArtifact=true`. This stops the Gradle build from applying the Spring Boot plugin to bootify application components, mainly the various CAS web application artifacts. This is required because the [CAS Overlay][overlay] needs to operate on a *vanilla* web application untouched by Spring Boot plugins (a.k.a *non-bootiful*) before it can explode and repackage it with Spring Boot. Note that the CAS build and release processes automatically take this flag into account when snapshots or releases are published and more conveniently, whether you are working on the CAS codebase or overlay, you get to work with the same bootiful web application without any extra hassle.
 
@@ -279,16 +225,7 @@ public class SomeCasComponentTests {
 
 Note that the test execution would always fail if the Redis database isn't installed, running and configured correctly for everyone else working on the same CAS codebase. To work around this, we have also added a condition for the test runner to only execute the test when the [CAS CI environment][castravisci] is handling the test execution. The CI environment, given the appropriate category, will bootstrap and initialize the required dependencies and systems (typically via Docker) for the tests to execute which allows you to run the tests locally with a (Redis) database of your own while allowing the CI process to handle the test execution all the same, automatically and with the needed external dependencies.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Again, for better examples simply scan the codebase to find similar test classes.
 

@@ -26,16 +26,7 @@ I have been asked on and off about multitenancy capabilities of CAS and whether 
 
 In addition to the problem of isolating configuration per tenant, there also needs to be a mechanism by which CAS may shake hands with each tenant to recognize and activate their connected configuration. Furthermore, any design needs to also carefully weigh and evaluate possibilities of *feature imbalance* which is the problem of introducing capabilities requested by a tenant without impact and side-effects to others and doing so in such a way to ensure all tenants can get their fair share of system capabilities if and when asked.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If all of this sounds complex and seems like a lot of work, it is simply because it is. If this is something you desire to see in your deployment, please [reach out](https://fawnoos.com).
 
@@ -53,16 +44,7 @@ It is important to treat these tenants as generic as possible and not make any a
 
 One possible solution is to turn the problem from one of software into one of deployment topology. Rather than having *a single* CAS deployment serving many tenants, you would simply have many smaller deployments serving each tenant and you would assign each tenant a specific endpoint that handles their needs exclusively. For our tenants, we could have `https://sso.example.org/tenantA/cas/` and `https://sso.example.org/tenantB/cas` endpoint and so on. (If you care, rewrite the URLs prettier at some level to hide details) All CAS functionality is scoped to the specific endpoints that are shared with each tenant and the software itself cares not how it is contacted and by whom so long as requests are well-formed. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 While arguably this is the simplest of all options and grants the most flexibility, it goes without saying that managing many small deployments, upgrades and maintenance efforts across the platform does incur cost and risk and requires quite a bit of automation, technique and infrastructure support to let all play nice.
 
@@ -74,16 +56,7 @@ I am of course assuming, rather obviously, that tenants support username/passwor
 
 The answer is, yes.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Most authentication strategies in CAS are given a [predicate to examine the requested credential]( https://apereo.github.io/cas/5.3.x/installation/Configuration-Properties-Common.html#authentication-credential-selection) for eligibility. This predicate is simply a fancy a condition whose outcome determines whether the authentication strategy/handler should proceed to operate on the credential.
 
@@ -119,16 +92,7 @@ Simple, eh?
  
 In our quest to multi-tenancy, we need to design a strategy to release bundles of attributes to each tenant. One option is to simply register all applications with CAS and design attribute release policies for each. While reasonable, this approach might lead to some maintenance overhead, especially as you begin to design attribute release rules from a tenant perspective and as that number grows over time. To elaborate, let's say all applications managed by tenant A should receive the `firstName` attribute but only a few privileged applications in the same group need access to `lastName`. Are we to duplicate the same attribute release policy rules for each service definition with `firstName` as the allowed attribute and only in special cases then make room for `lastName`? Not quite. What might be more desirable is if we had a way to *share policy rules* across tenants and definitions to centralize configuration and policy.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 One option is to [use a Groovy script](https://apereo.github.io/cas/5.3.x/integration/Attribute-Release-Policies.html#groovy-script) shared across members of a given tenant. For instance, our release policy includes something like this:
 

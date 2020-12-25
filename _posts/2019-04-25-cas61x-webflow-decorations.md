@@ -12,16 +12,7 @@ tags:       [CAS]
 
 There are times where you may need to modify the CAS login webflow to include additional pieces of data, typically fetched from outside resources and endpoints. Examples include displaying announcements on the CAS login screen or calling a REST API to fetch today's Cafeteria menu, etc. While the webflow itself can certainly be extended in many fancy ways, one easy option is to let CAS *decorate* the login webflow automatically by reaching out outside sources to fetch data while taking care of the internal webflow configuration and injections on its own. Of course, once data is fetched and made available to CAS you still have the responsibility of using that data to properly display it in the appropriate view and style it correctly...and that's what we are going to do here!
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our use case is such:
 
@@ -100,16 +91,7 @@ Mainly, etc.
 <strong>Groovy Script</strong><br/>The script is cached and watched for changes. As you adjust the logic and update the script, CAS may detect changes to the file and auto-refresh its cached version of it after a small delay.
 </div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Of course, the CAS message/language bundle (typically `custom_messages.properties` file) should also contain the text for our message keys/codes as well:
 

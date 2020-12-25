@@ -8,16 +8,7 @@ tags:       [CAS]
 
 Apereo CAS has been able to delegate authentication to external [identity providers](https://apereo.github.io/cas/6.2.x/integration/Delegate-Authentication.html) for quite some time. Simply put, delegation is just a fancy word that means, whether automatically or at the click of a button, the browser is expected to redirect the user to an external identity provider (i.e. Twitter, GitHub, etc) and on the return trip back, CAS is tasked to parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Registering the existence of such external identity providers is usually and most-commonly done via CAS settings. In this tutorial, we are going to take a look at alternative strategies for bootstrapping a CAS server deployment using an external REST API to feed and register our external identity providers with the CAS application runtime.
 
@@ -76,16 +67,7 @@ Now that we have the REST API ready, all that is left is to register it with CAS
 cas.authn.pac4j.rest.url=https://api.example.org/delegatedauthn
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 With the above configuration, you should see something close to the below screenshot the very next time you build and run CAS:
 

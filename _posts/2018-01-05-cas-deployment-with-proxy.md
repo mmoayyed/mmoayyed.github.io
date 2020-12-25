@@ -23,16 +23,7 @@ We are using the embedded Apache Tomcat container provided by CAS automatically.
 
 So, in order to open up a communication channel between the proxy and the CAS embedded Apache Tomcat server, we want to do the following:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 1. Ensure Apache Tomcat runs on port `8080`, assuming that's what the proxy uses to talk to CAS.
 2. Ensure Apache Tomcat has SSL turned off.

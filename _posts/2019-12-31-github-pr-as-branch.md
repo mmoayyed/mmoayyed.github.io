@@ -11,6 +11,8 @@ Sometimes, when someone sends you a pull request from a fork or branch of a GitH
 locally to resolve a merge conflict or to test and verify the changes on your local computer before merging on GitHub. [This document](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally) describes the process quite well and I have managed to summarize and condense the 
 instructions into a small *bash* function that can be reused for any GitHub repository:
 
+{% include googlead1.html  %}
+
 ```bash
 function fetchpr() {
   pullid=$1
@@ -30,6 +32,8 @@ locally to resume work on it, you could do the following:
 cd path/to/repository/directory
 fetchpr 4585
 ```         
+
+{% include googlead1.html  %}
 
 You will have the pull request as a local branch under `pr-4585`.
 

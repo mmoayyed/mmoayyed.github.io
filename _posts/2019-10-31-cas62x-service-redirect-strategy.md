@@ -13,16 +13,7 @@ Per the [CAS Protocol](https://apereo.github.io/cas/6.2.x/protocol/CAS-Protocol-
 to be returned to the original service identifier provided in the initial authentication request via the `service` parameter. While this default behavior is enforced by 
 the Apereo CAS server, there may be situations where the ultimate redirection URL may need to be customized or altered for advanced integrations.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this short tutorial, we are briefly going to review the specifics of the redirection strategy and ways that it might be tuned. Our starting position is based on:
 

@@ -9,16 +9,7 @@ A very common way to package and deploy Apereo CAS is via Docker. There are nume
 
 Apereo CAS, as a Spring Boot application, supports building a container from Gradle using the Spring Boot Gradle build plugin. Similar to previous approaches, the most interesting thing about this approach is that you don’t need a Dockerfile. You build the image using the same standard container format as you get from `docker build` - and it can work in environments where docker is not installed.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This tutorial specifically requires and focuses on:
 
@@ -43,16 +34,7 @@ bootBuildImage {
 }
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The most recent versions of the overlay provide a variant of the Spring Boot Gradle plugin that can create an OCI image using Cloud Native Buildpacks. Images can be built using the `bootBuildImage` task:
 

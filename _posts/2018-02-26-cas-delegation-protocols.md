@@ -7,16 +7,7 @@ tags:       [CAS]
 
 I have been consulting on variations of a deployment strategy and use case that involves CAS acting as an identity provider while also presenting the ability to [delegate authentication requests](https://apereo.github.io/cas/5.2.x/integration/Delegate-Authentication.html) to an external identity provider and act as a *proxy* in between. I had the erroneous assumption that client applications integrating with CAS in proxy mode must be those that speak the CAS protocol. This meant that while CAS itself may delegate authentication requests to a variety of identity providers that speak SAML2, OAuth2 and CAS protocols, etc the client application that ultimately would receive a response from the proxying CAS server can only understand a service ticket and the particular validation payload compliant with the CAS protocol semantics.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This post is an attempt at explaining my rationale with a follow-up explanation of why I was wrong.
 
@@ -31,16 +22,7 @@ The *normal* flow for delegated authentication is something like this:
 - When successful, CAS Server establishes an SSO session, creates a  service ticket and redirects back to the client application with that ticket.
 - Client application validates the ticket and understands the user profile elements.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once the response is processed by the external identity provider, note that the opinion is built into the CAS authentication flow to assume the next steps to be "creating a service ticket" and "redirecting back to the calling service/application with that ticket"; details which are dictated by the CAS protocol and obviously no longer apply if the client application is a SAML SP or OAuth2 client.
 
@@ -58,16 +40,7 @@ All *other* [authentication protocols supported by the CAS server](https://apere
 
 Let's start with a client application that speaks SAML2. This client is configured in CAS [as a SAML2 service provider](https://apereo.github.io/cas/5.2.x/installation/Configuring-SAML2-Authentication.html), while CAS itself is proxying Facebook as an external identity provider.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This is a bit of a complicated scenario since you have about three protocols dancing together. The effective flow would be:
 
@@ -85,16 +58,7 @@ This is a bit of a complicated scenario since you have about three protocols dan
 
 The trick, if I could re-emphasize, is noting that all protocols are clients of the CAS server that interact with it using the CAS protocol. This is done at the request/browser level, as opposed to doing things internally via heavily customized webflows and such that would be entangled with one another. The protocol modules that exist in CAS make zero assumptions about the internal inner workings of the CAS authentication flow/engine. They treat it just like they would an external CAS server; the only difference is, they sit and live inside the CAS server directly and yet they remain completely agnostic of that fact. Simply put in our example, the SAML2 module basically says: "this incoming request needs to be authenticated. So I'll route it to a CAS server for authentication and when it comes back, I'll do my bit".
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This surely continues to maintain SSO sessions as well for all follow-up requests, because the CAS server does not care about the calling party; whether external or internal, the SSO session will be established and available for everything else.
 

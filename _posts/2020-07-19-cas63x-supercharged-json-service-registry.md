@@ -8,16 +8,7 @@ tags:       [CAS]
 
 Apereo CAS offers a large menu of options for managing client application registration records. Over the years, the [JSON Service Registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) has become quite the popular choice given its configuration simplicity and low maintenance overhead. Depending on the type of client application being registered and the authentication protocol used, there are a few hidden *gems* available to the adopters of the JSON Service Registry that should prove quite advantageous when it comes to managing secrets, dynamic application reconfiguration at runtime, etc. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -31,16 +22,7 @@ Our starting position is as follows:
 
 When CAS is configured to act as an [OAuth Identity Provider](https://apereo.github.io/cas/6.2.x/installation/OAuth-OpenId-Authentication.html), OAuth client applications and relying parties (i.e. *RP*s) are required to register their presence with the CAS server to allow for successful integrations. The RP registration record typically consists of several required fields, such as client id, redirect URI and, relevant to our discussion here, a client secret. If we are to manage such registration records via the [JSON Service Registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html), that would mean the client secret would be exposed in plain text and available to anyone with access to the file system! 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Fortunately, client secrets can also be kept as encrypted secrets. Authorized relying parties always have access to and submit the client secret in plain text in their exchanges with the Apereo CAS server. However, when dealing with encrypted secrets, CAS can auto-reverse the encryption of the secret found in the JSON service definition file for verification and matching.
 
@@ -58,16 +40,7 @@ Skipping other details, our JSON service file could take on the following form:
 
 All you'd have to do is to take a plain secret and use the [CAS Command-line Shell](https://apereo.github.io/cas/6.2.x/installation/Configuring-Commandline-Shell.html) to transform it into encrypted form. The encryption and signing keys for client secrets may be defined via the following settings:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```properties 
 cas.authn.oauth.crypto.encryption.key=...
@@ -81,16 +54,7 @@ cas.authn.oauth.crypto.encryption-enabled=true
 
 A rather recent addition to the CAS features portfolio is support for the [Spring Expression Language](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Spring-Expressions.html), particularly used but not limited to reconfigure fields and properties of a JSON service definition file at runtime. This could be useful when the component wishes to have access to system properties, environment variables or in general requires a more dynamic or programmatic strategy for configuration before it can be fully functional.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 For example, consider the following JSON service definition with a specialized attribute release policy:
 
@@ -122,16 +86,7 @@ At runtime, CAS will automatically resolve the path specified for the `groovyScr
 }
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Of course, you're allowed to use any system property or environment variable defined to reconfigure the service definition. Furthermore, the behavior is not exclusive to `GroovyScriptAttributeReleasePolicy` but to a large number of CAS components or even properties. Eligible components should be pointed out in the official CAS reference documentation with a small note that might read: *The configuration of this component qualifies to use the Spring Expression Language syntax.*.
 

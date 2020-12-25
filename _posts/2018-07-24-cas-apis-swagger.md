@@ -10,16 +10,7 @@ tags:       [CAS]
 For some time now, CAS has had the ability to take advantages of Swagger natively to produce API documentation automatically. The generated documentation supports all CAS endpoints and REST APIs provided they are made available to the runtime application context. This means that any and all modules that declare API endpoints will automatically
 be recognized by the CAS Swagger integration, provided of course the module is activated and included in your CAS configuration.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If you wish to learn more about Swagger, please [visit this link](https://swagger.io/) and the reference documentation for CAS `5.3.x` as of this writing is available [here](https://apereo.github.io/cas/5.3.x/integration/Swagger-Integration.html).
 

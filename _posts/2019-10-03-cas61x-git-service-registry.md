@@ -11,16 +11,7 @@ tags:       [CAS]
 
 Applications that are integrated with the Apereo CAS server typically are registered with the system as [JSON](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html) or [YAML](https://apereo.github.io/cas/6.1.x/services/YAML-Service-Management.html) files. Such files can be stored in a remote git repository to take advantage of all native operations and benefits of *distributed* source control such as version tracking, history, etc, given they are considered source code after all.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Using a git-backed service registry, CAS is given the ability to pull down and *clone* a repository and watch for changes at defined intervals. In this tutorial, we are going to quickly review the steps required to [manage application records via Git](https://apereo.github.io/cas/6.1.x/services/Git-Service-Management.html).
 
@@ -80,16 +71,7 @@ accessStrategy: !<org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy
 
 We expect that CAS would connect to the repository's `master` branch to pull down the above files regardless of where they are physically located in the repository directory structure.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 To make it easier to test the changes, I am also going to include the [auto-configuration module for reporting](https://apereo.github.io/cas/6.1.x/monitoring/Monitoring-Statistics.html#cas-endpoints) in the CAS overlay to take advantage of `registeredServices` [actuator endpoint](https://apereo.github.io/cas/6.1.x/services/Service-Management.html#administrative-endpoints). With the inclusion of this module, I can instruct CAS to enable it and allow anonymous requests for easy testing:
 
@@ -143,16 +125,7 @@ accessStrategy: !<org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy
 curl https://sso.example.org/cas/actuator/registeredServices/2 | jq
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 By default, the response type is always in JSON. If you prefer YAML, by all means:
 

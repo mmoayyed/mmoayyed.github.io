@@ -11,16 +11,7 @@ CAS allows you to externalize your configuration settings so you can work with t
 
 As your CAS deployment moves through the deployment pipeline from dev to test and into production, you can manage the configuration between those environments separately, and be certain that each tier has everything it needs to run when the server migrates. Tier-specific configuration is usually managed and activated through the use of application (aka. Spring) *profiles* while the rest of the more common settings are gathered centrally that apply to all environments. When you run CAS in [standalone mode](https://apereo.github.io/cas/6.0.x/configuration/Configuration-Server-Management.html#standalone) specially, the default configuration directory on the filesystem (i.e. `/etc/cas/config`) may include `(cas|application).(yaml|yml|properties)` files that can be used to control behavior. Such configuration files may also specifically apply to a profile (i.e. `ldap.properties`) that can be activated using `spring.profiles.active` or `spring.profiles.include` settings.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Starting with CAS `6`, Groovy can also serve as a strategy for loading configuration in a way that allows one to consolidate common and tier-specific files in one place. This tutorial explores that possibility with a starting position is based on the following:
 

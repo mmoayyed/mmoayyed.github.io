@@ -12,16 +12,7 @@ tags:       [CAS]
 When CAS is configured to act as an OAuth identity provider, it begins to issue access tokens that are by default opaque identifiers. There is also the option to generate JWTs as access tokens on a per-application basis. Using JWTs, CAS can create JSON documents to encode all relevant parts of an access token into the token itself. The main benefit of this is that API servers can verify access tokens without doing a token lookup on every API request, making the API much more easily scalable. Also, this means that applications don’t need to be aware of 
 how CAS implements access tokens which makes it possible to change the implementation later without affecting clients.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 
 Our starting position is based on:

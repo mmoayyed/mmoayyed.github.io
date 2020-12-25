@@ -10,16 +10,7 @@ tags:       [CAS]
 
 The [third specification of the CAS protocol](https://apereo.github.io/cas/5.1.x/protocol/CAS-Protocol.html) was released around the time CAS `v4.0.0` came into existence. The primary objective of the revision was to bring the spec up to speed with common community practices and extensions, one of which most significantly was the ability to let CAS release attributes to authorized relying parties and applications.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In order to preserve protocol backward-compatibility, a new `/p3/serviceVaildate` endpoint was added whose only job was to release attributes to be consumed by clients. This way, existing CAS clients unable to parse the new `<cas:attributes>` block in the validation response could continue to function as they did. Newer clients could simply hit the new endpoint to receive attributes.
 

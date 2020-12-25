@@ -11,16 +11,7 @@ tags:       [CAS]
 
 The Apereo CAS portfolio presents support for an impressive number of [multifactor authentication providers](https://apereo.github.io/cas/6.1.x/mfa/Configuring-Multifactor-Authentication.html) out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather [simplified multifactor authentication](https://apereo.github.io/cas/6.1.x/mfa/Simple-Multifactor-Authentication.html) solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this tutorial, we are going to briefly review the steps required to turn on [Simple Multifactor Authentication](https://apereo.github.io/cas/6.1.x/mfa/Simple-Multifactor-Authentication.html).
 
@@ -74,16 +65,7 @@ A few things to note:
 - The expiration of the generated token is set to `30` seconds.
 - User email addresses are expected to be found under a `mail` attribute. In this example, this is done as a static attribute via the stub attribute repository configuration.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 At this point, we should be ready to test.
 
@@ -152,16 +134,7 @@ public AuthenticationHandler casSimpleMultifactorAuthenticationHandler() {
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly [are possible](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/) as well. Feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to [join the Apereo Foundation](https://www.apereo.org/content/apereo-membership) and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.
 

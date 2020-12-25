@@ -9,16 +9,7 @@ tags:       [CAS]
 
 [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a community project to manage and monitor Spring Boot applications such as Apereo CAS. The admin server presents an AngularJS-based UI that interacts with the [actuator endpoints](https://apereo.github.io/cas/6.0.x/monitoring/Monitoring-Statistics.html) provided by Spring Boot in CAS. One CAS has registered itself with the admin server, either using the *Spring Admin Client* via HTTP or as part of discovery using technologies such as Eureka, Consul, etc, the admin server can begin to provide feature to monitor CAS for health status, JVM & memory metrics, environment settings, thread dumps, audit data, logs, etc.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 While the CAS integration with the Spring Boot Admin server has been available for some time (likely since CAS `5.1.x`), in this tutorial we will focus on how to get the latest version of [Apereo CAS integrated with the Admin server](https://apereo.github.io/cas/5.1.x/installation/Configuring-Monitoring-Administration.html). At a high-level, we need to accomplish the following:
 

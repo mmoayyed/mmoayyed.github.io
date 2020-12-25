@@ -12,16 +12,7 @@ tags:       [CAS]
 CAS has the ability to [send notifications via SMS](https://apereo.github.io/cas/6.1.x/notifications/SMS-Messaging-Configuration.html) for a variety of functions such as one-time passwords for multifactor authentication, service expiration notifications, and more. In this tutorial, 
 we are going to take a look at configuring CAS for [SMS notifications via Twilio](https://www.twilio.com/) where we'll be using notifications to notify relevant contacts when services in the service registry are considered expired. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on:
 

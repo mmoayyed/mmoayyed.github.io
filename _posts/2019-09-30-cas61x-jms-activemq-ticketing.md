@@ -11,16 +11,7 @@ tags:       [CAS]
 
 CAS can be enabled with a variety of messaging systems to distribute and share ticket data: from simplified use of the JMS API to a complete infrastructure to receive messages asynchronously. This is the capability where CAS uses a specialized form of the default in-memory ticket registry with the main difference that ticket operations applied to the registry are broadcasted using a messaging queue to other listening CAS nodes on the queue. Each node keeps copies of ticket state on its own and only instructs others to keep their copy accurate by broadcasting messages and data associated with each. Each message and ticket registry instance running inside a CAS node in the cluster is tagged with a unique identifier to avoid endless looping behavior and recursive needless inbound operations.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In this tutorial, we are going to briefly review the JMS configuration in Apereo CAS and steps required to use message queues to [distribute tickets and tokens](https://apereo.github.io/cas/6.1.x/ticketing/Messaging-JMS-Ticket-Registry.html) across a cluster. Our starting position is based on:
 

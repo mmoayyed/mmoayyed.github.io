@@ -10,16 +10,7 @@ Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/devel
 
 This post demonstrates an overview of how audit events can be stored in an Oracle relational database and reviews the configuration required for Oracle databases to correctly retrieve,  filter and clean up audit history.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -38,16 +29,7 @@ implementation "org.apereo.cas:cas-server-support-audit-jdbc:${project.'cas.vers
 
 Next, CAS configuration needs to be told about the presence of the database:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```properties
 cas.audit.jdbc.dialect: org.hibernate.dialect.Oracle12cDialect
@@ -69,16 +51,7 @@ That might be just enough; however, depending on how the Oracle database may be 
 This error most likely has to do with the fact that when Oracle is installed, the default format in which dates are expected, (likely specified in the <code>NLS_DATE_FORMAT</code> column of the <code>NLS_SESSION_PARAMETERS</code> table), might not quite match CAS' expectations of date values and format. To remove this error, CAS configuration must be modified to use the appropriate date format. Finally, the SQL query used to fetch and filter audits should also be modified to correctly cast and transform date values:
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```properties
 cas.audit.jdbc.date-formatter-pattern: yyyy-MM-dd
@@ -104,16 +77,7 @@ The above settings instruct CAS to schedule the cleaner process, running it ever
 The audit management facilities in Apereo CAS can be fetched using [actuator endpoints](https://apereo.github.io/cas/development/installation/Audits.html#administrative-endpoints). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the audit database and report back records based on configurable filtering criteria.
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 For instance, the following endpoint is expected to produce audit records for the past 5 days:
 

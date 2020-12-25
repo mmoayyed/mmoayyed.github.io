@@ -8,16 +8,7 @@ background: '/images/home/slide-1.jpg'
 
 CAS allows you to externalize your configuration settings so you can work with the same CAS instance in different environments. You can use properties files, YAML files, environment variables and command-line arguments (just to name a few!) to externalize and provide configuration. These strategies present a very flexible and powerful way to manage CAS configuration for production deployments in a variety of use cases. This is a short blog post on how to manage CAS configuration across tiers and avoid duplication of settings as much as possible.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on:
 

@@ -8,16 +8,7 @@ tags:       [CAS]
 
 Since the introduction of [Passwordless Authentication](/2019/07/18/cas61x-passwordless-authn/) in CAS `6.1.x`, a lot of additional and useful improvements are added to make this integration seamlessly integrate with other forms of authentication such as delegation or multifactor. This blog post intends to demonstrate a few advanced variations of passwordless authentication in combination with other authentication flows and forms.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on the following:
 
@@ -93,16 +84,7 @@ In another variation, the passwordless account can skip its default flow in favo
   ...
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This requires a separate decision to select the identity provider from the list of those that are available and configured in CAS. To do this, we can design a small Groovy script tasked to decide and select the appropriate identity provider for our passwordless user:
 

@@ -9,16 +9,7 @@ tags:       [CAS]
 
 There are a number of [tutorials and overviews](https://apereo.github.io/tags/#CAS) that describe the purpose and anatomy of a [CAS Overlay](https://apereo.github.io/cas/5.2.x/installation/Maven-Overlay-Installation.html). What is often left unsaid in these posts is the note that a CAS overlay, regardless of how it is orchestrated by your favorite hipster build tool of the week, can be used to override *any and all* CAS components that are configured and available at runtime where this not only includes somewhat static configuration such as property files, HTML views, and YAML configuration but also Java classes, solid source code and beyond.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This brief walkthrough aims to uncover the magical ways one can tap into and alter the CAS source code from an overlay perspective, without quite dealing with the CAS codebase, for good and evil...but mostly evil.
 
@@ -40,16 +31,7 @@ In *almost* all cases the changes that go into the overlay, specifically dealing
 
 Any time you are about to tap into CAS internals, you should pause and reconsider alternative approaches and subsequently the overall maintenance strategy of the change, especially if the reason for the change has to do with the second category of modifications noted above. Depending on scope and component, the change may not be forward-compatible at all, the original component may be heavily refactored or removed in future versions without mercy, the feature may get removed entirely and you may be forever left with local customizations that require maintenance and care for every build and future upgrade. This is the power of open-source where modifications come freely with code at hand...with the understanding that *"You can do things on your own, but then, you would [mostly] be on your own"*.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Though put in somewhat extreme terms, consider this a best malpractice that if your CAS deployment overlay contains any `.java` code, chances are you are doing something *wrong*. There should be [better routes and strategies](/2017/09/10/stop-writing-code/) on how to deliver the same end result and those should not solely and exclusively belong to your deployment. You are not that special. Given timeline and budget if you find no other strategy, always label the changes to be temporary and work as hard as you can to remove it. I could not tell you how many times I have been involved in deployments where the prospect has made significant modifications to CAS internals and...
 
@@ -108,16 +90,7 @@ wget https://raw.githubusercontent.com/apereo/cas/5.2.x/support/cas-server-suppo
 <div class="alert alert-info">
 <strong>Remember</strong><br/>All source code that is put into the overlay must be housed inside the <code>src/main/java</code> directory, followed by the exact path to the component noted by its package name. If the package name, for instance, is <code>org.apereo.cas.support.web.flow</code>, then the full path for the overlaid component would be <code>src/main/java/org/apereo/cas/support/web/flow</code>. All source code is compiled and placed inside the <code>WEB-INF/classes</code> parent directory.</div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Notice there are a number of failures now reported by the Maven build complaining about missing symbols. This is due to the fact that the build is now trying to compile our downloaded version of `ValidateCaptchaAction.java` which itself depends on a number of other components and libraries that must be available at compile-time for the task to succeed. So we need to locate what and where the missing items are and get them added to the build script.
 
@@ -198,16 +171,7 @@ As you can see, there are inherent dangers in this approach:
 - Any of the now-included modules can be renamed or removed from CAS version to version, thus making your build dysfunctional in the future.
 - ...and just to demonstrate the problem, our change as it is most often the case, is completely undocumented! Without comparison against the original source file, it is entirely unclear why this source file exists in an overlay which would make it difficult for the next person in line to pick up the maintenance effort, two years into the deployment.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 But there is light at the end of the tunnel. Now that you have made a reasonable change and are satisfied with its behavior, the next best course of action would be to remove the file altogether (and every other change you made along with it) and contribute the fix back to the CAS codebase. This is *NOT* the sort of change that should be specialized for any single deployment and in the interest of "*It Should Just Work*", the behavior of `ValidateCaptchaAction` should just do the correct thing by default, removing any learning curve or need for one to make changes.
 

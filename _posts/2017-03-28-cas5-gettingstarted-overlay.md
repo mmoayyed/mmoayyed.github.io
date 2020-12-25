@@ -16,16 +16,7 @@ This tutorial specifically requires and focuses on:
 
 Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building it from source, overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself, override/insert specific behavior into it and then merge it all back together to produce the final (web application) artifact. You can find a lot more about how overlays work [here](https://apereo.github.io/cas/5.0.x/installation/Maven-Overlay-Installation.html).
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The concept of the WAR Overlay is NOT a CAS invention. It's specifically an Apache Maven eature and of course there are techniques and plugins available to apply the same concept to Gradle-based builds as well.You are free to choose between Maven or Gradle. For this tutorial I opted into the [Maven WAR overlay](https://github.com/apereo/cas-overlay-template).
 
@@ -213,34 +204,7 @@ It is **VERY IMPORTANT** that you contain and commit the entire overlay director
 
 If I `cd` into the `target/cas` directory, I can see an *exploded* version of the `cas.war` file. This is the directory that contains the results of the overlay process. Since I have not actually customized and overlaid anything yet, all configuration files simply match their default and are packaged as such. So as an example, let's change something.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-Digging further down, I notice there exists a `/target/cas/WEB-INF/classes/messages.properties` file, which is [the default message bundle](https://apereo.github.io/cas/5.0.x/installation/User-Interface-Customization-Localization.html). I decide that I am going to change the text associated with `screen.welcome.instructions`.
-
-<div class="alert alert-warning">
-  <strong>Remember</strong><br/>Do NOT ever make changes in the <code>target</code> directory. The changesets will be cleaned out and set back to defaults every time you do a build. Follow the overlay process to avoid surprises.
-</div>
-
-
-First, I will need to move the file to my project directory so that Apache Maven during the overlay process can use that instead of what is provided by default.
-
-Here we go:
-
-```bash
-cd cas-overlay-template
-mkdir -p src/main/resources
-cp target/cas/WEB-INF/classes/messages.properties src/main/resources/
-```
-
+{% include googlead1.html  %}
 Then I'll leave everything in that file alone, except the line I want to change.
 
 ```properties

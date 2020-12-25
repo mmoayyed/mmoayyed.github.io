@@ -11,16 +11,7 @@ tags:       [CAS]
 
 CAS has had [support for single logout](https://apereo.github.io/cas/5.3.x/installation/Logout-Single-Signout.html) for quite a while. This feature basically means that CAS is able to invalidate client application sessions in addition to its own SSO session, assuming client applications are ready to honor and accept logout requests with special configuration. When a CAS session ends, it notifies each of the services that the SSO session is no longer valid, and that relying parties need to invalidate their own session by processing a special logout request. Remember that the callback submitted to each CAS-protected application is simply *a notification*; nothing more. It is the *responsibility of the application* to intercept that notification and properly destroy the user authentication session, either manually, via a specific endpoint or more commonly via a CAS client library that supports SLO.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 By default, applications are contacted by CAS using their *original URL* to receive the logout notification; which is simply the purified service URL used when an authentication request on behalf of the application is submitted to CAS. This tutorial focuses on ways one can customize the logout URL in more dynamic ways.
 

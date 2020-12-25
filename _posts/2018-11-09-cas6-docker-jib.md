@@ -9,16 +9,7 @@ tags:       [CAS]
 
 Unless you've been living under a rock, you've probably heard about [Docker](https://www.docker.com/). By combining its container engine technology and container platform, Docker enables you to bring traditional and cloud-native applications into an automated and secure supply chain, advancing dev to ops collaboration and reducing time to value.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 CAS [embraced Docker](https://github.com/apereo/cas-webapp-docker) a while ago by providing a sample `Dockerfile` template to kickstart the builds. This template simply wraps the necessary environment and components, such as OS and Java, around an existing WAR Overlay project. There is a fair amount of smarts and creativity that could go into the build to optimize build layers, take advantage of Docker *multi-stage builds* and more to produce an ideal CAS image for deployment.
 
@@ -84,16 +75,7 @@ Built image to Docker daemon as org.apereo.cas/cas
 
 What's happening here is that the Gradle build is invoking the `jib` plugin to fetch a base image, and then build all other required layers on top of it. Our CAS settings and logging configuration, etc as well as the `cas.war` are moved into the image to subsequently be handled via the startup shell script, which is the point where we instruct the build and Docker to use an *entrypoint* allowing our image to turn into a running container.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 If you query for available Docker images, you might see:
 
@@ -117,16 +99,7 @@ That is all it takes.
 
 It is evidently very convenient to use the same CAS build to generate a Docker image without dabbling too much into the specifics and nuances of a `Dockerfile` syntax. There are also few configuration options available in the Gradle build that allow one to decide the base image, expose ports and assign tags and labels. More interestingly and while the CAS build tries to keep things simple, `jib` really makes pushing images to remote registries easy by supporting the likes of Docker Hub, Google Container Registry and Amazon Elastic Container Registry all in on spot using a familiar consistent syntax.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 In doing so, it should be noted that the `jib` plugin and project is relatively new with the initial project announcement dating back to July 2018. Furthermore, support for Spring Boot projects and especially those that build WARs and double-specifically those that depend and work with WAR Overlays such as CAS is extremely brand new. It is completely plausible that future iterations of the plugin allow tighter integrations with the Docker engine to produce better-optimized images, expose more configuration knobs and keep improving WAR support. If the current behavior and capabilities of this plugin do not meet the requirements, you're welcome to continue using the native `Dockerfile` approach and keep an eye towards newer versions of the plugin.
 

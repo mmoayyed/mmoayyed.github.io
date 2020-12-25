@@ -13,16 +13,7 @@ Despite what you may have heard, I am here to put a stop to all rumors and clari
 
 Sounds quite legitimate. Let's start with the simpler answer, which is that any CAS authentication handler can always directly tap into the `HttpServletRequest` object to query and fetch parameters passed by the login form and other views. One could do this in *Spring Framework speech* using something like:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```java
 ...

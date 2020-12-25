@@ -9,16 +9,7 @@ tags:       [Blog]
 
 As a fellow somewhat active in the technology space and that of open-source identity and access management, a reasonable portion of my time throughout the week is loaned to conference calls reviewing and discussing the viability of software upgrades and feature deployments. Much of this is spent on reviewing what already exists, analyzing any and all available documentation at luck’s behest and finally enumerating approaches to the ultimate upgrade goal. Take note that in the majority of these conversations, the underlying motivation first and foremost is to fall back to stock functionality and try-remove most if not all of the existing *local* customizations for which at one point significant time and investment was made. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
  "Why?" That is an excellent question. This post intends to provide a local and customized answer.
 
@@ -26,16 +17,7 @@ As a fellow somewhat active in the technology space and that of open-source iden
 
 Amongst many other factors, a significant and common motivation for one to adopt and deploy open-source software is to avoid vendor lock-in and feel empowered by a permitting license to tailor the packaging to one’s needs. Indeed, the source is open and you are for the most part allowed and encouraged to ride the freedom train and turn the package inside out where needed. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 As time marches on with more applications on-boarded and newer systems integrated, your deployment would be bombarded with all sorts of new and unfamiliar requirements whose successful delivery at times would undoubtedly require writing code.
 
@@ -51,16 +33,7 @@ It’s when you have to step out of bounds that things get more interesting.
 
 As much as you would try to avoid this, there will be requirements and integrations whose implementation requires you to step out of bounds and write the code. These are the most common rationales I have learned:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 -	Integration with home-grown legacy system/behavior.
 -	NIH syndrome.
@@ -79,16 +52,7 @@ Of course, that day rarely comes. What’s more alarming is that over time, you 
 Such extensions to software are like bad roommates that rarely move out. They sit on your couch all day, eat your food and insist on watching Grey’s Anatomy all day fascinated by life and love. They require continuous care to ensure the system as a whole would not remain stale and maintenance to warrant unbroken paths to future upgrades. Substantial effort may need to be spent during the design phase as you have to account for best security/coding/deployment practices; Then you would need to document the behavior and share, review and teach it to other coworkers who one day might step into your position. All of this is a very long way of saying: hidden cost. 
 But on the other hand, let’s not forget though that you might have immense satisfaction once you deliver because you very proudly were able to analyze, understand, design, implement and deliver a useful practical needed change. So, good for you. Very well done!
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 It’s quite obvious that none of us can stop change. The legacy systems, the vendors, the integrations, the requirements…they will continue to come and as much as you may disagree with intent or behavior, *thou shall deliver*. When you start to make changes, the *Why* and the *How* are important but those are not this post’s concern. For the purposes of this rant, the Where is where it’s at. 
 
@@ -104,16 +68,7 @@ Now that we have gotten that out of the way, let’s figure out how we are going
 
 It is likely that someone else in your open-source community has already coded and delivered the very same thing. Nowadays, it’s very difficult to come up with something that hasn’t already been thought of and [done by the Simpsons]( https://www.wikiwand.com/en/Simpsons_Already_Did_It).
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Ask around. Chances are you will find similarities and opportunities for collaboration.
 
@@ -125,16 +80,7 @@ These are excellent questions.
 
 As I have repeatedly outlined, it most often does not matter what *this* is. Maybe you are working on a brand new capability absent in the current software stack…or maybe you’re adding a new variation to an existing feature, like the ability to use a relational database instead of a NoSQL database…or perhaps you want the system to dance for you based on the native and traditional customs of the end-user’s current region determined by the browser’s locale…who knows. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Ordinarily, [it’s all good](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/). The worst that could happen is, *"No, sorry. Code this for you only"*. 
 

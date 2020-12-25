@@ -16,16 +16,7 @@ to a request. The selection criteria could be based on the format or syntax of t
 or some other arbitrary rule. In this post, we are going to briefly look at strategies that allow one to narrow down
 the list of authentication handler candidates from a global set.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on:
 

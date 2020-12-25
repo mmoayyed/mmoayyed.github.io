@@ -7,16 +7,7 @@ tags:       [CAS]
 
 This blog post demonstrates how to set up a [Vue.js](https://vuejs.org/) SPA application to authenticate and authorize using OpenID Connect Code flow with PKCE. The [Vue OIDC Client](https://github.com/soukoku/vue-oidc-client) sample application is used to implement the client-side authentication logic and validation logic and the Apereo CAS server is used to act as an OpenID Connect identity provider.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is as follows:
 
@@ -42,16 +33,7 @@ Once you have the correct modules in the WAR overlay for [OpenID Connect](https:
 
 Our client application will be running on `http://localhost:8080`, and the identity provider will be at `https://sso.example.org/cas/oidc`. Given the SPA nature of the client, we need to make sure CORS requests are allowed by the client to reach out to the identity provider's OIDC endpoints for discovery, token exchange, and profile retrieval. For simplicity and testing purposes only, the following settings should enable the proper CORS filter for CAS that allow all origins:
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ```
 cas.http-web-request.cors.enabled=true
@@ -99,16 +81,7 @@ Once you bring up the client application, the home page allows you login using a
 
 {% include image.html img="https://user-images.githubusercontent.com/1205228/102646708-c496d680-4179-11eb-9ece-e54c37108736.png" width="80%" title="Vue.js OpenID Connect Client Application Home Page" %}
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once you have successfully logged in and exchanged tokens with CAS, you should be greeted with the following page:
 

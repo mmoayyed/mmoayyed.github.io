@@ -18,16 +18,7 @@ If you have configured multifactor authentication with CAS with a provider (i.e.
 
 CAS provides a large number of strategies to [trigger multifactor authentication](https://apereo.github.io/cas/5.3.x/installation/Configuring-Multifactor-Authentication-Triggers.html). To deliver the use case, we can take advantage of a Groovy-based trigger to implement said conditions. The script is invoked by CAS globally (regardless of application, user, MFA provider, etc) whose outcome should determine whether an MFA provider can take control of the subsequent step in the authentication flow.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on the following:
 

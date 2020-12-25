@@ -17,16 +17,7 @@ A GA release is typically the last step in the software release life cycle. It i
 
 How is a release beaten into shape?
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 A GA release typically follows after one or more *release candidates*. The release candidate is a beta version of the software with potential to be a final product unless significant bugs are discovered during trials. Release candidates provide opportunities for the community to begin testing new and old product features to the extent and interest reasonable, until show-stopper defects are all evaluated and possibly removed.
 
@@ -51,25 +42,7 @@ I might be stating the obvious here...
 
 Why does that matter and how is that relevant?
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-When you begin to plan your production deployment, you inevitably have to make a number of assumptions about your overall environment. You may be upgrading from a previous version and need to figure out how to transition the old to the new. The product may also bring about a few new features in which you may want to invest and then have other applications and systems utilize. You may have to strengthen and modify the infrastructure, security policy, integrations, high-availability and scalability requirements, etc. It's not an easy thing.
-
-Are you willing to trust your plans with the (possible, if any) test results of other beta testers in the community? Does your community even have beta testers? Do you know if they might have the same interests and needs in the software capabilities as you? Do you have access to their test results? Are you aware of their testing policies? What sort of tests anyway? Integration tests, functional tests, HA tests, accessibility tests, smoke tests...?
-
-In my experience, it's much more effective to take direct control of the situation beforehand. Community members and testers test and spend time on features they care about. That may not necessarily include yours.
-
-## Another Left Turn
-
+{% include googlead1.html  %}
 Sigh. This is my least favorite thing to jot down. Here's how it goes:
 
 1. You are waiting for *others* (developers, beta testers, goblins, etc) to test features before it's to become GA.

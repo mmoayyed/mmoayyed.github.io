@@ -9,16 +9,7 @@ While [authentication support](https://apereo.github.io/cas/5.1.x/installation/C
 in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case 
 is the task of designing custom authentication schemes.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 This post describes the necessary steps needed to design
 and register a custom authentication strategy (i.e. `AuthenticationHandler`) in CAS `5.1.x`. 
@@ -39,16 +30,7 @@ The overall tasks may be categorized as such:
 
 First step is to define the skeleton for the authentication handler itself. This is the core principal component whose job is to declare support for a given type of credential only to then attempt validate it and produce a successful result. The core parent component from which all handlers extend is the `AuthenticationHandler` interface.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 With the assumption that the type of credentials used here deal with the traditional username and password, noted by the infamous `UsernamePasswordCredential` below, a more appropriate skeleton to define for a custom authentication handler may seem like the following:
 

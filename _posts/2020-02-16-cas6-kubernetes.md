@@ -8,16 +8,7 @@ tags:       [CAS]
 
 Continuing with Apereo CAS thriving in a [containerized world](http://fawnoos.com/2020/01/31/cas6-docker-deployment/) for deployments, this tutorial begins to demonstrate a quick walkthrough on how a CAS container can be deployed and managed by [Kubernetes](https://kubernetes.io/). While a brief introduction of Kubernetes and the surrounding development environment is presented, the main focus of the post is to outline the tricks and tips expected of a CAS deployer for a successful cloud-based deployment.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Our starting position is based on the following:
 
@@ -64,16 +55,7 @@ brew install minikube
 <strong>Minikube Symlinks</strong><br/>You may need to reset your symlinks via <code>brew link --overwrite minikube</code>
 </div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 You can try to verify the state of your installation via:
 
@@ -141,16 +123,7 @@ minikube   Ready    master   83s   v1.17.2
 
 Once you have a running Kubernetes cluster, we can deploy our containerized CAS server on top of it. To do so, we need to create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes on how to create and update instances of CAS. Once you've created a Deployment, the Kubernetes master schedules mentioned application instances onto individual Nodes in the cluster.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ## Deployments
 
@@ -235,16 +208,7 @@ deployment.apps/cas created
 service/cas created
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Next, let's check to see if our CAS deployment is running:
 
@@ -268,16 +232,7 @@ replicaset.apps/cas-7f97f4844b   1         1         1       44s
 <div class="alert alert-success">
 <strong>Be Patient</strong><br/>You may need to execute the <code>kubectl get all</code> command a few more times until the pod shows its status as "Running".</div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Back in the dashboard, you should be able to see the deployment running in all greens:
 

@@ -17,16 +17,7 @@ I am going to tell you about the part that my mom told me when I was a kid and i
 
 The story goes that as the chief engineer, Mr. Walter Aigner, finished the architecture work and once the bridge construction was fully ready to be "tested", he called upon Reza Shah (the head monarch of Iran at the time) to come visit the beauty in all its glory. He did also request that Reza Shah must have the honor of boarding the very first train ever to cross the bridge and cut the metaphorical ribbon with wheels on burning coal.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 The bridge was a very big deal at the time; a symbol of magnificence, pride and glory for the nation. The opportunity for the common folk to see their Shah up close and witness him take part in the community to “ride the train along with his countrymen” was going to be both advantageous to the administration and a note of joy and amusement for the people.
 

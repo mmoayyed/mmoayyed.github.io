@@ -11,16 +11,7 @@ tags:       [CAS]
 
 A [dockerized CAS deployment](/2020/01/31/cas6-docker-deployment/) allows one to run multiple CAS servers on a single VM, where each server might be configured differently to address different needs for authentication policy, attribute release, etc. To avoid conflicts and achieve better separation of concerns, we can use Docker and NGINX to host multiple CAS containers behind a proxy, in their isolated network and let the proxy offload the SSL context onto the Docker container running CAS and correctly route traffic. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 As is pointed out by the [referenced guide](https://blog.ssdnodes.com/blog/host-multiple-websites-docker-nginx/),
 
@@ -50,16 +41,7 @@ docker run -d -p80:80 --name nginx-proxy --net nginx-proxy -v \
 
 The bit about `/var/run/docker.sock:/tmp/docker.sock` is important. It gives the container access to the host’s Docker socket, which contains information about a variety of Docker events, such as creating a new container or shutting one down.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 As is pointed out by the [referenced guide](https://blog.ssdnodes.com/blog/host-multiple-websites-docker-nginx/),
 
@@ -86,16 +68,7 @@ When you are done, save the file and build the CAS docker image:
 ./docker-build.sh
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 Once the image is built, run the container:
 
@@ -113,16 +86,7 @@ Watch the CAS logs to make sure the server is ready:
 docker logs -f cas
 ```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-8081398210264173"
-     data-ad-slot="3789603713"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include googlead1.html  %}
 
 ...and then finally, test the configuration to validate how NGINX is proxying traffic onto the appropriate CAS container:
 
