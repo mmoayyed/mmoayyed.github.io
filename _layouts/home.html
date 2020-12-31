@@ -11,7 +11,6 @@ layout: default
 
       {{ content }}
 
-
       {% assign numbers = "0,3,6,9,12,15" | split: ',' %}
       {% for i in numbers %}
       {% include postcard.html offset=i %}

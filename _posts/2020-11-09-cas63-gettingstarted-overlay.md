@@ -262,13 +262,13 @@ First, ensure you have declared the appropriate module/intention in the build:
 implementation "org.apereo.cas:cas-server-support-duo:${casServerVersion}"
 ```
 
-Then, put specific Duo Security settings in `cas.properties. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription:
+Then, put specific Duo Security settings in `cas.properties`. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription:
 
 ```
 cas.authn.mfa.duo[0].duo-secret-key=
-cas.authn.mfa.duo[0].duo-application-key=
 cas.authn.mfa.duo[0].duo-integration-key=
 cas.authn.mfa.duo[0].duo-api-host=
+# cas.authn.mfa.duo[0].duo-application-key=
 ```
 
 At this point, we have enabled Duo Security and we just need to find a way to instruct CAS to route the authentication flow over to Duo Security in the appropriate condition. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute `memberOf` contain the value `mfa-eligible`. This condition is placed in the `cas.properties` file:

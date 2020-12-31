@@ -260,7 +260,7 @@ First, ensure you have declared the appropriate module/intention in the build:
 compile "org.apereo.cas:cas-server-support-duo:${casServerVersion}"
 ```
 
-Then, put specific Duo Security settings in `cas.properties. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription:
+Then, put specific Duo Security settings in `cas.properties`. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription:
 
 ```properties
 cas.authn.mfa.duo[0].duoSecretKey=

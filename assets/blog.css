@@ -42,18 +42,18 @@ a, a:hover, .navbar-nav>li>a.active {
 }
 
 .title {
-    font-family: Cochin;
+    font-family: cursive;
     font-weight: 100;
     line-height: 1.5;
     color:white;
     width: 70%;
     text-align: left;
-    font-size: 42px;
+    font-size: 43px;
 }
 
 .post-subtitle {
     font-style: italic;
-    font-size: 16px;
+    font-size: 21px;
     font-weight: unset;
 }
 
@@ -69,6 +69,13 @@ header.masthead {
 .blogpost img {
     height: auto;
     width: 100%;
+    opacity: .5;
+    transition: opacity .2s ease-in-out;
+    border-radius: 8px;
+}
+
+.blogpost img:hover {
+    opacity: 1;
 }
 
 .blogcontainer {
