@@ -48,7 +48,7 @@ a, a:hover, .navbar-nav>li>a.active {
     color:white;
     width: 70%;
     text-align: left;
-    font-size: 43px;
+    font-size: 44px;
 }
 
 .post-subtitle {
@@ -227,7 +227,11 @@ a.post-preview-link {
 
 @media only screen and (max-width: 500px) {
     .title {
-        font-size: 20px;
+        margin-top: 3px;
+        font-size: 28px;
+    }
+    .post-subtitle {
+        font-size: 15px;
     }
     .blognavbar {
         margin-top: 4%;
