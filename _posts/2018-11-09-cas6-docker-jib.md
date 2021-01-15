@@ -31,6 +31,9 @@ Once you have cloned the CAS WAR overlay, a rather simplified workflow for build
 2. Massage your CAS configuration for settings and logging at `${overlay-path}/etc/cas/config`
 3. Build the CAS overlay to produce and run the docker image.
 
+
+{% include googlead1.html  %}
+
 Assuming you have completed the first two steps, let's move on to the build step.
 
 ## Docker Image
@@ -50,6 +53,9 @@ Usage: build.sh [...]
 ```
 
 Seems like the one we might need. Let's run it:
+
+
+{% include googlead1.html  %}
 
 ```bash
 ./build.sh docker
@@ -87,6 +93,9 @@ org.apereo.cas/cas latest 34a3d3502970 4 minutes ago 551MB
 ```
 
 ...which may then conveniently be executed via the following:
+
+
+{% include googlead1.html  %}
 
 ```bash
 docker run --name cas -p 8443:8443 -d org.apereo.cas/cas

@@ -24,6 +24,9 @@ Our starting position is based on the following:
 
 [Kubernetes (K8s)](https://kubernetes.io/) is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery, and over the years, it has become quite the popular choice and mainstream for container orchestrations.
 
+
+{% include googlead1.html  %}
+
 The easiest way to start experimenting with Kubernetes is via [Minikube](https://kubernetes.io/). This is a tool that implements a local Kubernetes cluster on your desired OS of choice and its primary goals are to be the best tool for local Kubernetes application development and to support all Kubernetes features that fit. For this tutorial, we will be using a Minikube instance to get Apereo CAS, as a Spring Boot application at its core, deployed as quickly and comfortably as possible.
 
 ## Docker Image
@@ -40,6 +43,9 @@ server.ssl.enabled=false
 ## Minikube
 
 To successfully set up a Kubernetes cluster, you do need to have Minikube installed for your OS. I did follow the instructions posted here for [Minikube on MacOS](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos) and while the process was relatively simple, I did have to account for the following gotchas:
+
+
+{% include googlead1.html  %}
 
 - Before the installation, it's best to disconnect from all VPN connections.
 - Make sure you have a correct and compatible version of VirtualBox installed for your OS.
@@ -93,6 +99,9 @@ $ minikube start
     Done! kubectl is now configured to use "minikube"
 ```
 
+
+{% include googlead1.html  %}
+
 You can always examine the state of your cluster using the dashboard:
 
 ```bash
@@ -100,6 +109,8 @@ minikube dashboard &
 ```
 
 ![image](https://user-images.githubusercontent.com/1205228/74601036-ba67ff80-50b2-11ea-95b2-e72c661a207d.png)
+
+{% include googlead1.html  %}
 
 Great! You now have a running Kubernetes cluster in the terminal. Minikube started a virtual machine for you, and a Kubernetes cluster is now running in that VM.
 
@@ -112,6 +123,9 @@ $ kubectl cluster-info
 Kubernetes master is running at https://192.168.64.2:8443
 KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 ```
+
+
+{% include googlead1.html  %}
 
 You could also fetch a list of nodes:
 
@@ -138,6 +152,9 @@ minikube   Ready    master   83s   v1.17.2
 ```
 
 If you remember, we do have a [self-contained CAS image](https://hub.docker.com/repository/docker/mmoayyed/cas) and the would-be running container based on that image operates on and exposes port `8080`. So, we should be able to describe our container to Kubernetes to run and deploy our application in the cluster using the Kubernetes YAML syntax; To avoid having to look at or edit YAML, we can ask `kubectl` to generate it for us. 
+
+
+{% include googlead1.html  %}
 
 To create a deployment descriptor, we can use the following:
 
@@ -195,6 +212,9 @@ status:
   loadBalancer: {}
 ```
 
+
+{% include googlead1.html  %}
+
 You can see the deployment descriptor listing details about how the container should run, how port-mappings should be handled, etc. Note also that the descriptor is broken down into two categories: The *Deployment* section and the *Service* section each of each are distinguished using the `Kind` flag. In summary, this will allow our CAS deployment to be managed and deployed as a [Service in Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/). 
 
 ## Unleash the YAML
@@ -246,6 +266,9 @@ NAME                   READY   STATUS    RESTARTS   AGE
 cas-7f97f4844b-b2qc5   1/1     Running   0          15m
 ```
 
+
+{% include googlead1.html  %}
+
 ...and lets establish an SSH tunnel to that pod via:
 
 ```bash
@@ -257,6 +280,8 @@ Forwarding from [::1]:8080 -> 8080
 ...and viola! our CAS server container is available under `http://localhost:8080/cas/login`:
 
 ![image](https://user-images.githubusercontent.com/1205228/74601430-d15d2080-50b7-11ea-9425-0315245ead12.png)
+
+{% include googlead1.html  %}
 
 We could also create the same tunnel using a Kubernetes deployment reference:
 

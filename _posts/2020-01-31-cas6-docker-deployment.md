@@ -32,6 +32,9 @@ jibBuildTar - Builds a container image to a tarball.
 jibDockerBuild - Builds a container image to a Docker daemon.
 ```
 
+
+{% include googlead1.html  %}
+
 You can build Docker image direcly with jib using:
 
 ```bash
@@ -74,6 +77,9 @@ REPOSITORY                       TAG                                IMAGE ID    
 org.apereo.cas/cas               v6.2.0-SNAPSHOT                    7e9c1d4b3ce0        About a minute ago   358MB
 ```
 
+
+{% include googlead1.html  %}
+
 Certain configuration elements about the Docker images, such as the base image can be controlled via the `gradle.propeties` file. For more 
 details, please review `gradle/dockerjib.gradle` file.
 
@@ -97,6 +103,9 @@ org.apereo.cas/cas          v6.2.0-SNAPSHOT     83c945802e31        Less than a 
 ## Docker Compose
 
 For convenience, an additional `docker-compose.yml` is also provided to orchestrate the build, as modest as it may be:
+
+
+{% include googlead1.html  %}
 
 ```bash
 docker-compose build

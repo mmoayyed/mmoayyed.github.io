@@ -31,6 +31,9 @@ First, we need to create a Docker network that we will use to bridge all of thes
 docker network create nginx-proxy
 ```
 
+
+{% include googlead1.html  %}
+
 Then, let's run the proxy on port `80`:
 
 ```bash
@@ -79,6 +82,9 @@ docker run -d --expose 80 --net nginx-proxy \
 ```
 
 The proxy listens and adds an entry for the virtual host automatically to the NGINX config file, and restarts it for full effect. Also, note how the container is running in its isolated network via `--net nginx-proxy` sharing it with the NGINX proxy itself.
+
+
+{% include googlead1.html  %}
 
 Watch the CAS logs to make sure the server is ready:
 
