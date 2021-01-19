@@ -59,7 +59,7 @@ curl -u casuser:Mellon -X POST -H "Content-Type: application/json" \
 Of course, you could do the same if the application policy is a YAML file:
 
 ```bash
-curl -u casuser:Mellon -X POST -H "application/vnd.cas.services+yaml" \
+curl -u casuser:Mellon -X POST -H "Accept: application/vnd.cas.services+yaml" \
      --data-binary "@/path/to/Service-1.yaml" \
      https://sso.example.org/cas/actuator/importRegisteredServices
 ```
