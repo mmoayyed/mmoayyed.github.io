@@ -9,7 +9,9 @@ If you are running Parallels Desktop for Mac and you have upgraded to macOS Big 
 
 > Network initialization failed. Your virtual machine will continue working normally but will no have no network connection
 
-![image](https://user-images.githubusercontent.com/1205228/105572703-0c5ae000-5d6e-11eb-9e86-bfb39dc846fc.png)
+{% include image.html img="https://user-images.githubusercontent.com/1205228/105573123-99069d80-5d70-11eb-9b21-2b7d7d75ec44.png" 
+width="80%" 
+title="Network initialization failed. Your virtual machine will continue working normally but will no have no network connection" %}
 
 I found several posts on various forums that prescribed different recipes. This is one recipe that works best for me, and perhaps it might do the trick for you as well:
 
