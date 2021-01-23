@@ -13,6 +13,8 @@ If you are running Parallels Desktop for Mac and you have upgraded to macOS Big 
 width="80%" 
 title="Network initialization failed. Your virtual machine will continue working normally but will no have no network connection" %}
 
+{% include googlead1.html  %}
+
 I found several posts on various forums that prescribed different recipes. This is one recipe that works best for me, and perhaps it might do the trick for you as well:
 
 - Find and edit the `network.desktop.xml` file:
