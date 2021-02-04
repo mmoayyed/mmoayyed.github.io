@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Securing a Vue.js SPA with OpenID Connect
-summary:    Learn how to secure a Vue.js application using OpenID Connect code flow with PKCE and Apereo CAS as an OpenID Connect identity provider.
+summary:    Learn how to secure a Vue.js application using OpenID Connect with PKCE and Apereo CAS as an OpenID Connect identity provider.
 tags:       [CAS]
 ---
 
@@ -16,7 +16,7 @@ Our starting position is as follows:
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 - [Vue OIDC Client](https://github.com/soukoku/vue-oidc-client)
 
-## CAS Configuration
+## Configuration
 
 Once you have the correct modules in the WAR overlay for [OpenID Connect](https://apereo.github.io/cas/6.3.x/installation/OIDC-Authentication.html), you will need to make sure the client application is [registered with CAS](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) as a relying party:
 
