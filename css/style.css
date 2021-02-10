@@ -1765,7 +1765,7 @@ animation-delay: .175s;
 .blog-post-preview {
   border-width: 1pt;
   border-style: solid;
-  height: 250pt;
+  height: 290pt;
   border-radius: 25px;
   border-color: lightgray;
   margin-top: 40pt;
@@ -1779,6 +1779,7 @@ animation-delay: .175s;
 
 .blog-post-preview a {
   color: unset;
+  min-height: 95px;
 }
 
 .post {
