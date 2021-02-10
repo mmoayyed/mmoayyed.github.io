@@ -1763,14 +1763,14 @@ animation-delay: .175s;
 }
 
 .blog-post-preview {
-  border-width: 1pt;
+  border-width: 2pt;
   border-style: solid;
   height: 290pt;
   border-radius: 25px;
   border-color: lightgray;
   margin-top: 40pt;
   margin-right: 10pt;
-  width: 31.33%;
+  width: 31.93%;
 }
 
 .blog-post-preview:hover {
@@ -1779,7 +1779,7 @@ animation-delay: .175s;
 
 .blog-post-preview a {
   color: unset;
-  min-height: 95px;
+  min-height: 115px;
 }
 
 .post {
