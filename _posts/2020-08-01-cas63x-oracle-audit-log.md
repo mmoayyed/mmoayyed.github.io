@@ -66,8 +66,8 @@ By default, a background job is automatically scheduled to run at specific inter
 ```properties
 cas.audit.jdbc.max-age-days: 180
 cas.audit.jdbc.schedule.enabled: true
-cas.audit.jdbc.schedule.start-delay: 10PTS
-cas.audit.jdbc.schedule.repeat-interval: 60PTS
+cas.audit.jdbc.schedule.start-delay: PT10S
+cas.audit.jdbc.schedule.repeat-interval: PT60S
 ```
 
 The above settings instruct CAS to schedule the cleaner process, running it every minute to remove audit records from the database that are older than 180 days. 
