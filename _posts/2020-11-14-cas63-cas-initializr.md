@@ -104,7 +104,7 @@ You can grab the metadata on the root endpoint with the appropriate `Accept` hea
 
 ```bash
 curl -H 'Accept: application/json' https://casinit.herokuapp.com
-```     
+```
 
 Or using `HTTPie`:
 

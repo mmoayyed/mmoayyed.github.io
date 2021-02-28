@@ -7,16 +7,20 @@ table {
     margin-top: 2px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Exo Medium', "Bookerly", "Neuton";
+}
+
 body {
-    font-family: 'Neuton', sans-serif;
+    font-family: 'Exo Medium','Neuton', sans-serif;
     text-align: justify;
-    font-size: 23.8px;
+    font-size: 14pt;
 }
 
 
 header.masthead .post-heading .meta  {
     font-family: 'Tahoma', sans-serif; 
-    font-size: 18px;
+    font-size: 13pt;
 }
 
 .navbar-nav>li>a {
@@ -106,7 +110,11 @@ pre.highlight {
     padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 1px;
-    font-size: 16px;
+}
+
+pre,span,code {
+    font-family: "UbuntuMono Nerd Font Mono", "agave Nerd Font Mono", "Monaco", Gerogia monospace;
+    font-size: 15pt;
 }
 
 div.highlight {
