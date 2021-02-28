@@ -111,7 +111,7 @@ pre.highlight {
     padding-bottom: 1px;
 }
 
-pre,span,code {
+pre {
     font-family: "UbuntuMono Nerd Font Mono", "agave Nerd Font Mono", "Monaco", Gerogia monospace;
     font-size: 15pt;
 }
@@ -243,6 +243,10 @@ a.post-preview-link {
     .blognavbar {
         margin-top: 4%;
         background: rgb(7, 6, 6);
+    }
+
+    pre {
+        font-size: 12pt;
     }
     
 }

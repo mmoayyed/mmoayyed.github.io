@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Apereo CAS - WAR Overlay Initializr<br>Part 2
+title:      Apereo CAS - WAR Overlay Initializr
 summary:    Apereo CAS Initializr generates CAS WAR Overlay projects with just what you need to start quickly and accelerate CAS development and deployments.
 tags:       [CAS]
 ---
