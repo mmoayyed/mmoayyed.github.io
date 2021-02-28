@@ -246,10 +246,10 @@ a.post-preview-link {
     }
 
     body {
-        font-size: larger;
+        font-size: 14pt;
     }
-    
+
     pre {
-        font-size: 12pt;
+        font-size: 11pt;
     }
 }
