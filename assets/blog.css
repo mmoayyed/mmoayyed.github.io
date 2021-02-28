@@ -1,3 +1,4 @@
+
 table {
     width: 100%;
 }
@@ -7,12 +8,10 @@ table {
     margin-top: 2px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Exo Medium', "Bookerly", "Neuton";
-}
 
 body {
-    font-family: 'Exo Medium','Neuton', sans-serif;
+    font-weight: 500;
+    font-family: 'Exo','Neuton', sans-serif;
     text-align: justify;
     font-size: 14pt;
 }
@@ -29,7 +28,7 @@ header.masthead .post-heading .meta  {
     font-family: 'Raleway', sans-serif;
     -webkit-transition: all .3s ease-in-out;
     line-height: 20px;
-    font-weight: 700;
+    font-weight: 600;
     background: transparent;
     padding: 9px 15px;
     font-size: 18px;
