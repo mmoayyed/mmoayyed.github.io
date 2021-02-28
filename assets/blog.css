@@ -245,6 +245,10 @@ a.post-preview-link {
         background: rgb(7, 6, 6);
     }
 
+    body {
+        font-size: larger;
+    }
+    
     pre {
         font-size: 12pt;
     }
