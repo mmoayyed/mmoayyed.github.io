@@ -112,8 +112,8 @@ pre.highlight {
 }
 
 pre {
-    font-family: "UbuntuMono Nerd Font Mono", "agave Nerd Font Mono", "Monaco", Gerogia monospace;
-    font-size: 15pt;
+    font-family: "Ubuntu", "agave Nerd Font Mono", "Monaco", Gerogia monospace;
+    font-size: 12pt;
 }
 
 div.highlight {
