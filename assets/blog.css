@@ -11,7 +11,7 @@ table {
 
 body {
     font-weight: 500;
-    font-family: 'Exo','Neuton', sans-serif;
+    font-family: 'Exo','Neuton', 'Open Sans', 'Raleway', 'Times New Roman';
     text-align: justify;
     font-size: 14pt;
 }
@@ -232,7 +232,7 @@ a.post-preview-link {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     .title {
         margin-top: 3px;
         font-size: 28px;
@@ -248,5 +248,4 @@ a.post-preview-link {
     pre {
         font-size: 12pt;
     }
-    
 }
