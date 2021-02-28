@@ -126,8 +126,9 @@ CAS Initializr at this point is mainly a backend service and a few APIs. However
 
 Start simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files around.
 
-I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribute] as best as you can.
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
 
 [Misagh Moayyed](https://fawnoos.com)
 
 [initializr]: https://casinit.herokuapp.com
+[contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
