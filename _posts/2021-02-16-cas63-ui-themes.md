@@ -172,6 +172,42 @@ The basic constructs of the theme are all the same; you would have a `dracula.pr
   <strong>Note</strong><br/>In CAS <code>6.4.x</code> with Spring Boot <code>2.4.x</code>, the setting to locate static resources is changed to <code>
 spring.web.resources.static-locations</code>. Furthermore, specifying this setting in your CAS configuration should no longer be necessary.</div>
 
+## Dynamic Messages
+
+There may be scenarios where you would want to display a message or announcement in a CAS view and have the ability to dynamically update the message or remove it without having to restart the CAS server. This can be arranged by externalizing the CAS message bundle to remain outside the web application context and by adjusting the message cache policy to auto-fetch the latest copy of the message without having to rely on cached text values.
+
+To control the message bundle construction and its cache, start with:
+
+{% include googlead1.html %}
+
+```properties
+cas.message-bundle.cache-seconds=0
+cas.message-bundle.use-code-message=false
+cas.message-bundle.base-names=classpath:custom_messages,classpath:messages,\
+  file:/etc/cas/config/custom_messages
+```
+
+Then, we should of course create our message bundle at `/etc/cas/config/custom_messages.properties`:
+
+```properties
+custom.message=<strong>Hello</strong>, World!
+```
+
+All that's left for us to do is to modify our desired CAS HTML page to pull up the message:
+
+```html
+<div th:with="message=${#messages.msgOrNull('custom.message')}">
+    <p th:utext="${message}" />
+</div>
+```
+
+If you pull the CAS page in your browser, you should be able to see <b>Hello</b>, World!. If you change the text and refresh the page again, the text should update as well. Also, note that setting the cache expiration policy of the message bundle to `0` is not without a performance penalty; the change is not limited to the custom change here and affects all CAS messages and message bundles that are used, whether default or customized.
+
+{% include googlead1.html %}
+
+<div class="alert alert-info">
+  <strong>Note</strong><br/>Removing or commenting out the message key in the custom message bundle does not actually remove it from the cache, and only forces the system to fall back to using the last known value. To remove the text, it might be better to assign a blank value to the custom message in the message bundle file.</div>
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
