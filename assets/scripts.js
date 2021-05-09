@@ -12,6 +12,6 @@ function switchMode() {
 }
 
 let hour = new Date().getHours();
-if (hour > 18) {
+if (hour => 18 || hour <= 8) {
   switchMode();
 }
