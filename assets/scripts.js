@@ -11,7 +11,3 @@ function switchMode() {
   $('code.highlighter-rouge').css("color", "#dfcb66");
 }
 
-let hour = new Date().getHours();
-if (hour >= 18 || hour <= 8) {
-  switchMode();
-}
