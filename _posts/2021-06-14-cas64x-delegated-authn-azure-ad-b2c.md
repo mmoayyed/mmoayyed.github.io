@@ -16,12 +16,12 @@ In this blog post, we will start from a modest OpenID Connect client application
 {% include image.html img="https://user-images.githubusercontent.com/1205228/121808669-df509080-cc6e-11eb-8642-2e1d4dee0e4e.jpg" 
 width="70%" title="CAS Login Flow" %}
 
-- User accesses OpenID Connect client application.
+- User accesses the OpenID Connect client application.
 - User is redirected to CAS, acting as an OpenID Connect identity provider.
 - CAS, acting as a client itself, lets the user delegate the flow to Azure Active Directory B2C.
 - User logs in using Azure Active Directory B2C credentials and is redirected back to CAS.
 - CAS establishes an SSO session and redirects the user back to the OpenID Connect client application.
-- OpenID Connect client application shakes hands with CAS and allows the user to login.
+- OpenID Connect client application shakes hands with CAS and allows the user to log in.
 
 Our starting position is as follows:
 
@@ -30,7 +30,7 @@ Our starting position is as follows:
 
 ## Configuration
 
-Once you have the correct modules in the WAR overlay for [OpenID Connect][oidc] and [Delegated Authentication][delegation], you will need to make sure CAS is able to hand off authentication to the Azure Active Directory B2C identity provider:
+Once you have the correct modules in the WAR overlay for [OpenID Connect][oidc] and [Delegated Authentication][delegation], you will need to make sure CAS can hand off authentication to the Azure Active Directory B2C identity provider:
 
 ```
 cas.authn.pac4j.oidc[4].generic.id=...
@@ -50,7 +50,7 @@ The discovery URI can be found on the Azure Active Directory B2C dashboard for y
 width="70%" title="Azure Active Directory B2C Discovery URI" %}
 
 
-Remember that you need to register the CAS Redirect URI with Azure Active Directory B2C. By default the redirect (reply) URI is the
+Remember that you need to register the CAS Redirect URI with Azure Active Directory B2C. By default, the redirect (reply) URI is the
 CAS login endpoint which contains the name of the external identity provider as a path variable:
 
 {% include image.html img="https://user-images.githubusercontent.com/1205228/121808763-4ec68000-cc6f-11eb-9e24-42876db1cc12.png"
