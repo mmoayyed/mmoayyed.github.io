@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Apereo CAS - OpenID Connect Custom Scopes & Claims
+title:      Apereo CAS - OpenID Connect Scopes & Claims
 summary:    Configure Apereo CAS to act as an OpenID Connect identity provider, allowing the release of custom scopes and claims to applications.
 tags:       [CAS]
 ---
