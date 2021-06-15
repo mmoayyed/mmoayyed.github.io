@@ -23,7 +23,6 @@ At a minimum, our CAS configuration for an Amazon ECS would look as follows:
 
 ```properties
 cas.ticket.registry.hazelcast.cluster.discovery.enabled=true
-cas.ticket.registry.hazelcast.cluster.members=1.2.*.*
 cas.ticket.registry.hazelcast.cluster.discovery.aws.security-group-name=service:cas-service-development
 cas.ticket.registry.hazelcast.cluster.multicast-enabled=false
 cas.ticket.registry.hazelcast.cluster.discovery.aws.port=-5701
