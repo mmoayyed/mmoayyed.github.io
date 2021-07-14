@@ -204,7 +204,7 @@ Note how I am skipping over `phone`.
 
 # Build and Deploy
 
-For this to actually be tested, we need a client to which we can release attributes, right? You can use whatever client/application you like, as long as it's able to retrieve attributes. I ended up using [this](https://github.com/cas-projects/cas-sample-java-webapp). When attempting to access the application, I get redirected to CAS. Once I log in and return, I see the following in the CAS logs on startup:
+For this to actually be tested, we need a client to which we can release attributes, right? You can use whatever client/application you like, as long as it's able to retrieve attributes. I ended up using [this](https://github.com/apereo/cas-sample-java-webapp). When attempting to access the application, I get redirected to CAS. Once I log in and return, I see the following in the CAS logs on startup:
 
 ```bash
 2017-02-21 14:54:04,885 DEBUG [org.apereo.cas.config.CasPersonDirectoryConfiguration] - <Configured multi-row JDBC attribute repository for [jdbc:hsqldb:hsql://localhost:9001/xdb]>

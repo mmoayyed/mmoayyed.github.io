@@ -13,7 +13,7 @@ Our starting position is as follows:
 
 - CAS `6.3.x`
 - Java `11`
-- [Bootiful Java Web Application](https://github.com/cas-projects/bootiful-cas-client)
+- [Bootiful Java Web Application](https://github.com/apereo/bootiful-cas-client)
 
 # Setup
 

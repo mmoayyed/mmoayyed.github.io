@@ -7,7 +7,6 @@ tags:       [CAS]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-# Overview
 
 For a highly-available CAS deployment, running CAS backed by the [Hazelcast Ticket Registry](https://apereo.github.io/cas/6.1.x/ticketing/Hazelcast-Ticket-Registry.html) can be a great option. In the simplest scenario, CAS server nodes are registered as Hazelcast cluster members via static discovery and that is fine for most deployments. Likewise, producing a CAS docker image and running it a container is fairly straight forward, what with the scaffolding and machinery put into the [CAS Overlay](https://github.com/apereo/cas-overlay-template) to produce images via the `jib` plugin or a native `Dockerfile`.
 

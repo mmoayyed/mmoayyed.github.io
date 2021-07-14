@@ -14,7 +14,7 @@ This tutorial specifically requires and focuses on:
 - CAS `6.3.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [Bootiful CAS Client](https://github.com/cas-projects/bootiful-cas-client)
+- [Bootiful CAS Client](https://github.com/apereo/bootiful-cas-client)
 - [CLI JSON Processor `jq`](https://stedolan.github.io/jq/)
 
 ## CAS Server
@@ -53,7 +53,7 @@ cas.authn.mfa.global-provider-id=mfa-duo
 
 ## Client Application
 
-For testing and demo purposes, I am using the [Bootiful CAS Client](https://github.com/cas-projects/bootiful-cas-client) application with some minor adjustments:
+For testing and demo purposes, I am using the [Bootiful CAS Client](https://github.com/apereo/bootiful-cas-client) application with some minor adjustments:
 
 - The `MainController` is annotated with `@RestController` and contains the following endpoint to simply produce the authenticated user principal as JSON:
 
