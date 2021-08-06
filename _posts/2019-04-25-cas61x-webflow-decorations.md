@@ -37,7 +37,7 @@ Imagine we have the following service definition registered with CAS:
   "serviceId": "^https://.*",
   "name": "HTTPS and IMAPS",
   "id": 10000001,
-  "description": "This service definition authorizes all application urls that support HTTPS and IMAPS protocols.",
+  "description": "Authorize that support HTTPS and IMAPS protocols.",
 }
 ```
 
@@ -62,6 +62,7 @@ def run(Object[] args) {
     def logger = args[2]
 
     def service = WebUtils.getService(requestContext)
+    // def request = WebUtils.getHttpServletRequestFromExternalWebflowContext(requestContext)
     logger.info("Decorating the login view for ${service}")
     if (service != null) {
         if (service.id.startsWith("https://")) {
