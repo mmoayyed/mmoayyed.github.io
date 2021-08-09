@@ -122,8 +122,26 @@ If you attempt to access CAS using an application that does in fact run behind `
 ![image](https://user-images.githubusercontent.com/1205228/56655233-0b4fc880-6647-11e9-8a41-7fccdde920e5.png)
 
 Next, if you relax the `serviceId` requirement to allow for `http` applications as well, you might see the following outcome:
-
+{% include googlead1.html  %}
 ![image](https://user-images.githubusercontent.com/1205228/56655214-fecb7000-6646-11e9-9076-d73db686ccaa.png)
+
+# Bonus
+
+If you need access to the raw HTTP request, you can always use:
+
+```groovy
+def request = WebUtils.getHttpServletRequestFromExternalWebflowContext(requestContext)
+println(request.getRemoteAddr())
+```
+
+A better strategy would be to use `ClientInfoHolder` instead:
+{% include googlead1.html  %}
+```groovy
+import org.apereo.inspektr.common.web.*;
+
+def clientInfo = ClientInfoHolder.getClientInfo();
+def clientIp = clientInfo.getClientIpAddress();
+```
 
 # So...
 
