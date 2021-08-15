@@ -70,7 +70,7 @@ The solution here very much depends on the time of the external servlet containe
 
 # Multi-Node
 
-If you have multiple CAS servers deployed behind a load balancer or a proxy, you generally need to mak sure *Sticky Sessions* are turned on and configured at the load balancer level, in addition to carefully managing the session timeouts. Alternatively, you may force force the CAS server to handle session replication itself via the ticket registry using `cas.authn.saml-idp.replicate-sessions=true`.
+If you have multiple CAS servers deployed behind a load balancer or a proxy, you generally need to make sure *Sticky Sessions* are turned on and configured at the load balancer level, in addition to carefully managing the session timeouts. Alternatively, you may force force the CAS server to handle session replication itself via the ticket registry using `cas.authn.saml-idp.replicate-sessions=true`.
 
 {% include googlead1.html  %}
 
