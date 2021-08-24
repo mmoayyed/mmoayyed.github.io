@@ -35,7 +35,7 @@ By default, an authentication handler that is processed and put into the executi
 
 # Application Authentication Policy
 
-Imagine a scenario where you may want to activate the `JSON` handler if the authentication request is submitted from a specific application. In other words, the `JSON` handler should only be allowed to validate credentials if the end-user is about to log into a designated application that is of course registered with CAS. To achieve this use case, we could design a specific [authentication policy](https://apereo.github.io/cas/development/services/Configuring-Service-AuthN-Policy.html) for the application and instruct CAS to use our `JSON` authentication handler when processing requests from this application:
+Imagine a scenario where you may want to activate the `JSON` handler if the authentication request is submitted from a specific application. In other words, the `JSON` handler should only be allowed to validate credentials if the end-user is about to log into a designated application that is of course registered with CAS. To achieve this use case, we could design a specific [authentication policy](https://apereo.github.io/cas/6.4.x/services/Configuring-Service-AuthN-Policy.html) for the application and instruct CAS to use our `JSON` authentication handler when processing requests from this application:
 
 {% include googlead1.html  %}
 

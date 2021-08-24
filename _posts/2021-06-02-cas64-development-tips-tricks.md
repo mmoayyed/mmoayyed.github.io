@@ -246,5 +246,5 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 [initializr]: https://casinit.herokuapp.com
-[testproc]: https://apereo.github.io/cas/development/developer/Test-Process.html
-[buildproc]: https://apereo.github.io/cas/development/developer/Build-Process.html
+[testproc]: https://apereo.github.io/cas/6.4.x/developer/Test-Process.html
+[buildproc]: https://apereo.github.io/cas/6.4.x/developer/Build-Process.html

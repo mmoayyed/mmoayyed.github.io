@@ -5,7 +5,7 @@ summary:    Review modest strategies to register SAML2 service providers in Aper
 tags:       [CAS]
 ---
 
-Apereo CAS can be configured to act as a standalone [SAML2 identity provider](https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html) to integrate with and support SAML2 service providers via appropriate SAML2 metadata exchanges to establish mutual trust. Such exchanges can be configured and managed using a variety of ways, the most common of which happens to via the file system or URL. In this post, we will take a look at both options to discuss modest approaches to metadata management as well as caching behavior and controls. 
+Apereo CAS can be configured to act as a standalone [SAML2 identity provider](https://apereo.github.io/cas/6.4.x/authentication/Configuring-SAML2-Authentication.html) to integrate with and support SAML2 service providers via appropriate SAML2 metadata exchanges to establish mutual trust. Such exchanges can be configured and managed using a variety of ways, the most common of which happens to via the file system or URL. In this post, we will take a look at both options to discuss modest approaches to metadata management as well as caching behavior and controls. 
 
 {% include googlead1.html  %}
 
@@ -13,7 +13,7 @@ This post specifically requires and focuses on:
 
 - CAS `6.4.x`
 - Java `11`
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.4.x/services/JSON-Service-Management.html)
 
 # SAML2 Service Providers
 

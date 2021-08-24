@@ -12,11 +12,11 @@ tags:       [CAS]
 - CAS `6.4.x`
 - Java `11`
 - [Passport-SAML](http://www.passportjs.org/packages/passport-saml/)
-- [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html)
+- [JSON Service Registry](https://apereo.github.io/cas/6.4.x/services/JSON-Service-Management.html)
 
 # CAS Configuration
 
-Apereo CAS can be configured to act as a standalone [SAML2 identity provider](https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html) to integrate with and support SAML2 service providers such as our to-be-developed Node.js application via appropriate SAML2 metadata exchanges to establish mutual trust. This metadata exchange and the registration step is done with CAS using the following JSON snippet:
+Apereo CAS can be configured to act as a standalone [SAML2 identity provider](https://apereo.github.io/cas/6.4.x/authentication/Configuring-SAML2-Authentication.html) to integrate with and support SAML2 service providers such as our to-be-developed Node.js application via appropriate SAML2 metadata exchanges to establish mutual trust. This metadata exchange and the registration step is done with CAS using the following JSON snippet:
 
 {% include googlead1.html  %}
 

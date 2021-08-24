@@ -7,7 +7,7 @@ tags:       [CAS,MFA]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-Perhaps one of the more attractive features of [CAS 5](https://apereo.github.io/cas/development) is the ability to support [multifactor authentication](https://apereo.github.io/cas/5.0.x/installation/Configuring-Multifactor-Authentication.html)
+Perhaps one of the more attractive features of [CAS 5](https://apereo.github.io/cas/5.0.x) is the ability to support [multifactor authentication](https://apereo.github.io/cas/5.0.x/installation/Configuring-Multifactor-Authentication.html)
 via a number of providers/vendors that can be triggered in many ways. While support for triggers may seem extensive, there is always
 that edge use case that would have you trigger MFA based on a special set of requirements.
 

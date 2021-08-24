@@ -9,15 +9,15 @@ The [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) is a unified
 
 {% include googlead1.html  %}
 
-In this post, we will examine [integration strategies](https://apereo.github.io/cas/development/integration/AWS-Integration.html) between Apereo CAS and AWS CLI requests that aim to offer a simpler technique for obtaining AWS temporary credentials. This post specifically requires and focuses on:
+In this post, we will examine [integration strategies](https://apereo.github.io/cas/6.4.x/integration/AWS-Integration.html) between Apereo CAS and AWS CLI requests that aim to offer a simpler technique for obtaining AWS temporary credentials. This post specifically requires and focuses on:
 
 - CAS `6.4.x`
 - Java `11`
-- [AWS Integration](https://apereo.github.io/cas/development/integration/AWS-Integration.html)
+- [AWS Integration](https://apereo.github.io/cas/6.4.x/integration/AWS-Integration.html)
 
 # Overview
 
-Apereo CAS offers a [dedicated endpoint](https://apereo.github.io/cas/development/integration/AWS-Integration.html) that can support two different integration options for obtaining security credentials from AWS security token service. These options primarily take advantage of the AWS offered APIs that are, namely, `AssumeRole` and `GetSessionToken`. We should also note that the authenticated user that is trying to submit the API requests can qualify and initiate multifactor authentication using the available CAS [multifactor authentication triggers](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication-Triggers.html). This is also a new addition to the list of enhancements in this Apereo CAS release that allows [REST API requests](https://apereo.github.io/cas/development/protocol/REST-Protocol.html) to take advantage of multifactor authentication for qualifying users.
+Apereo CAS offers a [dedicated endpoint](https://apereo.github.io/cas/6.4.x/integration/AWS-Integration.html) that can support two different integration options for obtaining security credentials from AWS security token service. These options primarily take advantage of the AWS offered APIs that are, namely, `AssumeRole` and `GetSessionToken`. We should also note that the authenticated user that is trying to submit the API requests can qualify and initiate multifactor authentication using the available CAS [multifactor authentication triggers](https://apereo.github.io/cas/6.4.x/mfa/Configuring-Multifactor-Authentication-Triggers.html). This is also a new addition to the list of enhancements in this Apereo CAS release that allows [REST API requests](https://apereo.github.io/cas/6.4.x/protocol/REST-Protocol.html) to take advantage of multifactor authentication for qualifying users.
 
 {% include googlead1.html  %}
 
@@ -41,7 +41,7 @@ curl -X POST -d username=casuser -d password=Mellon \
   https://cas.example.org/cas/actuator/awsSts
 ```
 
-Additionally, let's suppose that our CAS server is configured to [multifactor authentication](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html) using [Duo Security](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html). The API request can certainly carry a `passcode` credential obtained from the Duo Security's mobile app to pre-authenticate the user for multifactor authentication:
+Additionally, let's suppose that our CAS server is configured to [multifactor authentication](https://apereo.github.io/cas/6.4.x/mfa/Configuring-Multifactor-Authentication.html) using [Duo Security](https://apereo.github.io/cas/6.4.x/mfa/DuoSecurity-Authentication.html). The API request can certainly carry a `passcode` credential obtained from the Duo Security's mobile app to pre-authenticate the user for multifactor authentication:
 
 ```bash
 curl -X POST -d username=casuser -d password=Mellon -d passcode=325301 \

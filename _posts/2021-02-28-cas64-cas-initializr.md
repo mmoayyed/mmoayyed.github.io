@@ -35,7 +35,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 
 ## CAS Spring Boot Admin Overlay
 
-You may generate a [CAS Spring Boot Admin](https://apereo.github.io/cas/development/monitoring/Configuring-Monitoring-Administration.html) WAR overlay project using the following command:
+You may generate a [CAS Spring Boot Admin](https://apereo.github.io/cas/6.4.x/monitoring/Configuring-Monitoring-Administration.html) WAR overlay project using the following command:
 
 ```bash
 curl -k http://casinit.herokuapp.com/starter.tgz \
@@ -45,7 +45,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 
 ## CAS Spring Cloud Configuration Server Overlay
 
-You may generate a [CAS Spring Cloud Configuration Server](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management.html) WAR overlay project using the following command:
+You may generate a [CAS Spring Cloud Configuration Server](https://apereo.github.io/cas/6.4.x/configuration/Configuration-Server-Management.html) WAR overlay project using the following command:
 
 {% include googlead1.html  %}
 
@@ -57,7 +57,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 
 ## CAS Spring Cloud Discovery Server Overlay
 
-You may generate a [CAS Spring Cloud Discovery Server](https://apereo.github.io/cas/development/installation/Service-Discovery-Guide-Eureka.html) WAR overlay project using the following command:
+You may generate a [CAS Spring Cloud Discovery Server](https://apereo.github.io/cas/6.4.x/installation/Service-Discovery-Guide-Eureka.html) WAR overlay project using the following command:
 
 {% include googlead1.html  %}
 
@@ -69,7 +69,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 
 ## CAS Management Server Overlay
 
-You may generate a [CAS Management Server](https://apereo.github.io/cas/development/services/Installing-ServicesMgmt-Webapp.html) WAR overlay project using the following command:
+You may generate a [CAS Management Server](https://apereo.github.io/cas/6.4.x/services/Installing-ServicesMgmt-Webapp.html) WAR overlay project using the following command:
 
 ```bash
 curl -k http://casinit.herokuapp.com/starter.tgz \
