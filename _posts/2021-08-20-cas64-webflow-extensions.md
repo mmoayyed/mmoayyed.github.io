@@ -22,6 +22,8 @@ This post *might* equally apply to all CAS `6.x` deployments. YMMV. To learn the
 
 Every CAS module that needs to dynamically augment the Spring Webflow routes simply takes on the following form:
 
+{% include googlead1.html  %}
+
 ```java
 package com.example.cas;
 
@@ -43,6 +45,8 @@ public class SomethingWebflowConfigurer extends AbstractCasWebflowConfigurer {
 ```
 
 CAS modules register their `WebflowConfigurer` instances in `@Configuration` classes:
+
+{% include googlead1.html  %}
 
 ```java
 package com.example.cas;
@@ -84,6 +88,8 @@ Note that each `CasWebflowConfigurer` implementation may be assigned a specific 
   <strong>Remember</strong><br/>If you are looking for XML flow definitions to extend CAS, you are simply holding it wrong. While you may be creative enough to find a solution and make that approach work, it is pretty much guaranteed that your design will break quite quickly in the next upgrade.
 </div>
 
+{% include googlead1.html  %}
+
 Next, we just need to ensure that CAS is able to pick up our special configuration. To do so, create a `src/main/resources/META-INF/spring.factories` file and reference the configuration class in it as such:
 
 ```properties
@@ -104,6 +110,8 @@ protected void doInitialize() throws Exception {
 }
 ```
 
+{% include googlead1.html  %}
+
 The parent class, `AbstractCasWebflowConfigurer`, providers a lot of helper methods and utilities in a *DSL-like* fashion to hide the complexity of Spring Webflow APIs to make customization easier. 
 
 Some interesting examples follow.
@@ -120,6 +128,8 @@ var state = getState(flow, "stateId", ActionState.class);
 
 Create a view state definition in the flow using the id `stateId` that is tasked to render the `someHtmlViewHere` HTML view:
 
+{% include googlead1.html  %}
+
 ```java
 var state = createViewState(flow, "stateId", "someHtmlViewHere");
 ```
@@ -133,6 +143,8 @@ var state = createActionState(flow, "stateId", "actionBeanId");
 createTransitionForState(handler, "ifThisTransitionHappens", "thenGoHereStateId");
 ```
 
+{% include googlead1.html  %}
+
 ## Create Default Transitions
 
 Create an action state definition in the flow using the id `stateId` that will execute the action identified by `actionBeanId`. The state will always route to the state id `thenGoHereStateId` as a default *catch all*, if none of its defined transitions can properly handle the step:
@@ -144,6 +156,8 @@ createStateDefaultTransition(state, "defaultStateId");
 ```
 
 The `actionBeanId` itself should be defined as a `@Bean`:
+
+{% include googlead1.html  %}
 
 ```java
 @Bean
@@ -164,6 +178,8 @@ var state = createEndState(flow, "stateId", "flowScope.url", true);
 
 Create a decision state that will conditionally route to one of two states, based on the outcome of the predicate `flowScope.someValue != null`. If `true`, the flow will resume control at the state `trueStateId`; otherwise it will switch to `falseStateId`.
 
+{% include googlead1.html  %}
+
 ```java
 createDecisionState(flow, "stateId", "flowScope.someValue != null", "trueStateId", "falseStateId");
 ```
@@ -178,6 +194,7 @@ h.add(SomeException.class, "stateId");
 flow.getExceptionHandlerSet().add(h);
 ```
 
+{% include googlead1.html  %}
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
