@@ -1773,9 +1773,10 @@ animation-delay: .175s;
 }
 
 .blog-post-preview {
+  font-family: Bree serif, Overlock, sans-serif;
   border-width: 2pt;
   border-style: solid;
-  height: 290pt;
+  height: 330pt;
   border-radius: 25px;
   border-color: lightgray;
   margin-top: 40pt;

@@ -63,11 +63,11 @@ a, a:hover, .navbar-nav>li>a.active {
 }
 
 .title {
-    font-family: cursive;
+    font-family: Bree serif, Overlock, sans-serif;
     font-weight: 100;
     line-height: 1.5;
     color:white;
-    max-width: 78%;
+    max-width: 75%;
     text-align: left;
     font-size: 42px;
 }
@@ -186,6 +186,10 @@ code {
 a.post-preview-link {
     text-decoration: none;
     color: unset;
+}
+
+.card-title {
+    font-family: Bree serif, Overlock, sans-serif;
 }
 
 .card:hover {
