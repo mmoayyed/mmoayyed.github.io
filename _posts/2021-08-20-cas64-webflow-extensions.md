@@ -196,6 +196,20 @@ flow.getExceptionHandlerSet().add(h);
 
 {% include googlead1.html  %}
 
+# Bonus
+
+You can allow CAS to provide a JSON representation of the CAS authentication webflows via a dedicated `springWebflow` actuator endpoint. The endpoint can accept a `flowId` parameter as well as via a `GET` to only present the flow body of the requested flow id.
+
+To enable and expose the `springWebflow` endpoint, the following settings should come in handy:
+
+```properties
+management.endpoints.web.exposure.include=springWebflow
+management.endpoint.springWebflow.enabled=true
+cas.monitor.endpoints.endpoint.springWebflow.access=IP_ADDRESS
+cas.monitor.endpoints.endpoint.springWebflow.required-ip-addresses=127.0.0.1
+```
+{% include googlead1.html  %}
+
 # Need Help?
 
 If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
