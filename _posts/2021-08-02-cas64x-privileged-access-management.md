@@ -156,6 +156,10 @@ CLIENT IP ADDRESS: 172.16.5.181
 SERVER IP ADDRESS: 192.168.200.22
 ```
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 PAM solutions are critical components of a healthy and functional IAM infrastructure, as they focuses on privileged accounts and those with elevated privileges in the organization. PAM and IAM need to work together to define and execute appropriate policies to protect against cyber attacks. 

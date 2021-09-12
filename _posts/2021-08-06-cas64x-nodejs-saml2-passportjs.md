@@ -137,6 +137,10 @@ Once after a successful authentication attempt with CAS as a SAML2 identity prov
 {% include image.html img="https://user-images.githubusercontent.com/1205228/128532053-386f0581-212a-4ff4-b118-e05c6048b7e3.png" 
 width="80%" title="Node.js Passport-SAML application" %}
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

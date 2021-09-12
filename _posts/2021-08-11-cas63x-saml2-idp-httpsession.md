@@ -74,6 +74,10 @@ If you have multiple CAS servers deployed behind a load balancer or a proxy, you
 
 {% include googlead1.html  %}
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

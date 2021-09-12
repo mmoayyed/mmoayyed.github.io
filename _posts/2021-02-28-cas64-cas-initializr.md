@@ -122,6 +122,10 @@ CAS Initializr at this point is mainly a backend service and a few APIs. However
 
 {% include googlead1.html  %}
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 Start simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files around.

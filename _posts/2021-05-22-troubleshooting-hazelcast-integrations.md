@@ -82,6 +82,10 @@ com.hazelcast.config.InvalidConfigurationException: Unable to retrieve credentia
 
 For dynamic discovery of Hazelcast members in AWS ECS environments, you need to make sure the *IAM Role* is not specified in your application configuration, because the Hazelcast plugin would then fetch your credentials by using your IAM role. In AWS ECS, the role is fetched from the task definition that is assigned to run the application.
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)

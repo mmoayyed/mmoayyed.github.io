@@ -65,6 +65,10 @@ That's it.
 
 - In the Duo Security's admin console, you may note that field labels no longer refer to *Integration Key* or *Secret Key*. With Universal Prompt, these fields are renamed to better align with the OAuth 2.0 specification and are now known as *Client ID* or `client_id` and the *Client secret* or `client_secret`.
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

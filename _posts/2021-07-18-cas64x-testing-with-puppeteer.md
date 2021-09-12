@@ -139,6 +139,10 @@ Using Puppeteer as a browser automation tool and framework has several advantage
 
 All relevant patches or pull requests that affect the CAS user interface or have an effect on an external client-facing representation of a component **should be tested and submitted** with a test scenario based on Puppeteer. This makes it much easier for the project maintainers to verify the correctness of the original claim, review and ascertain the state of the patch, and ensure regressions are prevented as future CAS releases are published.  
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

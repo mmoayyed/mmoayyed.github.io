@@ -208,6 +208,10 @@ If you pull the CAS page in your browser, you should be able to see <b>Hello</b>
 <div class="alert alert-info">
   <strong>Note</strong><br/>Removing or commenting out the message key in the custom message bundle does not actually remove it from the cache, and only forces the system to fall back to using the last known value. To remove the text, it might be better to assign a blank value to the custom message in the message bundle file.</div>
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

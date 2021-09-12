@@ -126,6 +126,10 @@ There a few advantages to testing CAS high availability using this technique:
 - The client application is a simple Java-based web application and does not require any additional dependencies, extensions, or frameworks.
 - The client application can be used to test other aspects and features of CAS, and its use is not limited to high availability testing.
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
