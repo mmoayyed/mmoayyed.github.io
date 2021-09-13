@@ -87,6 +87,11 @@ Once you have successfully logged in and exchanged tokens with CAS, you should b
 
 {% include image.html img="https://user-images.githubusercontent.com/1205228/102646820-f5770b80-4179-11eb-97ac-04cea7f260c5.png" width="80%" title="OpenID Connect Vue.js Successful Login" %}
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

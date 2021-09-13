@@ -126,6 +126,11 @@ To learn more, please review [the Spring Cloud documentation](https://cloud.spri
 
 - Components that can be refreshed are marked with `@RefreshScope` judiciously. Not every component has to be refreshable and certain beans should not be reloadable anyway. A bean's ability to reload its state must be a privilege and not a right. 
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 ## Finale
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.

@@ -60,6 +60,11 @@ To handle automatic selection of the correct identity provider, we can start by 
 
 It is important to emphasize that this is a modest user interface enhancement, mostly designed as *a matter of convenience to the user* and the overall user experience. Other variations of this flow that force the server to execute authorization logic to determine the user's home identity provider without providing a selection menu *can not* be handled via client-side enhancements in a secure way and must be pushed back to the backend server.
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

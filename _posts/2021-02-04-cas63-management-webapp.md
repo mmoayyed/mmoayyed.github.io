@@ -159,6 +159,11 @@ This should let the service registry manage OIDC services as proper database ent
 
 The configuration and build versions are specified in the `gradle.properties` file. You can always change the `casmgmt.version` and repeat the build process as patches and fixes are released by the CAS project.
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.

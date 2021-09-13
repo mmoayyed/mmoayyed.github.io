@@ -97,6 +97,11 @@ Or, you might see errors:
 
 If your Markdown documents are technical documentation and manuals, let's say for a project that is hosted on GitHub, you could very easily integrate the above steps into [your CI workflow](https://travis-ci.org/apereo/cas/builds) and automate the validation process for all commits and pull requests. 
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 ## Finale
 
 I hope this review was of some help to you. Be sure to take a look at [HTMLProofer](https://github.com/gjtorikian/html-proofer) and give it a try. Of course, kudos to [Hal Deadman](https://github.com/hdeadman) for putting together the script, the Docker image and the follow-up work that went into the [Apereo CAS project](https://github.com/apereo/cas) to make sure the documentation syntax is kept up to par.

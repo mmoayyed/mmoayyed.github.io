@@ -78,6 +78,11 @@ Once entries are imported, you can invoke the previous `registeredServices` actu
 curl -u casuser:Mellon https://sso.example.org/cas/actuator/exportRegisteredServices -o results.zip
 ```
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 Remember that the strategies outlined in this guide apply to all types of technologies and services that can [manage application definitions](https://apereo.github.io/cas/6.3.x/services/Service-Management.html#storage) in Apereo CAS. They are not limited to relational databases, and should work all the same if your deployment uses MongoDb, Cassandra or any other technology as the backing solution for the CAS service registry. 

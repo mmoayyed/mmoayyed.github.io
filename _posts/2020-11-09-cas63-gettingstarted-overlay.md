@@ -391,6 +391,11 @@ docker-compose build
 
 You may also build Docker images using the [Spring Boot Gradle plugin](/2020/10/24/cas63x-spring-boot-docker/).
 
+
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 It's important that you start off simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files around.
