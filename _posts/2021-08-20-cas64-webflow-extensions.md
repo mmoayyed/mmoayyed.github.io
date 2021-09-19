@@ -5,7 +5,7 @@ summary:    Learn and master extending Apereo CAS Spring Webflow definitions.
 tags:       [CAS]
 ---
 
-More recent versions of Apereo CAS, specifically starting with CAS 5 and above, attempt to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and viola! CAS will take care of the rest.
+More recent versions of Apereo CAS, specifically starting with CAS 5 and above, attempt to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and voilà! CAS will take care of the rest.
 
 {% include googlead1.html  %}
 
