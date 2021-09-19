@@ -201,7 +201,6 @@ a.post-preview-link {
     .title {
         text-align: left;
         font-size: 32px;
-        max-width: 70%;
     }
 
     header.masthead .post-heading .meta {
@@ -259,6 +258,7 @@ a.post-preview-link {
     .title {
         margin-top: 3px;
         font-size: 28px;
+        max-width: 80%;
     }
     .post-subtitle {
         font-size: 15px;
@@ -266,6 +266,10 @@ a.post-preview-link {
     .blognavbar {
         margin-top: 4%;
         background: rgb(7, 6, 6);
+    }
+
+    a#darkMode {
+        display: none;
     }
 
     body {
