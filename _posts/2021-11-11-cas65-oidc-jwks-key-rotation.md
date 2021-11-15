@@ -72,12 +72,14 @@ You could also ask CAS to narrow down the list of keys for you by specifying the
 $ curl https://sso.example.org/cas/oidc/jwks\?state=current | jq
 ```
 
+Other possible states are `previous` and `future`.
+
 ## Key Rotation
 
 Typically, CAS maintains three different and distinct keys in its keystore:
 
 - The *current* key, used for signing operations, etc soon to be rotated when necessary.
-- The *future* key, which would be replaced with the *current* key once after keys are rotated.
+- The *future* key, which would take the place of the *current* key once after keys are rotated.
 - The *previous* key, no longer in rotation and a candidate for removal via revocation operations.
 
 CAS does allow a reasonable schedule for key rotation. The schedule can be controlled via:
@@ -90,7 +92,7 @@ cas.authn.oidc.jwks.rotation.schedule.enabled=true
 
 During key rotation operations,
 
-- Current key is put out of rotation; their status changes to *previous*.
+- Current key is put out of rotation; its status changes to *previous*.
 - Future key takes the place of the current key.
 - A new future key is generated and would be on standby.
 
