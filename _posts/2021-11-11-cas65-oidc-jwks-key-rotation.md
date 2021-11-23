@@ -20,6 +20,7 @@ Our focus is based on the following:
 National Institute of Standards and Technology (NIST) proposes that one should rotate the keys after a certain period. The previous keys must be discarded, 
 and newly generated keys must be used for further cryptographic operations. 
 
+{% include googlead1.html  %}
 > According to NIST guidelines, both keys must be rotated at least once every two years. CAS deployments typically rotate keys once every six months.
 
 ## Key Generation
@@ -31,6 +32,8 @@ First, CAS is able to auto-generate a keystore at a defined path:
 ```properties
 cas.authn.oidc.jwks.jwks-file=file:/path/to/keystore.jwks
 ```
+
+{% include googlead1.html  %}
 
 This keystore is only generated when the file pointed out by that setting does *NOT* exist. If it does, CAS would happily load and parse the file without any complaints.
 
@@ -62,6 +65,7 @@ The `state` parameter indicates the status of the key lifecycle. A value of `0` 
 
 Per the OpenID Connect specification, you can always ask CAS to produce its keys:
 
+{% include googlead1.html  %}
 ```bash
 $ curl https://sso.example.org/cas/oidc/jwks | jq
 ```
@@ -81,7 +85,7 @@ Typically, CAS maintains three different and distinct keys in its keystore:
 - The *current* key, used for signing operations, etc soon to be rotated when necessary.
 - The *future* key, which would take the place of the *current* key once after keys are rotated.
 - The *previous* key, no longer in rotation and a candidate for removal via revocation operations.
-
+{% include googlead1.html  %}
 CAS does allow a reasonable schedule for key rotation. The schedule can be controlled via:
 
 ```properties
@@ -105,14 +109,14 @@ $ curl https://sso.example.org/cas/actuator/oidcJwks/rotate | jq
 ## Key Revocation
 
 Key revocation operations begin to refresh the state of the keystore by removing *previous* keys. Similar to key rotation routines, key revocation may also be designed to follow a reasonable schedule:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.oidc.jwks.revocation.schedule.repeat-interval=PT60S
 cas.authn.oidc.jwks.revocation.schedule.start-delay=PT30S
 cas.authn.oidc.jwks.revocation.schedule.enabled=true
 ```
 
-...and as ever, if you do not want to wait for the **revocation schedule** to kick in and wish to forcefully rotate keys, you can always ask CAS to run the revocation routine for you:
+...and as ever, if you do not want to wait for the **revocation schedule** to kick in and wish to forcefully revoke keys, you can always ask CAS to run the revocation routine for you:
 
 ```bash
 $ curl https://sso.example.org/cas/actuator/oidcJwks/revoke | jq
