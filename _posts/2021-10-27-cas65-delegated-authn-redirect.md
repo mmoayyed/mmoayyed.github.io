@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication & Identity Provider Selection
 summary:    Learn how to present external identity providers to Apereo CAS for delegated (proxy) authentication, and choose strategies that allow the system to programmatically designate an identity provider as primary and automatically redirect the user to it for authentication and access.
-tags:       ["CAS 6.5.x"]
+tags:       ["CAS 6.5.x", "Delegated Authentication"]
 ---
 
 When setting up Apereo CAS to delegate authentication to [external identity providers][delegation], one common consideration is to determine whether an identity provider can be programmatically chosen for the given request. Given the combination of the original request, various other dynamic parameters, and the requesting relying party, CAS ought to be able to find a qualifying and applicable identity provider. When known, the flow and client browser should attempt to auto-redirect to the chosen identity provider and effectively turn CAS into an *invisible* proxy.

@@ -3,7 +3,7 @@ layout:     post
 title:      Shibboleth IdP - Scriptable LDAP Filter
 summary:    A review of scripted query templates of the LDAP DataConnector in the Shibboleth Identity Provider to build LDAP queries dynamically.
 published: true
-tags: ["Shibboleth Identity Provider"]
+tags: ["Shibboleth Identity Provider", "LDAP", "Groovy"]
 ---
 
 I have been working on a use case that involves configuring the [Shibboleth Identity Provider](https://wiki.shibboleth.net/confluence/display/IDP4/Home) to handle a SAML2 authentication flow to an external SAML2-capable Okta identity provider. The external identity provider was releasing a SAML2 NameID in the `eppn` format (i.e. `user@example.org`) and the Shibboleth installation was set to resolve attributes using the filter defined in the LDAP [`DataConnector`](https://wiki.shibboleth.net/confluence/display/IDP4/LDAPConnector):

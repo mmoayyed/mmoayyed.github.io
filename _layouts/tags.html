@@ -97,7 +97,7 @@ style="background-size: contain; background-position-x: right; background-image:
     let cards = "";
     let count = 0;
     filteredPosts.forEach(post => {
-      console.log(post.url);
+      // console.log(post.url);
 
       let tags = post.tags.trim().split(",").map(tag => { return `<li><a href="#">${tag.trim()}</a>&nbsp;</li>` }).join("");
       cards = cards + 

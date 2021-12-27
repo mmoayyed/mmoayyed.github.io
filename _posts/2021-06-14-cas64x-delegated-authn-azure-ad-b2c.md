@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication with Microsoft Azure AD B2C
 summary:    Learn how to use Microsoft Azure AD B2C as an external OpenID Connect identity provider and connect it to CAS for a delegated/proxy authentication scenario.
-tags:       ["CAS 6.4.x", "Delegated Authentication"]
+tags:       ["CAS 6.4.x", "Delegated Authentication", "Azure Active Directory"]
 ---
 
 Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers][oidc] for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.

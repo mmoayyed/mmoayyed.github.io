@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Management WebApp w/ Docker
 summary:    Learn how to deploy the CAS management web application via Docker to provide an administrative overview of registered applications with CAS, and take advantage of dashboards and other monitoring tools.
-tags:       ["CAS 6.3.x"]
+tags:       ["CAS 6.3.x", "Docker"]
 ---
 
 The [CAS management web application](https://apereo.github.io/cas/6.3.x/services/Installing-ServicesMgmt-Webapp.html) provides a web interface and dashboard and allows CAS administrators and application owners delegated access so they can manage and modify policies associated with their applications. The operational capacity of the CAS server itself is not in any way tied to the deployment status of the management web application; you may decide to take the application offline for maintenance or completely remove it from your deployment scenario at any given time.

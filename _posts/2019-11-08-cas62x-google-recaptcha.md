@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Google reCAPTCHA Integration
 summary:    Learn to set up an integration between Apereo CAS and Google reCAPTCHA.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Google reCAPTCHA"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

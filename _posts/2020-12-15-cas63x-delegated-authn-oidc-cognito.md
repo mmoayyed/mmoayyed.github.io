@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication with Amazon Cognito
 summary:    Learn how to use Amazon Cognito as an external OpenID Connect identity provider and connect it to CAS for a delegated authentication scenario.
-tags:       ["CAS 6.3.x", "Delegated Authentication", "OpenID Connect"]
+tags:       ["CAS 6.3.x", "Delegated Authentication", "OpenID Connect", "AWS"]
 ---
 
 Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers](https://apereo.github.io/cas/6.3.x/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.

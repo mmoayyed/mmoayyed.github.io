@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - User Interface Customizations
 summary:    A review of Apereo CAS user interface customization strategies, including themes for those who enjoy front-end development and the wonderful world of UI/UX.
-tags:       ["CAS 6.3.x"]
+tags:       ["CAS 6.3.x", "UI/UX"]
 ---
 
 When it comes to implementing CAS user interface customizations, there are many options and strategies one can use to deliver a unique user experience. There are ways one can customize the default views to overlay changes on top of provided HTML files. These views may then be customized and loaded from a variety of locations, and just as well, could be themed using both static and dynamic strategies either globally or on a per-application basis. In this post, we shall review such customization strategies at a high-level, and also touch upon developer tools and methods that allow the changes to quickly go into effect and get deployed.

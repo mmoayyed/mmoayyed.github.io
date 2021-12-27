@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Keeping Healthy with Spring Boot
 summary:    Learn how you may keep your Apereo CAS deployment healthy, monitoring its status using Spring Boot actuator endpoints and health indicators.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Monitoring"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

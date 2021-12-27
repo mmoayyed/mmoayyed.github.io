@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication to OAUTH Identity Providers
 summary:    Learn how your Apereo CAS deployment may be configured to delegate authentication to an external OAUTH identity provider.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Delegated Authentication", "OAuth"]
 ---
 
 Apereo CAS has had the support to [delegate authentication to external OAUTH identity providers](https://apereo.github.io/cas/6.1.x/integration/Delegate-Authentication.html) for quite some time. This functionality, if memory serves me correctly, started around CAS `3.x` as an extension based on the [pac4j](https://github.com/pac4j/pac4j) project which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 with Node.js <br>and Passport-SAML
 summary:    Take advantage of Passport-SAML to integrate your Node.js application with a SAML2 identity provider for authentication.
-tags:       ["CAS 6.4.x", "SAML"]
+tags:       ["CAS 6.4.x", "SAML", "Node.js"]
 ---
 
 [Passport](http://www.passportjs.org/) is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively dropped into any Express-based web application. Password also have a collection of authentication strategies, [one of which](http://www.passportjs.org/packages/passport-saml/) provides a SAML2 authentication provider which is the main focus of this blog post based on the following components:

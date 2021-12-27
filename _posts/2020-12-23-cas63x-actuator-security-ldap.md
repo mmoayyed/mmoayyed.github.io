@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Securing Actuator Endpoints with LDAP
 summary:    Learn how to secure CAS actuator endpoints using basic authentication and accounts found in LDAP.
-tags:       ["CAS 6.3.x", "LDAP"]
+tags:       ["CAS 6.3.x", "LDAP", "Monitoring"]
 ---
 
 CAS, being a Spring-Boot application at heart, includes several actuator endpoints to help you monitor and manage the server when it’s pushed to production. Such actuator endpoints can be secured in a variety of ways the most common of which would be username/password via basic authentication. In this blog post, we will examine the security configuration of actuator endpoints secured whose access is controlled via LDAP.
