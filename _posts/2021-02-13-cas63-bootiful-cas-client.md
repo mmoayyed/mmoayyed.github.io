@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Bootiful CASified Web Application
 summary:    A review of a simple Spring Boot web application powered by Apereo CAS for authentication and single sign-on.
-tags:       ["CAS 6.4.x"]
+tags:       ["CAS 6.4.x", "Service Integrations"]
 ---
 
 The `bootiful-cas-client` is a modest web application powered by Spring Boot, which relies on Apereo CAS for authentication and web single sign-on. In this walkthrough, we will take a quick look at the anatomy of the web application and attempt to integrate it with a given CAS server for fun and profit, etc. Mainly, etc.

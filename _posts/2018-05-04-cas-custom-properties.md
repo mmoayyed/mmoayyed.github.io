@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Customized Settings
 summary:    Extend the Apereo CAS server to allow custom configuration properties and settings.
-tags:       ["CAS 5.3.x"]
+tags:       ["CAS 5.3.x", "Spring Cloud", "Configuration Management"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

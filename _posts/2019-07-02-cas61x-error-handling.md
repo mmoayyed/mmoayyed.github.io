@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Handling Authentication Webflow Errors with Grace
 summary:    Learn how to modify Apereo CAS to customize exception handling and produce localized error messages for your deployment.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Spring Webflow"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Custom Login Fields w/ Dynamic Bindings
 summary:    Learn how to extend the Spring Webflow model to add custom fields to the CAS login form and the authentication process and take advantage of the additional user-provided data in customized authentication handlers.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Authentication"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

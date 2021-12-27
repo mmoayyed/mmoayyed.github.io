@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5 - Maintaining Protocol Compatibility
 summary:    A short and sweet CAS 5 guide on how to get CAS Protocol v2 to act as v3.
-tags:       ["CAS 5.0.x"]
+tags:       ["CAS 5.0.x", "Authentication"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Supercharged JSON Service Registry 
 summary:    Learn how to take advantage of advanced features of the Apereo CAS JSON Service Registry to manage, maintain, and protect application registration records.
-tags:       ["CAS 6.3.x"]
+tags:       ["CAS 6.3.x", "Service Integrations"]
 ---
 
 Apereo CAS offers a large menu of options for managing client application registration records. Over the years, the [JSON Service Registry](https://apereo.github.io/cas/6.2.x/services/JSON-Service-Management.html) has become quite the popular choice given its configuration simplicity and low maintenance overhead. Depending on the type of client application being registered and the authentication protocol used, there are a few hidden *gems* available to the adopters of the JSON Service Registry that should prove quite advantageous when it comes to managing secrets, dynamic application reconfiguration at runtime, etc. 

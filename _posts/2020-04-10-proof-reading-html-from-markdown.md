@@ -3,7 +3,7 @@ layout:     post
 title:      Validate Generated HTML from Markdown
 summary:    In this post, you will learn how to validate and verify your HTML documents that are generated from markdown sources using HTMLProofer.
 published: true
-tags:       [Miscellaneous, MarkDown]
+tags:       [Miscellaneous, Markdown, Ruby]
 ---
 
 If you have a set of Markdown documents hosted somewhere (i.e. [GitHub Pages](https://pages.github.com/)) and rendered in HTML format, it would be a good idea to validate and proof-read them all, to make sure image references, links, tags, etc are all working correctly before you publish. Doing so manually would take a lot of time and is quite a tedious task. So in this blog post, we are going to take a look at the [HTMLProofer](https://github.com/gjtorikian/html-proofer) tool to see how it can be used to validate our markdown documents. 

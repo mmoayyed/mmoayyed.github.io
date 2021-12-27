@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Custom Authentication & Attribute Sources
 summary:    Master writing custom authentication handlers/schemes in CAS and learn how to design custom data sources that can produce user claims and attributes.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Authentication"]
 ---
 
 While [authentication support](https://apereo.github.io/cas/6.2.x/installation/Configuring-Authentication-Components.html)

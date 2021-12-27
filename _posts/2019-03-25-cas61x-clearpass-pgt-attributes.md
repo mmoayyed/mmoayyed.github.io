@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS 6.1.x - Credential Caching & Proxy AuthN
 summary:    Learn how you may configure Apereo CAS to capture and cache the credential's password and the proxy-granting ticket in proxy authentication scenarios, pass them along to applications as regular attributes/claims. We will also be reviewing a handful of attribute release strategies that specifically affect authentication attributes, conveying metadata about the authentication event itself.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Authentication"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      Deploying Apereo CAS Behind a Proxy
 summary:    A short tutorial on how to get Apereo CAS deployed behind proxies and load balancers that aim to terminate SSL.
-tags:       ["CAS 5.2.x"]
+tags:       ["CAS 5.2.x", "Apache Tomcat"]
 ---
  
  I suppose the majority of CAS deployments today sit behind some sort of proxy or load balancer, especially with high-availability requirements in mind. F5, HAProxy, etc. In most setups, the proxy upfront terminates SSL and then hands off the request over to CAS on a secured connection typically on port `8080`. While doing this sort of thing with an external servlet container such as Apache Tomcat is perfectly doable and folks have been doing that for ages, this guide aims to demonstrate how one might go about achieving the same result using the embedded Apache Tomcat container that ships with CAS.

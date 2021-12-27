@@ -13,6 +13,10 @@ layout: default
   #blogTags.dropdown span.item {
     padding-right: 8px;
   }
+
+  #clearButton {
+    margin-left: 8px;
+  }
 </style>
 
 <script>
@@ -79,6 +83,14 @@ style="background-size: contain; background-position-x: right; background-image:
   $("#blogEntries").empty();
   $("div.dropdown-item.custom-control:first").hide()
 
+  let clearButton = `<a id='clearButton' href="javascript:clearSelections();"><i class="fa fa-times"></i></a>`
+  $(".viewbar").append(clearButton);
+
+  function clearSelections() {
+    blogTags.deselectAll();
+    $("#blogEntries").empty();
+  }
+
   let filterFunction = function() { 
     $("#blogEntries").empty();
 
@@ -104,7 +116,7 @@ style="background-size: contain; background-position-x: right; background-image:
         `<div class="card filter">
           <span>
             <div class="card-body text-center">
-              <h4 class="card-title" style="min-height: 55px;">
+              <h4 class="card-title" style="min-height: 130px;">
                 <a class="post-preview-link" href="${post.url}">${post.title}</a></h4>
               <span class="post-meta">Posted on ${post.date}</span>
               <span class="tagcloud06"><ul>${tags}</ul></span>

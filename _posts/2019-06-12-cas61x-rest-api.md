@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - REST API Integrations
 summary:    Learn how to integrate with CAS using its REST API to authenticate, exchange tickets and get access to user profiles and attributes.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Service Integrations", "REST"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

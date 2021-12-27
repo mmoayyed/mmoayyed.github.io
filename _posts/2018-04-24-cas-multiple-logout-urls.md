@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Handling Multiple Logout URLs
 summary:    Extend the Apereo CAS server to allow for multiple logout URLs during SLO operations.
-tags:       ["CAS 5.3.x"]
+tags:       ["CAS 5.3.x", "Authentication", "Service Integrations"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

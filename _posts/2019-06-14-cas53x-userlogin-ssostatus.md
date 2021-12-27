@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Are We Logged In Yet?
 summary:    Learn how to modify and extend a CAS deployment to determine whether an SSO session is still valid and tied to a user authentication session.
-tags:       ["CAS 5.3.x"]
+tags:       ["CAS 5.3.x", "Authentication", "Monitoring"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

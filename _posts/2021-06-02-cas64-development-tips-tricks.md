@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Development Tips & Techniques
 summary:    Collections of bash aliases, tips, and tricks and all the secret ways to stay productive while developing and/or contributing to Apereo CAS.
-tags:       ["CAS 6.4.x", "Getting Started"]
+tags:       ["CAS 6.4.x", "Getting Started", "Gradle"]
 ---
 
 When you are planning to contribute a bug fix or feature enhancements to Apereo CAS, it quite useful to have access to a set of scripts, commands, and shell aliases to make your development environment more productive and less repetitive. In this blog post, I am cataloging a collection of shell aliases and functions that I use on a daily basis while working on Apereo CAS. 

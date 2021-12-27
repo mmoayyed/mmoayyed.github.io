@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Authentication Handler Resolution
 summary:    Learn how to resolve and select authentication handlers based on configurable and flexible filtering criteria.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Authentication"]
 background: '/images/home/slide-1.jpg'
 ---
 

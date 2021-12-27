@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Reloading Configuration Dynamically
 summary:    Learn of secret strategies one may employ to track, manage and dynamically reload CAS configuration and settings without hair loss.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Spring Cloud", "Configuration Management"]
 ---
 
 When it comes to managing and tracking CAS settings, there is a plethora options to choose from for the modest as well as the enterprise-ready. Quickly put, CAS settings can be managed via key-value stores in form of standalone properties or YAML files. Such files can be split up per environment profile, can be fed directly to CAS at runtime or via command-line parameters, environment variables, inline JSON feeds, JVM system properties, [slurpped via Groovy](/2018/11/02/cas6-groovy-config-slurper/) or even managed inside a separate and external [configuration server](/2018/10/25/cas6-cloud-config-server/) which feed data to a CAS server from many other storage services and databases on a per-profile basis. All of this capability is provided by and built on top of Spring Boot and Spring Cloud frameworks that provide quite a flexible design in keeping track of one's application settings.

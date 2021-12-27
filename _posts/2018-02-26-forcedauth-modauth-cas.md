@@ -2,7 +2,7 @@
 layout:     post
 title:      Forced Authentication with Apereo CAS
 summary:    Discourse on supporting forced authentication with the Apereo CAS server from the perspective of an application protected with mod-auth-cas, the Apache httpd module for CAS.
-tags:       ["CAS 5.2.x"]
+tags:       ["CAS 5.2.x", "Authentication"]
 ---
 
 This post summarizes a recent conversation I had with a few colleagues on strategies one may use to support forced authentication with CAS and the journey we went on to discover and diagnose a few integration issues with an application protected by [mod_auth_cas](https://github.com/apereo/mod_auth_cas).

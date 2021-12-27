@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Event Filtering
 summary:    Learn how to filter events that are tracked by CAS event repositories and persistence engine.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Authentication"]
 background: '/images/home/slide-1.jpg'
 ---
 

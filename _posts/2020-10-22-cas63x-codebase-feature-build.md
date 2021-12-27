@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS 6.3.x - Building CAS Feature Modules
 summary:    Learn how various CAS features modules can be changed and tested from the perspective of a CAS contributor working on the codebase.
-tags:       ["CAS 6.3.x", "Getting Started"]
+tags:       ["CAS 6.3.x", "Getting Started", "Gradle"]
 ---
 
 This quick walkthrough effectively aims for the following objectives:

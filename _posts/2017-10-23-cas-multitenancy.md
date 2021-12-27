@@ -2,7 +2,7 @@
 layout:     post
 title:      Multitenancy With CAS
 summary:    A short review of multitenancy feature variants and equivalents in Apereo CAS.
-tags:       ["CAS 5.2.x"]
+tags:       ["CAS 5.2.x", "Getting Started"]
 ---
 
 <!--

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Audit Logs Managed by Oracle Database
 summary:    Learn how to store, read, and manage CAS audit logs in Oracle databases.
-tags:       ["CAS 6.3.x"]
+tags:       ["CAS 6.3.x", "RDBMS", "Monitoring", "Audits"]
 ---
 
 Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/6.3.x/installation/Audits.html) that capture events such as creation and removal of tokens, authentication sessions, requests and responses, and a lot more. Each audited operation typically carries a subject, an action, date/time of the event as well as other peripheral types of information such as client and server IP addresses, etc. Audit events can of course be managed and stored in a variety of database types, the most common of which happens to be [relational databases](https://apereo.github.io/cas/6.3.x/installation/Audits.html#database-audits) such as MySQL, Oracle, etc.

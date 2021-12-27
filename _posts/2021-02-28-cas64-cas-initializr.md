@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - WAR Overlay Initializr
 summary:    Apereo CAS Initializr generates CAS WAR Overlay projects with just what you need to start quickly and accelerate CAS development and deployments.
-tags:       ["CAS 6.4.x", "Getting Started"]
+tags:       ["CAS 6.4.x", "Getting Started", "Gradle"]
 ---
 
 [Apereo CAS Initializr][initializr] is a relatively new addition to the Apereo CAS ecosystem that allows you as the deployer to generate WAR Overlay projects on the fly with just what you need to start quickly. This post builds on top of the original [blog entry](/2020/11/14/cas63-cas-initializr/) and reviews recent enhancements to the [Apereo CAS Initializr][initializr] concerning support for additional project types and publishing Docker images.

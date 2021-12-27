@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Unique SSO per User
 summary:    Learn how to force the Apereo CAS server to maintain a unique SSO session per user account, disallowing multiple logins for the same user in parallel.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Authentication"]
 ---
 
 While consulting on a CAS deployment, ran across an interesting question that I think deserves its own post:
