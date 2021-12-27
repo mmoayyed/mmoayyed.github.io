@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - OpenID Connect Scopes & Claims
 summary:    Configure Apereo CAS to act as an OpenID Connect identity provider, allowing the release of custom scopes and claims to applications.
-tags:       [CAS]
+tags:       ["CAS 6.4.x", "OpenID Connect"]
 ---
 
 Apereo CAS can be configured to act as an [OpenID Connect identity provider][oidc]. In doing so, OpenID Connect client applications can be registered with CAS to authorize the release standard as well as custom scopes. Additionally, CAS can be allowed to release claims back to registered applications in a *scope-free* setting. This blog post aims to review options that exist in Apereo CAS when it comes to managing and releasing OpenID Connect scopes and claims.

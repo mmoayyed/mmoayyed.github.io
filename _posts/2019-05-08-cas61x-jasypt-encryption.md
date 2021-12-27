@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Configuration Security w/ Jasypt
 summary:    Learn how to secure CAS configuration settings and properties with Jasypt.
-tags:       [CAS]
+tags:       ["CAS 6.1.x", "Jasypt"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Integration with HashiCorp Vault
 summary:    CAS distributed configuration management using HashCorp Vault, where you learn how to store and secure CAS configuration settings and properties inside Vault.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Vault"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

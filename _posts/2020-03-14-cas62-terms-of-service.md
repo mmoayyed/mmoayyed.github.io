@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Acceptable Usage Policy
 summary:    Activate different forms of acceptable usage policy and terms of service conditionally based on user affiliation, etc.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 Dealing with license agreements and terms of use policies is never an exciting thing. That said, pretty much every piece of software and web service in existence requires you to accept the terms and conditions before use, and certainly, the same functionality can be offered by your CAS deployment to activate and manage the right policy for the user base.

@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS Multifactor Authentication with Google Authenticator
 summary:    A short walkthrough to demonstrate how one might turn on multifactor authentication with CAS using Google Authenticator, leveraging a variety of triggers.
-tags:       [CAS,MFA]
+tags:       ["CAS 5.3.x", "MFA", "Google Authenticator"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

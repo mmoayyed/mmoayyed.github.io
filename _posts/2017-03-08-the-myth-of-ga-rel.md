@@ -2,7 +2,7 @@
 layout:     post
 title:      Busting the Myth - GA Release
 summary:    Musings on the trustworthiness of a general availability (GA) release and its production-readiness calibre in open source. 
-tags:       [Blog]
+tags: ["Miscellaneous"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

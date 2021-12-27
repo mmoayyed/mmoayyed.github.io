@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Advanced Passwordless Authentication
 summary:    Playing around with different variations of Passwordless Authentication in CAS, integrating it with other advanced authentication flows such as delegated authentication, multifactor and more.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 Since the introduction of [Passwordless Authentication](/2019/07/18/cas61x-passwordless-authn/) in CAS `6.1.x`, a lot of additional and useful improvements are added to make this integration seamlessly integrate with other forms of authentication such as delegation or multifactor. This blog post intends to demonstrate a few advanced variations of passwordless authentication in combination with other authentication flows and forms.

@@ -3,7 +3,7 @@ layout:     post
 title:      Apereo CAS - Dockerized Deployment via Traefik Reverse Proxy
 summary:    Learn how to deploy Apereo CAS using Docker and allowing Traefik as a reverse proxy and edge router to channel http and https traffic to the CAS container.
 published: true
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "Docker"]
 ---
 
 [Traefik](https://doc.traefik.io/traefik/) is an open-source cloud-native, modern reverse proxy and edge Router that makes publishing services quite simple. Its key characteristic is that it can automatically discover the right configuration for services as it inspects infrastructure to find relevant information on which service serves which request.

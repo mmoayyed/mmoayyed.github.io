@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Authentication Lifecycle Phases
 summary:    Tap into the Apereo CAS authentication engine from outside, and design extensions that prevent an unsuccessful authentication attempt or warn the user after-the-fact based on specific policies of your choosing.
-tags:       [CAS]
+tags:       ["CAS 5.3.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

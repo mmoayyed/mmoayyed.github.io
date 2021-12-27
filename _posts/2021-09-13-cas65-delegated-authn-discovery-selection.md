@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication w/ Identity Provider Discovery
 summary:    Learn how to present external identity providers to Apereo CAS for delegated (proxy) authentication, and choose strategies that allow the user to discover and select an identity provider from a menu statically, or via more dynamic ways.
-tags:       [CAS]
+tags:       ["CAS 6.5.x", "Delegated Authentication"]
 ---
 
 Apereo CAS has had support to delegate authentication to [external identity providers][delegation] for quite some time. Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. Delegated authentication is also known as *proxy* authentication, though it should be noted that true *proxy* authentication could also mean something completely different when used in the context of the [CAS protocol][casprotocol].

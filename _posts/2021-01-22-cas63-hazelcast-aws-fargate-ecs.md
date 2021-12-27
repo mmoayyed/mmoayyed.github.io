@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - AWS Fargate & Amazon ECS<br>with Hazelcast
 summary:    Learn how to deploy clustered Apereo CAS server nodes using AWS Fargate and Amazon ECS, with Hazelcast as the ticket registry for high availability.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "Hazelcast"]
 ---
 
 [AWS Fargate](https://aws.amazon.com/fargate) is a serverless compute engine for containers that work with both Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS). For a highly-available CAS deployment, running the Apereo CAS backed with the [Hazelcast Ticket Registry](https://apereo.github.io/cas/6.3.x/ticketing/Hazelcast-Ticket-Registry.html) can be a great option, especially when run as a Docker container in an Amazon ECS environment to take advantage of ECS member discovery. In this blog post, we will take a quick look at the minimum configuration required to make this deployment scenario possible.

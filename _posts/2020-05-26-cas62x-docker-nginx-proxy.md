@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Dockerized Deployment via NGINX
 summary:    Learn how to run multiple CAS servers on a single VM using Docker, all behind an NGINX proxy.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x", "Docker"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This post is largely inspired by <a href="https://blog.ssdnodes.com/blog/host-multiple-websites-docker-nginx/">this guide.</a>

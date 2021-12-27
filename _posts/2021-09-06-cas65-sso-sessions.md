@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Managing SSO Sessions
 summary:    A quick review of how to manage and administer single sign-on sessions in Apereo CAS via dedicated endpoints, to view and delete active user sessions.
-tags:       [CAS]
+tags:       ["CAS 6.5.x", "Monitoring"]
 ---
 
 As an identity provider and single sign-on manager, Apereo CAS is able to manage and maintain the collection of active single sign-on sessions for users. Furthermore, administers are able to review all active sessions and remotely destroy a user's single sign-on session, effectively logging the user out of all applications via single logout if that is an activated option. 

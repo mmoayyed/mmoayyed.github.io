@@ -1,40 +1,47 @@
 <div class="card-deck" style="padding-top: 10pt;">
-    {% for post in site.posts limit : 3 offset : include.offset %}
-    <!-- <div class="card animate__animated animate__pulse filter  {{ post.tags | join: ' '}}"> -->
+  {% for post in site.posts limit : 3 offset : include.offset %}
+  <!-- <div class="card animate__animated animate__pulse filter  {{ post.tags | join: ' '}}"> -->
     <div class="card filter  {{ post.tags | join: ' '}}">
       <!-- {% if forloop.first  %}
-      <div class="card-header">Featured</div>
-      {% endif %}  -->
-      <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-        <div class="card-body text-center">
-          <h4 class="card-title" style="min-height: 95px;">{{ post.title }}</h4>
+        <div class="card-header">Featured</div>
+        {% endif %}  -->
+        <span>
+          <div class="card-body text-center">
+            <h4 class="card-title" style="min-height: 95px;">
+              <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
+            </h4>
+            
+              <span class="post-meta">Posted
+              <!-- {% if post.author %}
+                {{ post.author }}
+                {% else %}
+                {{ site.author }}
+                {% endif %} -->
+                on
+                {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %} 
+              </span>
+              <span class="tagcloud06"><ul>
+                {% for tag in post.tags %}
+                  <li><a href="#">{{ tag }}</a></li>
+                {% endfor %}
+              </ul></span>
 
-          <span class="post-meta">Posted
-            <!-- {% if post.author %}
-            {{ post.author }}
-            {% else %}
-            {{ site.author }}
-            {% endif %} -->
-            on
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %} 
+              <p class="card-text">
+                {% if post.summary %}
+                <h4 class="post-subtitle">{{ post.summary }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
+                {% endif %}
+              </p>
+              
+            </div>
           </span>
-
-          <p class="card-text">
-            {% if post.summary %}
-          <h4 class="post-subtitle">{{ post.summary }}</h4>
-          {% else %}
-          <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
-          {% endif %}
-          </p>
-
         </div>
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-
-  <div class="container">
-    <div class="row">
-      {% include googlead2.html  %}
-    </div>
-  </div>
+        {% endfor %}
+      </div>
+      
+      <div class="container">
+        <div class="row">
+          {% include googlead2.html  %}
+        </div>
+      </div>

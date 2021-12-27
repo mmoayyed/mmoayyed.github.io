@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Extending Webflows
 summary:    Learn and master extending CAS 5 Spring Webflow definitions.
-tags:       [CAS]
+tags:       ["CAS 5.3.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

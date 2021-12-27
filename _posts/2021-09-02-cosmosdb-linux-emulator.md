@@ -2,7 +2,7 @@
 layout:     post
 title:      Run the Azure Cosmos DB Emulator on Docker for MacOS
 summary:    The Azure Cosmos DB Linux Emulator provides a local environment that emulates the Azure Cosmos DB service for development purposes. This post shows how the emulator may be run on a MacOS platform and how client Java applications can be configured to connect to the service.
-tags:       [CAS]
+tags:       ["CAS 6.5.x", "Azure CosmosDB", "Docker"]
 ---
 
 The [Azure Cosmos DB Linux Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/linux-emulator) is now available on Linux platforms, though as of this writing continues to be in *Preview* mode. The emulator provides a local environment that mimics the Azure Cosmos DB service for development purposes. In this post, I'll take a quick look at how the emulator may be run on a MacOS platform and how client Java applications can be configured to connect to the service.

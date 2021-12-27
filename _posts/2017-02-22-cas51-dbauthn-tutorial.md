@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5 Database Authentication Tutorial
 summary:    Learn how to configure database authentication in CAS 5.
-tags:       [CAS]
+tags:       ["CAS 5.1.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

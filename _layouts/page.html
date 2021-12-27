@@ -13,11 +13,18 @@ layout: default
       <div>
         <div class="mx-auto">
           <div class="post-heading">
-            <h2 class="title">{{ page.title }}</h2>
-            {% if page.subtitle %}
-            <h2 class="post-subtitle">{{ page.subtitle }}</h2>
-            {% endif %}
-            <a id="searchbutton" class="btn btn-warning btn-sm"><span>Search</span> &rarr;</a>
+            {% unless page.disableTitle %}
+              <h2 class="title">{{ page.title }}</h2>
+              {% if page.subtitle %}
+              <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+              {% endif %}
+            {% endunless %}
+
+            {% unless page.disableSearch %}
+              <a id="searchbutton" class="btn btn-warning btn-sm"><span>Search By Keyword</span> &rarr;</a>
+              <a id="tagsbutton" href="/tags" class="btn btn-warning btn-sm"><span>Search By Topic</span> &rarr;</a>
+            {% endunless %}
+
           </div>
         </div>
       </div>
@@ -33,6 +40,3 @@ layout: default
       </div>
     </div>
   </div>
-
-
-{% include search.html %}

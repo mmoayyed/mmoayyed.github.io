@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Deployment on Heroku (PaaS) Cloud
 summary:    Learn how to deploy Apereo CAS on the Heroku cloud platform using a git repository and a push-to-deploy model.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.3.x"]
 ---
 
 [Heroku](https://www.heroku.com/) is a cloud Platform-as-a-Service (PaaS) platform with a powerful ecosystem for deploying and running modern apps. The Heroku developer experience is an app-centric approach for software delivery and is quite pleasant, especially if you follow the push-to-deploy model by connecting its environment to a git repository. 

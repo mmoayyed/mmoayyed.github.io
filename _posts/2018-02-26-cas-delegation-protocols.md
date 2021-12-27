@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Dances with Protocols
 summary:    A short overview of how Apereo CAS may support multiple authentication protocols simultaneously while acting as both the primary identity provider or proxying another. Two Socks could not be reached for comments.
-tags:       [CAS]
+tags:       ["CAS 5.2.x", "Delegated Authentication"]
 ---
 
 I have been consulting on variations of a deployment strategy and use case that involves CAS acting as an identity provider while also presenting the ability to [delegate authentication requests](https://apereo.github.io/cas/5.2.x/integration/Delegate-Authentication.html) to an external identity provider and act as a *proxy* in between. I had the erroneous assumption that client applications integrating with CAS in proxy mode must be those that speak the CAS protocol. This meant that while CAS itself may delegate authentication requests to a variety of identity providers that speak SAML2, OAuth2 and CAS protocols, etc the client application that ultimately would receive a response from the proxying CAS server can only understand a service ticket and the particular validation payload compliant with the CAS protocol semantics.

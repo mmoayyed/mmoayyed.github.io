@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication to SAML2 Identity Providers
 summary:    Learn how your Apereo CAS deployment may be configured to delegate authentication to an external SAML2 identity provider.
-tags:       [CAS,SAML]
+tags:       ["CAS 6.1.x", "SAML", "Delegated Authentication"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

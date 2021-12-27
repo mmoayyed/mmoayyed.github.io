@@ -2,7 +2,7 @@
 layout:     post
 title:      Effective Software Troubleshooting Tactics
 summary:    A collection of what hopefully are obvious troubleshooting tactics when it comes to diagnosing software deployment issues and configuration problems.
-tags:       [Blog]
+tags: ["Miscellaneous"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

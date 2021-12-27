@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Administrative Endpoints & Monitoring
 summary:    Gain insight into your running Apereo CAS deployment in production. Learn how to monitor and manage the server by using HTTP endpoints and gather metrics to diagnose issues and improve performance.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "Monitoring"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

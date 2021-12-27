@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Identity Impersonation
 summary:    You do not always have to be you. Allow the Apereo CAS server to allow you to pretend to be another person for fun and profit.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "Impersonation"]
 ---
 
 # Overview

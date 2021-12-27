@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS Best [Mal]Practice - Supercharged Overlays
 summary:    An overview of how a CAS overlay prepped for deployment can tap into internal components, altering logic and behavior for good and evil...but mostly evil.
-tags:       [CAS]
+tags:       ["CAS 5.2.x"]
 ---
 
 # Overview

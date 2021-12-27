@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Docker Images via Spring Boot
 summary:    Learn how to use an existing CAS overlay to build Docker images via Spring Boot.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "Docker"]
 ---
 
 A very common way to package and deploy Apereo CAS is via Docker. There are numerous strategies, such as those outlined by [this post](/2018/11/09/cas6-docker-jib/) or [this post](/2020/01/31/cas6-docker-deployment/) that can be used to transform an existing CAS overlay into a packaged Docker image. This tutorial focuses on producing Apereo CAS Docker images via the [Spring Boot Gradle plugin][plugin].

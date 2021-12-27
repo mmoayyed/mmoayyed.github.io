@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS Delegated Authentication with ADFS
 summary:    Learn how your Apereo CAS deployment may be configured to delegate authentication to Microsoft ADFS.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Delegated Authentication"]
 ---
 
 Apereo CAS has had support to [delegated authentication to Microsoft ADFS](https://apereo.github.io/cas/6.0.x/integration/ADFS-Integration.html) for quite some time now. This functionality, if memory serves me correctly, started around CAS `3.x` in form of an [extension](https://github.com/Unicon/cas-adfs-integration) which then later found its way into the CAS codebase as a first class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.

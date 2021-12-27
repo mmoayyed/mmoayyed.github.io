@@ -2,7 +2,7 @@
 layout:     post
 title:      Checking Out Pull Requests Locally
 summary:    Check out GitHub pull requests as local branches using a simple bash function.
-tags:       [Blog]
+tags: ["Miscellaneous"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

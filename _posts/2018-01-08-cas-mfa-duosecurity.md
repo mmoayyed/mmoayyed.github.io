@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS Multifactor Authentication with  Duo Security 
 summary:    A short walkthrough to demonstrate how one might turn on multifactor authentication with CAS using Duo Security, leveraging a variety of triggers.
-tags:       [CAS,MFA]
+tags:       ["CAS 5.2.x", "MFA"]
 ---
 
 As a rather common use case, the majority of CAS deployments that intend to turn on multifactor authentication support tend to do so via Duo Security. This is a quick and *simplified* guide to demonstrate an approach to that use case along with some additional explanations regarding specific multifactor triggers supported in CAS today.

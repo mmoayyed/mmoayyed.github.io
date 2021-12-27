@@ -19,6 +19,16 @@ layout: default
               content=page.content %} &middot; <a href='/feed.xml'><i class="fas fa-rss"></i></a>
               <a id="darkMode" href="javascript:switchMode();"><i title="Dark Mode" class="fas fa-moon"></i></a>
             </span>
+
+            <span class="tagcloud06">
+              <ul>
+                  {% for tag in page.tags %}
+                  {% capture tag_name %}{{ tag }}{% endcapture %}
+                    <li><a href="/tag/{{ tag_name | url_encode }}"><nobr>{{ tag_name }}</nobr></a></li>
+                  {% endfor %}
+              </ul>
+            </span>
+
           </div>
         </div>
       </div>
@@ -31,10 +41,19 @@ layout: default
     <div class="blogcontainer">
       <div class="blogpost mx-auto">
 
+
         {{ content }}
 
-        <hr>
+        <div class="tagcloud06">
+            <ul>
+                {% for tag in page.tags %}
+                {% capture tag_name %}{{ tag }}{% endcapture %}
+                  <li><a href="/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr></a></li>
+                {% endfor %}
+            </ul>
+        </div>
 
+        <hr>
         <div class="clearfix">
 
           {% if page.previous.url %}

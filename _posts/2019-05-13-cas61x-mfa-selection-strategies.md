@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Multifactor Provider Selection
 summary:    Learn how to configure CAS to integrate with and use multiple multifactor providers at the same time. This post also reveals a few super secret and yet open-source strategies one may use to select appropriate providers for authentication attempts, whether automatically or based on a menu.
-tags:       [CAS]
+tags:       ["CAS 6.1.x", "MFA"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

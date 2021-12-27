@@ -2,7 +2,7 @@
 layout:     post
 title:      GitHub Actions - Cleaning Workflow Runs
 summary:    Learn how to use the GitHub Actions REST API to clean previous or stale workflow runs.
-tags:       [CAS]
+tags:       ["Miscellaneous"]
 ---
 
 A while ago, I put together a *quick and dirty* bash function that would allow for cleaning up after Github Actions Workflow Runs, especially those that have completed in either success or failure and have since been surpassed by subsequent workflow runs that contain better and newer changes. 

@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Authorized Applications Portal
 summary:    Learn how to modify the Spring Webflow in Apereo CAS to display a list of user authorized applications on successful login attempts and present a mini user portal for application access.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 I collaborated on an interesting CAS use case that asked for the following behavior:

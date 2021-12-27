@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Reloading HTML Views
 summary:    Learn how to make changes to Apereo CAS HTML views and have them be reloaded dynamically at runtime without restarts or rebuilds.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 One of the more common customizations tasks in an Apereo CAS deployment is the branding and decoration of the HTML views presented to the user for login, logout, etc. These views in Apereo CAS are backed by the [Thymeleaf templating engine](https://www.thymeleaf.org/) and are embedded in the CAS web application archive. For customizations, the goal is to extract these views and bundles from the CAS web application archive, (as prepared and built via the installation overlay), make changes as necessary, and then refresh the browser to see the effects live without restarts or rebuilds.

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Have you been pawned?
 summary:    Learn how Apereo CAS may be configured to check for pawned passwords and warn the user, using the haveibeenpawned.com service
-tags:       [CAS]
+tags:       ["CAS 6.1.x", "Groovy"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

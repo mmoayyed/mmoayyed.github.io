@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Service Redirection Strategies
 summary:    Learn to customize Apereo CAS to modify the default strategy used for redirecting the authentication flow back to relying parties.
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

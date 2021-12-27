@@ -2,7 +2,7 @@
 layout:     post
 title:      Activating MFA in CAS 5
 summary:    Learn and master custom MFA triggers in CAS 5.
-tags:       [CAS,MFA]
+tags:       ["CAS 5.0.x", "MFA"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

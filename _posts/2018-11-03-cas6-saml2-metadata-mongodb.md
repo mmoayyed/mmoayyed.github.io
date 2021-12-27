@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 Metadata with MongoDb
 summary:    CAS distributed SAML2 metadata management using MongoDB, where you learn how to store metadata documents inside MongoDB for CAS as a SAML2 identity provider and all other registered SAML2 service providers.
-tags:       [CAS,SAML]
+tags:       ["CAS 6.0.x", "SAML", "MongoDb"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      JWT Of All Things With CAS
 summary:    A short tutorial on how to let Apereo CAS handle authentication events accompanied by JWTs.
-tags:       [CAS]
+tags:       ["CAS 5.2.x", "MFA"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

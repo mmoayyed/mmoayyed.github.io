@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS Swag with Swagger
 summary:    Enable Swagger integration with your Apereo CAS APIs.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "Swagger"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

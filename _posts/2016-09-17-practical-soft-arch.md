@@ -2,7 +2,7 @@
 layout:     post
 title:      Veresk Software Architecture
 summary:    Soapbox alert; I ramble on about software architecture, taking notes from historical monarchs.
-tags:       [Blog]
+tags: ["Miscellaneous"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

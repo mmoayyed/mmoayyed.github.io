@@ -1,0 +1,136 @@
+---
+layout: default
+---
+
+<script src="{{"/assets/vendor/filter-checkboxes-multiple/filter-multi-select-bundle.min.js" | relative_url }}"></script>
+
+<style>
+  /* Hide the close button for each tag */
+  #blogTags.dropdown span.item button {
+    display: none;
+  }
+
+  #blogTags.dropdown span.item {
+    padding-right: 8px;
+  }
+</style>
+
+<script>
+  let blogPosts = [];
+</script>
+
+{% for post in site.posts %}
+<script>
+  blogPosts.push({ 
+    title: "{{ post.title }}",
+    date: "{{ post.date | date: '%B %d, %Y' }}",
+    url: "{{ post.url | prepend: site.baseurl | replace: '//', '/' }}",
+    summary: "{{ post.summary }}",
+    tags: "{{ post.tags | join: ',' }} "
+  });
+</script>
+{% endfor %}
+
+<!-- Page Header -->
+{% if page.background %}
+<header class="masthead" 
+style="background-size: contain; background-position-x: right; background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+{% else %}
+<header class="masthead">
+  {% endif %}
+  
+  <div class="container">
+    <div>
+      <div class="mx-auto">
+        <div class="post-heading">
+          <h2 class="title">{{ page.title }} <img src="/images/blog/tag.png" style="vertical-align: super;"> </h2>
+          <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+          <select multiple name="blogTag" id="blogTags">
+            
+            {% assign sorted_tags = site.tags | sort %}
+            {% for tag in sorted_tags %}
+            {% assign name = tag[0] %}
+            <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <span id="blogEntries" />
+      {{ content }}
+    </div>
+  </div>
+</div>
+
+<script>
+
+  const blogTags = $('#blogTags').filterMultiSelect({
+    placeholderText: "Select topics from the Fawnoos Blog..."
+  });
+
+  blogTags.deselectAll();
+  $("#blogEntries").empty();
+  $("div.dropdown-item.custom-control:first").hide()
+
+  let filterFunction = function() { 
+    $("#blogEntries").empty();
+
+    let selectedTags = JSON.parse(blogTags.getSelectedOptionsAsJson(false)).blogTag;
+    console.log("Selected tags are " + selectedTags);
+    let filteredPosts = selectedTags.length > 0 ? blogPosts.filter(function(post) {
+      let postTags = post.tags.trim().split(",");
+      console.log("Post tags are " + postTags);
+      let result = selectedTags.every(t => postTags.includes(t));
+      console.log("Checking post " + post.title + " for tags " + selectedTags + " : " + result);
+      return result;
+    }) : [];
+
+    console.log(`Found posts ${filteredPosts.length}`);
+    
+    let cards = "";
+    let count = 0;
+    filteredPosts.forEach(post => {
+      console.log(post.url);
+
+      let tags = post.tags.trim().split(",").map(tag => { return `<li><a href="#">${tag.trim()}</a>&nbsp;</li>` }).join("");
+      cards = cards + 
+        `<div class="card filter">
+          <span>
+            <div class="card-body text-center">
+              <h4 class="card-title" style="min-height: 55px;">
+                <a class="post-preview-link" href="${post.url}">${post.title}</a></h4>
+              <span class="post-meta">Posted on ${post.date}</span>
+              <span class="tagcloud06"><ul>${tags}</ul></span>
+              <p class="card-text">
+                <h4 class="post-subtitle">${post.summary}</h4>
+              </p>
+            </div>
+          </span>
+        </div>`;
+        
+      count++;
+      if (count % 3 == 0) {
+        let cardDeck = `<div class="card-deck" style="padding-top: 10pt;">${cards}</div>`;
+        $("#blogEntries").append(cardDeck);
+        cards = "";
+        count = 0;
+      }
+    });
+  
+    if (count > 0) {
+      let cardDeck = `<div class="card-deck" style="padding-top: 10pt;">${cards}</div>`;
+      $("#blogEntries").append(cardDeck);
+    }
+  
+  };
+
+  $("input[name=blogTag]").on("click", filterFunction);
+
+</script>

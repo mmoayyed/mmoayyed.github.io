@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Handling SAML2 Authentication Requests
 summary:    Learn how to manage SAML2 authentication requests when CAS is acting as a SAML2 identity provider in single-node and multi-node deployments.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "SAML"]
 ---
 
 Apereo CAS presents itself as a multilingual platform supporting protocols such as CAS, SAML2, OAuth2, and OpenID Connect. Support and functionality for each protocol are designed and implemented using a plugin model where each protocol effectively becomes a client of the CAS server, handing off matters of authentication and workflows, and eventually then takes back control to build the appropriate response using its specific bindings, parameters, payload and security requirements. A blog post on how this model works can be found [here](/2018/02/26/cas-delegation-protocols/) or [here](/2017/02/17/cas-custom-protocols/).

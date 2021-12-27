@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Managing Configuration Profiles
 summary:    As your CAS deployment moves through the deployment pipeline from dev to test to production, manage the configuration between those environments separately using application profiles.
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 background: '/images/home/slide-1.jpg'
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - MaxMind Geo2IP ISP Integration
 summary:    Learn how you may determine the Internet Service Provider, organization name, and autonomous system organization and number associated with the user's IP address in CAS using MaxMind services and present warnings in the authentication flow for the end-user if an IP address is matched.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "GeoLocation"]
 ---
 
 I have been consulting on a CAS project with the main requirement of doing an integration with [MaxMind](https://www.maxmind.com/) GeoIP2 services. 

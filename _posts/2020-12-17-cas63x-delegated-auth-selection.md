@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - External Identity Provider Selection
 summary:    An overview of modest changes to the Apereo CAS user interface to handle external identity provider selections in delegated authentication scenarios.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "Delegated Authentication"]
 ---
 
 When Apereo CAS is configured to hand off the authentication flow to [external identity providers](https://apereo.github.io/cas/6.3.x/integration/Delegate-Authentication.html), one use case that often pops up is the ability to auto-select the appropriate identity provider based on user affiliations, scope, or tenancy. In simple scenarios, this selection logic is keyed off of the user identifier. For example, the SSO system should be able to auto-select `GitHub` as the external identity provider, if the user's given identifier is in the format of `user@example.com` and so on.

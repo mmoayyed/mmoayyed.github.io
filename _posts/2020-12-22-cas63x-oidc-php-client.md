@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Securing PHP with OpenID Connect
 summary:    Learn how to secure a simple PHP application using OpenID Connect code flow and Apereo CAS as an OpenID Connect identity provider.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "OpenID Connect", "PHP"]
 ---
 
 This blog post demonstrates how to set up a basic PHP application to authenticate and authorize using OpenID Connect Code flow. The [PHP OpenID Connect Client](https://github.com/jumbojett/OpenID-Connect-PHP) is used to implement the client-side authentication and validation logic and the Apereo CAS server is used to act as an OpenID Connect identity provider.

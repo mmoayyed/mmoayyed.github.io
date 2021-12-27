@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 Identity Provider Integration w/ InCommon
 summary:    Learn how Apereo CAS may act as a SAML2 identity provider to integrate with service providers from metadata aggregates such as InCommon with various attribute release policies for research and scholarship, etc.
-tags:       [CAS,SAML]
+tags:       ["CAS 6.1.x", "SAML"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

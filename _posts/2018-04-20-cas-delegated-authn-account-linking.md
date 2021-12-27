@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Linking Accounts with Delegated Authentication
 summary:    A quick use case walkthrough where profiles provided by external identity providers to CAS need to be looked up by an identifier in internal databases before CAS can successfully establish an authenticated subject.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "Delegated Authentication"]
 ---
 
 # Overview

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - OAuth JWT Access Tokens
 summary:    Learn to customize Apereo CAS to issue OAuth Access Tokens as JWTs.
-tags:       [CAS]
+tags:       ["CAS 6.2.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

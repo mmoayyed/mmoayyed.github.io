@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Testing High Availability
 summary:    Learn how to use a sample CASified application to test CAS high availability when deployed in a cluster.
-tags:       [CAS]
+tags:       ["CAS 6.4.x"]
 ---
 
 A highly available CAS deployment offers resilience in response to various failure modes such that CAS continues to offer SSO services despite failures. A high availability (HA) configuration of CAS is achieved by ensuring there is adequate redundancy so that the service is robust in the face of component failures and that routine maintenance can be done without service downtime. 

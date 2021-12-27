@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Integration with Spring Cloud Config Server
 summary:    CAS distributed configuration management using Spring Cloud Server for fun and profit. Learn how to centralize and setup configuration and property sources as part of the Cloud Config server and how to connect your Apereo CAS deployment to the Cloud Config server to receive real-time configuration updates per environment and deployment tier.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Spring Cloud"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

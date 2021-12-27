@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Dockerized Deployments
 summary:    Review a number of strategies that allow to create Docker images for your CAS deployment and run Docker containers with ease.
-tags:       [CAS]
+tags:       ["CAS 6.2.x", "Docker"]
 ---
 
 CAS [embraced Docker](https://github.com/apereo/cas-webapp-docker) a while ago by providing a sample `Dockerfile` template to kickstart the builds. Since then, both configuration and technology have evolved greatly to simplify Docker-based deployments of CAS in much easier and hassle-free ways. This tutorial begins to review strategies that exist today to allow a CAS adopter to create Docker images for a CAS deployment and run containers with ease.

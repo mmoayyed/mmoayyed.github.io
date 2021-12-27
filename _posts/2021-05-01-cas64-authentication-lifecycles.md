@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Authentication Handler Lifecycles
 summary:    Learn how to manage authentication states and activate authentication handlers on-demand and dynamically when necessary.
-tags:       [CAS]
+tags:       ["CAS 6.4.x"]
 ---
 
 Apereo CAS offers a variety of authentication handlers and strategies that are responsible to validate credentials. Such authentication handlers are typically defined statically at configuration time and then activated dynamically at runtime to operate on user-provided credentials. The focus of this post is to examine the state of authentication handlers, statically and/or dynamically, and review authentication handler activation rules selectively.

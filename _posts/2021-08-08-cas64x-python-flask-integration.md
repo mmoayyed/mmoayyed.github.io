@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Python Web Application w/ Flask-CAS
 summary:    Learn how to build a Python web application using Flask that is protected via an Apereo CAS server using the Flask CAS extension.
-tags:       [CAS]
+tags:       ["CAS 6.4.x", "Python"]
 ---
 
 [Flask]() is a lightweight web application framework for Python, designed to make getting started quick and easy,

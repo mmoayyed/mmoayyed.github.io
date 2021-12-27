@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Protect APIs via Duo Security MFA
 summary:    Learn how to use Duo Security for multifactor authentication with Apereo CAS to protect application APIs and REST endpoints in non-browser MFA sequences.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "MFA"]
 ---
 
 Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. Support for Duo Security can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. Furthermore, recent versions of CAS can provide integration support for Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi). In this walkthrough, we'll take a look at the Duo Security integration setup with CAS and will also review options for command-line or API access. 

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication & Groovy Attribute Extraction
 summary:    Learn how to delegate and hand off authentication to an external OAuth20-capable identity provider, and script the extraction of attributes from the identity provider response using Groovy.
-tags:       [CAS]
+tags:       ["CAS 6.5.x", "Delegated Authentication", "Groovy"]
 ---
 
 When setting up Apereo CAS to delegate authentication to [external identity providers][delegation], it may be desirable to manipulate the claims and attributes received from the identity provider to transform values from one syntax to another. For example, an identity provider might return the attribute `employeeId` with the value of `EMPL-123456` back to CAS whereupon custom extraction logic would capture that attribute value as `123456` instead, and would record it under a new name, `employeeReference` to be used for release to client applications.

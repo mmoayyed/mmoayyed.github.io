@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - REFEDS MFA Profile w/ Duo Security
 summary:    Learn how to use Duo Security for multifactor authentication with Apereo CAS to handle the REFEDS MFA Profile.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "MFA", "SAML"]
 ---
 
 Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. In scenarios where CAS is also acting as a SAML2 identity provider, there may be a requirement to support the [REFEDS MFA Profile](https://refeds.org/profile/mfa) and enforce Duo Security multifactor authentication on service providers that require the REFEDS authentication context class. 

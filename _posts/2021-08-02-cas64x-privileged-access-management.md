@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Privileged Access Management (PAM)
 summary:    An overview of various PAM features and options that can be relevant in Apereo CAS deployments.
-tags:       [CAS]
+tags:       ["CAS 6.4.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on the <a href="https://www.tirasa.net/en/blog/privileged-access-management-pam-with-apereo-cas">Tirasa Blog</a>.</div>

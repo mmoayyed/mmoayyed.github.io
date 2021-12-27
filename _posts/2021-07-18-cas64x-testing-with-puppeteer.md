@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Master of Puppeteer
 summary:    Learn how to take advantage of Puppeteer to automate browser-based integration and/or functional tests.
-tags:       [CAS]
+tags:       ["CAS 6.4.x", "Puppeteer"]
 ---
 
 Apereo CAS started to incorporate browser-based integration and functional tests, [starting with the `6.3.x` release](https://apereo.github.io/cas/6.3.x/release_notes/RC5.html#puppeteer-tests). In this effort, the project presents a set of functional/browser scenarios that are backed by the [Puppeteer framework](https://pptr.dev/). Such test scenarios are used to verify protocol compatibility, validate authentication flows, and ensure the correctness of other types of integration tests using a headless Chromium browser across various CAS releases. 

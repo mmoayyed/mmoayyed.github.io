@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Jib at CAS Docker Images
 summary:    Learn how you may use Jib, an open-source Java containerizer from Google, and its Gradle plugin to build CAS docker images seamlessly without stepping too deep into scripting Dockerfile commands.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Docker"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

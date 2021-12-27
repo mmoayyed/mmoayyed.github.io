@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Bootstrapping Configuration via REST
 summary:    Bootstrapping the CAS application context using external REST APIs, while taking advantage of Spring Cloud's ability to dynamically refresh and reload settings.
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.2.x", "Spring Cloud"]
 ---
 
 Since the adoption of Spring Boot and Spring Cloud, Apereo CAS could bootstrap its running application context using a variety of external property and settings sources such as the [Spring Cloud Configuration Server](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Server-Management.html) as well as MongoDb, JDBC, etc. In this walkthrough, we will take a look at how a given CAS server can bootstrap itself using an [external REST API](https://apereo.github.io/cas/6.2.x/configuration/Configuration-Server-Management.html#rest) to auto-configure features and behavior while also keeping the ability to dynamically reload the configuration at runtime and on-demand.

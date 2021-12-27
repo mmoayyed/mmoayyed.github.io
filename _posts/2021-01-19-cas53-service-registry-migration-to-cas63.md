@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Service Registry Migrations
 summary:    Learn how to migrate application records and services in the Apereo CAS 5.3.x Service Registry from one version to the next for easier upgrades.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "CAS 5.3.x"]
 ---
 
 If you are in the process of upgrading from Apereo CAS `5.3.x` over to `6.3.x`, you do need to think about a data migration strategy for your CAS application records that are managed in the Service Registry. This can become especially tricky depending on the type of service registry used to handle records. For example, if your application records are managed by an Oracle database, you not only have to review and possibly troubleshoot database schema differences across two different CAS versions, but also look for strategies to account for differences in CAS service definitions across versions.

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Dockerized Hazelcast Deployments
 summary:    Learn how to run CAS backed by a Hazelcast cluster in Docker containers and take advantage of the Hazelcast management center to monitor and observer cluster members.
-tags:       [CAS]
+tags:       ["CAS 6.1.x", "Docker", "Hazelcast"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

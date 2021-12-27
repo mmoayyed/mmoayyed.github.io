@@ -2,8 +2,7 @@
 layout:     post
 title:      Apereo CAS - Monitoring Metrics with Prometheus and Grafana
 summary:    Learn how to monitor Apereo CAS metrics, exported by Spring Boot actuators, using the open-source monitoring system, Prometheus. 
-published: true
-tags:       [CAS]
+tags:       ["CAS 6.3.x"]
 ---
 
 [Prometheus](https://prometheus.io/) is an open-source monitoring system designed to pull and scrap metrics data over HTTP periodically at a configured interval. It also presents a simple user interface to visualize, query, and monitor all the metrics. Prometheus is natively [supported by Apereo CAS](https://apereo.github.io/cas/6.3.x/monitoring/Configuring-Metrics.html) by taking advantage of Spring Boot's actuator metrics exported and supported by the Micrometer library; a framework that presents metrics data to a variety of external monitoring systems. 

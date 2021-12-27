@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Service Matching Strategies
 summary:    Learn to customize Apereo CAS to modify the default strategy used for matching services.
-tags:       [CAS]
+tags:       ["CAS 6.1.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

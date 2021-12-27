@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Duo Security MFA Universal Prompt
 summary:    Learn how to use Duo Security's new Universal Prompt option for multifactor authentication with Apereo CAS and enjoy an iFrame-less world.
-tags:       [CAS]
+tags:       ["CAS 6.3.x", "MFA"]
 ---
 
 Duo Security's [Universal Prompt](https://duo.com/blog/easier-more-effective-mfa-for-all-the-duo-universal-prompt-project) is a major technical and UX redesign of core Duo Security's multifactor functionality. It provides a redesign of the web-based authentication prompt and upgrades the Duo Web SDK to provide a new mechanism for delivering the prompt to both Duo-developed and partner-built software integrations *without the iFrame*. 

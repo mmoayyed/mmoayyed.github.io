@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Slurp Configuration with Groovy
 summary:    Learn how CAS configuration may be consumed via Groovy to simplify and consolidate settings for multiple deployment environments and profiles.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Groovy"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

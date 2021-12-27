@@ -2,7 +2,7 @@
 layout:     post
 title:      Introduction to CAS Commandline Shell
 summary:    A short review of an interactive command-line shell provided by Apereo CAS.
-tags:       [CAS]
+tags:       ["CAS 5.2.x"]
 ---
 
 <!--

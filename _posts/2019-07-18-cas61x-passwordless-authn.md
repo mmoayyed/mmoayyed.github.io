@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Passwordless Authentication
 summary:    Learn how to modify Apereo CAS to allow users to login without the need to remember a password.
-tags:       [CAS]
+tags:       ["CAS 6.1.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

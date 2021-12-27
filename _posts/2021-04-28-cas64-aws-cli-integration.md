@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - AWS CLI Integration
 summary:    Learn how to access and manage AWS services using the AWS CLI, integrated with Apereo CAS for authentication and RBAC authorization.
-tags:       [CAS]
+tags:       ["CAS 6.4.x"]
 ---
 
 The [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) is a unified tool that allows one to access manage AWS services. Before access to such services can be granted, the CLI tool needs to authenticate itself and all subsequent API requests using dedicated credentials obtained from a trusted identity provider that is integrated with AWS' security token service. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, clients in this space either attempt to configure AWS CLI to use [AWS Single Sign-On](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html), or try to take advantage of the [SAML2 protocol](https://aws.amazon.com/premiumsupport/knowledge-center/aws-cli-call-store-saml-credentials/) via the likes of ECP, headless browsers, etc to replay a SAML2 response back to AWS to make `AssumeRole` API calls and store temporary user credentials.

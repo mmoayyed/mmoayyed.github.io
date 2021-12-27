@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - User Interface Customizations
 summary:    A short tutorial on Apereo CAS user interface customizations, including themes, localization and dynamic views for all those who enjoy front-end development and suffer from instant gratification.
-tags:       [CAS]
+tags:       ["CAS 5.3.x", "UI/UX"]
 ---
 
 

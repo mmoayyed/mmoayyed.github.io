@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 NameID Variations
 summary:    An overview of techniques and strategies used to produce NameID elements in SAML2 responses of Apereo CAS acting as a SAML2 identity provider, whether as part of the Subject tag or embedded inside individual SAML2 attributes.
-tags:       [CAS]
+tags:       ["CAS 6.4.x", "SAML"]
 ---
 
 When managing and deploying Apereo CAS as a SAML2 identity provider, it's rather common for SAML2 service provider integrations and applications to expect a specific `NameID` from the SAML2 response they receive from CAS. A SAML2 `NameID` is an element that generally belongs to the `Subject` tag, is assigned a specific format and 

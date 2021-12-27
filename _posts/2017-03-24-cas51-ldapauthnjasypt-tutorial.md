@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5 LDAP AuthN and Jasypt Configuration
 summary:    Learn how to configure LDAP AuthN with CAS and secure LDAP credentials via Jasypt.
-tags:       [CAS]
+tags:       ["CAS 5.1.x", "Jasypt", "LDAP"]
 ---
 
 This is a short and sweet tutorial on how to configure CAS for LDAP authentication and secure bind credentials via Jasypt encryption.

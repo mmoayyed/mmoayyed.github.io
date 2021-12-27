@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Spring Boot Admin Integration
 summary:    Learn to manage and monitor your Apereo CAS deployment using the Spring Boot Admin server and Spring Boot Actuator endpoints.
-tags:       [CAS]
+tags:       ["CAS 6.0.x", "Monitoring"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

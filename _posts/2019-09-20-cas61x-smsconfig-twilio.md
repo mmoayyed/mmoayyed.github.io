@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SMS Notifications via Twilio
 summary:    Learn to configure Apereo CAS for SMS notifications via Twilio.
-tags:       [CAS]
+tags:       ["CAS 6.1.x"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

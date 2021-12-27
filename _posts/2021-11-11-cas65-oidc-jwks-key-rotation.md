@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - OpenID Connect Key Rotation & Revocation
 summary:    Learn how to configure schedules and strategies to handle key rollover, rotation, and revocation for keys used by OpenID Connect's keystore.
-tags:       [CAS]
+tag:       ["CAS 6.5.x", "OpenID Connect"]
 ---
 
 When using Apereo CAS as an OpenID Connect OP, a recommended practice for non-trivial deployments typically is one to secure and rotate keys. Key rollover requires that we discard current keys and generate a new pair of keys to be used for signing and verifying the tokens. In this blog post, we will take a look at how to configure Apereo CAS to handle key rotation and revocation automatically, or forcefully.

@@ -2,7 +2,7 @@
 layout:     post
 title:      Troubleshooting Hazelcast Integrations
 summary:    An overview of several common errors when doing integrations with Hazelcast distributed caching.
-tags:       [CAS]
+tags:       ["Hazelcast", "CAS 6.4.x"]
 ---
 
 [Hazelcast IMDG](https://github.com/hazelcast/hazelcast) is an open-source in-memory data grid based on Java. It allows data to be evenly distributed among the nodes of a cluster, allowing for horizontal scaling of processing and available storage. Integrations with Hazelcast can be somewhat tricky, given different the variety of components involved, the characteristics of the network and the chosen communication strategy between cluster node. In this blog post, several common Hazelcast errors are cataloged for reviews and better troubleshooting.

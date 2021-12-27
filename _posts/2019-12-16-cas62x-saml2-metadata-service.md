@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 Metadata Overrides
 summary:    Learn how to manage SAML2 service provider registrations in CAS and override metadata artifacts on a per-application basis.
-tags:       [CAS]
+tags:       ["CAS 6.2.x", "SAML"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

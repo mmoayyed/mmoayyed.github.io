@@ -2,7 +2,7 @@
 layout:     post
 title:      Defining a Product Vision
 summary:    This is my take on how to evolve a product/project vision, and lessons I have learned.
-tags:       [Blog]
+tags: ["Miscellaneous"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
