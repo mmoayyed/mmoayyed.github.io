@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Riffing on Attribute Release Policies
 summary:    Learn how to release the kraken of attributes to CAS clients, relying parties and service providers using a variety of attribute release policies and authentication protocols, sampled and collected here to fun and profit.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Attribute Resolution"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

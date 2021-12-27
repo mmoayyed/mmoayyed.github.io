@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Attribute-based Application Authorization
 summary:    A walkthrough to demonstrate how one might fetch attributes from a number of data sources, turning them into roles that could then be used to enforce application access and authorization.
-tags:       ["CAS 5.2.x"]
+tags:       ["CAS 5.2.x", "Authorization"]
 ---
 
 A fairly common CAS deployment use case is to enforce access to a particular set of applications via user attributes and roles. Once the authentication/authorization server passed on the required attributes and entitlements to the application, each service might individually be tasked with controlling entry access, and once authorized, enforcement of a set of specific functions inside the application which the user may be allowed to carry out. The purpose of this tutorial is to present an alternative to the first scenario, by providing options to centrally control and manage that ruleset that allows the user to enter an application that is integrated with Apereo CAS.

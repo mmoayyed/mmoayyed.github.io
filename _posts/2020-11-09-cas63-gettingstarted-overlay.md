@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS 6.3.x Deployment - WAR Overlays
 summary:    Learn how to configure and build your own CAS deployment via the WAR overlay method, get rich quickly, stay healthy indefinitely and respect family and friends in a few very easy steps.
-tags:       ["CAS 6.3.x"]
+tags:       ["CAS 6.3.x", "Getting Started"]
 ---
 
 This is a short and sweet tutorial on how to deploy CAS via [the WAR Overlay method][overlaysetup].

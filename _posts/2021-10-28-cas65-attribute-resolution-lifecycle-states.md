@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Attribute Resolution Lifecycle States
 summary:    Learn how to define attribute repositories to resolve person attributes, on-demand or conditionally, by taking advantage of repository and resolver lifecycle states to enable, disable the resolution engine, or put it in standby mode.
-tags:       ["CAS 6.5.x"]
+tags:       ["CAS 6.5.x", "Attribute Resolution"]
 ---
 
 The attribute resolution engine in Apereo CAS has grown to be quite flexible over the years and can locate people and attributes from a variety of sources. The resolution engine is primarily tasked to resolve and canonicalize principal identifiers using *principal resolver* components, and then locate claims and attributes for those identifiers from sources using *attribute repository* components.

@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS 6.1.x - Attribute Repositories w/ Person Directory
 summary:    An overview of CAS attribute repositories and strategies on how to fetch attributes from a variety of sources in addition to the authentication source, merge and combine attributes from said sources to ultimately release them to applications with a fair bit of caching.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Attribute Resolution"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5 SAML2 Delegated AuthN Tutorial
 summary:    Learn how to delegate authentication requests to external SAML2 identity providers.
-tags:       ["CAS 5.1.x"]
+tags:       ["CAS 5.1.x", "Delegated Authentication"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

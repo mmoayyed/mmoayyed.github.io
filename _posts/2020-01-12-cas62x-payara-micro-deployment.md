@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Payara Micro Deployments
 summary:    Learn how to deploy Apereo CAS via Payara Micro.
-tags:       ["CAS 6.2.x"]
+tags:       ["CAS 6.2.x", "Payara Micro"]
 background: '/images/home/slide-1.jpg'
 ---
 

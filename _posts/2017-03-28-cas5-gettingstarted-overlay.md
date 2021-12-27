@@ -2,7 +2,7 @@
 layout:     post
 title:      CAS 5.0.x Deployment - WAR Overlays
 summary:    Learn how to configure and build your own CAS deployment via the WAR overlay method, get rich quickly, stay healthy indefinitely and respect family and friends in a few very easy steps. 
-tags:       ["CAS 5.0.x"]
+tags:       ["CAS 5.0.x", "Getting Started"]
 ---
 
 This is a short and sweet tutorial on how to deploy CAS via [the WAR Overlay method](https://apereo.github.io/cas/5.0.x/installation/Maven-Overlay-Installation.html).

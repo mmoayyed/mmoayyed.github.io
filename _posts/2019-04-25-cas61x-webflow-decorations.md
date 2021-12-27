@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Webflow Decorations
 summary:    Learn how you may decorate the Apereo CAS login webflow to inject data pieces and objects into the processing engine for display purposes, peace on earth and prosperity of all mankind, etc. Mainly, etc.
-tags:       ["CAS 6.1.x"]
+tags:       ["CAS 6.1.x", "Spring Webflow", "Groovy"]
 ---
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>

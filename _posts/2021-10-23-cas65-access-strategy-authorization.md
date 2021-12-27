@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Global Access Strategy & Enforcement
 summary:    An overview of access strategy and authorization enforcement techniques used at a global level to control entry to applications integrated with Apereo CAS for single sign-on.
-tags:       ["CAS 6.5.x"]
+tags:       ["CAS 6.5.x", "Authorization"]
 ---
 
 Apereo CAS is now able to offer features to control authorization and entry access to the application at a global level, in addition to providing options for overrides at the application level. This post can be viewed as an extension of [Privileged Access Management](2021/08/02/cas64x-privileged-access-management/) features in Apereo CAS that specifically focus on options to determine user access at a global level.
