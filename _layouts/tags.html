@@ -118,7 +118,9 @@ style="background-size: contain; background-position-x: right; background-image:
     filteredPosts.forEach(post => {
       // console.log(post.url);
 
-      let tags = post.tags.trim().split(",").map(tag => { return `<li><a href="#">${tag.trim()}</a>&nbsp;</li>` }).join("");
+      let tags = post.tags.trim().split(",").map(tag => { 
+        return `<li><a href="/tags?t=${encodeURIComponent(tag.trim())}">${tag.trim()}</a>&nbsp;</li>` }).join("");
+
       cards = cards + 
         `<div class="card filter">
           <span>
@@ -153,6 +155,13 @@ style="background-size: contain; background-position-x: right; background-image:
   $("input[name=blogTag]").on("click", filterFunction);
 
 
-  blogTags.selectOption("CAS 6.5.x");
+  let urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('t')) {
+    let tag = urlParams.get('t');
+    console.log("Setting tag to " + tag);
+    blogTags.selectOption(tag);
+  } else {
+    blogTags.selectOption("CAS 6.5.x");
+  }
   filterFunction();
 </script>

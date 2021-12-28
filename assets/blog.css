@@ -572,7 +572,7 @@ a.post-preview-link {
 }
 
 @media only screen and (max-width: 499px) {
-    #searchbutton, #tagsbutton {
+    #searchbutton/*,#tagsbutton */ {
         display: none;
     }
 }

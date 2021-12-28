@@ -24,7 +24,7 @@ layout: default
               <ul>
                   {% for tag in page.tags %}
                   {% capture tag_name %}{{ tag }}{% endcapture %}
-                    <li><a href="/tag/{{ tag_name | url_encode }}"><nobr>{{ tag_name }}</nobr></a></li>
+                    <li><a href="/tags?t={{ tag_name | url_encode }}"><nobr>{{ tag_name }}</nobr></a></li>
                   {% endfor %}
               </ul>
             </span>
