@@ -19,21 +19,13 @@ layout: default
   }
 </style>
 
-<script>
-  let blogPosts = [];
-</script>
-
-{% for post in site.posts %}
-<script>
-  blogPosts.push({ 
-    title: "{{ post.title }}",
-    date: "{{ post.date | date: '%B %d, %Y' }}",
-    url: "{{ post.url | prepend: site.baseurl | replace: '//', '/' }}",
-    summary: "{{ post.summary }}",
-    tags: "{{ post.tags | join: ',' }} "
-  });
-</script>
-{% endfor %}
+<div id="allBlogPosts" style="display:none">
+  {% for post in site.posts %}
+    <span data-post-title="{{ post.title }}" data-post-date="{{ post.date }}" 
+          data-post-url="{{ post.url }}" data-post-summary="{{ post.summary }}"
+          data-post-tags="{{ post.tags | join: ',' }}" />
+  {% endfor %}
+</div>
 
 <!-- Page Header -->
 {% if page.background %}
@@ -80,6 +72,7 @@ style="background-size: contain; background-position-x: right; background-image:
   });
 
   blogTags.deselectAll();
+
   $("#blogEntries").empty();
   $("div.dropdown-item.custom-control:first").hide()
 
@@ -96,14 +89,28 @@ style="background-size: contain; background-position-x: right; background-image:
 
     let selectedTags = JSON.parse(blogTags.getSelectedOptionsAsJson(false)).blogTag;
     console.log("Selected tags are " + selectedTags);
-    let filteredPosts = selectedTags.length > 0 ? blogPosts.filter(function(post) {
-      let postTags = post.tags.trim().split(",");
-      console.log("Post tags are " + postTags);
-      let result = selectedTags.every(t => postTags.includes(t));
-      console.log("Checking post " + post.title + " for tags " + selectedTags + " : " + result);
-      return result;
-    }) : [];
 
+    let filteredPosts = [];
+    if (selectedTags.length > 0) {
+      $("#allBlogPosts span").filter(function() {
+        let postTags = $(this).attr("data-post-tags").trim().split(",");
+        console.log("Post tags are " + postTags);
+        let result = selectedTags.every(t => postTags.includes(t));
+        console.log("Checking post " + postTags + " for selected tags " + selectedTags + ": " + result);
+        return result;
+      }).map(function() {
+          let post = {
+            title: $(this).attr("data-post-title"),
+            date: $(this).attr("data-post-date"),
+            url: $(this).attr("data-post-url"),
+            summary: $(this).attr("data-post-summary"),
+            tags: $(this).attr("data-post-tags").trim()
+          };
+          console.log("Adding post " + post.title);
+          filteredPosts.push(post);
+        });
+    }
+    
     console.log(`Found posts ${filteredPosts.length}`);
     
     let cards = "";
@@ -145,4 +152,7 @@ style="background-size: contain; background-position-x: right; background-image:
 
   $("input[name=blogTag]").on("click", filterFunction);
 
+
+  blogTags.selectOption("CAS 6.5.x");
+  filterFunction();
 </script>

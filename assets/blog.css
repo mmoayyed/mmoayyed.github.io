@@ -570,3 +570,15 @@ a.post-preview-link {
         font-size: 11pt;
     }
 }
+
+@media only screen and (max-width: 499px) {
+    #searchbutton, #tagsbutton {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 485px) {
+    .post-heading .tagcloud06 {
+        display: none;
+    }
+}
