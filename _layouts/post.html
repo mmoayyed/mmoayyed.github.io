@@ -44,15 +44,6 @@ layout: default
 
         {{ content }}
 
-        <div class="tagcloud06">
-            <ul>
-                {% for tag in page.tags %}
-                {% capture tag_name %}{{ tag }}{% endcapture %}
-                  <li><a href="/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr></a></li>
-                {% endfor %}
-            </ul>
-        </div>
-
         <hr>
         <div class="clearfix">
 
