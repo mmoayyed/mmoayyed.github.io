@@ -16,7 +16,7 @@ layout: default
             <span class="meta">Posted by
               <a href="#">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a>
               on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
-              content=page.content %} &middot; <a href='/feed.xml'><i class="fas fa-rss"></i></a>
+              content=page.content %} &middot; <a title="Fawnoos || Open-Source Identity and Access Management Consulting Services" href='/feed.xml'><i class="fas fa-rss"></i></a>
               <a id="darkMode" href="javascript:switchMode();"><i title="Dark Mode" class="fas fa-moon"></i></a>
             </span>
 
@@ -24,7 +24,8 @@ layout: default
               <ul>
                   {% for tag in page.tags %}
                   {% capture tag_name %}{{ tag }}{% endcapture %}
-                    <li><a href="/tags?t={{ tag_name | url_encode }}"><nobr>{{ tag_name }}</nobr></a></li>
+                    <li><a title="Fawnoos || Open-Source Identity and Access Management Consulting Services" 
+                      href="/tags?t={{ tag_name | url_encode }}"><nobr>{{ tag_name }}</nobr></a></li>
                   {% endfor %}
               </ul>
             </span>

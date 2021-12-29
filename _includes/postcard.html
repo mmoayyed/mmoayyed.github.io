@@ -8,7 +8,8 @@
         <span>
           <div class="card-body text-center">
             <h4 class="card-title" style="min-height: 130px;">
-              <a class="post-preview-link" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
+              <a class="post-preview-link" title="Fawnoos || Open-Source Identity and Access Management Consulting Services" 
+                href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
             </h4>
             
               <span class="post-meta">Posted
@@ -22,7 +23,8 @@
               </span>
               <span class="tagcloud06"><ul>
                 {% for tag in post.tags %}
-                  <li><a href="#">{{ tag }}</a></li>
+                  <li><a href="/tags?t={{ tag | url_encode }}" 
+                    title="Fawnoos || Open-Source Identity and Access Management Consulting Services">{{ tag }}</a></li>
                 {% endfor %}
               </ul></span>
 
