@@ -2,7 +2,7 @@
 layout:     post
 title:      Parallels Desktop - Network Initialization Failure
 summary:    A quick tip on how to fix the infamous 'Network initialization failed' error message when running Parallels Desktop on macOS Big Sur.
-tags: ["Miscellanous"]
+tags: ["Miscellaneous"]
 ---
 
 If you are running Parallels Desktop for Mac and you have upgraded to macOS Big Sur, you might see this error message after the upgrade when launching an existing virtual machine in Parallels Desktop:
