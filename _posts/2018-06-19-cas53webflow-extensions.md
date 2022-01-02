@@ -7,7 +7,7 @@ tags:       ["CAS 5.3.x", "Spring Webflow"]
 
 <div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
-Unlike previous versions, CAS 5 attempts to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and viola! CAS will take care of the rest.
+Unlike previous versions, CAS 5 attempts to automate all required Spring Webflow changes on a per-module basis. In this new model, all one should have to do is to declare the appropriate module in the build script...and voilà! CAS will take care of the rest.
 
 {% include googlead1.html  %}
 
