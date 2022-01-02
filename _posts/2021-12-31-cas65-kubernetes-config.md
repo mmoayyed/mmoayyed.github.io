@@ -480,6 +480,86 @@ Pretty cool, right? But we are not done yet!
 
 ## Kubernetes Secrets
 
+Kubernetes has the notion of [Secret](https://kubernetes.io/docs/concepts/configuration/secret/)s for storing sensitive data such as passwords, etc. Secrets are similar to `ConfigMap`s but are specifically intended to hold confidential data.
+
+For our purposes, we want to consider removing the seting `cas.authn.accept.users=minikube::Mellon` from our deployment descriptor and instead have CAS recognize that as a secret.
+
+Once removed from YAML, we begin by defining the secret:
+
+```bash
+kubectl create secret generic cas-users --from-literal=users=minikube::Mellon
+```
+
+Then, we get produce a relevant YAML configuration, put it in a `secrets.yaml` file and apply that via `kubectl`:
+{% include googlead1.html  %}
+```bash
+kubectl get secrets cas-users -o yaml > secrets.yaml
+kubectl apply -f secrets.yaml
+```
+
+The YAML snippet sort of looks like this:
+
+```yaml
+---
+apiVersion: v1
+kind: Secret
+data:
+  users: bWluaWt1YmU6Ok1lbGxvbg==
+metadata:
+  name: cas-users
+  namespace: default
+```
+
+Back in the dashboar, we can now confirm the secret is configured in Kubernetes:
+
+{% include image.html img="https://user-images.githubusercontent.com/1205228/147870572-20be3004-3717-4333-8c43-6aca610f3ac0.png"
+width="70%" title="Apereo CAS in Kubernetes Dashboard" %}
+{% include googlead1.html  %}
+
+Secrets can be created independently of the pods that use them, and now we can modify our deployment to fetch the secret and expose the setting as an environment variable for simplicity. 
+
+We begin by modifying our CAS overlay's `bootstrap.properties` file with the following settings to enable support for Kubernetes secrets:
+
+```properties
+spring.cloud.kubernetes.secrets.name=cas
+spring.cloud.kubernetes.secrets.enabled=true
+spring.cloud.kubernetes.secrets.namespace=default
+```
+
+Once the CAS overlay and the container image are rebuilt and published again, our YAML descriptor can be modified as such:
+
+```yaml
+...
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cas
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cas
+    spec:
+      containers:
+      - image: mmoayyed/cas:latest
+        name: cas
+        env:
+         - name: CAS_AUTHN_ACCEPT_USERS
+           valueFrom:
+              secretKeyRef:
+                name: cas-users
+                key: users 
+...
+```
+{% include googlead1.html  %}
+The container is instructed to load the `users` secret and map to an environment variable under `CAS_AUTHN_ACCEPT_USERS`, which is then read by Spring Boot and CAS and ultimately translated to the familiar `cas.authn.accept.users`. At this point and just as before, you can login using the `minikube` user account, over at `http://localhost:8080/cas`.
+
+<div class="alert alert-info">
+  <strong>Note</strong><br/>By default, if a container already consumes a secret in an environment variable, a secret update will not be seen by the container unless it is restarted.
+</div>
+
 # Need Help?
 
 If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
