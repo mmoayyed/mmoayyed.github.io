@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Docker Infrastructure Deployment w/ Terraform
-summary:    Deploy and manage an Apereo CAS Docker container using Terraform, HashiCorp's infrastructure as code tool.
+summary:    Deploy and manage an Apereo CAS Docker container using Terraform, HashiCorp's Infrastructure as Code tool.
 tags:       ["CAS 6.4.x", "Docker", "Terraform"]
 ---
 
