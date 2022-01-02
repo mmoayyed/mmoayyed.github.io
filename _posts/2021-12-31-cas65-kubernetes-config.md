@@ -429,32 +429,32 @@ Back in the Minikube dashboard, you can force-delete the existing pod and watch 
 
 ```bash
 ...
-[org.springframework.cloud.kubernetes.commons.profile.AbstractKubernetesProfileEnvironmentPostProcessor] - <Adding 'kubernetes' to list of active profiles>
-[io.fabric8.kubernetes.client.Config] - <Trying to configure client from Kubernetes config...>
-[io.fabric8.kubernetes.client.Config] - <Did not find Kubernetes config at: [/root/.kube/config]. Ignoring.>
-[io.fabric8.kubernetes.client.Config] - <Trying to configure client from service account...>
-[io.fabric8.kubernetes.client.Config] - <Found service account host and port: 10.96.0.1:443>
-[io.fabric8.kubernetes.client.Config] - <Found service account ca cert at: [/var/run/secrets/kubernetes.io/serviceaccount/ca.crt}].>
-[io.fabric8.kubernetes.client.Config] - <Found service account token at: [/var/run/secrets/kubernetes.io/serviceaccount/token].>
-[io.fabric8.kubernetes.client.Config] - <Trying to configure client namespace from Kubernetes service account namespace path...>
-[io.fabric8.kubernetes.client.Config] - <Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].>
-[org.springframework.cloud.kubernetes.commons.KubernetesNamespaceProvider] - <Looking for service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace]
-[org.springframework.cloud.kubernetes.commons.KubernetesNamespaceProvider] - <Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].>
-[org.springframework.cloud.kubernetes.commons.KubernetesNamespaceProvider] - <Service account namespace value: /var/run/secrets/kubernetes.io/serviceaccount/namespace>
+[AbstractKubernetesProfileEnvironmentPostProcessor] - <Adding 'kubernetes' to list of active profiles>
+[Config] - <Trying to configure client from Kubernetes config...>
+[Config] - <Did not find Kubernetes config at: [/root/.kube/config]. Ignoring.>
+[Config] - <Trying to configure client from service account...>
+[Config] - <Found service account host and port: 10.96.0.1:443>
+[Config] - <Found service account ca cert at: [/var/run/secrets/kubernetes.io/serviceaccount/ca.crt}].>
+[Config] - <Found service account token at: [/var/run/secrets/kubernetes.io/serviceaccount/token].>
+[Config] - <Trying to configure client namespace from Kubernetes service account namespace path...>
+[Config] - <Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].>
+[KubernetesNamespaceProvider] - <Looking for service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace]
+[KubernetesNamespaceProvider] - <Found service account namespace at: [/var/run/secrets/kubernetes.io/serviceaccount/namespace].>
+[KubernetesNamespaceProvider] - <Service account namespace value: /var/run/secrets/kubernetes.io/serviceaccount/namespace>
 ...
 ```
 
 ...and then, as the CAS application starts up:
 
 ```bash
-[org.springframework.cloud.kubernetes.commons.config.ConfigMapPropertySourceLocator] - <Config Map normalized sources : [{ config-map name : 'cas', namespace : 'default', prefix : '' }]>
-[org.springframework.cloud.kubernetes.fabric8.config.Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
-[org.springframework.cloud.kubernetes.fabric8.config.Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
-[org.springframework.cloud.kubernetes.fabric8.config.Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
-[org.springframework.cloud.kubernetes.fabric8.config.Fabric8ConfigMapPropertySource] - <Loading ConfigMap with name 'cas' in namespace 'default'>
-[org.springframework.cloud.kubernetes.commons.config.ConfigMapPropertySource] - <The single property with name: [application.properties] will be treated as a properties file>
-[org.springframework.cloud.kubernetes.fabric8.config.Fabric8ConfigUtils] - <config-map with name : 'cas-kubernetes' not present in namespace : 'default'>
-[org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration] - <Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.cas.default'}]>
+[ConfigMapPropertySourceLocator] - <Config Map normalized sources : [{ config-map name : 'cas', namespace : 'default', prefix : '' }]>
+[Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
+[Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
+[Fabric8ConfigUtils] - <Config Map namespace from normalized source or passed directly : default>
+[Fabric8ConfigMapPropertySource] - <Loading ConfigMap with name 'cas' in namespace 'default'>
+[config.ConfigMapPropertySource] - <The single property with name: [application.properties] will be treated as a properties file>
+[Fabric8ConfigUtils] - <config-map with name : 'cas-kubernetes' not present in namespace : 'default'>
+[PropertySourceBootstrapConfiguration] - <Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.cas.default'}]>
 ```
 
 ...and then finally,
