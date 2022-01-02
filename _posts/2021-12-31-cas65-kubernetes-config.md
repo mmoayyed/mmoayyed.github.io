@@ -5,7 +5,7 @@ summary:    Playing around with Kubernetes, Minikube, and friends to demonstrate
 tags:       ["CAS 6.4.x", "CAS 6.5.x", "Configuration Management", "Kubernetes", "Spring Cloud", "Docker", "Spring Boot"]
 ---
 
-Continuing with Apereo CAS thriving in a [containerized world](/2020/02/16/cas6-kubernetes/) for Kubernetes deployments, this blog post continues on the same thread to demonstrate  how a CAS Docker container can be deployed and managed by [Kubernetes](https://kubernetes.io/) and use Kubernetes features such as `ConfigMap`s and `Secret`s for configuration management via Spring Cloud. 
+Continuing with Apereo CAS thriving in a [containerized world](/2020/02/16/cas6-kubernetes/) for Kubernetes deployments, this blog post continues on the same thread to demonstrate how a CAS Docker container can be deployed and managed by [Kubernetes](https://kubernetes.io/) and use Kubernetes features such as `ConfigMap`s and `Secret`s for configuration management via Spring Cloud. 
 
 {% include googlead1.html  %}
 
@@ -20,7 +20,7 @@ Our starting position is based on the following:
 
 ## Minikube
 
-I started out by making sure my Minikube installation is ready and recent. You can try to verify the state of your installation via:
+I started by making sure my Minikube installation is ready and recent. You can try to verify the state of your installation via:
 
 ```bash
 > minikube version
@@ -75,7 +75,7 @@ apiserver: Running
 kubeconfig: Configured
 ```
 
-If you are working from a previous existing Minikube installation, specially one that may be incompatible with the newest upgrades or one whose certificate might have expired, you may want to delete the previous setup first before starting Minikube again:
+If you are working from a previous existing Minikube installation, especially one that may be incompatible with the newest upgrades or one whose certificate might have expired, you may want to delete the previous setup first before starting Minikube again:
 
 ```bash
 minikube delete
@@ -96,7 +96,7 @@ Great! You now have a running Kubernetes cluster in the terminal. Minikube start
 
 ## Deployments
 
-Let's start by creating a deployment descriptor for our CAS server. To keep things simple, I started out with a plain CAS container image that is published by the CAS project on [Docker Hub](https://hub.docker.com/r/apereo/cas/):
+Let's start by creating a deployment descriptor for our CAS server. To keep things simple, I started with a plain CAS container image that is published by the CAS project on [Docker Hub](https://hub.docker.com/r/apereo/cas/):
 
 ```bash
 kubectl create deployment cas --image=apereo/cas:6.4.4.2 \
@@ -118,7 +118,7 @@ If you examine the running `cas` pod in the Kubernetes dashboard and review the 
 To get around for the time being, what we want to achieve is,
 
 - Create the keystore at `/etc/cas/thekeystore` on the host machine.
-- Start by Minikube and allow it to map the host directory `/etc/cas/` onto a `/etc/cas` path inside the Minikube container.
+- Start with Minikube and allow it to map the host directory `/etc/cas/` onto a `/etc/cas` path inside the Minikube container.
 - Modify our `deployment.yaml` deployment descriptor to configure volume mount between Minikube and the running CAS container.
 
 To create the initial keystore, you may use the JDK `keytool` command (use the password `changeit`):
@@ -140,7 +140,7 @@ minikube mount /etc/cas/:/etc/cas/
   <strong>Note</strong><br/>You can also SSH into the running Minikube container via <code>minikube ssh</code> and run <code>ls /etc/cas</code> to verify the status and correctness of the mount.
 </div>
 
-Finally, the deployment descriptor file `deployment.yml` should be modified to allow for a mapping between Minikube's volume and that of the CAS container. Here is a brief snippet of how that change might be applied:
+Finally, the deployment descriptor file `deployment.yml` should be modified to allow for mapping between Minikube's volume and that of the CAS container. Here is a brief snippet of how that change might be applied:
 
 ```yaml
 apiVersion: apps/v1
@@ -195,7 +195,7 @@ Forwarding from [::1]:8443 -> 8443
 
 ## Kubernetes ConfigMaps
 
-A `ConfigMap` is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume. A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
+A `ConfigMap` is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume. A ConfigMap allows you to decouple environment-specific configuration from your container images so that your applications are easily portable.
 
 <div class="alert alert-info">
   <strong>Note</strong><br/><code>ConfigMap</code> does not provide secrecy or encryption. If the data you want to store are confidential, use a <code>Secret</code> instead or use additional (third party) tools to keep your data private.
@@ -209,7 +209,7 @@ The default behavior is to create a `Fabric8ConfigMapPropertySource` based on a 
 
 ### CAS Configuration
 
-To turn on support for Kubernetes configuration management, we need to move away from the published CAS Docker image and instead build our own image based on the [CAS Overlay](https://github.com/apereo/cas-overlay-template) that contains a dedicated modules and dependencies for this support.
+To turn on support for Kubernetes configuration management, we need to move away from the published CAS Docker image and instead build our image based on the [CAS Overlay](https://github.com/apereo/cas-overlay-template) that contains dedicated modules and dependencies for this support.
 
 Once you have cloned the overlay, you will need to include the following dependency in the build:
 
@@ -254,11 +254,11 @@ docker push mmoayyed/cas:latest
 
 ### Kubernetes Configuration
 
-Now that the Docker image is published with Spring Cloud Kubernetes support, we need to modify our YAML deployment descriptor to acount for the following changes:
+Now that the Docker image is published with Spring Cloud Kubernetes support, we need to modify our YAML deployment descriptor to account for the following changes:
 
 - The Docker image coordinates should now switch to use our own built image.
 - Volumes and volume mounts should be removed from the descriptor.
-- A dedicated `ConfigMap` should be defined, tied to our application name (`cas`) and namespace (`default`) to contain necessary changs.
+- A dedicated `ConfigMap` should be defined, tied to our application name (`cas`) and namespace (`default`) to contain necessary changes.
 - Our deployment should be given enough permissions to read the `ConfigMap` at bootstrap time.
 
 
@@ -482,7 +482,7 @@ Pretty cool, right? But we are not done yet!
 
 Kubernetes has the notion of [Secret](https://kubernetes.io/docs/concepts/configuration/secret/)s for storing sensitive data such as passwords, etc. Secrets are similar to `ConfigMap`s but are specifically intended to hold confidential data.
 
-For our purposes, we want to consider removing the seting `cas.authn.accept.users=minikube::Mellon` from our deployment descriptor and instead have CAS recognize that as a secret.
+For our purposes, we want to consider removing the setting `cas.authn.accept.users=minikube::Mellon` from our deployment descriptor and instead have CAS recognize that as a secret.
 
 Once removed from YAML, we begin by defining the secret:
 
@@ -490,7 +490,7 @@ Once removed from YAML, we begin by defining the secret:
 kubectl create secret generic cas-users --from-literal=users=minikube::Mellon
 ```
 
-Then, we get produce a relevant YAML configuration, put it in a `secrets.yaml` file and apply that via `kubectl`:
+Then, we get to produce a relevant YAML configuration, put it in a `secrets.yaml` file, and apply that via `kubectl`:
 {% include googlead1.html  %}
 ```bash
 kubectl get secrets cas-users -o yaml > secrets.yaml
@@ -510,7 +510,7 @@ metadata:
   namespace: default
 ```
 
-Back in the dashboar, we can now confirm the secret is configured in Kubernetes:
+Back in the dashboard, we can now confirm the secret is configured in Kubernetes:
 
 {% include image.html img="https://user-images.githubusercontent.com/1205228/147870572-20be3004-3717-4333-8c43-6aca610f3ac0.png"
 width="70%" title="Apereo CAS in Kubernetes Dashboard" %}
@@ -525,6 +525,9 @@ spring.cloud.kubernetes.secrets.name=cas
 spring.cloud.kubernetes.secrets.enabled=true
 spring.cloud.kubernetes.secrets.namespace=default
 ```
+
+
+### Environment Variables
 
 Once the CAS overlay and the container image are rebuilt and published again, our YAML descriptor can be modified as such:
 
@@ -559,6 +562,67 @@ The container is instructed to load the `users` secret and map to an environment
 <div class="alert alert-info">
   <strong>Note</strong><br/>By default, if a container already consumes a secret in an environment variable, a secret update will not be seen by the container unless it is restarted.
 </div>
+
+### Volume Mounts
+
+Rather than mapping environment variables, another approach is to let Spring Cloud Kubernetes reading recursively from secrets mounts. To do this, we first begin by removing the mapped secret environment variables, and create a new secret, `cas-users-file`, from the file `/etc/cas/secrets/users` which contains the value `minikube::Mellon`:
+
+```bash
+kubectl create secret generic cas-users-file --from-file /etc/cas/secrets/users
+```
+
+Just as before, we can use `kubectl` to apply the secret YAML configuration:
+
+{% include googlead1.html  %}
+```yaml
+---
+apiVersion: v1
+data:
+  cas.authn.accept.users: bWluaWt1YmU6Ok1lbGxvbg==
+kind: Secret
+metadata:
+  name: cas-users-file
+  namespace: default
+```
+
+Finally, we have to modify the deployment descriptor of our pod to specify the settings for volume mounts, and to also instruct Spring Cloud Kubernetes to load secrets from the mounted paths:
+
+{% include googlead1.html  %}
+```yaml
+spec:
+  template:
+    spec:
+      containers:
+      - image: mmoayyed/cas:latest
+        name: cas
+        volumeMounts:
+          - name: secrets
+            mountPath: /etc/cas/secrets
+        env:
+         - name: ENTRYPOINT_DEBUG
+           value: 'true'
+         - name: JVM_EXTRA_OPTS
+           value: '-Dspring.cloud.kubernetes.secrets.paths=/etc/cas/secrets'
+      volumes:     
+        - name: secrets
+          secret:
+            secretName: cas-users-file
+```
+{% include googlead1.html  %}
+The CAS Docker image supports two special environment variables:
+
+- `ENTRYPOINT_DEBUG`: When set to `true`, outputs additional logs to indicate how CAS is started up.
+- `JVM_EXTRA_OPTS`: Allows for additional arguments to be passed to the CAS startup command, which is run using `java -jar`. 
+
+`spring.cloud.kubernetes.secrets.paths` is important; It sets the paths for Spring Cloud Kubernetes where secrets are mounted. For its value, we could also `/etc/cas/secrets/users`. Since all our secrets mapped to a common root, here we just specify the path to the secret directory.
+
+...and just as before, don't forget to instruct minikube to handle the volume mount from the host machine:
+{% include googlead1.html  %}
+```bash
+minikube mount /etc/cas/:/etc/cas/
+```
+
+At this point and just as before, you can login using the `minikube` user account, over at `http://localhost:8080/cas`.
 
 # Need Help?
 
