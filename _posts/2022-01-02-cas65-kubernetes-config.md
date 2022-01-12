@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Managing Configuration w/ Spring Cloud & Kubernetes
-summary:    Playing around with Kubernetes, Minikube, and friends to demonstrate ideas on how Apereo CAS might be deployed in a containerized and orchestrated fashion inside a Kubernetes cluster, and take advantage of specific Spring Cloud features such as Kubernetes ConfigMaps and Secrets. 
+summary:    Playing around with Kubernetes, Minikube, and friends to show how Apereo CAS might be deployed in a containerized and orchestrated fashion inside a Kubernetes cluster, and using Spring Cloud features such as Kubernetes ConfigMaps and Secrets. 
 tags:       ["CAS 6.4.x", "CAS 6.5.x", "Configuration Management", "Kubernetes", "Spring Cloud", "Docker", "Spring Boot"]
 ---
 

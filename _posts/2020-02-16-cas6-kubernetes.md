@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Kubernetes Deployments
-summary:    Playing around with Kubernetes, Minikube, and friends to demonstrate ideas on how Apereo CAS might be deployed in a containerized and orchestrated fashion. 
+summary:    Playing around with Kubernetes, Minikube, and friends to show how Apereo CAS can be deployed in a containerized and orchestrated fashion. 
 tags:       ["CAS 6.2.x", "Kubernetes", "Docker"]
 ---
 
