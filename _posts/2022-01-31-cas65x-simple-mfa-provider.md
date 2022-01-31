@@ -2,32 +2,30 @@
 layout:     post
 title:      Apereo CAS - Simple Multifactor Authentication
 summary:    Learn to configure Apereo CAS to act as a simple multifactor provider itself.
-tags:       ["CAS 6.1.x", "MFA"]
+tags:       ["CAS 6.5.x", "MFA"]
 ---
-
-<div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
 
 # Overview
 
-The Apereo CAS portfolio presents support for an impressive number of [multifactor authentication providers](https://apereo.github.io/cas/6.1.x/mfa/Configuring-Multifactor-Authentication.html) out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather [simplified multifactor authentication](https://apereo.github.io/cas/6.1.x/mfa/Simple-Multifactor-Authentication.html) solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.
+The Apereo CAS portfolio presents support for an impressive number of [multifactor authentication providers](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html) out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather [simplified multifactor authentication](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html) solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.
 
 {% include googlead1.html  %}
 
-In this tutorial, we are going to briefly review the steps required to turn on [Simple Multifactor Authentication](https://apereo.github.io/cas/6.1.x/mfa/Simple-Multifactor-Authentication.html).
+In this tutorial, we are going to briefly review the steps required to turn on [Simple Multifactor Authentication](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html).
 
 Our starting position is based on:
 
-- CAS `6.1.x`
+- CAS `6.5.x`
 - Java `11`
 - [MockMock](https://github.com/tweakers/MockMock)
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration
 
-Prepare your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/6.1.x/mfa/Simple-Multifactor-Authentication.html). Next, we will first instruct CAS to trigger *simple mfa* for all requests and applications:
+Prepare your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html). Next, we will first instruct CAS to trigger *simple mfa* for all requests and applications:
 
 ```properties
-cas.authn.mfa.globalProviderId=mfa-simple
+cas.authn.mfa.triggers.global.global-provider-id=mfa-simple
 ```
 {% include googlead1.html  %}
 <div class="alert alert-info">
@@ -47,18 +45,18 @@ spring.mail.testConnection=true
 </div>
 
 Then, let's instruct CAS to share tokens via email:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.attribute-repository.stub.attributes.mail=misagh@somewhere.com
 
 cas.authn.mfa.simple.mail.from=wolverine@example.org
 cas.authn.mfa.simple.mail.subject=CAS MFA Token
 cas.authn.mfa.simple.mail.text=Hello! Your requested CAS token is %s
-cas.authn.mfa.simple.mail.attributeName=mail
+cas.authn.mfa.simple.mail.attribute-name=mail
 
-cas.authn.mfa.simple.timeToKillInSeconds=30
+cas.authn.mfa.simple.time-to-kill-in-seconds=30
 ```
-{% include googlead1.html  %}
+
 A few things to note:
 
 - The `%s` acts as a placeholder for the generated token in the body of the message.
@@ -72,7 +70,7 @@ At this point, we should be ready to test.
 # Test
 
 Once you build and bring up the deployment, let's simulate an authentication attempt from a made-up application, `https://app.example.org`, by submitting the following request:
-
+{% include googlead1.html  %}
 ```bash
 https://sso.example.org/cas/login?service=https://app.example.org
 ```
@@ -94,12 +92,12 @@ If you check your email, you should have received a token:
 
 Submit the generated token `CASMFA-004291` back to CAS and you should be allowed to proceed.
 
-# Bonus
+# Token Generation
 
 To control the length of the generated token, use:
 
 ```properties
-# cas.authn.mfa.simple.tokenLength=6
+# cas.authn.mfa.simple.token-length=6
 ```
 
 You can take direct control of the token generation logic by [designing your own configuration component](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Management-Extensions.html) with the following bean in place:
@@ -130,15 +128,36 @@ public AuthenticationHandler casSimpleMultifactorAuthenticationHandler() {
 }
 ```
 
+## Rate Limiting
+
+By default, if the user keeps asking for tokens without actually using them, CAS will continue to send the same unused token to the user so long as the token continued to be valid. This provides a useful defensive measure against too many token requests, but you also may want to continue the rate of the submitted requests as well. This can be done by forming a rate-limiting configuration plan to limit the number of requests:
+
+```
+cas.authn.mfa.simple.bucket4j.enabled=true
+cas.authn.mfa.simple.bucket4j.blocking=true
+
+cas.authn.mfa.simple.bucket4j.bandwidth[0].capacity=100
+cas.authn.mfa.simple.bucket4j.bandwidth[0].duration=PT1M
+
+cas.authn.mfa.simple.bucket4j.bandwidth[1].capacity=60
+cas.authn.mfa.simple.bucket4j.bandwidth[1].duration=PT5S
+```
+{% include googlead1.html  %}
+We are allowed to define multiple rate-limting plans. For example, the above configuration rate-limiting of requests in *blocking* mode, which means the client request will be blocked until resources eventually become available. Our rate limiting plan allows for 100 requests per minute, but not no more often than 60 tokens per 5 seconds.
+
+Specifying multiple bandwidths and configuration plans may be a very useful technique in protecting against useful attacks. For example, Bucket4j documentation provides the following scenario:
+
+>Suppose that you start with a limit of 10000 tokens / per 1 hour per user. A malicious attacker may send 9999 request within 10 seconds. This would correspond to 100 request per second which could seriously impact the system. A skilled attacker could stop at 9999 request per hour, and repeat every hour, which would make this attack impossible to detect because the limit would not be reached.
+{% include googlead1.html  %}
+For additional details, please visit the [Bucket4j reference documentation](https://bucket4j.com/).
+
 # So...
 
-I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly [are possible](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/) as well. Feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
-
-{% include googlead1.html  %}
-
-Finally, if you benefit from Apereo CAS as free and open-source software, we invite you to [join the Apereo Foundation](https://www.apereo.org/content/apereo-membership) and financially support the project at a capacity that best suits your deployment. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem and care about its long-term success and sustainability, this is a viable option to consider.
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
 
 Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
+
+[contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 
