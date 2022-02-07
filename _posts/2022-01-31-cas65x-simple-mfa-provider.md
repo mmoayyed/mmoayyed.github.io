@@ -130,7 +130,7 @@ public AuthenticationHandler casSimpleMultifactorAuthenticationHandler() {
 
 ## Rate Limiting
 
-By default, if the user keeps asking for tokens without actually using them, CAS will continue to send the same unused token to the user so long as the token continued to be valid. This provides a useful defensive measure against too many token requests, but you also may want to continue the rate of the submitted requests as well. This can be done by forming a rate-limiting configuration plan to limit the number of requests:
+By default, if the user keeps asking for tokens without actually using them, CAS will continue to send the same unused token to the user so long as the token continues to be valid. This provides a useful defensive measure against too many token requests, but you may want to control the rate of the submitted requests as well. This can be done by forming a rate-limiting configuration plan to limit the number of requests:
 
 ```
 cas.authn.mfa.simple.bucket4j.enabled=true
@@ -143,9 +143,9 @@ cas.authn.mfa.simple.bucket4j.bandwidth[1].capacity=60
 cas.authn.mfa.simple.bucket4j.bandwidth[1].duration=PT5S
 ```
 {% include googlead1.html  %}
-We are allowed to define multiple rate-limting plans. For example, the above configuration rate-limiting of requests in *blocking* mode, which means the client request will be blocked until resources eventually become available. Our rate limiting plan allows for 100 requests per minute, but not no more often than 60 tokens per 5 seconds.
+We are allowed to define multiple rate-limting plans. For example, the above configuration handles requests in *blocking* mode, which means the client request will be blocked until resources eventually become available. Our plan allows for 100 requests per minute, but not no more often than 60 tokens per 5 seconds.
 
-Specifying multiple bandwidths and configuration plans may be a very useful technique in protecting against useful attacks. For example, Bucket4j documentation provides the following scenario:
+Specifying multiple bandwidths and configuration plans may be a very useful technique in protecting against clever attacks. For example, Bucket4j documentation provides the following scenario:
 
 >Suppose that you start with a limit of 10000 tokens / per 1 hour per user. A malicious attacker may send 9999 request within 10 seconds. This would correspond to 100 request per second which could seriously impact the system. A skilled attacker could stop at 9999 request per hour, and repeat every hour, which would make this attack impossible to detect because the limit would not be reached.
 {% include googlead1.html  %}
