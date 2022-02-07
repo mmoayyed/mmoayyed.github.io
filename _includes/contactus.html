@@ -1,19 +1,25 @@
-<span id="contact-section-header"></span>
+<span id="contact-section-header">
 <div id="contact-section">
     <div class="container">
-        <div class="clear-fix contact-address-content">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="row clear-fix contact-address-content">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                 <div class="left-side">
-                    <h2>Contact Us</h2>
+                    {% unless include.disableTitle == "true" %}
+                        <h2>Contact Us</h2>
+                    {% endunless %}
+
+                    {% unless include.disableSubTitle == "true" %}
                     <p>Have a question about projects, services, rates, or anything else? Feel free to get in
                         touch and drop us a note.</p>
+                    {% endunless %}
+                    
                     <ul>
                         <li>
                             <a href="mailto:info@fawnoos.com">
                                 <div class="icon tran3s round-border p-color-bg"><i class="fa fa-envelope-o"
                                         aria-hidden="true"></i></div>
                                 <p>
-                                    <h6><code style="color:unset">info@fawnoos.com</code></h6>
+                                    <h6>info@fawnoos.com</code></h6>
                                 </p>
                             </a>
                             <p>
@@ -44,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                 <div class="left-side wrap-contact100">
 
                     <form action="https://formspree.io/f/mzbyedlp" method="POST" class="contact100-form validate-form">
@@ -90,9 +96,13 @@
 
     </div>
 </div>
-
+</span>
 
 <script>
+    {% if include.moveToHelp == "true" %}
+        $("h1#need-help").next().append($("#contact-section-header"))
+    {% endif %}
+
     setTimeout(function () {
         (function ($) {
             "use strict"; $('.input100').each(function () {

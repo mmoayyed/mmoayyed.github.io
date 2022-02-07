@@ -1,3 +1,48 @@
+#contact-section-header {
+  padding-bottom: 34px;
+}
+
+#contact-section p {
+   line-height: 26px;
+}
+
+#contact-section h6,
+#contact-section p,
+#contact-section ul { 
+  margin:0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#contact-section a {
+  text-decoration: none; 
+  display: inline-block;
+}
+
+#contact-section a:hover,
+#contact-section a:focus,
+#contact-sectiona:visited {
+  text-decoration: none; 
+  outline: none;
+}
+
+#contact-section h6 {
+  color:#292929; 
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+#contact-section .contact-address-content .left-side ul li:hover .icon,
+#contact-section .send-message form button:hover {
+  color:rgb(232,137,12);
+}
+
+#contact-section .contact-address-content .left-side ul li .icon,
+#contact-section .send-message form button {
+  border-color:rgb(232,137,12);;
+  border-style: solid;
+}
+
 #contact-section .contact-address-content h2 {
   margin: 45px 0 35px 0;
 }
@@ -70,6 +115,23 @@
 }
 #contact-section .send-message form button:hover {
   background: #fff;
+}
+
+.contactus-link-main:hover {
+  text-decoration: underline;
+  color: yellow;
+}
+
+.round-border {
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+}
+
+.p-color-bg {
+  background: rgb(232,137,12);
 }
 /*** 
 
@@ -171,7 +233,7 @@ Conatct Form Activation
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 .contact100-form-title {
   width: 100%;

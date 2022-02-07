@@ -220,8 +220,7 @@ animation-delay: .175s;
 #service-section .single-service-content:hover .icon-heading h6 a,
 #pricing-section .single-price-table a:hover,#blog-section .single-news-item .img a,
 #blog-section .single-news-item:hover .post p a,#blog-section .single-news-item .post h6:hover a,
-#contact-section .contact-address-content .left-side ul li:hover .icon,
-#contact-section .send-message form button:hover,.inner-page-banner .opacity ul li:last-child,
+.inner-page-banner .opacity ul li:last-child,
 .blog-details-page aside .sidebar-news-list ul li a i,.monthly-header-title,
 .blog-details-page aside .sidebar-news-list ul li a:hover,.blog-details-page aside .sidebar-archives ul li a i,
 .blog-details-page aside .sidebar-archives ul li a:hover,.blog-details-page aside .sidebar-archives ul li a.active,
@@ -243,7 +242,6 @@ animation-delay: .175s;
 #project-section .project-menu ul li:hover,.page-middle-banner .opacity a,
 #team-section .team-member-wrapper .single-team-member .img .opacity h4,#pricing-section .single-price-table a,
 #our-client .owl-theme .owl-dots .owl-dot.active span, #our-client .owl-theme .owl-dots .owl-dot:hover span,
-#contact-section .contact-address-content .left-side ul li .icon,#contact-section .send-message form button,
 .sidebar-tags ul li a:hover,.blog-details-post-wrapper .post-comment form button,
 .blog-details-post-wrapper .post-comment textarea:focus,.blog-details-post-wrapper .post-comment input:focus {
   border-color:rgb(232,137,12);;
@@ -1506,17 +1504,14 @@ animation-delay: .175s;
   display:inline;
 }
 
-.contactus-link-main:hover {
-  text-decoration: underline;
-  color: yellow;
-}
+
 
 .resume {
   position: relative;
   left: 33%;
 }
 
-#about-us-header, #team-section-header, #contact-section-header, #service-section-header {
+#about-us-header, #team-section-header, #service-section-header {
   padding-bottom: 34px;
 }
 
