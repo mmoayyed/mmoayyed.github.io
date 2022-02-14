@@ -91,6 +91,6 @@ Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[casprotocol]: https://apereo.github.io/cas/development/protocol/CAS-Protocol.html
-[delegation]: https://apereo.github.io/cas/development/integration/Delegate-Authentication.html
+[casprotocol]: https://apereo.github.io/cas/6.5.x/protocol/CAS-Protocol.html
+[delegation]: https://apereo.github.io/cas/6.5.x/integration/Delegate-Authentication.html
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html

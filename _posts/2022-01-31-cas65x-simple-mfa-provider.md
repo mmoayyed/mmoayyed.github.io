@@ -7,11 +7,11 @@ tags:       ["CAS 6.5.x", "MFA"]
 
 # Overview
 
-The Apereo CAS portfolio presents support for an impressive number of [multifactor authentication providers](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html) out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather [simplified multifactor authentication](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html) solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.
+The Apereo CAS portfolio presents support for an impressive number of [multifactor authentication providers](https://apereo.github.io/cas/6.5.x/mfa/Configuring-Multifactor-Authentication.html) out of the box. One such option is to remove dependencies to an external vendor integration and let the CAS server itself become a provider. This is a rather [simplified multifactor authentication](https://apereo.github.io/cas/6.5.x/mfa/Simple-Multifactor-Authentication.html) solution where after primary authentication, CAS begins to issue time-sensitive tokens to end-users via pre-defined communication channels such as email or text messages.
 
 {% include googlead1.html  %}
 
-In this tutorial, we are going to briefly review the steps required to turn on [Simple Multifactor Authentication](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html).
+In this tutorial, we are going to briefly review the steps required to turn on [Simple Multifactor Authentication](https://apereo.github.io/cas/6.5.x/mfa/Simple-Multifactor-Authentication.html).
 
 Our starting position is based on:
 
@@ -22,7 +22,7 @@ Our starting position is based on:
 
 # Configuration
 
-Prepare your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/development/mfa/Simple-Multifactor-Authentication.html). Next, we will first instruct CAS to trigger *simple mfa* for all requests and applications:
+Prepare your CAS overlay with the correct [auto-configuration module](https://apereo.github.io/cas/6.5.x/mfa/Simple-Multifactor-Authentication.html). Next, we will first instruct CAS to trigger *simple mfa* for all requests and applications:
 
 ```properties
 cas.authn.mfa.triggers.global.global-provider-id=mfa-simple
@@ -100,7 +100,7 @@ To control the length of the generated token, use:
 # cas.authn.mfa.simple.token-length=6
 ```
 
-You can take direct control of the token generation logic by [designing your own configuration component](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Management-Extensions.html) with the following bean in place:
+You can take direct control of the token generation logic by [designing your own configuration component](https://apereo.github.io/cas/6.5.x/configuration/Configuration-Management-Extensions.html) with the following bean in place:
 {% include googlead1.html  %}
 ```java
 @Bean
