@@ -5,7 +5,9 @@ summary:    Learn how to design and mass-promote your very own custom authentica
 tags:       ["CAS 5.1.x", "Authentication"]
 ---
 
-![](https://cloud.githubusercontent.com/assets/1205228/23062372/c06e1e1a-f51a-11e6-8e5a-60692af7728c.jpg)
+{% include image.html img="https://cloud.githubusercontent.com/assets/1205228/23062372/c06e1e1a-f51a-11e6-8e5a-60692af7728c.jpg"
+width="60%" 
+title="Design CAS-Enabled Custom Protocols" %}
 
 That's right. If you enjoy designing your own authentication protocols, integration strategies and workflows and then face the requirement of letting your Apereo CAS deployment support them, you have come to the right place. This is a guide for you.
 
