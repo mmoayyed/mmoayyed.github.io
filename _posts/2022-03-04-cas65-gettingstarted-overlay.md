@@ -345,6 +345,52 @@ cas.authn.mfa.triggers.global.global-principal-attribute-value-regex=mfa-eligibl
 
 If the above condition holds true and CAS is to route to a multifactor authentication flow, that would be one supported and provided by Duo Security since that’s the only provider that is currently configured to CAS.
 
+# OpenID Connect
+
+We can also turn on support for the [OpenID Connect][oidc] protocol, allowing CAS to act as an OP (OpenID Connect Provider). OpenId Connect is a continuation of the OAuth protocol with some additional variations. If you enable OpenId Connect, you will have automatically enabled OAuth as well. "Two birds for one stone" sort of thing, though no disrespect to the avian community!
+{% include googlead1.html  %}
+<div class="alert alert-info">
+  <strong>Let There Be SSO</strong><br/>Remember that any successful authentication activity that allows CAS to establish a single sign-on session will be seen as valid, regardless of what protocol is used to interact and communicate with CAS. Switching the protocol and sending authentication requests between various applications integrated with CAS does not invalidate an existing single sign-on session and end-users will be not be asked to login again unless forcefully asked or indicated by the coming request.
+</div>
+
+By turning on support for [OpenID Connect][oidc], CAS begins to act as an authorization server, allowing client applications to verify the identity of the end-user and to obtain basic profile information in an interoperable and REST-like manner. For this tutorial, our focus is to mainly on integrating web-based client applications using the *Authorization Code* flow of OpenID Connect, which is quite similar to the CAS protocol; you receive a *code*, you validate the *code* and receive an access token as well as an ID token.
+
+## Configuration
+
+First, ensure you have declared the appropriate module/intention in the build:
+
+```groovy
+implementation "org.apereo.cas:cas-server-support-oidc"
+```
+{% include googlead1.html  %}
+
+Then, we teach CAS about specific aspects of the authorization server functionality:
+
+```properties
+cas.authn.oidc.core.issuer=https://sso.example.org/cas/oidc
+cas.authn.oidc.jwks.file-system.jwks-file=file://etc/cas/config/keystore.jwks
+```
+
+The JWKS resource is used by CAS to create (or use an existing) JSON web keystore composed of private and public keys that enable clients to validate a JSON Web Token (JWT) such as an id token, issued by CAS as an OpenID Connect Provider. Here, we define the global keystore as a path on the file system. 
+
+<div class="alert alert-info">
+  <strong>Clustered Deployments</strong><br/>When deploying CAS in a cluster, you must make sure all CAS server nodes have access to and share an identical and exact copy of the keystore file. Keystore differences will lead to various validation failures and application integration issues.
+</div>
+
+That should be all. Now, you can proceed to register your client web application with CAS similar to the approach described earlier:
+{% include googlead1.html  %}
+```json
+{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "my-client-id",
+  "clientSecret": "my-client-secret",
+  "serviceId" : "^https://my.application.com/oidc/.+",
+  "name": "OIDC",
+  "description": "A sample OIDC client application"
+  "id": 1
+}
+```
+
 # Monitoring & Status
 
 Many CAS deployments rely on the `/status` endpoint for monitoring the health and activity of the CAS deployment. This endpoint is typically secured via an IP address, allowing external monitoring tools and load balancers to reach the endpoint and parse the output. In this quick exercise, we are going to accomplish that task, allowing the `status` endpoint to be available over HTTP to `localhost`.
@@ -470,13 +516,13 @@ The choice of the embedded servlet container is noted by the `appServer` propert
 # Use -tomcat, -jetty, -undertow for deployment to other embedded containers
 # if the overlay application supports or provides the chosen type.
 # You should set this to blank if you want to deploy to an external container.
-# and want to set up, download and manage the container (i.e. Apache Tomcat) yourself.
+# and want to set up, download, and manage the container (i.e. Apache Tomcat) yourself.
 appServer=-tomcat
 ```
 {% include googlead1.html  %}
 All servlet containers presented here, embedded or otherwise, aim to be production-ready. This means that CAS ships with useful defaults out of the box that may be overridden, if necessary and by default, CAS configures everything for you from development to production in today’s platforms. In terms of their production quality, there is almost no difference between using an embedded container vs. an external one.
 
-Unless there are specific, technical and reasonable objections, choosing an embedded servlet container is almost always the better choice.
+Unless there are specific, technical, and reasonable objections, choosing an embedded servlet container is almost always the better choice.
 
 # Gradle Tasks
 
@@ -514,6 +560,7 @@ I hope this review was of some help to you and I am sure that both this post as 
 [Misagh Moayyed](https://fawnoos.com)
 
 [duo]: https://apereo.github.io/cas/6.5.x/mfa/DuoSecurity-Authentication.html
+[oidc]: https://apereo.github.io/cas/6.5.x/authentication/OIDC-Authentication.html
 [hazelcasttickets]: https://apereo.github.io/cas/6.5.x/ticketing/Hazelcast-Ticket-Registry.html
 [contribute]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 [localization]: https://apereo.github.io/cas/6.5.x/ux/User-Interface-Customization-Localization.html
