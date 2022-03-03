@@ -368,7 +368,7 @@ Then, we teach CAS about specific aspects of the authorization server functional
 
 ```properties
 cas.authn.oidc.core.issuer=https://sso.example.org/cas/oidc
-cas.authn.oidc.jwks.file-system.jwks-file=file://etc/cas/config/keystore.jwks
+cas.authn.oidc.jwks.file-system.jwks-file=file:///etc/cas/config/keystore.jwks
 ```
 
 The JWKS resource is used by CAS to create (or use an existing) JSON web keystore composed of private and public keys that enable clients to validate a JSON Web Token (JWT) such as an id token, issued by CAS as an OpenID Connect Provider. Here, we define the global keystore as a path on the file system. 
