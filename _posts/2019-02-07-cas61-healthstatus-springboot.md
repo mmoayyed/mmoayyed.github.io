@@ -27,8 +27,8 @@ More information about the health endpoint may be [found here](https://apereo.gi
 ## Configuration
 
 Let's try to enable both `status` and `health` first. The following settings should come in handy:
-
-```properties
+{% include googlead1.html  %}
+```
 management.endpoints.web.exposure.include=status,health
 
 management.endpoint.status.enabled=true
@@ -47,7 +47,7 @@ The above collection of settings instruct CAS to:
 - Ensure the `health` endpoint can always produce details from internal monitors and health indicators.
 
 If you invoke the `status` endpoint using `curl https://sso.example.org/cas/actuator/status | jq`:
-
+{% include googlead1.html  %}
 ```json
 {
   "status": 200,
@@ -80,7 +80,9 @@ Notice how `details` are *always* returned back in the response where we are get
 
 ## Health Indicators
 
-The `health` endpoint provided by Spring Boot is set to check the status of your running CAS server. It is often used by monitoring software to alert someone when a production system goes down. Health information is collected from the content of a *registry* that has collected, at runtime, reports from `HealthIndicator` components and monitors.  Spring Boot includes a number of auto-configured `HealthIndicator`s and CAS presents a few of its own. The final system state is derived by an *aggregator* which sorts the statuses from each `HealthIndicator` based on an ordered list of statuses. The first status in the sorted list is used as the overall health status.
+The `health` endpoint provided by Spring Boot is set to check the status of your running CAS server. It is often used by monitoring software to alert someone when a production system goes down. Health information is collected from the content of a *registry* that has collected, at runtime, reports from `HealthIndicator` components and monitors.  
+{% include googlead1.html  %}
+Spring Boot includes a number of auto-configured `HealthIndicator`s and CAS presents a few of its own. The final system state is derived by an *aggregator* which sorts the statuses from each `HealthIndicator` based on an ordered list of statuses. The first status in the sorted list is used as the overall health status.
 
 <div class="alert alert-warning">
   <strong>Hey!</strong><br/>If you have monitoring software that tries to check for CAS server status by continuously invoking the <code>/login</code> endpoint, stop doing that. You should be using <code>status</code> or <code>health</code> instead.
@@ -106,7 +108,7 @@ With the above setting, if you try to invoke the `health` endpoint again you may
 ```
 
 ...where details on memory usage are now removed, given the monitor underneath is disabled.
-
+{% include googlead1.html  %}
 More information on CAS health indicators and monitors can be [found here](https://apereo.github.io/cas/6.1.x/configuration/Configuration-Properties.html#health-endpoint). If you'd like to learn more details about this topic, see the [Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html#production-ready-health).
 
 ## Finale
