@@ -63,7 +63,7 @@ If you invoke the `status` endpoint using `curl https://sso.example.org/cas/actu
   "health": "UP",
   "host": "misaghmoayyed",
   "server": "https://sso.example.org",
-  "version": "6.1.0-RC2-SNAPSHOT - ..."
+  "version": "6.5.0 - ..."
 }
 ```
 
