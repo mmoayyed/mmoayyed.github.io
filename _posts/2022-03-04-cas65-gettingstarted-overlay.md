@@ -264,9 +264,9 @@ Of course, if you are working on a more modest CAS deployment in an environment 
 
 ```properties
 # cas.ticket.registry.hazelcast.cluster.instance-name=localhost
-# cas.ticket.registry.hazelcast.cluster.port=5701
-# cas.ticket.registry.hazelcast.cluster.port-auto-increment=true
-cas.ticket.registry.hazelcast.cluster.members=123.321.123.321,223.621.123.521,...
+# cas.ticket.registry.hazelcast.cluster.network.port=5701
+# cas.ticket.registry.hazelcast.cluster.network.port-auto-increment=true
+cas.ticket.registry.hazelcast.cluster.network.members=123.321.123.321,223.621.123.521,...
 ```
 
 # Audit Logs
