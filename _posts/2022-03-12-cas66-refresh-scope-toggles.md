@@ -93,7 +93,7 @@ So in summary, you cannot refresh something that was never created in the first 
 
 While the above explanation may seem perfectly reasonable, it does not detract from the fact that this is a problem and limitation we must overcome. From the end-user perspective, the configuration must be refreshable regardless of the technology complications therein. Sure, one could always force the reinitialization of the application context with a server/application restart but that is not always desirable, possible, or even cost-effective in certain cases. 
 
-So in the spirit of *It should just work*, let's take a look at how we *attempt* to solve this issue in Apereo CAS. When we look at the category of beans that need to be reloadable, the solution comes down to the following three groups:
+So in the spirit of *It Should Just Work*, let's take a look at how we *attempt* to solve this issue in Apereo CAS. When we look at the category of beans that need to be reloadable, the solution comes down to the following groups:
 {% include googlead1.html  %}
 - Conditional beans for which there exists a sensible default implementation.
 - Conditional beans for which there exists a sensible *no-op* implementation.
