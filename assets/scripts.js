@@ -9,6 +9,8 @@ function switchMode() {
     .css("background-image", "linear-gradient(to right, #020001, #1a1618)")
     .css("color", "#d6d6d6")
   $('code.highlighter-rouge').css("color", "#dfcb66");
+  $('blockquote').css("color", "ghostwhite");
+  $('#contact-section h6').css("color", "lightyellow");
 }
 
 let codes = document.querySelectorAll('.highlight > pre > code');
