@@ -94,7 +94,7 @@ Then, we can modify the `global.xml` configuration file to include our logic for
 {% include googlead1.html  %}
 The Shibboleth Identity Provider will invoke our discovery function above to determine the external identity provider. Our script examines the requested authentication context class and will choose the appropriate provider accordingly. In case no authentication context class is requested, the script will choose the default identity provider.
 
-Bug thanks to [Mike Grady](https://www.linkedin.com/in/mapgrady) who's the original author of the script. I only should take credit for minor customizations, particularly for injecting the `custom` object.
+Big thanks to [Mike Grady](https://www.linkedin.com/in/mapgrady) who's the original author of the script. I only should take credit for minor customizations, particularly for injecting the `custom` object.
 
 ## Need Help?
 
