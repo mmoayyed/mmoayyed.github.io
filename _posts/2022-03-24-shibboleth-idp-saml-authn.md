@@ -105,6 +105,3 @@ If you have questions about the contents and the topic of this blog post, or if 
 I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
 
 [Misagh Moayyed](https://fawnoos.com)
-
-
-[Misagh Moayyed](https://fawnoos.com)
