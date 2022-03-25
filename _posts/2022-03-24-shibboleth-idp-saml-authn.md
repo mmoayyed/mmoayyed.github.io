@@ -2,7 +2,7 @@
 layout:     post
 title:      Shibboleth IdP - SAML2 Authentication Flows w/ Refeds MFA
 summary:    An overview of the external SAML2 identity selection and discovery strategy in the Shibboleth Identity Provider while taking into requested authentication contexts, specifically for Refeds MFA.
-tags: ["Shibboleth Identity Provider"]
+tags: ["Shibboleth Identity Provider", "SAML", "Groovy", "Delegated Authentication"]
 ---
 
 The Shibboleth Identity Provider supports a [SAML authentication flow](https://shibboleth.atlassian.net/wiki/spaces/IDP4/pages/1282539600/SAMLAuthnConfiguration). This login flow supports the use of a separate SAML 2.0 identity provider to authenticate the user, with the IdP acting as a SAML proxy. This blog post provides a quick overview of the external identity selection and discovery strategy for advanced login flows while taking into requested authentication contexts.

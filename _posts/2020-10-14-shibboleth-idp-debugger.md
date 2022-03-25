@@ -3,7 +3,7 @@ layout:     post
 title:      Shibboleth IdP - Docker Debugging Tricks & Techniques
 summary:    A quick survey of tricks and techniques used to attach a debugger to the Shibboleth Identity provider that may be running inside a Docker container.
 published: true
-tags: ["Shibboleth Identity Provider", "Docker"]
+tags: ["Shibboleth Identity Provider", "Docker", "SAML"]
 ---
 
 One of the more popular ways of packaging and running the Shibboleth Identity Provider is with Docker. A Docker-based build environment can be particularly useful during development and testing, especially when building add-ons and extending the capabilities of the identity provider with custom code. A build powered by Docker can simulate the deployment environment by packaging the Shibboleth Identity Provider in an Apache Tomcat server with the proper TLS setup, an LDAP server for authentication and attribute release, and maybe a sample service provider and more in a recyclable automated way. 
