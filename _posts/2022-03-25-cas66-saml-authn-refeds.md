@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - SAML2 Delegated Authentication Flows w/ Refeds MFA
 summary:    An overview of the external SAML2 identity selection and discovery strategy in Apereo CAS while taking into requested authentication contexts, specifically for Refeds MFA.
-tags:       ["CAS 6.6.x", "SAML", "Groovy", "Delegated Authentication]
+tags:       ["CAS 6.6.x", "SAML", "Groovy", "Delegated Authentication"]
 ---
 
 If your Apereo CAS deployment is configured to act as a SAML2 identity provider, you may run into a use case where the authentication flow should be routed to a separate and external SAML 2.0 identity provider to authenticate the user, with CAS acting as a SAML proxy. This is what Apereo CAS refers to as [delegated authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html). {% include googlead1.html  %} This blog post provides a quick overview of the external identity selection and discovery strategy for advanced login flows while taking into requested authentication contexts.
