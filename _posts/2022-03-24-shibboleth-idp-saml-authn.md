@@ -13,6 +13,7 @@ Our starting position is based on the following:
 - Shibboleth Identity Provider `4.1.x`
 - Java `11`
 
+A similar topic that covers Apereo CAS is also [available here](/2022/03/25/cas66-saml-authn-refeds/).
 
 ## Overview
 
