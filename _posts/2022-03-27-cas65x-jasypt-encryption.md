@@ -1,13 +1,9 @@
 ---
 layout:     post
-title:      Apereo CAS - Configuration Security w/ Jasypt
+title:      Apereo CAS - Configuration Security with Jasypt
 summary:    Learn how to secure CAS configuration settings and properties with Jasypt.
-tags:       ["CAS 6.1.x", "Jasypt", "Configuration Management"]
+tags:       ["CAS 6.5.x", "Jasypt", "Configuration Management"]
 ---
-
-<div class="alert alert-success"><i class="far fa-lightbulb"></i> This blog post was originally posted on <a href="https://github.com/apereo/apereo.github.io">Apereo GitHub Blog</a>.</div>
-
-# Overview
 
 If you are running CAS in standalone mode without the presence of the Spring Cloud configuration server, you can take advantage of built-in [Jasypt functionality](http://www.jasypt.org/) to decrypt sensitive CAS settings.
 
@@ -15,11 +11,11 @@ Jasypt is a java library which allows the deployer to add basic encryption capab
 
 {% include googlead1.html  %}
 
-However, an easier approach might be to use the native [CAS command-line shell](https://apereo.github.io/cas/6.1.x/installation/Configuring-Commandline-Shell.html). The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.
-
+However, an easier approach might be to use the native [CAS command-line shell](https://apereo.github.io/cas/6.5.x/installation/Configuring-Commandline-Shell.html). The CAS command-line shell provides the ability to query the CAS server for help on available settings/modules and various other utility functions one of which is the ability to encrypt and/or decrypt settings via Jasypt. We'll use the shell to encrypt a few settings and place them in your CAS configuration file, expecting the server to decrypt and use them as needed.
+{% include googlead1.html  %}
 Our starting position is based on:
 
-- CAS `6.1.x`
+- CAS `6.5.x`
 - Java `11`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
@@ -32,9 +28,9 @@ help encrypt-value
 ...
 help decrypt-value
 ```
-
-So let's encrypt a setting:
 {% include googlead1.html  %}
+So let's encrypt a setting:
+
 ```bash
 cas>encrypt-value value casuser::Misagh alg PBEWithMD5AndTripleDES \
     provider SunJCE password ThisIsMyEncryptionKey iterations 1000
@@ -44,7 +40,7 @@ cas>encrypt-value value casuser::Misagh alg PBEWithMD5AndTripleDES \
 ```
 
 Nice. Let's verify that it can be decrypted back:
-
+{% include googlead1.html  %}
 ```bash
 cas>decrypt-value value {cas-cipher}mMcg02NysblAcwYI+bFRpEcHBQaVQ51J \
     alg PBEWithMD5AndTripleDES provider SunJCE \
@@ -55,21 +51,22 @@ casuser::Misagh
 ```
 
 Next, let's use our typical `cas.properties` file with the encrypted value:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.accept.users={cas-cipher}mMcg02NysblAcwYI+bFRpEcHBQaVQ51J
 ```
-{% include googlead1.html  %}
+
 Almost there...the last task is to instruct CAS to use the proper algorithm, decryption key, and other relevant parameters when attempting to decrypt settings.
 
 ```properties
-# cas.standalone.configurationSecurity.alg=PBEWithMD5AndTripleDES
-# cas.standalone.configurationSecurity.provider=SunJCE
-# cas.standalone.configurationSecurity.iterations=1000
-# cas.standalone.configurationSecurity.psw=ThisIsMyEncryptionKey
+# cas.standalone.configuration-security.alg=PBEWithMD5AndTripleDES
+# cas.standalone.configuration-security.provider=SunJCE
+# cas.standalone.configuration-security.iterations=1000
+# cas.standalone.configuration-security.psw=ThisIsMyEncryptionKey
 ```
+{% include googlead1.html  %}
 
-The above settings may be passed to CAS at runtime using either OS environment variables,
+The above settings **MUST** be passed to CAS at runtime using either OS environment variables,
 system properties or normal command-line arguments.
 
 # More...
@@ -85,10 +82,13 @@ cas>help jasypt-test-algorithms
 ...
 ```
 
-# So...
 
-I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please know that all other use cases, scenarios, features, and theories certainly [are possible](https://apereo.github.io/2017/02/18/onthe-theoryof-possibility/) as well. Feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
+## Need Help?
 
-Happy Coding,
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
+## Finale
+
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
 
 [Misagh Moayyed](https://fawnoos.com)
