@@ -183,6 +183,53 @@ oktaB.autoRedirectType = DelegationAutoRedirectTypes.SERVER
 {% include googlead1.html  %}
 To learn more about redirection strategies, see [this post](/2021/10/27/cas65-delegated-authn-redirect/).
 
+## Authentication Context Class
+
+Once you return from the chosen identity provider, you may wish to manipulate the authenication context class that is ultimately put into the SAML2 response and sent back to the original Service Provider.
+
+One easy way would be to specify and overwrite the context class for the service provider:
+{% include googlead1.html  %}
+```json
+{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "https://spring.io/security/saml-sp",
+  "name": "SAML",
+  "id": 1,
+  "metadataLocation": "/path/to/sp-metadata.xml",
+  "requiredAuthenticationContextClass": "https://refeds.org/profile/mfa",
+}
+```
+
+If that is not good enough, you could always script the logic as well:
+{% include googlead1.html  %}
+```json
+{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "https://spring.io/security/saml-sp",
+  "name": "SAML",
+  "id": 1,
+  "metadataLocation": "/path/to/sp-metadata.xml",
+  "requiredAuthenticationContextClass": "file:///path/to/GroovyScript.groovy",
+}
+```
+
+The script itself may be designed as:
+{% include googlead1.html  %}
+```groovy
+def run(final Object... args) {
+    def samlContext = args[0]
+    def logger = args[1]
+    
+    logger.info("Building context for entity {}", samlContext.adaptor.entityId)
+    /**
+      This is where you calculate the final context class...
+    */
+    return "https://refeds.org/profile/mfa"
+}
+```
+
+The compiled script is cached for faster subseqeunt executions.
+
 ## Need Help?
 
 If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
