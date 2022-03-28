@@ -67,7 +67,17 @@ Almost there...the last task is to instruct CAS to use the proper algorithm, dec
 {% include googlead1.html  %}
 
 The above settings **MUST** be passed to CAS at runtime using either OS environment variables,
-system properties or normal command-line arguments.
+system properties or normal command-line arguments. For example, you may run CAS with an embedded servlet container while passing parameters as command-line arguments:
+
+```bash
+java -jar -Dlog.console.stacktraces=true \
+    build/libs/cas.war \
+    --cas.standalone.configuration-security.alg=PBEWithMD5AndTripleDES \
+    --cas.standalone.configuration-security.provider=SunJCE \
+    --cas.standalone.configuration-security.iterations=1000 \
+    --cas.standalone.configuration-security.psw=ThisIsMyEncryptionKey \
+    --logging.level.org.apereo.cas=trace
+```
 
 # More...
 
