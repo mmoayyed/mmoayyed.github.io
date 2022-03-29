@@ -5,7 +5,7 @@ summary:    Learn how to turn on or disable CAS feature modules and auto-configu
 tags:       ["CAS 6.6.x", "Configuration Management", "Spring Boot"]
 ---
 
-Being a Spring Boot application at its core, Apereo CAS presents many semi-opinionated modules that attempt to auto-configure the running application context with specific features. Each specific CAS feature, such as support for [OpenID Connect](https://apereo.github.io/cas/development/protocol/OIDC-Protocol.html), might be encapsulated in several components each registred in CAS and tagged as a `@Configuration`. This tutorial provides a basic overview of such configuration components may be disabled/ignored at runtime, while also reviewing the possibility to control *batches* of auto-configuration components using feature categories and toggles.
+Being a Spring Boot application at its core, Apereo CAS presents many semi-opinionated modules that attempt to auto-configure the running application context with specific features. Each specific CAS feature, such as support for [OpenID Connect](https://apereo.github.io/cas/development/protocol/OIDC-Protocol.html), might be encapsulated in several components each registred in CAS and tagged as a `@Configuration`. This tutorial provides a basic overview of how such configuration components may be disabled/ignored at runtime, while also reviewing the possibility to control *batches* of auto-configuration components using feature categories and toggles.
 
 {% include googlead1.html  %}
 
@@ -33,7 +33,7 @@ Excluding a configuration component is almost identical to not having the owner 
 
 While the above strategy works as advertised in specific scenarios, there are serious risks associated with its usage. Of course, you have to hunt down and find the location of the actual configuration class to then exclude it from the runtime. Then, you have to be careful about all the other modules and configuration classes that might be negatively affected by this exclusion rule, and likewise, find and exclude those as well. Finally, such configuration classes are mainly seen as *internal implementation detail*, which means they be relocated, broken down, or renamed in the lifecycle of the CAS software and you might have to essentially repeat the same exercise for each upgrade to ensure the right stuff is excluded. 
 
-Rather than individual configuration components, a better alternative would be to disable *categories of features* and toggle their activity in a way that would be comprehensive and risk-free. For example, your *intention* is to disable the OpenID Connect functionality in CAS, regardless of where it's defined in whatever many configuration components. A feature toggle does that exactly that. 
+Rather than individual configuration components, a better alternative would be to disable *categories of features* and toggle their activity in a way that would be comprehensive and risk-free. For example, your *intention* is to disable the OpenID Connect functionality in CAS, regardless of where it's defined in whatever many configuration components. A feature toggle does exactly that. 
 {% include googlead1.html  %}
 To achieve this, many CAS configuration components internally are *annotated* with a specific condition that groups their activation together using a special flag. For example, all components related to handling and managing the [SAML2 Identity Provider functionality](https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html) might be annotated with:
 
