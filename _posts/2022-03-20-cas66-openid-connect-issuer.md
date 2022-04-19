@@ -15,7 +15,7 @@ Our starting position is based on the following:
 
 ## Overview
 
-An issuer identifier, in OpenID Connect terms, is a case-sensitive URL using the `https` scheme that contains scheme, host, and optionally, port number and path components and no query or fragment components. This URL uniquely identifies the CAS server instance as an OpenID Connect and is a point for resolving important metadata about the server, such as its endpoints and capabilities.
+An issuer identifier, in OpenID Connect terms, is a case-sensitive URL using the `https` scheme that contains scheme, host, and optionally, port number and path components and no query or fragment components. This URL uniquely identifies the CAS server instance as an OpenID Connect provider and is a point for resolving important metadata about the server, such as its endpoints and capabilities.
 
 ## Configuration
 
@@ -64,7 +64,7 @@ In *very extreme and special circumstances*, you may decide to override the `iss
 
 ## Issuer Aliases
 
-The CAS adopter is also given the option to configure issuer *aliases* in form of regular expressions. An issuer alias,
+The CAS adopter is also given the option to configure issuer *aliases* in form of regular expression patterns. An issuer alias,
 {% include googlead1.html  %}
 >  Defines the regular expression pattern that is matched against the calculated issuer from the request. If the issuer that is extracted from the request does not match the issuer defined in the CAS configuration, this pattern acts as a secondary level rule to allow incoming requests to pass through if the match is successful. 
 
