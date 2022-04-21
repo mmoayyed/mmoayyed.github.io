@@ -18,23 +18,29 @@ This tutorial specifically requires and focuses on:
 
 {% include googlead1.html  %}
 
-* A markdown unordered list which will be replaced with the ToC
-{:toc}
-
 # Overlay...What?
 
 Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building it from source, overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself, override/insert specific behavior into it and then merge it all back together to produce the final (web application) artifact. You can find a lot more about how overlays work [here][overlaysetup].
 
 Please note that a CAS WAR Overlay can also be generated on demand using the [CAS Initializr](/2021/02/28/cas64-cas-initializr/).
-
+{% include googlead1.html  %}
 The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `6.5`.
 
 <div class="alert alert-info">
   <strong>Gradle WAR Overlay</strong><br/>The Maven WAR overlay template is now deprecated and moved aside. The reference overlay project simply resides here and is transformed to use the Gradle build tool instead. This is done to reduce maintenance overhead and simplify the deployment strategy while allowing future attempts to make auto-generation of the overlay as comfortable as possible.
 </div>
 
-Once you have forked and cloned the repository locally, or when you have generated the WAR overlay yourself using CAS Initializr, you're ready to begin.
+The quickest way to generate a CAS WAR overlay starter template is via the following:
 
+```bash
+curl -k https://casinit.herokuapp.com/starter.tgz  \
+  -d type=cas-overlay -d baseDir=overlay | tar -xzvf -
+```
+
+...if you prefer, you could always download and clone [this repository](https://github.com/apereo/cas-overlay-template).
+
+Once you have forked and cloned the repository locally, or when you have generated the WAR overlay yourself using CAS Initializr, you're ready to begin.
+{% include googlead1.html  %}
 <div class="alert alert-info">
   <strong>Note</strong><br/>Remember to switch to the appropriate branch. Today, the <code>master</code> branch of the repository applies to CAS <code>6.6.x</code> deployments. That may not necessarily remain true when you start your own deployment. So examine the branches and make sure you <code>checkout</code> the one matching your intended CAS version.
 </div>
@@ -46,22 +52,36 @@ Similar to Grey's, a *Gradle* WAR overlay is composed of several facets the most
 <div class="alert alert-info">
   <strong>KISS</strong><br/>You do not need to download Gradle separately. The project provides one for you automatically with the embedded Gradle Wrapper.
 </div>
-
+{% include googlead1.html  %}
 The CAS Gradle Overlay is composed of several sections. The ones you need to worry about are the following.
 
 ## Gradle Properties
 
 In `gradle.properties` file, project settings, and versions are specified:
 
-```
-...
-cas.version=6.5.0
-...
+```properties
+cas.version=6.5.3
 ```
 
 The `gradle.properties` file describes what versions of CAS, Spring Boot, and Java are required for the deployment. You are in practice mostly concerned with the `cas.version` setting and as new (maintenance) releases come out, it would be sufficient to simply update that version and re-run the build.
-
+{% include googlead1.html  %}
 This might be a good time to review the CAS project's [Release Policy][releasepolicy] as well as [Maintenance Policy][maintenancepolicy].
+
+## To Upgrade
+
+You should do your best to stay current with [CAS releases](https://github.com/apereo/cas/releases), particularly those that are issued as security or patch releases. Security releases are a critical minimal change on a release to address a serious confirmed security issue, and typically take on the format of `X.Y.Z.1`, `X.Y.Z.2`, etc. A patch release is a conservative incremental improvement that includes bug fixes and is absolutely backward compatible with previous patch releases and takes on the format of `X.Y.1`, `X.Y.2`, etc. 
+{% include googlead1.html  %}
+Upgrading to a security or patch release is **STRONGLY** recommended, and should be a drop-in replacement. To upgrade to such releases, all you should have to do is to adjust the `cas.version` setting in your `gradle.proprties` file. For example, going from CAS `6.5.2` to `6.5.3` should be as easy as:
+
+```properties
+# cas.version=6.5.2
+cas.version=6.5.3
+```
+
+The best way to stay current with CAS releases and receive release notifications and announcements is via subscribing to the GitHub repository and watch for releases:
+{% include googlead1.html  %}
+{% include image.html img="https://user-images.githubusercontent.com/1205228/164376845-b5d62b54-8ba0-4fe2-a4ed-cbd69d1e021c.png" width="80%" 
+title="Apereo CAS GitHub Repository Release Watch" %}
 
 ## Dependencies
 
@@ -111,7 +131,7 @@ Now that you have a basic understanding of the build descriptor, it's time to ru
 cd cas-overlay-template
 ./gradlew clean
 ```
-
+{% include googlead1.html  %}
 The WAR Overlay project provides you with an embedded Gradle *wrapper* whose job is to first determine whether you have Gradle installed. If not, it will download and configure one for you based on the project's needs. The `gradlew tasks` command describes the set of available operations you may carry out with the build script.
 
 <div class="alert alert-info">
@@ -131,7 +151,7 @@ BUILD SUCCESSFUL in 14s
 2 actionable tasks: 2 executed
 ...
 ```
-
+{% include googlead1.html  %}
 You can see that the build attempts to download, clean, compile and package all artifacts, and finally, it produces a `build/libs/cas.war` which you can then use for actual deployments.
 
 # Configuration
@@ -147,12 +167,52 @@ cas.server.name=https://cas.example.org:8443
 cas.server.prefix=${cas.server.name}/cas
 logging.config=file:/etc/cas/config/log4j2.xml
 ```
-
+{% include googlead1.html  %}
 ...which at a minimum, identifies the CAS server's URL and prefix and instructs the running server to locate the logging configuration at `file:/etc/cas/config/log4j2.xml`. The overlay by default ships with a `log4j2.xml` that you can use to customize logging locations, levels, etc. Note that the presence of all that is contained inside `/etc/cas/config/` is optional. CAS will continue to fall back onto defaults if the directory and the files within are not found.
 
 ## Keep Track
 
 It is **VERY IMPORTANT** that you contain and commit the entire overlay directory (save the obvious exclusions such as the `build` directory) into some sort of source control system, such as `git`. Treat your deployment just like any other project with tags, releases, and functional baselines.
+
+# Logging
+
+CAS server logs are **THE BEST RESOURCE** for determining the root cause of a problem, provided you have configured the appropriate log levels. Specifically, you want to make sure `DEBUG` or `TRACE` levels are turned on for the relevant packages and components in your logging configuration. Know where the logging configuration is, become familiar with its syntax when changes are due and know where the output data is saved.
+{% include googlead1.html  %}
+## Configuration
+
+The CAS server web application by default ships with a `log4j2.xml` file that provides sensible logging configuration and levels for basic use cases. This option typically is activated when no external logging configuration is available and provided by the CAS build or its configuration. In reality, the CAS build provides dedicated settings by default to control the loggig configuration via the following setting:
+
+```properties
+logging.config=file:/etc/cas/config/log4j2.xml
+```
+{% include googlead1.html  %}
+The logging configuration is then expected to be found and loaded from `/etc/cas/config/log4j2.xml`. If you deactivate or remove this setting, the default logging described earlier will begin to activate.
+
+## Log Output
+
+Log messages are routed to console, and a `cas.log` file at `/tmp/logs`. Here are a few points about the default logging facility:
+
+- You can change the base directory by passing along a system property to the runtime when you start or deploy CAS via `-DbaseDir=/my/directory`.
+- If you need the full stacktrace output of the exceptions, you can define the system property `-Dlog.file.stacktraces=true` for the runtime when you start or deploy CAS.
+- If you need to change CAS logging levels, you can define the system property `-Dcas.log.level=debug` for the runtime when you start or deploy CAS. This will generally affect all log messages that would be submitted via components from the `org.apereo.cas` namespace, including all sub-packages and components.
+{% include googlead1.html  %}
+If you prefer to control the logging levels a bit more forcefully and dynamically, you can define the log level for the package you prefer when you start and run CAS particularly with an embedded servlet container:
+
+```bash
+java -jar build/libs/cas.war --logging.level.org.apereo.cas=debug
+```
+
+Or alternatively, you could define the same setting in your `cas.properties`, though note that this technique only affects log messages once the CAS configuration file has been loaded and processed by the runtime:
+
+```properties
+logging.level.org.apereo.cas=debug
+```
+{% include googlead1.html  %}
+<div class="alert alert-info">
+  <strong>Remember</strong><br/>If you are starting out, we <strong>STRONGLY</strong> recommend that you set the CAS logging level to either <code>debug</code> (or <code>trace</code> for more verbose and thorough logging). This is the most effective insight you have into the running software and your best troubleshooting tool to determine what exactly the system might be doing, and why.
+</div>
+
+These options work for all packages and components, regardless of whether they're owned or developed by CAS.
 
 # LDAP Authentication
 
@@ -198,7 +258,7 @@ implementation "org.apereo.cas:cas-server-support-json-service-registry"
 ```
 
 Next, you must teach CAS how to look up JSON files to read and write registration records. This is done in the `cas.properties` file:
-
+{% include googlead1.html  %}
 ```properties
 cas.service-registry.core.init-from-json=false
 cas.service-registry.json.location=file:/etc/cas/services
@@ -216,7 +276,7 @@ cas.service-registry.json.location=file:/etc/cas/services
 ```
 
 Or perhaps a slightly more advanced version would be an application definition that allows for the release of certain attributes that we previously retrieved from LDAP as part of authentication:
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
@@ -300,7 +360,7 @@ dependencies {
 </div>
 
 Then, put specific Duo Security settings in `cas.properties`:
-
+{% include googlead1.html  %}
 ```properties
 cas.audit.jdbc.user=postgres
 cas.audit.jdbc.password=password
@@ -342,7 +402,7 @@ At this point, we have enabled Duo Security and we just need to find a way to in
 cas.authn.mfa.triggers.global.global-principal-attribute-name-triggers=memberOf
 cas.authn.mfa.triggers.global.global-principal-attribute-value-regex=mfa-eligible
 ```
-
+{% include googlead1.html  %}
 If the above condition holds true and CAS is to route to a multifactor authentication flow, that would be one supported and provided by Duo Security since that’s the only provider that is currently configured to CAS.
 
 # OpenID Connect
@@ -372,7 +432,7 @@ cas.authn.oidc.jwks.file-system.jwks-file=file:///etc/cas/config/keystore.jwks
 ```
 
 The JWKS resource is used by CAS to create (or use an existing) JSON web keystore composed of private and public keys that enable clients to validate a JSON Web Token (JWT) such as an id token, issued by CAS as an OpenID Connect Provider. Here, we define the global keystore as a path on the file system. 
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
   <strong>Clustered Deployments</strong><br/>When deploying CAS in a cluster, you must make sure all CAS server nodes have access to and share an identical and exact copy of the keystore file. Keystore differences will lead to various validation failures and application integration issues.
 </div>
@@ -523,6 +583,15 @@ appServer=-tomcat
 All servlet containers presented here, embedded or otherwise, aim to be production-ready. This means that CAS ships with useful defaults out of the box that may be overridden, if necessary and by default, CAS configures everything for you from development to production in today’s platforms. In terms of their production quality, there is almost no difference between using an embedded container vs. an external one.
 
 Unless there are specific, technical, and reasonable objections, choosing an embedded servlet container is almost always the better choice.
+
+If you forget to specify the correct servlet container type and yet choose to run CAS directly, it is likely that you would receive the following error:
+
+```bash
+ERROR [org.springframework.boot.SpringApplication] - <Application run failed>
+  org.springframework.context.ApplicationContextException: Unable to start web server;
+    nested exception is org.springframework.context.ApplicationContextException: 
+    Unable to start ServletWebServerApplicationContext due to missing ServletWebServerFactory bean.
+```
 
 # Gradle Tasks
 
