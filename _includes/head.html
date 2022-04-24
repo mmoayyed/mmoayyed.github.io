@@ -37,6 +37,8 @@
   
   <script src="{{"/assets/tipuesearch/tipuesearch_set.js" | relative_url }}"></script>
   <script src="{{"/assets/tipuesearch/tipuesearch.min.js" | relative_url }}"></script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   
   <link rel="stylesheet" href="{{"/assets/vendor/animate/animate.min.css" | relative_url }}">
   
@@ -53,6 +55,13 @@
             $('.filter').filter('.' + value).show('1000');
         }
     });
+
+    window.onload = function() { 
+      var el = document.getElementById('g-recaptcha-response'); 
+      if (el) { 
+        el.setAttribute('required', 'required'); 
+      } 
+    }
   </script>
 
 </head>
