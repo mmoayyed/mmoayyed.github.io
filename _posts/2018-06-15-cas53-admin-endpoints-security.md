@@ -21,7 +21,7 @@ This tutorial specifically requires and focuses on:
 # Actua...What?
 
 In essence, actuator endpoints bring production-ready features to CAS. Monitoring a running CAS instance, gathering metrics, understanding traffic or the state of our database becomes trivial with such endpoints. The main benefit of these endpoints is that we can get production grade tools without having to actually implement these features ourselves. Actuators are mainly used to expose operational information about the running application – health, metrics, info, dump, env, etc. These are HTTP endpoints or JMX beans to enable us to interact with it.
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
 <strong>Definition</strong><br/>An actuator is a manufacturing term, referring to a mechanical device for moving or controlling something. Actuators can generate a large amount of motion from a small change.</div>
 
@@ -42,7 +42,7 @@ cas.monitor.endpoints.status.sensitive=false
 ```
 
 What the above settings indicate is that the `status` endpoint should be turned on at runtime and it's one whose security is *NOT* controlled by the Spring Security library.
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
 <strong>Sensitivity</strong><br/>The <code>sensitive</code> flag is a rather loaded and confusing term presented by the Spring Boot library that has since been revamped and redesigned, starting with Spring Boot v2. It's quite possible that once and if CAS switches Spring Boot v2, the above property pair get cleaned up too.
 </div>
@@ -54,7 +54,7 @@ cas.adminPagesSecurity.ip=.+
 ```
 
 Once you have the above in place, simply open up a command prompt and execute:
-
+{% include googlead1.html  %}
 ```bash
 # You might need the -k flag if the server's certificate is untrusted...
 $ curl https://login.example.org/cas/status
@@ -80,7 +80,7 @@ For easier diagnostics, you need to turn on the following logging configuration 
     <AppenderRef ref="file"/>
 </AsyncLogger>
 ```
-
+{% include googlead1.html  %}
 ...which then help you diagnose issues if access to an endpoint is blocked with:
 
 ```properties
@@ -104,7 +104,7 @@ $ curl https://login.example.org/cas/status | jq
   "path": "/cas/status"
 }
 ```
-
+{% include googlead1.html  %}
 ...where the logs would indicate:
 
 ```bash
@@ -127,7 +127,7 @@ Note that while almost all CAS endpoints can be secured via other means (such as
 As an exercise, let us enable the Spring Boot's `health` & `info` endpoints and compare them with CAS' own `status` endpoint. We are also going to secure the `health` endpoint using the [Spring Security library](https://spring.io/projects/spring-security) by taking advantage of the basic authentication scheme.
 
 So, the first order of business is to simply enable the endpoints:
-
+{% include googlead1.html  %}
 ```properties
 cas.adminPagesSecurity.ip=192\.168\.3\.1
 
@@ -151,7 +151,7 @@ $ curl https://login.example.org/cas/status/health | jq
   "status": "UP"
 }
 ```
-
+{% include googlead1.html  %}
 ...or we can try the `info` endpoint too:
 
 ```bash
@@ -181,7 +181,7 @@ Nice. Two questions:
 # Let's Health
 
 According to the documentation, the `health` endpoint shows application health information (when the application is secure, a simple "status" when accessed over an unauthenticated connection or full message details when authenticated). That has been the case since our requests are not exactly authenticated. We have simply honored the IP rules when submitting requests but we need to take this one step further and ask for credentials. Fancier modes of authenticating requests to such endpoints are provided by Spring Security (a library Spring Boot depends upon to auto-configure the access rules for endpoints marked as `sensitive`). So, let's get that configured.
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
 <strong>Remember</strong><br/>Regardless of your method of authentication, the IP access rules are always in effect and do not back off once you turn on Spring Security and family. If you need the IP access restrictions to go away, simply open up the pattern to allow <code>.+</code> where that would allow you to exclusively rely upon the protection offered by Spring Boot and its authentication strategy.
 </div>
@@ -197,7 +197,7 @@ The first task is to configure our CAS overlay to include the relevant dependenc
 ```
 
 ...and then, mark the endpoint as `sensitive` in our CAS properties:
-
+{% include googlead1.html  %}
 ```properties
 endpoints.health.enabled=true
 endpoints.health.sensitive=true
@@ -217,7 +217,7 @@ $ curl https://login.example.org/cas/status/health | jq
 ```
 
 ...you might see the following:
-
+{% include googlead1.html  %}
 ```json
 {
   "timestamp": 1529126720131,
@@ -235,7 +235,7 @@ $ curl -u wade:de@dp00L https://login.example.org/cas/status/health | jq
 ```
 
 ...and the full output shall then be something as follows where CAS presents some additional health information regarding `session` and `memory` which correspond to its own health indicators monitoring the runtime memory status as well as the ticket registry repository:
-
+{% include googlead1.html  %}
 ```json
 {
   "status": "UP",
@@ -273,7 +273,7 @@ $ curl -u wade:de@dp00L https://login.example.org/cas/status/health | jq
   "path": "/cas/status/health"
 }
 ```
-
+{% include googlead1.html  %}
 Of course, this is just basic authentication with a pre-defined pair of credentials. You can get the endpoints secured with a CAS server as well, or you can try basic authentication with an underlying account store backed by LDAP or JDBC...or as always, you can take full advantage of Spring Security in all its glory and design your authentication scheme for the win.
 
 # Looking Ahead
@@ -287,7 +287,7 @@ All of that is to say, endpoint security is one area that might get heavily refa
 # Monitors
 
 CAS monitors may be defined to report back the health status of the ticket registry and other underlying connections to systems that are in use by CAS. Spring Boot offers a number of monitors known as `HealthIndicator`s that are activated given the presence of specific settings (i.e. `spring.mail.*`). CAS itself provides a number of other monitors based on the same component whose action may require a combination of a particular dependency module and its relevant settings.
-
+{% include googlead1.html  %}
 As you saw in the output of the `health` endpoint, the default monitors report back brief memory and ticket stats. As an exercise, we shall configure CAS to monitor and report health information on the status of a mail server (the monitor is provided by Spring Boot natively) and we may also let CAS monitor the status of an LDAP server provided where the monitor is this time brought to you by CAS.
 
 ## Mail Server Monitor
@@ -301,7 +301,7 @@ spring.mail.testConnection=true
 ```
 
 With the above settings, at runtime CAS begins to create and bootstrap components that need to deal with a mail server and just as well, a special health monitor will get auto-configured to watch the server status and report back results via the `health` endpoint.
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
 <strong>Saving Lives</strong><br/>This is the power of auto-configuration, saving you time and energy and abstracting you away from all the confusing internal details. Talk about improving productivity and saving lives, the entire configuration of a mail server connector as well as its relevant monitor is done using just a few simple settings!</div>
 
@@ -323,7 +323,7 @@ $ curl -u wade:de@dp00L https://login.example.org/cas/status/health | jq
 ```
 
 ...and if you shut the server down, you might receive:
-
+{% include googlead1.html  %}
 ```json
 ...
 "mail": {
@@ -345,7 +345,7 @@ First, let's add the following dependency to ensure CAS can connect to an LDAP s
     <version>${cas.version}</version>
 </dependency>
 ```
-
+{% include googlead1.html  %}
 ...and let's teach CAS where our LDAP server lives:
 
 ```properties
@@ -364,7 +364,7 @@ $ curl -u wade:de@dp00L https://login.example.org/cas/status/health | jq
 ```
 
 ...and we shall receive the same sort of report except for this time we have a small blob for `pooledLdapConnectionFactory`:
-
+{% include googlead1.html  %}
 ```json
 ...
 "pooledLdapConnectionFactory": {
@@ -377,8 +377,7 @@ $ curl -u wade:de@dp00L https://login.example.org/cas/status/health | jq
 ```
 
 Additional monitors and health indicators may get added in future CAS versions. Consult the CAS documentation for more info.
-
-
+{% include googlead1.html  %}
 # What About...?
 
 - [CAS WAR Overlays](/2018/06/09/cas53-gettingstarted-overlay/)
