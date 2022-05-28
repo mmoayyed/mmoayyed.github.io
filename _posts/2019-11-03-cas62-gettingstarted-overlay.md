@@ -210,7 +210,7 @@ cas.serviceRegistry.json.location=file:/etc/cas/services
 
 # Ticketing
 
-A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets][ticketing] issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment][haguide]. Just like the service management facility, large variety of databases and storage options are supposed by CAS under the facade of a *Ticket Registry*.
+A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for [keeping track of tickets][ticketing] issued by CAS. CAS itself comes by default with a memory-based node-specific cache that is often more than sufficient for smaller deployments or certain variations of a [clustered deployment][haguide]. Just like the service management facility, large variety of databases and storage options are supported by CAS under the facade of a *Ticket Registry*.
 
 {% include googlead1.html  %}
 
