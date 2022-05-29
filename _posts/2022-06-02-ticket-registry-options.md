@@ -70,7 +70,7 @@ cas.ticket.registry.redis.sentinel.node[2]=localhost:26381
 
 # JPA
 
-The JPA Ticket Registry allows CAS to store client authenticated state tickets in a relational database back-end such as MySQL, etc. The configuration of the database tables and schema should all be handled automatically by CAS; you will simply need to make sure the database instance is created and made available to the running CAS server.
+The JPA Ticket Registry allows CAS tickets in a relational database back-end such as MySQL, etc. The configuration of the database tables and schema should all be handled automatically by CAS; you will simply need to make sure the database instance is created and made available to the running CAS server.
 
 ## Configuration
 
