@@ -143,7 +143,7 @@ public CasSimpleMultifactorAuthenticationService casSimpleMultifactorAuthenticat
 
 ## REST API
 
-The operations that deal with token generation and management can also be entirely outsourced to an external REST API. This comes in handy in senarios wher you might have your own token generation service that wants own the managament and maintenance tasks when it comes to tokens. To handle this, you need to instruct CAS to contact your REST API endpoint:
+The operations that deal with token generation and management can also be entirely outsourced to an external REST API. This comes in handy in senarios where you might have your own token generation service that wants own the managament and maintenance tasks when it comes to tokens. To handle this, you need to instruct CAS to contact your REST API endpoint:
 
 ```properties
 cas.authn.mfa.simple.token.rest.url=http://api.example.org/mfa
