@@ -5,7 +5,7 @@ summary:    Review several ticket registry implementation options available to h
 tags:       ["CAS 6.5.x", "Hazelcast", "Redis", "MongoDb"]
 ---
 
-A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for keeping track of tickets and tokens issued by CAS. A large variety of databases and storage services are supported by Apereo CAS under the facade of a *Ticket Registry*, and in this port, we will review a few of the more popular options that would be particularly useful for distributed deployments with high-availability requirements.
+A robust CAS deployment requires the presence and configuration of an *internal* database that is responsible for keeping track of tickets and tokens issued by CAS. A large variety of databases and storage services are supported by Apereo CAS under the facade of a *Ticket Registry*, and in this post, we will review a few of the more popular options that would be particularly useful for distributed deployments with high-availability requirements.
 {% include googlead1.html %}
 <div class="alert alert-info">
   <strong>One Registry to Rule Them All</strong><br />Apereo CAS accepts and can work with <i>one</i> ticket registry option at the most. Choose one with which you are most comfortable and familiar; that generally is the best selection criteria.

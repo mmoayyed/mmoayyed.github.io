@@ -463,14 +463,14 @@ textarea.input100 {
 }
 .alert-validate:hover:before {
   visibility: visible;
-  font-family: 'Exo','Neuton', 'Open Sans', 'Raleway', 'Times New Roman';
+  font-family: 'Palatino','Exo','Neuton', 'Open Sans', 'Raleway', 'Times New Roman';
   font-size: 17px;
   opacity: 1;
 }
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
-    font-family: 'Exo','Neuton', 'Open Sans', 'Raleway', 'Times New Roman';
+    font-family: 'Palatino','Exo','Neuton', 'Open Sans', 'Raleway', 'Times New Roman';
     font-size: 15px;
     opacity: 1;
   }
