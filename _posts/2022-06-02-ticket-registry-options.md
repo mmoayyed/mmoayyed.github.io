@@ -58,7 +58,16 @@ cas.ticket.registry.redis.host=localhost
 cas.ticket.registry.redis.port=6379
 cas.ticket.registry.redis.pool.enabled=true
 ```
+
 {% include googlead1.html %}
+
+There are a variety of Redis server implementations available to choose. For instance you may want to consider using [Dragonfly](https://dragonflydb.io/), which is a robust, ultra fast in-memory datastore, fully compatible with Redis™* and Memcached:
+
+```bash
+docker run --ulimit memlock=-1 -p 6379:6379 \
+  --rm docker.dragonflydb.io/dragonflydb/dragonfly
+```
+
 To support a Sentinel-aware configuration, you may also register other Redis nodes, in this case, `3`:
 
 ```
