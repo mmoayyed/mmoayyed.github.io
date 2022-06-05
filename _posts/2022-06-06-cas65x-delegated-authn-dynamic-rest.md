@@ -44,7 +44,7 @@ cas.authn.pac4j.rest.cache-duration=NEVER
 This would CAS to only reach out to the REST API when the contents of cache expire i.e. once every 2 hours. This cache expiration policy of course does directly correlate with how quickly you would like to see changes picked up by CAS and how rapidly you plan on adding, removing, or updating the external identity providers that are managed by the REST API. 
 
 <div class="alert alert-info">
-<strong>Use</strong><br/>Note that the internal state of the cache is not distributed and is only kept inside a single CAS server node's runtime memory. This implies if you are running CAS in a cluster, each node could potentially contain differing copies of the cache, depending on the cache bootstrapping and initialization timeline.</div>
+<strong>Use</strong><br/>Note that the internal state of the cache is not distributed and is only kept inside a single CAS server node's runtime memory. This implies if you are running CAS in a cluster, each node could potentially contain different copies of the cache, depending on the cache bootstrapping and initialization timeline.</div>
 
 # REST Payload
 
