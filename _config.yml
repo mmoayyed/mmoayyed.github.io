@@ -87,3 +87,11 @@ redcarpet:
 permalink:    pretty
 sass:
   style: compressed
+compress_html:
+  clippings: all
+  comments: [""]
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []

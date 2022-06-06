@@ -89,6 +89,10 @@ header.masthead {
     font-size: 10pt;
 }
 
+.blogpost {
+    display:none;
+}
+
 .blogpost img {
     height: auto;
     width: 100%;

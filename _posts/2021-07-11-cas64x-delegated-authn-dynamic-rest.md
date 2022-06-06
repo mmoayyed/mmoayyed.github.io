@@ -7,7 +7,7 @@ tags:       ["CAS 6.3.x", "Delegated Authentication"]
 
 Apereo CAS has had support to delegate authentication to [external identity providers][delegation] for quite some time. Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. 
 
-In this blog post, we will briefly review the configuration required to outsource the construction and configuration of external delegated identity providers to a REST API and have CAS dynamically picked up the REST payload to identity providers available for authentication. 
+In this blog post, we will briefly review the configuration required to outsource the construction and configuration of external delegated identity providers to a REST API and have CAS dynamically picked up the REST payload to identify providers available for authentication. 
 
 {% include googlead1.html  %}
 
