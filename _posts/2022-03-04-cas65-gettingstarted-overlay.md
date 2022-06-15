@@ -399,8 +399,8 @@ cas.authn.mfa.duo[0].duo-api-host=
 At this point, we have enabled Duo Security and we just need to find a way to instruct CAS to route the authentication flow over to Duo Security in the appropriate condition. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute `memberOf` contain the value `mfa-eligible`. This condition is placed in the `cas.properties` file:
 
 ```properties
-cas.authn.mfa.triggers.global.global-principal-attribute-name-triggers=memberOf
-cas.authn.mfa.triggers.global.global-principal-attribute-value-regex=mfa-eligible
+cas.authn.mfa.triggers.principal.global-principal-attribute-name-triggers=memberOf
+cas.authn.mfa.triggers.principal.global-principal-attribute-value-regex=mfa-eligible
 ```
 {% include googlead1.html  %}
 If the above condition holds true and CAS is to route to a multifactor authentication flow, that would be one supported and provided by Duo Security since that’s the only provider that is currently configured to CAS.
