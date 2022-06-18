@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Google Apps Integration
 summary:    Learn how to use Apereo CAS as a SAML2 identity provider to integrate with Google Apps.
-tags:       ["CAS 6.5.x", "SAML2"]
+tags:       ["CAS 6.6.x", "SAML"]
 ---
 
 Google Apps for Education (or any of the Google apps) utilizes SAML 2.0 to provide an integration point for external authentication services. While this integration was more of a one-off in previous CAS versions, it is now being deprecated in favor of a more typical SAML2 integration with Apereo CAS acting as a proper SAML2 identity provider. In this blog post, we will briefly review the configuration required to set up Apereo CAS as the authentication source for Google Apps.
@@ -11,7 +11,7 @@ Google Apps for Education (or any of the Google apps) utilizes SAML 2.0 to provi
 
 Our starting position is as follows:
 
-- CAS `6.5.x`
+- CAS `6.6.x`
 - Java `11`
 
 # Configuration
