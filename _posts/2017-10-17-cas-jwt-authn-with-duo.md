@@ -273,8 +273,16 @@ Location: https://www.example.org?ticket=eyJhbGciOiJIUzUxMiJ9.WlhsS05tRllRV2xQYV
 
 This works exactly the same as before, except that now the `ticket` parameter contains a JWT as a service ticket. 
  
-# Summary
+# Need Help?
 
-I hope this tutorial was of some help to you. As you have been reading, I can guess that you have come up with a number of missing bits and pieces that would satisfy your JWT needs more comprehensively with CAS. In a way, that is exactly what this tutorial intends to inspire. Please feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
+# So...
+
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
+
+Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
+
+[contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
