@@ -5,7 +5,7 @@ summary:    Learn how to track, inspect and store auditable activities and event
 tags:       ["CAS 6.5.x", "Audits", "RDBMS", "Apache Tomcat"]
 ---
 
-CAS provides a facility for auditing authentication activity, allowing them to be recorded to a variety of storage services. Essentially, audited authentication events attempt to provide the *who, what, when, how*, along with any additional contextual information that might be useful to track activity. Auditable events can be narrowed down and filtered, and may also be stored in a wide range of backend services.
+Apereo CAS provides a facility for auditing authentication activity, allowing them to be recorded to a variety of storage services. Essentially, audited authentication events attempt to provide the *who, what, when, how*, along with any additional contextual information that might be useful to track activity. Auditable events can be narrowed down and filtered, and may also be stored in a wide range of backend services.
 
 {% include googlead1.html %}
 
