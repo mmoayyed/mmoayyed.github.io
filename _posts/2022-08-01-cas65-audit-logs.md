@@ -9,7 +9,7 @@ CAS provides a facility for auditing authentication activity, allowing them to b
 
 {% include googlead1.html %}
 
-This blog post briefly looks at work with the Audit Log in Apereo CAS. Our starting position is as follows:
+This blog post briefly looks at the Audit Log in Apereo CAS. Our starting position is as follows:
 
 - Apereo CAS `6.5.x`
 - [CAS Initializr](https://apereo.github.io/cas/6.5.x/installation/WAR-Overlay-Initializr.html)
