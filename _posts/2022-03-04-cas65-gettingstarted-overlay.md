@@ -359,7 +359,7 @@ dependencies {
   <strong>Remember</strong><br/>You should not have to include additional modules or dependencies to provide database drivers. Those will be automatically provided by CAS to the build with the inclusion of the module above.
 </div>
 
-Then, put specific Duo Security settings in `cas.properties`:
+Then, put specific audit settings in `cas.properties`:
 {% include googlead1.html  %}
 ```properties
 cas.audit.jdbc.user=postgres
@@ -369,7 +369,7 @@ cas.audit.jdbc.url=jdbc:postgresql://localhost:5432/audit
 cas.audit.jdbc.dialect=org.hibernate.dialect.PostgreSQL10Dialect
 ```
 
-You may also note that the audit record includes a special field for *Client IP Address", which typically notes the IP address of the end-user attempting to authenticate, etc. Deployments that are behind a proxy or a load balancer often tend to mask the real IP address by default, and expose it using a dedicated header, such as `X-Forwarded-For`. This can be configured with CAS as well, so the correct IP is then recorded into the audit log:
+You may also note that the audit record includes a special field for *Client IP Address*, which typically notes the IP address of the end-user attempting to authenticate, etc. Deployments that are behind a proxy or a load balancer often tend to mask the real IP address by default, and expose it using a dedicated header, such as `X-Forwarded-For`. This can be configured with CAS as well, so the correct IP is then recorded into the audit log:
 {% include googlead1.html  %}
 ```properties
 cas.audit.engine.alternate-client-addr-header-name=X-Forwarded-For
