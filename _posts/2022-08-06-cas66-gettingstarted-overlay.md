@@ -105,7 +105,7 @@ dependencies {
 
 Note that when you include dependencies in the CAS build, you do not need to specify the CAS version itself. Each release of CAS provides a curated list of dependencies it supports. In practice, you do not need to provide a version for any of these dependencies in your build configuration as the CAS distribution is managing that for you. When you upgrade CAS itself, these dependencies will be upgraded as well in a consistent way.
 {% include googlead1.html  %}
-The curated list of dependencies contains a refined list of third-party libraries. The list is available as a standard Bill of Materials (BOM). Not everyone likes inheriting from the BOM. 
+The curated list of dependencies contains a refined list of third-party libraries. The list is available as a standard Bill of Materials (BOM).
 
 ```groovy
 depndencies {
