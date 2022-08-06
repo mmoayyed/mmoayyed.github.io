@@ -24,7 +24,7 @@ Overlays are a strategy to combat repetitive code and/or resources. Rather than 
 
 Please note that a CAS WAR Overlay can also be generated on demand using the [CAS Initializr](/2021/02/28/cas64-cas-initializr/).
 {% include googlead1.html  %}
-The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `6.5`.
+The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `6.6`.
 
 <div class="alert alert-info">
   <strong>Gradle WAR Overlay</strong><br/>The Maven WAR overlay template is now deprecated and moved aside. The reference overlay project simply resides here and is transformed to use the Gradle build tool instead. This is done to reduce maintenance overhead and simplify the deployment strategy while allowing future attempts to make auto-generation of the overlay as comfortable as possible.
@@ -60,7 +60,7 @@ The CAS Gradle Overlay is composed of several sections. The ones you need to wor
 In `gradle.properties` file, project settings, and versions are specified:
 
 ```properties
-cas.version=6.5.3
+cas.version=6.6.0
 ```
 
 The `gradle.properties` file describes what versions of CAS, Spring Boot, and Java are required for the deployment. You are in practice mostly concerned with the `cas.version` setting and as new (maintenance) releases come out, it would be sufficient to simply update that version and re-run the build.
@@ -71,11 +71,11 @@ This might be a good time to review the CAS project's [Release Policy][releasepo
 
 You should do your best to stay current with [CAS releases](https://github.com/apereo/cas/releases), particularly those that are issued as security or patch releases. Security releases are a critical minimal change on a release to address a serious confirmed security issue, and typically take on the format of `X.Y.Z.1`, `X.Y.Z.2`, etc. A patch release is a conservative incremental improvement that includes bug fixes and is absolutely backward compatible with previous patch releases and takes on the format of `X.Y.1`, `X.Y.2`, etc. 
 {% include googlead1.html  %}
-Upgrading to a security or patch release is **STRONGLY** recommended, and should be a drop-in replacement. To upgrade to such releases, all you should have to do is to adjust the `cas.version` setting in your `gradle.proprties` file. For example, going from CAS `6.5.2` to `6.5.3` should be as easy as:
+Upgrading to a security or patch release is **STRONGLY** recommended, and should be a drop-in replacement. To upgrade to such releases, all you should have to do is to adjust the `cas.version` setting in your `gradle.proprties` file. For example, going from CAS `6.6.0` to `6.6.1` should be as easy as:
 
 ```properties
-# cas.version=6.5.2
-cas.version=6.5.3
+# cas.version=6.6.0
+cas.version=6.6.1
 ```
 
 The best way to stay current with CAS releases and receive release notifications and announcements is via subscribing to the GitHub repository and watch for releases:
