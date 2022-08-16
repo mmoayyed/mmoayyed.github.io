@@ -77,7 +77,7 @@ In this scenario, our application is only authorized to use the `client_credenti
 
 ## Custom Scopes
 
-You may also decide to design your scopes as bundles of custom attributes and claims. For example, one could design a `MyCustomScope` scope that contains two claims:
+You may also decide to design your scopes as bundles of custom attributes and claims. For example, one could design a `MyCustomScope` scope that contains the claims:
 
 {% include googlead1.html  %}
 
