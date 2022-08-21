@@ -35,6 +35,7 @@ I have had this conversation many many times:
 > - ...(2 days later) Yes, thank you for setting us on the right path. We found out that this was one of our own customizations. 
 > - You're very welcome. That will be $6,000.
 > - Of course. As you know, we have certain concerns about contributing funds to project Y to help with its sustainability, but we have no problem paying you to do Google searches for us. Sending the wire as we speak...
+
 {% include googlead1.html %}
 Don't do that. Please.
 
