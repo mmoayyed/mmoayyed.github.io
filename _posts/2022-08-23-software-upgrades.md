@@ -55,7 +55,7 @@ Software technical decisions should ideally be based on technical merit and the 
 {% include googlead1.html %}
 You must look for a solution when a problem has been identified. Not the other way around. Usually.
 
-# Testing...What Now?
+# I Should Test...What Now?
 
 Software projects, and particularly upgrades, tend to take a (very) long time often because there are no automated testing processes in place. Every change has the potential to ricochet and break something else, and there is no verifiable reproducible repeatable process for early detection and prevention. Testing mainly is the process of one or two people interacting with the system manually, clicking links, and checking boxes to report "*It doesn't work*". Once more, the sad irony of this pattern is those sometimes concerned with the *stability* of an upgrade have no way to prove that their existing system is stable other than relying on the number of past incidents and anecdotal evidence. The only process is amateurish hearsay and some 10x developer's gut feeling.
 
