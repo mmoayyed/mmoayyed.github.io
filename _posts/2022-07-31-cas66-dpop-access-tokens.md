@@ -14,7 +14,7 @@ You can read more about DPoP [here](https://datatracker.ietf.org/doc/html/draft-
 This blog post briefly looks at DPoP access tokens may be used with Apereo CAS. Our starting position is as follows:
 
 - Apereo CAS `6.6.x`
-- [CAS Initializr](https://apereo.github.io/cas/development/installation/WAR-Overlay-Initializr.html)
+- [CAS Initializr](https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Initializr.html)
 
 # Overview
 

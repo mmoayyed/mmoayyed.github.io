@@ -5,7 +5,7 @@ summary:    Learn how to turn on or disable CAS feature modules and auto-configu
 tags:       ["CAS 6.6.x", "Configuration Management", "Spring Boot"]
 ---
 
-Being a Spring Boot application at its core, Apereo CAS presents many semi-opinionated modules that attempt to auto-configure the running application context with specific features. Each specific CAS feature, such as support for [OpenID Connect](https://apereo.github.io/cas/development/protocol/OIDC-Protocol.html), might be encapsulated in several components each registred in CAS and tagged as a `@Configuration`. This tutorial provides a basic overview of how such configuration components may be disabled/ignored at runtime, while also reviewing the possibility to control *batches* of auto-configuration components using feature categories and toggles.
+Being a Spring Boot application at its core, Apereo CAS presents many semi-opinionated modules that attempt to auto-configure the running application context with specific features. Each specific CAS feature, such as support for [OpenID Connect](https://apereo.github.io/cas/6.6.x/protocol/OIDC-Protocol.html), might be encapsulated in several components each registred in CAS and tagged as a `@Configuration`. This tutorial provides a basic overview of how such configuration components may be disabled/ignored at runtime, while also reviewing the possibility to control *batches* of auto-configuration components using feature categories and toggles.
 
 {% include googlead1.html  %}
 
@@ -35,7 +35,7 @@ While the above strategy works as advertised in specific scenarios, there are se
 
 Rather than individual configuration components, a better alternative would be to disable *categories of features* and toggle their activity in a way that would be comprehensive and risk-free. For example, your *intention* is to disable the OpenID Connect functionality in CAS, regardless of where it's defined in whatever many configuration components. A feature toggle does exactly that. 
 {% include googlead1.html  %}
-To achieve this, many CAS configuration components internally are *annotated* with a specific condition that groups their activation together using a special flag. For example, all components related to handling and managing the [SAML2 Identity Provider functionality](https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html) might be annotated with:
+To achieve this, many CAS configuration components internally are *annotated* with a specific condition that groups their activation together using a special flag. For example, all components related to handling and managing the [SAML2 Identity Provider functionality](https://apereo.github.io/cas/6.6.x/authentication/Configuring-SAML2-Authentication.html) might be annotated with:
 
 ```java
 @ConditionalOnFeature(feature = CasFeatureModule.FeatureCatalog.SamlIdP)

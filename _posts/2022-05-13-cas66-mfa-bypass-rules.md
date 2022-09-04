@@ -5,7 +5,7 @@ summary:    Learn how to skip and bypass multifactor authentication flows using 
 tags:       ["CAS 6.6.x", "MFA"]
 ---
 
-Apereo CAS supports a wide array of [multifactor authentication providers](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html). Each multifactor provider is equipped with options to allow for conditional bypassing of multifactor authentication, where such rules are typically based on data gathered during the initial primary authentication event. Once the provider is chosen to honor the authentication request, bypass rules are then consulted to calculate whether the provider should ignore the request and skip MFA conditionally. 
+Apereo CAS supports a wide array of [multifactor authentication providers](https://apereo.github.io/cas/6.6.x/mfa/Configuring-Multifactor-Authentication.html). Each multifactor provider is equipped with options to allow for conditional bypassing of multifactor authentication, where such rules are typically based on data gathered during the initial primary authentication event. Once the provider is chosen to honor the authentication request, bypass rules are then consulted to calculate whether the provider should ignore the request and skip MFA conditionally. 
 {% include googlead1.html %}
 In this blog post, we will examine *some* of the options available to handle bypass scenarios of multifactor providers. While all listed options should apply to all supported multifactor authentication providers supported by Apereo CAS, in this post we will specifically focus on the integration with [Duo Security][duosecurity].
 
@@ -119,4 +119,4 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[duosecurity]: https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html
+[duosecurity]: https://apereo.github.io/cas/6.6.x/mfa/DuoSecurity-Authentication.html

@@ -14,7 +14,7 @@ In this tutorial, I am going to take a look at how JWTs can be used as credentia
 
 - Apereo CAS `6.6.x`
 - curl `7.79.1`
-- [CAS Initializr](https://apereo.github.io/cas/development/installation/WAR-Overlay-Initializr.html)
+- [CAS Initializr](https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Initializr.html)
 
 # Overview
 
@@ -131,7 +131,7 @@ Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[jwtauthn]: https://apereo.github.io/cas/development/installation/JWT-Authentication.html
+[jwtauthn]: https://apereo.github.io/cas/6.6.x/installation/JWT-Authentication.html
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[shell]: https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html
-[jsonsvc]: https://apereo.github.io/cas/development/installation/JSON-Service-Management.html
+[shell]: https://apereo.github.io/cas/6.6.x/installation/Configuring-Commandline-Shell.html
+[jsonsvc]: https://apereo.github.io/cas/6.6.x/installation/JSON-Service-Management.html

@@ -13,7 +13,7 @@ Our starting position is as follows:
 
 - CAS `6.6.x`
 - Java `11`
-- [CAS Initializr](https://apereo.github.io/cas/development/installation/WAR-Overlay-Initializr.html)
+- [CAS Initializr](https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Initializr.html)
 
 # Overlaying Views
 

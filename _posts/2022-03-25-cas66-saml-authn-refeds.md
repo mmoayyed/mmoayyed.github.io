@@ -5,7 +5,7 @@ summary:    An overview of the external SAML2 identity selection and discovery s
 tags:       ["CAS 6.6.x", "SAML", "Groovy", "Delegated Authentication"]
 ---
 
-If your Apereo CAS deployment is configured to act as a SAML2 identity provider, you may run into a use case where the authentication flow should be routed to a separate and external SAML 2.0 identity provider to authenticate the user, with CAS acting as a SAML proxy. This is what Apereo CAS refers to as [delegated authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html). {% include googlead1.html  %} This blog post provides a quick overview of the external identity selection and discovery strategy for advanced login flows while taking into requested authentication contexts.
+If your Apereo CAS deployment is configured to act as a SAML2 identity provider, you may run into a use case where the authentication flow should be routed to a separate and external SAML 2.0 identity provider to authenticate the user, with CAS acting as a SAML proxy. This is what Apereo CAS refers to as [delegated authentication](https://apereo.github.io/cas/6.6.x/integration/Delegate-Authentication.html). {% include googlead1.html  %} This blog post provides a quick overview of the external identity selection and discovery strategy for advanced login flows while taking into requested authentication contexts.
 
 Our starting position is based on the following:
 
@@ -53,7 +53,7 @@ To handle this integration, we first need to start by registering the service pr
 }
 ```
 
-Then, we need to define our two Okta identity providers per instructed [laid out here](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html):
+Then, we need to define our two Okta identity providers per instructed [laid out here](https://apereo.github.io/cas/6.6.x/integration/Delegate-Authentication.html):
 {% include googlead1.html  %}
 ```
 ...

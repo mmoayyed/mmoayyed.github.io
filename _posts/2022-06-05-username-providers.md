@@ -8,7 +8,7 @@ tags:       ["CAS 6.6.x", "SAML", "OpenID Connect"]
 Applications and relying parties that are integrated and registered with Apereo CAS often need to receive the authenticated username to verify the authentication transaction and allow access into their domain. Depending on the authentication protocol used to communicate with the application, this identifier can be shared with the application in a variety of ways and its structure and format can be freely customized. 
 {% include googlead1.html %}
 
-In this blog post, we will take a look at a few of the popular techniques that can be used to share the username with applications that can speak CAS, SAML2, and OpenID authentication protocols, with the assumption that application registration policies are managed as JSON files using the [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html). 
+In this blog post, we will take a look at a few of the popular techniques that can be used to share the username with applications that can speak CAS, SAML2, and OpenID authentication protocols, with the assumption that application registration policies are managed as JSON files using the [JSON Service Registry](https://apereo.github.io/cas/6.6.x/services/JSON-Service-Management.html). 
 
 {% include googlead1.html %}
 

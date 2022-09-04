@@ -147,5 +147,5 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 [initializr]: https://casinit.herokuapp.com
-[jsonsvc]: https://apereo.github.io/cas/development/services/JSON-Service-Management.html
-[oidc]: https://apereo.github.io/cas/development/authentication/OIDC-Authentication.html
+[jsonsvc]: https://apereo.github.io/cas/6.6.x/services/JSON-Service-Management.html
+[oidc]: https://apereo.github.io/cas/6.6.x/authentication/OIDC-Authentication.html

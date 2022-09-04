@@ -87,5 +87,5 @@ I hope this review was of some help to you and I am sure that both this post as 
 [Misagh Moayyed](https://fawnoos.com)
 
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[qrauthn]: https://apereo.github.io/cas/development/authentication/QRCode-Authentication.html
+[qrauthn]: https://apereo.github.io/cas/6.6.x/authentication/QRCode-Authentication.html
 [initializr]: https://casinit.herokuapp.com

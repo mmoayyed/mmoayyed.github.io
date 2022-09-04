@@ -12,7 +12,7 @@ When Apereo CAS is configured to accept a username/password credential type, you
 This blog post briefly looks at several options that allow one to transform and modify usernames before submission. Our starting position is as follows:
 
 - Apereo CAS `6.6.x`
-- [CAS Initializr](https://apereo.github.io/cas/development/installation/WAR-Overlay-Initializr.html)
+- [CAS Initializr](https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Initializr.html)
 
 # Overview
 

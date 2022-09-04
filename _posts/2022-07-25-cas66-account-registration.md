@@ -11,11 +11,11 @@ In this post, we will take a look at the configuration steps required to turn on
 
 - CAS `6.6.x`
 - Java `11`
-- [CAS Initializr](https://apereo.github.io/cas/development/installation/WAR-Overlay-Initializr.html)
+- [CAS Initializr](https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Initializr.html)
 
 # Overview
 
-Once you have included the [appropriate CAS module](https://apereo.github.io/cas/development/registration/Account-Registration-Overview.html) in your build, you will need to instruct CAS with the following settings:
+Once you have included the [appropriate CAS module](https://apereo.github.io/cas/6.6.x/registration/Account-Registration-Overview.html) in your build, you will need to instruct CAS with the following settings:
 
 ```properties
 # Allow the activation link to remain valid for 5 minutes
