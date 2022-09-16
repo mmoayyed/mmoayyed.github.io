@@ -28,7 +28,7 @@ implementation "org.apereo.cas:cas-server-support-grouper"
 ```
 
 Optionally, we might also consider including the following settings in our `cas.properties`:
-
+{% include googlead1.html %}
 ```properties
 cas.authn.attribute-repository.grouper.id=Grouper
 cas.authn.attribute-repository.grouper.subject-type=SUBJECT_ID
@@ -45,7 +45,7 @@ Finally, you should of course configure the Grouper client library that is used 
 ```
 
 Based on the above configuration and assuming the CAS server is configured to use LDAP for authentication, we could safely expect that if a `casuser` user logs in via LDAP, the end result should be an authenticated CAS principal for `casuser` whose group memberships are collected into a `grouperGroups` attribute. If you wanted to change this setup and allow CAS to query Grouper under a different user attribute (that is found for the user during the authentication event) you might consider setting up the following:
-
+{% include googlead1.html %}
 ```properties
 cas.authn.attribute-repository.grouper.username-attribute=alternative-attribute
 ```
