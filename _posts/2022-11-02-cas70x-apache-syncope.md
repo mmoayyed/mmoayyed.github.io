@@ -5,7 +5,7 @@ summary:   Learn about available strategies that allow one to set up an integrat
 tags:       ["CAS 7.0.x", "Service Integrations"]
 ---
 
-[Apache Syncope](https://syncope.apache.org/) is a powerful, open-source Java-based enterprise-ready solution that at its core provides services for identity management, synchronization, and provisioning of accounts across repositories and compliance. Apereo CAS offers several integration strategies with Apache Syncope that specifically relate to authentication, attribute resolution and account management, etc. Such options empower both solutions to take advantage of each other's core competencies and, when combined, provide a powerful, feature-rich, and extensible open-source IAM solution for enterprise deployments.
+[Apache Syncope](https://syncope.apache.org/) is a powerful, open-source Java-based enterprise-ready solution that at its core provides services for identity management, synchronization, and provisioning of accounts across repositories. Apereo CAS offers several integration strategies with Apache Syncope that specifically relate to authentication, attribute resolution and account management, etc. Such options empower both solutions to take advantage of each other's core competencies and, when combined, provide a powerful, feature-rich, and extensible open-source IAM solution for enterprise deployments.
 
 {% include googlead1.html %}
 
@@ -13,7 +13,7 @@ tags:       ["CAS 7.0.x", "Service Integrations"]
   <strong>Note</strong><br/><a href="https://syncope.apache.org/docs/3.0/reference-guide.html">Apache Syncope 3.0.0 Maggiore</a>, about to be released as of this writing, offers a built-in Web Access or WA module that acts as a central hub for authentication, authorization and single sign-on based on Apereo CAS. More on this later!
 </div>
 
-In this post, we will briefly take a look at a few options that allow for seamless integration between Apereo CAS and Apache Syncope. This tutorial specifically requires and focuses on:
+In this post, we will briefly take a look at a few options that allow for a seamless integration between Apereo CAS and Apache Syncope. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
 - Java `17`
