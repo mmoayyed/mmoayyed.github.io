@@ -98,3 +98,4 @@ Happy Coding,
 [Misagh Moayyed](https://fawnoos.com)
 
 [profileselection]: https://apereo.github.io/cas/development/integration/Delegate-Authentication-ProfileSelection.html
+[contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
