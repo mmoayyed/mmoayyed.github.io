@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clear
+# clear
 # bundle install
 # bundle exec jekyll build
 # rvm use 2.6.2
