@@ -74,7 +74,7 @@ shibcas.serverName = https://localhost:9443
 
 idp.authn.External.supportedPrincipals = \
     saml2/urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport, \
-    https://refeds.org/profile/mfa
+    saml2/https://refeds.org/profile/mfa
 ```
 
 # Need Help?
