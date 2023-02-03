@@ -9,7 +9,7 @@ This is a quick review of how to run the an Oracle SQL databass on ARM-based mac
 
 {% include googlead1.html %}
 
-# Intel x86
+# Intel x86_64
 
 If you are on an Intel x86 machine, one could typically run an Oracle database via Docker as such:
 
