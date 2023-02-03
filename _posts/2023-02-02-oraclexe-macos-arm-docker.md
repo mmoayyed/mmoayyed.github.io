@@ -38,7 +38,7 @@ This is not a multi-arch build so we have to find alternatives for ARM-based mac
 
 If you are on an ARM-based machines (i.e. Apple Silicon), one alternative would be to run the Oracle Database Express Edition via Docker. Currently, there is no Oracle Database port for ARM chips, hence Oracle XE images cannot run on the new Apple M chips via Docker Desktop. Fortunately, there are other technologies that can spin up x86_64 software on Apple M chips, such as [colima](https://github.com/abiosoft/colima). 
 {% include googlead1.html %}
-Colima is a container runtimes on macOS (and Linux) with minimal setup. You can install it via:
+Colima is a container runtime on macOS (and Linux) with minimal setup. You can install it via:
 
 ```bash
 brew install colima
