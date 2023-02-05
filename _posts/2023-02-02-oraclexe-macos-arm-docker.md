@@ -5,7 +5,7 @@ summary:    Learn how to run the Oracle databases on macOS ARM-based machines vi
 tags:       ["Docker", "Miscellaneous"]
 ---
 
-This is a quick review of how to run the an Oracle SQL databass on ARM-based machines (i.e. Apple Silicon) via Docker. The instructions posted here were originally put together based on `Docker version 20.10.22, build 3a2c30b`. 
+This is a quick review of how to run an Oracle SQL databass on ARM-based machines (i.e. Apple Silicon) via Docker. The instructions posted here were originally put together based on `Docker version 20.10.22, build 3a2c30b`. 
 
 {% include googlead1.html %}
 
