@@ -29,7 +29,7 @@ Let's say we have a `memberOf` attribute that contains the following list of val
 - `CN=System,OU=Services`
 
 Additionally, we have the following attributes:
-
+{% include googlead1.html  %}
 - `extensionAttribute1` with value(s) `A`
 - `extensionAttribute2` with value(s) `B`
 - `extensionAttribute3` with value(s) `C`
@@ -49,7 +49,7 @@ How do we do this?
 # Solution
 
 Apereo CAS allows one to release attributes to an application using specific *attribute release policies*. These policies can be built via embedded Apache Groovy scripts and fragments and can take advantage of Groovy's scripting capabilities. Our SAML2 service provider is registered with CAS using a JSON policy file with an attribute release policy that ultimately would look similar to the following file:
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
@@ -68,7 +68,7 @@ Apereo CAS allows one to release attributes to an application using specific *at
 ```
 
 The main element to note here is the use of `ReturnMappedAttributeReleasePolicy` which allows one to virtually re-map attributes. Our policy above is tasked to produce a `memberOf` attribute whose values are determined based on the result and outcome of an embedded Groovy script, yet to be defined.
-
+{% include googlead1.html  %}
 <div class="alert alert-info">
   <strong>Note</strong><br/>The Groovy script is tasked to operate on certain attributes as a baseline. This means, original attributes such as <code>memberOf</code>, <code>extensionAttribute1</code>, etc must already be available and fetched from the attribute source before the script's execution.
 </div>
@@ -104,7 +104,7 @@ if (ext3 != null) results.addAll(ext3)
 println "memberOf values: $results"
 return results
 ```
-
+{% include googlead1.html  %}
 A few key points to review:
 
 - The script receives a special `attributes` variable; this is a key-value `Map` that contains all available attributes that are already and before this step, resolved and fetched by CAS. In the script, `attributes['memberOf']` return a list of all existing values for the `memberOf` attribute.
@@ -113,7 +113,7 @@ A few key points to review:
 - For troubleshooting and visibility purposes, we log the final results and finally return them to CAS. At this point, CAS would be taking our result list and will record its values under the mapped `memberOf` attribute. 
 
 Putting it all together, it can be somewhat tricky to correctly format and place the script inside the JSON file. Fortunately, the JSON syntax supported by CAS has supported multiline strings for many years. This means we can do something like this:
-
+{% include googlead1.html  %}
 ```java
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
