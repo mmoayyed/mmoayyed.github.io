@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Bitnami Redis Docker Images w/ RediSearch
-summary:    Learn how to slightly modify the Bitnami Redis Docker images to load and enabled additional Redis modules such as RediSearch, JSON, etc.
+summary:    Learn how to slightly modify the Bitnami Redis Docker images to load and enable additional Redis modules such as RediSearch, JSON, etc.
 tags:       ["Redis", "Docker"]
 ---
 
