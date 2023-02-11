@@ -10,20 +10,32 @@ h1 {
   margin-top: 75px;
 }
 
-</style>
-<!-- Page Header -->
-{% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-  {% else %}
-  <header class="masthead">
-    {% endif %}
-    <div class="overlay"></div>
-  </header>
+.error-text {
+  position: relative;
+  color:white;
+  top: 350px;
+}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        {{ content }}
+a {
+  text-decoration: none;
+}
+</style>
+
+<header>
+  <div class="overlay hero" style="background-image: url('{{ page.background }}');">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10">
+    
+          <span class="error-text">
+            {{ content }}
+          </span>
+
+        </div>
       </div>
     </div>
+
   </div>
+</header>
+
+
