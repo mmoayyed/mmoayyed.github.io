@@ -37,7 +37,7 @@ cas.authn.saml-idp.core.authentication-context-class-mappings=https://refeds.org
 
 Let's say that you have a CAS deployment that is configured to act as a SAML2 identity provider. This CAS sever is also configured to act as a SAML2 proxy, and will hand off authentication requests to an external SAML2 identity provider, say, Okta. In other words, all applications registered with CAS will interact with it as a SAML2 identity provider, and yet CAS itself will act as a service provider when it proxies the request to Okta.
 
-SAML2 service provicers that are registered with CAS are configured to request `https://refeds.org/profile/mfa` as the requested authentication context. Normally, CAS would take the context verbaitm and will pass it on to Okta. Of course, if Okta may not recognize this context at all, and so you may be required to translate and map this to something it understands:
+SAML2 service provicers that are registered with CAS are configured to request `https://refeds.org/profile/mfa` as the requested authentication context. Normally, CAS would take the context verbaitm and will pass it on to Okta. Of course, Okta may not recognize this context at all, and so you may be required to translate and map this to something it understands:
 
 ```
 cas.authn.saml-idp.core.authentication-context-class-mappings[0]= \
