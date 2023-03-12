@@ -21,7 +21,7 @@ This tutorial specifically focuses on:
 When the SAML proxying feature is deployed and turned on in the Shibboleth IdP, the POST back to the IdP from the proxied IdP may omit the necessary cookies to resume the flow, resulting in the "stale request" message. There are no alternatives but to get SameSite addressed if you use that feature with Chrome, Firefox, and other browsers that enforce this type of behavior. 
 
 Aside from the proxying case, the following deployment scenario results in the loss of SSO functionality (the user has to enter their credentials again).
-
+{% include googlead1.html %}
 - A SAML 2.0 SP uses the HTTP-POST binding to issue its request AND
 - The IdP is configured to use server-side sessions OR is not using HTML Local Storage with client-side sessions.
 
@@ -30,7 +30,7 @@ Aside from the proxying case, the following deployment scenario results in the l
 The Shibboleth IdP includes a Java servlet filter class that can be deployed to work around Java's lack of SameSite support and auto-add the attribute to cookies in various ways. It does have a generic extension point for attaching a condition that can be used for User-Agent testing. 
 
 To activate the filter, one needs the following properties in `idp.properties` file:
-
+{% include googlead1.html %}
 ```properties
 idp.cookie.sameSite = None 
 idp.cookie.sameSiteCondition = My.SameSiteCondition
@@ -44,16 +44,16 @@ The `My.SameSiteCondition` refers to a bean ID of a `Predicate<ServletRequest>` 
 ```
 
 The `%{idp.home}/conf/my-samesite.js` executes a JSR-223 scriptlet against a `ProfileRequestContext` to produce a true/false result. The script itself may be designed as such:
-
+{% include googlead1.html %}
 ```javascript
-function isMinWorkingBrowserVersion(ua, browserName, minWorkingVersion) {
+function minVersion(ua, browserName, version) {
     let setSameSite = true;
     let regexString = browserName + "/(\\d+)\\.";
     let regex = new RegExp(regexString);
     let match = ua.match(regex);
     if (match) {
         let major = parseInt(match[1]);
-        if (major < minWorkingVersion) { 
+        if (major < version) { 
             setSameSite = false;
         }
     }
@@ -62,7 +62,6 @@ function isMinWorkingBrowserVersion(ua, browserName, minWorkingVersion) {
 
 let activate = true;
 const logger = Java.type("org.slf4j.LoggerFactory").getLogger("My.SameSiteCondition");
-
 try {
     if (input != null) {
         let UA = input.getHeader("User-Agent");
@@ -70,17 +69,17 @@ try {
             logger.info('SameSite User-Agent: ' + UA);
             if ((UA.contains("iPhone") || UA.contains("iPad") || UA.contains(" OS X ")) 
                 && (UA.contains("Version/") && UA.contains("Safari/"))) {
-                activate = isMinWorkingBrowserVersion(UA, "Version", 15);
+                activate = minVersion(UA, "Version", 15);
             } else if (UA.contains("Firefox/")) {
-                activate = isMinWorkingBrowserVersion(UA, "Firefox", 60); 
+                activate = minVersion(UA, "Firefox", 60); 
             } else if (UA.contains("Opera/")) {
-                activate = isMinWorkingBrowserVersion(UA, "Opera", 39);
+                activate = minVersion(UA, "Opera", 39);
             } else if (UA.contains("Chrome/")) {
-                activate = isMinWorkingBrowserVersion(UA, "Chrome", 51); 
+                activate = minVersion(UA, "Chrome", 51); 
             } else if (UA.contains("Chromium/")) {
-                activate = isMinWorkingBrowserVersion(UA, "Chromium", 51);
+                activate = minVersion(UA, "Chromium", 51);
             }
-            logger.info('SameSite User-Agent Verdict: ' + activate);
+            logger.debug('SameSite User-Agent: ' + activate);
         }
     }
 }
@@ -89,7 +88,7 @@ catch (e) {
 }
 return activate;
 ```
-
+{% include googlead1.html %}
 The returned outcome of the script is a boolean `true/false` that is only set based on the type of browser and a minimum version that could support SameSite cookies. When the script returns `true`, the IdP will set the SameSite attribute to `None`, as specified via the `idp.cookie.sameSite` property.
 
 # Need Help?
