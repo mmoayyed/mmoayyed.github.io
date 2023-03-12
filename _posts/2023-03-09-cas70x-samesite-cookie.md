@@ -32,9 +32,10 @@ You may of course choose any of the listed options below.
 ## SameSite Options
 
 - `Lax`: Cookies are not sent on normal cross-site subrequests (for example to load images or frames into a third-party site), but are sent when a user is navigating to the origin site (i.e., when following a link).
-- `Strict`: Cookies will only be sent in a first-party context and not be sent along with requests initiated by third-party websites.
+- `Strict`: Cookies will only be sent in a first-party context and not be sent along with requests initiated by third-party websites. 
 - `None`: Cookies will be sent in all contexts, i.e. in responses to both first-party and cross-site requests. If `SameSite=None` is set, the cookie Secure attribute must also be set (or the cookie will be blocked).
 {% include googlead1.html %}
+
 CAS itself offers a few additional options as well:
 
 - `Off`: Disable the generation of the `SameSite` cookie attribute altogether.
