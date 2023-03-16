@@ -46,7 +46,7 @@ cas.authn.attribute-repository.stub.attributes.common-name=CAS
 {% include googlead1.html  %}
 ## Custom Scopes
 
-We could of course define our own custom scope that contains a tailored set of claims:
+We could of course define our custom scope that contains a tailored set of claims:
 
 ```properties
 cas.authn.oidc.core.user-defined-scopes.MyCustomScope=cn,given:name,name,family_name
@@ -81,7 +81,7 @@ Now that our `MyCustomScope` scope is ready, we could assign it to the relying p
 
 ## Mapping Claims
 
-You might have noticed that our attribute repository does not retrieve all the claims and attributes that we would want to be release. For example, consider the following use case:
+You might have noticed that our attribute repository does not retrieve all the claims and attributes that we would want to be released. For example, consider the following use case:
 
 - CAS should release the claim `cn` which is packed into our scope `MyCustomScope`. Since we do not have a `cn` attribute available in our attribute repository, CAS should use the value of the `common-name` attribute when it begins to process `cn`. This is taught to CAS using the following mapping rule:
 {% include googlead1.html  %}
@@ -99,7 +99,7 @@ cas.authn.oidc.core.claims-map.family_name=identity-name
   <strong>Note</strong><br/>Note that claim mapping rules should equally apply to claims that are packed into the ID token as well as those that are produced by the <i>user profile</i> endpoint. 
 </div>
 
-Finally, please note that mapping rules defined via this technique are global and cannot be revised and modified on a per relying party basis. For example, the value for claim `family_name` will always be based on `identity-name` for all requests and all client applications that are authorized to receive it. Changing this mapping rule on a per application basis will require further modifications that are outside the scope of this post.
+Finally, please note that mapping rules defined via this technique are global and cannot be revised and modified on a relying party basis. For example, the value for claim `family_name` will always be based on `identity-name` for all requests and all client applications that are authorized to receive it. Changing this mapping rule on a per-application basis will require further modifications that are outside the scope of this post.
 
 ## Scope-free Claims
 
