@@ -8,6 +8,7 @@ tags:       ["Spring Cloud", "Docker", "Google Cloud"]
 The Google Cloud Platform offers two attractive products for cloud-native application deployments:
 
 - [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) is an asynchronous and scalable messaging service that decouples services producing messages from services processing those messages Pub/Sub allows services to communicate asynchronously, with latencies on the order of 100 milliseconds.
+{% include googlead1.html %}
 - [Google Cloud Firestore](https://firebase.google.com/docs/firestore) is a flexible, scalable NoSQL cloud database to store and sync data for clients and servers. Its data model supports flexible, hierarchical data structures so you can store your data in documents, organized into collections. 
 
 In this blog post, we will take a quick look at how to set up a Java application to connect to Google Cloud Firestore and PubSub emulators for local development and testing, using [Spring Cloud GCP](https://googlecloudplatform.github.io/spring-cloud-gcp). There will also be small demonstrations of how to run emulators locally via Docker.
@@ -27,7 +28,7 @@ To run Firestore and PubSub emulators locally for development and testing, we'll
 ```docker
 FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:$GCLOUD_SDK_VERSION
 ```
-
+{% include googlead1.html %}
 Then, we need to install the emulators:
 
 ```docker
@@ -37,7 +38,7 @@ RUN gcloud components update
 ```
 
 Finally, we'll need to provide an `ENTRYPOINT` for the Docker image to run the emulators:
-
+{% include googlead1.html %}
 ```bash
 gcloud config set project "${GCP_PROJECT_ID}"
 gcloud beta emulators firestore start --host-port="0.0.0.0:${FIRESTORE_PORT}" &
@@ -53,7 +54,7 @@ To build the Docker image and run the container, you may use:
 docker build . -t my/gcp:latest
 docker run --name gcp-server -d --rm -p 8080:8080 -p 8085:8085 my/gcp
 ```
-
+{% include googlead1.html %}
 At this point, your emulators should be running on ports `8080` and `8085` for both Firestore and PubSub.
 
 # Connecting to PubSub
@@ -64,7 +65,7 @@ To test and develop against the PubSub emulator, Spring Cloud provides the follo
 spring.cloud.gcp.pubsub.emulator-host=localhost:${PUBSUB_PORT}
 spring.cloud.gcp.pubsub.project-id=${GCP_PROJECT_ID}
 ```
-
+{% include googlead1.html %}
 Of course, this is not exactly sufficient mainly because the emulators run on a non-SSL connection and we'll need to instruct Google Cloud GCP to adjust its communication channel accordingly. This is handled using `` and we'll need to have one for the publisher transport and one for the subscriber transport:
 
 ```java
@@ -80,7 +81,7 @@ public TransportChannelProvider subscriberTransportChannelProvider(GcpPubSubProp
     return FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
 }
 ```
-
+{% include googlead1.html %}
 Furthermore, you might need to do the same sort of thing if your application intends to use the `PubSubAdmin` component. This will have you adjust the topic admin settings so you can query and create topics:
 
 ```java
@@ -96,7 +97,7 @@ public TopicAdminSettings topicAdminSettings(GcpPubSubProperties properties) {
 ```
 
 ...and finally, we would need to adjust the subscription admin settings so our application can create and query subscriptions:
-
+{% include googlead1.html %}
 ```java
 @Bean
 public SubscriptionAdminClient subscriptionAdminClient(GcpPubSubProperties properties) {
@@ -118,7 +119,7 @@ spring.cloud.gcp.firestore.project-id=${GCP_PROJECT_ID}
 spring.cloud.gcp.firestore.emulator.enabled=true
 spring.cloud.gcp.firestore.host-port=localhost:${FIRESTORE_PORT}
 ```
-
+{% include googlead1.html %}
 Note that Spring Cloud GCP may proceed to create a `firestoreTemplate` template bean if, among other things, it sees the `Flux` on the classpath. If you do not need the reactive `FirestoreTemplate` template, you will need to consider removing the appropriate dependency from the classpath.
 
 # Need Help?
