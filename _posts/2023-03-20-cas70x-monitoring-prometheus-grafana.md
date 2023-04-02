@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Monitoring Metrics with Prometheus and Grafana
 summary:    Learn how to monitor your Apereo CAS deployment in production using open-source tools such as Prometheus and Grafana to set up dashboards, visualize CAS-specific metrics and gain insight into the running CAS software.
-tags:       ["Monitoring", "Docker", "Spring Boot"]
+tags:       ["CAS 7.0.x", "Monitoring", "Docker", "Spring Boot"]
 ---
 
 When Apereo CAS is deployed in production, it needs to be monitored and observed to watch out for possible performance issues. Many commercial tools can tap into the APM (Application Performance Metrics) exported by CAS to provide monitoring capabilities. In this post, we will examine two open-source tools called [Prometheus](https://prometheus.io) and Grafana which gather and store metrics data in a time-series format and visualize it on dashboards.
