@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Running Oracle Databases via Docker on MacOS  ARM-based Sillicon
+title:      Running Oracle Databases via Docker on MacOS  ARM-based Silicon
 summary:    Learn how to run the Oracle databases on macOS ARM-based machines via Docker. 
 tags:       ["Docker", "Miscellaneous"]
 ---
