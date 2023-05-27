@@ -21,6 +21,7 @@ While this can be a fairly handy trick, you **MUST** **NEVER** do this unless yo
 {% include googlead1.html %}
 - As soon as you control a given dependency and its lifecycle, you will then be tasked from that point on to continuously look after that dependency, watch out for newer releases for potential upgrades and worry about how that change might affect everything else in your build. Upstream dependency upgrades would be invisible and ineffective to you...which of course is the point of this entire exercise.
 - As a consequence, your upgrade process will be difficult since you will have to always cross-check your changes with the newer versions of CAS. This will quickly get out of hand if you end up modifying multiple dependency libraries and their dependency hierarchy.
+{% include googlead1.html  %}
 - For your deployment to build and compile, you might need to introduce and add additional dependencies and libraries to the build. You will also need to take care of all transitive dependencies that might be brought into the build and all potential conflicts they might introduce, which are often invisible at build time.
 - Potential dependency conflicts where you possibly end up with multiple versions of the same library can be fatal to one's deployment at runtime and may cause the deployment to be entirely unpredictable. Such deployments often tend to work in one environment and not another, depending on how server containers and classloaders favor one version of a jar library over another.
 
@@ -33,7 +34,7 @@ Let's begin with the premise that our CAS deployment is set to ship with an embe
 <div class="alert alert-info">
   <strong>Note</strong><br/>This is not meant to be an exact, step-by-step guide. Rather, it's a modest overview of the overall process. Basic familiarity with Gradle, as well as the structure of the CAS Overlay project, is required.
 </div>
-
+{% include googlead1.html  %}
 To handle this change, we'll need to effectively do three things with the initial assumption that our desired version is already defined in the `gradle.properties` file:
 
 ```properties
@@ -41,7 +42,7 @@ tomcatVersion=10.1.7
 ```
 
 First, we'll need to take advantage of Gradle's [dependency substitution feature](https://docs.gradle.org/current/userguide/resolution_rules.html). Gradle offers a powerful API for manipulating a requested dependency before that dependency is resolved. The feature currently offers the ability to change the group, name, and/or version of a requested dependency, allowing a dependency to be substituted with a completely different module during resolution.
-
+{% include googlead1.html  %}
 ```groovy
 eachDependency { DependencyResolveDetails dependency ->
     def requested = dependency.requested
@@ -52,7 +53,7 @@ eachDependency { DependencyResolveDetails dependency ->
 ```
 
 Then, we will force the Gradle build to bring forth the required Apache Tomcat dependencies into the build so they can pass through our resolution rules:
-
+{% include googlead1.html  %}
 ```groovy
 if (project.appServer == "-tomcat") {
     implementation "org.apereo.cas:cas-server-webapp-init${project.appServer}:${project.'cas.version'}"
