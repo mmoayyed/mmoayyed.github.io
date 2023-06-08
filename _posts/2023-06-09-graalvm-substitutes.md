@@ -47,7 +47,7 @@ Unfortunately, the original `InvalidDatatypeFacetException` is swallowed here wh
 
 Graal VM provides a substitution mechanism to handle scenarios where the offending source code is for whatever reason unavailable or cannot easily be changed. At AOT compile-time, Graal VM native image can change and transform specific bytecode by replacing or deleting it. Substitutions are typically developed in Java, and we will have to build a small substitution that would allow us to see the original exception by logging it.
 
-Modify your project to include the Graal VM SDK dependency and make it's *only available at compile-time*. Then we can start with the following outline:
+Modify your project to include the Graal VM SDK dependency and make sure it's *only available at compile-time*. Then we can start with the following outline:
 {% include googlead1.html  %}
 ```java
 /*
@@ -72,8 +72,9 @@ public final class XSSimpleTypeDecl {
 
 Of course, the above substitution would not compile because:
 
-1. We need access to `internalPrivateMethodHere();` which is an internal private method; the name is specifically changed for maximum effect.
+1. We need access to `internalPrivateMethodHere();` which is an internal private method; the name is specifically chosen for maximum effect.
 2. We need access to the `fIsImmutable` field.
+
 {% include googlead1.html  %}
 To solve the first issue, we can use an alias to refer to the original method:
 
