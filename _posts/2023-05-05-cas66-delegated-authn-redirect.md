@@ -33,7 +33,7 @@ cas.authn.pac4j.saml[0].keystore-path=/etc/cas/config/samlKeystore.jks
 cas.authn.pac4j.saml[0].identity-provider-metadata-path=https://login.microsoftonline.com/...
 cas.authn.pac4j.saml[0].client-name=SAML2Client
 ```
-
+{% include googlead1.html  %}
 Now, let's decide how to redirect to Azure AD. 
 
 # User Selection
