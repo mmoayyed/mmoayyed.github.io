@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      JWT All Things With CAS
+title:      Apereo CAS - JWT All the Things
 summary:    A tutorial on how to let Apereo CAS handle authentication events accompanied by JWTs.
 tags:       ["CAS 7.0.x", "MFA"]
 ---
