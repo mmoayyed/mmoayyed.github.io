@@ -29,7 +29,7 @@ curl --request POST --location 'https://sso.example.org/cas/actuator/releaseAttr
     username=casuser&password=Mellon&service=https%3A%2F%2Fapereo.github.io'
 ```
 
-The produced payload will have the following structure where youw: 
+The produced payload will have the following structure: 
 
 ```json
 {
