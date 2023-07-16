@@ -5,7 +5,7 @@ summary:    Learn how to format and decorate CAS audit logs with new styles and 
 tags:       ["CAS 7.0.x", "GeoLocation", "Audits", "Groovy"]
 ---
 
-Apereo CAS uses the [Inspektr framework](https://github.com/apereo/inspektr) for all audit-related functionality. Inspektr is a very small library designed to capture and record the pieces of runtime information that attempt to answer questions like "*who did what to which resource", when and how?* and in this post, we will review a few strategies that allow one to control and format the output of the audit log in Apereo CAS.
+Apereo CAS uses the [Inspektr framework](https://github.com/apereo/inspektr) for all audit-related functionality. Inspektr is a very small library designed to capture and record the pieces of runtime information that attempt to answer questions like "*who did what to which resource, when and how?*" and in this post, we will review a few strategies that allow one to control and format the output of the audit log in Apereo CAS.
 
 {% include googlead1.html  %}
 
