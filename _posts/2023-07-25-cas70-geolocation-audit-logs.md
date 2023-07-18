@@ -68,7 +68,7 @@ ip: ${
 }
 ```
 
-It of course does the job to some extent, but looks fairly ugly to me! Dynamically accessing CAS internal components inside a Groovy script typically leads to maintainability issues, especially when/if such components move around and get refactored in the CAS codebase. Execution failures remain somewhat unknown and silent until runtime when the feature is exercised and this might remain unnoticed for a while. 
+It of course does the job to some extent, but looks fairly ugly to me! Dynamically accessing CAS internal components inside a Groovy script typically leads to long-term maintenance issues, especially when/if such components move around and get refactored in the CAS codebase. Execution failures remain somewhat unknown and silent until runtime when the feature is exercised and this might remain unnoticed for a while. 
 
 A safer though slightly heavy-handed option for this task would be to house the logic inside a `ClientInfoResolver` component:
 {% include googlead1.html  %}
@@ -80,7 +80,7 @@ public ClientInfoResolver casAuditClientInfoResolver(GeoLocationService service)
 ```
 
 <div class="alert alert-info">
-  <strong>Note</strong><br/>The bean/method name chosen above must be exactly chosen as shown. At runtime, the active application context would be to select your version of this particular bean instead of what ships by default with CAS, and this decision is based on the presence of the same bean name defined above.
+  <strong>Note</strong><br/>The method (bean) name chosen above must be exactly as shown. At runtime, the active application context would begin to select your version of this particular bean instead of what ships by default with CAS, and this decision is based on the presence of the same bean name defined above.
 </div>
 
 Once the bean is correctly registered with the Spring application context, your implementation should be able to safely geolocate client IP addresses:
