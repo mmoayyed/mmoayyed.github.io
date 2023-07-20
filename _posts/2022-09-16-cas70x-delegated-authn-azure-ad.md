@@ -5,7 +5,7 @@ summary:    Learn how to use Microsoft Azure Active Directory as an external Ope
 tags:       ["CAS 7.0.x", "Delegated Authentication", "Azure Active Directory"]
 ---
 
-Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers][saml2] for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
+Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers][delegation] for quite some time. This functionality, if memory serves me correctly, started around CAS 3.x as an extension based on the [pac4j project](https://github.com/pac4j/pac4j) which then later found its way into the CAS codebase as a first-class feature. Since then, the functionality more or less has evolved to allow the adopter less configuration overhead and fancier ways to automated workflows.
 
 {% include googlead1.html %}
 Of course, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
