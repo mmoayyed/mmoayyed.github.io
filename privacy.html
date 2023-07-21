@@ -1,0 +1,55 @@
+---
+layout: default
+background-color: "#212529"
+searchbutton: false
+ignorefooter: "true"
+title: Misagh Moayyed
+---
+
+{% include pageheader.html %} <link rel="stylesheet" type="text/css"
+href="{{"css/style.css" | relative_url }}"> <link rel="stylesheet"
+type="text/css" href="{{"css/responsive.css" | relative_url }}">
+
+<script>
+  $(".masthead").css("z-index", "-1");
+  $(".logo").css("margin-top", "6px");
+  $(".logo").css("margin-left", "6px");
+  $(".masthead").css("background-color", "rgb(7, 6, 6)");
+  $(".navbar-toggle").css("margin-top", "0px");
+  $(".navbar-toggle").css("margin-right", "0px");
+  $(".navbar-nav>li").css("margin-left", "20px");
+  $("nav").removeClass("navbar");
+</script>
+
+<section id="about-us">
+  <div class="container">
+    <div style="text-align: center; margin: 35px 0 0 0">
+      <h2>Privacy Policy</h2>
+    </div>
+
+    <div class="clear-fix team-member-wrapper">
+      <div class="team-member-body">
+        <br />
+
+        <p>
+
+Fawnoos uses Google Adsense to serve ads-based content. It also uses Google Analytics to track visitors. We only allow connections to Fawnoos over a secure HTTPS connection. This ensures that no one between you and Fawnoos can secretly listen to your requests and steal your personal data.
+        </p>
+        <br>
+        <p>
+          Fawnoos does not actively use cookies that could be used to identify the user. We also do not collect any personal information about the user invisibly.
+        </p>
+        <br>
+        
+        <p>If you have any questions about data protection, please reach out.</p>
+      </div>
+
+    </div>
+
+    <section>{% include contactus.html %}</section>
+
+
+  </div>
+</section>
+
+{% include footermain.html %}
