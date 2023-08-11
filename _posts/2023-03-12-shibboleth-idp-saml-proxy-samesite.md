@@ -47,12 +47,12 @@ The `%{idp.home}/conf/my-samesite.js` executes a JSR-223 scriptlet against a `Pr
 {% include googlead1.html %}
 ```javascript
 function minVersion(ua, browserName, version) {
-    let setSameSite = true;
-    let regexString = browserName + "/(\\d+)\\.";
-    let regex = new RegExp(regexString);
-    let match = ua.match(regex);
+    var setSameSite = true;
+    var regexString = browserName + "/(\\d+)\\.";
+    var regex = new RegExp(regexString);
+    var match = ua.match(regex);
     if (match) {
-        let major = parseInt(match[1]);
+        var major = parseInt(match[1]);
         if (major < version) { 
             setSameSite = false;
         }
@@ -60,11 +60,11 @@ function minVersion(ua, browserName, version) {
     return setSameSite;
 }
 
-let activate = true;
-const logger = Java.type("org.slf4j.LoggerFactory").getLogger("My.SameSiteCondition");
+var activate = true;
+var logger = Java.type("org.slf4j.LoggerFactory").getLogger("My.SameSiteCondition");
 try {
     if (input != null) {
-        let UA = input.getHeader("User-Agent");
+        var UA = input.getHeader("User-Agent");
         if (UA != null) {
             logger.info('SameSite User-Agent: ' + UA);
             if ((UA.contains("iPhone") || UA.contains("iPad") || UA.contains(" OS X ")) 
