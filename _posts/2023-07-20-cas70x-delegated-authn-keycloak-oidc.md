@@ -2,7 +2,7 @@
 layout:     post
 title:      Apereo CAS - Delegated Authentication with Keycloak
 summary:    Learn how to use Keycloak as an external OpenID Connect identity provider and connect it to CAS for a delegated/proxy authentication scenario.
-tags:       ["CAS 7.0.x", "Delegated Authentication", "OpenID Connect", "Docker"]
+tags:       ["CAS 7.0.x", "Delegated Authentication", "OpenID Connect", "Docker", "Keycloak"]
 ---
 
 Apereo CAS has had support to delegate authentication to [external OpenID Connect identity providers][delegation] for quite some time. In a CAS context, *delegation* is just a fancy word that ultimately means, whether automatically or at the click of a button, the browser is expected to redirect the user to the appropriate identity provider endpoint, and on the return trip back, CAS is tasked to shake hands, parse the response and extract attributes, etc to establish an authentication session, issue tickets, etc. In other words, in delegated scenarios, the main identity provider is an external system and CAS simply begins to act as a client or proxy in between.
