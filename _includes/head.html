@@ -55,12 +55,18 @@
             $('.filter').filter('.' + value).show('1000');
         }
     });
-
     window.onload = function() { 
       var el = document.getElementById('g-recaptcha-response'); 
       if (el) { 
         el.setAttribute('required', 'required'); 
       } 
+      let unfilled = $("ins.adsbygoogle[data-ad-status=unfilled]").length;
+      let filled = $("ins.adsbygoogle[data-ad-status=filled]").length;
+      let host = document.location.host;
+      if (unfilled == 0 && filled == 0 && host !== "localhost:4000") {
+        $(".blogpost").empty();
+        $("#blocker-warning").show();
+      }
     }
   </script>
 

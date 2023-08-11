@@ -1,5 +1,10 @@
 @import url('../fonts/font-awesome/css/font-awesome.min.css');
 
+#blocker-warning {
+    display:none;
+    margin-top: 20px;
+}
+
 .div-code-button {
     display: flex;
     flex-direction: row-reverse;
