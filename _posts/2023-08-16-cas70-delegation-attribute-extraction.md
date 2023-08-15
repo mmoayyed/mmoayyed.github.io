@@ -21,7 +21,6 @@ Our focus is based on the following:
 Once you have prepared your CAS build for [delegated authentication][delegation], the basic configuration requires handing off authentication to an external SAML2 identity provider as follows:
 
 {% include googlead1.html  %}
-
 ```
 cas.authn.pac4j.saml[0].keystore-password=...
 cas.authn.pac4j.saml[0].private-key-password=...
@@ -37,7 +36,6 @@ cas.authn.pac4j.saml[0].client-name=SAML2Client
 As it stands out, delegated authentication and attribute extraction in CAS is handled by the [Pac4j][pac4j] library, which provides a flexible way for us to collect attributes from the response. For example, in its simplest form, we could instruct CAS to capture the attribute `phone` from the profile and record it under the name `phoneNumber`:
 
 {% include googlead1.html  %}
-
 ```
 cas.authn.pac4j.saml[0].mapped-attributes[0]=phone->phoneNumber
 ```
@@ -80,7 +78,7 @@ cas.authn.pac4j.saml[0].saml2-attribute-converter=file:/path/to/AttributeConvert
 ```
 
 ...and the script would be tasked to run your conversion rules and produce attributes:
-
+{% include googlead1.html  %}
 ```groovy
 import org.pac4j.saml.credentials.*
 import org.opensaml.core.xml.*
