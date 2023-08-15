@@ -12,7 +12,7 @@ tags:       ["CAS 7.0.x", "Monitoring", "Spring Boot"]
 In this post, we will take a brief look at how JavaMelody may be configured to monitor CAS deployments. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration

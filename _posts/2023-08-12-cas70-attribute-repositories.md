@@ -12,7 +12,7 @@ tags:       ["CAS 7.0.x", "Gradle", "Spring Boot", "Attribute Resolution"]
 In this post, we will demonstrate how attribute repositories in CAS can be customized and rebuilt. Our starting position is:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 
 # Attribute Repository Plan
 

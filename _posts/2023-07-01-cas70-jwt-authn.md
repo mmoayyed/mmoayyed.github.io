@@ -18,7 +18,7 @@ In this tutorial, I am going to briefly review various forms of JWT functionalit
 Our starting position is as follows:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 
 # JWT Authentication
 

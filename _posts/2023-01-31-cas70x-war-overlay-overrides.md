@@ -12,7 +12,7 @@ CAS deployments oftentimes need to customize and/or overwrite behavior that is o
 In this post, we will briefly take a look at strategies that allow one to overwrite configuration files and source code from the upstream CAS project without having to manually rebuild the entire codebase from the source. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Source Files

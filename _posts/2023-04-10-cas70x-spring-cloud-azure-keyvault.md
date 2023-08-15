@@ -12,7 +12,7 @@ Azure Key Vault provides secure storage of generic secrets, such as passwords an
 This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration

@@ -12,7 +12,7 @@ A good number of Apereo CAS settings and properties may carry sensitive values. 
 In this post, we will take a brief look at how CAS may be customized to decrypt secured properties on the fly. Our starting position is:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration

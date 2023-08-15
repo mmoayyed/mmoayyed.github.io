@@ -12,7 +12,7 @@ When Apereo CAS is deployed in production, it needs to be monitored and observed
 This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # CAS Metrics

@@ -14,7 +14,7 @@ WebAuthn support in Apereo CAS comes in two flavors: one that can act as a multi
 Our starting position is as follows:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 
 # Configuration
 

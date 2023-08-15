@@ -19,7 +19,7 @@ This tutorial specifically focuses on:
 
 - Docker
 - Spring Cloud GCP `4.1.3`
-- Java `17`
+- Java `21`
 
 # Running Emulators
 

@@ -12,7 +12,7 @@ Apereo CAS deployments typically tend to manage SSO sessions using browser cooki
 In this post, we will review a number of these options with a specific focus on linking SSO sessions to geographical locations. Our starting position is as follows:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 
 # Cookie Security
 

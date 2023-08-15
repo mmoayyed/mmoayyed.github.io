@@ -16,7 +16,7 @@ tags:       ["CAS 7.0.x", "Service Integrations"]
 In this post, we will briefly take a look at a few options that allow for a seamless integration between Apereo CAS and Apache Syncope. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Authentication

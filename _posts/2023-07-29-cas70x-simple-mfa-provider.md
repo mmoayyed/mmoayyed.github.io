@@ -16,7 +16,7 @@ In this tutorial, we are going to briefly review the steps required to turn on [
 Our starting position is based on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [MockMock](https://github.com/tweakers/MockMock)
 
 # Configuration

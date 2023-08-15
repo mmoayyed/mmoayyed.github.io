@@ -14,7 +14,7 @@ This is especially important for Apereo CAS, as SSO management is mainly backed 
 In this post, we will briefly take a look at a few configuration options that allow CAS to control and define the `SameSite` attribute. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration

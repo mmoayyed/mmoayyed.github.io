@@ -16,7 +16,7 @@ Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a 
 This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 ## Configuration

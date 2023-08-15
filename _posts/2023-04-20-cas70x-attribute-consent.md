@@ -12,7 +12,7 @@ Apereo CAS provides the ability to require user consent to attribute release. Pr
 This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Configuration

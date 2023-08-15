@@ -12,7 +12,7 @@ tags:       ["CAS 7.0.x", "Redis"]
 In this post, we will briefly take a look at some of the available options that allow for a seamless integration between Apereo CAS and Redis. This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Attribute Consent

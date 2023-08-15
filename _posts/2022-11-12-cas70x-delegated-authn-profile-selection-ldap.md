@@ -14,7 +14,7 @@ In this post, we will focus on available strategies that allow CAS to link a use
 This tutorial specifically requires and focuses on:
 
 - CAS `7.0.x`
-- Java `17`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 # Overview
