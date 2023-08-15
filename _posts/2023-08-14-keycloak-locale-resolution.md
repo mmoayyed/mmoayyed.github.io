@@ -86,7 +86,7 @@ If you have questions about the contents and the topic of this blog post, or if 
 
 # So...
 
-I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute][contribguide] as best as you can.
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to engage and contribute as best as you can.
 
 Happy Coding,
 
