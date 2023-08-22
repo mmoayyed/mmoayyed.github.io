@@ -1,0 +1,37 @@
+---
+layout: default
+background-color: "#212529"
+searchbutton: false
+ignorefooter: "true"
+title: Misagh Moayyed
+---
+
+{% include pageheader.html %} <link rel="stylesheet" type="text/css"
+href="{{"css/style.css" | relative_url }}"> <link rel="stylesheet"
+type="text/css" href="{{"css/responsive.css" | relative_url }}">
+
+<style>
+    .masthead {
+        z-index: -1;
+        background-color: rgb(7, 6, 6);
+    }
+    .logo {
+        margin-top: 6px;
+        margin-left: 6px;
+    }
+    .navbar-nav>li {
+        margin-left: 20px;
+    }
+    .navbar-toggle {
+        margin-top: 0px;
+        margin-right: 0px; 
+    }
+</style>
+
+<script>
+  $("nav").removeClass("navbar");
+</script>
+
+{{ content }}
+
+{% include footermain.html %}
