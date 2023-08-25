@@ -1,5 +1,9 @@
 @import url('../fonts/font-awesome/css/font-awesome.min.css');
 
+#navbar-collapse-1 {
+    margin-top: 5px;
+}
+
 #blocker-warning {
     display:none;
     margin-top: 20px;
@@ -21,6 +25,7 @@
     margin-top: -20px;
     font-family: 'Courier New', Courier, monospace;
 }
+
 .btn-copy-code:hover{
     background-color: rgb(177, 104, 8);
 }
