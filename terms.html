@@ -4,33 +4,65 @@ ignorefooter: "true"
 ---
 
 <style>
-    #contactuscontainer {
-        width: 955px;
+    .fab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
     }
-    #termscontainer {
-        min-width: 1550px;
+
+    @media (max-width: 900px) {
+        .fab {
+            display: none;
+        }
     }
 </style>
 
+<script>
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+       
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 350 &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    function handleScroll() {
+        const triggerElement = document.getElementById("contact-section-header");
+        const fabcontactus = document.getElementById("fabcontactus");
+
+        if (isInViewport(triggerElement) || window.outerWidth <= 700) {
+            fabcontactus.style.display = "none";
+        } else {
+            fabcontactus.style.display = "block";
+        }
+    }
+    window.addEventListener("scroll", handleScroll);
+</script>
+
 <section id="terms">
     <div class="container" id="termscontainer">
-        <div style="text-align: center; margin: 35px 0 25px 0">
+        <div style="margin-top: 25px;" id="termsheader">
             <h2>Contracts & Statements of Work</h2>
         </div>
         <div>
+            <p class="text-wrap">
             Fawoos consulting services and support options typically fall into the following categories. Please review the details listed below and <a href="#contact-section-header">follow up</a> to discuss your project and/or support needs. While this is ultimately up to your schedule and project needs, most projects typically begin approixmately 24/48 hours after the contract is signed.
-             
+            </p> 
             <p><br></p>
         </div>
 
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#tm"><i class="fa fa-clock"></i> Time & Material</a>
                 </li>
                 <li>
-                  <a class="nav-link" data-toggle="tab" href="#fixedbid"><i class="fa fa-file"></i> Fixed Scope</a>
+                  <a class="nav-link" data-toggle="tab" href="#fixedbid"><i class="fas fa-file-contract"></i> Fixed Scope</a>
                 </li>
             </ul>
     
@@ -90,12 +122,20 @@ ignorefooter: "true"
                     <p>
                         <strong>None</strong>. No remote direct access to systems (VPN, Remote Desktop, etc.) will ever be required, used or asked. All interactions are strictly limited to email communications, screen-sharing tools and offline access to redacted configuration files for troubleshooting and testing, etc. if and when necessary.
                     </p>
+
+                    <p><br></p>
+                    <ul>
+                        <li><h6 style="margin-bottom: 25px;"><i class="fa fa-arrow-right"></i> How do you handle payments?</h6></li>
+                    </ul>
+                    <p>
+                        You will typically receive an invoice within <u>7 to 14 days</u> of the project start date, and are expected to settle the invoice within <u>7 to 14 days</u> of the invoice submission date so the support activities may resume. Payments are handled via bank account wire transfers, or via the likes of PayPal.
+                    </p>
     
                 </div>
     
                 <div class="tab-pane" id="fixedbid" style="margin-bottom: 25px; margin-top: 25px">
     
-                    <p>This option requires an exact project description and task list from you. We will discuss your deployment environment, specific support needs, current software versions and all other relevant issues upfront to then arrive at an exact scope, focused on a specific use case. You will then receive a fixed quote. The project stops once the scope is verified and delivered. 
+                    <p>This option requires an <ul>exact project description and task list</ul> from you. We will discuss your deployment environment, specific support needs, current software versions and all other relevant issues upfront to then arrive at an exact scope, focused on a specific use case. You will then receive a fixed quote. The project stops once the scope is verified and delivered. 
                     <p><br></p>
     
                     <ul>
@@ -109,7 +149,7 @@ ignorefooter: "true"
                         <li><h6 style="margin-bottom: 25px;"><i class="fa fa-arrow-right"></i> What can I use these hours for?</h6></li>
                     </ul>
                     <p>
-                        A fixed-scope project focuses on an exact pre-defined scope written down and reviewed by all stakeholders. Any task that is not strictly defined upfront and noted in the statement of work is considered as out of scope and will be excluded from project delivery.
+                        A fixed-scope project focuses on an <strong>exact pre-defined scope</strong> written down and reviewed by all stakeholders. Any task that is not strictly defined upfront and noted in the statement of work is considered as out of scope and will be excluded from project delivery.
                         <p><br></p>
                     <ul>
                         <li><h6 style="margin-bottom: 25px;"><i class="fa fa-arrow-right"></i> When does the project expire?</h6></li>
@@ -129,16 +169,35 @@ ignorefooter: "true"
                         <li><h6 style="margin-bottom: 25px;"><i class="fa fa-arrow-right"></i> What kind of access do you need?</h6></li>
                     </ul>
                     <p>
-                        Most likely, we will need direct access to your systems (VPN, Remote Desktop, etc.), source code repositories or deployment environments to complete the work.
+                        Most likely, we will need direct access to your systems (VPN, Remote Desktop, etc.), source code repositories or deployment environments to complete the work, and build/deploy the software artifacts.
                     </p>
     
+                    <p><br></p>
+                    <ul>
+                        <li><h6 style="margin-bottom: 25px;"><i class="fa fa-arrow-right"></i> How do you handle payments?</h6></li>
+                    </ul>
+                    <p>
+                        You will typically receive an invoice within <u>7 to 14 days</u> of the project start date, and are expected to settle the invoice within <u>7 to 14 days</u> of the invoice submission date so the support activities may resume. Payments are handled via bank account wire transfers, or via the likes of PayPal.
+                    </p>
+    
+
                 </div>
             </div>
     
         </div>
-
-        <div class="col-lg-4">
-            <section>{% include contactus.html %}</section>
-        </div>
     </div>
+
+    {% include contactus.html %}
+
 </section>
+
+<div class="fab" id="fabcontactus">
+    <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" onclick="document.location='#contact-section-header';">
+            <span>
+                Contact Us
+                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+            </span>
+        </button>
+    </div>
+</div>
