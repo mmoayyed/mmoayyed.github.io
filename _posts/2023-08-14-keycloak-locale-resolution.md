@@ -12,7 +12,7 @@ tags:       ["Keycloak"]
 In this post, we will look at options provided by Keycloak that allow a server developer to customize the locale resolution rules for various freemarker templates and HTML forms. Our starting position is as follows:
 
 - Keycloak `22`
-- Java `21`
+- Java `17`
 
 # Locale Selection Rules
 
