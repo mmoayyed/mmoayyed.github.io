@@ -1,6 +1,5 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
-  $('.blogpost').css('display', 'block');
 })
 
 

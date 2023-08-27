@@ -229,7 +229,7 @@ Conatct Form Activation
 }
 .wrap-contact100 {
   width: 100%;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 10px;
   overflow: hidden;
   position: relative;
