@@ -69,7 +69,7 @@ def run(final Object... args) {
 }
 ```
 
-The above script is mainly tasked to produce a list of warning messages conditionally. Such messages are communicated back to the CAS webflow in the form of language codes that may be found in the CAS language bundled. For example, if the Groovy script decides that *the account is not having a good day*, it will then pass back a warning to CAS that aims to explain this scenario via the CAS user interface under the language code `lang.account.bad.day`. The expectation is that this code is defined in CAS language bundles and is specifically designed to explain this situation:
+The above script is mainly tasked to produce a list of warning messages conditionally. Such messages are communicated back to the CAS webflow in the form of language codes that may be found in the CAS language bundles. For example, if the Groovy script decides that *the account is not having a good day*, it will then pass back a warning to CAS that aims to explain this scenario via the CAS user interface under the language code `lang.account.bad.day`. The expectation is that this code is defined in CAS language bundles and is specifically designed to explain this situation:
 {% include googlead1.html  %}
 ```properties
 lang.account.bad.day=Sorry, you are having a bad day!
