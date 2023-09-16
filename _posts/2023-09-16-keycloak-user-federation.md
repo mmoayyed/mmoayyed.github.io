@@ -21,7 +21,7 @@ You can use Keycloak's *User Storage SPI* to write extensions to Keycloak to con
 <div class="alert alert-info">
   <strong>SPI What?</strong><br/>SPI is a design pattern and a mechanism, typically in Java, for allowing third-party extensions or plugins to be easily integrated into a Java application without modifying its core code. SPI is commonly used in libraries and frameworks to provide a way for developers to extend or customize the behavior of the library without having to modify its source code. Keycloak has a number of Service Provider Interfaces (SPI) for which you can implement your own providers to customize functionality and extend behavior.
 </div>
-
+{% include googlead1.html  %}
 When the Keycloak runtime needs to look up a user, such as when a user is logging in, it performs a number of steps to locate the user. It first looks to see if the user is in the user cache; if the user is found it uses that in-memory representation. Then it looks for the user within the Keycloak local database. If the user is not found, it then loops through User Storage SPI provider implementations to perform the user query until one of them returns the user the runtime is looking for. 
 
 Note that User Storage SPI provider implementations are not enabled by default, but instead must be enabled and configured per realm under the User Federation tab in the administration console.
@@ -86,7 +86,7 @@ org.example.keycloak.MyUserStorageProviderFactory
 # Registering User Storage Providers
 
 As discussed before, User Storage SPI provider implementations are not enabled by default, but instead must be enabled and configured per realm under the User Federation tab in the administration console. This can be done with the following steps:
-
+{% include googlead1.html  %}
 - Select "User Federation" in the menu column
 - Select your provider in the listbox that shows "Add provider..."
 - Click "Save" on the "Add User Federation Provider" screen.
@@ -99,6 +99,6 @@ If you have questions about the contents and the topic of this blog post, or if 
 
 ## Finale
 
-I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to [engage and contribute](https://apereo.github.io/cas/developer/Contributor-Guidelines.html) as best as you can.
+I hope this review was of some help to you and I am sure that both this post as well as the functionality it attempts to explain can be improved in any number of ways. Please feel free to engage and contribute as best as you can.
 
 [Misagh Moayyed](https://fawnoos.com)
