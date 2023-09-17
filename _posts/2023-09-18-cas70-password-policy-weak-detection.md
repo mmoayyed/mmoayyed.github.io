@@ -2,14 +2,14 @@
 layout:     post
 title:      Apereo CAS - Weak Password Detection
 summary:    Learn how to tune the password management features of your Apereo CAS deployment to detect and catch weak passwords that fail the strength criteria of your password policy.
-tags:       ["CAS 7.0.x", "LDAP"]
+tags:       ["CAS 7.0.x"]
 ---
 
 In an age where cyber threats loom larger than ever before, the need for robust password policies and efficient management tools has become paramount. As organizations navigate the complex landscape of digital security, they seek solutions that not only safeguard sensitive data but also streamline the user experience. Apereo CAS presents password management capabilities that excel in bolstering security through its password policy features and management capabilities.
 
 {% include googlead1.html  %}
 
-Apereo CAS can empowers organizations to proactively identify vulnerable accounts with weak passwords, compelling users to update their passwords, and ultimately fortifying the barriers against potential threats. In this post we will take a quick look at the steps required to enable weak password detection with Apereo CAS. Our starting position is as follows:
+Apereo CAS can empower organizations to proactively identify vulnerable accounts with weak passwords, compelling users to update their passwords, and ultimately fortifying the barriers against potential threats. In this post we will take a quick look at the steps required to enable weak password detection with Apereo CAS. Our starting position is as follows:
 
 - CAS `7.0.x`
 - Java `21`
