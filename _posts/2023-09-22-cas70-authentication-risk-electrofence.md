@@ -50,7 +50,7 @@ cas.authn.adaptive.risk.response.risk-verification-token-expiration=PT1M
 Risk confirmation attempts are only evaluated up to a point in history, typically `7` days. That is to say, subsequent authentication attempts that are detected as risky (and resemble similar traits) are then evaluated against previous confirmations in history for the past `7` days. Once we move beyond this point in the history of authentication attempts, the confirmations no longer hold and the user will be asked to verify their attempt again. You may of course control the duration of this window via:
 {% include googlead1.html  %}
 ```properties
-cas.authn.adaptive.risk.response.risk-verification-hostory=P7D
+cas.authn.adaptive.risk.response.risk-verification-history=P7D
 ```
 
 # Need Help?
