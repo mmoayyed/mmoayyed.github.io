@@ -63,7 +63,7 @@ Certain configuration elements about the Docker images, such as the base image c
 containerImageOrg=apereo
 containerImageName=cas
 
-baseDockerImage=azul/zulu-openjdk:17
+baseDockerImage=azul/zulu-openjdk:11
 allowInsecureRegistries=false
 dockerImagePlatform=amd64:linux
 ```
@@ -105,7 +105,7 @@ Just like before, certain configuration elements about the Docker images, such a
 containerImageOrg=apereo
 containerImageName=cas
 
-baseDockerImage=azul/zulu-openjdk:17
+baseDockerImage=azul/zulu-openjdk:11
 allowInsecureRegistries=false
 dockerImagePlatform=amd64:linux
 ```
