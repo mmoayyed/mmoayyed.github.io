@@ -33,6 +33,15 @@ Any account that fails to pass the strength criteria, as indicated by the above 
 {% include googlead1.html  %}
 {% include image.html img="/images/blog/assets/2023-09-16-20-54-53.png" width="70%" title="Apereo CAS - Weak Password Detection" %}
 
+If you'd rather write your own policy implementation and move the detection logic out of CAS, you can always supply your own implementation via:
+
+```java
+@Bean
+public AuthenticationPostProcessor passwordStrengthAuthenticationPostProcessor() {
+    return new MyOwnPasswordDetectionLogic();
+}
+```
+
 # Need Help?
 
 If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
