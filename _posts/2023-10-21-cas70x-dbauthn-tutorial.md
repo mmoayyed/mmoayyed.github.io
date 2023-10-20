@@ -167,9 +167,9 @@ Once CAS understands the schema, we should then specify which attributes really 
 {% include googlead1.html  %}
 
 ```properties
-cas.authn.attribute-repository.attributes.firstname=firstname
-cas.authn.attribute-repository.attributes.lastname=lastname
-# cas.authn.attribute-repository.attributes.phone=phone
+cas.authn.attribute-repository.jdbc[0].attributes.firstname=firstname
+cas.authn.attribute-repository.jdbc[0].attributes.lastname=lastname
+# cas.authn.attribute-repository.jdbc[0].attributes.phone=phone
 ```
 
 Note how I am skipping over `phone`.
