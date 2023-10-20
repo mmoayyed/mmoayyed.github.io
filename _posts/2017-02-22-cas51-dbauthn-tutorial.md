@@ -218,6 +218,10 @@ Which shows that CAS has been able to understand the schema and map columns to a
 
 ![image](https://cloud.githubusercontent.com/assets/1205228/23163353/5c39f42a-f847-11e6-806e-6d4e3ca88805.png)
 
+# Need Help?
+
+If you have questions about the contents and the topic of this blog post, or if you need additional guidance and support, feel free to [send us a note ](/#contact-section-header) and ask about consulting and support services.
+
 # So...
 
 I hope this brief tutorial was of some assistance to you. Remember that the point here is not to enumerate best practices and such. It's just to show the possibilities. It's important that you start off simple and make changes one step at a time. Once you have a functional environment, you can gradually and slowly add customizations to move files, tables and queries around.

@@ -31,4 +31,4 @@ codes.forEach((code) => {
   countID++;
 }); 
 new ClipboardJS('.btn-copy-code');
-// switchMode();
+switchMode();
