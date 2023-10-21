@@ -69,11 +69,11 @@ For this tutorial, this is what I actually needed to make this work:
 cas.authn.jdbc.query[0].sql=SELECT * FROM USERS WHERE uid=?
 cas.authn.jdbc.query[0].user=database-user
 cas.authn.jdbc.query[0].password=database-password
-cas.authn.jdbc.query[0].fieldPassword=psw
+cas.authn.jdbc.query[0].field-password=psw
 cas.authn.jdbc.query[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
 
 cas.authn.jdbc.query[0].dialect=org.hibernate.dialect.HSQLDialect
-cas.authn.jdbc.query[0].driverClass=org.hsqldb.jdbcDriver
+cas.authn.jdbc.query[0].driver-class=org.hsqldb.jdbcDriver
 ```
 
 The last two settings are important, and may vary depending on your database choice. For example, for PostgreSQL you could use:
@@ -126,8 +126,8 @@ Then configure CAS to handle `MD5` password encoding:
 
 ```
 cas.authn.jdbc.query[0].password-encoder.type=DEFAULT
-cas.authn.jdbc.query[0].password-encoder.encodingAlgorithm=MD5
-cas.authn.jdbc.query[0].password-encoder.characterEncoding=UTF-8
+cas.authn.jdbc.query[0].password-encoder.encoding-algorithm=MD5
+cas.authn.jdbc.query[0].password-encoder.character-encoding=UTF-8
 ```
 
 # Build and Deploy
@@ -159,7 +159,7 @@ cas.authn.attribute-repository.jdbc[0].singleRow=false
 cas.authn.attribute-repository.jdbc[0].sql=SELECT * FROM USERATTRS WHERE {0}
 cas.authn.attribute-repository.jdbc[0].username=uid
 cas.authn.attribute-repository.jdbc[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
-cas.authn.attribute-repository.jdbc[0].columnMappings.attrname=attrvalue
+cas.authn.attribute-repository.jdbc[0].column-mappings.attrname=attrvalue
 ```
 
 Once CAS understands the schema, we should then specify which attributes really should be retrieved by CAS.
