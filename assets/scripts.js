@@ -9,7 +9,7 @@ function switchMode() {
     .css("background-image", "linear-gradient(to right, #020001, #1a1618)")
     .css("color", "#d6d6d6")
   $('code.highlighter-rouge').css("color", "#dfcb66");
-  $('blockquote').css("color", "ghostwhite");
+  $('blockquote,h1,h2,h3,h4,h5,h6,h5>a').css("color", "ghostwhite");
   $('#contact-section h6').css("color", "lightyellow");
 }
 
