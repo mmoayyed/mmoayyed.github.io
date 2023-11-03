@@ -61,7 +61,20 @@ Hop over to [the overlay installation](https://apereo.github.io/cas/development/
 
 # Configure CAS
 
-Follow the steps [described here](https://apereo.github.io/cas/development/authentication/Database-Authentication.html) to add the needed CAS modules. You do not have to add any additional JARs and such for database drivers. CAS ships with a few [automatically and by default](https://apereo.github.io/cas/development/installation/JDBC-Drivers.html).
+Follow the steps [described here](https://apereo.github.io/cas/development/authentication/Database-Authentication.html) to add the needed CAS modules. You do not have to add any additional JARs and such for database drivers. CAS ships with a few [automatically and by default](https://apereo.github.io/cas/development/installation/JDBC-Drivers.html). To do so, find the `build.gradle` file in your CAS overlay, and locate the _correct_ `dependencies` block to add the following module:
+
+```groovy
+dependencies {
+    /**
+     * CAS dependencies and modules may be listed here.
+     **/
+    implementation "org.apereo.cas:cas-server-support-jdbc"
+}
+```
+
+Once you have added the change, be sure to rebuild the CAS overlay. 
+
+Please note that for the purposes of this tutorial, we assume that all CAS configuration properties are put inside `/etc/cas/config/cas.properties`. You will need to create this file, if one does not already exist. 
 
 For this tutorial, this is what I actually needed to make this work:
 {% include googlead1.html  %}
@@ -90,6 +103,13 @@ cas.authn.jdbc.query[0].driver-class=com.mysql.cj.jdbc.Driver
 cas.authn.jdbc.query[0].dialect=org.hibernate.dialect.MySQLDialect
 ```
 
+Or for Oracle you could use:
+
+```
+cas.authn.jdbc.query[0].driver-class=oracle.jdbc.driver.OracleDriver
+cas.authn.jdbc.query[0].dialect=org.hibernate.dialect.OracleDialect
+```
+
 Remember to adjust the URL and connection string correctly for each database type.
 
 I also need to disable static authentication. It would also be very nice if I could turn on `DEBUG` logs and see what CAS attempts to do:
@@ -102,7 +122,7 @@ cas.authn.accept.enabled=false
 
 # Build and Deploy
 
-Once you get CAS built and deployed, logs should indicate something like this:
+Once you get CAS built, i.e `./gradlew clean build`, and deployed, logs should indicate something like this:
 
 ```bash
 - <No password encoder shall be created given the requested encoder type [NONE]>
@@ -126,8 +146,15 @@ Then configure CAS to handle `MD5` password encoding:
 
 ```
 cas.authn.jdbc.query[0].password-encoder.type=DEFAULT
-cas.authn.jdbc.query[0].password-encoder.encoding-algorithm=MD5
 cas.authn.jdbc.query[0].password-encoder.character-encoding=UTF-8
+
+cas.authn.jdbc.query[0].password-encoder.encoding-algorithm=MD5
+```
+
+Or alternatively, if you wanted to use a different algorithm such as `SHA-256`, you could use:
+
+```
+cas.authn.jdbc.query[0].password-encoder.encoding-algorithm=SHA-256
 ```
 
 # Build and Deploy
@@ -155,7 +182,7 @@ Good job! Lets get some attributes now.
 Because the `USERATTRS` follows something of a *multi-row* setup, we want to make sure CAS [can understand](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html#person-directory) the specifics of this schema model. We will need to set up a separate attribute repository instance that CAS will contact once the user is fully authenticated. In our case, the attribute repository is the same database instance. So the configuration may look something like this:
 
 ```
-cas.authn.attribute-repository.jdbc[0].singleRow=false
+cas.authn.attribute-repository.jdbc[0].single-row=false
 cas.authn.attribute-repository.jdbc[0].sql=SELECT * FROM USERATTRS WHERE {0}
 cas.authn.attribute-repository.jdbc[0].username=uid
 cas.authn.attribute-repository.jdbc[0].url=jdbc:hsqldb:hsql://localhost:9001/xdb
