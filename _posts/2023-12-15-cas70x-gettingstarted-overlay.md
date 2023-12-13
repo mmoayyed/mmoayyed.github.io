@@ -1,19 +1,19 @@
 ---
 layout:     post
-title:      Apereo CAS 6.6.x Deployment - WAR Overlays
+title:      Apereo CAS 7.0.x Deployment - WAR Overlays
 summary:    Learn how to configure and build your own CAS deployment via the WAR overlay method, get rich quickly, stay healthy indefinitely and respect family and friends in a few very easy steps.
-tags:       ["CAS 6.6.x", "Getting Started", "Gradle"]
+tags:       ["CAS 7.0.x", "Getting Started", "Gradle", "Spring Boot"]
 ---
 
 This is a short and sweet tutorial on how to deploy CAS via [the WAR Overlay method][overlaysetup].
 
 This tutorial specifically requires and focuses on:
 
-- CAS `6.6.x`
-- Java 11
+- CAS `7.0.x`
+- Java 21
 
 <div class="alert alert-info">
-  <strong>Need Help?</strong><br/>If you ever get stuck and are in need of additional assistance, start by reviewing the suggestions <a href="https://apereo.github.io/cas/6.6.x/installation/Troubleshooting-Guide.html">provided here</a>. You may also look at available support options <a href="https://apereo.github.io/cas/Support.html">provided here</a>.
+  <strong>Need Help?</strong><br/>If you ever get stuck and are in need of additional assistance, start by reviewing the suggestions <a href="https://apereo.github.io/cas/development/installation/Troubleshooting-Guide.html">provided here</a>. You may also look at available support options <a href="https://apereo.github.io/cas/Support.html">provided here</a>.
 </div>
 
 {% include googlead1.html  %}
@@ -24,7 +24,7 @@ Overlays are a strategy to combat repetitive code and/or resources. Rather than 
 
 Please note that a CAS WAR Overlay can also be generated on demand using the [CAS Initializr](/2021/02/28/cas64-cas-initializr/).
 {% include googlead1.html  %}
-The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `6.6`.
+The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apache Maven* feature and of course, there are techniques and plugins available to apply the same concept to Gradle-based builds as well. For this tutorial, the Gradle overlay we will be working with is [available here][overlay]. Be sure to check out the appropriate branch, that is `7.0`.
 
 <div class="alert alert-info">
   <strong>Gradle WAR Overlay</strong><br/>The Maven WAR overlay template is now deprecated and moved aside. The reference overlay project simply resides here and is transformed to use the Gradle build tool instead. This is done to reduce maintenance overhead and simplify the deployment strategy while allowing future attempts to make auto-generation of the overlay as comfortable as possible.
@@ -42,7 +42,7 @@ curl -k https://getcas.apereo.org/starter.tgz  \
 Once you have forked and cloned the repository locally, or when you have generated the WAR overlay yourself using CAS Initializr, you're ready to begin.
 {% include googlead1.html  %}
 <div class="alert alert-info">
-  <strong>Note</strong><br/>Remember to switch to the appropriate branch. Today, the <code>master</code> branch of the repository applies to CAS <code>6.6.x</code> deployments. That may not necessarily remain true when you start your own deployment. So examine the branches and make sure you <code>checkout</code> the one matching your intended CAS version.
+  <strong>Note</strong><br/>Remember to switch to the appropriate branch. Today, the <code>master</code> branch of the repository applies to CAS <code>7.0.x</code> deployments. That may not necessarily remain true when you start your own deployment. So examine the branches and make sure you <code>checkout</code> the one matching your intended CAS version.
 </div>
 
 # Overlay's Anatomy
@@ -60,7 +60,7 @@ The CAS Gradle Overlay is composed of several sections. The ones you need to wor
 In `gradle.properties` file, project settings, and versions are specified:
 
 ```properties
-cas.version=6.6.0
+cas.version=7.0.0
 ```
 
 The `gradle.properties` file describes what versions of CAS, Spring Boot, and Java are required for the deployment. You are in practice mostly concerned with the `cas.version` setting and as new (maintenance) releases come out, it would be sufficient to simply update that version and re-run the build.
@@ -71,11 +71,11 @@ This might be a good time to review the CAS project's [Release Policy][releasepo
 
 You should do your best to stay current with [CAS releases](https://github.com/apereo/cas/releases), particularly those that are issued as security or patch releases. Security releases are a critical minimal change on a release to address a serious confirmed security issue, and typically take on the format of `X.Y.Z.1`, `X.Y.Z.2`, etc. A patch release is a conservative incremental improvement that includes bug fixes and is absolutely backward compatible with previous patch releases and takes on the format of `X.Y.1`, `X.Y.2`, etc. 
 {% include googlead1.html  %}
-Upgrading to a security or patch release is **STRONGLY** recommended, and should be a drop-in replacement. To upgrade to such releases, all you should have to do is to adjust the `cas.version` setting in your `gradle.proprties` file. For example, going from CAS `6.6.0` to `6.6.1` should be as easy as:
+Upgrading to a security or patch release is **STRONGLY** recommended, and should be a drop-in replacement. To upgrade to such releases, all you should have to do is to adjust the `cas.version` setting in your `gradle.proprties` file. For example, going from CAS `7.0.0` to `7.0.1` should be as easy as:
 
 ```properties
-# cas.version=6.6.0
-cas.version=6.6.1
+# cas.version=7.0.0
+cas.version=7.0.1
 ```
 
 The best way to stay current with CAS releases and receive release notifications and announcements is via subscribing to the GitHub repository and watch for releases:
@@ -451,6 +451,63 @@ That should be all. Now, you can proceed to register your client web application
 }
 ```
 
+# SAML2
+
+We can also turn on support for the [SAML2][saml2] protocol, allowing CAS to act as a SAML2 identity provider. By turning on support for [SAML2][saml2], CAS begins to accept SAML2 authentication requests and will in the end produce SAML2 assertions and responses. In doing so, CAS will also generate its own SAML2 identity provider metadata along with other needed artifacts and certificates, all of which should immediately get you started with service provider registrations.
+
+{% include googlead1.html  %}
+<div class="alert alert-info">
+  <strong>Let There Be SSO</strong><br/>Remember that any successful authentication activity that allows CAS to establish a single sign-on session will be seen as valid, regardless of what protocol is used to interact and communicate with CAS. Switching the protocol and sending authentication requests between various applications integrated with CAS does not invalidate an existing single sign-on session and end-users will be not be asked to login again unless forcefully asked or indicated by the coming request.
+</div>
+
+## Configuration
+
+First, ensure you have declared the appropriate module/intention in the build:
+
+```groovy
+implementation "org.apereo.cas:cas-server-support-saml-idp"
+```
+{% include googlead1.html  %}
+
+Then, we need to decide what our SAML2 entity id should be and where to keep our SAML2 metadata. To keep matters simple, we'll choose the filesystem to track and store metadata and its artifacts:
+
+```properties
+cas.authn.saml-idp.core.entity-id=https://cas.apereo.org/saml/idp,
+cas.authn.saml-idp.metadata.file-system.location=file:///path/to/metadata/directory
+```
+
+An entity id is a globally unique name for your identity provider. It's used to identify the IdP during SAML transactions. It is typically a URI, although it doesn't have to point to an actual resource. It's often set to the IdP's base URL or a specific URL that describes the entity. For example, it could be something like `https://cas.apereo.org/saml/idp`. This id is included in the metadata that CAS shares with its partners, and it's used in SAML messages to indicate the sender or the intended recipient. It's important that the entity id is unique to avoid confusion or conflicts.
+
+Metadata is an XML document that contains information about a SAML entity, such as an Identity Provider (IdP) or a Service Provider (SP). This metadata is used to facilitate the exchange of information for SAML transactions.
+
+<div class="alert alert-info">
+  <strong>SAML2 Metadata Generation</strong><br/>CAS metadata and its related artifacts are generated on startup, if and only if they are not found by the system. Once generated, these artifacts will sit there and are ready to be reused as you start and stop the server. This means, it's very very important that you do not lose or misplace the metadata artifacts. Once lost, CAS will re-generate them for you and that potentially will break every existing SAML2 integration you have already registered with CAS.
+</div>
+
+The metadata typically includes:
+
+- **Entity ID**: A unique identifier for the entity.
+- **Endpoints**: URLs where the entity sends or receives SAML messages. These include Assertion Consumer Service (ACS) endpoints, Single Logout Service (SLS) endpoints, etc.
+- **Certificates**: Public key certificates used for signing and/or encrypting SAML assertions.
+- **Binding**: The protocol binding that the entity supports (e.g., `HTTP-Redirect`, `HTTP-POST`, etc.).
+The metadata is usually exchanged out-of-band (i.e., not through the SAML protocol itself) and is often made available at a publicly accessible URL. This allows partners to fetch and refresh the metadata as needed. For CAS, this typically would be: `https://sso.example.org/cas/idp/metadata`
+
+
+Now, you can proceed to register your client web application with CAS similar to the approach described earlier:
+
+```json
+{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-for-saml2-service-provider",
+  "name" : "Sample",
+  "id" : 1,
+  "metadataLocation" : "https://saml2.example.org/sp/metadata",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  }
+}
+```
+
 # Monitoring & Status
 
 Many CAS deployments rely on the `/status` endpoint for monitoring the health and activity of the CAS deployment. This endpoint is typically secured via an IP address, allowing external monitoring tools and load balancers to reach the endpoint and parse the output. In this quick exercise, we are going to accomplish that task, allowing the `status` endpoint to be available over HTTP to `localhost`.
@@ -628,18 +685,19 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[duo]: https://apereo.github.io/cas/6.6.x/mfa/DuoSecurity-Authentication.html
-[oidc]: https://apereo.github.io/cas/6.6.x/authentication/OIDC-Authentication.html
-[hazelcasttickets]: https://apereo.github.io/cas/6.6.x/ticketing/Hazelcast-Ticket-Registry.html
+[duo]: https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html
+[oidc]: https://apereo.github.io/cas/development/authentication/OIDC-Authentication.html
+[saml2]: https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html
+[hazelcasttickets]: https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html
 [contribute]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[localization]: https://apereo.github.io/cas/6.6.x/ux/User-Interface-Customization-Localization.html
-[haguide]: https://apereo.github.io/cas/6.6.x/high_availability/High-Availability-Guide.html
-[ticketing]: https://apereo.github.io/cas/6.6.x/ticketing/Configuring-Ticketing-Components.html
-[jsonservicemgmt]: https://apereo.github.io/cas/6.6.x/services/JSON-Service-Management.html
-[servicemgmt]: https://apereo.github.io/cas/6.6.x/services/Service-Management.html#storage
-[ldapauthn]: https://apereo.github.io/cas/6.6.x/installation/LDAP-Authentication.html
-[configmgmt]: https://apereo.github.io/cas/6.6.x/configuration/Configuration-Management.html
+[localization]: https://apereo.github.io/cas/development/ux/User-Interface-Customization-Localization.html
+[haguide]: https://apereo.github.io/cas/development/high_availability/High-Availability-Guide.html
+[ticketing]: https://apereo.github.io/cas/development/ticketing/Configuring-Ticketing-Components.html
+[jsonservicemgmt]: https://apereo.github.io/cas/development/services/JSON-Service-Management.html
+[servicemgmt]: https://apereo.github.io/cas/development/services/Service-Management.html#storage
+[ldapauthn]: https://apereo.github.io/cas/development/installation/LDAP-Authentication.html
+[configmgmt]: https://apereo.github.io/cas/development/configuration/Configuration-Management.html
 [overlay]: https://github.com/apereo/cas-overlay-template
 [releasepolicy]: https://apereo.github.io/cas/developer/Release-Policy.html
 [maintenancepolicy]: https://apereo.github.io/cas/developer/Maintenance-Policy.html
-[overlaysetup]: https://apereo.github.io/cas/6.6.x/installation/WAR-Overlay-Installation.html
+[overlaysetup]: https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html

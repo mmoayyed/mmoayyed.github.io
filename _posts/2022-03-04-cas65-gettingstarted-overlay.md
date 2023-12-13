@@ -33,7 +33,7 @@ The concept of the WAR Overlay is NOT a CAS invention. It's specifically an *Apa
 The quickest way to generate a CAS WAR overlay starter template is via the following:
 
 ```bash
-curl -k https://casinit.herokuapp.com/starter.tgz  \
+curl -k https://getcas.apereo.org/starter.tgz  \
   -d type=cas-overlay -d baseDir=overlay | tar -xzvf -
 ```
 

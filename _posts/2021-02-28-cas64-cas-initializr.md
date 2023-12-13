@@ -24,7 +24,7 @@ Resuming from the [initial effort](/2020/11/14/cas63-cas-initializr/), the [Aper
 Just as before, you may generate a CAS WAR overlay project using the following command:
 
 ```bash
-curl -k http://casinit.herokuapp.com/starter.tgz \
+curl -k http://getcas.apereo.org/starter.tgz \
   -d dependencies="core,duo" -d type=cas-overlay \
   -d baseDir=overlay | tar -xzvf -
 ```
@@ -38,7 +38,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 You may generate a [CAS Spring Boot Admin](https://apereo.github.io/cas/6.4.x/monitoring/Configuring-Monitoring-Administration.html) WAR overlay project using the following command:
 
 ```bash
-curl -k http://casinit.herokuapp.com/starter.tgz \
+curl -k http://getcas.apereo.org/starter.tgz \
   -d type=cas-bootadmin-server-overlay \
   -d baseDir=overlay | tar -xzvf -
 ```
@@ -50,7 +50,7 @@ You may generate a [CAS Spring Cloud Configuration Server](https://apereo.github
 {% include googlead1.html  %}
 
 ```bash
-curl -k http://casinit.herokuapp.com/starter.tgz \
+curl -k http://getcas.apereo.org/starter.tgz \
   -d type=cas-config-server-overlay \
   -d baseDir=overlay | tar -xzvf -
 ```
@@ -62,7 +62,7 @@ You may generate a [CAS Spring Cloud Discovery Server](https://apereo.github.io/
 {% include googlead1.html  %}
 
 ```bash
-curl -k http://casinit.herokuapp.com/starter.tgz \
+curl -k http://getcas.apereo.org/starter.tgz \
   -d type=cas-discovery-server-overlay   \
   -d baseDir=overlay | tar -xzvf -
 ```
@@ -72,7 +72,7 @@ curl -k http://casinit.herokuapp.com/starter.tgz \
 You may generate a [CAS Management Server](https://apereo.github.io/cas/6.4.x/services/Installing-ServicesMgmt-Webapp.html) WAR overlay project using the following command:
 
 ```bash
-curl -k http://casinit.herokuapp.com/starter.tgz \
+curl -k http://getcas.apereo.org/starter.tgz \
   -d type=cas-mgmt-overlay   \
   -d baseDir=overlay | tar -xzvf -
 ```
@@ -134,5 +134,5 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[initializr]: https://casinit.herokuapp.com
+[initializr]: https://getcas.apereo.org
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html

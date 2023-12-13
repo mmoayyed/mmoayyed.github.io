@@ -37,7 +37,7 @@ The CAS projects provides a running an instance of the CAS Initializr on Heroku.
 
 ```bash
 function getcas() {
-  curl -k https://casinit.herokuapp.com/starter.tgz -d dependencies=$1 | tar -xzvf -
+  curl -k https://getcas.apereo.org/starter.tgz -d dependencies=$1 | tar -xzvf -
   ls
 }
 ```
@@ -87,13 +87,13 @@ Feature modules referenced throughout [CAS documentation](https://apereo.github.
 CAS project modules and dependencies that can be requested must be specified by their identifier. To see a full list of all dependencies supported and available by this service, you can invoke the following command:
 
 ```bash
-curl https://casinit.herokuapp.com/dependencies
+curl https://getcas.apereo.org/dependencies
 ```
 
 Typically, dependency identifiers match CAS server dependency/module artifact names without the `cas-server-` prefix. Furthermore, certain dependencies can are assigned `aliases` as *shortcuts* to simplify requests. To see the full list of dependencies and their aliases, you may use:
 
 ```bash
-curl https://casinit.herokuapp.com/actuator/info
+curl https://getcas.apereo.org/actuator/info
 ```
 
 # CAS Initializr Metadata
@@ -103,13 +103,13 @@ The metadata lists the capabilities of the service, that is the available option
 You can grab the metadata on the root endpoint with the appropriate `Accept` header:
 
 ```bash
-curl -H 'Accept: application/json' https://casinit.herokuapp.com
+curl -H 'Accept: application/json' https://getcas.apereo.org
 ```
 
 Or using `HTTPie`:
 
 ```bash
-http https://casinit.herokuapp.com Accept:application/json
+http https://getcas.apereo.org Accept:application/json
 ```
 
 # CAS Initializr Anatomy
@@ -243,7 +243,7 @@ I hope this review was of some help to you and I am sure that both this post as 
 [duo]: https://apereo.github.io/cas/6.3.x/mfa/DuoSecurity-Authentication.html
 [overlayrepo]: https://github.com/apereo/cas-overlay-template
 [overlay]: https://apereo.github.io/cas/6.3.x/installation/WAR-Overlay-Installation.html
-[initializr]: https://casinit.herokuapp.com
+[initializr]: https://getcas.apereo.org
 [extensions]: https://apereo.github.io/cas/6.3.x/configuration/Configuration-Management-Extensions.html
 [contribute]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 

@@ -105,7 +105,7 @@ Create overlay projects using [Apereo CAS Initializr][initializr]:
 
 ```bash
 function getcas(){
-    URL="https://casinit.herokuapp.com/starter.tgz"
+    URL="https://getcas.apereo.org/starter.tgz"
     DEFAULT_PROJECT_TYPE="cas-overlay"
     projectType=${2:-$DEFAULT_PROJECT_TYPE}
     rm -Rf ./overlay
@@ -249,6 +249,6 @@ I hope this review was of some help to you and I am sure that both this post as 
 [Misagh Moayyed](https://fawnoos.com)
 
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[initializr]: https://casinit.herokuapp.com
+[initializr]: https://getcas.apereo.org
 [testproc]: https://apereo.github.io/cas/6.4.x/developer/Test-Process.html
 [buildproc]: https://apereo.github.io/cas/6.4.x/developer/Build-Process.html
