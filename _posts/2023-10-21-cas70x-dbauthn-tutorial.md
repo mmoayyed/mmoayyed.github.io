@@ -74,9 +74,12 @@ dependencies {
 
 Once you have added the change, be sure to rebuild the CAS overlay. 
 
+# Query Mode
+
 Please note that for the purposes of this tutorial, we assume that all CAS configuration properties are put inside `/etc/cas/config/cas.properties`. You will need to create this file, if one does not already exist. 
 
-For this tutorial, this is what I actually needed to make this work:
+For this tutorial, we are going to start with a form of database authentication called *Query Mode*. This is the approach where CAS authenticates a user by comparing the user password (which can be encoded with a password encoder) against the password on record determined by a configurable database query. This is what I actually needed to make this work:
+
 {% include googlead1.html  %}
 ```
 cas.authn.jdbc.query[0].sql=SELECT * FROM USERS WHERE uid=?
