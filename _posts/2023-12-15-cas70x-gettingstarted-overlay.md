@@ -470,14 +470,14 @@ implementation "org.apereo.cas:cas-server-support-saml-idp"
 {% include googlead1.html  %}
 
 Then, we need to decide what our SAML2 entity id should be and where to keep our SAML2 metadata. To keep matters simple, we'll choose the filesystem to track and store metadata and its artifacts:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.saml-idp.core.entity-id=https://cas.apereo.org/saml/idp,
 cas.authn.saml-idp.metadata.file-system.location=file:///path/to/metadata/directory
 ```
 
 An entity id is a globally unique name for your identity provider. It's used to identify the IdP during SAML transactions. It is typically a URI, although it doesn't have to point to an actual resource. It's often set to the IdP's base URL or a specific URL that describes the entity. For example, it could be something like `https://cas.apereo.org/saml/idp`. This id is included in the metadata that CAS shares with its partners, and it's used in SAML messages to indicate the sender or the intended recipient. It's important that the entity id is unique to avoid confusion or conflicts.
-
+{% include googlead1.html  %}
 Metadata is an XML document that contains information about a SAML entity, such as an Identity Provider (IdP) or a Service Provider (SP). This metadata is used to facilitate the exchange of information for SAML transactions.
 
 <div class="alert alert-info">
@@ -492,9 +492,8 @@ The metadata typically includes:
 - **Binding**: The protocol binding that the entity supports (e.g., `HTTP-Redirect`, `HTTP-POST`, etc.).
 The metadata is usually exchanged out-of-band (i.e., not through the SAML protocol itself) and is often made available at a publicly accessible URL. This allows partners to fetch and refresh the metadata as needed. For CAS, this typically would be: `https://sso.example.org/cas/idp/metadata`
 
-
 Now, you can proceed to register your client web application with CAS similar to the approach described earlier:
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
@@ -558,7 +557,7 @@ screen.welcome.instructions=Speak friend and enter.
 ```
 
 Then I'll package things up as usual.
-
+{% include googlead1.html  %}
 ```bash
 ./gradlew clean build
 ```
@@ -590,7 +589,7 @@ If you wish to run CAS via the embedded Apache Tomcat container behind a proxy o
 - Apache Tomcat connector listening on the above port is marked as secure.
 
 The above task list translates to the following properties expected to be found in your `cas.properties`:
-
+{% include googlead1.html  %}
 ```properties
 server.port=8080
 server.ssl.enabled=false
@@ -626,7 +625,7 @@ If the WAR overlay is prepped with an embedded servlet container such as Apache 
 ```bash
 java -jar build/libs/cas.war
 ```
-
+{% include googlead1.html  %}
 The choice of the embedded servlet container is noted by the `appServer` property found in the `gradle.properties` file:
 
 ```properties
@@ -640,7 +639,7 @@ appServer=-tomcat
 All servlet containers presented here, embedded or otherwise, aim to be production-ready. This means that CAS ships with useful defaults out of the box that may be overridden, if necessary and by default, CAS configures everything for you from development to production in today’s platforms. In terms of their production quality, there is almost no difference between using an embedded container vs. an external one.
 
 Unless there are specific, technical, and reasonable objections, choosing an embedded servlet container is almost always the better choice.
-
+{% include googlead1.html  %}
 If you forget to specify the correct servlet container type and yet choose to run CAS directly, it is likely that you would receive the following error:
 
 ```bash
