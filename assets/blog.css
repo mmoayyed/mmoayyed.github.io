@@ -276,6 +276,13 @@ a.post-preview-link {
 	background-color: #faaa5e;
 }
 
+.emoji {
+    margin-right: 2px;
+    border: none;
+    border-radius: 6px !important;
+    border-style: inherit !important;
+    opacity: 1 !important;
+}
 
 
 /* Filter Checkbox */

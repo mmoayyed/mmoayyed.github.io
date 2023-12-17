@@ -73,6 +73,17 @@
       // } else {
       // }
       $('.blogpost').css('display', 'block');
+
+
+      let emoji = "<span class='emoji'>ℹ️</span>";
+      $('.alert.alert-info strong:first-child').prepend(emoji);
+
+      emoji = "<span class='emoji'>⚠️</span>";
+      $('.alert.alert-warning strong:first-child').prepend(emoji);
+
+      emoji = "<span class='emoji'>☘️</span>";
+      $('.alert.alert-success strong:first-child').prepend(emoji);
+      
     }
   </script>
 
