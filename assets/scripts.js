@@ -4,13 +4,15 @@ $(function () {
 
 
 function switchMode() {
-  $('body,div.card')
-    .css("background-color", "#020001")
-    .css("background-image", "linear-gradient(to right, #020001, #1a1618)")
-    .css("color", "#d6d6d6")
+  $('body')
+    .css("background-color", "#030a0d")
+    // .css("background-image", "linear-gradient(to right, #020001, #030a0d)")
+    .css("color", "#d6d6d6");
   $('code.highlighter-rouge').css("color", "#dfcb66");
   $('blockquote,h1,h2,h3,h4,h5,h6,h5>a').css("color", "ghostwhite");
   $('#contact-section h6').css("color", "lightyellow");
+
+  $('div.card').css('background-image', 'linear-gradient(to right, rgb(21 32 40), rgb(29 61 76))');
 }
 
 let codes = document.querySelectorAll('.highlight > pre > code');
@@ -32,3 +34,7 @@ codes.forEach((code) => {
 }); 
 new ClipboardJS('.btn-copy-code');
 switchMode();
+
+setTimeout(function () {
+  $(".masthead").css("filter", "grayscale(0)")
+}, 1000);
