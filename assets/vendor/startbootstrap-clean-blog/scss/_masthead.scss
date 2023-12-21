@@ -87,3 +87,20 @@ header.masthead {
     }
   }
 }
+
+
+div.card {
+  background-image: linear-gradient(to right, rgb(3 17 27), rgb(3, 61, 88));
+}
+
+body {
+  background-color: #030a0d;
+}
+
+body, code.highlighter-rouge {
+  color: #d6d6d6;
+}
+
+blockquote,h1,h2,h3,h4,h5,h6,h5>a {
+  color: ghostwhite !important;
+}
