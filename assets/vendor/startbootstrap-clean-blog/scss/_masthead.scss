@@ -6,8 +6,12 @@ header.masthead {
   // background-color: rgb(7, 6, 6);
   background-attachment: scroll;
   position: relative;
-  background-size: 49%;
-  background-position-x: 64%;
+  background-size: 49% !important;
+  background-position-x: 67%;
+  @media only screen and (max-width: 1300px) {
+    background-size: 79% !important;
+  }
+
   filter: grayscale(1);
 
   @include background-cover;
