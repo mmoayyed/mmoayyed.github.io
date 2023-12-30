@@ -128,3 +128,11 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{"assets/contact.css" | relative_url }}">
+
+{% if include.isBlogPost == "true" %}
+    <style>
+        #contact-section-header h6 {
+            color: ghostwhite;
+        }
+    </style>
+{% endif %}

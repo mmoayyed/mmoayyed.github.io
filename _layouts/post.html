@@ -53,9 +53,9 @@ layout: default
       <div class="blogpost mx-auto">
         {{ content }}
         <hr>
-        <section>
+        <section id="blogpost-contactus-section">
           {% include contactus.html disableTitle="true" 
-            disableSubTitle="true" moveToHelp="true" %}
+            disableSubTitle="true" moveToHelp="true" isBlogPost="true" %}
         </section>
       
         <div class="clearfix">
