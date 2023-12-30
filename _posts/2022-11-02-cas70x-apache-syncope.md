@@ -23,7 +23,7 @@ In this post, we will briefly take a look at a few options that allow for a seam
 
 Apache Syncope can act as the central repository and identity store of CAS-enabled accounts. Once CAS receives credentials from the end user, it can take advantage of Syncope's REST APIs to submit user credentials to Syncope for validation. The resulting payload upon success may also pass back a representation of the authenticated user account that would then be employed and consumed by CAS to build a single sign-on session.
 
-Assuming you have prepared your CAS to build to include the appropriate [Apache Syncope integration module](https://apereo.github.io/cas/development/authentication/Syncope-Authentication.html), the following settings at a minimum should handle this integration:
+Assuming you have prepared your CAS to build to include the appropriate [Apache Syncope integration module](https://apereo.github.io/cas/7.0.x/authentication/Syncope-Authentication.html), the following settings at a minimum should handle this integration:
 
 ```properties
 cas.authn.syncope.url=...
@@ -97,5 +97,5 @@ Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[profileselection]: https://apereo.github.io/cas/development/integration/Delegate-Authentication-ProfileSelection.html
+[profileselection]: https://apereo.github.io/cas/7.0.x/integration/Delegate-Authentication-ProfileSelection.html
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html

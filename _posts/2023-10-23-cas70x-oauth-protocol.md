@@ -16,7 +16,7 @@ This tutorial specifically focuses on:
 
 # Setup
 
-The typical setup is quite simple once you include the [relevant extension module](https://apereo.github.io/cas/development/authentication/OAuth-Authentication.html) in your build. Once you have a functioning build, you can begin registering your OAuth client applications with CAS whose registration record may likely be managed in [flat JSON files](https://apereo.github.io/cas/development/services/JSON-Service-Management.html):
+The typical setup is quite simple once you include the [relevant extension module](https://apereo.github.io/cas/7.0.x/authentication/OAuth-Authentication.html) in your build. Once you have a functioning build, you can begin registering your OAuth client applications with CAS whose registration record may likely be managed in [flat JSON files](https://apereo.github.io/cas/7.0.x/services/JSON-Service-Management.html):
 {% include googlead1.html  %}
 ```json
 {

@@ -13,7 +13,7 @@ This tutorial specifically requires and focuses on:
 - Java 21
 
 <div class="alert alert-info">
-  <strong>Need Help?</strong><br/>If you ever get stuck and are in need of additional assistance, start by reviewing the suggestions <a href="https://apereo.github.io/cas/development/installation/Troubleshooting-Guide.html">provided here</a>. You may also look at available support options <a href="https://apereo.github.io/cas/Support.html">provided here</a>.
+  <strong>Need Help?</strong><br/>If you ever get stuck and are in need of additional assistance, start by reviewing the suggestions <a href="https://apereo.github.io/cas/7.0.x/installation/Troubleshooting-Guide.html">provided here</a>. You may also look at available support options <a href="https://apereo.github.io/cas/Support.html">provided here</a>.
 </div>
 
 {% include googlead1.html  %}
@@ -684,19 +684,19 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[duo]: https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html
-[oidc]: https://apereo.github.io/cas/development/authentication/OIDC-Authentication.html
-[saml2]: https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html
-[hazelcasttickets]: https://apereo.github.io/cas/development/ticketing/Hazelcast-Ticket-Registry.html
+[duo]: https://apereo.github.io/cas/7.0.x/mfa/DuoSecurity-Authentication.html
+[oidc]: https://apereo.github.io/cas/7.0.x/authentication/OIDC-Authentication.html
+[saml2]: https://apereo.github.io/cas/7.0.x/authentication/Configuring-SAML2-Authentication.html
+[hazelcasttickets]: https://apereo.github.io/cas/7.0.x/ticketing/Hazelcast-Ticket-Registry.html
 [contribute]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[localization]: https://apereo.github.io/cas/development/ux/User-Interface-Customization-Localization.html
-[haguide]: https://apereo.github.io/cas/development/high_availability/High-Availability-Guide.html
-[ticketing]: https://apereo.github.io/cas/development/ticketing/Configuring-Ticketing-Components.html
-[jsonservicemgmt]: https://apereo.github.io/cas/development/services/JSON-Service-Management.html
-[servicemgmt]: https://apereo.github.io/cas/development/services/Service-Management.html#storage
-[ldapauthn]: https://apereo.github.io/cas/development/installation/LDAP-Authentication.html
-[configmgmt]: https://apereo.github.io/cas/development/configuration/Configuration-Management.html
+[localization]: https://apereo.github.io/cas/7.0.x/ux/User-Interface-Customization-Localization.html
+[haguide]: https://apereo.github.io/cas/7.0.x/high_availability/High-Availability-Guide.html
+[ticketing]: https://apereo.github.io/cas/7.0.x/ticketing/Configuring-Ticketing-Components.html
+[jsonservicemgmt]: https://apereo.github.io/cas/7.0.x/services/JSON-Service-Management.html
+[servicemgmt]: https://apereo.github.io/cas/7.0.x/services/Service-Management.html#storage
+[ldapauthn]: https://apereo.github.io/cas/7.0.x/installation/LDAP-Authentication.html
+[configmgmt]: https://apereo.github.io/cas/7.0.x/configuration/Configuration-Management.html
 [overlay]: https://github.com/apereo/cas-overlay-template
 [releasepolicy]: https://apereo.github.io/cas/developer/Release-Policy.html
 [maintenancepolicy]: https://apereo.github.io/cas/developer/Maintenance-Policy.html
-[overlaysetup]: https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html
+[overlaysetup]: https://apereo.github.io/cas/7.0.x/installation/WAR-Overlay-Installation.html

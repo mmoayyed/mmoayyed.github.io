@@ -55,7 +55,7 @@ According to the MaxMind website:
 {% include googlead1.html  %}
 > MaxMind GeoIP2 offerings identify the location and other characteristics of Internet users for a wide range of applications including content personalization, fraud detection, ad targeting, traffic analysis, compliance, geo-targeting, geo-fencing, and digital rights management.
 
-To activate this variant of session pinning, one would need to tweak a CAS build with the [right extension module](https://apereo.github.io/cas/development/authentication/GeoTracking-Authentication-Maxmind.html) and configure CAS to integrate with MaxMind. Once ready, the geolocation of client sessions can be turned on using the following:
+To activate this variant of session pinning, one would need to tweak a CAS build with the [right extension module](https://apereo.github.io/cas/7.0.x/authentication/GeoTracking-Authentication-Maxmind.html) and configure CAS to integrate with MaxMind. Once ready, the geolocation of client sessions can be turned on using the following:
 {% include googlead1.html  %}
 ```properties
 cas.tgc.geo-locate-client-session=true

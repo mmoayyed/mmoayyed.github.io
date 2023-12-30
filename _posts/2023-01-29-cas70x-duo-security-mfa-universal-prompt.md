@@ -9,7 +9,7 @@ Duo Security's [Universal Prompt](https://duo.com/blog/easier-more-effective-mfa
 
 {% include googlead1.html  %}
 
-Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi) and the integration strategy with Apereo CAS.
+Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/7.0.x/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi) and the integration strategy with Apereo CAS.
 
 {% include googlead1.html  %}
 

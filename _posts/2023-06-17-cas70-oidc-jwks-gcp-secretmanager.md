@@ -31,7 +31,7 @@ You can provide user credentials by running the `gcloud auth application-default
 
 # CAS Configuration
 
-Once you have the [right module](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management-SpringCloud-GCP-SecretManager.html) in place, you may then instruct your CAS deployment to fetch secrets from Google Cloud Secret Manager and assign them to CAS settings. For example:
+Once you have the [right module](https://apereo.github.io/cas/7.0.x/configuration/Configuration-Server-Management-SpringCloud-GCP-SecretManager.html) in place, you may then instruct your CAS deployment to fetch secrets from Google Cloud Secret Manager and assign them to CAS settings. For example:
 {% include googlead1.html %}
 ```properties
 cas.authn.oidc.jwks.file-system.jwks-file=${sm://cas_authn_oidc_jwks_file-system_jwks-file}
@@ -47,7 +47,7 @@ Note that the name of the secret can be of your choosing. In this case, the secr
 
 Another strategy for managing the JWKS would be to use CAS configuration security to encrypt the file. You can take advantage of built-in [Jasypt functionality](http://www.jasypt.org/) to decrypt sensitive CAS settings. Jasypt supplies command-line tools useful for performing encryption, decryption, etc. To use the tools, you should download the Jasypt distribution. Once unzipped, you will find a `jasypt-$VERSION/bin` directory with several bat|sh scripts that you can use for encryption/decryption operations `(encrypt|decrypt).(bat|sh)`.
 {% include googlead1.html %}
-You may also use the [CAS Command-line Shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html) to encrypt settings. The `encrypt-value` command does accept a `--file` parameter that you can use along with the encryption password to encrypt the contents of the JWKS file. 
+You may also use the [CAS Command-line Shell](https://apereo.github.io/cas/7.0.x/installation/Configuring-Commandline-Shell.html) to encrypt settings. The `encrypt-value` command does accept a `--file` parameter that you can use along with the encryption password to encrypt the contents of the JWKS file. 
 
 Once you have the contents of the JWKS encrypted, you can pass the encrypted file to CAS:
 

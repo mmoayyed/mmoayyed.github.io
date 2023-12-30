@@ -14,7 +14,7 @@ In this post, we will briefly take a look at a few configuration options that al
 - CAS `7.0.x`
 - Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
-- [Azure Active Directory Integration](https://apereo.github.io/cas/development/authentication/Azure-ActiveDirectory-Authentication.html)
+- [Azure Active Directory Integration](https://apereo.github.io/cas/7.0.x/authentication/Azure-ActiveDirectory-Authentication.html)
 
 # Authentication
 

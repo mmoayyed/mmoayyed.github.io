@@ -126,6 +126,6 @@ Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[delegation]: https://apereo.github.io/cas/development/integration/Delegate-Authentication.html
-[saml2]: https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html
+[delegation]: https://apereo.github.io/cas/7.0.x/integration/Delegate-Authentication.html
+[saml2]: https://apereo.github.io/cas/7.0.x/authentication/Configuring-SAML2-Authentication.html
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html

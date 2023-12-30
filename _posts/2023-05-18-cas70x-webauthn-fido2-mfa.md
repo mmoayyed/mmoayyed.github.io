@@ -18,7 +18,7 @@ Our starting position is as follows:
 
 # Configuration
 
-Once you have the [right module](https://apereo.github.io/cas/development/mfa/FIDO2-WebAuthn-Authentication.html) in place, your starting set of configuration options should be as follows:
+Once you have the [right module](https://apereo.github.io/cas/7.0.x/mfa/FIDO2-WebAuthn-Authentication.html) in place, your starting set of configuration options should be as follows:
 
 ```properties
 cas.authn.mfa.web-authn.core.application-id=https://sso.example.org

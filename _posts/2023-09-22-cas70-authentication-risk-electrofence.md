@@ -63,5 +63,5 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[events]: https://apereo.github.io/cas/development/authentication/Configuring-Authentication-Events.html
-[risk]: https://apereo.github.io/cas/development/authentication/Configuring-RiskBased-Authentication.html
+[events]: https://apereo.github.io/cas/7.0.x/authentication/Configuring-Authentication-Events.html
+[risk]: https://apereo.github.io/cas/7.0.x/authentication/Configuring-RiskBased-Authentication.html

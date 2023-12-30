@@ -17,7 +17,7 @@ In this post, we will take a brief look at how JavaMelody may be configured to m
 
 # Configuration
 
-Once you include the appropriate [extension module](https://apereo.github.io/cas/development/monitoring/Configuring-Monitoring-JavaMelody.html) in your CAS build, JavaMelody will be available at `https://sso.example.org/cas/monitoring` to browse the monitoring reports. The report requires and forces authenticated access, so you will need to configure the credentials:
+Once you include the appropriate [extension module](https://apereo.github.io/cas/7.0.x/monitoring/Configuring-Monitoring-JavaMelody.html) in your CAS build, JavaMelody will be available at `https://sso.example.org/cas/monitoring` to browse the monitoring reports. The report requires and forces authenticated access, so you will need to configure the credentials:
 {% include googlead1.html %}
 ```properties
 spring.security.user.name=javamelody

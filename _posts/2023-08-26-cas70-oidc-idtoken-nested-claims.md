@@ -62,7 +62,7 @@ You may observe that all noted claims are *flat*; that is, there is no hierarchy
 
 # Setup
 
-Let's pretend that an Apereo CAS deployment is configured to pull out and produce an attribute called `organization` with multiple values: `apereo`, `cas`, and `oss`. We intend to collect this attribute and stuff it as a structured claim `org.apereo.cas.entity` into an ID token. To do so, we can decorate the attribute `organization` with an [attribute definition](https://apereo.github.io/cas/development/authentication/OIDC-Attribute-Definitions.html) and tag it as a structured claim:
+Let's pretend that an Apereo CAS deployment is configured to pull out and produce an attribute called `organization` with multiple values: `apereo`, `cas`, and `oss`. We intend to collect this attribute and stuff it as a structured claim `org.apereo.cas.entity` into an ID token. To do so, we can decorate the attribute `organization` with an [attribute definition](https://apereo.github.io/cas/7.0.x/authentication/OIDC-Attribute-Definitions.html) and tag it as a structured claim:
 {% include googlead1.html  %}
 ```json
 "organization": {

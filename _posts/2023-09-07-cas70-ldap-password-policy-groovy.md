@@ -109,4 +109,4 @@ Happy Coding,
 [Misagh Moayyed](https://fawnoos.com)
 
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
-[ldap]: https://apereo.github.io/cas/development/authentication/LDAP-Authentication.html
+[ldap]: https://apereo.github.io/cas/7.0.x/authentication/LDAP-Authentication.html

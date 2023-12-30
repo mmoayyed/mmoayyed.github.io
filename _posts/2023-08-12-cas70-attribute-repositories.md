@@ -5,7 +5,7 @@ summary:    Learn how to build or customize sources of person attributes through
 tags:       ["CAS 7.0.x", "Gradle", "Spring Boot", "Attribute Resolution"]
 ---
 
-[Attribute resolution strategies](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html) in CAS are controlled by the [Person Directory project](https://github.com/apereo/person-directory). The Person Directory dependency is automatically bundled with the CAS server and provides several options to fetch attributes and user data from sources such as LDAP, JDBC, etc. Since we do have multiple sources of attributes, the Person Directory component is also able to aggregate and merge the results and has options to decide how to deal with disagreements in case two sources produce conflicting data.
+[Attribute resolution strategies](https://apereo.github.io/cas/7.0.x/integration/Attribute-Resolution.html) in CAS are controlled by the [Person Directory project](https://github.com/apereo/person-directory). The Person Directory dependency is automatically bundled with the CAS server and provides several options to fetch attributes and user data from sources such as LDAP, JDBC, etc. Since we do have multiple sources of attributes, the Person Directory component is also able to aggregate and merge the results and has options to decide how to deal with disagreements in case two sources produce conflicting data.
 
 {% include googlead1.html  %}
 

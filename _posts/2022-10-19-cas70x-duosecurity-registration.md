@@ -5,7 +5,7 @@ summary:    Handle multifactor user enrollment with Duo Security with your regis
 tags:       ["CAS 7.0.x", "Delegated Authentication", "MFA"]
 ---
 
-Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at a few options that address user enrollment and onboarding, particularly when outsourced to external applications.
+Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/7.0.x/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at a few options that address user enrollment and onboarding, particularly when outsourced to external applications.
 
 {% include googlead1.html  %}
 

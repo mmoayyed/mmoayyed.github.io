@@ -17,7 +17,7 @@ This tutorial specifically requires and focuses on:
 
 # Configuration
 
-User consent decisions and options can of course be managed and stored inside a [Redis database](https://apereo.github.io/cas/development/integration/Attribute-Release-Consent-Storage-Redis.html). A super modest setup should include the following settings:
+User consent decisions and options can of course be managed and stored inside a [Redis database](https://apereo.github.io/cas/7.0.x/integration/Attribute-Release-Consent-Storage-Redis.html). A super modest setup should include the following settings:
 {% include googlead1.html %}
 ```properties
 cas.consent.redis.host=localhost

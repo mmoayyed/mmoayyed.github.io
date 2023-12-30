@@ -5,7 +5,7 @@ summary:    Learn how to load encrypted configuration settings into Apereo CAS u
 tags:       ["CAS 7.0.x", "Configuration Management", "Spring Cloud", "Jasypt"]
 ---
 
-A good number of Apereo CAS settings and properties may carry sensitive values. Database passwords, API tokens, and various other secrets need to be protected and secured first and then taught to CAS in a way that it can decode and process those values when connections and requests to those systems are made. While there are multiple ways to handle [configuration security](https://apereo.github.io/cas/development/configuration/Configuration-Properties-Security.html) with CAS, it's entirely possible that you might have your custom and unique way of handling CAS properties and need a way to allow CAS to learn and decrypt properties using your security strategy.
+A good number of Apereo CAS settings and properties may carry sensitive values. Database passwords, API tokens, and various other secrets need to be protected and secured first and then taught to CAS in a way that it can decode and process those values when connections and requests to those systems are made. While there are multiple ways to handle [configuration security](https://apereo.github.io/cas/7.0.x/configuration/Configuration-Properties-Security.html) with CAS, it's entirely possible that you might have your custom and unique way of handling CAS properties and need a way to allow CAS to learn and decrypt properties using your security strategy.
 
 {% include googlead1.html %}
 

@@ -22,7 +22,7 @@ In essence, actuator endpoints bring production-ready features to CAS. Monitorin
 <div class="alert alert-info">
 <strong>Definition</strong><br/>An actuator is a manufacturing term, not a CAS term, referring to a mechanical device for moving or controlling something. Actuators can generate a large amount of motion from a small change.</div>
 
-The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/development/monitoring/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
+The full list of endpoints provided to your CAS deployment [is posted here](https://apereo.github.io/cas/7.0.x/monitoring/Monitoring-Statistics.html). Note that you do not need to do anything extra special to get these endpoints added to your deployment; these are all available by default and just need to be turned on and secured for access.
 
 # Endpoints
 

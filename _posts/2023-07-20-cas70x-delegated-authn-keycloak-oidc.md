@@ -91,6 +91,6 @@ Happy Coding,
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[delegation]: https://apereo.github.io/cas/development/integration/Delegate-Authentication.html
+[delegation]: https://apereo.github.io/cas/7.0.x/integration/Delegate-Authentication.html
 [contribguide]: https://apereo.github.io/cas/developer/Contributor-Guidelines.html
 [keycloak]: https://www.keycloak.org/

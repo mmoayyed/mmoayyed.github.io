@@ -17,9 +17,9 @@ In this post, we will briefly take a look at some of the available options that 
 
 # Attribute Consent
 
-CAS provides the ability to enforce [user-informed consent](https://apereo.github.io/cas/development/integration/Attribute-Release-Consent.html) upon attribute release. Practically, this means that before accessing the target application, the user will be presented with a collection of attributes allowed to be released to the application with options to either proceed or deny the release of said attributes. There are also additional options to indicate how should underlying changes in the attribute release policy be considered by the consent engine.
+CAS provides the ability to enforce [user-informed consent](https://apereo.github.io/cas/7.0.x/integration/Attribute-Release-Consent.html) upon attribute release. Practically, this means that before accessing the target application, the user will be presented with a collection of attributes allowed to be released to the application with options to either proceed or deny the release of said attributes. There are also additional options to indicate how should underlying changes in the attribute release policy be considered by the consent engine.
 {% include googlead1.html %}
-User consent decisions and options can of course be managed and stored inside a [Redis database](https://apereo.github.io/cas/development/integration/Attribute-Release-Consent-Storage-Redis.html). A super modest setup should include the following settings:
+User consent decisions and options can of course be managed and stored inside a [Redis database](https://apereo.github.io/cas/7.0.x/integration/Attribute-Release-Consent-Storage-Redis.html). A super modest setup should include the following settings:
 
 ```properties
 cas.consent.redis.host=localhost
@@ -28,7 +28,7 @@ cas.consent.redis.port=6379
 
 # Terms of Use
 
-Also known as *Acceptable Usage Policy* or EULA, CAS presents the ability to allow the user to accept [the usage policy](https://apereo.github.io/cas/development/webflow/Webflow-Customization-AUP.html) before moving on to the application. Production-level deployments of this feature typically would want to allow CAS to store the user policy decisions inside an external database such as Redis.
+Also known as *Acceptable Usage Policy* or EULA, CAS presents the ability to allow the user to accept [the usage policy](https://apereo.github.io/cas/7.0.x/webflow/Webflow-Customization-AUP.html) before moving on to the application. Production-level deployments of this feature typically would want to allow CAS to store the user policy decisions inside an external database such as Redis.
 
 A basic setup may include the following settings:
 {% include googlead1.html %}
@@ -44,7 +44,7 @@ The `aup-attribute-name` is somewhat important; This is the principal attribute 
 
 Redis can be used as the backend store to manage CAS-generated tokens. The Redis ticket registry provided by CAS would use Redis as a key/value store that accepts ticket identifiers as the key and CAS-produced ticket objects as values. 
 
-Assuming you have the correct [extension module](https://apereo.github.io/cas/development/ticketing/Redis-Ticket-Registry.html) defined in your CAS overlay, the basic setup should be as follows:
+Assuming you have the correct [extension module](https://apereo.github.io/cas/7.0.x/ticketing/Redis-Ticket-Registry.html) defined in your CAS overlay, the basic setup should be as follows:
 {% include googlead1.html %}
 ```properties
 cas.ticket.registry.redis.host=localhost
@@ -78,7 +78,7 @@ cas.ticket.registry.redis.cache.cache-size=0
 
 Similar to ticket operations, application registration records can be stored inside a Redis database. Again, CAS presents and uses Redis as a key/value store where the key is the application identifier and CAS service definition objects are put inside Redis as values. 
 
-A [modest setup](https://apereo.github.io/cas/development/services/Redis-Service-Management.html) should include the following settings:
+A [modest setup](https://apereo.github.io/cas/7.0.x/services/Redis-Service-Management.html) should include the following settings:
 {% include googlead1.html %}
 ```properties
 cas.service-registry.redis.host=localhost

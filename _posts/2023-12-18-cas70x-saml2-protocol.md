@@ -16,7 +16,7 @@ This tutorial specifically focuses on:
 
 # Setup
 
-The typical setup is quite simple once you include the [relevant extension module](https://apereo.github.io/cas/development/authentication/Configuring-SAML2-Authentication.html) in your build. Then, at the very minimum you'll need to include the following settings:
+The typical setup is quite simple once you include the [relevant extension module](https://apereo.github.io/cas/7.0.x/authentication/Configuring-SAML2-Authentication.html) in your build. Then, at the very minimum you'll need to include the following settings:
 {% include googlead1.html  %}
 ```properties
 cas.authn.saml-idp.core.entity-id=https://cas.apereo.org/saml/idp
@@ -35,7 +35,7 @@ On startup, CAS will choose to auto-generate identity provider metadata at the s
 
 # Service Provider Registrations
 
-Once you have a functioning build, you can begin registering your SAML2 service providers and client applications with CAS whose registration record may likely be managed in [flat JSON files](https://apereo.github.io/cas/development/services/JSON-Service-Management.html):
+Once you have a functioning build, you can begin registering your SAML2 service providers and client applications with CAS whose registration record may likely be managed in [flat JSON files](https://apereo.github.io/cas/7.0.x/services/JSON-Service-Management.html):
 {% include googlead1.html  %}
 ```json
 {

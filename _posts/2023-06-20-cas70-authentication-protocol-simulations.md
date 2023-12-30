@@ -16,7 +16,7 @@ Our starting position is as follows:
 
 # CAS Protocol
 
-You may take advantage of [dedicated actuator endpoints](https://apereo.github.io/cas/development/integration/Attribute-Release-Policies.html) that allow you to examine the attributes that would be authorized for release for applications that are integrated with Apereo CAS using the CAS protocol. The produced payload here will show the execution context that CAS will use to build the final response. 
+You may take advantage of [dedicated actuator endpoints](https://apereo.github.io/cas/7.0.x/integration/Attribute-Release-Policies.html) that allow you to examine the attributes that would be authorized for release for applications that are integrated with Apereo CAS using the CAS protocol. The produced payload here will show the execution context that CAS will use to build the final response. 
 
 <div class="alert alert-warning">
   <strong>WATCH OUT!</strong><br/>The collection of endpoints described here <strong>MUST</strong> be properly secured for production purposes. It is not wise to enable and expose all actuator endpoints to the web and certainly, the security of the exposed endpoints should be taken into account very seriously. None of the CAS or Spring Boot actuator endpoints are enabled by default. For production, you should carefully choose which endpoints to expose.
@@ -62,7 +62,7 @@ Attributes that are resolved and authorized for release will go into the `primar
 Note that in the above example, person attributes are produced in two separate attempts:
 
 - Person attributes that may be found as part of the user authentication attempt, since the password is supplied.
-- Person attributes that may be found as part of the [attribute resolution phase](https://apereo.github.io/cas/development/integration/Attribute-Resolution.html) from separate attribute repository sources.
+- Person attributes that may be found as part of the [attribute resolution phase](https://apereo.github.io/cas/7.0.x/integration/Attribute-Resolution.html) from separate attribute repository sources.
 
 This means that if you do not have access to the user's password, you may of course remove it from the request:
 {% include googlead1.html %}
