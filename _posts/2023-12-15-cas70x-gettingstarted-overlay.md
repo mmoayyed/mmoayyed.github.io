@@ -652,7 +652,7 @@ ERROR [org.springframework.boot.SpringApplication] - <Application run failed>
 # Gradle Tasks
 
 The Gradle WAR overlay provides many additional commands that might prove helpful for troubleshooting purposes:
-
+{% include googlead1.html %}
 ```bash
 # Run the CAS web application in standalone executable mode
 ./gradlew executable
