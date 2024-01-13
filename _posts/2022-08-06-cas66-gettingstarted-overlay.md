@@ -60,7 +60,7 @@ The CAS Gradle Overlay is composed of several sections. The ones you need to wor
 In `gradle.properties` file, project settings, and versions are specified:
 
 ```properties
-cas.version=6.6.0
+cas.version=6.6.15
 ```
 
 The `gradle.properties` file describes what versions of CAS, Spring Boot, and Java are required for the deployment. You are in practice mostly concerned with the `cas.version` setting and as new (maintenance) releases come out, it would be sufficient to simply update that version and re-run the build.
