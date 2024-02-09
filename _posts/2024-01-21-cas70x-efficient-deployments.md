@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Apereo CAS - Efficient Deployments with Class Data Sharing
-summary:    Learn how to build, unpack and run an unpackaged Apereo CAS server via Spring Boot and Application Class-Data Sharing or optimal performance.
+summary:    Learn how to build, unpack and run an unpackaged Apereo CAS server via Spring Boot and Application Class-Data Sharing for optimal performance.
 tags:       ["CAS 7.0.x", "Getting Started", "Spring Boot"]
 ---
 
