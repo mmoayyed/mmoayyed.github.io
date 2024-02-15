@@ -66,7 +66,7 @@ Any piece of open-source software in particular that is subject to some variant 
 
 In short, the only person that can decide if the software is stable is you, and likewise, you're the only person that can make it so by either fixing it or paying someone to fix it for you. Waiting around for random strangers on the internet to tell you good news or sob stories is only going to end-of-life your deployment very quickly. If you hang around, it's entirely possible that at some point all features are bug-free and all deployments are success stories, but that is a decision entirely driven by luck, fantasy and hope. 
 
-..and hope is not a strategy. Your CIO might agree.
+...and hope is not a strategy. Your CIO might agree.
 
 # OK. What Now? 
 
