@@ -39,7 +39,7 @@ If you are waiting for some version of some software to become *stable* particul
 2. How is the software made stable?
 3. Who is testing the software, and who are the folks with seemingly unlimited access to time, money, and energy that are fixing issues and stablizing builds?
 4. Why are they doing it? What is their motiviation and how long does that last? How is it that they can do it and I cannot?
-5. Is it really true that we can sit back and relax while certain other strangers on the internet keep fixing stuff for *us"? How do we know they are fixing stuff that we care about? and how do we know they are testing the stuff we also care about? 
+5. Is it really true that we can sit back and relax while certain other strangers on the internet keep fixing stuff for *us*? How do we know they are fixing stuff that we care about? and how do we know they are testing the stuff we care about? Do we? really?
 
 If your answer to the above is, *I don't know*, you're most likely going to very expensively surprised.
 
