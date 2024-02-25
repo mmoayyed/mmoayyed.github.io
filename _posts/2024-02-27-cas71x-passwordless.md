@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Apereo CAS - Advanced Passwordless Authentication
+title:      Apereo CAS - Passwordless Authentication
 summary:    Playing around with different variations of Passwordless Authentication in CAS, integrating it with other advanced authentication flows such as delegated authentication, multifactor and more.
-tags:       ["CAS 6.2.x", "MFA"]
+tags:       ["CAS 7.1.x", "MFA"]
 ---
 
 Since the introduction of [Passwordless Authentication](/2019/07/18/cas61x-passwordless-authn/) in CAS `6.1.x`, a lot of additional and useful improvements are added to make this integration seamlessly integrate with other forms of authentication such as delegation or multifactor. This blog post intends to demonstrate a few advanced variations of passwordless authentication in combination with other authentication flows and forms.
@@ -11,8 +11,8 @@ Since the introduction of [Passwordless Authentication](/2019/07/18/cas61x-passw
 
 Our starting position is based on the following:
 
-- CAS `6.2.x`
-- Java 11
+- CAS `7.1.x`
+- Java 21
 
 ## Overview
 
@@ -22,7 +22,7 @@ Passwordless Authn might also be interpreted as [WebAuthn support](https://webau
 
 ## Configuration
 
-Once you have decorated the CAS WAR Overlay with the proper [extension module](https://apereo.github.io/cas/6.2.x/installation/Passwordless-Authentication.html), you will need to adjust your CAS configuration (i.e. `cas.properties` file) to tune the feature for the following:
+Once you have decorated the CAS WAR Overlay with the proper [extension module](https://apereo.github.io/cas/development/authentication/Passwordless-Authentication.html), you will need to adjust your CAS configuration (i.e. `cas.properties` file) to tune the feature for the following:
 
 ## User Accounts
 
@@ -75,7 +75,7 @@ In doing so, CAS will skip the default passwordless authentication flow in favor
 
 ## Delegated Authentication
 
-In another variation, the passwordless account can skip its default flow in favor of delegated authentication. To do so and with the assumption that [delegated authentication](https://apereo.github.io/cas/6.2.x/integration/Delegate-Authentication.html) is turned on in CAS, we can tag the account as one who's eligible for delegated authentication via:
+In another variation, the passwordless account can skip its default flow in favor of delegated authentication. To do so and with the assumption that [delegated authentication](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html) is turned on in CAS, we can tag the account as one who's eligible for delegated authentication via:
 {% include googlead1.html  %}
 ```groovy
   ...
@@ -86,7 +86,7 @@ In another variation, the passwordless account can skip its default flow in favo
 {% include googlead1.html  %}
 
 This requires a separate decision to select the identity provider from the list of those that are available and configured in CAS. To do this, we can design a small Groovy script tasked to decide and select the appropriate identity provider for our passwordless user:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.passwordless.delegatedAuthenticationSelectorScript.location= \
     file:/etc/cas/config/PasswordlessDelegated.groovy
@@ -113,7 +113,7 @@ def run(Object[] args) {
 
 ## Multifactor Authentication
 
-In another variation, the passwordless account can skip its default flow in favor of [multifactor authentication](https://apereo.github.io/cas/6.2.x/mfa/Configuring-Multifactor-Authentication.html) using a multifactor provider that is found configured and available in CAS. In doing so and much like other variations, the account must be tagged as one eligible for multifactor authentication:
+In another variation, the passwordless account can skip its default flow in favor of [multifactor authentication](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication.html) using a multifactor provider that is found configured and available in CAS. In doing so and much like other variations, the account must be tagged as one eligible for multifactor authentication:
 {% include googlead1.html  %}
 ```groovy
   ...
@@ -137,8 +137,18 @@ Let's also make sure our demo passwordless account carries that relevant attribu
   ...
 ```
 
-With the above configuration, the account is processed by CAS [multifactor authentication triggers](https://apereo.github.io/cas/6.2.x/mfa/Configuring-Multifactor-Authentication-Triggers.html) to route to the appropriate multifactor authentication flow.
+With the above configuration, the account is processed by CAS [multifactor authentication triggers](https://apereo.github.io/cas/development/mfa/Configuring-Multifactor-Authentication-Triggers.html) to route to the appropriate multifactor authentication flow.
 
+## Duo Security User Accounts
+
+Duo Security can also act as a passwordless account store. Once enabled, user accounts that are found and registered with Duo Security with a valid email address and phone number will receive a push notification from Duo Security and are able to login to CAS without the need for a password:
+{% include googlead1.html  %}
+```
+cas.authn.mfa.duo[0].duo-secret-key=...
+cas.authn.mfa.duo[0].duo-integration-key=...
+cas.authn.mfa.duo[0].duo-api-host=...
+cas.authn.mfa.duo[0].passwordless-authentication-enabled=true
+```
 
 # Need Help?
 
