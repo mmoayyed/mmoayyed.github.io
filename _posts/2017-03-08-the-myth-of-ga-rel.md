@@ -34,7 +34,7 @@ If your community and your membership does not filter through those parameters a
 A GA tag is just a tag. That's all....Yes, it's just a tag. It holds no magical powers. Really.
 
 If you are waiting for some version of some software to become *stable* particularly by waiting around for all bugs to shake out (for more on this exact subject please see below), it would be practical to ask:
-
+{% include googlead1.html  %}
 1. Who is making the software more stable?
 2. How is the software made stable?
 3. Who is testing the software, and who are the folks with seemingly unlimited access to time, money, and energy that are fixing issues and stablizing builds?
@@ -59,11 +59,11 @@ Sigh. This is my least favorite thing to jot down. Here's how it goes:
 3. Tail-recursion back to #1.
 
 Something eventually breaks that cycle; it's usually the release schedule. Most development communities find themselves saying *"We have tested what we could. Nobody else has reported anything. It's been 6 months. This is good-enough"*.
-
+{% include googlead1.html  %}
 Do not put yourself in situations where you have to face the question of the falling tree not having any witnesses. Your time is better spent elsewhere on other things...like testing! Users, contributors and developers all work on and test stuff *they* care about. That might not be similar to your tests, and they might have very different definitions of *care* and *quality*, which are often driven by time and money. To be exact, not your time. Not your money.
 
 Any piece of open-source software in particular that is subject to some variant of the Apache v2 or MIT license requires that you gain confidence in a release by starting early and experimenting with release candidates and/or follow-up snapshot releases. In terms of stability, all versions are loosely based on the Schrödinger's Cat theory: there are no guarantees until you open the box. Software distributed under the project license is distributed on an "AS IS" basis without warranties or conditions of any kind, either express or implied. 
-
+{% include googlead1.html  %}
 In short, the only person that can decide if the software is stable is you, and likewise, you're the only person that can make it so by either fixing it or paying someone to fix it for you. Waiting around for random strangers on the internet to tell you good news or sob stories is only going to end-of-life your deployment very quickly. If you hang around, it's entirely possible that at some point all features are bug-free and all deployments are success stories, but that is a decision entirely driven by luck, fantasy and hope. 
 
 ...and hope is not a strategy. Your CIO might agree.

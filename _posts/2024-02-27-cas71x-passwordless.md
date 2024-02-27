@@ -38,10 +38,10 @@ cas.authn.passwordless.accounts.groovy.location=file:/etc/cas/config/Passwordles
 {% include googlead1.html  %}
 ```groovy
 def run(Object[] args) {
-    def username = args[0]
+    def request = args[0]
     def logger = args[1]
     
-    logger.info("Locating user record for user $username")
+    logger.info("Locating user record for user $request.username")
 
     /*
      * Query relevant data sources to fetch
@@ -148,6 +148,25 @@ cas.authn.mfa.duo[0].duo-secret-key=...
 cas.authn.mfa.duo[0].duo-integration-key=...
 cas.authn.mfa.duo[0].duo-api-host=...
 cas.authn.mfa.duo[0].passwordless-authentication-enabled=true
+```
+
+## Disabling Passwordless Authentication
+
+Passwordless authentication can be selectively controlled for specific applications. By default,
+all services and applications are eligible for passwordless authentication. If you wish to disable the flow for a particular application, 
+modify the application policy and indicate your own `passwordlessPolicy` construct:
+{% include googlead1.html  %}
+```json
+{
+  "@class": "org.apereo.cas.services.CasRegisteredService",
+  "serviceId": "^https://app.example.org",
+  "name": "App",
+  "id": 1,
+  "passwordlessPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServicePasswordlessPolicy",
+    "enabled": false
+  }
+}
 ```
 
 # Need Help?

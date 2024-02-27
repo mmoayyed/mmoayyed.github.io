@@ -22,7 +22,7 @@ Our task list is rather short:
 # Configuring Authentication
 
 Prior to configuring *multiple* factors of authentication, we need to first establish a primary mode of validating credentials. To kill two birds with one stone [1], we are going to o address yet another common use case and keep things simple by sticking with [LDAP authentication](https://apereo.github.io/cas/5.2.x/installation/LDAP-Authentication.html). The strategy here, as indicated by the CAS documentation, is to declare the intention/module in the build script and then configure the relevant `cas.authn.ldap[x]` settings for the directory server in use. Most commonly, that would translate into the following settings:
-
+{% include googlead1.html  %}
 ```
 cas.authn.ldap[0].type=AUTHENTICATED
 cas.authn.ldap[0].ldapUrl=ldaps://ldap1.example.org 
@@ -33,7 +33,7 @@ cas.authn.ldap[0].bindCredential=...
 ```
 
 Note that the method of authentication, whether on its own or using separate attribute repositories and queries must have the ability to resolve the needed attribute which will be used later by CAS to trigger multifactor authentication. For this context, the simplest way would be to let LDAP authentication retrieve the attribute directly from the directory server.  The following setting allows us to do just that:
-
+{% include googlead1.html  %}
 ```
 cas.authn.ldap[0].principalAttributeList=memberOf
 ```
@@ -43,7 +43,7 @@ At this point in the authentication flow, we have established an authenticated s
 # Configuring Duo Security
 
 Here, our task is to enable [Duo Security](https://apereo.github.io/cas/5.2.x/installation/DuoSecurity-Authentication.html) in CAS. Practically, similar to the LDAP authentication configuration, this involves declaring the right module in the build and then providing specific Duo Security settings to CAS properties. Things such as the secret key, integration key, etc which should be provided by your Duo Security subscription. Most commonly, that would translate into the following settings:
-
+{% include googlead1.html  %}
 ```
 cas.authn.mfa.duo[0].duoSecretKey=
 cas.authn.mfa.duo[0].duoApplicationKey=
@@ -56,7 +56,7 @@ At this point, we have enabled Duo Security and we just need to find a way to in
 # Configuring Multifactor Authentication Triggers
 
 The entire purpose of a trigger here is to detect a condition by which the authentication flow should be rerouted. There are a large number of [triggers supported by CAS](https://apereo.github.io/cas/5.2.x/installation/Configuring-Multifactor-Authentication-Triggers.html), all of which kick into action and behave all the same regardless of the multifactor authentication provider. Our task here is to build a special condition that activates multifactor authentication if any of the values assigned to the attribute `memberOf` contain the value `mfa-eligible`:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.mfa.globalPrincipalAttributeNameTriggers=memberOf
 cas.authn.mfa.globalPrincipalAttributeValueRegex=mfa-eligible

@@ -25,7 +25,7 @@ You may also be interested in this related blog post, detailing [attribute-based
 # Use Case
 
 Given our starting position of defining a customized unauthorized redirect URL in situations where access to a CAS-enabled service is denied, you should take note of the following service definition that may be recognized as part of CAS using a [JSON service registry](https://apereo.github.io/cas/5.3.x/installation/JSON-Service-Management.html):
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
@@ -43,7 +43,7 @@ Given our starting position of defining a customized unauthorized redirect URL i
 ```
 
 It should be obvious that the `unauthorizedRedirectUrl` field of the configured access strategy allows one to define a URL to which CAS might redirect once service access is denied. Of course, we have not defined any particular rules that would prevent one from accessing this application via CAS so let's do just that with a few modifications:
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
@@ -71,7 +71,7 @@ However, one issue remains which is the ability to customize the redirect URL in
 # Dynamic Unauthorized URLs
 
 We can start by preparing CAS with a [customized configuration component](https://apereo.github.io/cas/5.3.x/installation/Configuration-Management-Extensions.html) that would house our customizations for this use case. Once that is done, take note of the following bean definition posted in `CasSupportActionsConfiguration.java` today:
-
+{% include googlead1.html  %}
 ```java
 @RefreshScope
 @Bean
@@ -82,7 +82,7 @@ public Action redirectUnauthorizedServiceUrlAction() {
 ```
 
 Note how the bean is marked as conditional, meaning it will only be used by CAS if an alternative definition by the same is *not* found. So, in order for CAS to pick up our own alternative implementation, we are going to provide that bean definition in our own configuration class as such:
-
+{% include googlead1.html  %}
 ```java
 @Bean
 public Action redirectUnauthorizedServiceUrlAction() {
@@ -94,7 +94,7 @@ public Action redirectUnauthorizedServiceUrlAction() {
 <strong>Compile Dependencies</strong><br/>Note that in order for the CAS overlay build to compile our changes and put them to good use, the overlay must be prepared with the required module used during the compilation phase. Otherwise, there will be errors complaining about missing symbols, etc.</div>
 
 Now, it's time to actually design our very own `DynamicRedirectUnauthorizedServiceUrlAction`. Here is a modest example:
-
+{% include googlead1.html  %}
 ```java
 public class MyRedirectUnauthorizedServiceUrlAction extends RedirectUnauthorizedServiceUrlAction {
     ...

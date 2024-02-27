@@ -43,7 +43,7 @@ These are modules that ship with CAS by default and thou shall mark them with a 
 # Create MFA Triggers
 
 You should create an event resolver that houses and implements your special requirements for MFA. A typical example might be: *Activate MFA provider `mfa-duo` if the request client IP address matches the pattern `123.+`*
-
+{% include googlead1.html  %}
 ```java
 package org.apereo.cas.custom.mfa;
 
@@ -81,7 +81,7 @@ Note that you have full access to the resolved CAS authentication, the principal
 
 Your trigger then needs to be registered. We do this via CAS' native auto-configuration strategy, which scans the application context
 for relevant annotations inside `org.apereo.cas` sub-packages. If you change package names, you **MUST** account for the custom context scan too.
-
+{% include googlead1.html  %}
 ```java
 package org.apereo.cas.custom.config;
 

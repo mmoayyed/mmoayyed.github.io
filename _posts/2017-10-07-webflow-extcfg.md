@@ -29,7 +29,7 @@ Consider:
 
 - Just because you had access to 20 configuration files, that did not mean that you could go about changing anything and everything. This claim is not a question of capability. It's a question of sanity and rationale. Is there a reason the project should expose you to 20 files where in reality, you mostly should, nay, MUST care about just a few?
 - Similarly, just because you now have access to only a few configuration files that does not mean your capabilities of modifying the software internals are now diminished and your freedom lost. The mechanics may have changed but not the underlying principals.
-
+{% include googlead1.html  %}
 In fact, you can do A LOT MORE.
 
 # What Did You Do?
@@ -58,7 +58,7 @@ Is that verbosity the same thing as flexibility?
 # So, Now What?
 
 Every CAS module that needs to dynamically augment the Spring Webflow routes simply takes on the following form:
-
+{% include googlead1.html  %}
 ```java
 public class SomethingWebflowConfigurer extends AbstractCasWebflowConfigurer {
     @Override
@@ -70,7 +70,7 @@ public class SomethingWebflowConfigurer extends AbstractCasWebflowConfigurer {
 ```
 
 CAS modules register their `WebflowConfigurer` instances in `@Configuration` classes:
-
+{% include googlead1.html  %}
 ```java
 @Configuration("SomethingConfiguration")
 public class SomethingConfiguration {
