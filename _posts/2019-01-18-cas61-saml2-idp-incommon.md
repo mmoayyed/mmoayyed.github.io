@@ -24,7 +24,7 @@ Our starting position is based on the following:
 In order to allow CAS to become a SAML2 identity provider, the overlay needs to be prepped based on the instructions provided [here](https://apereo.github.io/cas/6.1.x/installation/Configuring-SAML2-Authentication.html). Remember to add the relevant module to the overlay along with the list of required build repositories.
 
 The SAML2 IdP configuration will need to minimally match the following settings:
-
+{% include googlead1.html  %}
 ```properties
 cas.authn.samlIdp.entityId=https://sso.example.org/idp
 cas.authn.samlIdp.scope=example.org
@@ -36,7 +36,7 @@ You will, of course, need to adjust your entityId and scope as needed. Upon star
 ## Relying-Party Integrations
 
 Let's consider the following fictitious use cases:
-
+{% include googlead1.html  %}
 | Service Provider  | Entity ID             | Expected Attributes
 | ----------------- | --------------------- | ------------------------------------------
 | Almond            | `almond.example.org`  | InCommon R&S bundle, `department`, `title`
@@ -50,7 +50,7 @@ The above relying parties may be registered with CAS using the following sample 
 - Given a service definition file typically is entirely self-contained, a certain number of attribute release policies may need to be repeated in the event that a relying party definition needs to override or complement the default *catch-all* policy. Solutions to this issue to simplify maintenance and remove duplication may be worked out in future CAS releases.
 
 ### Almond Service Registration
-
+{% include googlead1.html  %}
 ```json
 {
   "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
@@ -76,7 +76,7 @@ The above relying parties may be registered with CAS using the following sample 
 ```
 
 ### Coconut Service Registration
-
+{% include googlead1.html  %}
 ```json
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
@@ -95,7 +95,7 @@ The above relying parties may be registered with CAS using the following sample 
 ### All Others
 
 Note the `serviceId` field here contains a regular expression that is very friendly to all relying parties. The `evaluationOrder` field is set to a sufficiently large number to ensure this definition is considered very late into the process.
-
+{% include googlead1.html  %}
 ```json
 {
   "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
@@ -136,19 +136,19 @@ curl -k -X GET https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMeta
 ```
 
 Likewise, the following command may do just as well:
-
+{% include googlead1.html  %}
 ```bash
 curl -X GET https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache?serviceId=coconut
 ```
 
 - Invalidate the current state of the service provider metadata cache for `coconut`:
-
+{% include googlead1.html  %}
 ```bash
 curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache?serviceId=coconut
 ```
 
 - Invalidate the current state of the service provider metadata cache:
-
+{% include googlead1.html  %}
 ```bash
 curl -X DELETE https://sso.example.org/cas/actuator/samlIdPRegisteredServiceMetadataCache
 ```
