@@ -2,7 +2,7 @@
 layout:     post
 title:      Git - Shallow Clones & Branches
 summary:    A quick tip on how to fetch remote branches of a git repository after it has been shallow-cloned.
-tags: ["Miscellaneous"]
+tags: ["Miscellaneous", "Git"]
 ---
 
 A shallow clone in Git is a way to clone a repository with only a limited history. When you perform a standard clone of a Git repository, you typically get the entire history of that repository, including all commits, branches, and tags. With a shallow clone, you specify a `depth` parameter that limits the number of commits fetched from the remote repository. This can significantly reduce the amount of time and disk space required for cloning large repositories.

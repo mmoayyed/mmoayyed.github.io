@@ -38,31 +38,31 @@ CAS presents the ability to augment the login form to include additional custom 
 ## Example
 
 So imagine that in addition to the usual `username` and `password` fields you also wanted to ask the user for their `phone` as a mandatory field. To do this, you'd teach CAS about the new `phone` field:
- 
+ {% include googlead1.html  %}
 ```properties
 cas.view.customLoginFormFields.phone.messageBundleKey=customLoginFormField.phone
 cas.view.customLoginFormFields.phone.required=true
 ```
 
 The CAS message/language bundle, typically `custom_messages.properties` file, should also contain the text for the new field:
-
+{% include googlead1.html  %}
 ```properties
 customLoginFormField.phone=Telephone
 customFields[phone].required=Telephone number must be specified.
 ```
 
 If you build and bring up CAS, you might see something like this:
-
+{% include googlead1.html  %}
 ![image](https://user-images.githubusercontent.com/1205228/53297205-1a95cf80-37d8-11e9-9f82-aa1a2386aca3.png)
 
 ...and if you attempt to submit the form without the `phone` field:
-
+{% include googlead1.html  %}
 ![image](https://user-images.githubusercontent.com/1205228/53297209-35684400-37d8-11e9-996b-b173cf1c6040.png)
 
 ## Authentication Handling
 
 Next, let's say you have registered the following authentication handler with CAS:
-
+{% include googlead1.html  %}
 ```java
 public class MyAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
     ...
@@ -76,7 +76,7 @@ public class MyAuthenticationHandler extends AbstractUsernamePasswordAuthenticat
 
 
 To receive and process the new `phone` field in your custom authentication handler, you would do something like:
-
+{% include googlead1.html  %}
 ```java
 protected AuthenticationHandlerExecutionResult authenticateUsernamePasswordInternal(
     final UsernamePasswordCredential credential, final String originalPassword) {

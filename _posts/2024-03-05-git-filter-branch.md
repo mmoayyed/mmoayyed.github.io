@@ -2,7 +2,7 @@
 layout:     post
 title:      Git - Rewrite History & Branches
 summary:    A quick tip on how to rewrite git history to update commits, authors and committer information.
-tags: ["Miscellaneous"]
+tags: ["Miscellaneous", "Git"]
 ---
 
 I recently ran into a task where I needed to rename author and committer information of a commit range in a git repository, but only if the author or comitter fields matched a certain value. This tutorial is a quick overview of how I managed to solve this.
