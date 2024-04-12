@@ -31,7 +31,7 @@ Let's suppose that your current [CAS deployment](https://apereo.github.io/cas/de
 7.0.0
 ```
 
-Next, we can ask the build to discovery and list all upgrade recipes that might applicable for the task at hand:
+Next, we can ask the build to discover and list all upgrade recipes that might be applicable for the task at hand:
 {% include googlead1.html %}
 ```bash
 ./gradlew --init-script openrewrite.gradle rewriteDiscover \
