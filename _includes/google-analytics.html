@@ -1,11 +1,17 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
+  
   gtag('config', '{{ site.google_analytics }}');
   gtag('config', '{{ site.googleads_conversion_tracking }}');
+  
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
 </script>
-
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
