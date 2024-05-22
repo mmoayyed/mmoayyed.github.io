@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      GitHub - Rerun Failed Workflow Runs
+title:      GitHub Actions - Rerun Failed Workflow Runs
 summary:    A few tips and tricks on how to rerun failed workflow runs in GitHub Actions.
 tags: ["Miscellaneous", "Git"]
 ---
