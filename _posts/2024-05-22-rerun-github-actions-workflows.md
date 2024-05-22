@@ -37,13 +37,10 @@ function ghrfj() {
   fid=$(echo "$json_data" | jq --arg wf "$workflow" -r '.workflow_runs[] | select(.name == $wf) | .id' )
   
   if [ -n "$fid" ]; then
-     echo -e "Rerunning failed workflow runs with id $fid"
-     gh api \
-        --method POST \
-        -H "Accept: application/vnd.github+json" \
-        /repos/$repo/actions/runs/$fid/rerun-failed-jobs
+     echo "Rerunning failed workflow run with id $fid"
+     gh run rerun $fid --failed
   else
-    echo -e "🍀 $workflow: Passing!"
+    echo "$workflow: Passing!"
   fi
 }
 ```
@@ -68,29 +65,26 @@ You'll need to tweak the filtering logic above to find the right workflow runs a
 
 One possible solution would be to define a GitHub Action's workflow whose sole responsibility would be to find failed workflow runs and rerun those. This workflow only needs to run when certain designated workflows have been completed and failed. So it might be something like this:
 {% include googlead1.html  %}
-```
+```yml
 name: Rerun Workflows
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %} 
 on:
   workflow_run:
     workflows:
-      - Build
+      - Build # Replace with your workflow(s)
     types:
       - completed
     branches:
-      - master
-
+      - master # Replace with your branch
 jobs:
   rerun-failed-jobs:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    if: {% raw %}${{ github.event.workflow_run.conclusion == 'failure' }}{% endraw %} 
     steps:
-      - name: Rerunning ${{ github.event.workflow_run.name }}
+      - name: Rerunning {% raw %}${{ github.event.workflow_run.name }}{% endraw %}
         run: |
-          echo "Workflow run ID: ${{ github.event.workflow_run.id }}"
-          echo "Workflow run Name: ${{ github.event.workflow_run.name }}"
+          echo "Workflow run ID: {% raw %}${{ github.event.workflow_run.id }}{% endraw %}"
           # Rerun stuff here...
 ```
 {% include googlead1.html  %}
