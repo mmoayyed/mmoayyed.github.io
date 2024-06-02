@@ -98,11 +98,17 @@ If the WAR file is invalid, you will receive the following error:
 Error: File 'cas.war' is not compatible; ensure jar file is valid and launch script is not enabled
 ```
 
-This creates a `cas/cas.war` file and the needed libraries in a `cas/lib` folder at the root of the project directory. CAS can then be executed with:
+This creates a `cas/cas.war` file and the needed libraries in a `cas/lib` folder at the root of the project directory. Then we need to perform a training run:
+
+```bash
+java -XX:ArchiveClassesAtExit=./cas/cas.jsa -Dspring.context.exit=onRefresh -jar cas/cas.war
+```
+
+This creates a `cas.jsa` file that can be reused as long as the application is not updated. Finally, CAS can then be executed with:
 
 {% include googlead1.html %}
 ```bash
-java -jar cas/cas.war
+java -XX:SharedArchiveFile=./cas/cas.jsa -jar cas/cas.war
 ...
 ...
 ...
