@@ -20,6 +20,11 @@
 /* @import url('../vendor/monthly-master/css/monthly.css'); */
 
 
+:root {
+  --theme-color-bg: #0c7eca;
+  --tagcloud-bg-color: #0a75ba;
+}
+
 /*** 
 
 ====================================================================
@@ -1534,7 +1539,7 @@ animation-delay: .175s;
 	height: 20px;
 	line-height: 20px;
 	padding: 0 1em 0 .5em;
-	background-color: #faaa5e;
+	background-color: #0a75ba;
 	border-radius: 0 3px 3px 0;
 	color: #fff;
 	font-size: 13px;
@@ -1550,7 +1555,7 @@ animation-delay: .175s;
 	content: '';
 	width: 20px;
 	height: 20px;
-	background-color: #faaa5e;
+	background-color: var(--tagcloud-bg-color);;
 	border-radius: 100%;
 	-webkit-transition: .2s;
 	transition: .2s;
@@ -1565,7 +1570,7 @@ animation-delay: .175s;
 }
 
 .tagcloud06 ul li a:hover::before {
-	background-color: #faaa5e;
+	background-color: var(--tagcloud-bg-color);
 }
 
 .team-member-body {

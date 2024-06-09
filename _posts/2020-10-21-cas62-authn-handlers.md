@@ -104,7 +104,7 @@ public class MyAuthenticationEventExecutionPlanConfiguration
             Note that each authentication handler may optionally qualify for an 'order`
             as well as a unique name.
         */
-        return h;
+        return handler;
     }
 
     @Override

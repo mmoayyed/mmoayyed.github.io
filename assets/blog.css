@@ -1,5 +1,16 @@
 @import url('../fonts/font-awesome/css/font-awesome.min.css');
 
+:root {
+    --fms-badge-text-color: white;
+    --fms-badge-color: #faaa5e;
+    --tagcloud-bg-color: #0a75ba;
+    --theme-color-bg: #0c7eca;
+    --theme-color-border: #33a2ec;
+    --theme-color-bg-hover: #06578d;
+    --theme-color-code: #28abf7;
+}
+
+
 #navbar-collapse-1 {
     margin-top: 5px; 
 }
@@ -16,7 +27,7 @@
 
 .btn-copy-code {
     color: #FFF;
-    background-color: rgb(232, 137, 12);
+    background-color: var(--theme-color-bg);
     position: absolute;
     border: 0;
     padding: 5px 5px 5px 5px;
@@ -27,7 +38,7 @@
 }
 
 .btn-copy-code:hover{
-    background-color: rgb(177, 104, 8);
+    background-color: var(--theme-color-bg-hover);
 }
 
 table {
@@ -167,9 +178,6 @@ div.highlight {
     margin-bottom: 8px;
 }
 
-code {
-    font-size: 18px;
-}
 
 .blog-menu-collapsed {
     margin: 0px; 
@@ -195,6 +203,11 @@ code {
 
 code {
   color: rgb(75, 72, 72);
+  font-size: 18px;
+}
+
+code.highlighter-rouge {
+    color: var(--theme-color-code);
 }
 
 .ui-dialog {
@@ -203,8 +216,8 @@ code {
 
 .btn-warning {
     color: #fff;
-    background-color: #f0ad4e;
-    border-color: #eea236;
+    background-color: var(--theme-color-bg);
+    border-color: var(--theme-color-border);
     border-radius: 10px;
     font-size: 12pt;
 }
@@ -219,7 +232,7 @@ a.post-preview-link {
 }
 
 .card:hover {
-    border-color: #eea236;
+    border-color: var(--theme-color-border);
     border-width: 1.2px;
 }
 
@@ -243,7 +256,7 @@ a.post-preview-link {
 	height: 15px;
 	line-height: 15px;
 	padding: 0 1em 0 .5em;
-	background-color: #faaa5e;
+	background-color: var(--tagcloud-bg-color);
 	border-radius: 3px 3px 3px 3px;
 	color: #fff;
 	font-size: 12px;
@@ -262,7 +275,7 @@ a.post-preview-link {
 }
 
 .tagcloud06 ul li a:hover::before {
-	background-color: #faaa5e;
+	background-color: var(--tagcloud-bg-color);
 }
 
 .emoji {
@@ -274,30 +287,6 @@ a.post-preview-link {
 }
 
 
-/* Filter Checkbox */
-/*! 
- *  Multiple select dropdown with filter jQuery plugin.
- *  Copyright (C) 2020  Andrew Wagner  github.com/andreww1011
- *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 2.1 of the License, or (at your option) any later version.
- * 
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Lesser General Public License for more details.
- * 
- *  You should have received a copy of the GNU Lesser General Public
- *  License along with this library; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
- *  USA
- */
- :root {
-    --fms-badge-text-color: white;
-    --fms-badge-color: #faaa5e;
-}
 
 .filter-multi-select.dropup, .filter-multi-select.dropdown {
     position: relative;

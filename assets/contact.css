@@ -1,3 +1,4 @@
+
 #contact-section-header {
   padding-bottom: 34px;
 }
@@ -39,7 +40,7 @@
 
 #contact-section .contact-address-content .left-side ul li .icon,
 #contact-section .send-message form button {
-  border-color:rgb(232,137,12);;
+  border-color:rgb(232,137,12);
   border-style: solid;
 }
 
