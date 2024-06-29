@@ -109,7 +109,7 @@ def run(Object... args) {
 }
 ```
 
-All that remains is to modify our fragment from earlier and let it use the new `` flow variable:
+All that remains is to modify our fragment from earlier and let it use the new `announcementBody` flow variable:
 {% include googlead1.html %}
 ```html
 <div th:fragment="serviceUI" 
