@@ -50,7 +50,7 @@ cas.authn.attribute-repository.stub.attributes.mail=misagh@somewhere.com
 
 cas.authn.mfa.simple.mail.from=wolverine@example.org
 cas.authn.mfa.simple.mail.subject=CAS MFA Token
-cas.authn.mfa.simple.mail.text=Hello! Your requested CAS token is %s
+cas.authn.mfa.simple.mail.text=Hello! Your requested CAS token is ${token}
 cas.authn.mfa.simple.mail.attribute-name=mail
 
 cas.authn.mfa.simple.time-to-kill-in-seconds=30

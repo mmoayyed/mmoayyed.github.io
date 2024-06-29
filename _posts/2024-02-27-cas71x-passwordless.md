@@ -124,8 +124,8 @@ In another variation, the passwordless account can skip its default flow in favo
 Once the account is deemed eligible for a multifactor authentication flow, it is processed by the collection of multifactor authentication triggers to select the appropriate provider. To keep things simple, let's say we would want to require MFA for users with an attribute `category` whose value(s) matches a pattern of `student` or `admin`.
 {% include googlead1.html  %}
 ```properties
-cas.authn.mfa.globalPrincipalAttributeNameTriggers=category
-cas.authn.mfa.globalPrincipalAttributeValueRegex=student|admin
+cas.authn.mfa.triggers.principal.global-principal-attribute-name-triggers=category
+cas.authn.mfa.triggers.principal.global-principal-attribute-value-regex=student|admin
 ```
 
 Let's also make sure our demo passwordless account carries that relevant attribute:
