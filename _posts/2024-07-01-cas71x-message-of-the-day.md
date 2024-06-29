@@ -17,7 +17,7 @@ Our starting position is as follows:
 # Requirements
 
 Let's begin with the initial premise that our announcements and messages are to be displayed directly on the login screen, right above the area where the users are expected to present their credentials. Here is the sort of final outcome we expect to see:
-
+{% include googlead1.html %}
 {% include image.html img="/images/blog/assets/msgoftheday.png" width="50%" title="Apereo CAS - Announcements & Message Of The Day" %}
 
 Of course, we want to be able to change this announcement dynamically without having to restart the CAS server.
@@ -25,7 +25,7 @@ Of course, we want to be able to change this announcement dynamically without ha
 # User Interface
 
 The area in the user interface that needs to be modified is owned by a dedicated CAS fragment called `serviceui.html.` We can begin by pulling this fragment into our own CAS overlay project:
-
+{% include googlead1.html %}
 ```bash
 ./gradlew[.bat] getResource -PresourceName=serviceui
 ```
@@ -44,7 +44,7 @@ This will fetch the fragment and put it at the following path: `src/main/resourc
 ```
 
 Let's break this down:
-
+{% include googlead1.html %}
 - In Thymeleaf, `utext` is a utility function used to insert unescaped text into your HTML templates. This means that the text you insert will not be HTML-escaped, allowing you to include HTML content directly.
 - `#{announcement.title}` is a special syntax that instructs CAS and thymeleaf to load the text attached to the language key `announcement.title` from a language bundle. This text can include HTML and will then be rendered using the `utext` directive.
 
@@ -55,13 +55,13 @@ This means all we have to do is to define our language bundle and define two key
 A language bundle (or resource bundle) is a way to manage internationalization (i18n) and localization (l10n) of CAS. It allows you to provide multiple language translations for the CAS user interface texts, messages, and labels, making it adaptable to different locales. A language bundle is typically a set of `.properties` files where each file contains key-value pairs. Each key represents a specific piece of text and the value is the translated text for a specific language.
 
 By default, CAS looks at the following language bundles to find the text attached to a key:
-
+{% include googlead1.html %}
 - `/etc/cas/config/custom_messages.properties`
 - `classpath:custom_messages.properties` 
 - `classpath:messages.properties`
 
 The system will look at each file one by one to find a given language key, i.e. `announcement.title`. Let's define our two keys inside `/etc/cas/config/custom_messages.properties`, which has the added advantage that changes to this bundle can be done outside the CAS web application, removing the need for repackaging and rebuilding of the CAS server:
-
+{% include googlead1.html %}
 ```properties
 announcement.title=Hey there!
 announcement.body=Do you know why skeletons don't fight each other? They don't have <i>the guts</i>!
@@ -70,7 +70,7 @@ announcement.body=Do you know why skeletons don't fight each other? They don't h
 # Updating Messages
 
 Language bundles in CAS are cached for performance reasons. Once the system has loaded a bundle, it will usually hold onto and cache its contents for about 3 minutes before reloading it. If you want to see instantaneous changes to your language bundle and don't wish to wait too long, you can adjust the following property in your CAS settings:
-
+{% include googlead1.html %}
 ```properties
 cas.message-bundle.cache-seconds=3
 ```
@@ -84,13 +84,13 @@ The strategy so far works for very basic and modest of use cases. Let's make lif
 A webflow decorator in CAS is an easier option that allows you to *decorate* the webflow dynamically, and it takes care of the internal webflow configuration. Such decorators specifically get called upon as CAS begins to render the login view while reserving the right to decorate additional parts of the webflow in the future.
 
 For our purposes, let's use a Groovy script to decorate the webflow:
-
+{% include googlead1.html %}
 ```properties
 cas.webflow.login-decorator.groovy.location=file:/path/to/MyDecorator.groovy
 ```
 
 The script itself would have the following structure:
-
+{% include googlead1.html %}
 ```groovy
 import java.net.*
 
@@ -110,7 +110,7 @@ def run(Object... args) {
 ```
 
 All that remains is to modify our fragment from earlier and let it use the new `` flow variable:
-
+{% include googlead1.html %}
 ```html
 <div th:fragment="serviceUI" 
     id="serviceui" 
