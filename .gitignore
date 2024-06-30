@@ -4,7 +4,7 @@ _site
 .history
 .jekyll-metadata
 .jekyll-cache
-
+.ignore
 # Ignore the config file that's used for gh-pages.
 _config.gh-pages.yml
 out/
