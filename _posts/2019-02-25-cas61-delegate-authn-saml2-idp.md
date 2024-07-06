@@ -84,7 +84,7 @@ If you expand the link to see attributes currently resolved, you will see everyt
 
 ## Remap Attributes
 
-To make things more exiciting, let's instruct CAS to fetch the attribute `employeeNumber` from the identity provider
+To make things more exciting, let's instruct CAS to fetch the attribute `employeeNumber` from the identity provider
 and then virtually rename it to `empl_id`:
 ```
 cas.authn.pac4j.saml[0].mappedAttributes[0].name=employeeNumber

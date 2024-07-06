@@ -516,7 +516,7 @@ We can also turn on support for external/delegated authentication, to hand the a
 The initial setup is in fact simple; as the [documentation describes][delegation] you need to add the required dependency in your overlay:
 
 ```groovy
-implementation "org.apereo.cas:cas-server-support-pac4j-webflow"
+implementation "org.apereo.cas:cas-server-support-pac4j-saml"
 ```
 
 ...and then in your `cas.properties`, instruct CAS to hand off authentication to the, in this case, SAML2 identity provider:
@@ -545,6 +545,12 @@ cas.authn.pac4j.oidc[0].generic.id=...
 cas.authn.pac4j.oidc[0].generic.secret=...
 cas.authn.pac4j.oidc[0].generic.client-name=Keycloak
 cas.authn.pac4j.oidc[0].generic.discovery-uri=https://ext.idp.org/.well-known/openid-configuration
+```
+
+Be sure to include the following dependency as well in your build:
+
+```groovy
+implementation "org.apereo.cas:cas-server-support-pac4j-oidc"
 ```
 
 # Monitoring & Status

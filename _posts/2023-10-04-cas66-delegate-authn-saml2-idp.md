@@ -75,7 +75,7 @@ If you expand the link to see attributes currently resolved, you will see everyt
 
 ## Remap Attributes
 
-To make things more exiciting, let's instruct CAS to fetch the attribute `employeeNumber` from the identity provider
+To make things more exciting, let's instruct CAS to fetch the attribute `employeeNumber` from the identity provider
 and then virtually rename it to `empl_id`:
 {% include googlead1.html  %}
 ```
@@ -93,7 +93,7 @@ With those settings, if you go through the same sequence again you might see som
 
 ## Identity Provider Authorization
 
-Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/6.1.x/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
+Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/6.6.x/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
 {% include googlead1.html  %}
 ```json
 {
