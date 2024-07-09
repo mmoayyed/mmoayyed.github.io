@@ -44,6 +44,7 @@ Next, you can exmaine your available Docker images:
 {% include googlead1.html  %}
 ```bash
 $ docker images
+
 REPOSITORY                       TAG                                IMAGE ID            CREATED              SIZE
 org.apereo.cas/cas               v7.1.0                            8e9c1d4b3ce0        About a minute ago   358MB
 ```
