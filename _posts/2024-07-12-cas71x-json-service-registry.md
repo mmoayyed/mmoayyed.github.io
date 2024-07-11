@@ -47,7 +47,7 @@ Or perhaps a slightly more advanced version would be an application definition t
 ```json
 {
   "@class" : "org.apereo.cas.services.CasRegisteredService",
-  "serviceId" : "https://app.example.org",
+  "serviceId" : "^https://app.example.org",
   "name" : "ApplicationName",
   "id" : 1001,
   "attributeReleasePolicy" : {
@@ -56,6 +56,10 @@ Or perhaps a slightly more advanced version would be an application definition t
   }
 }
 ```
+
+<div class="alert alert-info">
+  <strong>Remember</strong><br/>The <code>serviceId</code> field is in fact a regular expression pattern that is compared against the application URL, which in this case, would be passed to CAS via the <code>service</code> parameter. Using patterns allows you to group applications together under a common scheme and apply similar policies to them without having to register them individually.
+</div>
 
 The naming convention here is somewhat important and is determined based on the service `name` field and its numeric `id` using the below formula:
 {% include googlead1.html  %}
