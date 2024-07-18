@@ -14,13 +14,13 @@ Here we go.
 # Tooling
 
 The Java `keytool`, typically found in `$JAVA_HOME/bin` directory, is a command-line utility that is used to manage keys and certificates in Java keystores. It can generate, import, and export cryptographic keys and certificates. For many common key-related operations, you also need to have `openssl` at your disposal. OpenSSL is a toolkit that implements the SSL and TLS protocols and generally work as a general-purpose cryptography library and has the ability to convert keys and keystores from one format to another. 
-
+{% include googlead1.html  %}
 Let's go over a few sample commands that you might useful using the above tools.
 
 # Commands
 
 Let's start with generating our very own keystore:
-
+{% include googlead1.html  %}
 ```bash
 keytool -genkey -alias myentry -keyalg RSA -validity 999 \
     -keystore /etc/config/thekeystore -ext san=dns:$REPLACE_WITH_FULL_MACHINE_NAME
@@ -29,7 +29,7 @@ keytool -genkey -alias myentry -keyalg RSA -validity 999 \
 This will generate a `thekeystore` file which will include the SSL private/public keys that are issued for your server domain. Make sure you replace `$REPLACE_WITH_FULL_MACHINE_NAME` with a real value, such as `myserver.example.org`, if that is where your certificate would be used.
 
 The above commands usually starts out with the following response:
-
+{% include googlead1.html  %}
 ```
 Enter keystore password: changeit
 Re-enter new password: changeit
@@ -54,7 +54,7 @@ Is CN=$FULL_MACHINE_NAME, OU=Test, O=Test, L=Test, ST=Test, C=US correct?
 </div>
 
 Next, you can use the `keytool` command to list the entries in your keystore:
-
+{% include googlead1.html  %}
 ```bash
 # This will ask you for a password...
 keytool -list -keystore /etc/config/thekeystore 
@@ -68,7 +68,7 @@ keytool -delete -alias myentry -keystore /etc/config/thekeystore
 ```
 
 You can also export the certificate or public entry attached to your key in the keystore:
-
+{% include googlead1.html  %}
 ```bash
 keytool -export -file /etc/config/mycertificate.crt \
   -keystore /etc/config/thekeystore -alias myentry
@@ -81,14 +81,14 @@ keytool -export -file /etc/config/mycertificate.crt \
 Now let's say you have a private/public keypair in PEM format and you want to get those into a Java keystore. A PEM file is used to store and transmit cryptographic keys, certificates, and other data and it is a Base64 encoded format with specific headers and footers. Being in Base64 encoding makes it easy to read in text editors.
 
 To get our PEM files into a Java keystore, we first need `openssl` to convert them into a compatible format such as `PKCS12`:
-
+{% include googlead1.html  %}
 ```bash
 openssl pkcs12 -export -in /etc/config/cert.pem \
   -inkey /etc/config/key.pem -out /etc/config/keystore.p12 -name myentry
 ```
 
 When you have the `keystore.p12` file, you can import it into your own Java keystore:
-
+{% include googlead1.html  %}
 ```bash
 keytool -importkeystore -deststorepass changeit -destkeypass changeit \
   -destkeystore /etc/config/thekeystore -srckeystore /etc/config/keystore.p12 \
