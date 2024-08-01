@@ -5,7 +5,7 @@ summary:    Discover how to upgrade your CAS deployment quickly and efficiently 
 tags:       ["CAS 7.0.x", "Getting Started"]
 ---
 
-[OpenRewrite](https://docs.openrewrite.org/) is a tool and platform used by the CAS allows the project to upgrade installations in place from one version to the next. It works by making changes to the project structure representing your CAS Overlay build and printing the modified files back. Modification instructions are packaged together in form of upgrade scripts called Recipes that are produced by the CAS project, and then referenced and discovered in the CAS overlay.
+[OpenRewrite](https://docs.openrewrite.org/) is a tool and platform used by CAS and allows the project to upgrade installations in place from one version to the next. It works by making changes to the project structure representing your CAS Overlay build and printing the modified files back. Modification instructions are packaged together in form of upgrade scripts called Recipes that are produced by the CAS project, and then referenced and discovered in the CAS overlay.
 
 {% include googlead1.html %}
 In this post, we are going to take a brief look at what it takes to upgrade a CAS deployment using OpenRewrite. This tutorial specifically focuses on:

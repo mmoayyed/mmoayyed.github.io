@@ -86,7 +86,7 @@ As a result, it might be easier to reboot and refresh the CAS overlay and start 
 
 A CAS major release is one that is presented in the form of `1.B.C`, `2.B.C`, etc. When the left-most number changes, it signals to the adopter that this release *could* contain significant features and enhancements such as new integrations and most importantly, platform-level requirements might have changed. You may be asked to go to a newer Java version, or an entirely different operating system, etc. A major release is, by definition, free to change anything and everything, though, of course, every effort is made to ensure application data and configuration remain compatible. Should the need show up, however, with very, very good reasons, a major release allows for that sort of change to pass.
 {% include googlead1.html  %}
-CAS major releases do not follow predefined schedule; they are decided upon by the project maintainers and developers when time and technology feel right and are in demand. Anecdotally, they are released once every few years mainly to keep up with the Java release cadence. Just as before, it might be easier to reboot and refresh the CAS overlay and start anew, unless you really know what you're doing.
+CAS major releases do not follow a predefined schedule; they are decided upon by the project maintainers and developers when time and technology feel right and are in demand. Anecdotally, they are released once every few years mainly to keep up with the Java release cadence. Just as before, it might be easier to reboot and refresh the CAS overlay and start anew, unless you really know what you're doing.
 
 # Recommendations
 
