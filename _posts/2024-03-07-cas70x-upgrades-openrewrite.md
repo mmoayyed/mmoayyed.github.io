@@ -15,7 +15,7 @@ In this post, we are going to take a brief look at what it takes to upgrade a CA
 
 # Upgrade Recipes
 
-OpenRewrite recipes are produced by CAS itself and are essentially YAML files that make minimally invasive changes to your CAS build allowing you to upgrade from one version to the next with minimal effort. The recipe contains *almost everything* that is required for a CAS build system to navigate from one version to other and automated tedious aspects of the upgrade such as finding the correct versions of CAS, relevant libraries and plugins as well as any possible structural changes to one’s CAS build.
+OpenRewrite recipes are produced by CAS itself and are essentially YAML files that make minimally invasive changes to your CAS build allowing you to upgrade from one version to the next with minimal effort. The recipe contains *almost everything* that is required for a CAS build system to navigate from one version to other and automates tedious aspects of the upgrade such as finding the correct versions of CAS, relevant libraries and plugins as well as any possible structural changes to one’s CAS build.
 {% include googlead1.html %}
 <div class="alert alert-warning">
   <strong>WATCH OUT!</strong><br/>While upgrades recipes will continue to get smarter and better over time, you should know that their technical prowess and ability can only go so far. There may be certain aspects of the upgrade that are simply not possible to automate, specially if you have made significant modifications to your CAS build.

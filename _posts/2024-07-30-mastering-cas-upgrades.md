@@ -77,7 +77,7 @@ Specifically a CAS feature release might require the interested adopter to:
 4. Rework CAS configuration, application registration records, etc in small and modest ways.
 
 <div class="alert alert-info">
-  <strong>Note</strong><br/>A CAS feature release will never ever change the Java platform requirement and will reject any and all other component upgrades that might ask for a newer Java version. Special consideration is also made to ensure data that is produced by CAS that is meant to hang around and stay for the long-term remains compatible and unmolested with newer versions, except for very small comestic changes from time to time.
+  <strong>Note</strong><br/>A CAS feature release will never ever change the Java platform requirement and will reject any and all other component upgrades that might ask for a newer Java version. Special consideration is also made to ensure data that is produced by CAS that is meant to hang around and stay for the long-term remains compatible and unmolested with newer versions, except for very small cosmetic changes from time to time.
 </div>
 {% include googlead1.html  %}
 As a result, it might be easier to reboot and refresh the CAS overlay and start anew, unless you really know what you're doing and have kept up with the release progress and process over the months. It may not be immediately enough to just upgrade the CAS version in your build; other plugins and components used in the build might also need your attention.
