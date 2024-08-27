@@ -82,13 +82,13 @@ Note that the `standalone` profile is always active (unless you take matters int
 To activate the profile, we need to evaluate the method used to run the CAS web application. If you are, for example, running the CAS web application directly as a Spring Boot application, then the activation instruction takes the following form as a command-line argument:
 
 ```bash
-java -jar /path/to/cas.war --Spring.profiles.include=dev
+java -jar /path/to/cas.war --spring.profiles.include=dev
 ```
 
 Or if you are running CAS as an executable web application file, it takes on a fairly identical form:
 {% include googlead1.html  %}
 ```bash
-/path/to/cas.war --Spring.profiles.include=dev
+/path/to/cas.war --spring.profiles.include=dev
 ```
 
 You might instead prefer to activate the right profile as an environment variable before running CAS itself:
