@@ -23,7 +23,7 @@ OpenRewrite recipes are produced by CAS itself and are essentially YAML files th
 
 # Upgrades
 
-Let's suppose that your current [CAS deployment](https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html) is based on `7.0.0` and you intend to upgrade to `7.0.2`. We begin by first verifying the base CAS version to confirm:
+Let's suppose that your current [CAS deployment](https://apereo.github.io/cas/7.1.x/installation/WAR-Overlay-Installation.html) is based on `7.0.0` and you intend to upgrade to `7.0.2`. We begin by first verifying the base CAS version to confirm:
 {% include googlead1.html %}
 ```bash
 ./gradlew casVersion --no-configuration-cache -q

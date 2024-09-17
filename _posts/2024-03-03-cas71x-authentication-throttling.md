@@ -15,7 +15,7 @@ In this post, we are going to take a brief look at what it takes to throttle fai
 
 # Setup
 
-Once you have included the [correct module](https://apereo.github.io/cas/development/authentication/Configuring-Authentication-Throttling.html#failure-throttling) in your CAS overlay, you will need to decide on a strategy to track failed authentication requests. A common way would be to opt for the combination of the user's source IP and username. This option would limit successive failed logins against a particular user from the same IP address.
+Once you have included the [correct module](https://apereo.github.io/cas/7.1.x/authentication/Configuring-Authentication-Throttling.html#failure-throttling) in your CAS overlay, you will need to decide on a strategy to track failed authentication requests. A common way would be to opt for the combination of the user's source IP and username. This option would limit successive failed logins against a particular user from the same IP address.
 {% include googlead1.html %}
 ```properties
 cas.authn.throttle.core.username-parameter=username
@@ -63,7 +63,7 @@ Deployments with multiple CAS nodes behind a load balancer configured with sessi
 {% include googlead1.html %}
 CAS also provides options that allow you to distribute the throttled submission store across multiple CAS nodes. This option removes the need for session affinity and allows any CAS node in the cluster to have access to the same centralized submission store to detect throttled accounts and block access.
 
-One possible option would be to distribute throttled entries with [Hazelcast](https://apereo.github.io/cas/development/authentication/Configuring-Authentication-Throttling-Hazelcast.html):
+One possible option would be to distribute throttled entries with [Hazelcast](https://apereo.github.io/cas/7.1.x/authentication/Configuring-Authentication-Throttling-Hazelcast.html):
 {% include googlead1.html %}
 ```properties
 cas.authn.throttle.hazelcast.cluster.core.instance-name=CAS

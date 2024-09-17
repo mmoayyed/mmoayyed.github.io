@@ -20,7 +20,7 @@ Our starting position is based on:
 
 ## Configuration
 
-Once your CAS deployment is enabled for [MFA with Google Authenticator](https://apereo.github.io/cas/development/mfa/GoogleAuthenticator-Authentication.html), we need to figure out how to store user-trusted devices that are tracked and remembered by CAS. For this exercise, let's use a [PostgreSQL database](https://apereo.github.io/cas/development/mfa/Multifactor-TrustedDevice-Authentication-Storage-JDBC.html) with the following configuration:
+Once your CAS deployment is enabled for [MFA with Google Authenticator](https://apereo.github.io/cas/7.1.x/mfa/GoogleAuthenticator-Authentication.html), we need to figure out how to store user-trusted devices that are tracked and remembered by CAS. For this exercise, let's use a [PostgreSQL database](https://apereo.github.io/cas/7.1.x/mfa/Multifactor-TrustedDevice-Authentication-Storage-JDBC.html) with the following configuration:
 {% include googlead1.html  %}
 ```properties
 cas.authn.mfa.trusted.jpa.user=...
@@ -86,7 +86,7 @@ cas.authn.mfa.trusted.device-fingerprint.user-agent.enabled=true
 
 ### GeoLocation
 
-This option works best if you have configured a GeoLocation service like [MaxMind](https://apereo.github.io/cas/development/authentication/GeoTracking-Authentication-Maxmind.html). When enabled, the user's location is determined using the GeoLocation service and used as a component in the final device fingerprint. 
+This option works best if you have configured a GeoLocation service like [MaxMind](https://apereo.github.io/cas/7.1.x/authentication/GeoTracking-Authentication-Maxmind.html). When enabled, the user's location is determined using the GeoLocation service and used as a component in the final device fingerprint. 
 {% include googlead1.html  %}
 ```properties
 cas.authn.mfa.trusted.device-fingerprint.geolocation.enabled=true

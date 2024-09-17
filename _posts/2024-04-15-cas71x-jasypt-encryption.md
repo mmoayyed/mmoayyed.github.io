@@ -146,6 +146,6 @@ I hope this review was of some help to you and I am sure that both this post as 
 
 [Misagh Moayyed](https://fawnoos.com)
 
-[shell]: https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html
-[oidc]: https://apereo.github.io/cas/development/authentication/OIDC-Authentication-JWKS-Storage.html
-[saml2]: https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata.html
+[shell]: https://apereo.github.io/cas/7.1.x/installation/Configuring-Commandline-Shell.html
+[oidc]: https://apereo.github.io/cas/7.1.x/authentication/OIDC-Authentication-JWKS-Storage.html
+[saml2]: https://apereo.github.io/cas/7.1.x/installation/Configuring-SAML2-DynamicMetadata.html

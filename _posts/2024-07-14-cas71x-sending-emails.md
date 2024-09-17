@@ -41,7 +41,7 @@ This option generally works quite well for any email server or provider that is 
 
 Amazon Simple Email Service (SES) is a cloud-based email-sending service designed to provide high deliverability and scalability. Integrating Amazon SES with Spring Boot allows you to leverage this service to send transactional and marketing emails. 
 {% include googlead1.html  %}
-[CAS uses the AWS SDK](https://apereo.github.io/cas/development/notifications/Sending-Email-Configuration-AmazonSES.html) for Java to configure Amazon SES and handle email sending tasks. With a few simple steps, including setting up your AWS credentials to configure the SES client, you can start sending emails through Amazon's infrastructure. 
+[CAS uses the AWS SDK](https://apereo.github.io/cas/7.1.x/notifications/Sending-Email-Configuration-AmazonSES.html) for Java to configure Amazon SES and handle email sending tasks. With a few simple steps, including setting up your AWS credentials to configure the SES client, you can start sending emails through Amazon's infrastructure. 
 
 Once you have included the right module in your CAS build, a very basic setup could mean the following settings:
 {% include googlead1.html  %}
@@ -53,7 +53,7 @@ cas.email-provider.ses.credential-secret-key=...
 
 # SendGrid
 
-SendGrid is a popular cloud-based email service known for its robust features and ease of use, making it an excellent choice for sending transactional and marketing emails. Integrating SendGrid with CAS allows you to take advantage of SendGrid's email delivery platform. By incorporating the [relevant library](https://apereo.github.io/cas/development/notifications/Sending-Email-Configuration-SendGrid.html) into your CAS project, you can quickly configure the necessary API keys and settings to start sending emails. 
+SendGrid is a popular cloud-based email service known for its robust features and ease of use, making it an excellent choice for sending transactional and marketing emails. Integrating SendGrid with CAS allows you to take advantage of SendGrid's email delivery platform. By incorporating the [relevant library](https://apereo.github.io/cas/7.1.x/notifications/Sending-Email-Configuration-SendGrid.html) into your CAS project, you can quickly configure the necessary API keys and settings to start sending emails. 
 
 Just as before, once you have included the right module in your CAS build, a fundamental setup could mean the following settings:
 {% include googlead1.html  %}
@@ -64,7 +64,7 @@ spring.sendgrid.endpoint=https://api.sendgrid.com/v3/mail/send
 
 # Mailjet
 
-Mailjet is a comprehensive email service provider offering various features for sending transactional and marketing emails. Integrating Mailjet with CAS allows you to utilize its API for email delivery and analytics. By adding [the required library](https://apereo.github.io/cas/development/notifications/Sending-Email-Configuration-Mailjet.html) to your CAS build, you can easily configure your API keys and set up the necessary properties to start sending emails. 
+Mailjet is a comprehensive email service provider offering various features for sending transactional and marketing emails. Integrating Mailjet with CAS allows you to utilize its API for email delivery and analytics. By adding [the required library](https://apereo.github.io/cas/7.1.x/notifications/Sending-Email-Configuration-Mailjet.html) to your CAS build, you can easily configure your API keys and set up the necessary properties to start sending emails. 
 
 Just as before, once you have included the right module in your CAS build, a fundamental setup could mean the following settings:
 {% include googlead1.html  %}

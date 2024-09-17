@@ -31,7 +31,7 @@ You can provide user credentials by running the `gcloud auth application-default
 
 # CAS Configuration
 
-Once you have the [right module](https://apereo.github.io/cas/development/configuration/Configuration-Server-Management-SpringCloud-GCP-SecretManager.html) in place, you may then instruct your CAS deployment to fetch secrets from Google Cloud Secret Manager and assign them to CAS settings. For example:
+Once you have the [right module](https://apereo.github.io/cas/7.1.x/configuration/Configuration-Server-Management-SpringCloud-GCP-SecretManager.html) in place, you may then instruct your CAS deployment to fetch secrets from Google Cloud Secret Manager and assign them to CAS settings. For example:
 {% include googlead1.html %}
 ```properties
 cas.tgc.crypto.encryption.key=${sm://my-encryption-key}

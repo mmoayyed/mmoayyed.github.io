@@ -21,7 +21,7 @@ Let's begin. Our starting position is based on:
 
 ## Configuration
 
-The initial setup is, in fact simple; as the [documentation describes](https://apereo.github.io/cas/development/integration/Delegate-Authentication.html), you simply need to add the required dependency in your overlay:
+The initial setup is, in fact simple; as the [documentation describes](https://apereo.github.io/cas/7.1.x/integration/Delegate-Authentication.html), you simply need to add the required dependency in your overlay:
 
 ```groovy
 implementation "org.apereo.cas:cas-server-support-pac4j-webflow"
@@ -100,7 +100,7 @@ width="50%" title="Apereo CAS - Delegated Authentication to SAML2 Identity Provi
 
 ## Identity Provider Authorization
 
-Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/development/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
+Let's pretend that we are using the [JSON Service Registry](https://apereo.github.io/cas/7.1.x/services/JSON-Service-Management.html) to manage our application registration records. On a per-app basis and for a sample test application, let's make sure our app is authorized to use our SAML2 identity provider in a delegated authentication scenario. 
 {% include googlead1.html  %}
 ```json
 {
