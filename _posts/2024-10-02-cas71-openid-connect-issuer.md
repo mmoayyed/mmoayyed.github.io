@@ -2,15 +2,15 @@
 layout:     post
 title:      Apereo CAS - OpenID Connect Issuers & Aliases
 summary:    Learn how to tune your Apereo CAS deployment as an OpenID Connect provider to respond to authentication requests from multiple hosts with different issuer patterns and aliases.
-tags:       ["CAS 6.6.x", "OpenID Connect"]
+tags:       ["CAS 7.1.x", "OpenID Connect"]
 ---
 
 If your Apereo CAS deployment is configured to act as an OpenID Connect provider, then you will need to be careful with how you define the required issuer setting. In this blog post, we will examine the range of options available to define and tune the issuer value for Apereo CAS acting as an OpenID Connect provider. 
 {% include googlead1.html  %}
 Our starting position is based on the following:
 
-- CAS `6.6.x`
-- Java `11`
+- CAS `7.1.x`
+- Java `21`
 - [CAS WAR Overlay](https://github.com/apereo/cas-overlay-template)
 
 ## Overview
