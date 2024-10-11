@@ -5,6 +5,10 @@ summary:    Learn how to inform Microsoft Office365 and/or ADFS that multifactor
 tags:       ["CAS 7.2.x", "SAML2", "MFA"]
 ---
 
+<div class="alert alert-info">
+  <strong>Contributed Content</strong><br/>Keith Conger of Colorado College, an active member of the CAS community, was generous enough to contribute this guide and offer notes, examples, and screenshots of the relevant configuration. Thank you Keith!
+</div>
+
 If your Apereo CAS deployment supports Microsoft Office365 (perhaps via a SAML2 integration), you might have seen the following announcement from Microsoft:
 
 > Action required: Enable multifactor authentication for your tenant by...
