@@ -65,7 +65,7 @@ Since the integration is carried out via SAML2, you will need to make sure your 
           "groovy { return 'DOMAIN\\\\' + attributes['samaccountName'][0] }"
         ]
       ],
-      "upn": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn,"
+      "upn": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
     }
   },
   "multifactorPolicy": {
@@ -77,7 +77,7 @@ Since the integration is carried out via SAML2, you will need to make sure your 
       ]
     ],
     "bypassPrincipalAttributeName": "memberOf",
-    "bypassPrincipalAttributeValue": "^CN=MFA-Exempt.*",
+    "bypassPrincipalAttributeValue": "^CN=MFA-Exempt.*"
   },
   "metadataLocation": "https://fs.domain.edu/federationmetadata/2007-06/federationmetadata.xml",
   "signAssertions": true,
@@ -86,7 +86,7 @@ Since the integration is carried out via SAML2, you will need to make sure your 
   "skipGeneratingSubjectConfirmationInResponseTo": false,
   "skipGeneratingSubjectConfirmationNotOnOrAfter": false,
   "skipGeneratingSubjectConfirmationRecipient": false,
-  "skipGeneratingSubjectConfirmationNotBefore": true,
+  "skipGeneratingSubjectConfirmationNotBefore": true
 }
 ```
 
