@@ -58,7 +58,7 @@ Simple enough, but what about all other applications and users?
 For everything else, let's say all users that carry a specific attribute, `email`, with a value that matches the right pattern should go through the other profile. To handle this bit of logic, we need to build a small little script to implement our conditional logic:
 {% include googlead1.html  %}
 ```properties
-cas.authn.mfa.groovy-script.location=/path/to/GroovyMfa.groovy
+cas.authn.mfa.groovy-script.location=file:/path/to/GroovyMfa.groovy
 ```
 
 The script itself looks like the one below:
