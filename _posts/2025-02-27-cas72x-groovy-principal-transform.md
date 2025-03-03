@@ -8,7 +8,7 @@ tags:       ["CAS 7.2.x", "Groovy"]
 Apereo CAS provides options for each authentication strategy and method to modify and transform the username before attempting the authentication transaction. This is typically useful in scenarios where you want to standardize usernames across multiple authentication sources or manipulate the username by adding or replacing domain names, or enforce lowercase or uppercase transformations.
 
 {% include googlead1.html  %}
-This post demonstrates an how such transformation can be carried out using Groovy in a scripted fashion to look up the effective username from external sources.
+This post demonstrates how such transformations can be carried out using Groovy in a scripted fashion to look up the effective username from external sources.
 
 Our starting position is as follows:
 
