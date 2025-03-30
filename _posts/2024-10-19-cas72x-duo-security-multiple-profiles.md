@@ -5,7 +5,7 @@ summary:    Learn how to register multiple multifactor authentication profiles i
 tags:       ["CAS 7.2.x", "MFA"]
 ---
 
-Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/development/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi) and the integration strategy with Apereo CAS. Furthermore, we will examine how multiple Duo Security integrations can be defined in CAS, and how one may be able to choose between them, taking into account user attributes and/or application policies.
+Apereo CAS can integrate with [Duo Security](https://www.duo.com/) to provide a smooth and seamless multifactor authentication scenario. [Support for Duo Security](https://apereo.github.io/cas/7.2.x/mfa/DuoSecurity-Authentication.html) can cover authentication scenarios for web-based applications as well as command-line interfaces and APIs. In this walkthrough, we'll take a look at Duo Security's *Universal Prompt* using Duo's [OIDC Auth API](https://duo.com/docs/oauthapi) and the integration strategy with Apereo CAS. Furthermore, we will examine how multiple Duo Security integrations can be defined in CAS, and how one may be able to choose between them, taking into account user attributes and/or application policies.
 
 {% include googlead1.html  %}
 

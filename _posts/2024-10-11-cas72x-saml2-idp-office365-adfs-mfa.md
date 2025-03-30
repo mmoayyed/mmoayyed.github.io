@@ -126,7 +126,7 @@ CAS internally tracks the satisfied authentication context class using an attrib
 <strong>Note</strong><br/>This option only works if you are on the most recent version of the CAS software.
 </div>
 
-We can set up an [attribute definition](https://apereo.github.io/cas/development/integration/Attribute-Definitions.html) to rename this attribute to our chosen attribute:
+We can set up an [attribute definition](https://apereo.github.io/cas/7.2.x/integration/Attribute-Definitions.html) to rename this attribute to our chosen attribute:
 {% include googlead1.html  %}
 ```json
 "authnContextClass": {

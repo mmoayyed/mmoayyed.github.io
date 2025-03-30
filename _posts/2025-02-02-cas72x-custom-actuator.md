@@ -23,7 +23,7 @@ This tutorial specifically requires and focuses on:
 
 - CAS `7.2.x`
 - Java 21
-- [WAR Overlay](https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html)
+- [WAR Overlay](https://apereo.github.io/cas/7.2.x/installation/WAR-Overlay-Installation.html)
 
 # Actuator Endpoint
 

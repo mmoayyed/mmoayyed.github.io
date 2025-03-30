@@ -5,7 +5,7 @@ summary:    Master writing custom authentication handlers in CAS to verify user 
 tags:       ["CAS 7.2.x", "Authentication", "Monitoring"]
 ---
 
-While [authentication support](https://apereo.github.io/cas/development/authentication/Configuring-Authentication-Components.html)
+While [authentication support](https://apereo.github.io/cas/7.2.x/authentication/Configuring-Authentication-Components.html)
 in CAS for a variety of systems is somewhat comprehensive and complex, a common deployment use case
 is the task of designing custom authentication schemes.
 
@@ -24,7 +24,7 @@ This tutorial specifically requires and focuses on:
 
 - CAS `7.2.x`
 - Java 21
-- [WAR Overlay](https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html)
+- [WAR Overlay](https://apereo.github.io/cas/7.2.x/installation/WAR-Overlay-Installation.html)
 
 # Customized Authentication
 

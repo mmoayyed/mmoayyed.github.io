@@ -5,7 +5,7 @@ summary:    Learn how to store, read, and manage CAS audit logs in SQL databases
 tags:       ["CAS 7.2.x", "RDBMS", "Monitoring", "Audits"]
 ---
 
-Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/development/audits/Audits.html) that capture events such as creation and removal of tokens, authentication sessions, requests and responses, and a lot more. Each audited operation typically carries a subject, an action, date/time of the event as well as other peripheral types of information such as client and server IP addresses, etc. Audit events can of course be managed and stored in a variety of database types, the most common of which happens to be [relational databases](https://apereo.github.io/cas/development/audits/Audits-Database.html) such as MySQL, Oracle, etc.
+Apereo CAS exposes several [audit operations](https://apereo.github.io/cas/7.2.x/audits/Audits.html) that capture events such as creation and removal of tokens, authentication sessions, requests and responses, and a lot more. Each audited operation typically carries a subject, an action, date/time of the event as well as other peripheral types of information such as client and server IP addresses, etc. Audit events can of course be managed and stored in a variety of database types, the most common of which happens to be [relational databases](https://apereo.github.io/cas/7.2.x/audits/Audits-Database.html) such as MySQL, Oracle, etc.
 {% include googlead1.html  %}
 This post demonstrates an overview of how audit events can be stored in a relational database and reviews the configuration required for a few databases to correctly retrieve, filter and clean up audit history.
 
@@ -18,7 +18,7 @@ Our starting position is as follows:
 
 # Initial Setup
 
-Support for storing audit data into a relational database is first enabled by including the appropriate auto-configuration module in the build script of the [CAS WAR Overlay](https://apereo.github.io/cas/development/installation/WAR-Overlay-Installation.html):
+Support for storing audit data into a relational database is first enabled by including the appropriate auto-configuration module in the build script of the [CAS WAR Overlay](https://apereo.github.io/cas/7.2.x/installation/WAR-Overlay-Installation.html):
 {% include googlead1.html  %}
 ```gradle
 implementation "org.apereo.cas:cas-server-support-audit-jdbc"
@@ -73,7 +73,7 @@ cas.audit.jdbc.schedule.enabled=false
 
 ## Viewing Audits
 
-The audit management facilities in Apereo CAS can be fetched using [actuator endpoints](https://apereo.github.io/cas/development/audits/Audits.html). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the audit database and report back records based on configurable filtering criteria.
+The audit management facilities in Apereo CAS can be fetched using [actuator endpoints](https://apereo.github.io/cas/7.2.x/audits/Audits.html). These endpoints, *once exposed, secured and enabled*, allow the adopter to peek into the current contents of the audit database and report back records based on configurable filtering criteria.
 <div class="alert alert-info">
   <strong>Note</strong><br/>This post assumes that all CAS actuator endpoints are protected with basic auth using the predefined
   credentials <code>casuser</code> and <code>Mellon</code> for the username and password, respectively.

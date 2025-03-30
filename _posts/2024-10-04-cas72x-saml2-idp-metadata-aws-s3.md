@@ -21,7 +21,7 @@ Let's begin. Our starting position is based on:
 
 Metadata documents are stored in and fetched from a single pre-defined bucket that is taught to CAS. This bucket is automatically created by CAS if it does not exist, and is only ever expected hold a single object. The object only holds the actual XML metadata, and keys and certificates are tracked as *metadata* attached to the object. CAS would only generate the SAML2 identity provider metadata if it cannot be found or if it's seen as invalid or compromised.
 {% include googlead1.html  %}
-The setup is relatively simple. Once your build includes the appropriate [extension module](https://apereo.github.io/cas/development/installation/Configuring-SAML2-DynamicMetadata-AmazonS3.html), you will need to instruct CAS to connect to AWS and define bucket-related settings:
+The setup is relatively simple. Once your build includes the appropriate [extension module](https://apereo.github.io/cas/7.2.x/installation/Configuring-SAML2-DynamicMetadata-AmazonS3.html), you will need to instruct CAS to connect to AWS and define bucket-related settings:
 {% include googlead1.html  %}
 ```properties
 cas.authn.saml-idp.metadata.amazon-s3.idp-metadata-bucket-name=thebucket
@@ -37,7 +37,7 @@ cas.authn.saml-idp.metadata.amazon-s3.crypto.encryption.key=
 cas.authn.saml-idp.metadata.amazon-s3.crypto.signing.key=
 ```
 {% include googlead1.html  %}
-The default algorithm used here is `A128CBC-HS512`. Remember that keys will be automtically generated for you on startup, or you can generate them yourself using [CAS command-line shell](https://apereo.github.io/cas/development/installation/Configuring-Commandline-Shell.html).
+The default algorithm used here is `A128CBC-HS512`. Remember that keys will be automtically generated for you on startup, or you can generate them yourself using [CAS command-line shell](https://apereo.github.io/cas/7.2.x/installation/Configuring-Commandline-Shell.html).
 
 # Need Help?
 
